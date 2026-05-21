@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VM Guide — HRO / TRR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d0f12;--bg2:#131619;--bg3:#1a1e23;--bg4:#22272e;
+  --border:#2a3040;--border2:#3a4555;
+  --text:#d4d8e0;--text2:#8892a4;--text3:#5a6478;
+  --teal:#1db88a;--teal-d:#0f6e56;--teal-bg:rgba(29,184,138,.08);
+  --purple:#7c6ff7;--amber:#f0a030;--coral:#e85840;
+  --blue:#3b9eff;--red:#e24b4a;
+  --sidebar-w:240px;--header-h:52px;
+  --mono:'IBM Plex Mono',monospace;
+  --sans:'IBM Plex Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;overflow-x:hidden}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+.header{position:fixed;top:0;left:0;right:0;height:var(--header-h);background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 20px;z-index:100;gap:16px}
+.header-logo{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--teal);letter-spacing:.08em}
+.header-title{font-size:13px;color:var(--text2);font-weight:300}
+.header-actions{margin-left:auto;display:flex;align-items:center;gap:8px}
+.header-tag{font-family:var(--mono);font-size:11px;color:var(--text3);background:var(--bg3);border:1px solid var(--border);padding:3px 10px;border-radius:4px}
+.btn-plantao{font-family:var(--mono);font-size:11px;color:var(--amber);background:rgba(240,160,48,.1);border:1px solid rgba(240,160,48,.3);padding:4px 12px;border-radius:4px;cursor:pointer;transition:all .15s}
+.btn-plantao:hover,.btn-plantao.active{background:rgba(240,160,48,.2);border-color:var(--amber)}
+.menu-btn{display:none;background:none;border:1px solid var(--border);color:var(--text2);padding:5px 10px;border-radius:4px;cursor:pointer;font-family:var(--mono);font-size:12px}
+.sidebar{position:fixed;top:var(--header-h);left:0;width:var(--sidebar-w);bottom:0;background:var(--bg2);border-right:1px solid var(--border);overflow-y:auto;padding:20px 0;z-index:90;transition:transform .25s ease}
+.sidebar-section{padding:6px 20px 4px;font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--text3);margin-top:12px}
+.sidebar-section:first-child{margin-top:0}
+.nav-link{display:block;padding:7px 20px 7px 28px;font-size:12.5px;color:var(--text2);text-decoration:none;border-left:2px solid transparent;transition:all .15s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav-link:hover{color:var(--text);background:var(--bg3)}
+.nav-link.active{color:var(--teal);border-left-color:var(--teal);background:rgba(29,184,138,.07)}
+.main{margin-left:var(--sidebar-w);margin-top:var(--header-h);padding:40px 48px;max-width:960px}
+.section{padding-top:60px;margin-bottom:80px}
+.section:first-child{padding-top:20px}
+.section-label{font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--teal);margin-bottom:8px}
+.section-title{font-size:24px;font-weight:600;color:#e8ecf2;margin-bottom:6px;line-height:1.2}
+.section-subtitle{font-size:13px;color:var(--text2);margin-bottom:28px;font-weight:300}
+.divider{width:100%;height:1px;background:var(--border);margin:28px 0}
+.prose{font-size:14px;color:var(--text);line-height:1.75;margin-bottom:16px}
+.prose strong{color:#e8ecf2;font-weight:500}
+h3{font-size:15px;font-weight:500;color:#e8ecf2;margin:28px 0 12px}
+.src{font-family:var(--mono);font-size:10px;color:var(--text3);margin-left:6px;vertical-align:middle}
+.share-link{font-family:var(--mono);font-size:10px;color:var(--text3);margin-left:8px;vertical-align:middle;cursor:pointer;opacity:0;transition:opacity .15s;text-decoration:none}
+.share-link:hover{color:var(--teal)}
+.section-title:hover .share-link,h3:hover .share-link{opacity:1}
+.callout{border-left:3px solid;padding:12px 16px;border-radius:0 6px 6px 0;margin:16px 0;font-size:13.5px;line-height:1.65}
+.callout strong{font-weight:500}
+.callout.teal{border-color:var(--teal);background:rgba(29,184,138,.08);color:#a0e8d0}
+.callout.amber{border-color:var(--amber);background:rgba(240,160,48,.08);color:#f5d090}
+.callout.red{border-color:var(--red);background:rgba(226,75,74,.08);color:#f0a0a0}
+.callout.purple{border-color:var(--purple);background:rgba(124,111,247,.08);color:#c0b8fe}
+.callout.blue{border-color:var(--blue);background:rgba(59,158,255,.08);color:#a0ccff}
+.card-grid{display:grid;gap:12px;margin:16px 0}
+.card-grid.col2{grid-template-columns:1fr 1fr}
+.card-grid.col3{grid-template-columns:1fr 1fr 1fr}
+.concept-card{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:16px;transition:border-color .2s}
+.concept-card:hover{border-color:var(--border2)}
+.concept-card .label{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px}
+.concept-card .value{font-size:14px;font-weight:500;color:#e8ecf2;margin-bottom:6px}
+.concept-card .desc{font-size:12.5px;color:var(--text2);line-height:1.55}
+.concept-card.teal .label{color:var(--teal)}
+.concept-card.purple .label{color:var(--purple)}
+.concept-card.amber .label{color:var(--amber)}
+.concept-card.coral .label{color:var(--coral)}
+.concept-card.blue .label{color:var(--blue)}
+.table-wrap{overflow-x:auto;margin:16px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead th{background:var(--bg3);color:var(--text2);font-weight:500;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap}
+tbody td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:top;line-height:1.55}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:rgba(255,255,255,.02)}
+td strong{color:#e8ecf2;font-weight:500}
+.td-mono{font-family:var(--mono);font-size:12px}
+.td-ok{color:var(--teal);font-weight:500}
+.td-warn{color:var(--amber);font-weight:500}
+.td-bad{color:var(--red);font-weight:500}
+.peep-table{margin:16px 0}
+.peep-row{display:flex;gap:0;margin-bottom:6px;align-items:center}
+.peep-label{font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;color:var(--text3);width:60px;flex-shrink:0}
+.peep-cells{display:flex;gap:4px;flex-wrap:wrap}
+.peep-cell{background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:5px 10px;font-family:var(--mono);font-size:12px;color:var(--text);min-width:44px;text-align:center}
+.peep-cell.hi{background:rgba(29,184,138,.12);border-color:var(--teal-d);color:var(--teal)}
+.calc-box{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:24px;margin:20px 0}
+.calc-box h3{margin-top:0;color:var(--text)}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+.calc-field label{display:block;font-size:11.5px;color:var(--text2);margin-bottom:6px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em}
+.calc-field input,.calc-field select{width:100%;background:var(--bg4);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:6px;font-family:var(--mono);font-size:13px;outline:none;transition:border-color .15s}
+.calc-field input:focus,.calc-field select:focus{border-color:var(--teal)}
+.calc-field select option{background:var(--bg4)}
+.calc-result{background:var(--teal-bg);border:1px solid var(--teal-d);border-radius:8px;padding:16px 20px;margin-top:12px}
+.res-label{font-size:11px;color:var(--teal);font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+.res-values{display:flex;gap:24px;flex-wrap:wrap}
+.res-item .res-val{font-family:var(--mono);font-size:22px;font-weight:500;color:var(--teal)}
+.res-item .res-unit{font-size:12px;color:var(--text2)}
+.res-item small{display:block;font-size:11px;color:var(--text3);margin-top:2px}
+.scenario-list{display:flex;flex-direction:column;gap:5px;margin:16px 0}
+.scenario-item{display:grid;grid-template-columns:200px 1fr 1fr;border:1px solid var(--border);border-radius:6px;overflow:hidden;font-size:13px}
+.scenario-item .s-ctx{padding:10px 14px;background:var(--bg4);color:var(--text2);font-size:12.5px;display:flex;align-items:center}
+.scenario-item .s-first{padding:10px 14px;background:rgba(29,184,138,.07);border-left:1px solid var(--border);border-right:1px solid var(--border)}
+.scenario-item .s-first strong{color:var(--teal);font-family:var(--mono);font-size:12px}
+.scenario-item .s-note{padding:10px 14px;color:var(--text2);font-size:12px;display:flex;align-items:center}
+.step-list{display:flex;flex-direction:column;gap:4px;margin:16px 0}
+.step-item{display:grid;grid-template-columns:140px 1fr;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.step-item .s-label{padding:12px 14px;font-size:12px;font-weight:500;display:flex;flex-direction:column;justify-content:center;gap:2px}
+.step-item .s-label span:first-child{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em}
+.step-item .s-body{padding:12px 14px;font-size:13px;color:var(--text);border-left:1px solid var(--border);line-height:1.6}
+.step-item.teal .s-label{background:rgba(29,184,138,.12);color:var(--teal)}
+.step-item.purple .s-label{background:rgba(124,111,247,.12);color:var(--purple)}
+.step-item.amber .s-label{background:rgba(240,160,48,.12);color:var(--amber)}
+.step-item.coral .s-label{background:rgba(232,88,64,.12);color:var(--coral)}
+.badge{display:inline-block;font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;padding:2px 8px;border-radius:4px;margin-right:4px}
+.badge.teal{background:rgba(29,184,138,.15);color:var(--teal)}
+.badge.red{background:rgba(226,75,74,.15);color:#f08080}
+.badge.blue{background:rgba(59,158,255,.15);color:var(--blue)}
+.badge.amber{background:rgba(240,160,48,.15);color:var(--amber)}
+/* Quiz */
+.quiz-box{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:24px;margin:20px 0}
+.quiz-case{font-size:13.5px;color:var(--text);line-height:1.7;margin-bottom:20px;padding:16px;background:var(--bg4);border-radius:8px;border-left:3px solid var(--blue)}
+.quiz-question{font-size:14px;font-weight:500;color:#e8ecf2;margin-bottom:14px}
+.quiz-options{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.quiz-opt{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;background:var(--bg4);border:1px solid var(--border);border-radius:6px;cursor:pointer;transition:all .15s;font-size:13px;color:var(--text);text-align:left;width:100%}
+.quiz-opt:hover{border-color:var(--border2);background:var(--bg3)}
+.quiz-opt.correct{border-color:var(--teal);background:rgba(29,184,138,.1);color:#a0e8d0}
+.quiz-opt.wrong{border-color:var(--red);background:rgba(226,75,74,.08);color:#f0a0a0}
+.quiz-opt.disabled{cursor:default;pointer-events:none}
+.quiz-letter{font-family:var(--mono);font-size:11px;font-weight:500;flex-shrink:0;width:18px;color:var(--text3)}
+.quiz-feedback{display:none;padding:12px 16px;border-radius:6px;font-size:13px;line-height:1.6;margin-bottom:12px}
+.quiz-feedback.show{display:block}
+.quiz-feedback.correct{background:rgba(29,184,138,.1);border:1px solid var(--teal-d);color:#a0e8d0}
+.quiz-feedback.wrong{background:rgba(226,75,74,.08);border:1px solid var(--red);color:#f0a0a0}
+.quiz-nav{display:flex;gap:8px;align-items:center}
+.quiz-btn{font-family:var(--mono);font-size:12px;padding:7px 16px;border-radius:6px;cursor:pointer;transition:all .15s;border:1px solid var(--border);background:var(--bg4);color:var(--text2)}
+.quiz-btn:hover{border-color:var(--border2);color:var(--text)}
+.quiz-btn.primary{background:rgba(29,184,138,.12);border-color:var(--teal-d);color:var(--teal)}
+.quiz-btn.primary:hover{background:rgba(29,184,138,.2)}
+.quiz-progress{font-family:var(--mono);font-size:11px;color:var(--text3);margin-left:auto}
+.quiz-score{text-align:center;padding:24px;display:none}
+.quiz-score.show{display:block}
+.quiz-score .score-num{font-family:var(--mono);font-size:48px;font-weight:500;color:var(--teal)}
+.quiz-score .score-label{font-size:13px;color:var(--text2);margin-top:4px}
+/* Modo plantão */
+body.plantao-mode .prose,
+body.plantao-mode .callout,
+body.plantao-mode .section-subtitle,
+body.plantao-mode .card-grid,
+body.plantao-mode .step-list,
+body.plantao-mode .scenario-list,
+body.plantao-mode .calc-box,
+body.plantao-mode .quiz-box,
+body.plantao-mode h3:not(.keep-plantao),
+body.plantao-mode p.prose{display:none!important}
+body.plantao-mode .table-wrap{display:block!important}
+body.plantao-mode .peep-table{display:block!important}
+body.plantao-mode .section{margin-bottom:40px;padding-top:36px}
+/* Toast */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--bg3);border:1px solid var(--teal-d);color:var(--teal);font-family:var(--mono);font-size:12px;padding:10px 18px;border-radius:6px;z-index:999;opacity:0;transform:translateY(8px);transition:all .2s;pointer-events:none}
+.toast.show{opacity:1;transform:translateY(0)}
+@media(max-width:768px){
+  .sidebar{transform:translateX(-100%);z-index:200}
+  .sidebar.open{transform:translateX(0)}
+  .main{margin-left:0;padding:24px 20px}
+  .menu-btn{display:block}
+  .header-title{display:none}
+  .card-grid.col3{grid-template-columns:1fr}
+  .card-grid.col2{grid-template-columns:1fr}
+  .calc-grid{grid-template-columns:1fr}
+  .scenario-item{grid-template-columns:1fr}
+  .scenario-item .s-first,.scenario-item .s-note{border-left:none;border-top:1px solid var(--border)}
+  .step-item{grid-template-columns:1fr}
+  .step-item .s-body{border-left:none;border-top:1px solid var(--border)}
+  .section-title{font-size:19px}
+  .btn-plantao{display:none}
+}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:150}
+.overlay.show{display:block}
+#progress{position:fixed;top:var(--header-h);left:0;height:2px;background:var(--teal);z-index:99;width:0%;transition:width .1s}
+</style>
+</head>
+<body>
+<header class="header">
+  <span class="header-logo">VM.guide</span>
+  <span class="header-title">Ventilação Mecânica · Indutores · Sedoanalgesia</span>
+  <div class="header-actions">
+    <button class="btn-plantao" id="btnPlantao" onclick="togglePlantao()">⚡ Plantão</button>
+    <span class="header-tag">HRO / TRR · UpToDate 2026</span>
+    <button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>
+  </div>
+</header>
+<div id="progress"></div>
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+<div class="toast" id="toast"></div>
+
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-section">Fundamentos</div>
+  <a class="nav-link" href="#fisiologia">Fisiologia da VM</a>
+  <a class="nav-link" href="#modos">Modos de VM</a>
+  <a class="nav-link" href="#parametros">Parâmetros iniciais</a>
+  <div class="sidebar-section">Patologias</div>
+  <a class="nav-link" href="#sdra">SDRA</a>
+  <a class="nav-link" href="#dpoc-asma">DPOC &amp; Asma</a>
+  <a class="nav-link" href="#hipercapnia">Hipercapnia permissiva</a>
+  <a class="nav-link" href="#tce">VM no TCE</a>
+  <div class="sidebar-section">Segurança</div>
+  <a class="nav-link" href="#complicacoes">Complicações da VM</a>
+  <a class="nav-link" href="#dissincronia">Dissincronia P-V</a>
+  <div class="sidebar-section">Desmame</div>
+  <a class="nav-link" href="#desmame">SAT / SBT / Extubação</a>
+  <div class="sidebar-section">Farmacologia</div>
+  <a class="nav-link" href="#indutores">Indutores para RSI</a>
+  <a class="nav-link" href="#sedoanalgesia">Sedoanalgesia na UTI</a>
+  <div class="sidebar-section">Referência</div>
+  <a class="nav-link" href="#calculadora">Calculadoras</a>
+  <a class="nav-link" href="#tabelas">Tabelas rápidas</a>
+  <a class="nav-link" href="#quiz">Caso clínico / Quiz</a>
+</nav>
+
+<main class="main">
+
+<!-- 1. FISIOLOGIA -->
+<section class="section" id="fisiologia">
+  <div class="section-label">01 — Fundamentos</div>
+  <h1 class="section-title">Fisiologia da VM com Pressão Positiva <a class="share-link" href="#fisiologia" onclick="copyLink(event,'#fisiologia')">🔗</a></h1>
+  <p class="section-subtitle">Ciclo ventilatório, mecânica pulmonar e efeitos hemodinâmicos</p>
+  <h3>O ciclo ventilatório — Trigger, Target, Cycle <span class="src">[UpToDate — Modes of MV, Table 1]</span></h3>
+  <p class="prose">Todo ciclo respiratório tem três momentos que definem como o ventilador interage com o paciente:</p>
+  <div class="card-grid col3">
+    <div class="concept-card teal"><div class="label">Trigger</div><div class="value">Inicia a inspiração</div><div class="desc">Tempo programado (FR) ou esforço do paciente. Flow-triggering: 2 L/min. Pressure-triggering: −1 a −2 cmH₂O.</div></div>
+    <div class="concept-card purple"><div class="label">Target</div><div class="value">Controlado durante insuflação</div><div class="desc">Pressão fixa (PC) → fluxo e volume variam. Volume/Fluxo fixo (VC) → pressão varia conforme mecânica.</div></div>
+    <div class="concept-card amber"><div class="label">Cycle</div><div class="value">Encerra a inspiração</div><div class="desc">Volume atingido (VC). Tempo inspiratório (PC). Queda do fluxo a 25% do pico (PSV).</div></div>
+  </div>
+  <div class="callout teal"><strong>VC vs PC:</strong> Em volume-controlado você garante o VC — mas se a complacência cair, a pressão sobe. Em pressão-controlada você garante a pressão — mas se a mecânica piorar, o VC cai silenciosamente. Em VC monitore Pplat e DP; em PC monitore VC e ventilação-minuto. <span class="src">[UpToDate — Overview initiating IMV ICU]</span></div>
+  <div class="divider"></div>
+  <h3>Mecânica pulmonar — parâmetros essenciais <span class="src">[FCCS Cap. 5 + UpToDate — Overview IMV ICU]</span></h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Parâmetro</th><th>Definição</th><th>Meta / Alerta</th><th>Causa de elevação</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Pplat</strong><br><small>Pausa insp. ≥ 0,5 s</small></td><td>Pressão estática — reflete apenas complacência. Melhor estimativa da pressão alveolar pico.</td><td><span class="td-bad">≤ 30 cmH₂O</span><br>Se >30: reduzir VC</td><td>↓ Complacência: SDRA, edema, pneumotórax, obesidade</td></tr>
+      <tr><td><strong>ΔP Ppico−Pplat</strong></td><td>Componente resistivo. Se ↑ com Pplat normal → problema de via aérea.</td><td><span class="td-warn">↑ com Pplat normal = resistência</span></td><td>Broncoespasmo, secreção, tubo dobrado, DPOC</td></tr>
+      <tr><td><strong>Driving Pressure (DP)</strong><br><span class="td-mono">DP = Pplat − PEEP</span></td><td>Pressão transpulmonar durante insuflação. Equivale a VT / complacência do sistema resp.</td><td><span class="td-bad">&lt; 15 cmH₂O</span><br>Melhor preditor de VILI</td><td>↓ Complacência ou ↑ VC sem ajuste de PEEP</td></tr>
+      <tr><td><strong>Auto-PEEP (PEEPi)</strong></td><td>PEEP intrínseco por esvaziamento pulmonar incompleto. Diagnosticado na curva fluxo-tempo (fluxo expiratório não retorna a zero).</td><td>Meta: PEEPi &lt; 10 cmH₂O<br>Medir com pausa expiratória</td><td>Obstrução (DPOC, asma), FR alta, I:E inadequado</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout red"><strong>Ppico ↑ + Pplat normal</strong> → problema de RESISTÊNCIA (broncoespasmo, secreção, tubo dobrado, auto-PEEP). Conduta: aspirar, broncodilatador, verificar circuito.<br><br><strong>Ppico ↑ + Pplat ↑</strong> → problema de COMPLACÊNCIA (SDRA, pneumotórax, edema, hiperinsuflação). Conduta: reduzir VC, excluir pneumotórax, revisar PEEP. <span class="src">[UpToDate — MV adultos PS; FCCS Cap. 5]</span></div>
+  <div class="divider"></div>
+  <h3>Efeitos hemodinâmicos da VM com pressão positiva <span class="src">[UpToDate — Complications MV Overview]</span></h3>
+  <div class="card-grid col2">
+    <div class="concept-card coral"><div class="label">Efeitos potencialmente deletérios</div><div class="desc">↓ Retorno venoso → compressão das veias cavas → ↓ DC<br><br>↑ RVP com PEEP alto → ↑ pós-carga do VD → disfunção ventricular direita<br><br>PVC e PAOP falsamente elevadas — corrigir: verdadeira PVC = PVC medida − ½ PEEP (complacência normal) ou ¼ PEEP (complacência reduzida)</div></div>
+    <div class="concept-card teal"><div class="label">Efeito benéfico (ICC / EAP)</div><div class="desc">Em ICC: pressão intratorácica positiva → ↓ pós-carga do VE e ↓ retorno venoso → melhora do débito em corações insuficientes.<br><br>Isso explica por que PEEP alto pode paradoxalmente melhorar a hemodinâmica no edema agudo de pulmão.</div></div>
+  </div>
+  <div class="callout amber"><strong>Hipotensão pós-IOT</strong> é frequente e multifatorial: sedação + ↓ retorno venoso + hipovolemia relativa. Antes de escalar DVA: verificar PEEP, FR, e realizar reposição volêmica cautelosa. Em DPOC/Asma: desconectar circuito por 30–60 s para excluir auto-PEEP como causa. <span class="src">[UpToDate — MV adults ED; DPOC UpToDate]</span></div>
+</section>
+
+<!-- 2. MODOS -->
+<section class="section" id="modos">
+  <div class="section-label">02 — Fundamentos</div>
+  <h1 class="section-title">Modos de Ventilação Mecânica <a class="share-link" href="#modos" onclick="copyLink(event,'#modos')">🔗</a></h1>
+  <p class="section-subtitle">AC-VC · AC-PC · SIMV-PSV · PSV — classificação, vantagens e indicações</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Modo</th><th>Estratégia</th><th>Trigger</th><th>Suporte por resp.</th><th>Indicação principal</th></tr></thead>
+    <tbody>
+      <tr><td><strong>AC-VC</strong></td><td>Volume-controlada</td><td>Vent. ou paciente</td><td>Total em cada resp.</td><td><span class="badge teal">Padrão inicial</span> IOT aguda, SDRA, instabilidade, paralisia. Garante VM mínima.</td></tr>
+      <tr><td><strong>AC-PC</strong></td><td>Pressão-controlada</td><td>Vent. ou paciente</td><td>Total — pressão fixa, volume variável</td><td>Fístula aérea (limita pressão), TCE (alguns centros), dissincronia refratária ao AC-VC.</td></tr>
+      <tr><td><strong>SIMV-PSV</strong></td><td>Mista</td><td>Vent. (FR mín.) + paciente</td><td>Total nas obrigatórias; parcial (PSV 5–10 cmH₂O) nas espontâneas</td><td><span class="badge amber">Evitar como inicial</span> Aumenta trabalho respiratório vs AC. Não recomendado para fase aguda.</td></tr>
+      <tr><td><strong>PSV</strong></td><td>Pressão-suportada</td><td>Apenas paciente</td><td>Parcial — por esforço do paciente</td><td><span class="badge blue">Desmame</span> Drive respiratório presente, RASS ≥ −2. <span class="td-bad">Contraindicado sem respiração espontânea.</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout purple"><strong>Por que o SIMV ficou obsoleto como modo inicial?</strong> Em respirações espontâneas acima da FR mínima, o paciente realiza 100% do trabalho muscular — o ventilador não suporta essas respirações (a menos que PSV seja adicionado). Isso ↑ trabalho respiratório comparado ao AC. FCCS: "Not a good mode for critically ill patients — increased work of breathing compared with AC". A abordagem moderna é AC com desmame progressivo de suporte de pressão. <span class="src">[FCCS Tab. 5-6; UpToDate — Modes MV]</span></div>
+  <h3>AC-VC vs AC-PC — diferenças práticas <span class="src">[UpToDate — ARDS ventilator management, Table 4]</span></h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Aspecto</th><th>AC-VC (Volume-controlado)</th><th>AC-PC (Pressão-controlada)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>O que é garantido</strong></td><td>Volume corrente (VC fixo)</td><td>Pressão inspiratória (fixa)</td></tr>
+      <tr><td><strong>Vantagem principal</strong></td><td class="td-ok">VM mínima garantida; familiaridade clínica</td><td>Pressões controladas; melhor tolerância pelo paciente</td></tr>
+      <tr><td><strong>Desvantagem principal</strong></td><td>Pressões não controladas → barotrauma se complacência ↓</td><td class="td-bad">VC variável → hipoventialção silenciosa se mecânica piora</td></tr>
+      <tr><td><strong>O que monitorar</strong></td><td>Pplat e DP a cada ajuste</td><td>VC e ventilação-minuto</td></tr>
+      <tr><td><strong>Indicação preferencial</strong></td><td>Início de VM, SDRA, instabilidade hemodinâmica</td><td>Fístula aérea, dissincronia refratária</td></tr>
+    </tbody>
+  </table></div>
+  <h3>PSV — configuração no desmame <span class="src">[FCCS Cap. 5 B; UpToDate — Overview IMV ICU]</span></h3>
+  <p class="prose">Em PSV, o paciente controla FR, tempo inspiratório e influencia o VC. A ciclagem ocorre quando o fluxo cai a <strong>25% do pico</strong>. Para desmame, ajustar o nível de PS para atingir: VC 6–8 mL/kg PBW, FR &lt; 30 irpm, VM adequada. Importante: <em>cuff leak</em> no tubo pode impedir a ciclagem adequada pois o fluxo nunca cai ao limiar de 25%.</p>
+</section>
+
+<!-- 3. PARÂMETROS -->
+<section class="section" id="parametros">
+  <div class="section-label">03 — Fundamentos</div>
+  <h1 class="section-title">Parâmetros Iniciais <a class="share-link" href="#parametros" onclick="copyLink(event,'#parametros')">🔗</a></h1>
+  <p class="section-subtitle">Configuração passo a passo baseada nos protocolos UpToDate e FCCS</p>
+  <h3>Configuração inicial — AC-VC <span class="src">[UpToDate — Overview IMV ICU; UpToDate — MV adults ED, Table 5; FCCS Tab. 5-7]</span></h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Parâmetro</th><th>Valor inicial</th><th>Faixa / meta</th><th>Fonte / observação</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Modo</strong></td><td>AC-VC</td><td>—</td><td>Modo inicial de escolha na maioria dos pacientes. PSV apenas no desmame.</td></tr>
+      <tr><td><strong>VC</strong></td><td><span class="td-mono">6 mL/kg PBW</span></td><td>SDRA: 4–8 mL/kg PBW<br>Não-SDRA: 6–8 mL/kg PBW</td><td><span class="td-ok">Usar PBW pela altura, nunca peso real.</span> UpToDate: "avoid volumes ≥ 10 mL/kg PBW"</td></tr>
+      <tr><td><strong>FR</strong></td><td>12–16 irpm</td><td>10–35 irpm<br>SDRA: até 35 irpm</td><td>FCCS: "choose rate to achieve desired minute ventilation". Target pH, não PaCO₂.</td></tr>
+      <tr><td><strong>PEEP</strong></td><td>5 cmH₂O</td><td>5–10 cmH₂O (geral)<br>Maior em SDRA</td><td>UpToDate: "PEEP typically set at 5 cmH₂O with subsequent adjustments by FiO₂". FCCS: "PEEP levels >15 rarely necessary"</td></tr>
+      <tr><td><strong>FiO₂</strong></td><td>1,0 (100%)</td><td>Meta SpO₂ 90–96%</td><td>Iniciar em 1,0 para garantir oxigenação na fase de estabilização. Desmamar rapidamente em 30 min.</td></tr>
+      <tr><td><strong>Fluxo inspiratório</strong></td><td>40–60 L/min</td><td>40–75 L/min<br>Obstrução: até 75 L/min</td><td>UpToDate: "40 to 60 L/min with ramp pattern, I:E 1:2 to 1:3". Fluxos >75 L/min geralmente desnecessários.</td></tr>
+      <tr><td><strong>I:E</strong></td><td>1:2 a 1:3</td><td>Obstrução: 1:3 a 1:4</td><td>Ramp pattern (decelerating) padrão → distribui ventilação mais homogeneamente e ↓ Ppico vs constant flow.</td></tr>
+      <tr><td><strong>Trigger</strong></td><td>Flow: 2 L/min<br>Pressure: −1 a −2 cmH₂O</td><td>Mínimo necessário sem auto-trigger</td><td>UpToDate: "pressure triggering should NOT be used when auto-PEEP is suspected" → usar flow triggering.</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Tabela PEEP / FiO₂ — ARDSnet Low PEEP Strategy <span class="src">[UpToDate — ARDS ventilator management, Table 3; FCCS Tab. 5-8]</span></h3>
+  <p class="prose">Meta: SpO₂ 88–95% / PaO₂ 55–80 mmHg. Iniciar PEEP em 5 cmH₂O e titular progressivamente. Efeito pleno de recrutamento pode levar horas.</p>
+  <div class="peep-table">
+    <div class="peep-row"><div class="peep-label">FiO₂</div><div class="peep-cells"><div class="peep-cell">0,3</div><div class="peep-cell">0,4</div><div class="peep-cell">0,4</div><div class="peep-cell">0,5</div><div class="peep-cell">0,5</div><div class="peep-cell">0,6</div><div class="peep-cell">0,7</div><div class="peep-cell">0,8</div><div class="peep-cell">0,9</div><div class="peep-cell">1,0</div></div></div>
+    <div class="peep-row"><div class="peep-label">PEEP</div><div class="peep-cells"><div class="peep-cell">5</div><div class="peep-cell">5</div><div class="peep-cell">8</div><div class="peep-cell">8</div><div class="peep-cell">10</div><div class="peep-cell">10</div><div class="peep-cell hi">10–12</div><div class="peep-cell hi">14</div><div class="peep-cell hi">18–20</div><div class="peep-cell hi">20–24</div></div></div>
+  </div>
+</section>
+
+<!-- 4. SDRA -->
+<section class="section" id="sdra">
+  <div class="section-label">04 — Patologias</div>
+  <h1 class="section-title">SDRA — Ventilação Protetora (LTVV) <a class="share-link" href="#sdra" onclick="copyLink(event,'#sdra')">🔗</a></h1>
+  <p class="section-subtitle">Low Tidal Volume Ventilation — evidência de redução de mortalidade em múltiplos RCTs</p>
+  <div class="callout blue"><strong>Evidência (UpToDate — ARDS ventilator management):</strong><br>
+    • ARDSnet ARMA trial (N=861): mortalidade 31% (VC 6 mL/kg) vs 40% (VC 12 mL/kg); mais dias sem VM (12 vs 10 dias).<br>
+    • Meta-análise de 6 RCTs (1.297 pacs.): LTVV reduziu mortalidade em 28 dias (27,4 vs 37%; RR 0,74, IC95% 0,61–0,88).<br>
+    • Análise retrospectiva de 9 trials (3.562 pacs.): entre todas as variáveis (VC, PEEP, Pplat, DP), a <strong>driving pressure foi a que melhor predisse sobrevida</strong> em SDRA.<br>
+    • UpToDate 2026: enquanto alguns experts definem meta de DP &lt;20 cmH₂O, "dados sugerem que &lt;15 cmH₂O pode ter maior benefício".</div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Parâmetro</th><th>Meta</th><th>Ajuste se fora da meta</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Modo</strong></td><td>AC-VC (preferido)</td><td>AC-PC aceitável se VC estável e consistente com LTVV</td></tr>
+      <tr><td><strong>VC</strong></td><td><span class="td-ok">6 mL/kg PBW inicial</span></td><td>Se Pplat >30: ↓ 1 mL/kg a cada 15 min até mín. 4 mL/kg</td></tr>
+      <tr><td><strong>Pplat</strong></td><td><span class="td-bad">≤ 30 cmH₂O</span></td><td>Reduzir VC. Se já em 4 mL/kg e Pplat >30: ↑ FR para compensar</td></tr>
+      <tr><td><strong>Driving Pressure</strong></td><td><span class="td-bad">&lt; 15 cmH₂O</span></td><td>Reduzir VC ou ↑ PEEP. Evitar PEEP alto em pulmão pouco recrutável.</td></tr>
+      <tr><td><strong>PEEP</strong></td><td>Tabela ARDSnet</td><td>Titular por FiO₂/SpO₂. Monitorar PA e FC durante titulação. Efeito pleno leva horas.</td></tr>
+      <tr><td><strong>FiO₂</strong></td><td>100% → desmamar</td><td>Meta SpO₂ 88–95% / PaO₂ 55–80 mmHg. Desmamar em 30–60 min.</td></tr>
+      <tr><td><strong>FR</strong></td><td>14–22 irpm (até 35)</td><td>↑ FR para compensar ↓ VC e manter VM adequada</td></tr>
+      <tr><td><strong>pH alvo</strong></td><td>≥ 7,25</td><td>Se pH &lt;7,25: ↑ FR até 35 irpm ou NaHCO₃. Se pH ≤7,20: corrigir com NaHCO₃.</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Protocolo ARDSnet — sequência prática <span class="src">[UpToDate — ARDS ventilator management, Table 3; FCCS Tab. 5-9]</span></h3>
+  <div class="step-list">
+    <div class="step-item teal"><div class="s-label"><span>Passo 1</span><span>PBW</span></div><div class="s-body">Calcular PBW pela altura (não pelo peso real). Usar calculadora neste guia.</div></div>
+    <div class="step-item teal"><div class="s-label"><span>Passo 2</span><span>VC inicial</span></div><div class="s-body">Iniciar AC-VC em 8 mL/kg PBW. Reduzir 1 mL/kg a cada hora até atingir 6 mL/kg (protocolo original ARDSnet).</div></div>
+    <div class="step-item teal"><div class="s-label"><span>Passo 3</span><span>FR</span></div><div class="s-body">Ajustar FR para manter ventilação-minuto basal (≤35 irpm). Target pH, não PaCO₂.</div></div>
+    <div class="step-item teal"><div class="s-label"><span>Passo 4</span><span>Pplat</span></div><div class="s-body">Medir Pplat com pausa inspiratória de pelo menos 0,5 s (FCCS: "usually 1 second"). Se >30: ↓VC 1 mL/kg até mín. 4 mL/kg ou pH 7,15.</div></div>
+    <div class="step-item teal"><div class="s-label"><span>Passo 5</span><span>DP</span></div><div class="s-body">Calcular DP = Pplat − PEEP. Meta &lt;15 cmH₂O. Se elevada com Pplat ≤30: considerar ↑ PEEP (se recrutável) ou ↓ VC.</div></div>
+    <div class="step-item teal"><div class="s-label"><span>Passo 6</span><span>PEEP / FiO₂</span></div><div class="s-body">Iniciar PEEP 5 cmH₂O e FiO₂ 1,0. Desmamar FiO₂ em 30–60 min usando tabela ARDSnet. Monitorar PA e FC durante titulação de PEEP.</div></div>
+    <div class="step-item teal"><div class="s-label"><span>Passo 7</span><span>Gasometria</span></div><div class="s-body">Gasometria arterial em 30–60 min. Reavaliação em cada ajuste de VC ou FR.</div></div>
+  </div>
+  <div class="callout amber"><strong>Reconhecimento subótimo de SDRA:</strong> Estudo multicêntrico 2016 (3.022 pacs.): SDRA reconhecida pelos médicos em apenas 60% das vezes; &lt;2/3 receberam VC ≤8 mL/kg PBW. Estudo 2021 (2.500 pacs.): apenas 31,4% receberam ventilação protetora (Pplat &lt;30 cmH₂O + VC &lt;6,5 mL/kg PBW). Desenvolver protocolos institucionais melhora a adesão. <span class="src">[UpToDate — ARDS ventilator management]</span></div>
+</section>
+
+<!-- 5. DPOC / ASMA -->
+<section class="section" id="dpoc-asma">
+  <div class="section-label">05 — Patologias</div>
+  <h1 class="section-title">DPOC &amp; Asma — Hiperinsuflação Dinâmica <a class="share-link" href="#dpoc-asma" onclick="copyLink(event,'#dpoc-asma')">🔗</a></h1>
+  <p class="section-subtitle">Fisiopatologia do air trapping e estratégia ventilatória para obstrução ao fluxo expiratório</p>
+  <p class="prose">A hiperinsuflação dinâmica (DHI) ocorre quando o tempo expiratório é insuficiente para esvaziamento pulmonar completo. O ar se acumula progressivamente a cada ciclo, gerando <strong>auto-PEEP (PEEPi)</strong>. Em estudo prospectivo de 13 pacientes com DPOC em VM, todos tinham auto-PEEP mensurável (média 9,4 cmH₂O); 7 pacientes tinham PEEPi >10 cmH₂O. O auto-PEEP é responsável por até um terço do trabalho total de respiração em DPOC em VM. <span class="src">[UpToDate — IMV in COPD]</span></p>
+  <h3>Configuração ventilatória no DPOC <span class="src">[UpToDate — IMV in COPD; FCCS Cap. 5 B]</span></h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Parâmetro</th><th>Configuração</th><th>Raciocínio fisiopatológico</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Modo preferido</strong></td><td>VC-CMV (AC-VC) ou SIMV-PSV</td><td>UpToDate sugere modos volume-controlados sobre PSV puro. SIMV-PSV se AC-VC causar hiperventilação.</td></tr>
+      <tr><td><strong>FR</strong></td><td><span class="td-ok">↓ frequência (meta: reduzir DHI)</span></td><td>AC: set 4 abaixo da FR espontânea (ex: se FR 20, setar 16). Monitorar: FR alta → ↑ DHI → inverter I:E.</td></tr>
+      <tr><td><strong>Fluxo inspiratório</strong></td><td><span class="td-ok">60–100 L/min (ALTO)</span></td><td>↑ Fluxo → ↓ TI → ↑ TE disponível. Em estudo: fluxo 30→90 L/min aumentou TE de 2,1 para 2,3 s e ↓ auto-PEEP de 7 para 6,4 cmH₂O.</td></tr>
+      <tr><td><strong>PEEP extrínseco</strong></td><td>Iniciar 5–10 cmH₂O; ajustar</td><td>UpToDate: extrinsic PEEP deve "undermatch" intrinsic PEEP — nunca ≥ PEEPi. Prática: ≤80% do PEEPi. Benefício: ↓ esforço de trigger sem piorar DHI.</td></tr>
+      <tr><td><strong>Trigger</strong></td><td>Flow-triggering preferido</td><td>Em IMV: WOB 30–40% menor com flow vs pressure triggering.</td></tr>
+      <tr><td><strong>SpO₂ alvo</strong></td><td>88–92%</td><td>Drive hipóxico em DPOC — hiperoxia pode abolir drive ventilatório.</td></tr>
+      <tr><td><strong>pH / PaCO₂</strong></td><td>Hipercapnia permissiva<br>pH > 7,20</td><td>DPOC frequentemente hipercápnico de base. UpToDate: "permissive hypercapnia is acceptable provided pH does not fall below 7.20".</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout red"><strong>EMERGÊNCIA — Auto-PEEP com colapso cardiovascular:</strong> Em qualquer paciente com DPOC ou Asma em VM que desenvolva hipotensão grave ou AESP, a manobra imediata é <strong>desconectar o circuito do tubo endotraqueal</strong>. Isso permite expiração passiva e alívio da hiperinsuflação. UpToDate: "immediate disconnection of the endotracheal tube from the ventilator is a potentially life-saving maneuver, and is the most effective means of testing for and abolishing hemodynamically significant auto-PEEP." Não escalar DVA sem testar isso primeiro. <span class="src">[UpToDate — IMV in COPD; IMV in asthma]</span></div>
+  <h3>Asma grave — objetivos específicos <span class="src">[UpToDate — IMV in asthma]</span></h3>
+  <p class="prose">Os ajustes devem visar: <strong>Pplat &lt;30 cmH₂O</strong> e <strong>PEEPi &lt;10 cmH₂O</strong>. As manobras principais para atingir esses objetivos são: ↓ VC, ↓ FR, ↑ fluxo inspiratório. Em broncoespasmo extremo raramente resolvido: considerar anestesia geral, heliox ou ECMO.</p>
+  <div class="card-grid col2">
+    <div class="concept-card coral"><div class="label">Configuração prioritária</div><div class="desc">VC 6 mL/kg PBW<br>FR 8–12 irpm (mínimo possível)<br>Fluxo 80–90 L/min<br>PEEP zero ou mínimo (sem PEEPi confirmado)<br>Sedação profunda obrigatória (dissincronia = ↑ DHI)<br>Broncodilatador via ventilador</div></div>
+    <div class="concept-card amber"><div class="label">Hipercapnia permissiva agressiva</div><div class="desc">pH >7,15–7,20 aceitável<br>Não aumentar VC para corrigir PaCO₂<br>Excluir pneumotórax antes de qualquer decisão (barotrauma com pressões altas + asma)<br>Neurobloqueio se não tolerar VM mesmo sob sedação profunda</div></div>
+  </div>
+</section>
+
+<!-- 6. HIPERCAPNIA -->
+<section class="section" id="hipercapnia">
+  <div class="section-label">06 — Patologias</div>
+  <h1 class="section-title">Hipercapnia Permissiva <a class="share-link" href="#hipercapnia" onclick="copyLink(event,'#hipercapnia')">🔗</a></h1>
+  <p class="section-subtitle">Quando e como aceitar a elevação da PaCO₂ para proteger o pulmão</p>
+  <p class="prose">Hipercapnia permissiva é a aceitação da ↑PaCO₂ e acidose respiratória resultante de estratégias que protegem o pulmão (↓VC, ↓FR). Não é um objetivo — é uma consequência tolerada. Não se aplica a pacientes com hipercapnia crônica onde o alvo é manter o pH normal, não normalizar a PaCO₂. <span class="src">[UpToDate — Permissive hypercapnia during MV in adults]</span></p>
+  <div class="card-grid col3">
+    <div class="concept-card teal"><div class="label">pH ≥ 7,25</div><div class="value">Não tratar</div><div class="desc">Acidose geralmente bem tolerada. Manter estratégia protetora. UpToDate: "not corrected since this level of acidosis is generally well tolerated".</div></div>
+    <div class="concept-card amber"><div class="label">pH 7,21 – 7,24</div><div class="value">Individualizar</div><div class="desc">Considerar NaHCO₃ se instabilidade hemodinâmica associada. Avaliar o contexto clínico individual.</div></div>
+    <div class="concept-card coral"><div class="label">pH ≤ 7,20</div><div class="value">Corrigir</div><div class="desc">NaHCO₃ IV. Meta: pH ≤7,20 (não normalizar). Não usar bicarb para normalizar — gera CO₂ paradoxal. Reduzir NaHCO₃ em 24h após melhora.</div></div>
+  </div>
+  <h3>Técnica de titulação <span class="src">[UpToDate — Permissive hypercapnia]</span></h3>
+  <p class="prose">A PaCO₂ deve elevar-se lentamente — preferencialmente &lt;10 mmHg/hora. A elevação deve ser ainda mais lenta quando PaCO₂ >80 mmHg. Não há limite absoluto superior, mas níveis >100 mmHg raramente são necessários. Ajustes devem ser incrementais: reduzir FR não mais que 2–3 irpm ou VC não mais que 25–50 mL por vez.</p>
+  <h3>Contraindicações <span class="src">[UpToDate — Permissive hypercapnia]</span></h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Contraindicação</th><th>Mecanismo</th><th>Alternativa prática</th></tr></thead>
+    <tbody>
+      <tr><td><strong>TCE / hipertensão intracraniana</strong></td><td>CO₂ vasodilatador cerebral → ↑ FSC → ↑ PIC → risco de herniação. Hipercapnia também ↓ pH liquórico.</td><td>Normoventilação (PaCO₂ 35–40 mmHg). Se SDRA + TCE: LTVV pode ser usada SE hipercapnia/acidose forem evitadas.</td></tr>
+      <tr><td><strong>Epilepsia ativa</strong></td><td>Hipercapnia pode ↓ limiar convulsivo</td><td>Controlar status antes de aceitar hipercapnia</td></tr>
+      <tr><td><strong>Gestação</strong></td><td>PaCO₂ basal da grávida: ~32 mmHg. Hipercapnia materna pode comprometer trocas fetais.</td><td>Meta: PaCO₂ materno ~32 mmHg</td></tr>
+      <tr><td><strong>HAP + disfunção de VD</strong></td><td>Hipercapnia → ↑ RVP → piora sobrecarga do VD já comprometido</td><td>Cautela; individualizar; considerar iNO</td></tr>
+      <tr><td><strong>Hipovolemia grave</strong></td><td>Hipercapnia causa vasodilatação sistêmica → hipotensão</td><td>Corrigir volemia antes de aceitar hipercapnia significativa</td></tr>
+      <tr><td><strong>Cardiopatia com DAC / FA / HP</strong></td><td>Hipercapnia → ↑ output simpático → taquicardia, ↑ consumo O₂ miocárdico.</td><td>Considerar como contraindicação relativa; individualizar</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout amber"><strong>NaHCO₃ — paradoxo do CO₂:</strong> O bicarbonato tamponeia H⁺ mas gera CO₂ como subproduto: H⁺ + HCO₃⁻ → H₂O + CO₂. Em VM limitada, o CO₂ gerado pode elevar paradoxalmente a PaCO₂. Usar Carbicarb (mistura equimolar de carbonato e bicarbonato de sódio) corrige acidemia sem gerar CO₂ — mas sua disponibilidade é limitada. Infundir NaHCO₃ lentamente e reavalie gasometria em 30–60 min. <span class="src">[UpToDate — Permissive hypercapnia]</span></div>
+</section>
+
+<!-- 7. VM NO TCE — NOVA SEÇÃO -->
+<section class="section" id="tce">
+  <div class="section-label">07 — Patologias</div>
+  <h1 class="section-title">VM no TCE — Estratégia Neuroprotetora <a class="share-link" href="#tce" onclick="copyLink(event,'#tce')">🔗</a></h1>
+  <p class="section-subtitle">Metas de PPC / PIC · Normoventilação · Evitar hipóxia e hipercapnia</p>
+
+  <div class="callout red"><strong>Princípio fundamental:</strong> No TCE grave, a VM tem duplo objetivo — proteger o pulmão (LTVV) E proteger o cérebro (normoventilação, otimização PPC). Hipóxia (SpO₂ &lt;90%) e hipotensão (PAM &lt;80 mmHg) são os maiores determinantes de lesão secundária. Hipercapnia é vasodilatador cerebral: PaCO₂ ↑ 1 mmHg → ↑ FSC ~4%. <span class="src">[UpToDate — Intracranial hypertension; Brain Trauma Foundation Guidelines 2023]</span></div>
+
+  <h3>Metas hemodinâmicas e ventilatórias <span class="src">[Brain Trauma Foundation Guidelines 2023; UpToDate — MV in TBI]</span></h3>
+  <div class="card-grid col3">
+    <div class="concept-card teal"><div class="label">PPC alvo</div><div class="value">60–70 mmHg</div><div class="desc">PPC = PAM − PIC. Meta mínima: 60 mmHg. Alvo preferencial: 70 mmHg em TCE grave. PAM deve ser monitorada continuamente.</div></div>
+    <div class="concept-card coral"><div class="label">PIC alvo</div><div class="value">&lt; 22 mmHg</div><div class="desc">Brain Trauma Foundation 2023: tratar PIC >22 mmHg. Monitorização invasiva indicada em Glasgow ≤8 com TC anormal ou risco clínico.</div></div>
+    <div class="concept-card purple"><div class="label">PaCO₂ alvo</div><div class="value">35–40 mmHg</div><div class="desc">Normoventilação. Evitar hipercapnia (↑ FSC → ↑ PIC). Hiperventilação profilática (PaCO₂ &lt;35) contraindicada — causa vasoconstrição e isquemia.</div></div>
+  </div>
+
+  <div class="table-wrap"><table>
+    <thead><tr><th>Parâmetro</th><th>Alvo no TCE</th><th>Rationale</th></tr></thead>
+    <tbody>
+      <tr><td><strong>SpO₂</strong></td><td><span class="td-ok">≥ 95%</span></td><td>Hipóxia (SpO₂ &lt;90% ou PaO₂ &lt;60 mmHg) é lesão secundária major. Meta mais conservadora que em outras patologias.</td></tr>
+      <tr><td><strong>PaO₂</strong></td><td>80–120 mmHg</td><td>Hiperoxia grave (PaO₂ >300) também é deletéria — radicais livres. Evitar FiO₂ 1,0 prolongado sem necessidade.</td></tr>
+      <tr><td><strong>PaCO₂</strong></td><td><span class="td-ok">35–40 mmHg</span></td><td>Normoventilação estrita. Monitorar com capnografia contínua (EtCO₂) — gradient arterial-EtCO₂ pode ser variável em TCE.</td></tr>
+      <tr><td><strong>PAM</strong></td><td><span class="td-bad">≥ 80 mmHg</span></td><td>Brain Trauma Foundation: PAM ≥80 mmHg para garantir PPC ≥60 mmHg com PIC até 20. Hipotensão é o maior preditor de mau prognóstico no TCE.</td></tr>
+      <tr><td><strong>PEEP</strong></td><td>5 cmH₂O (conservador)</td><td>PEEP alto → ↑ pressão intratorácica → ↓ retorno venoso jugular → ↑ PIC. Preferir PEEP mínimo para manter oxigenação. Em SDRA + TCE: individualizar.</td></tr>
+      <tr><td><strong>VC</strong></td><td>6–8 mL/kg PBW</td><td>LTVV compatível com TCE — desde que PaCO₂ seja mantida 35–40 mmHg com ajuste de FR.</td></tr>
+      <tr><td><strong>FR</strong></td><td>14–16 irpm (ajustar para PaCO₂)</td><td>Ajustar para manter PaCO₂ 35–40 mmHg. Não usar FR para corrigir pH em detrimento da PaCO₂.</td></tr>
+      <tr><td><strong>Cabeceira</strong></td><td>30–45° (posição neutra do pescoço)</td><td>Facilita drenagem venosa jugular. Pescoço neutro (sem rotação) — evitar compressão jugular que ↑ PIC.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Hiperventilação de resgate — quando e como <span class="src">[UpToDate — Intracranial hypertension management; Brain Trauma Foundation 2023]</span></h3>
+  <div class="callout amber"><strong>Hiperventilação NÃO é tratamento de primeira linha.</strong> Causa vasoconstrição cerebral intensa → isquemia regional. Reservada para hernição iminente como <em>ponte</em> enquanto terapias definitivas são preparadas (cirurgia, osmoterapia, drenagem de LCR). Meta: PaCO₂ 30–35 mmHg por &lt;30 min. Nunca manter PaCO₂ &lt;30 mmHg cronicamente. <span class="src">[Brain Trauma Foundation Guidelines 2023]</span></div>
+
+  <h3>TCE + SDRA — o dilema ventilatório <span class="src">[UpToDate — MV in TBI with ARDS]</span></h3>
+  <p class="prose">Quando TCE grave coexiste com SDRA (trauma torácico associado, aspiração), há conflito entre as estratégias: LTVV (↓VC) pode exigir ↑FR para manter ventilação-minuto, o que é aceitável para PaCO₂. O problema surge quando Pplat >30 exige ↓VC para 4 mL/kg e a FR máxima (35 irpm) não consegue manter PaCO₂ 35–40 mmHg. Nesse cenário:</p>
+  <div class="step-list">
+    <div class="step-item teal"><div class="s-label"><span>Opção 1</span><span>Pronação</span></div><div class="s-body">Melhora oxigenação sem piorar PaCO₂. Permite ↓FiO₂ e potencialmente ↓ PEEP, reduzindo impacto sobre PIC.</div></div>
+    <div class="step-item purple"><div class="s-label"><span>Opção 2</span><span>NaHCO₃</span></div><div class="s-body">Se acidose metabólica associada: corrigir com NaHCO₃ para permitir ↑FR sem hipercapnia adicional. Atenção ao paradoxo do CO₂.</div></div>
+    <div class="step-item amber"><div class="s-label"><span>Opção 3</span><span>ECMO-VV</span></div><div class="s-body">Em SDRA refratária + TCE: ECMO-VV permite normalizar PaCO₂ independente dos parâmetros ventilatórios. Considerar em centros experientes.</div></div>
+    <div class="step-item coral"><div class="s-label"><span>Evitar</span><span>Permissiva</span></div><div class="s-body">Hipercapnia permissiva é CONTRAINDICADA no TCE. Não aceitar PaCO₂ >45 mmHg em TCE com PIC elevada ou risco de herniação.</div></div>
+  </div>
+</section>
+
+<!-- 8. COMPLICAÇÕES -->
+<section class="section" id="complicacoes">
+  <div class="section-label">08 — Segurança</div>
+  <h1 class="section-title">Complicações da VM <a class="share-link" href="#complicacoes" onclick="copyLink(event,'#complicacoes')">🔗</a></h1>
+  <p class="section-subtitle">Reconhecimento precoce, fisiopatologia e conduta</p>
+  <h3>Complicações pulmonares <span class="src">[UpToDate — Clinical and physiologic complications MV: Overview; FCCS Cap. 5]</span></h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Complicação</th><th>Mecanismo</th><th>Clínica / diagnóstico</th><th>Conduta</th></tr></thead>
+    <tbody>
+      <tr><td><strong>VALI / VILI</strong></td><td>Volutrauma (↑VC) ou barotrauma (↑Pplat) → lesão alveolar adicional clinicamente indistinguível de SDRA</td><td>Piora progressiva da hipoxemia, ↑ Pplat, RX com piora</td><td>↓ VC para 4–6 mL/kg PBW, Pplat ≤30, DP &lt;15</td></tr>
+      <tr><td><strong>Barotrauma</strong><br><small>Pneumotórax, pneumomediastino, enfisema subcutâneo</small></td><td>Ruptura alveolar por pressão excessiva → dissecção de ar ao longo de planos teciduais</td><td>MV assimétrico, ↑ Ppico súbito, <span class="td-bad">hipotensão</span>, desvio traqueal, enfisema subcutâneo. Pneumotórax hipertensivo: pode causar PCR em AESP.</td><td>USG bedside urgente. Pneumotórax hipertensivo: drenagem imediata sem esperar RX</td></tr>
+      <tr><td><strong>PAV</strong><br><small>Pneumonia Associada à VM</small></td><td>Microaspiração subglótica, biofilme no cuff, colonização das vias aéreas</td><td>Febre, secreção purulenta, ↑ leucócitos, novo infiltrado após ≥48h de VM</td><td>ATB guiado por cultura. Bundle de prevenção: HOB ≥30°, higiene oral, pressão do cuff 20–30 cmH₂O, evitar sedação profunda desnecessária</td></tr>
+      <tr><td><strong>VIDD</strong><br><small>Ventilator-Induced Diaphragm Dysfunction</small></td><td>Atrofia diafragmática por desuso em VM controlada prolongada</td><td>Dificuldade de desmame, dependência crescente de VM</td><td>Minimizar sedação profunda, usar modos assistidos, mobilização precoce, SAT diário, SBT o mais cedo possível</td></tr>
+      <tr><td><strong>Auto-PEEP / PEEPi</strong></td><td>Air trapping por obstrução ou I:E inadequado → ↑ pressão intratorácica</td><td>Hipotensão, ↑ Ppico progressivo, não-disparo do vent., curva fluxo-tempo (fluxo expiratório não retorna a zero)</td><td>Desconectar circuito (diagnóstico e tratamento). ↓FR, ↑fluxo, PEEP extrínseco ≤80% do PEEPi</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Complicações não-pulmonares <span class="src">[UpToDate — Complications MV Overview]</span></h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Complicação</th><th>Mecanismo</th><th>Prevenção / conduta</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Hipotensão pós-IOT</strong></td><td>Sedação + ↓ retorno venoso + hipovolemia</td><td>Ressuc. pré-IOT; ↓PEEP; revisar sedação; fluido cauteloso. Em DPOC/Asma: desconectar circuito primeiro.</td></tr>
+      <tr><td><strong>TEV / TVP</strong></td><td>Imobilidade, estados pró-coagulantes do crítico</td><td>HBPM profilático + dispositivos de compressão pneumática intermitente</td></tr>
+      <tr><td><strong>Úlcera de estresse</strong></td><td>VM >48h é fator de risco para sangramento clinicamente significativo por úlcera</td><td>IBP ou bloqueador H₂ em pacientes de risco (VM >48h, coagulopatia)</td></tr>
+      <tr><td><strong>Delirium / PICS</strong></td><td>Sedação excessiva, imobilidade, privação sensorial, dor não tratada</td><td>Bundle ABCDEF, preferência por dexmedetomidina, mobilização precoce, ciclo sono-vigília</td></tr>
+      <tr><td><strong>Hiperglicemia</strong></td><td>Sedativos (propofol = carga calórica lipídica), estresse, drogas vasoativas</td><td>Monitorização glicêmica. Propofol: monitorar triglicérides e glicemia diariamente.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout teal"><strong>Bundle ABCDEF (mnemônico de prevenção de PICS):</strong>
+    A = Analgesia first (avaliar dor antes de sedar) &nbsp;|&nbsp;
+    B = Breathing — SAT (Spontaneous Awakening Trial) + SBT (Spontaneous Breathing Trial) diários &nbsp;|&nbsp;
+    C = Choice of sedation (preferir leve: RASS −2 a 0) &nbsp;|&nbsp;
+    D = Delirium — monitorar com CAM-ICU &nbsp;|&nbsp;
+    E = Early mobility (mobilização precoce) &nbsp;|&nbsp;
+    F = Family engagement
+    <span class="src">[UpToDate — Complications MV; Sedoanalgesia UpToDate]</span></div>
+</section>
+
+<!-- 9. DISSINCRONIA — NOVA SEÇÃO -->
+<section class="section" id="dissincronia">
+  <div class="section-label">09 — Segurança</div>
+  <h1 class="section-title">Dissincronia Paciente-Ventilador <a class="share-link" href="#dissincronia" onclick="copyLink(event,'#dissincronia')">🔗</a></h1>
+  <p class="section-subtitle">Tipos, diagnóstico pelas curvas de pressão/fluxo/volume e conduta</p>
+
+  <p class="prose">Dissincronia paciente-ventilador ocorre quando há descoordenação entre o drive neural do paciente e o ciclo entregue pelo ventilador. Prevalência: até <strong>25% dos ciclos</strong> em pacientes em modo assistido. Associada a ↑ duração da VM, ↑ mortalidade, piora de SDRA. O diagnóstico é feito pela análise das curvas de pressão, fluxo e volume no display do ventilador. <span class="src">[UpToDate — Patient-ventilator dyssynchrony]</span></p>
+
+  <h3>Tipos de dissincronia e diagnóstico pelas curvas <span class="src">[UpToDate — Patient-ventilator dyssynchrony, Table 2]</span></h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Tipo</th><th>O que é</th><th>Curva diagnóstica</th><th>Conduta</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Trigger inefetivo</strong><br><small>(missed trigger)</small></td>
+        <td>Paciente faz esforço inspiratório que não aciona o ventilador. Causa mais comum de dissincronia.</td>
+        <td><strong>Curva de pressão:</strong> deflexão negativa na fase expiratória sem resposta do vent. <strong>Curva de fluxo:</strong> interrupção da fase expiratória + fluxo levemente positivo sem ciclo subsequente.</td>
+        <td>• Verificar auto-PEEP (causa principal) → ↓FR, ↑fluxo inspiratório<br>• Reduzir threshold de trigger<br>• Usar flow-trigger em vez de pressure-trigger<br>• PEEP extrínseco ≤80% PEEPi para equilibrar auto-PEEP</td>
+      </tr>
+      <tr>
+        <td><strong>Double triggering</strong></td>
+        <td>Dois ciclos ventilatórios ocorrem por um único esforço do paciente. Gera VC efetivo 2× o programado → risco de volutrauma.</td>
+        <td><strong>Curva de fluxo:</strong> dois ciclos consecutivos com expiração muito curta entre eles. <strong>Curva de pressão:</strong> queda de pressão ao final do 1º ciclo (esforço contínuo do paciente).</td>
+        <td>• ↑ Tempo inspiratório programado (para coincidir com tempo neural do paciente)<br>• ↓ Sensibilidade de trigger<br>• Considerar sedação mais profunda<br>• Trocar para modo PC se refratário</td>
+      </tr>
+      <tr>
+        <td><strong>Reverse triggering</strong></td>
+        <td>Ciclo iniciado pelo ventilador provoca contração do diafragma por reflexo (entrainment neural). Ocorre especialmente em sedação profunda.</td>
+        <td>Difícil de detectar sem monitoramento de esforço diafragmático (P0.1, EAdi). <strong>Curva de pressão:</strong> deflexão negativa na fase inspiratória de ciclo controlado.</td>
+        <td>• Considerar bloqueio neuromuscular temporário em SDRA grave<br>• OU acordar o paciente (SAT) para retomar respiraçao espontânea coordenada<br>• Ajustar tempo de ciclo</td>
+      </tr>
+      <tr>
+        <td><strong>Flow starvation</strong><br><small>(demand > delivery)</small></td>
+        <td>Fluxo entregue pelo ventilador é insuficiente para atender ao drive do paciente. Ocorre no AC-VC com fluxo fixo inadequado.</td>
+        <td><strong>Curva de pressão no AC-VC:</strong> formato côncavo (escavado) em vez de platô convexo. Indica que o paciente está "puxando" mais do que o vent. entrega.</td>
+        <td>• ↑ Fluxo inspiratório (60 → 75–90 L/min)<br>• Trocar para padrão decelerating (ramp) em vez de constant flow<br>• Considerar AC-PC (fluxo ilimitado)<br>• Revisar nível de sedação — drive alto pode indicar dor</td>
+      </tr>
+      <tr>
+        <td><strong>Premature cycling</strong></td>
+        <td>Ventilador encerra a inspiração antes do término do tempo neural inspiratório do paciente.</td>
+        <td><strong>Curva de pressão (PSV):</strong> deflexão positiva ao final da inspiração (paciente ainda inspirando quando o vent. cicla). <strong>Curva de fluxo:</strong> fluxo ainda elevado quando ocorre o ciclo.</td>
+        <td>• ↑ Threshold de ciclagem (aumentar % do pico de fluxo para ciclagem: 25% → 40–50%)<br>• ↑ Tempo inspiratório máximo (Tmax)<br>• ↓ Sensibilidade de trigger em PSV</td>
+      </tr>
+      <tr>
+        <td><strong>Delayed cycling</strong></td>
+        <td>Ventilador continua insuflando após o término do tempo neural inspiratório do paciente (paciente já expirou ativamente).</td>
+        <td><strong>Curva de pressão (PSV):</strong> pico de pressão ao final da inspiração (esforço expiratório ativo). <strong>Curva de fluxo:</strong> fluxo cai lentamente / não atinge threshold de ciclagem (comum com cuff leak ou DPOC).</td>
+        <td>• ↓ Threshold de ciclagem (25% → 10–15% do pico)<br>• ↓ Nível de pressão-suporte<br>• Corrigir cuff leak</td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <h3>Abordagem sistemática da dissincronia <span class="src">[UpToDate — Patient-ventilator dyssynchrony]</span></h3>
+  <div class="step-list">
+    <div class="step-item teal"><div class="s-label"><span>Passo 1</span><span>Identificar</span></div><div class="s-body">Analisar curvas de pressão, fluxo e volume no display. Observar FR no display vs FR programada (diferença = respirações espontâneas). FR display > FR programada + FR irregular = dissincronia.</div></div>
+    <div class="step-item teal"><div class="s-label"><span>Passo 2</span><span>Excluir causas</span></div><div class="s-body">Antes de ajustar ventilador: excluir dor (CPOT/BPS), ansiedade, febre, broncoespasmo, secreção, auto-PEEP, pneumotórax. Tratar a causa antes de modificar o modo.</div></div>
+    <div class="step-item teal"><div class="s-label"><span>Passo 3</span><span>Ajustar modo</span></div><div class="s-body">Ajustar parâmetros conforme tipo de dissincronia (tabela acima). Se refratário ao AC-VC: considerar AC-PC. Se refratário a qualquer modo assistido: avaliar necessidade de bloqueio neuromuscular temporário (apenas em SDRA grave).</div></div>
+    <div class="step-item amber"><div class="s-label"><span>Cuidado</span><span>Sedação</span></div><div class="s-body">Usar sedação como solução padrão para dissincronia é errado — piora VIDD, prolonga VM, aumenta delirium. Tratar a causa. Sedação profunda apenas quando estritamente necessária.</div></div>
+  </div>
+
+  <div class="callout purple"><strong>Dissincronia grave em SDRA:</strong> Double triggering e reverse triggering em SDRA podem gerar esforços inspiratórios que amplificam a pressão transpulmonar (P-SILI: patient self-inflicted lung injury). Nesse cenário, bloqueio neuromuscular por 48h pode reduzir mortalidade (ACURASYS trial: RR 0,68; mortalidade 31,6 vs 40,7%). PHOENIX trial (2023) não replicou, mas em pacientes com P/F &lt;150 e assincronia grave, ainda é considerado. <span class="src">[UpToDate — ARDS ventilator management; ACURASYS; PHOENIX trial 2023]</span></div>
+</section>
+
+<!-- 10. DESMAME — NOVA SEÇÃO -->
+<section class="section" id="desmame">
+  <div class="section-label">10 — Desmame</div>
+  <h1 class="section-title">Desmame Ventilatório — SAT / SBT / Extubação <a class="share-link" href="#desmame" onclick="copyLink(event,'#desmame')">🔗</a></h1>
+  <p class="section-subtitle">Critérios, protocolo e escolha entre T-piece vs PSV baixo</p>
+
+  <div class="callout teal"><strong>Desmame precoce salva vidas:</strong> A VM prolongada desnecessária aumenta PAV, VIDD, delirium e PICS. O bundle SAT+SBT reduz duração da VM em ~3 dias e mortalidade em 28 dias (Girard et al., NEJM 2008). Avaliar elegibilidade para desmame <strong>diariamente</strong>, de preferência pela manhã. <span class="src">[UpToDate — Weaning from MV; Girard NEJM 2008]</span></div>
+
+  <h3>Critérios para iniciar avaliação de desmame <span class="src">[UpToDate — Weaning from MV, Table 1; FCCS Cap. 5 C]</span></h3>
+  <div class="card-grid col2">
+    <div class="concept-card teal"><div class="label">Critérios essenciais (todos necessários)</div><div class="desc">✓ Causa da intubação em resolução ou controlada<br>✓ SpO₂ ≥ 90% com FiO₂ ≤ 0,4 e PEEP ≤ 8 cmH₂O<br>✓ Drive respiratório presente (RASS ≥ −2)<br>✓ Hemodinamicamente estável (DVA em dose baixa ou desmamando)<br>✓ Capaz de proteger via aérea (tosse adequada)<br>✓ Secreção manejável (aspiração ≤ q2h suficiente)</div></div>
+    <div class="concept-card amber"><div class="label">Contraindicações relativas (avaliar individualmente)</div><div class="desc">✗ Agitação grave (RASS >+2) — controlar antes<br>✗ Instabilidade hemodinâmica ativa<br>✗ Lesão neurológica aguda com proteção de VA incerta<br>✗ Obstrução de VA acima do cuff não resolvida<br>✗ Esforço inspiratório inadequado (P0.1 &lt;1 cmH₂O)</div></div>
+  </div>
+
+  <h3>SAT — Spontaneous Awakening Trial <span class="src">[UpToDate — Weaning from MV; Girard NEJM 2008]</span></h3>
+  <p class="prose">Antes do SBT, interromper sedação continuamente administrada (não apenas reduzir). Meta: RASS −1 a +1. O SAT deve ser monitorado ativamente.</p>
+  <div class="step-list">
+    <div class="step-item teal"><div class="s-label"><span>Passo 1</span><span>Elegibilidade</span></div><div class="s-body">Seguro iniciar SAT se: sem agitação ativa, sem convulsões nas últimas 24h, sem bloqueio neuromuscular, FiO₂ ≤70%, PEEP ≤10, sem deterioração clínica aguda.</div></div>
+    <div class="step-item teal"><div class="s-label"><span>Passo 2</span><span>Suspender sedação</span></div><div class="s-body">Interromper propofol ou midazolam. Manter analgesia (fentanil ou morfina). Monitorar continuamente por 30–120 min.</div></div>
+    <div class="step-item coral"><div class="s-label"><span>Falha SAT</span><span>Critérios</span></div><div class="s-body">Suspender e reiniciar sedação em dose menor se: agitação grave (RASS >+2), SpO₂ &lt;88%, FR >35 irpm por >5 min, FC >140 ou variação >20% por >5 min, angústia respiratória evidente.</div></div>
+  </div>
+
+  <h3>SBT — Spontaneous Breathing Trial <span class="src">[UpToDate — Weaning from MV; FCCS Cap. 5 C]</span></h3>
+  <p class="prose">O SBT testa se o paciente consegue respirar com suporte mínimo por 30–120 min. Realizar após SAT bem-sucedido (ou paciente já acordado). Duas modalidades com eficácia semelhante:</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Modalidade</th><th>Configuração</th><th>Vantagens</th><th>Quando preferir</th></tr></thead>
+    <tbody>
+      <tr><td><strong>T-piece (peça em T)</strong></td><td>Tubo desconectado do ventilador + fluxo de O₂ contínuo. Paciente respira completamente sem assistência.</td><td>Testa condições mais próximas da extubação. Detecta pacientes que "trapaceiam" com suporte mínimo de PSV.</td><td>Pacientes de baixo risco de falha de extubação. Pós-operatório de cirurgia cardíaca. Quando se quer teste mais rigoroso.</td></tr>
+      <tr><td><strong>PSV baixo</strong><br><small>PS 5–8 cmH₂O + PEEP 5</small></td><td>Pressão-suporte de 5–8 cmH₂O (apenas para superar resistência do tubo) + PEEP 5 cmH₂O.</td><td>Confortável, monitorizado continuamente no ventilador. Alarmes ativos. Acesso rápido se falha.</td><td>Pacientes de alto risco (DPOC, ICC, idosos, VM prolongada). Preferência da maioria dos intensivistas atualmente.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout blue"><strong>T-piece vs PSV baixo — evidência:</strong> Meta-análise de 8 trials (2.431 pacs.) — nenhuma diferença significativa em taxa de extubação bem-sucedida (OR 1,07) ou falha de extubação. Ambos são aceitáveis. A escolha deve ser baseada no paciente e experiência local. FCCS: "Both techniques are acceptable." UpToDate: "use the technique with which you are most familiar." <span class="src">[UpToDate — Weaning from MV; Volta et al. meta-análise 2016]</span></div>
+
+  <h3>Critérios de falha do SBT — interromper se:</h3>
+  <div class="card-grid col2">
+    <div class="concept-card coral"><div class="label">Sinais de falha (qualquer um)</div><div class="desc">SpO₂ &lt;88% por >5 min<br>FR >35 irpm por >5 min<br>FC >140 bpm ou variação >20%<br>PA sistólica &lt;90 ou >180 mmHg<br>Agitação, diaforese, uso de musculatura acessória<br>Alteração do nível de consciência</div></div>
+    <div class="concept-card teal"><div class="label">SBT bem-sucedido — critérios</div><div class="desc">FR 12–25 irpm<br>SpO₂ ≥ 90%<br>VC > 5 mL/kg PBW<br>IRRS (f/VT) &lt; 105<br>Sem angústia respiratória<br>Hemodinamicamente estável por 30–120 min</div></div>
+  </div>
+
+  <h3>Critérios de extubação <span class="src">[UpToDate — Weaning from MV; FCCS Cap. 5 C]</span></h3>
+  <div class="step-list">
+    <div class="step-item teal"><div class="s-label"><span>Pré-extubação</span><span>Checklist</span></div><div class="s-body">✓ SBT bem-sucedido · ✓ Tosse forte (pico expiratório ≥ 60 L/min ou avaliação clínica) · ✓ Secreção manejável · ✓ Consciente e cooperativo (GCS ≥ 8, obedece comandos simples) · ✓ Proteção de VA (engolir, tossir ao comando) · ✓ Cuff leak test positivo em pacientes de risco para estridor pós-extubação</div></div>
+    <div class="step-item amber"><div class="s-label"><span>Cuff Leak</span><span>Quando testar</span></div><div class="s-body">Indicado em: IOT &gt;72h, sexo feminino, trauma laríngeo, reintubação prévia. Método: desinsuflar cuff e medir diferença entre VC inspirado e expirado. Leak &lt;110 mL (ou &lt;12% do VC) → risco de estridor pós-extubação → metilprednisolona 20 mg IV q4h por 12h antes da extubação. <span class="src">[UpToDate — Weaning from MV]</span></div></div>
+    <div class="step-item purple"><div class="s-label"><span>Pós-extubação</span><span>Alto risco</span></div><div class="s-body">Em pacientes de alto risco de falha (DPOC, ICC, idosos, VM &gt;7 dias, hipercápnicos): iniciar VNI profilática imediatamente após extubação. VNI pós-extubação reduz reintubação em 50% nesse grupo (UpToDate). Ter IOT de re-intubação preparada na beira do leito por 1h.</div></div>
+  </div>
+
+  <div class="callout amber"><strong>IRRS (Índice de Respiração Rápida e Superficial) = f/VT:</strong> FR (irpm) / VC (L). Calculado no 1º minuto do SBT em T-piece (sem suporte). IRRS &lt;105 = sucesso do SBT (sensibilidade 97%, especificidade 64%). IRRS &lt;80 = alta probabilidade de extubação bem-sucedida. Não usar em PSV baixo (suporte altera o cálculo). <span class="src">[Yang KL, Tobin MJ. NEJM 1991; UpToDate — Weaning from MV]</span></div>
+</section>
+
+<!-- 11. INDUTORES -->
+<section class="section" id="indutores">
+  <div class="section-label">11 — Farmacologia</div>
+  <h1 class="section-title">Indutores para RSI <a class="share-link" href="#indutores" onclick="copyLink(event,'#indutores')">🔗</a></h1>
+  <p class="section-subtitle">Perfil farmacológico completo e algoritmo de escolha por cenário clínico — baseado em UpToDate RSI Induction Agents (Mar 2026) e FCCS</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Propriedade</th><th>Etomidato</th><th>Cetamina</th><th>Propofol</th><th>Midazolam</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Dose RSI padrão</strong></td><td class="td-mono">0,3 mg/kg IV</td><td class="td-mono">1–2 mg/kg IV</td><td class="td-mono">1,5–3 mg/kg IV</td><td class="td-mono">0,2–0,3 mg/kg IV</td></tr>
+      <tr><td><strong>Dose no choque</strong></td><td class="td-ok td-mono">0,15 mg/kg IV</td><td class="td-ok td-mono">1 mg/kg IV</td><td class="td-bad">Evitar — risco de colapso</td><td class="td-warn td-mono">0,1–0,15 mg/kg (2ª linha)</td></tr>
+      <tr><td><strong>Onset</strong></td><td>15–45 s</td><td>45–60 s</td><td>15–45 s</td><td class="td-bad">30–60 s (lento)</td></tr>
+      <tr><td><strong>Duração</strong></td><td>3–12 min</td><td>10–20 min</td><td>5–10 min</td><td>15–30 min</td></tr>
+      <tr><td><strong>Hemodinâmica</strong></td><td class="td-ok">NEUTRO — melhor da classe para instáveis</td><td class="td-warn">↑ PA e ↑ FC (↑ output simpático)</td><td class="td-bad">↓ PA (~10 mmHg típico; mais em instáveis)</td><td class="td-bad">↓ PA dose-dependente</td></tr>
+      <tr><td><strong>Broncoespasmo</strong></td><td class="td-warn">Leve ↑ resistência — cautela em asma</td><td class="td-ok">Broncodilatador (↑ catecolaminas)</td><td class="td-ok">Broncodilatador</td><td>Neutro</td></tr>
+      <tr><td><strong>PIC / SNC</strong></td><td class="td-ok">Neutro para PIC. Preserva PPC.</td><td class="td-warn">Evidência de elevação de PIC é fraca. Revisão de 11 estudos: sem evidência de prejuízo neurológico. Razoável no TCE + hipotensão.*</td><td class="td-ok">↓ PIC (se hemodin. estável)</td><td class="td-bad">↓ PA pode ↓ PPC. Onset lento.</td></tr>
+      <tr><td><strong>Anticonvulsivante</strong></td><td>Não. Mioclonia pós-etomidato ≠ convulsão.</td><td class="td-bad">Não — efeito estimulante. Evitar em status.</td><td class="td-ok">Sim — preferência em status epiléptico.</td><td class="td-ok">Sim — anticonvulsivante, onset mais lento</td></tr>
+      <tr><td><strong>Caveat principal</strong></td><td class="td-warn">Supressão adrenal reversível 12–24h (1 dose em sepse = aceitável)**</td><td>Evitar se PAM >120 mmHg ou sinais de herniação</td><td class="td-bad">↓ MAP em 43% dos críticos (INTUBE study). PRIS em infusão prolongada.</td><td class="td-bad">Subdosado frequentemente. Taquifilaxia.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="prose" style="font-size:12.5px;color:var(--text3)">* UpToDate: "A systematic review of 11 studies found no evidence to justify restrictions on ketamine use for RSI in the setting of elevated ICP." Evitar cetamina se hipertensão arterial grave (PAM >120) ou sinais de herniação. <br>** UpToDate: etomidato em dose única "is an acceptable induction agent for patients with severe sepsis." Hidrocortisona 100 mg IV apenas se choque refratório a fluido E vasopressor.</p>
+  <h3>Algoritmo de escolha por cenário <span class="src">[UpToDate — RSI Induction Agents; FCCS Tab. 2-2]</span></h3>
+  <div class="scenario-list">
+    <div class="scenario-item"><div class="s-ctx">Geral / estável</div><div class="s-first"><strong>Etomidato 0,3 mg/kg</strong></div><div class="s-note">Alternativa: Propofol 1,5–2 mg/kg se hemodin. estável. Padrão na maioria dos serviços de urgência.</div></div>
+    <div class="scenario-item"><div class="s-ctx">Choque / instabilidade hemodinâmica</div><div class="s-first"><strong>Etomidato 0,15 mg/kg</strong></div><div class="s-note">Alternativa: Cetamina 1 mg/kg. Ressuc. pré-IOT obrigatória. Ambos causam ↓ PA em choque grave — dose reduzida em 25–50%.</div></div>
+    <div class="scenario-item"><div class="s-ctx">TCE + hipotensão (PAM normal ou baixa)</div><div class="s-first"><strong>Etomidato 0,15–0,3 mg/kg</strong></div><div class="s-note">Cetamina 1 mg/kg é alternativa razoável (evidência de segurança neurológica). Manter PPC. Hipotensão é mais deletéria que ↑PIC leve.</div></div>
+    <div class="scenario-item"><div class="s-ctx">TCE + HAS grave (PAM &gt; 120)</div><div class="s-first"><strong>Etomidato 0,3 mg/kg</strong></div><div class="s-note">UpToDate: "If significant hypertension [MAP >120] is present, etomidate is strongly preferable to ketamine." Alternativa: Propofol se hemodin. permite.</div></div>
+    <div class="scenario-item"><div class="s-ctx">Broncoespasmo grave (Asma / DPOC)</div><div class="s-first"><strong>Cetamina 1–2 mg/kg</strong></div><div class="s-note">UpToDate: "we suggest induction with ketamine or propofol" em estável; "ketamine or etomidate" em instável. Ambas são broncodilatadoras.</div></div>
+    <div class="scenario-item"><div class="s-ctx">Status epiléptico</div><div class="s-first"><strong>Propofol 1–2 mg/kg</strong></div><div class="s-note">UpToDate: "we suggest propofol or etomidate for induction of RSI in patients with status epilepticus." Evitar cetamina. Propofol: infundir em 30–45 s.</div></div>
+    <div class="scenario-item"><div class="s-ctx">Cardiopata / DAC / dissecção aórtica</div><div class="s-first"><strong>Etomidato 0,3 mg/kg</strong></div><div class="s-note">UpToDate: "We suggest etomidate for induction of the patient with significant cardiovascular disease." Adicionar Fentanil 3 mcg/kg IV lento como pré-tratamento.</div></div>
+    <div class="scenario-item"><div class="s-ctx">Sepse com choque refratário</div><div class="s-first"><strong>Etomidato 0,15 mg/kg</strong></div><div class="s-note">UpToDate: "suggest low-dose IV etomidate (0.15 mg/kg) or, alternatively, IV ketamine (1 mg/kg)." Se choque refratário a fluido + DVA: Hidrocortisona 100 mg IV.</div></div>
+  </div>
+</section>
+
+<!-- 12. SEDOANALGESIA -->
+<section class="section" id="sedoanalgesia">
+  <div class="section-label">12 — Farmacologia</div>
+  <h1 class="section-title">Sedoanalgesia pós-IOT na UTI <a class="share-link" href="#sedoanalgesia" onclick="copyLink(event,'#sedoanalgesia')">🔗</a></h1>
+  <p class="section-subtitle">Baseado em UpToDate — Sedative-analgesia in ventilated adults: Medication properties, dose regimens, and adverse effects (Set 2025)</p>
+  <div class="callout teal"><strong>Analgesia first:</strong> A maioria dos pacientes em VM está primariamente com dor — tratar dor antes de sedar. A seleção deve ser individualizada por variáveis farmacocinéticas e não-farmacocinéticas. Nenhum agente é superior em todas as situações.</div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Propriedade</th><th>Propofol</th><th>Dexmedetomidina</th><th>Midazolam</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Dose infusão UTI</strong></td><td class="td-mono">5–50 mcg/kg/min<br>Titular 5–10 mcg/kg/min a cada 5–10 min</td><td class="td-mono">0,2–1,5 mcg/kg/h<br>(loading geralmente não realizado)</td><td class="td-mono">0,02–0,1 mg/kg/h</td></tr>
+      <tr><td><strong>Onset</strong></td><td class="td-ok">&lt; 1 min (alta lipofilia)</td><td class="td-warn">~15–20 min com infusão contínua</td><td>2–5 min</td></tr>
+      <tr><td><strong>Analgesia</strong></td><td>Não</td><td class="td-ok">Sim — fraca, potencializa opioides</td><td>Não</td></tr>
+      <tr><td><strong>Depressão resp.</strong></td><td>Sim (dose-dependente)</td><td class="td-ok">Mínima — não suprime drive respiratório</td><td>Sim + potencializada por opioides</td></tr>
+      <tr><td><strong>Hemodinâmica</strong></td><td class="td-bad">Hipotensão em ~25% dos críticos</td><td class="td-warn">Hipotensão e bradicardia (comuns)</td><td class="td-bad">Hipotensão dose-dependente</td></tr>
+      <tr><td><strong>Delirium</strong></td><td>Neutro</td><td class="td-ok">Reduz incidência vs benzodiazepínicos (SEDCOM: 54% vs 77%)</td><td class="td-bad">↑ Risco. 3 estudos confirmam maior prevalência vs dexmedetomidina.</td></tr>
+      <tr><td><strong>Desmame de VM</strong></td><td class="td-ok">Excelente — titulável, awakening rápido</td><td class="td-ok">Excelente — paciente coopera durante desmame</td><td class="td-bad">Dificulta desmame em uso prolongado por acúmulo</td></tr>
+      <tr><td><strong>Quando preferir</strong></td><td>Curto prazo (&lt;48h); patologia neurológica; status pós-IOT imediato</td><td>Sedação leve (RASS 0 a −2); desmame; prevenir/tratar delirium</td><td>Abstinência alcoólica (1ª linha); ausência de propofol/dexmed; sedação profunda obrigatória</td></tr>
+      <tr><td><strong>Caveats</strong></td><td class="td-bad">PRIS (raro — mortalidade 33–66%): infusão &gt;48h + doses altas + acidose + arritmia + ↑CK + AKI. Monitorar triglicérides, lactato, CK diariamente. Suspender se TG &gt;300–400 mg/dL.</td><td class="td-warn">Retirada abrupta → síndrome de abstinência. Desmame gradual em infusões longas.</td><td class="td-bad">Acúmulo em obesos e hepatopatas. Reação paradoxal (rara): agitação — descontinuar. Tolerância com uso prolongado.</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Opioides na UTI <span class="src">[UpToDate — Sedoanalgesia props &amp; doses; FCCS Tab. 2-2]</span></h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Opioide</th><th>Bolus IV</th><th>Infusão</th><th>Vantagens</th><th>Cuidados / limitações</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Fentanil</strong></td><td class="td-mono">25–100 mcg</td><td class="td-mono">25–200 mcg/h</td><td class="td-ok">Rápido, sem liberação de histamina, hemodinamicamente estável. Padrão em UTI.</td><td>Acúmulo em tecido adiposo com infusões prolongadas.</td></tr>
+      <tr><td><strong>Morfina</strong></td><td class="td-mono">2–4 mg</td><td class="td-mono">2–10 mg/h</td><td>Barato, familiar</td><td class="td-bad">Libera histamina (broncoespasmo). Metabólito ativo acumula em IRC. Evitar em IRC.</td></tr>
+      <tr><td><strong>Hidromorfona</strong></td><td class="td-mono">0,2–0,4 mg</td><td class="td-mono">0,2–0,6 mg/h</td><td>5–7× mais potente que morfina. Alternativa em IRC.</td><td>Menor disponibilidade no Brasil.</td></tr>
+      <tr><td><strong>Remifentanil</strong></td><td class="td-mono">0,5 mcg/kg se necessário</td><td class="td-mono">0,5–15 mcg/kg/h</td><td class="td-ok">Ultra-curto (esterases plasmáticas). Não acumula em IR ou hepatopatia. Reversão rápida.</td><td>Antecipar dor ao descontinuar abruptamente. Custo elevado.</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Escalas de monitoramento <span class="src">[UpToDate — Sedoanalgesia; MV adults ED, Table 9]</span></h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Escala</th><th>O que mede</th><th>Alvo prático</th></tr></thead>
+    <tbody>
+      <tr><td><strong>RASS</strong></td><td>Sedação/agitação (−5 a +4)</td><td>RASS −2 a 0 para maioria. −4/−5 apenas com indicação clara: SDRA grave, bloqueio neuromuscular, procedimentos.</td></tr>
+      <tr><td><strong>BPS</strong></td><td>Dor em não-comunicativos (3–12)</td><td>BPS ≤ 5 = sem dor ou dor leve.</td></tr>
+      <tr><td><strong>CPOT</strong></td><td>Dor em não-comunicativos (0–8)</td><td>CPOT &lt; 3 = sem dor significativa.</td></tr>
+      <tr><td><strong>CAM-ICU</strong></td><td>Delirium (positivo/negativo)</td><td>Rastrear 1× por turno. CAM+ → intervir: dexmedetomidina, mobilização, reorientação, ciclo sono-vigília.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- 13. CALCULADORAS -->
+<section class="section" id="calculadora">
+  <div class="section-label">13 — Referência</div>
+  <h1 class="section-title">Calculadoras <a class="share-link" href="#calculadora" onclick="copyLink(event,'#calculadora')">🔗</a></h1>
+  <p class="section-subtitle">PBW / VC · Driving Pressure · Ventilação-minuto · P/F ratio</p>
+
+  <div class="calc-box">
+    <h3>Peso Corpóreo Predito e Volume Corrente <span class="src">[UpToDate — ARDS ventilator management; FCCS Cap. 5]</span></h3>
+    <p class="prose" style="font-size:13px;margin-bottom:12px">Masc: PBW = 50 + 0,91 × (altura cm − 152,4) &nbsp;|&nbsp; Fem: PBW = 45,5 + 0,91 × (altura cm − 152,4)</p>
+    <div class="calc-grid">
+      <div class="calc-field"><label>Altura (cm)</label><input type="number" id="altura" placeholder="ex: 175" oninput="calcPBW()"></div>
+      <div class="calc-field"><label>Sexo</label><select id="sexo" onchange="calcPBW()"><option value="m">Masculino</option><option value="f">Feminino</option></select></div>
+    </div>
+    <div class="calc-result" id="calc-result" style="display:none">
+      <div class="res-label">Resultados</div>
+      <div class="res-values">
+        <div class="res-item"><div class="res-val" id="pbw-val">—</div><div class="res-unit">kg PBW</div><small>Peso predito</small></div>
+        <div class="res-item"><div class="res-val" id="vc6-val">—</div><div class="res-unit">mL</div><small>VC 6 mL/kg (padrão)</small></div>
+        <div class="res-item"><div class="res-val" id="vc5-val">—</div><div class="res-unit">mL</div><small>VC 5 mL/kg</small></div>
+        <div class="res-item"><div class="res-val" id="vc4-val">—</div><div class="res-unit">mL</div><small>VC 4 mL/kg (SDRA grave)</small></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="calc-box">
+    <h3>Driving Pressure <span class="src">[UpToDate — ARDS ventilator management]</span></h3>
+    <p class="prose" style="font-size:13px;margin-bottom:12px">DP = Pplat − PEEP &nbsp;|&nbsp; Meta: &lt;15 cmH₂O. Medir Pplat com pausa inspiratória ≥ 0,5 s sem esforço do paciente.</p>
+    <div class="calc-grid">
+      <div class="calc-field"><label>Pressão de Platô (cmH₂O)</label><input type="number" id="pplat" placeholder="ex: 26" oninput="calcDP()"></div>
+      <div class="calc-field"><label>PEEP (cmH₂O)</label><input type="number" id="peep-dp" placeholder="ex: 8" oninput="calcDP()"></div>
+    </div>
+    <div class="calc-result" id="dp-result" style="display:none">
+      <div class="res-label">Driving Pressure</div>
+      <div class="res-values">
+        <div class="res-item"><div class="res-val" id="dp-val">—</div><div class="res-unit">cmH₂O</div><small id="dp-status">DP = Pplat − PEEP</small></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="calc-box">
+    <h3>Ventilação-Minuto <span class="src">[UpToDate — Overview IMV ICU]</span></h3>
+    <p class="prose" style="font-size:13px;margin-bottom:12px">VM = VC (L) × FR &nbsp;|&nbsp; Normal: 4–8 L/min. Meta em SDRA: titular para pH, não para PaCO₂ específica.</p>
+    <div class="calc-grid">
+      <div class="calc-field"><label>Volume Corrente (mL)</label><input type="number" id="vc-vm" placeholder="ex: 450" oninput="calcVM()"></div>
+      <div class="calc-field"><label>Frequência Respiratória (irpm)</label><input type="number" id="fr-vm" placeholder="ex: 16" oninput="calcVM()"></div>
+    </div>
+    <div class="calc-result" id="vm-result" style="display:none">
+      <div class="res-label">Ventilação-Minuto</div>
+      <div class="res-values">
+        <div class="res-item"><div class="res-val" id="vm-val">—</div><div class="res-unit">L/min</div><small id="vm-status">VM = VC × FR</small></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="calc-box">
+    <h3>Índice P/F (PaO₂/FiO₂) — Classificação Berlin de SDRA <span class="src">[UpToDate — ARDS diagnosis; Berlin Definition 2012]</span></h3>
+    <p class="prose" style="font-size:13px;margin-bottom:12px">P/F = PaO₂ (mmHg) / FiO₂ (decimal) &nbsp;|&nbsp; Calculado com PEEP ≥ 5 cmH₂O para diagnóstico de SDRA. Ex: PaO₂ 70 mmHg com FiO₂ 0,6 = P/F 117 (SDRA moderada).</p>
+    <div class="calc-grid">
+      <div class="calc-field"><label>PaO₂ (mmHg)</label><input type="number" id="pao2" placeholder="ex: 70" oninput="calcPF()"></div>
+      <div class="calc-field"><label>FiO₂ (decimal, ex: 0.6)</label><input type="number" id="fio2" placeholder="ex: 0.6" step="0.01" min="0.21" max="1.0" oninput="calcPF()"></div>
+    </div>
+    <div class="calc-result" id="pf-result" style="display:none">
+      <div class="res-label">Índice P/F</div>
+      <div class="res-values">
+        <div class="res-item"><div class="res-val" id="pf-val">—</div><div class="res-unit">mmHg</div><small id="pf-status">PaO₂/FiO₂</small></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="calc-box">
+    <h3>IRRS — Índice de Respiração Rápida e Superficial <span class="src">[Yang KL, Tobin MJ. NEJM 1991]</span></h3>
+    <p class="prose" style="font-size:13px;margin-bottom:12px">IRRS = FR (irpm) / VC (L) &nbsp;|&nbsp; Calcular no 1º minuto do SBT em T-piece. IRRS &lt;105 = sucesso do SBT. IRRS &lt;80 = alta probabilidade de extubação bem-sucedida.</p>
+    <div class="calc-grid">
+      <div class="calc-field"><label>FR espontânea (irpm)</label><input type="number" id="fr-irrs" placeholder="ex: 22" oninput="calcIRRS()"></div>
+      <div class="calc-field"><label>VC espontâneo (mL)</label><input type="number" id="vc-irrs" placeholder="ex: 380" oninput="calcIRRS()"></div>
+    </div>
+    <div class="calc-result" id="irrs-result" style="display:none">
+      <div class="res-label">IRRS (f/VT)</div>
+      <div class="res-values">
+        <div class="res-item"><div class="res-val" id="irrs-val">—</div><div class="res-unit">irpm/L</div><small id="irrs-status">FR / VC</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14. TABELAS RÁPIDAS -->
+<section class="section" id="tabelas">
+  <div class="section-label">14 — Referência</div>
+  <h1 class="section-title">Tabelas Rápidas <a class="share-link" href="#tabelas" onclick="copyLink(event,'#tabelas')">🔗</a></h1>
+  <p class="section-subtitle">Consulta de plantão — situação vs estratégia</p>
+  <h3>VM por situação clínica</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Situação</th><th>Modo</th><th>VC</th><th>FR</th><th>PEEP</th><th>Nota chave</th></tr></thead>
+    <tbody>
+      <tr><td><strong>IOT padrão</strong></td><td>AC-VC</td><td>6–8 mL/kg PBW</td><td>12–16</td><td>5</td><td>FiO₂ 100% → desmamar em 30 min para SpO₂ 90–96%</td></tr>
+      <tr><td><strong>SDRA leve-moderada</strong></td><td>AC-VC</td><td>6 mL/kg PBW</td><td>14–22</td><td>ARDSnet</td><td>Pplat ≤30, DP &lt;15, SpO₂ 88–95%</td></tr>
+      <tr><td><strong>SDRA grave refratária</strong></td><td>AC-VC ± BNM</td><td>4–6 mL/kg PBW</td><td>Até 35</td><td>10–20</td><td>Prona (único com benefício de mortalidade). Avaliar ECMO.</td></tr>
+      <tr><td><strong>DPOC agudizado</strong></td><td>AC-VC</td><td>6–8 mL/kg PBW</td><td>10–14</td><td>5–10 (ajustar)</td><td>Fluxo 60–100 L/min. PEEP ≤80% PEEPi. SpO₂ 88–92%.</td></tr>
+      <tr><td><strong>Asma grave</strong></td><td>AC-VC</td><td>6 mL/kg PBW</td><td>8–12</td><td>Mínimo</td><td>Pplat &lt;30, PEEPi &lt;10. Hipercapnia permissiva pH >7,15. Sedação profunda.</td></tr>
+      <tr><td><strong>TCE / ↑PIC</strong></td><td>AC-VC</td><td>6–8 mL/kg PBW</td><td>14–16</td><td>5</td><td>Normoventilação (PaCO₂ 35–40). Evitar hipercapnia. SpO₂ ≥95%.</td></tr>
+      <tr><td><strong>ICC / EAP</strong></td><td>AC-VC ou PSV</td><td>6–8 mL/kg PBW</td><td>12–16</td><td>8–10</td><td>PEEP alto = ↓ pós-carga do VE.</td></tr>
+      <tr><td><strong>Desmame</strong></td><td>PSV</td><td>Meta 6–8 mL/kg</td><td>Espontânea</td><td>Titulado</td><td>Drive presente, RASS ≥ −2, SAT + SBT diários. IRRS &lt;105.</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Indutor por cenário clínico</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Cenário</th><th>1ª escolha</th><th>Dose</th><th>Alternativa</th><th>Evitar</th></tr></thead>
+    <tbody>
+      <tr><td>Geral / estável</td><td class="td-ok">Etomidato</td><td class="td-mono">0,3 mg/kg</td><td>Propofol 1,5–2 mg/kg</td><td>—</td></tr>
+      <tr><td>Choque</td><td class="td-ok">Etomidato</td><td class="td-mono">0,15 mg/kg</td><td>Cetamina 1 mg/kg</td><td>Propofol, midazolam em dose plena</td></tr>
+      <tr><td>TCE + hipotensão</td><td class="td-ok">Etomidato</td><td class="td-mono">0,15–0,3 mg/kg</td><td>Cetamina 1 mg/kg</td><td>Propofol se instável</td></tr>
+      <tr><td>TCE + HAS grave (PAM >120)</td><td class="td-ok">Etomidato</td><td class="td-mono">0,3 mg/kg</td><td>Propofol 1 mg/kg</td><td>Cetamina (↑PA)</td></tr>
+      <tr><td>Broncoespasmo grave</td><td class="td-ok">Cetamina</td><td class="td-mono">1–2 mg/kg</td><td>Propofol 1,5 mg/kg (se estável)</td><td>Etomidato (↑ resistência)</td></tr>
+      <tr><td>Status epiléptico</td><td class="td-ok">Propofol</td><td class="td-mono">1–2 mg/kg lento</td><td>Etomidato 0,3 mg/kg</td><td>Cetamina (estimulante SNC)</td></tr>
+      <tr><td>Cardiopata / DAC</td><td class="td-ok">Etomidato</td><td class="td-mono">0,3 mg/kg</td><td>Propofol reduzido</td><td>+ Fentanil 3 mcg/kg IV lento pré-IOT</td></tr>
+      <tr><td>Sepse com choque</td><td class="td-ok">Etomidato</td><td class="td-mono">0,15 mg/kg</td><td>Cetamina 1 mg/kg</td><td>HC 100 mg IV se choque refratário + DVA</td></tr>
+    </tbody>
+  </table></div>
+  <div class="divider"></div>
+  <p style="font-size:11px;color:var(--text3);line-height:1.6">
+    <strong>Fontes:</strong> UpToDate (literatura revisada fev 2026): Mechanical ventilation of adults in the ED; Overview of initiating invasive MV in adults in the ICU; Modes of mechanical ventilation; ARDS: Ventilator management strategies for adults; Invasive MV in acute respiratory failure complicating COPD; Invasive MV in adults with acute exacerbations of asthma; Permissive hypercapnia during MV in adults; Clinical and physiologic complications of MV: Overview; Patient-ventilator dyssynchrony; Weaning from invasive mechanical ventilation; Intracranial hypertension management; MV in TBI; Induction agents for RSI in adults for emergency medicine and critical care (atualizado Mar 2026); Sedative-analgesia in ventilated adults (atualizado Set 2025).<br>
+    FCCS 7ª edição — Hamill ME, Hertel KA, Perez-Fernandez J.<br>
+    Brain Trauma Foundation Guidelines 2023. Yang &amp; Tobin NEJM 1991. Volta et al. meta-análise 2016. ACURASYS trial. PHOENIX trial 2023.<br>
+    Hospital Regional do Oeste — Guia educacional interno. Não substitui julgamento clínico individualizado.
+  </p>
+</section>
+
+<!-- 15. QUIZ -->
+<section class="section" id="quiz">
+  <div class="section-label">15 — Caso Clínico</div>
+  <h1 class="section-title">Caso Clínico Interativo <a class="share-link" href="#quiz" onclick="copyLink(event,'#quiz')">🔗</a></h1>
+  <p class="section-subtitle">Quiz de múltipla escolha — ventilação mecânica e farmacologia</p>
+
+  <div class="quiz-box" id="quiz-container">
+    <!-- Score screen -->
+    <div class="quiz-score" id="quiz-score">
+      <div class="score-num" id="score-num">0/5</div>
+      <div class="score-label">Questões corretas</div>
+      <div style="margin-top:20px">
+        <button class="quiz-btn primary" onclick="restartQuiz()">Reiniciar quiz</button>
+      </div>
+    </div>
+    <!-- Question screen -->
+    <div id="quiz-question-screen">
+      <div class="quiz-case" id="quiz-case"></div>
+      <div class="quiz-question" id="quiz-question"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-feedback" id="quiz-feedback"></div>
+      <div class="quiz-nav">
+        <button class="quiz-btn primary" id="quiz-next-btn" onclick="nextQuestion()" style="display:none">Próxima questão →</button>
+        <span class="quiz-progress" id="quiz-progress"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+// ============================================================
+// CALCULADORAS
+// ============================================================
+function calcPBW(){
+  const h=parseFloat(document.getElementById('altura').value);
+  const s=document.getElementById('sexo').value;
+  if(!h||h<100||h>220){document.getElementById('calc-result').style.display='none';return}
+  const pbw=s==='m'?50+0.91*(h-152.4):45.5+0.91*(h-152.4);
+  document.getElementById('pbw-val').textContent=pbw.toFixed(1);
+  document.getElementById('vc6-val').textContent=Math.round(pbw*6);
+  document.getElementById('vc5-val').textContent=Math.round(pbw*5);
+  document.getElementById('vc4-val').textContent=Math.round(pbw*4);
+  document.getElementById('calc-result').style.display='block';
+}
+function calcDP(){
+  const p=parseFloat(document.getElementById('pplat').value);
+  const e=parseFloat(document.getElementById('peep-dp').value);
+  if(isNaN(p)||isNaN(e)){document.getElementById('dp-result').style.display='none';return}
+  const dp=p-e;
+  const el=document.getElementById('dp-val');
+  const st=document.getElementById('dp-status');
+  el.textContent=dp.toFixed(1);
+  if(dp<15){el.style.color='var(--teal)';st.textContent='Dentro da meta (< 15 cmH₂O)'}
+  else if(dp<20){el.style.color='var(--amber)';st.textContent='Limítrofe — considerar ajuste de VC ou PEEP'}
+  else{el.style.color='var(--red)';st.textContent='ACIMA DO ALVO — risco de VILI. Reduzir VC ou aumentar PEEP.'}
+  document.getElementById('dp-result').style.display='block';
+}
+function calcVM(){
+  const vc=parseFloat(document.getElementById('vc-vm').value);
+  const fr=parseFloat(document.getElementById('fr-vm').value);
+  if(isNaN(vc)||isNaN(fr)||vc<=0||fr<=0){document.getElementById('vm-result').style.display='none';return}
+  const vm=(vc/1000)*fr;
+  const el=document.getElementById('vm-val');
+  const st=document.getElementById('vm-status');
+  el.textContent=vm.toFixed(1);
+  if(vm<4){el.style.color='var(--red)';st.textContent='Baixa — risco de hipercapnia e hipoventilação'}
+  else if(vm<=8){el.style.color='var(--teal)';st.textContent='Normal (4–8 L/min)'}
+  else if(vm<=12){el.style.color='var(--amber)';st.textContent='Elevada — avaliar alcalose ou drive alto'}
+  else{el.style.color='var(--red)';st.textContent='Muito elevada — revisar parâmetros'}
+  document.getElementById('vm-result').style.display='block';
+}
+function calcPF(){
+  const pao2=parseFloat(document.getElementById('pao2').value);
+  const fio2=parseFloat(document.getElementById('fio2').value);
+  if(isNaN(pao2)||isNaN(fio2)||fio2<=0||fio2>1){document.getElementById('pf-result').style.display='none';return}
+  const pf=pao2/fio2;
+  const el=document.getElementById('pf-val');
+  const st=document.getElementById('pf-status');
+  el.textContent=Math.round(pf);
+  if(pf>300){el.style.color='var(--teal)';st.textContent='Normal (sem SDRA)'}
+  else if(pf>200){el.style.color='var(--amber)';st.textContent='SDRA leve (200–300) — Berlin 2012'}
+  else if(pf>100){el.style.color='var(--red)';st.textContent='SDRA moderada (100–200) — Berlin 2012'}
+  else{el.style.color='var(--red)';st.textContent='SDRA grave (< 100) — Berlin 2012'}
+  document.getElementById('pf-result').style.display='block';
+}
+function calcIRRS(){
+  const fr=parseFloat(document.getElementById('fr-irrs').value);
+  const vc=parseFloat(document.getElementById('vc-irrs').value);
+  if(isNaN(fr)||isNaN(vc)||vc<=0){document.getElementById('irrs-result').style.display='none';return}
+  const irrs=fr/(vc/1000);
+  const el=document.getElementById('irrs-val');
+  const st=document.getElementById('irrs-status');
+  el.textContent=Math.round(irrs);
+  if(irrs<80){el.style.color='var(--teal)';st.textContent='Alta probabilidade de extubação bem-sucedida'}
+  else if(irrs<105){el.style.color='var(--amber)';st.textContent='Limítrofe — SBT bem-sucedido, extubação com cuidado'}
+  else{el.style.color='var(--red)';st.textContent='SBT com falha — não extubar'}
+  document.getElementById('irrs-result').style.display='block';
+}
+
+// ============================================================
+// MODO PLANTÃO
+// ============================================================
+function togglePlantao(){
+  document.body.classList.toggle('plantao-mode');
+  const btn=document.getElementById('btnPlantao');
+  if(document.body.classList.contains('plantao-mode')){
+    btn.textContent='✕ Sair do Plantão';btn.classList.add('active');
+  }else{
+    btn.textContent='⚡ Plantão';btn.classList.remove('active');
+  }
+}
+
+// ============================================================
+// SHARE LINKS
+// ============================================================
+function copyLink(e,anchor){
+  e.preventDefault();
+  const url=window.location.origin+window.location.pathname+anchor;
+  navigator.clipboard.writeText(url).then(()=>showToast('Link copiado!')).catch(()=>{
+    const inp=document.createElement('input');inp.value=url;document.body.appendChild(inp);inp.select();document.execCommand('copy');document.body.removeChild(inp);showToast('Link copiado!');
+  });
+}
+function showToast(msg){
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2200);
+}
+
+// ============================================================
+// QUIZ
+// ============================================================
+const questions=[
+  {
+    caso:'Paciente masculino, 68 anos, 175 cm, 95 kg. SDRA por pneumonia (P/F = 140). IOT realizada. Ventilador configurado: AC-VC, VC 570 mL, FR 18, PEEP 10, FiO₂ 0,8. Medida da Pplat: 34 cmH₂O.',
+    pergunta:'Qual é a conduta ventilatória mais adequada?',
+    opcoes:[
+      'Aumentar FR para 22 irpm para melhorar a oxigenação',
+      'Reduzir VC para 6 mL/kg PBW (PBW = 75 kg → 450 mL) e reavalie Pplat em 15 min',
+      'Aumentar PEEP para 14 cmH₂O conforme tabela ARDSnet',
+      'Trocar para AC-PC com pressão inspiratória de 20 cmH₂O'
+    ],
+    correta:1,
+    feedback:'O PBW para 175 cm/masc = 50 + 0,91×(175−152,4) = 70,6 kg. VC inicial = 70,6×6 = 424 mL. O VC de 570 mL é equivalente a ~8 mL/kg PBW — acima do alvo. Com Pplat 34 (>30 cmH₂O), a prioridade é reduzir o VC para 6 mL/kg PBW (~424 mL) e reavalie a Pplat. Aumentar PEEP com Pplat já elevada pioraria a driving pressure. O modo não é o problema aqui.'
+  },
+  {
+    caso:'Paciente asmático, 32 anos, IOT de emergência por broncoespasmo grave. Ventilador: AC-VC, VC 500 mL, FR 16, PEEP 5, fluxo 40 L/min. Após 10 min: PA 70/40 mmHg, FC 130 bpm, curva de fluxo com fluxo expiratório que não retorna a zero.',
+    pergunta:'Qual é a manobra diagnóstica e terapêutica mais imediata?',
+    opcoes:[
+      'Iniciar noradrenalina 0,1 mcg/kg/min para a hipotensão',
+      'Realizar pausa inspiratória para medir Pplat',
+      'Desconectar o circuito do tubo endotraqueal e permitir expiração passiva por 30–60 s',
+      'Reduzir PEEP de 5 para 0 cmH₂O'
+    ],
+    correta:2,
+    feedback:'A curva de fluxo com expiração que não retorna a zero é diagnóstica de auto-PEEP (PEEPi) por air trapping. Com hipotensão grave, o mecanismo é o mesmo do tamponamento: ↑ pressão intratorácica → ↓ retorno venoso → ↓ DC. A manobra imediata e potencialmente salvadora é desconectar o circuito — permite expiração passiva e alívio da hiperinsuflação dinâmica. UpToDate: "immediate disconnection... is a potentially life-saving maneuver." NÃO escalar DVA sem tentar isso primeiro.'
+  },
+  {
+    caso:'TCE grave (GCS 6), TC com herniação uncal iminente. Precisa de IOT emergencial. PA 85/50 mmHg (choque hemorrágico). Sem acesso a cetamina no momento.',
+    pergunta:'Qual indutor é mais adequado para RSI nessa situação?',
+    opcoes:[
+      'Propofol 1,5 mg/kg — reduz a PIC',
+      'Midazolam 0,2 mg/kg — início mais suave',
+      'Etomidato 0,15 mg/kg — neutro hemodinamicamente, preserva PPC',
+      'Aguardar cetamina antes de intubar'
+    ],
+    correta:2,
+    feedback:'Nesse cenário há conflito: TCE com herniação iminente (precisa proteger PIC) + hipotensão (precisa manter PPC). O propofol piora a hipotensão — contraindiciado. O midazolam também é hipotensor e tem onset lento. Aguardar é perigoso com herniação iminente. O etomidato em dose reduzida (0,15 mg/kg para choque) é o melhor indutor: neutro hemodinamicamente, preserva PPC, onset rápido. UpToDate: em TCE + hipotensão, "etomidate is the preferred induction agent."'
+  },
+  {
+    caso:'Paciente em VM há 72h por SDRA. RASS −3 sob propofol 40 mcg/kg/min. FiO₂ agora em 0,4, PEEP 8, SpO₂ 95%. Equipe questiona quando iniciar avaliação de desmame.',
+    pergunta:'Quais critérios esse paciente já atende para iniciar avaliação de desmame?',
+    opcoes:[
+      'Nenhum — SDRA contraindica desmame precoce',
+      'SpO₂ ≥90% com FiO₂ ≤0,4 e PEEP ≤8 — mas falta avaliar drive respiratório (RASS −3 impede SBT)',
+      'Todos os critérios — pode extubar imediatamente',
+      'Deve aguardar gasometria com PaO₂ >80 mmHg antes de qualquer avaliação'
+    ],
+    correta:1,
+    feedback:'O paciente atende aos critérios de oxigenação (SpO₂ 95% com FiO₂ 0,4 e PEEP 8) e causa em resolução. Porém, RASS −3 é sedação profunda demais para realizar SBT. O próximo passo é realizar SAT (Spontaneous Awakening Trial): suspender propofol e titular para RASS −1 a +1. Somente após SAT bem-sucedido realizar o SBT. Não há contraindicação de desmame em SDRA quando oxigenação está adequada — ao contrário, desmame precoce reduz VIDD.'
+  },
+  {
+    caso:'Paciente em PSV 12 cmH₂O / PEEP 5, RASS −1. FR mostrada no ventilador: 28 irpm. FR programada: 12 irpm. Curva de pressão mostra deflexões negativas na fase expiratória sem disparo do ventilador.',
+    pergunta:'Que tipo de dissincronia está presente e qual é a conduta inicial?',
+    opcoes:[
+      'Double triggering — reduzir sensibilidade de trigger',
+      'Flow starvation — aumentar fluxo inspiratório para 80 L/min',
+      'Trigger inefetivo — investigar auto-PEEP e reduzir threshold de trigger',
+      'Delayed cycling — reduzir threshold de ciclagem em PSV'
+    ],
+    correta:2,
+    feedback:'Deflexões negativas na fase expiratória sem disparo do ventilador = trigger inefetivo (missed trigger) — o esforço do paciente não é detectado. A diferença entre FR no display (28) e FR programada (12) mostra que há muitos esforços espontâneos. Causa mais comum: auto-PEEP (o paciente precisa "vencer" o PEEPi + threshold de trigger). Conduta: medir auto-PEEP (pausa expiratória), ↓ FR, ↑ fluxo inspiratório, PEEP extrínseco ≤80% PEEPi para equilibrar, e/ou reduzir threshold de trigger.'
+  }
+];
+
+let currentQ=0,score=0,answered=false;
+
+function renderQuestion(){
+  const q=questions[currentQ];
+  document.getElementById('quiz-case').innerHTML=q.caso;
+  document.getElementById('quiz-question').textContent=q.pergunta;
+  document.getElementById('quiz-progress').textContent=(currentQ+1)+' / '+questions.length;
+  document.getElementById('quiz-feedback').className='quiz-feedback';
+  document.getElementById('quiz-feedback').innerHTML='';
+  document.getElementById('quiz-next-btn').style.display='none';
+  answered=false;
+  const opts=document.getElementById('quiz-options');
+  opts.innerHTML='';
+  const letters=['A','B','C','D'];
+  q.opcoes.forEach((o,i)=>{
+    const btn=document.createElement('button');
+    btn.className='quiz-opt';
+    btn.innerHTML='<span class="quiz-letter">'+letters[i]+'</span>'+o;
+    btn.onclick=()=>answer(i);
+    opts.appendChild(btn);
+  });
+}
+
+function answer(idx){
+  if(answered)return;
+  answered=true;
+  const q=questions[currentQ];
+  const opts=document.querySelectorAll('.quiz-opt');
+  opts.forEach((o,i)=>{
+    o.classList.add('disabled');
+    if(i===q.correta)o.classList.add('correct');
+    else if(i===idx&&idx!==q.correta)o.classList.add('wrong');
+  });
+  const fb=document.getElementById('quiz-feedback');
+  if(idx===q.correta){
+    score++;
+    fb.className='quiz-feedback correct show';
+    fb.innerHTML='<strong>✓ Correto!</strong> '+q.feedback;
+  }else{
+    fb.className='quiz-feedback wrong show';
+    fb.innerHTML='<strong>✗ Incorreto.</strong> '+q.feedback;
+  }
+  const nextBtn=document.getElementById('quiz-next-btn');
+  nextBtn.style.display='inline-block';
+  nextBtn.textContent=currentQ<questions.length-1?'Próxima questão →':'Ver resultado';
+}
+
+function nextQuestion(){
+  currentQ++;
+  if(currentQ>=questions.length){
+    document.getElementById('quiz-question-screen').style.display='none';
+    document.getElementById('quiz-score').classList.add('show');
+    document.getElementById('score-num').textContent=score+'/'+questions.length;
+  }else{
+    renderQuestion();
+  }
+}
+
+function restartQuiz(){
+  currentQ=0;score=0;answered=false;
+  document.getElementById('quiz-score').classList.remove('show');
+  document.getElementById('quiz-question-screen').style.display='block';
+  renderQuestion();
+}
+
+renderQuestion();
+
+// ============================================================
+// NAVEGAÇÃO E SCROLL
+// ============================================================
+const sections=document.querySelectorAll('.section');
+const navLinks=document.querySelectorAll('.nav-link');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      navLinks.forEach(l=>l.classList.remove('active'));
+      const a=document.querySelector('.nav-link[href="#'+e.target.id+'"]');
+      if(a)a.classList.add('active');
+    }
+  });
+},{rootMargin:'-30% 0px -60% 0px'});
+sections.forEach(s=>observer.observe(s));
+window.addEventListener('scroll',()=>{
+  const d=document.documentElement;
+  const p=(d.scrollTop/(d.scrollHeight-d.clientHeight))*100;
+  document.getElementById('progress').style.width=p+'%';
+});
+function toggleMenu(){
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('show');
+}
+navLinks.forEach(l=>l.addEventListener('click',()=>{
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+}));
+
+// Suporte a âncoras na URL ao carregar
+window.addEventListener('load',()=>{
+  if(window.location.hash){
+    const el=document.querySelector(window.location.hash);
+    if(el)setTimeout(()=>el.scrollIntoView({behavior:'smooth'}),300);
+  }
+});
+</script>
+</body>
+</html>
