@@ -69,6 +69,7 @@
   .bubble pre{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:11px 13px;overflow-x:auto;margin:10px 0}
   .bubble pre code{font-family:var(--mono);font-size:12.5px;color:var(--text);background:none;border:0;padding:0;white-space:pre}
   .bubble code{font-family:var(--mono);font-size:12.5px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:1px 5px}
+  .bubble hr{border:none;border-top:1px solid var(--border);margin:12px 0}
   .chat-empty{flex:1;display:flex;align-items:center;justify-content:center;color:var(--text3);font-size:13px;text-align:center;line-height:1.6;padding:30px}
 
   .composer{display:flex;gap:10px;align-items:flex-end}
@@ -300,6 +301,7 @@ function mdToHtml(md){
       html+='<table><thead><tr>'+head.map(c=>'<th>'+inline(c)+'</th>').join('')+'</tr></thead><tbody>'+body+'</tbody></table>';
       continue;
     }
+    if(/^---+$/.test(line)){closeList();html+='<hr>';continue;}
     if(line.startsWith('### ')){closeList();html+='<h3>'+inline(line.slice(4))+'</h3>';}
     else if(line.startsWith('## ')){closeList();html+='<h2>'+inline(line.slice(3))+'</h2>';}
     else if(line.startsWith('# ')){closeList();html+='<h2>'+inline(line.slice(2))+'</h2>';}
