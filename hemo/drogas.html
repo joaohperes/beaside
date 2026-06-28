@@ -25,6 +25,242 @@
     <button class="sub-nav-btn" onclick="showSubsection('drogas','algo',this)">Algoritmo</button>
     <button class="sub-nav-btn" onclick="showSubsection('drogas','seg',this)">Segurança</button>
   </nav>
+
+  <!-- POR CHOQUE -->
+  <div class="sub-section active" data-sub="choque">
+    <div class="card">
+      <div class="card-title purple">1ª escolha por tipo de choque</div>
+      <div class="table-wrap"><table>
+        <tr><th>Choque</th><th>1ª linha</th><th>2ª linha / adicionar se refratário</th><th>Alvo</th></tr>
+        <tr><td><span class="pill pill-coral">Séptico</span></td><td>Noradrenalina</td><td>Vasopressina (Nora &gt; 0,25–0,5 μg/kg/min) → Adrenalina → Hidrocortisona se vasopressor crescente</td><td>PAM ≥ 65 (60–65 se ≥ 65 anos)</td></tr>
+        <tr><td><span class="pill pill-amber">Cardiogênico</span></td><td>Noradrenalina (PAM &lt; 65) ± Dobutamina</td><td>Milrinona · Levosimendana · suporte mecânico (BIA, ECMO)</td><td>PAM ≥ 65 · IC ≥ 2,2</td></tr>
+        <tr><td><span class="pill pill-red">Hipovolêmico</span></td><td>Volume — vasopressor é ponte</td><td>Noradrenalina enquanto repõe</td><td>Controle da causa</td></tr>
+        <tr><td><span class="pill pill-blue">Obstrutivo</span></td><td>Noradrenalina + tratar causa (drenar tamponamento, trombolisar TEP, descomprimir pneumotórax)</td><td>Adrenalina se parada iminente</td><td>Reverter a obstrução</td></tr>
+        <tr><td><span class="pill pill-purple">Anafilático</span></td><td>Adrenalina IM 0,3–0,5 mg (lateral da coxa) — repetir a cada 5–15 min</td><td>Adrenalina IV em BIC se refratário · Volume · Anti-H1/H2 · corticoide</td><td>Reverter broncoespasmo e hipotensão</td></tr>
+        <tr><td><span class="pill pill-green">Neurogênico</span></td><td>Noradrenalina (vaso + crono)</td><td>Fenilefrina se taquicardia · Atropina se bradicardia associada</td><td>PAM 85–90 (TRM agudo)</td></tr>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- VASOPRESSORES -->
+  <div class="sub-section" data-sub="vaso">
+    <div class="card collapsible" data-card="vaso-na" onclick="toggleCard(this,event)">
+      <div class="card-toggle">
+        <div class="card-title coral">Noradrenalina (norepinefrina)</div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="tag-row"><span class="tag">α₁ &gt;&gt; β₁</span><span class="tag">1ª linha em choque séptico</span><span class="tag">SSC 2026: pode iniciar em acesso periférico</span></div>
+        <table>
+          <tr><th>Dose inicial</th><th>Titulação</th><th>Dose máxima usual</th></tr>
+          <tr><td>0,01–0,05 μg/kg/min</td><td>Aumentar 0,02–0,05 μg/kg/min a cada 2–5 min até alvo de PAM</td><td>1–2 μg/kg/min (acima disso → adicionar 2ª droga)</td></tr>
+        </table>
+        <div class="formula">Diluição padrão: 16 mg (4 amp de 4 mg) em 250 mL SG 5% = 64 μg/mL</div>
+        <div class="alert-box info"><div class="icon">i</div><div class="content"><strong>Cálculo prático (paciente 70 kg, dose 0,1 μg/kg/min, diluição 64 μg/mL)</strong>Vazão = (0,1 × 70 × 60) / 64 = <strong>6,6 mL/h</strong>. Lembrete: 1 μg/kg/min em 70 kg ≈ 65 mL/h nessa diluição.</div></div>
+        <div class="alert-box warn"><div class="icon">!</div><div class="content"><strong>Efeitos adversos</strong>Vasoconstrição esplâncnica e periférica (isquemia digital), arritmias (menos que adrenalina/dopamina), bradicardia reflexa em hipertensos. Extravasamento → necrose: tratar com fentolamina SC.</div></div>
+      </div>
+    </div>
+
+    <div class="card collapsible" data-card="vaso-vp" onclick="toggleCard(this,event)">
+      <div class="card-toggle">
+        <div class="card-title purple">Vasopressina</div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="tag-row"><span class="tag">Receptor V1</span><span class="tag">Adicionar à Nora, não titular</span><span class="tag">SSC 2026: Nora &gt; 0,25–0,5 μg/kg/min</span></div>
+        <table>
+          <tr><th>Dose</th><th>Quando iniciar</th><th>Observação</th></tr>
+          <tr><td>0,01–0,04 U/min (dose fixa)</td><td>Choque séptico com Nora escalando &gt; 0,25–0,5 μg/kg/min</td><td>Não titular acima de 0,04 U/min — risco de isquemia. Permite reduzir dose de Nora.</td></tr>
+        </table>
+        <div class="formula">Diluição padrão: 20 U em 100 mL SF 0,9% = 0,2 U/mL → 0,03 U/min = 9 mL/h</div>
+        <div class="alert-box warn"><div class="icon">!</div><div class="content"><strong>Cuidados</strong>Isquemia mesentérica e digital, hiponatremia, broncoespasmo. Evitar em IC grave (aumenta pós-carga sem efeito inotrópico).</div></div>
+      </div>
+    </div>
+
+    <div class="card collapsible" data-card="vaso-adr" onclick="toggleCard(this,event)">
+      <div class="card-toggle">
+        <div class="card-title red">Adrenalina (epinefrina)</div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="tag-row"><span class="tag">α₁ + β₁ + β₂ (dose-dependente)</span><span class="tag">3ª linha no séptico</span><span class="tag">1ª linha na anafilaxia e PCR</span></div>
+        <table>
+          <tr><th>Indicação</th><th>Dose</th><th>Via</th></tr>
+          <tr><td>Anafilaxia</td><td>0,3–0,5 mg (0,01 mg/kg) — repetir 5–15 min</td><td>IM lateral da coxa</td></tr>
+          <tr><td>Choque séptico refratário</td><td>0,01–0,5 μg/kg/min em BIC</td><td>IV central preferencial</td></tr>
+          <tr><td>PCR</td><td>1 mg em bolus a cada 3–5 min</td><td>IV</td></tr>
+          <tr><td>Bradicardia sintomática</td><td>2–10 μg/min</td><td>IV em BIC</td></tr>
+        </table>
+        <div class="formula">Diluição BIC: 4 mg (4 amp de 1 mg) em 250 mL SG 5% = 16 μg/mL</div>
+        <div class="alert-box warn"><div class="icon">!</div><div class="content"><strong>Efeitos</strong>Taquicardia, arritmias, hiperlactatemia (efeito β₂ — não confundir com hipoperfusão), hiperglicemia. Pode mascarar interpretação do lactato como marcador de perfusão.</div></div>
+      </div>
+    </div>
+
+    <div class="card collapsible" data-card="vaso-fenil" onclick="toggleCard(this,event)">
+      <div class="card-toggle">
+        <div class="card-title amber">Fenilefrina (2ª linha)</div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="tag-row"><span class="tag">α₁ puro</span><span class="tag">Sem efeito β</span><span class="tag">2ª linha — uso restrito</span></div>
+        <table>
+          <tr><th>Dose</th><th>Indicação principal</th><th>Limitação</th></tr>
+          <tr><td>0,5–5 μg/kg/min (BIC) · 50–200 μg em bolus</td><td>Hipotensão induzida por anestesia, choque com taquicardia significativa quando Nora contraindicada</td><td>Reduz DC por bradicardia reflexa — evitar em disfunção ventricular</td></tr>
+        </table>
+        <div class="formula">Diluição: 10 mg em 250 mL = 40 μg/mL · Bolus 100 μg = 1 mL da diluição 100 μg/mL (10 mg em 100 mL)</div>
+      </div>
+    </div>
+
+    <div class="card collapsible" data-card="vaso-dopa" onclick="toggleCard(this,event)">
+      <div class="card-toggle">
+        <div class="card-title">Dopamina (em desuso como 1ª linha)</div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="tag-row"><span class="tag">Dose-dependente</span><span class="tag">SSC: NÃO recomenda como 1ª linha</span><span class="tag">Mais arritmias que Nora</span></div>
+        <table>
+          <tr><th>Faixa</th><th>Efeito predominante</th><th>Uso</th></tr>
+          <tr><td>1–3 μg/kg/min</td><td>Dopaminérgico (renal)</td><td>Sem benefício clínico — abandonado</td></tr>
+          <tr><td>3–10 μg/kg/min</td><td>β₁ (inotrópico)</td><td>Alternativa em bradicardia sintomática quando atropina/marca-passo indisponível</td></tr>
+          <tr><td>&gt; 10 μg/kg/min</td><td>α₁ (vasopressor)</td><td>Não preferir — mais arritmogênico que Nora</td></tr>
+        </table>
+        <div class="alert-box danger"><div class="icon">!</div><div class="content"><strong>Posição atual</strong>SSC 2026 mantém recomendação contra dopamina como 1ª linha em choque séptico. Maior incidência de arritmias e mortalidade vs. Nora. Reservada para casos específicos (bradicardia, indisponibilidade de outros).</div></div>
+      </div>
+    </div>
+
+    <div class="card collapsible" data-card="vaso-ang" onclick="toggleCard(this,event)">
+      <div class="card-toggle">
+        <div class="card-title teal">Angiotensina II (disponibilidade limitada)</div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="tag-row"><span class="tag">Receptor AT1</span><span class="tag">Choque vasodilatador refratário</span><span class="tag">Pouco disponível no Brasil</span></div>
+        <table>
+          <tr><th>Dose inicial</th><th>Titulação</th><th>Dose máxima</th></tr>
+          <tr><td>5–20 ng/kg/min</td><td>5 ng/kg/min a cada 5 min</td><td>200 ng/kg/min (3 horas) → 40 ng/kg/min após estabilização</td></tr>
+        </table>
+        <div class="alert-box info"><div class="icon">i</div><div class="content"><strong>Indicação</strong>Choque vasodilatador refratário a Nora + vasopressina em altas doses (estudo ATHOS-3). Disponibilidade limitada no SUS — uso quase exclusivo em centros de pesquisa ou setor privado.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INOTRÓPICOS -->
+  <div class="sub-section" data-sub="ino">
+    <div class="card collapsible" data-card="ino-dobu" onclick="toggleCard(this,event)">
+      <div class="card-toggle">
+        <div class="card-title amber">Dobutamina</div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="tag-row"><span class="tag">β₁ &gt; β₂ &gt;&gt; α₁</span><span class="tag">1ª escolha inotrópico</span><span class="tag">Adicionar à Nora se DC baixo</span></div>
+        <table>
+          <tr><th>Dose inicial</th><th>Titulação</th><th>Dose máxima usual</th></tr>
+          <tr><td>2,5–5 μg/kg/min</td><td>2,5 μg/kg/min a cada 10–15 min</td><td>20 μg/kg/min (acima → mais arritmias sem ganho)</td></tr>
+        </table>
+        <div class="formula">Diluição padrão: 250 mg (1 amp) em 250 mL SG 5% = 1000 μg/mL</div>
+        <div class="alert-box info"><div class="icon">i</div><div class="content"><strong>Cálculo prático (70 kg, 5 μg/kg/min, diluição 1000 μg/mL)</strong>Vazão = (5 × 70 × 60) / 1000 = <strong>21 mL/h</strong>. Regra mnemônica: μg/kg/min ≈ mL/h × 0,24 (peso 70 kg, diluição padrão).</div></div>
+        <div class="alert-box warn"><div class="icon">!</div><div class="content"><strong>Efeitos</strong>Taquicardia, arritmias (FA, EV), hipotensão por vasodilatação β₂ — sempre associar a vasopressor se PAM &lt; 65. Tolerância em uso prolongado (&gt; 72 h) por downregulation β.</div></div>
+      </div>
+    </div>
+
+    <div class="card collapsible" data-card="ino-mil" onclick="toggleCard(this,event)">
+      <div class="card-toggle">
+        <div class="card-title teal">Milrinona</div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="tag-row"><span class="tag">Inibidor da PDE-3</span><span class="tag">Inodilatador</span><span class="tag">Útil em IC com hipertensão pulmonar</span></div>
+        <table>
+          <tr><th>Bolus (opcional)</th><th>Manutenção</th><th>Observação</th></tr>
+          <tr><td>50 μg/kg em 10 min — frequentemente omitido por hipotensão</td><td>0,375–0,75 μg/kg/min</td><td>Meia-vida longa (2–4 h) — efeito não desaparece rápido ao desligar</td></tr>
+        </table>
+        <div class="formula">Diluição: 20 mg em 100 mL SG 5% = 200 μg/mL</div>
+        <div class="alert-box warn"><div class="icon">!</div><div class="content"><strong>Cuidados</strong>Hipotensão (vasodilatação arterial e venosa) — quase sempre exige Nora associada. Excreção renal — ajustar em DRC. Evitar em estenose aórtica grave e cardiomiopatia hipertrófica obstrutiva.</div></div>
+      </div>
+    </div>
+
+    <div class="card collapsible" data-card="ino-levo" onclick="toggleCard(this,event)">
+      <div class="card-toggle">
+        <div class="card-title purple">Levosimendana (2ª linha)</div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="tag-row"><span class="tag">Sensibilizador de cálcio</span><span class="tag">Dose única 24h</span><span class="tag">Alto custo</span></div>
+        <table>
+          <tr><th>Bolus (opcional)</th><th>Manutenção</th><th>Duração</th></tr>
+          <tr><td>6–12 μg/kg em 10 min — frequentemente omitido por hipotensão</td><td>0,05–0,2 μg/kg/min</td><td>24 h em infusão única — efeito hemodinâmico dura até 7–9 dias (metabólito ativo)</td></tr>
+        </table>
+        <div class="alert-box info"><div class="icon">i</div><div class="content"><strong>Indicação</strong>IC descompensada refratária, particularmente em uso crônico de β-bloqueador (não compete com receptor β). Sem benefício de mortalidade em estudos recentes (LEVO-CTS, CHEETAH) — uso seletivo.</div></div>
+        <div class="alert-box warn"><div class="icon">!</div><div class="content"><strong>Efeitos</strong>Hipotensão, taquicardia, hipocalemia, alargamento de QT. Quase sempre exige vasopressor associado.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADJUVANTES -->
+  <div class="sub-section" data-sub="adj">
+    <div class="card collapsible" data-card="adj-hidro" onclick="toggleCard(this,event)">
+      <div class="card-toggle">
+        <div class="card-title green">Hidrocortisona</div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="tag-row"><span class="tag">Corticoide</span><span class="tag">Choque séptico com vasopressor crescente</span><span class="tag">SSC 2026: condicional</span></div>
+        <table>
+          <tr><th>Dose</th><th>Quando iniciar</th><th>Duração</th></tr>
+          <tr><td>200 mg/dia (50 mg IV 6/6h ou infusão contínua 8,3 mg/h)</td><td>Choque séptico com necessidade contínua de Nora ≥ 0,25 μg/kg/min por &gt; 4 h após início</td><td>5–7 dias ou até desmame do vasopressor — desmamar gradualmente</td></tr>
+        </table>
+        <div class="alert-box info"><div class="icon">i</div><div class="content"><strong>Posição SSC 2026</strong>Recomendação condicional para choque séptico com vasopressor em escalonamento. Reduz tempo de vasopressor; efeito modesto em mortalidade. Hiperglicemia e infecção secundária são os principais riscos.</div></div>
+      </div>
+    </div>
+
+    <div class="card collapsible" data-card="adj-azul" onclick="toggleCard(this,event)">
+      <div class="card-toggle">
+        <div class="card-title">Azul de metileno (resgate em vasoplegia refratária)</div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="tag-row"><span class="tag">Inibidor da guanilato ciclase</span><span class="tag">Uso de exceção</span></div>
+        <table>
+          <tr><th>Dose bolus</th><th>Manutenção (opcional)</th><th>Indicação</th></tr>
+          <tr><td>1–2 mg/kg IV em 20–60 min</td><td>0,25–2 mg/kg/h por até 48–72 h</td><td>Vasoplegia refratária a Nora + vasopressina ± angiotensina II — pós-CEC, choque séptico de exceção</td></tr>
+        </table>
+        <div class="alert-box danger"><div class="icon">!</div><div class="content"><strong>Contraindicações</strong>Deficiência de G6PD (hemólise), uso de ISRS/IMAO (síndrome serotoninérgica), gestação, IRC grave. Discutir com referência de UTI antes de usar.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALGORITMO -->
+  <div class="sub-section" data-sub="algo">
+    <div class="card">
+      <div class="card-title blue">Algoritmo de escalonamento — choque séptico (SSC 2026)</div>
+      <div class="flow">
+        <div class="flow-step"><div class="flow-line"><div class="flow-dot">1</div><div class="flow-connector"></div></div><div class="flow-content"><div class="flow-title">Iniciar Noradrenalina</div><div class="flow-desc">Em qualquer acesso disponível (periférico de bom calibre é aceito enquanto se obtém central). Alvo: PAM ≥ 65 mmHg (60–65 se ≥ 65 anos). Titular a cada 2–5 min.</div></div></div>
+        <div class="flow-step"><div class="flow-line"><div class="flow-dot">2</div><div class="flow-connector"></div></div><div class="flow-content"><div class="flow-title">Volume em paralelo se responsivo</div><div class="flow-desc">Cristaloide balanceado (Ringer lactato preferencial). Reavaliar com PLR + VTI ou VPP a cada bolus. Não administrar volume cego se VCI dilatada ou paciente não-responsivo.</div></div></div>
+        <div class="flow-step"><div class="flow-line"><div class="flow-dot">3</div><div class="flow-connector"></div></div><div class="flow-content"><div class="flow-title">Nora &gt; 0,25–0,5 μg/kg/min → adicionar Vasopressina</div><div class="flow-desc">Dose fixa 0,03 U/min (não titular). Permite reduzir dose de Nora e poupa receptores α. Objetivo: manter PAM com menor escalonamento.</div></div></div>
+        <div class="flow-step"><div class="flow-line"><div class="flow-dot">4</div><div class="flow-connector"></div></div><div class="flow-content"><div class="flow-title">Considerar Hidrocortisona</div><div class="flow-desc">200 mg/dia se vasopressor em escalonamento contínuo &gt; 4 h após início. Reduz tempo de vasopressor.</div></div></div>
+        <div class="flow-step"><div class="flow-line"><div class="flow-dot">5</div><div class="flow-connector"></div></div><div class="flow-content"><div class="flow-title">Avaliar disfunção ventricular (POCUS / eco)</div><div class="flow-desc">Se DC baixo (FE reduzida, hipoperfusão persistente apesar de PAM em alvo): adicionar Dobutamina 2,5–5 μg/kg/min. Reavaliar SvcO₂ e Δ pCO₂.</div></div></div>
+        <div class="flow-step"><div class="flow-line"><div class="flow-dot">6</div><div class="flow-connector"></div></div><div class="flow-content"><div class="flow-title">Refratário → Adrenalina</div><div class="flow-desc">Considerar como 3ª droga. Atenção: pode elevar lactato por estímulo β₂ — não confundir com hipoperfusão piorando.</div></div></div>
+        <div class="flow-step"><div class="flow-line"><div class="flow-dot">7</div></div><div class="flow-content"><div class="flow-title">Resgate em vasoplegia extrema</div><div class="flow-desc">Angiotensina II (se disponível) ou Azul de metileno. Avaliar suporte mecânico em centros de referência. Discutir condução com intensivista experiente.</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEGURANÇA -->
+  <div class="sub-section" data-sub="seg">
+    <div class="card">
+      <div class="card-title amber">Pontos práticos de segurança</div>
+      <table>
+        <tr><th>Tema</th><th>Recomendação</th></tr>
+        <tr><td>Acesso periférico</td><td>SSC 2026: aceitável para iniciar Nora em veia de bom calibre (antecubital ou maior) por até 6 h. Trocar para CVC assim que possível. Monitorar local a cada 1–2 h.</td></tr>
+        <tr><td>Extravasamento de Nora/adrenalina</td><td>Suspender infusão. Aspirar pela cânula se possível. Fentolamina 5–10 mg em 10 mL SF infiltrado SC ao redor (off-label, primeiras 12 h). Calor local seco.</td></tr>
+        <tr><td>Dupla infusão</td><td>Drogas vasoativas em via dedicada. Não administrar bolus de outras drogas pela mesma via — risco de bolus inadvertido de vasopressor.</td></tr>
+        <tr><td>Troca de seringa/bag</td><td>Risco de hipotensão na troca. Preparar bag novo antes de terminar o atual; trocar com sobreposição de 10–15 s ou usar bomba dupla.</td></tr>
+        <tr><td>Desmame</td><td>Reduzir 0,02–0,05 μg/kg/min a cada 15–30 min se PAM estável. Desligar vasopressina por último, com cautela (queda abrupta de PAM possível).</td></tr>
+        <tr><td>Alvo individualizado</td><td>SSC 2026: PAM 60–65 mmHg para ≥ 65 anos (estudo 65 trial — não inferior a 65–70 e menor exposição a vasopressor).</td></tr>
+      </table>
+    </div>
+  </div>
+
 </main>
 <script src="../assets/app.js"></script>
 
