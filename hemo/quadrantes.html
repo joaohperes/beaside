@@ -9,9 +9,8 @@
 #chart-wrap{margin:16px 0 8px;user-select:none;}
 #quad-svg{width:100%;height:auto;display:block;}
 
-.q-area{cursor:pointer;transition:opacity .18s;}
-.q-area{opacity:1;}
-.q-area.dimmed{opacity:.35;}
+.q-area{cursor:pointer;transition:opacity .2s;}
+.q-area.dimmed{opacity:.28;}
 .q-area.active{opacity:1;}
 
 .iq-detail{margin-top:14px;border-radius:10px;border:1px solid var(--border);overflow:hidden;animation:fadeUp .16s ease;}
@@ -49,143 +48,142 @@
 
     <div id="chart-wrap">
       <!--
-        viewBox 520 × 380
-        plot area: x1=52 x2=500 y1=12 y2=308  → w=448 h=296
-        X: SvcO₂ 40–100%  →  midX at 40+(60/2)=70% → x = 52 + 448*(70-40)/60 = 52+224 = 276
-        Y: ΔpCO₂ 0–12     →  midY at 6            → y = 308 - 296*(6/12) = 308-148 = 160
+        viewBox 540 × 390
+        margins: top=32 right=24 bottom=60 left=52
+        plot area: x1=52 x2=516 y1=32 y2=308  → w=464 h=276
+        X: SvcO₂ 40–100%  → midX at 70%  → x = 52 + 464*(30/60) = 52+232 = 284
+        Y: ΔpCO₂ 0–12     → midY at 6    → y = 308 - 276*(6/12)  = 308-138 = 170
         grid every 2 mmHg (Y) and every 10% (X)
+        Y ticks: 0→308  2→285  4→262  6→239— wait, linear:
+          y(v) = 308 - 276*(v/12)
+          v=0→308  v=2→308-46=262  v=4→308-92=216  v=6→308-138=170
+          v=8→308-184=124  v=10→308-230=78  v=12→308-276=32
+        X ticks: x(p) = 52 + 464*(p-40)/60
+          p=40→52  p=50→129  p=60→207  p=70→284  p=80→362  p=90→439  p=100→516
       -->
-      <svg id="quad-svg" viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg">
+      <svg id="quad-svg" viewBox="0 0 540 390" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <marker id="arrowX" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-            <path d="M0,1.2 L6,3.5 L0,5.8 Z" fill="#3a4555"/>
+          <!-- Quadrant fills — distinct colors, low opacity -->
+          <linearGradient id="gq4" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#c0392b" stop-opacity=".18"/>
+            <stop offset="100%" stop-color="#c0392b" stop-opacity=".04"/>
+          </linearGradient>
+          <linearGradient id="gq3" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#e67e22" stop-opacity=".16"/>
+            <stop offset="100%" stop-color="#e67e22" stop-opacity=".03"/>
+          </linearGradient>
+          <linearGradient id="gq2" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#d4a017" stop-opacity=".14"/>
+            <stop offset="100%" stop-color="#d4a017" stop-opacity=".03"/>
+          </linearGradient>
+          <linearGradient id="gq1" x1="100%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" stop-color="#1db88a" stop-opacity=".15"/>
+            <stop offset="100%" stop-color="#1db88a" stop-opacity=".03"/>
+          </linearGradient>
+          <marker id="arrowX" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+            <path d="M0,1.5 L7,4 L0,6.5 Z" fill="#4a5a72"/>
           </marker>
-          <marker id="arrowY" markerWidth="7" markerHeight="7" refX="3.5" refY="0" orient="auto">
-            <path d="M1.2,6 L3.5,0 L5.8,6 Z" fill="#3a4555"/>
+          <marker id="arrowY" markerWidth="8" markerHeight="8" refX="4" refY="1" orient="auto">
+            <path d="M1.5,7 L4,1 L6.5,7 Z" fill="#4a5a72"/>
           </marker>
           <clipPath id="plotClip">
-            <rect x="52" y="12" width="448" height="296"/>
+            <rect x="52" y="32" width="464" height="276"/>
           </clipPath>
         </defs>
 
         <!-- ── Plot background ── -->
-        <rect x="52" y="12" width="448" height="296" fill="#0f1216"/>
+        <rect x="52" y="32" width="464" height="276" fill="#0e1318" rx="2"/>
 
-        <!-- ── Grid lines — Y every 2 mmHg ── -->
-        <!-- y for value v: 308 - 296*(v/12) -->
-        <!-- v=2  → 308-49.3=258.7  v=4  → 308-98.7=209.3  v=6  → 160  v=8  → 110.7  v=10 → 61.3 -->
-        <g stroke="#1e2530" stroke-width=".8" clip-path="url(#plotClip)">
-          <line x1="52" y1="258" x2="500" y2="258"/>
-          <line x1="52" y1="209" x2="500" y2="209"/>
-          <line x1="52" y1="160" x2="500" y2="160" stroke="#2a3545" stroke-width="1.2"/>
-          <line x1="52" y1="111" x2="500" y2="111"/>
-          <line x1="52" y1="62"  x2="500" y2="62"/>
+        <!-- ── Grid lines Y (every 2 mmHg) ── -->
+        <g clip-path="url(#plotClip)" stroke="#1c2530" stroke-width=".8">
+          <line x1="52" y1="262" x2="516" y2="262"/><!-- v=2 -->
+          <line x1="52" y1="216" x2="516" y2="216"/><!-- v=4 -->
+          <line x1="52" y1="170" x2="516" y2="170" stroke="#263040" stroke-width="1.1"/><!-- v=6 threshold -->
+          <line x1="52" y1="124" x2="516" y2="124"/><!-- v=8 -->
+          <line x1="52" y1="78"  x2="516" y2="78"/><!-- v=10 -->
         </g>
 
-        <!-- ── Grid lines — X every 10% (40,50,60,70,80,90,100) ── -->
-        <!-- x for value p: 52 + 448*(p-40)/60 -->
-        <!-- 40→52  50→126.7  60→201.3  70→276  80→350.7  90→425.3  100→500 -->
-        <g stroke="#1e2530" stroke-width=".8" clip-path="url(#plotClip)">
-          <line x1="127" y1="12" x2="127" y2="308"/>
-          <line x1="201" y1="12" x2="201" y2="308"/>
-          <line x1="276" y1="12" x2="276" y2="308" stroke="#2a3545" stroke-width="1.2"/>
-          <line x1="351" y1="12" x2="351" y2="308"/>
-          <line x1="425" y1="12" x2="425" y2="308"/>
+        <!-- ── Grid lines X (every 10%) ── -->
+        <g clip-path="url(#plotClip)" stroke="#1c2530" stroke-width=".8">
+          <line x1="129" y1="32" x2="129" y2="308"/><!-- 50% -->
+          <line x1="207" y1="32" x2="207" y2="308"/><!-- 60% -->
+          <line x1="284" y1="32" x2="284" y2="308" stroke="#263040" stroke-width="1.1"/><!-- 70% threshold -->
+          <line x1="362" y1="32" x2="362" y2="308"/><!-- 80% -->
+          <line x1="439" y1="32" x2="439" y2="308"/><!-- 90% -->
         </g>
 
         <!-- ── Quadrant fills ── -->
         <rect class="q-area" id="area-q4" data-q="q4"
-              x="52" y="12" width="224" height="148"
-              fill="#e24b4a" fill-opacity=".07"/>
+              x="52" y="32" width="232" height="138" fill="url(#gq4)"/>
         <rect class="q-area" id="area-q3" data-q="q3"
-              x="276" y="12" width="224" height="148"
-              fill="#e85840" fill-opacity=".05"/>
+              x="284" y="32" width="232" height="138" fill="url(#gq3)"/>
         <rect class="q-area" id="area-q2" data-q="q2"
-              x="52" y="160" width="224" height="148"
-              fill="#f0a030" fill-opacity=".05"/>
+              x="52" y="170" width="232" height="138" fill="url(#gq2)"/>
         <rect class="q-area" id="area-q1" data-q="q1"
-              x="276" y="160" width="224" height="148"
-              fill="#1db88a" fill-opacity=".06"/>
+              x="284" y="170" width="232" height="138" fill="url(#gq1)"/>
 
-        <!-- ── Threshold lines (on top of fill, below labels) ── -->
-        <line x1="276" y1="12"  x2="276" y2="308" stroke="#3a4555" stroke-width="1.2" stroke-dasharray="4 3"/>
-        <line x1="52"  y1="160" x2="500" y2="160" stroke="#3a4555" stroke-width="1.2" stroke-dasharray="4 3"/>
+        <!-- ── Threshold lines ── -->
+        <line x1="284" y1="32"  x2="284" y2="308" stroke="#2e3f52" stroke-width="1.3" stroke-dasharray="5 3"/>
+        <line x1="52"  y1="170" x2="516" y2="170" stroke="#2e3f52" stroke-width="1.3" stroke-dasharray="5 3"/>
 
         <!-- ── Axes ── -->
-        <line x1="52" y1="308" x2="504" y2="308" stroke="#3d4f62" stroke-width="1.6" marker-end="url(#arrowX)"/>
-        <line x1="52" y1="308" x2="52"  y2="8"   stroke="#3d4f62" stroke-width="1.6" marker-end="url(#arrowY)"/>
+        <!-- X axis at y=308, arrow at x=520 -->
+        <line x1="52" y1="308" x2="519" y2="308" stroke="#4a5a72" stroke-width="1.6" marker-end="url(#arrowX)"/>
+        <!-- Y axis at x=52, arrow at y=28 -->
+        <line x1="52" y1="308" x2="52" y2="29" stroke="#4a5a72" stroke-width="1.6" marker-end="url(#arrowY)"/>
 
-        <!-- ── Y axis — ticks + labels ── -->
-        <!-- v=0→308  v=2→258  v=4→209  v=6→160  v=8→111  v=10→62  v=12→12 -->
-        <g font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="#4a5a6e" text-anchor="end">
-          <line x1="52" y1="308" x2="47" y2="308" stroke="#3d4f62" stroke-width="1.2"/>
-          <text x="44" y="312">0</text>
-          <line x1="52" y1="258" x2="47" y2="258" stroke="#3d4f62" stroke-width="1.2"/>
-          <text x="44" y="262">2</text>
-          <line x1="52" y1="209" x2="47" y2="209" stroke="#3d4f62" stroke-width="1.2"/>
-          <text x="44" y="213">4</text>
-          <line x1="52" y1="160" x2="47" y2="160" stroke="#3d4f62" stroke-width="1.2"/>
-          <text x="44" y="164" fill="#7a8898" font-weight="700">6</text>
-          <line x1="52" y1="111" x2="47" y2="111" stroke="#3d4f62" stroke-width="1.2"/>
-          <text x="44" y="115">8</text>
-          <line x1="52" y1="62"  x2="47" y2="62"  stroke="#3d4f62" stroke-width="1.2"/>
-          <text x="44" y="66">10</text>
-          <line x1="52" y1="12"  x2="47" y2="12"  stroke="#3d4f62" stroke-width="1.2"/>
-          <text x="44" y="16">12</text>
+        <!-- ── Y axis ticks + labels ── -->
+        <g font-family="'IBM Plex Sans',sans-serif" font-size="10" fill="#4d5e72" text-anchor="end">
+          <line x1="52" y1="308" x2="46" y2="308" stroke="#4a5a72" stroke-width="1.2"/><text x="42" y="312">0</text>
+          <line x1="52" y1="262" x2="46" y2="262" stroke="#4a5a72" stroke-width="1.2"/><text x="42" y="266">2</text>
+          <line x1="52" y1="216" x2="46" y2="216" stroke="#4a5a72" stroke-width="1.2"/><text x="42" y="220">4</text>
+          <line x1="52" y1="170" x2="46" y2="170" stroke="#4a5a72" stroke-width="1.2"/><text x="42" y="174" fill="#8a9ab2" font-weight="600">6</text>
+          <line x1="52" y1="124" x2="46" y2="124" stroke="#4a5a72" stroke-width="1.2"/><text x="42" y="128">8</text>
+          <line x1="52" y1="78"  x2="46" y2="78"  stroke="#4a5a72" stroke-width="1.2"/><text x="42" y="82">10</text>
+          <line x1="52" y1="32"  x2="46" y2="32"  stroke="#4a5a72" stroke-width="1.2"/><text x="42" y="36">12</text>
         </g>
-        <!-- Y axis title -->
-        <text transform="rotate(-90,14,160)" x="14" y="160" text-anchor="middle"
-              font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="#4a5a6e" letter-spacing=".06em">Δ pCO₂ (mmHg)</text>
+        <text transform="rotate(-90,13,170)" x="13" y="170" text-anchor="middle"
+              font-family="'IBM Plex Sans',sans-serif" font-size="10" fill="#4d5e72" letter-spacing=".05em">Δ pCO₂ (mmHg)</text>
 
-        <!-- ── X axis — ticks + labels ── -->
-        <!-- p=40→52  50→127  60→201  70→276  80→351  90→425  100→500 -->
-        <g font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="#4a5a6e" text-anchor="middle">
-          <line x1="52"  y1="308" x2="52"  y2="313" stroke="#3d4f62" stroke-width="1.2"/>
-          <text x="52"  y="325">40%</text>
-          <line x1="127" y1="308" x2="127" y2="313" stroke="#3d4f62" stroke-width="1.2"/>
-          <text x="127" y="325">50%</text>
-          <line x1="201" y1="308" x2="201" y2="313" stroke="#3d4f62" stroke-width="1.2"/>
-          <text x="201" y="325">60%</text>
-          <line x1="276" y1="308" x2="276" y2="313" stroke="#3d4f62" stroke-width="1.2"/>
-          <text x="276" y="325" fill="#7a8898" font-weight="700">70%</text>
-          <line x1="351" y1="308" x2="351" y2="313" stroke="#3d4f62" stroke-width="1.2"/>
-          <text x="351" y="325">80%</text>
-          <line x1="425" y1="308" x2="425" y2="313" stroke="#3d4f62" stroke-width="1.2"/>
-          <text x="425" y="325">90%</text>
-          <line x1="500" y1="308" x2="500" y2="313" stroke="#3d4f62" stroke-width="1.2"/>
-          <text x="500" y="325">100%</text>
+        <!-- ── X axis ticks + labels ── -->
+        <g font-family="'IBM Plex Sans',sans-serif" font-size="10" fill="#4d5e72" text-anchor="middle">
+          <line x1="52"  y1="308" x2="52"  y2="314" stroke="#4a5a72" stroke-width="1.2"/><text x="52"  y="327">40%</text>
+          <line x1="129" y1="308" x2="129" y2="314" stroke="#4a5a72" stroke-width="1.2"/><text x="129" y="327">50%</text>
+          <line x1="207" y1="308" x2="207" y2="314" stroke="#4a5a72" stroke-width="1.2"/><text x="207" y="327">60%</text>
+          <line x1="284" y1="308" x2="284" y2="314" stroke="#4a5a72" stroke-width="1.2"/><text x="284" y="327" fill="#8a9ab2" font-weight="600">70%</text>
+          <line x1="362" y1="308" x2="362" y2="314" stroke="#4a5a72" stroke-width="1.2"/><text x="362" y="327">80%</text>
+          <line x1="439" y1="308" x2="439" y2="314" stroke="#4a5a72" stroke-width="1.2"/><text x="439" y="327">90%</text>
+          <line x1="516" y1="308" x2="516" y2="314" stroke="#4a5a72" stroke-width="1.2"/><text x="516" y="327">100%</text>
         </g>
-        <!-- X axis title -->
-        <text x="276" y="346" text-anchor="middle"
-              font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="#4a5a6e" letter-spacing=".06em">SvcO₂</text>
+        <text x="284" y="350" text-anchor="middle"
+              font-family="'IBM Plex Sans',sans-serif" font-size="10" fill="#4d5e72" letter-spacing=".05em">SvcO₂</text>
 
-        <!-- ── Quadrant labels — small, tucked in corners ── -->
-        <!-- Q4: top-left quadrant, label at x=164, y=85 (center of 52..276, 12..160) -->
-        <g font-family="'IBM Plex Mono',monospace" clip-path="url(#plotClip)">
-          <!-- Q4 -->
-          <text x="164" y="60"  text-anchor="middle" font-size="8" fill="#e24b4a" font-weight="700" letter-spacing=".1em" opacity=".85">Q4 — BAIXO DÉBITO</text>
-          <text x="164" y="78"  text-anchor="middle" font-size="12" fill="#dde2ea" font-weight="600" font-family="'IBM Plex Sans',sans-serif">Choque confirmado</text>
-          <text x="164" y="95"  text-anchor="middle" font-size="8.5" fill="#5a6a7e">SvcO₂ &lt; 70% · Δ pCO₂ ≥ 6</text>
+        <!-- ── Quadrant labels — centered, IBM Plex Sans ── -->
+        <g font-family="'IBM Plex Sans',sans-serif" clip-path="url(#plotClip)">
+          <!-- Q4 center: x=168, y=101 -->
+          <text x="168" y="72"  text-anchor="middle" font-size="8"  font-weight="700" fill="#d45050" letter-spacing=".1em" opacity=".9">Q4 — BAIXO DÉBITO</text>
+          <text x="168" y="90"  text-anchor="middle" font-size="13" font-weight="600" fill="#dce2ea">Choque confirmado</text>
+          <text x="168" y="106" text-anchor="middle" font-size="9"  fill="#4d5e72">SvcO₂ &lt; 70% · Δ pCO₂ ≥ 6</text>
 
-          <!-- Q3 -->
-          <text x="388" y="60"  text-anchor="middle" font-size="8" fill="#e85840" font-weight="700" letter-spacing=".1em" opacity=".85">Q3 — FALSA SEGURANÇA</text>
-          <text x="388" y="78"  text-anchor="middle" font-size="12" fill="#dde2ea" font-weight="600" font-family="'IBM Plex Sans',sans-serif">Cenário traiçoeiro</text>
-          <text x="388" y="95"  text-anchor="middle" font-size="8.5" fill="#5a6a7e">SvcO₂ ≥ 70% · Δ pCO₂ ≥ 6</text>
+          <!-- Q3 center: x=400, y=101 -->
+          <text x="400" y="72"  text-anchor="middle" font-size="8"  font-weight="700" fill="#d4712a" letter-spacing=".1em" opacity=".9">Q3 — FALSA SEGURANÇA</text>
+          <text x="400" y="90"  text-anchor="middle" font-size="13" font-weight="600" fill="#dce2ea">Cenário traiçoeiro</text>
+          <text x="400" y="106" text-anchor="middle" font-size="9"  fill="#4d5e72">SvcO₂ ≥ 70% · Δ pCO₂ ≥ 6</text>
 
-          <!-- Q2 -->
-          <text x="164" y="222" text-anchor="middle" font-size="8" fill="#c8862a" font-weight="700" letter-spacing=".1em" opacity=".85">Q2 — OFERTA</text>
-          <text x="164" y="240" text-anchor="middle" font-size="12" fill="#dde2ea" font-weight="600" font-family="'IBM Plex Sans',sans-serif">Problema na oferta</text>
-          <text x="164" y="257" text-anchor="middle" font-size="8.5" fill="#5a6a7e">SvcO₂ &lt; 70% · Δ pCO₂ &lt; 6</text>
+          <!-- Q2 center: x=168, y=239 -->
+          <text x="168" y="210" text-anchor="middle" font-size="8"  font-weight="700" fill="#b08820" letter-spacing=".1em" opacity=".9">Q2 — OFERTA</text>
+          <text x="168" y="228" text-anchor="middle" font-size="13" font-weight="600" fill="#dce2ea">Problema na oferta</text>
+          <text x="168" y="244" text-anchor="middle" font-size="9"  fill="#4d5e72">SvcO₂ &lt; 70% · Δ pCO₂ &lt; 6</text>
 
-          <!-- Q1 -->
-          <text x="388" y="222" text-anchor="middle" font-size="8" fill="#1a9e76" font-weight="700" letter-spacing=".1em" opacity=".85">Q1 — ADEQUADO</text>
-          <text x="388" y="240" text-anchor="middle" font-size="12" fill="#dde2ea" font-weight="600" font-family="'IBM Plex Sans',sans-serif">Ressuscitação ok</text>
-          <text x="388" y="257" text-anchor="middle" font-size="8.5" fill="#5a6a7e">SvcO₂ ≥ 70% · Δ pCO₂ &lt; 6</text>
+          <!-- Q1 center: x=400, y=239 -->
+          <text x="400" y="210" text-anchor="middle" font-size="8"  font-weight="700" fill="#178f6a" letter-spacing=".1em" opacity=".9">Q1 — ADEQUADO</text>
+          <text x="400" y="228" text-anchor="middle" font-size="13" font-weight="600" fill="#dce2ea">Ressuscitação ok</text>
+          <text x="400" y="244" text-anchor="middle" font-size="9"  fill="#4d5e72">SvcO₂ ≥ 70% · Δ pCO₂ &lt; 6</text>
         </g>
 
-        <!-- ── Threshold value labels ── -->
-        <text x="279" y="156" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#3a4a5a" font-style="italic">Δ pCO₂ = 6 mmHg</text>
-        <text x="279" y="306" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#3a4a5a" font-style="italic">SvcO₂ = 70%</text>
+        <!-- ── Threshold annotations ── -->
+        <text x="287" y="166" font-family="'IBM Plex Sans',sans-serif" font-size="8.5" fill="#2e3f52" font-style="italic">Δ pCO₂ = 6 mmHg</text>
+        <text x="287" y="305" font-family="'IBM Plex Sans',sans-serif" font-size="8.5" fill="#2e3f52" font-style="italic">SvcO₂ = 70%</text>
 
       </svg>
     </div>
@@ -241,28 +239,28 @@
 <script>
 const data = {
   q1: {
-    cls: 'd-q1',
+    cls: 'd-q1', dot: '#1db88a',
     name: 'Q1 — Ressuscitação adequada',
     crit: 'SvcO₂ ≥ 70% · Δ pCO₂ < 6',
     desc: 'Oferta de O₂ preservada e fluxo tecidual adequado. Os dois parâmetros excluem hipoperfusão global significativa. Se lactato ainda elevado, considerar hiperlactatemia tipo B (clearance prejudicado, hipermetabolismo).',
     action: 'Manter monitoramento clínico. Repetir lactato em 2 h. Verificar PAM, diurese e enchimento capilar. Se lactato persistentemente alto sem hipoperfusão — investigar causa tipo B.'
   },
   q2: {
-    cls: 'd-q2',
+    cls: 'd-q2', dot: '#f0a030',
     name: 'Q2 — Problema na oferta de O₂',
     crit: 'SvcO₂ < 70% · Δ pCO₂ < 6',
     desc: 'Tecidos extraindo mais O₂ que o normal, mas o fluxo sanguíneo tecidual está mantido (Δ pCO₂ ok). O problema está na oferta: queda da Hb, queda da SaO₂ ou queda do débito cardíaco — não no fluxo em si.',
     action: 'Investigar tríade da oferta: Hemoglobina (transfundir se Hb < 7–8 g/dL) · SaO₂ (otimizar FiO₂, revisar VM) · Débito cardíaco (eco — inotrópico se FE reduzida).'
   },
   q3: {
-    cls: 'd-q3',
+    cls: 'd-q3', dot: '#e85840',
     name: 'Q3 — Falsa segurança',
     crit: 'SvcO₂ ≥ 70% · Δ pCO₂ ≥ 6',
     desc: 'Cenário mais traiçoeiro. SvcO₂ "normal" engana: pode haver shunting arteriovenoso (sepse hiperdinâmica), hipóxia citopática (mitocôndria não consome O₂) ou foco infeccioso não controlado. O Δ pCO₂ ≥ 6 revela que o fluxo tecidual está inadequado.',
     action: 'Não se tranquilizar com a SvcO₂. Reavaliar lactato seriado, eco cardíaco (função VE, DC). Controlar foco infeccioso. Otimizar vasopressor; considerar dobutamina se baixo DC confirmado. Repetir gasometria venosa em 1–2 h.'
   },
   q4: {
-    cls: 'd-q4',
+    cls: 'd-q4', dot: '#e24b4a',
     name: 'Q4 — Baixo débito / Choque confirmado',
     crit: 'SvcO₂ < 70% · Δ pCO₂ ≥ 6',
     desc: 'Ambos alterados: oferta inadequada E fluxo tecidual insuficiente. Maior urgência clínica — é o padrão clássico de choque com baixo débito. A combinação implica que os tecidos estão ao mesmo tempo privados de O₂ e acumulando CO₂.',
@@ -274,10 +272,7 @@ const areas = document.querySelectorAll('.q-area');
 
 function selectQ(q) {
   const d = data[q];
-  areas.forEach(a => {
-    a.classList.remove('active');
-    a.classList.add('dimmed');
-  });
+  areas.forEach(a => { a.classList.remove('active'); a.classList.add('dimmed'); });
   const el = document.getElementById('area-' + q);
   el.classList.remove('dimmed');
   el.classList.add('active');
@@ -285,7 +280,7 @@ function selectQ(q) {
   const panel = document.getElementById('iqDetail');
   panel.className = 'iq-detail ' + d.cls;
   panel.style.display = 'block';
-  document.getElementById('detDot').style.background = {q1:'#1db88a',q2:'#f0a030',q3:'#e85840',q4:'#e24b4a'}[q];
+  document.getElementById('detDot').style.background = d.dot;
   document.getElementById('detName').textContent = d.name;
   document.getElementById('detCrit').textContent = d.crit;
   document.getElementById('detDesc').textContent = d.desc;
