@@ -17,9 +17,9 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
 .header{position:fixed;top:0;left:0;right:0;height:var(--header-h);background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 20px;z-index:100;gap:16px}
 .header-logo{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--teal);letter-spacing:.08em}
-.header-logo-pulse{width:6px;height:6px;border-radius:50%;background:var(--teal);position:relative;flex-shrink:0}
-.header-logo-pulse::after{content:'';position:absolute;inset:-3px;border-radius:50%;border:1px solid var(--teal);opacity:.5;animation:hdr-pulse 2.4s ease-out infinite}
-@keyframes hdr-pulse{0%{transform:scale(1);opacity:.5}100%{transform:scale(2.4);opacity:0}}
+.header-logo-bars rect:first-child{animation:bar-pulse 2.4s ease-in-out infinite}
+.header-logo-bars rect:last-child{animation:bar-pulse 2.4s ease-in-out infinite .6s}
+@keyframes bar-pulse{0%,100%{opacity:1}50%{opacity:.35}}
 .header-title{font-size:13px;color:var(--text2);font-weight:300}
 .header-actions{margin-left:auto;display:flex;align-items:center;gap:8px}
 .header-tag{font-family:var(--mono);font-size:11px;color:var(--text3);background:var(--bg3);border:1px solid var(--border);padding:3px 10px;border-radius:4px}
