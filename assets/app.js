@@ -86,10 +86,14 @@ function buildShell(){
   const header=document.createElement('header');
   header.className='header';
   header.innerHTML=
-    '<a class="header-logo" href="'+root+'index.html" style="text-decoration:none;display:flex;align-items:center;gap:7px">'+
-      '<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1db88a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+
-        '<path d="M5 8h8.5a2.5 2.5 0 1 0 -2.34 -3.24"/><path d="M3 12h15.5a2.5 2.5 0 1 1 -2.34 3.24"/><path d="M4 16h5.5a2.5 2.5 0 1 1 -2.34 3.24"/>'+
-      '</svg>bedside</a>'+
+    '<a class="header-logo" href="'+root+'index.html" style="text-decoration:none;display:flex;align-items:center;gap:8px">'+
+      '<svg width="12" height="15" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">'+
+        '<rect x="0" y="2" width="6" height="20" rx="3" fill="#1db88a"/>'+
+        '<rect x="10" y="0" width="6" height="15" rx="3" fill="#1db88a" opacity=".55"/>'+
+      '</svg>'+
+      '<span style="font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.12em;color:#fff;opacity:.92">be·aside</span>'+
+      '<span class="header-logo-pulse"></span>'+
+    '</a>'+
     '<span class="header-title">'+(MODULES[mod]?MODULES[mod].subtitle:'Guias Clínicos de UTI')+'</span>'+
     '<div class="header-actions">'+
       '<button class="btn-search" onclick="openSearch()">Buscar <kbd>⌘K</kbd></button>'+
