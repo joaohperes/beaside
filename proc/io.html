@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acesso Intraósseo — be·aside</title>
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+  :root{--proc:#3b82f6}
+  .proc-tag{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--proc);background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);padding:2px 9px;border-radius:20px;display:inline-block;margin-bottom:10px}
+  .ref{font-family:var(--mono);font-size:10.5px;color:var(--text3);border-left:2px solid var(--border2);padding:4px 10px;margin:6px 0 0;display:block;line-height:1.5}
+
+  .step-list{list-style:none;padding:0;margin:10px 0}
+  .step-list li{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text2);line-height:1.6}
+  .step-list li:last-child{border-bottom:none}
+  .step-n{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--proc);background:rgba(59,130,246,.12);border-radius:4px;padding:1px 7px;flex-shrink:0;margin-top:1px}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+  @media(max-width:600px){.two-col{grid-template-columns:1fr}}
+  .info-box{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px 16px;font-size:13px;color:var(--text2);line-height:1.6}
+  .info-box strong{color:var(--text)}
+  .warn-box{background:rgba(226,75,74,.07);border:1px solid rgba(226,75,74,.25);border-radius:8px;padding:14px 16px;font-size:13px;color:#f0b8b8;line-height:1.6}
+  .warn-box strong{color:#f5c6c6}
+  .ok-box{background:rgba(29,184,138,.07);border:1px solid rgba(29,184,138,.25);border-radius:8px;padding:14px 16px;font-size:13px;color:#bce8d8;line-height:1.6}
+  .ok-box strong{color:#d0f0e4}
+</style>
+</head>
+<body data-module="proc" data-page="io">
+<main class="main">
+<section class="section" id="io">
+  <h1 class="section-title">Acesso Intraósseo</h1>
+  <p class="section-subtitle">Indicações, sítios de inserção e técnica — quando o acesso venoso periférico falha na emergência.</p>
+
+  <div class="card" style="margin-top:0">
+    <span class="proc-tag">Acesso intraósseo</span>
+    <div class="card-title">Acesso intraósseo (IO)</div>
+    <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:12px">
+      O espaço medular é uma "veia que não colaba" — mantém fluxo mesmo em colapso cardiovascular grave. Indicado quando o acesso venoso periférico falha em situação de urgência.
+    </p>
+
+    <div class="ok-box" style="margin-bottom:14px">
+      <strong>Regra prática (AHA 2020):</strong> Se em <strong>2 tentativas ou 60 segundos</strong> não houver acesso venoso periférico viável → IO imediatamente. Não espere mais tentativas em PCR ou choque grave.
+    </div>
+    <span class="ref">Panchal AR et al. 2020 AHA Guidelines for CPR and ECC — Adult Basic and Advanced Life Support. <em>Circulation</em> 142(suppl 2):S366–S468, 2020. DOI: 10.1161/CIR.0000000000000916</span>
+    <span class="ref">Soar J et al. European Resuscitation Council Guidelines 2021: Adult Advanced Life Support. <em>Resuscitation</em> 161:115–151, 2021. DOI: 10.1016/j.resuscitation.2021.02.010</span>
+
+    <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Sítios de inserção</strong>
+    <table>
+      <thead><tr><th>Sítio</th><th>Referência anatômica</th><th>Vantagem</th></tr></thead>
+      <tbody>
+        <tr><td>Tíbia proximal (1ª escolha)</td><td>2 cm abaixo da tuberosidade tibial, face medial</td><td>Mais estudado, menor taxa de complicação</td></tr>
+        <tr><td>Úmero proximal</td><td>Tubérculo maior do úmero</td><td>Fluxo até 125 mL/min; preferir em PCR</td></tr>
+        <tr><td>Tíbia distal</td><td>Maléolo medial</td><td>Alternativa se tíbia proximal inviável</td></tr>
+      </tbody>
+    </table>
+
+    <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Técnica</strong>
+    <ul class="step-list">
+      <li><span class="step-n">1</span><span>Inserir o dispositivo (EZ-IO drill é o padrão) perpendicularmente ao osso com leve pressão, ativando o drill ao tocar o periósteo.</span></li>
+      <li><span class="step-n">2</span><span>Ao sentir "queda" de resistência: parar. A agulha deve ficar livre e estável sem apoio.</span></li>
+      <li><span class="step-n">3</span><span>Aspirar medula (sangue escuro, como sangue venoso) para confirmar posição.</span></li>
+      <li><span class="step-n">4</span><span>Flush de 10 mL de SF antes de qualquer droga. Observar subcutâneo — extravasamento indica malposição.</span></li>
+      <li><span class="step-n">5</span><span>Conectar extensão e infundir sob pressão (seringa ou bolsa pressurizada) — o espaço medular não gera retorno passivo por gravidade.</span></li>
+    </ul>
+
+    <div class="two-col">
+      <div class="info-box">
+        <strong>Duração máxima:</strong> Substituir por acesso venoso assim que possível. Máximo <strong>24 h</strong>. Idealmente &lt; 6–12 h. IO &gt; 24 h → risco real de osteomielite.
+      </div>
+      <div class="warn-box">
+        <strong>Contraindicações relativas:</strong> Fratura no osso-alvo, infecção local, prótese ortopédica, IO prévio no mesmo local nas últimas 24 h, osteogênese imperfeita.
+      </div>
+    </div>
+    <span class="ref">Long B et al. Systematic overview of IO versus IV delivery for emergency resuscitation. <em>Am J Emerg Med</em> 2024. PMC11142795</span>
+  </div>
+
+</section>
+</main>
+<script src="../assets/app.js"></script>
+</body>
+</html>

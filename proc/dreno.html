@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dreno Torácico — be·aside</title>
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+  :root{--proc:#3b82f6}
+  .proc-tag{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--proc);background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);padding:2px 9px;border-radius:20px;display:inline-block;margin-bottom:10px}
+  .ref{font-family:var(--mono);font-size:10.5px;color:var(--text3);border-left:2px solid var(--border2);padding:4px 10px;margin:6px 0 0;display:block;line-height:1.5}
+  .ref a{color:var(--text3);text-decoration:underline}
+
+  .step-list{list-style:none;padding:0;margin:10px 0}
+  .step-list li{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text2);line-height:1.6}
+  .step-list li:last-child{border-bottom:none}
+  .step-n{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--proc);background:rgba(59,130,246,.12);border-radius:4px;padding:1px 7px;flex-shrink:0;margin-top:1px}
+
+  .pill-list{list-style:none;padding:0;margin:8px 0}
+  .pill-list li{font-size:13px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;line-height:1.55;align-items:flex-start}
+  .pill-list li:last-child{border-bottom:none}
+  .pill-list li::before{content:'—';font-family:var(--mono);color:var(--proc);flex-shrink:0;margin-top:1px}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+  @media(max-width:600px){.two-col{grid-template-columns:1fr}}
+  .info-box{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px 16px;font-size:13px;color:var(--text2);line-height:1.6}
+  .info-box strong{color:var(--text)}
+  .warn-box{background:rgba(226,75,74,.07);border:1px solid rgba(226,75,74,.25);border-radius:8px;padding:14px 16px;font-size:13px;color:#f0b8b8;line-height:1.6}
+  .warn-box strong{color:#f5c6c6}
+  .ok-box{background:rgba(29,184,138,.07);border:1px solid rgba(29,184,138,.25);border-radius:8px;padding:14px 16px;font-size:13px;color:#bce8d8;line-height:1.6}
+  .ok-box strong{color:#d0f0e4}
+  .gap-note{font-family:var(--mono);font-size:11px;color:var(--text3);background:var(--bg3);border:1px dashed var(--border2);border-radius:6px;padding:8px 12px;margin-top:10px}
+
+  .mat-grid{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 0}
+  .mat-item{font-family:var(--mono);font-size:11px;color:var(--text2);background:var(--bg3);border:1px solid var(--border);border-radius:5px;padding:3px 9px}
+</style>
+</head>
+<body data-module="proc" data-page="dreno">
+<main class="main">
+<section class="section" id="dreno">
+  <h1 class="section-title">Dreno Torácico</h1>
+  <p class="section-subtitle">Toracostomia com dreno — indicações, técnica por dissecção romba e Seldinger (pigtail), gestão e complicações.</p>
+
+  <div class="card" style="margin-top:0">
+    <span class="proc-tag">Dreno torácico</span>
+    <div class="card-title">Dreno torácico (toracostomia com dreno)</div>
+    <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:16px">
+      Inserção de tubo na cavidade pleural para drenagem contínua. Indicado quando a toracocentese simples é insuficiente — pneumotórax, hemotórax, empiema, derrame maligno de alto débito. Existem duas técnicas principais: <strong>dissecção romba</strong> (dreno de grande calibre, padrão em trauma) e <strong>Seldinger</strong> (dreno fino de pigtail, guiado por USG, preferível na UTI eletiva).
+    </p>
+
+    <strong style="font-size:13px;color:var(--text);display:block;margin-bottom:8px">Indicações</strong>
+    <div class="two-col" style="margin-top:0">
+      <div class="info-box">
+        <strong>Urgentes</strong>
+        <ul class="pill-list" style="margin-top:6px">
+          <li>Pneumotórax hipertensivo (imediato — agulha antes do dreno)</li>
+          <li>Pneumotórax aberto (primeiro ocluir, depois drenar)</li>
+          <li>Hemotórax volumoso (≥ 300–500 mL)</li>
+          <li>Pneumotórax em VM</li>
+        </ul>
+      </div>
+      <div class="info-box">
+        <strong>Eletivas</strong>
+        <ul class="pill-list" style="margin-top:6px">
+          <li>Pneumotórax espontâneo sintomático ou &gt; 20%</li>
+          <li>Empiema / derrame parapneumônico complicado</li>
+          <li>Quilotórax</li>
+          <li>Derrame maligno recorrente (com ou sem pleurodese)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="gap-note" style="margin-top:14px">⚙ BTS 2023: a decisão de drenar pneumotórax espontâneo primário deve ser guiada pelos <strong>sintomas e estabilidade clínica</strong>, não apenas pelo tamanho radiológico. Paciente estável, assintomático → observação antes de drenar.</div>
+    <span class="ref">Havelock T et al. BTS Guideline for Pleural Disease. <em>Thorax</em> 78(Suppl 3):s1–s42, 2023. PMC11037506</span>
+
+    <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Material</strong>
+    <div class="mat-grid">
+      <span class="mat-item">USG com transdutor</span>
+      <span class="mat-item">Dreno torácico (28–32 Fr trauma; pigtail 12–14 Fr eletivo)</span>
+      <span class="mat-item">Bisturi lâmina 11 ou 15</span>
+      <span class="mat-item">Pinça hemostática curva (Kelly)</span>
+      <span class="mat-item">Fio de sutura (seda 0 ou 1)</span>
+      <span class="mat-item">Sistema de selo d'água (Pleur-evac ou similar)</span>
+      <span class="mat-item">Lidocaína 1–2% + seringa</span>
+      <span class="mat-item">Campo estéril + clorexidina</span>
+    </div>
+
+    <strong style="font-size:13px;color:var(--text);display:block;margin:18px 0 8px">Técnica — Dissecção romba (dreno de grande calibre)</strong>
+
+    <div class="ok-box" style="margin-bottom:14px">
+      <strong>Triângulo de segurança (BTS):</strong> Borda anterior do grande dorsal × borda lateral do peitoral maior × linha horizontal ao nível do mamilo × ápice axilar. A inserção é feita no <strong>5° espaço intercostal, linha axilar média ou anterior</strong>. Evitar posição posterior (dor no decúbito) e anterior (nervo torácico longo).
+    </div>
+
+    <ul class="step-list">
+      <li><span class="step-n">1</span><span>Posicionar: decúbito dorsal com o braço ipsilateral abduzido acima da cabeça (expõe a axila). Confirmar o lado com USG.</span></li>
+      <li><span class="step-n">2</span><span>Antissepsia ampla (incluir a axila) + campo estéril. Anestesia local generosa: infiltrar pele, subcutâneo, músculos intercostais e pleura parietal. Aspirar ao avançar para confirmar o espaço.</span></li>
+      <li><span class="step-n">3</span><span>Incisão horizontal de 2–3 cm no 5° espaço intercostal, <strong>acima da borda superior da 6ª costela</strong>.</span></li>
+      <li><span class="step-n">4</span><span>Dissecção romba com a Kelly fechada, progredindo pelo subcutâneo e músculo intercostal. Abrir a Kelly ao perfurar a pleura — sentirá "pop" e saída de ar ou líquido.</span></li>
+      <li><span class="step-n">5</span><span>Exploração digital do espaço pleural — confirma que não há aderências, pulmão ou diafragma na trajetória. Sempre antes de inserir o dreno.</span></li>
+      <li><span class="step-n">6</span><span>Introduzir o dreno com a pinça guiando a ponta, direcionado <strong>póstero-superiormente</strong> para derrame ou <strong>ântero-superiormente</strong> para pneumotórax. Inserir até o último orifício lateral estar dentro da cavidade.</span></li>
+      <li><span class="step-n">7</span><span>Conectar ao sistema de selo d'água. Confirmar funcionamento: oscilação da coluna d'água com a respiração (tidaling) e saída de ar ou líquido.</span></li>
+      <li><span class="step-n">8</span><span>Fixar com sutura em bolsa de tabaco ou U ao redor do dreno. Curativo oclusivo. Rx de tórax para confirmar posição.</span></li>
+    </ul>
+
+    <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Técnica — Seldinger (pigtail, preferível na UTI eletiva)</strong>
+    <ul class="step-list">
+      <li><span class="step-n">1</span><span>USG para marcar sítio (mesmo princípio da toracocentese). Técnica guiada por imagem em tempo real reduz complicações.</span></li>
+      <li><span class="step-n">2</span><span>Anestesia local. Punção com agulha introdutora aspirando continuamente.</span></li>
+      <li><span class="step-n">3</span><span>Ao retornar líquido/ar, introduzir o fio-guia pela agulha. Retirar a agulha mantendo o fio.</span></li>
+      <li><span class="step-n">4</span><span>Pequena incisão na pele + dilatadores progressivos sobre o fio.</span></li>
+      <li><span class="step-n">5</span><span>Introduzir o cateter pigtail sobre o fio, remover o fio, conectar ao sistema de drenagem.</span></li>
+      <li><span class="step-n">6</span><span>Confirmar posição com USG ou Rx.</span></li>
+    </ul>
+    <span class="ref">Porcel JM. Chest tube drainage of the pleural space: a concise review for pulmonologists. <em>Tuberc Respir Dis</em> 2018. PMC5903480</span>
+    <span class="ref">Fysh ET et al. Thoracentesis, Chest Tubes, and Tunneled Chest Drains. <em>Clin Chest Med</em> 2022. PMC9433149</span>
+
+    <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Gestão do dreno</strong>
+    <ul class="pill-list">
+      <li><strong>Aspiração ativa (−20 cmH₂O):</strong> Indicada em pulmão que não expande, fístula broncopleural de alto débito ou empiema espesso</li>
+      <li><strong>Selo d'água sem aspiração:</strong> Padrão para a maioria dos pneumotórax e derrames não complicados</li>
+      <li><strong>Clampeamento:</strong> Só para testar antes de retirar. Nunca clampar em pneumotórax ativo ou fístula broncopleural — risco de pneumotórax hipertensivo</li>
+      <li><strong>Retirada:</strong> Quando débito &lt; 100–200 mL/24h (derrame) ou ausência de borbulhamento por 24–48h (pneumotórax). Retirar em expiração máxima ou apneia. Comprimir e suturar imediatamente</li>
+    </ul>
+
+    <div class="warn-box" style="margin-top:14px">
+      <strong>Pitfalls mais comuns:</strong>
+      <ul style="margin:6px 0 0 16px;line-height:1.8">
+        <li>Inserir abaixo da 6ª costela → risco de laceração diafragmática e órgãos abdominais</li>
+        <li>Não fazer exploração digital → inserção em aderência ou pulmão</li>
+        <li>Clampar dreno em pneumotórax ativo → pneumotórax hipertensivo</li>
+        <li>Último orifício fora da cavidade → sucção de ar externo (sinal: borbulhamento constante sem melhora)</li>
+        <li>Não fixar bem → deslocamento do dreno com a movimentação do paciente</li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+</main>
+<script src="../assets/app.js"></script>
+</body>
+</html>

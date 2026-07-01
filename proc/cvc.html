@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cateter Venoso Central — be·aside</title>
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+  :root{--proc:#3b82f6}
+  .proc-tag{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--proc);background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);padding:2px 9px;border-radius:20px;display:inline-block;margin-bottom:10px}
+  .ref{font-family:var(--mono);font-size:10.5px;color:var(--text3);border-left:2px solid var(--border2);padding:4px 10px;margin:6px 0 0;display:block;line-height:1.5}
+
+  .step-list{list-style:none;padding:0;margin:10px 0}
+  .step-list li{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text2);line-height:1.6}
+  .step-list li:last-child{border-bottom:none}
+  .step-n{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--proc);background:rgba(59,130,246,.12);border-radius:4px;padding:1px 7px;flex-shrink:0;margin-top:1px}
+
+  .pill-list{list-style:none;padding:0;margin:8px 0}
+  .pill-list li{font-size:13px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;line-height:1.55;align-items:flex-start}
+  .pill-list li:last-child{border-bottom:none}
+  .pill-list li::before{content:'—';font-family:var(--mono);color:var(--proc);flex-shrink:0;margin-top:1px}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+  @media(max-width:600px){.two-col{grid-template-columns:1fr}}
+  .info-box{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px 16px;font-size:13px;color:var(--text2);line-height:1.6}
+  .info-box strong{color:var(--text)}
+  .warn-box{background:rgba(226,75,74,.07);border:1px solid rgba(226,75,74,.25);border-radius:8px;padding:14px 16px;font-size:13px;color:#f0b8b8;line-height:1.6}
+  .warn-box strong{color:#f5c6c6}
+  .ok-box{background:rgba(29,184,138,.07);border:1px solid rgba(29,184,138,.25);border-radius:8px;padding:14px 16px;font-size:13px;color:#bce8d8;line-height:1.6}
+  .ok-box strong{color:#d0f0e4}
+  .gap-note{font-family:var(--mono);font-size:11px;color:var(--text3);background:var(--bg3);border:1px dashed var(--border2);border-radius:6px;padding:8px 12px;margin-top:10px}
+
+  .mat-grid{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 0}
+  .mat-item{font-family:var(--mono);font-size:11px;color:var(--text2);background:var(--bg3);border:1px solid var(--border);border-radius:5px;padding:3px 9px}
+
+  .proc-divider{height:1px;background:var(--border);margin:40px 0 36px}
+
+  .compl-list{list-style:none;padding:0;margin:8px 0}
+  .compl-list li{font-size:13px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--border);display:grid;grid-template-columns:200px 1fr;gap:12px;line-height:1.55;align-items:baseline}
+  @media(max-width:600px){.compl-list li{grid-template-columns:1fr}}
+  .compl-list li:last-child{border-bottom:none}
+  .compl-name{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text)}
+
+  /* dúvidas de plantão */
+  .dv-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;margin-bottom:12px;overflow:hidden}
+  .dv-q{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;cursor:pointer;user-select:none}
+  .dv-q:hover{background:var(--bg3)}
+  .dv-q-icon{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--proc);background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);padding:3px 8px;border-radius:5px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+  .dv-q-text{flex:1;font-size:13.5px;font-weight:500;color:#e8ecf2;line-height:1.5}
+  .dv-arrow{color:var(--text3);font-family:var(--mono);font-size:12px;flex-shrink:0;margin-top:2px;transition:transform .15s}
+  .dv-card.open .dv-arrow{transform:rotate(90deg)}
+  .dv-a{display:none;border-top:1px solid var(--border);padding:14px 18px;font-size:13px;line-height:1.7;color:var(--text2)}
+  .dv-card.open .dv-a{display:block}
+  .dv-a strong{color:#e8ecf2;font-weight:500}
+  .dv-a .dv-resposta{border-left:3px solid var(--proc);background:rgba(59,130,246,.06);border-radius:0 6px 6px 0;padding:11px 15px;margin-bottom:10px;color:var(--text)}
+  .dv-a .dv-racional{border-left:3px solid var(--border2);background:var(--bg3);border-radius:0 6px 6px 0;padding:11px 15px;font-size:12.5px;color:var(--text2)}
+  .dv-a .dv-lbl{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:5px}
+  .dv-a .dv-resposta .dv-lbl{color:var(--proc)}
+  .dv-a .dv-racional .dv-lbl{color:var(--text3)}
+  .dv-a ul{margin:6px 0 6px 18px;padding:0}
+  .dv-a li{margin:4px 0}
+  .section-sub{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--text3);margin:32px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+</style>
+</head>
+<body data-module="proc" data-page="cvc">
+<main class="main">
+<section class="section" id="cvc">
+  <h1 class="section-title">Cateter Venoso Central</h1>
+  <p class="section-subtitle">Indicações, comparação de sítios, técnica completa (jugular interna direita) e dúvidas de plantão com referências.</p>
+
+  <div class="card" style="margin-top:0">
+    <span class="proc-tag">Cateter venoso central</span>
+    <div class="card-title">Cateter venoso central (CVC)</div>
+    <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:16px">
+      Acesso venoso em veia de grande calibre para infusão de drogas vasoativas, NPT, medição de PVC e coleta de SvcO₂. A técnica de Seldinger é o padrão universal. <strong>USG em tempo real</strong> é recomendado por todas as diretrizes — reduz falha de punção, pneumotórax e punção arterial acidental.
+    </p>
+
+    <strong style="font-size:13px;color:var(--text);display:block;margin-bottom:8px">Indicações</strong>
+    <ul class="pill-list">
+      <li>Drogas vasoativas (noradrenalina, vasopressina, adrenalina) — concentração plena</li>
+      <li>Nutrição parenteral total (NPT) com osmolaridade &gt; 900 mOsm/L</li>
+      <li>Monitorização de PVC e SvcO₂</li>
+      <li>Acesso periférico impossível ou inadequado</li>
+      <li>Hemodiálise (cateter de duplo-lúmen de grande calibre — Shilley)</li>
+      <li>Marca-passo transvenoso temporário</li>
+    </ul>
+
+    <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Comparação dos sítios</strong>
+    <table>
+      <thead><tr><th>Sítio</th><th>Vantagens</th><th>Desvantagens</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Jugular interna direita</strong><br>(padrão)</td><td>Trajetória direta para VCS; facilmente compressível; ângulo favorável; menor risco de pneumotórax</td><td>Desconforto ao movimentar o pescoço; risco de infecção ligeiramente maior que subclávia</td></tr>
+        <tr><td><strong>Subclávia</strong></td><td>Menor taxa de ICSRC; fixação fácil; mais confortável</td><td>Maior risco de pneumotórax (~2–3%); não compressível em caso de sangramento; contraindicada em coagulopatia grave</td></tr>
+        <tr><td><strong>Femoral</strong></td><td>Sem risco de pneumotórax; mais segura em coagulopatia; acesso mais rápido na urgência</td><td>Maior risco de trombose e infecção; limita deambulação; menor qualidade de PVC</td></tr>
+        <tr><td><strong>Jugular interna esquerda</strong></td><td>Alternativa se direita inviável</td><td>Risco de lesão do ducto torácico; trajetória mais oblíqua para VCS</td></tr>
+      </tbody>
+    </table>
+    <span class="ref">Parienti JJ et al. Intravascular Complications of Central Venous Catheterization by Insertion Site. <em>N Engl J Med</em> 373:1220–1229, 2015. DOI: 10.1056/NEJMoa1500964</span>
+    <span class="ref">Brass P et al. Ultrasound guidance versus anatomical landmarks for internal jugular vein catheterization. <em>Cochrane Database Syst Rev</em> CD006962, 2015. DOI: 10.1002/14651858.CD006962.pub2</span>
+
+    <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Material</strong>
+    <div class="mat-grid">
+      <span class="mat-item">Kit de CVC (agulha introductora, fio-guia J, dilatador, cateter)</span>
+      <span class="mat-item">USG com transdutor linear</span>
+      <span class="mat-item">Lidocaína 1–2% + seringa 10 mL</span>
+      <span class="mat-item">Bisturi lâmina 11</span>
+      <span class="mat-item">Fio de sutura (seda 2-0 ou 3-0)</span>
+      <span class="mat-item">Solução salina para flush dos lúmens</span>
+      <span class="mat-item">Campo estéril amplo + avental + clorexidina alcoólica</span>
+      <span class="mat-item">Máscara + gorro (paramentação completa — medida de barreira máxima)</span>
+    </div>
+
+    <strong style="font-size:13px;color:var(--text);display:block;margin:18px 0 8px">Técnica — Jugular interna direita (abordagem central)</strong>
+
+    <div class="ok-box" style="margin-bottom:14px">
+      <strong>Anatomia-chave:</strong> A veia jugular interna (VJI) corre lateral e anterior à artéria carótida comum. O ponto de entrada é no ápice do triângulo de Sedillot — entre as cabeças esternal e clavicular do esternocleidomastóideo, 2–3 cm acima da clavícula. O USG confirma a posição (veia é compressível; artéria pulsa e não colapsa).
+    </div>
+
+    <ul class="step-list">
+      <li><span class="step-n">1</span><span><strong>Paramentação máxima:</strong> avental estéril, luvas estéreis, máscara, gorro. Campo estéril amplo. Antissepsia com clorexidina alcoólica — aguardar secar antes de puncionar.</span></li>
+      <li><span class="step-n">2</span><span>Trendelenburg 15°: distende as veias do pescoço e reduz risco de embolia aérea. Cabeça rodada ~30° para o lado oposto ao procedimento (não exagerar — rotação excessiva sobrepõe a VJI à carótida).</span></li>
+      <li><span class="step-n">3</span><span><strong>USG antes de puncionar:</strong> visualizar a VJI em eixo curto (cross-section). Confirmar compressibilidade, posição lateral à carótida e ausência de trombose. Marcar o sítio. Se possível, usar USG em tempo real.</span></li>
+      <li><span class="step-n">4</span><span>Anestesia local com lidocaína 1% em pele e subcutâneo no sítio marcado.</span></li>
+      <li><span class="step-n">5</span><span>Inserir a agulha introductora a <strong>45° em relação à pele</strong>, direcionada para o mamilo ipsilateral, aspirando continuamente. Ao retornar sangue venoso (escuro, sem pulsação), estabilizar a agulha com a mão não dominante.</span></li>
+      <li><span class="step-n">6</span><span>Introduzir o <strong>fio-guia J</strong> pela agulha com a curva apontando para baixo (em direção ao coração). Deve deslizar sem resistência. <strong>Nunca forçar o fio</strong> — resistência = posição incorreta da agulha.</span></li>
+      <li><span class="step-n">7</span><span>Retirar a agulha mantendo o fio. Pequena incisão na pele com bisturi. Passar o dilatador sobre o fio com movimento firme e rotacional. Retirar o dilatador, comprimir.</span></li>
+      <li><span class="step-n">8</span><span>Introduzir o cateter sobre o fio. Para a jugular interna direita adulto: inserir até <strong>14–16 cm</strong> (ponta na junção atriocaval). Retirar o fio enquanto mantém o cateter.</span></li>
+      <li><span class="step-n">9</span><span>Aspirar e lavar todos os lúmens com SF. Tampar. Fixar com sutura e curativo estéril.</span></li>
+      <li><span class="step-n">10</span><span><strong>Confirmação:</strong> Rx de tórax obrigatório — ponta do cateter deve estar na VCS, acima da junção cavoatrial, sem pneumotórax. Alternativa rápida: USG transtorácico com flush de SF agitado (aparece como "neve" no VD).</span></li>
+    </ul>
+    <span class="ref">McGee DC, Gould MK. Preventing Complications of Central Venous Catheterization. <em>N Engl J Med</em> 348:1123–1133, 2003. DOI: 10.1056/NEJMra011883</span>
+    <span class="ref">Frykholm P et al. Clinical guidelines on central venous catheterisation. <em>Acta Anaesthesiol Scand</em> 58(5):508–524, 2014. PMID: 24593804</span>
+    <span class="ref">Central Venous Catheter Insertion. StatPearls, NCBI Bookshelf NBK557798. 2024.</span>
+
+    <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Profundidade de inserção por sítio</strong>
+    <table>
+      <thead><tr><th>Sítio</th><th>Profundidade (adulto)</th><th>Ponto de referência</th></tr></thead>
+      <tbody>
+        <tr><td>Jugular interna direita</td><td>14–16 cm</td><td>Ponta na VCS, acima do átrio</td></tr>
+        <tr><td>Jugular interna esquerda</td><td>16–18 cm</td><td>Trajetória mais longa até VCS</td></tr>
+        <tr><td>Subclávia direita</td><td>14–16 cm</td><td></td></tr>
+        <tr><td>Subclávia esquerda</td><td>16–18 cm</td><td></td></tr>
+        <tr><td>Femoral</td><td>20–25 cm</td><td>Ponta na veia cava inferior</td></tr>
+      </tbody>
+    </table>
+
+    <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Complicações</strong>
+    <ul class="compl-list">
+      <li><span class="compl-name">Punção arterial</span><span>Sangue pulsátil, vermelho-vivo. Retirar imediatamente e comprimir ≥ 10 min. Nunca dilatar sobre uma artéria puncionada. Com USG: raro (&lt; 1%).</span></li>
+      <li><span class="compl-name">Pneumotórax</span><span>Risco de 1–3% na subclávia; &lt; 0,5% na jugular com USG. Rx pós-procedimento confirma. Sintomático ou &gt; 20%: dreno.</span></li>
+      <li><span class="compl-name">Embolia aérea</span><span>Paciente em Trendelenburg + agulha aberta. Prevenção: tampar imediatamente ao retirar a agulha. Se ocorrer: Trendelenburg, decúbito lateral esquerdo, O₂ 100%.</span></li>
+      <li><span class="compl-name">Malposição do cateter</span><span>Cateter na subclávia contralateral ou jugular interna. Identificado no Rx. Pode ser reposicionado com fio-guia.</span></li>
+      <li><span class="compl-name">ICSRC (infecção)</span><span>Prevenção: paramentação máxima, antissepsia com clorexidina alcoólica, remoção precoce quando não necessário. Preferir jugular ou subclávia à femoral.</span></li>
+      <li><span class="compl-name">Arritmia</span><span>Fio-guia ou ponta do cateter no átrio/ventrículo. Reposicionar o cateter 1–2 cm para cima.</span></li>
+    </ul>
+
+    <div class="warn-box" style="margin-top:14px">
+      <strong>Pitfalls mais comuns:</strong>
+      <ul style="margin:6px 0 0 16px;line-height:1.8">
+        <li>Forçar o fio-guia com resistência → perfuração venosa ou arritmia</li>
+        <li>Não fazer paramentação máxima → maior risco de ICSRC</li>
+        <li>Confirmar apenas com ausculta → não detecta malposição assintomática</li>
+        <li>Deixar o cateter femoral &gt; 5–7 dias → risco desproporcionalmente alto de trombose e infecção</li>
+        <li>Não confirmar se sangue venoso (vs. arterial) antes de dilatar → dilatar sobre a carótida = catástrofe</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="proc-divider"></div>
+
+  <div id="plantao">
+    <h2 class="section-sub">Dúvidas de plantão</h2>
+
+    <div class="dv-card" onclick="this.classList.toggle('open')">
+      <div class="dv-q">
+        <span class="dv-q-icon">Cateter de HD</span>
+        <span class="dv-q-text">O Shilley foi removido acidentalmente. Posso repassar no mesmo sítio?</span>
+        <span class="dv-arrow">▶</span>
+      </div>
+      <div class="dv-a">
+        <div class="dv-resposta"><span class="dv-lbl">Resposta</span>
+          <strong>Sim — dentro de uma janela de tempo e sempre com USG.</strong>
+          <ul>
+            <li><strong>&lt; 2–4h:</strong> Trato provavelmente patente. Tente repassar fio-guia pelo trajeto (Seldinger modificado) com USG.</li>
+            <li><strong>&lt; 24–48h:</strong> Trato começa a colabar. Nova punção guiada por USG no mesmo sítio ainda é viável.</li>
+            <li><strong>&gt; 48–72h:</strong> Trato provavelmente fechado. Nova punção com USG — mesmo sítio ou contralateral.</li>
+            <li><strong>Sinais de infecção:</strong> Não repassar no mesmo sítio. Troca de sítio obrigatória.</li>
+          </ul>
+          <strong>Antes de qualquer manobra:</strong> Comprimir ≥ 10 min. Avaliar embolia aérea (hipoxemia súbita, queda de PA, mill-wheel murmur) — Trendelenburg se suspeita.
+        </div>
+        <div class="dv-racional"><span class="dv-lbl">Racional</span>
+          O trato é um canal criado por dilatação progressiva. Nas primeiras horas os tecidos ainda não contraíram. O hematoma local pode deslocar a anatomia — punção às cegas no mesmo sítio com hematoma = alto risco de punção arterial.
+        </div>
+        <span class="ref">Lok CE et al. KDOQI Clinical Practice Guideline for Vascular Access: 2019 Update. <em>Am J Kidney Dis</em> 75(suppl 2):S1–S164, 2020. DOI: 10.1053/j.ajkd.2019.12.001</span>
+        <span class="ref">Vats HS. Complications of catheters: tunneled and nontunneled. <em>Adv Chronic Kidney Dis</em> 19(3):188–194, 2012. PMID: 22578679</span>
+      </div>
+    </div>
+
+    <div class="dv-card" onclick="this.classList.toggle('open')">
+      <div class="dv-q">
+        <span class="dv-q-icon">Cateter de HD</span>
+        <span class="dv-q-text">Posso usar CVC duplo lúmen para hemodiálise se não houver Shilley?</span>
+        <span class="dv-arrow">▶</span>
+      </div>
+      <div class="dv-a">
+        <div class="dv-resposta"><span class="dv-lbl">Resposta</span>
+          <strong>Em emergência: sim, funciona — mas com limitações importantes.</strong>
+          <ul>
+            <li><strong>Fluxo:</strong> CVC duplo lúmen oferece 100–150 mL/min (vs. 300–400 mL/min do Shilley). Sessão roda com clearance menor.</li>
+            <li><strong>Compensação:</strong> Aumente o tempo de sessão (4h → 6h) ou prefira CRRT — fluxo menor é mais compatível.</li>
+            <li><strong>Recirculação:</strong> Lúmens na mesma altura = sangue limpo reaspira do. Inverter as vias pode ajudar — mas varia com o modelo.</li>
+            <li><strong>Duração:</strong> Usar como ponte &lt; 24–48h. Avise a equipe de diálise — os alarmes de pressão vão disparar.</li>
+          </ul>
+        </div>
+        <div class="dv-racional"><span class="dv-lbl">Racional</span>
+          O Shilley tem ponta em D com lúmens escalonados — minimiza recirculação. O CVC padrão tem lúmens concêntricos na mesma altura: recirculação &gt; 15–20% torna a diálise ineficiente. O diâmetro menor (7–8,5 Fr vs. 11,5–13,5 Fr) é o principal limitante de fluxo.
+        </div>
+        <span class="ref">Lok CE et al. KDOQI 2019. <em>Am J Kidney Dis</em> 75(suppl 2):S1–S164, 2020.</span>
+        <span class="ref">Canaud B et al. Central venous catheters for hemodialysis. <em>Kidney Int Reports</em> 2021. PMC8640568</span>
+      </div>
+    </div>
+
+    <div class="dv-card" onclick="this.classList.toggle('open')">
+      <div class="dv-q">
+        <span class="dv-q-icon">Acesso periférico</span>
+        <span class="dv-q-text">Posso infundir noradrenalina em acesso periférico?</span>
+        <span class="dv-arrow">▶</span>
+      </div>
+      <div class="dv-a">
+        <div class="dv-resposta"><span class="dv-lbl">Resposta</span>
+          <strong>Sim — a evidência atual suporta o uso em periférico por curto prazo, com condições.</strong>
+          <ul>
+            <li><strong>Calibre mínimo:</strong> 18G (idealmente 16G), em veia antecubital, basílica ou cefálica. Evitar mão e pé.</li>
+            <li><strong>Concentração diluída:</strong> 4–8 mg em 250 mL SF.</li>
+            <li><strong>Dose:</strong> Evidência mais robusta para ≤ 0,1–0,25 mcg/kg/min. Doses maiores → providenciar central.</li>
+            <li><strong>Duração:</strong> Ponte por &lt; 6–12h enquanto acesso central é inserido.</li>
+            <li><strong>Vigilância:</strong> Inspecionar o sítio a cada 1–2h. Eritema, palidez, enduração = extravasamento → parar imediatamente.</li>
+            <li><strong>Se extravasar:</strong> Fentolamina 5–10 mg em 10 mL SF subcutâneo ao redor do sítio dentro de 12h.</li>
+          </ul>
+        </div>
+        <div class="dv-racional"><span class="dv-lbl">Racional</span>
+          A dogma de "vasopressor só em central" surgiu do risco de extravasamento com necrose. Revisões sistemáticas (2015–2024) mostram risco baixo em veia calibrosa, concentração diluída e vigilância ativa. O que mata é o atraso no vasopressor esperando o acesso central.
+        </div>
+        <span class="ref">Loubani OM, Green RS. Extravasation from vasopressors through peripheral and central catheters. <em>J Crit Care</em> 30(3):653.e9–17, 2015. PMID: 25669592</span>
+        <span class="ref">Yerke J et al. Peripheral administration of norepinephrine. <em>CHEST</em> 165(1), 2024. PMC10851275</span>
+        <span class="ref">Evans L et al. Surviving Sepsis Campaign 2021. <em>Crit Care Med</em> 49(11):e1063–e1143, 2021. DOI: 10.1097/CCM.0000000000005337</span>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+</main>
+<script src="../assets/app.js"></script>
+</body>
+</html>

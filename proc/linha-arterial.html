@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linha Arterial — be·aside</title>
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+  :root{--proc:#3b82f6}
+  .proc-tag{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--proc);background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);padding:2px 9px;border-radius:20px;display:inline-block;margin-bottom:10px}
+  .ref{font-family:var(--mono);font-size:10.5px;color:var(--text3);border-left:2px solid var(--border2);padding:4px 10px;margin:6px 0 0;display:block;line-height:1.5}
+
+  .step-list{list-style:none;padding:0;margin:10px 0}
+  .step-list li{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text2);line-height:1.6}
+  .step-list li:last-child{border-bottom:none}
+  .step-n{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--proc);background:rgba(59,130,246,.12);border-radius:4px;padding:1px 7px;flex-shrink:0;margin-top:1px}
+
+  .pill-list{list-style:none;padding:0;margin:8px 0}
+  .pill-list li{font-size:13px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;line-height:1.55;align-items:flex-start}
+  .pill-list li:last-child{border-bottom:none}
+  .pill-list li::before{content:'—';font-family:var(--mono);color:var(--proc);flex-shrink:0;margin-top:1px}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+  @media(max-width:600px){.two-col{grid-template-columns:1fr}}
+  .info-box{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px 16px;font-size:13px;color:var(--text2);line-height:1.6}
+  .info-box strong{color:var(--text)}
+  .warn-box{background:rgba(226,75,74,.07);border:1px solid rgba(226,75,74,.25);border-radius:8px;padding:14px 16px;font-size:13px;color:#f0b8b8;line-height:1.6}
+  .warn-box strong{color:#f5c6c6}
+  .ok-box{background:rgba(29,184,138,.07);border:1px solid rgba(29,184,138,.25);border-radius:8px;padding:14px 16px;font-size:13px;color:#bce8d8;line-height:1.6}
+  .ok-box strong{color:#d0f0e4}
+  .gap-note{font-family:var(--mono);font-size:11px;color:var(--text3);background:var(--bg3);border:1px dashed var(--border2);border-radius:6px;padding:8px 12px;margin-top:10px}
+
+  .mat-grid{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 0}
+  .mat-item{font-family:var(--mono);font-size:11px;color:var(--text2);background:var(--bg3);border:1px solid var(--border);border-radius:5px;padding:3px 9px}
+
+  .compl-list{list-style:none;padding:0;margin:8px 0}
+  .compl-list li{font-size:13px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--border);display:grid;grid-template-columns:200px 1fr;gap:12px;line-height:1.55;align-items:baseline}
+  @media(max-width:600px){.compl-list li{grid-template-columns:1fr}}
+  .compl-list li:last-child{border-bottom:none}
+  .compl-name{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text)}
+</style>
+</head>
+<body data-module="proc" data-page="linha-arterial">
+<main class="main">
+<section class="section" id="linha-arterial">
+  <h1 class="section-title">Linha Arterial</h1>
+  <p class="section-subtitle">Cateter intra-arterial para monitorização contínua de PA e gasometrias — indicações, sítios, técnica na artéria radial e complicações.</p>
+
+  <div class="card" style="margin-top:0">
+    <span class="proc-tag">Linha arterial</span>
+    <div class="card-title">Linha arterial (cateter intra-arterial)</div>
+    <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:16px">
+      Cateter em artéria periférica para monitorização contínua da pressão arterial e coleta de gasometrias frequentes. A <strong>artéria radial</strong> é o sítio padrão — superficial, compressível, com circulação colateral pela ulnar. USG melhora a taxa de sucesso na primeira tentativa, especialmente em pacientes com pulso fraco.
+    </p>
+
+    <strong style="font-size:13px;color:var(--text);display:block;margin-bottom:8px">Indicações</strong>
+    <ul class="pill-list">
+      <li>Choque ou instabilidade hemodinâmica — monitorização PA batimento a batimento</li>
+      <li>Drogas vasoativas com titulação frequente</li>
+      <li>Necessidade de gasometrias seriadas (insuficiência respiratória grave, desmame de VM)</li>
+      <li>Cirurgias de grande porte cardiovascular ou neurocirúrgica</li>
+      <li>Hipertensão grave ou crise hipertensiva em tratamento IV</li>
+    </ul>
+
+    <strong style="font-size:13px;color:var(--text);display:block;margin:14px 0 8px">Sítios alternativos</strong>
+    <table>
+      <thead><tr><th>Artéria</th><th>Uso</th><th>Limitação</th></tr></thead>
+      <tbody>
+        <tr><td>Radial (padrão)</td><td>1ª escolha em adultos</td><td>Pode ser difícil em hipotensão grave ou vasospasmo</td></tr>
+        <tr><td>Femoral</td><td>Emergência, sem pulso radial palpável</td><td>Não compressível facilmente; maior risco de infecção; limita mobilização</td></tr>
+        <tr><td>Braquial</td><td>Alternativa quando radial inviável</td><td>Artéria terminal — sem circulação colateral; maior risco de isquemia</td></tr>
+        <tr><td>Ulnar</td><td>Radial ocluída; reservar se radial falhar</td><td>Mais difícil de palpar; calibre menor</td></tr>
+        <tr><td>Dorsal do pé</td><td>Pediátrico / quando membros superiores inviáveis</td><td>Coluna de pressão mais longa → ondas de pressão amplificadas</td></tr>
+      </tbody>
+    </table>
+
+    <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Material</strong>
+    <div class="mat-grid">
+      <span class="mat-item">Cateter arterial 20G (adulto) ou kit com fio-guia (Seldinger)</span>
+      <span class="mat-item">Seringa 5 mL + agulha 25G para anestesia</span>
+      <span class="mat-item">Lidocaína 1% (0,5–1 mL — só subcutâneo)</span>
+      <span class="mat-item">Extensão + transdutor de pressão + sistema de flush contínuo</span>
+      <span class="mat-item">Rolinho de gaze para dorsiflexão do punho</span>
+      <span class="mat-item">Curativo transparente + fixador</span>
+      <span class="mat-item">USG com transdutor linear (recomendado)</span>
+    </div>
+
+    <strong style="font-size:13px;color:var(--text);display:block;margin:18px 0 8px">Técnica — Artéria radial (cateter sobre agulha)</strong>
+
+    <div class="ok-box" style="margin-bottom:14px">
+      <strong>Teste de Allen modificado:</strong> Comprimir radial e ulnar simultaneamente até a mão empalidecer. Soltar a ulnar — a mão deve reperfundir em &lt; 10 s (arco palmar pérvio). Se &gt; 10 s: circulação colateral inadequada. Na prática clínica, teste de Allen positivo (ruim) não é contraindicação absoluta se a USG confirmar fluxo radial e ulnar, mas prefira o outro punho.
+    </div>
+
+    <ul class="step-list">
+      <li><span class="step-n">1</span><span>Posicionar o punho em <strong>dorsiflexão de 30–45°</strong> com apoio de rolinho sob o dorso. Fixar levemente com esparadrapo. Hiperflexão comprime a artéria — evitar.</span></li>
+      <li><span class="step-n">2</span><span>Palpar o pulso radial 2 cm proximal ao processo estiloide do rádio. Se fraco: USG transversal para visualizar a artéria.</span></li>
+      <li><span class="step-n">3</span><span>Antissepsia com clorexidina. Anestesia local: 0,3–0,5 mL de lidocaína 1% subcutânea bilateral ao vaso (não infiltrar em cima da artéria — causa vasospasmo).</span></li>
+      <li><span class="step-n">4</span><span>Inserir o cateter 20G a <strong>30–45° de inclinação</strong>, bisel para cima, direcionado para o pulso. Avançar até surgir flash de sangue na câmara.</span></li>
+      <li><span class="step-n">5</span><span><strong>Técnica cateter-sobre-agulha:</strong> Ao ver o flash, achatar o ângulo para 10–15° e avançar mais 1–2 mm para garantir que o cateter (não só a agulha) está dentro da artéria. Retirar o mandril e deslizar o cateter plástico.</span></li>
+      <li><span class="step-n">6</span><span><strong>Técnica Seldinger (alternativa, mais fácil em artérias difíceis):</strong> Ao ver o flash, introduzir o fio-guia pela agulha, retirar a agulha e deslizar o cateter sobre o fio.</span></li>
+      <li><span class="step-n">7</span><span>Comprimir o rádio proximal ao cateter, conectar a extensão pré-cheia e o transdutor. Soltar a compressão — deve surgir onda de pressão arterial na tela.</span></li>
+      <li><span class="step-n">8</span><span>Fixar com curativo transparente. Zeragem do transdutor ao nível do flebostático (4° espaço intercostal, linha axilar média).</span></li>
+    </ul>
+    <span class="ref">Teoh WH, Kristensen MS. Arterial Lines — StatPearls. NCBI Bookshelf NBK499989. 2025.</span>
+    <span class="ref">Scheer B et al. Clinical review: complications and risk factors of peripheral arterial catheters used for haemodynamic monitoring in anaesthesia and intensive care medicine. <em>Crit Care</em> 6(3):199–204, 2002. PMID: 12133178</span>
+    <span class="ref">Arterial Line Placement Using Modified Seldinger Technique. <em>Cureus</em> 2023. PMC10369313</span>
+
+    <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Complicações</strong>
+    <ul class="compl-list">
+      <li><span class="compl-name">Oclusão / trombose radial</span><span>~5% — maioria assintomática (circulação ulnar). Se isquemia: remover cateter imediatamente. Prevenção: sistema de flush contínuo com SF heparinizado (3 mL/h).</span></li>
+      <li><span class="compl-name">Isquemia de mão</span><span>Rara (&lt; 0,1%). Fatores: artéria braquial, PAD muito baixa, múltiplas tentativas, vasospasmo. Monitorizar coloração, temperatura e SpO₂ do dedo.</span></li>
+      <li><span class="compl-name">Hematoma local</span><span>Punção posterior + saída acidental. Comprimir 3–5 min após tentativa falhada. Em anticoagulado: 10 min.</span></li>
+      <li><span class="compl-name">Infecção / ICSRC</span><span>Menor risco que CVC. Trocar sítio se sinais locais de infecção. Não trocar por rotina a cada X dias sem indicação clínica.</span></li>
+      <li><span class="compl-name">Injeção arterial acidental</span><span>Nunca usar a linha arterial para infusão de drogas. Identificar claramente (etiqueta vermelha) e não conectar seringas de medicação.</span></li>
+    </ul>
+
+    <div class="warn-box" style="margin-top:14px">
+      <strong>Pitfalls mais comuns:</strong>
+      <ul style="margin:6px 0 0 16px;line-height:1.8">
+        <li>Hiperflexão do punho → comprime a artéria, dificulta punção e causa falha</li>
+        <li>Anestesia em cima da artéria → vasospasmo, pulso some</li>
+        <li>Não zerear o transdutor → valores de PA errôneos</li>
+        <li>Posição do transdutor errada → cada 10 cm acima/abaixo do ponto flebostático = ±7,5 mmHg de erro</li>
+        <li>Não identificar a linha arterial → infusão inadvertida de droga intra-arterial (pode causar isquemia irreversível)</li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+</main>
+<script src="../assets/app.js"></script>
+</body>
+</html>

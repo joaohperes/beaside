@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Punção Lombar — be·aside</title>
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+  :root{--proc:#3b82f6}
+  .proc-tag{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--proc);background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);padding:2px 9px;border-radius:20px;display:inline-block;margin-bottom:10px}
+  .ref{font-family:var(--mono);font-size:10.5px;color:var(--text3);border-left:2px solid var(--border2);padding:4px 10px;margin:6px 0 0;display:block;line-height:1.5}
+  .ref a{color:var(--text3);text-decoration:underline}
+
+  .step-list{list-style:none;padding:0;margin:10px 0}
+  .step-list li{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text2);line-height:1.6}
+  .step-list li:last-child{border-bottom:none}
+  .step-n{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--proc);background:rgba(59,130,246,.12);border-radius:4px;padding:1px 7px;flex-shrink:0;margin-top:1px}
+
+  .pill-list{list-style:none;padding:0;margin:8px 0}
+  .pill-list li{font-size:13px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;line-height:1.55;align-items:flex-start}
+  .pill-list li:last-child{border-bottom:none}
+  .pill-list li::before{content:'—';font-family:var(--mono);color:var(--proc);flex-shrink:0;margin-top:1px}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+  @media(max-width:600px){.two-col{grid-template-columns:1fr}}
+  .info-box{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px 16px;font-size:13px;color:var(--text2);line-height:1.6}
+  .info-box strong{color:var(--text)}
+  .warn-box{background:rgba(226,75,74,.07);border:1px solid rgba(226,75,74,.25);border-radius:8px;padding:14px 16px;font-size:13px;color:#f0b8b8;line-height:1.6}
+  .warn-box strong{color:#f5c6c6}
+  .ok-box{background:rgba(29,184,138,.07);border:1px solid rgba(29,184,138,.25);border-radius:8px;padding:14px 16px;font-size:13px;color:#bce8d8;line-height:1.6}
+  .ok-box strong{color:#d0f0e4}
+
+  .mat-grid{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 0}
+  .mat-item{font-family:var(--mono);font-size:11px;color:var(--text2);background:var(--bg3);border:1px solid var(--border);border-radius:5px;padding:3px 9px}
+
+  .compl-list{list-style:none;padding:0;margin:8px 0}
+  .compl-list li{font-size:13px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--border);display:grid;grid-template-columns:180px 1fr;gap:12px;line-height:1.55;align-items:baseline}
+  @media(max-width:600px){.compl-list li{grid-template-columns:1fr}}
+  .compl-list li:last-child{border-bottom:none}
+  .compl-name{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text)}
+</style>
+</head>
+<body data-module="proc" data-page="pl">
+<main class="main">
+<section class="section" id="pl">
+  <h1 class="section-title">Punção Lombar</h1>
+  <p class="section-subtitle">Acesso ao espaço subaracnoide — indicações, quando fazer TC antes, técnica, interpretação do LCR e complicações.</p>
+
+  <div class="card" style="margin-top:0">
+    <span class="proc-tag">Punção lombar</span>
+    <div class="card-title">Punção lombar (PL)</div>
+    <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:16px">
+      Acesso ao espaço subaracnoide lombar para análise do LCR e medição da pressão de abertura. Na UTI, a indicação mais urgente é suspeita de meningite bacteriana — o diagnóstico microbiológico no LCR define o antibiótico e a duração do tratamento. <strong>Não atrase o antibiótico esperando a PL.</strong>
+    </p>
+
+    <strong style="font-size:13px;color:var(--text);display:block;margin-bottom:8px">Indicações</strong>
+    <ul class="pill-list">
+      <li>Suspeita de meningite bacteriana, viral ou fúngica</li>
+      <li>Hemorragia subaracnóidea com TC negativa (xantocromia no LCR até 14 dias)</li>
+      <li>Encefalite (incluindo autoimune), Guillain-Barré, esclerose múltipla</li>
+      <li>Hipertensão intracraniana benigna (medição + alívio terapêutico)</li>
+      <li>Meningite por criptococos com HIC (PL terapêutica repetida — reduz mortalidade)</li>
+      <li>Administração intratecal de quimioterápicos ou antibióticos</li>
+    </ul>
+
+    <strong style="font-size:13px;color:var(--text);display:block;margin:14px 0 6px">Quando fazer TC antes da PL?</strong>
+    <div class="two-col" style="margin-top:0">
+      <div class="warn-box">
+        <strong>TC obrigatória antes:</strong>
+        <ul style="margin:6px 0 0 14px;line-height:1.8">
+          <li>Déficit neurológico focal novo</li>
+          <li>Papiledema ao fundo de olho</li>
+          <li>Rebaixamento do nível de consciência (GCS &lt; 14)</li>
+          <li>Crise convulsiva recente (&lt; 1 semana)</li>
+          <li>Imunodeprimido</li>
+        </ul>
+      </div>
+      <div class="ok-box">
+        <strong>Pode puncionar sem TC:</strong>
+        <ul style="margin:6px 0 0 14px;line-height:1.8">
+          <li>Meningismo sem déficit focal, sem papiledema, GCS ≥ 14</li>
+          <li>Nesse caso: antibiótico empírico imediato + PL logo após (sem esperar TC)</li>
+        </ul>
+        <strong>Regra:</strong> Nunca retarde o antibiótico por mais de 30–60 min esperando PL ou TC.
+      </div>
+    </div>
+    <span class="ref">van de Beek D et al. Community-acquired bacterial meningitis. <em>N Engl J Med</em> 374:1708–1720, 2016. PMID: 27116696</span>
+    <span class="ref">WHO Guidelines on meningitis diagnosis, treatment and care. NCBI Bookshelf NBK614844, 2023.</span>
+
+    <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 6px">Contraindicações</strong>
+    <ul class="pill-list">
+      <li>Lesão expansiva intracraniana com efeito de massa (risco de herniação) — fazer TC primeiro</li>
+      <li>Infecção de pele no sítio de punção</li>
+      <li>Plaquetas &lt; 20.000/mm³ (ou &lt; 50.000 se anticoagulado)</li>
+      <li>Anticoagulação plena com heparina não fracionada nas últimas 4–6h (HBPM: 24h)</li>
+      <li>Instabilidade hemodinâmica grave</li>
+    </ul>
+
+    <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Material</strong>
+    <div class="mat-grid">
+      <span class="mat-item">Agulha espinal 20–22G (atraumática — ponta Quincke ou Sprotte)</span>
+      <span class="mat-item">Manômetro de LCR + extensão em T</span>
+      <span class="mat-item">4 tubos numerados para coleta</span>
+      <span class="mat-item">Lidocaína 1% + seringa</span>
+      <span class="mat-item">Campo estéril + clorexidina aquosa (não alcoólica na coluna)</span>
+      <span class="mat-item">Estilete de reposição</span>
+    </div>
+
+    <strong style="font-size:13px;color:var(--text);display:block;margin:18px 0 8px">Técnica passo a passo</strong>
+
+    <div class="two-col" style="margin-bottom:14px">
+      <div class="info-box">
+        <strong>Decúbito lateral (preferencial para pressão)</strong><br>
+        Joelhos fletidos ao peito, coluna em máxima flexão ("posição fetal"). Cabeça alinhada com o resto do corpo no plano horizontal. Única posição que fornece pressão de abertura confiável.
+      </div>
+      <div class="info-box">
+        <strong>Sentado (preferencial para obesos)</strong><br>
+        Sentado na beira do leito, inclinado para frente abraçando um travesseiro. Mais fácil de palpar as apófises em obesos. <strong>Não mede pressão de abertura com confiabilidade</strong> — se precisar da pressão, deite após puncionar.
+      </div>
+    </div>
+
+    <ul class="step-list">
+      <li><span class="step-n">1</span><span>Identificar o espaço L3–L4 ou L4–L5. <strong>Referência: linha de Tuffier</strong> — linha imaginária entre os topos das cristas ilíacas passa pelo processo espinhoso de L4. O espaço L3–L4 é imediatamente acima.</span></li>
+      <li><span class="step-n">2</span><span>Antissepsia com clorexidina aquosa (alcoólica é neurotóxica — não usar na coluna). Campo estéril. Anestesia local em pele e subcutâneo.</span></li>
+      <li><span class="step-n">3</span><span>Inserir a agulha espinal com o bisel orientado paralelamente às fibras da dura-máter (longitudinal = perpendicular ao eixo horizontal no decúbito lateral). Avançar com o estilete no lugar, ligeiramente em direção ao umbigo (~15° de ângulo cranial).</span></li>
+      <li><span class="step-n">4</span><span>Ao cruzar a dura, sente-se uma "queda" de resistência (pop). Remover o estilete — LCR deve gotejar. Se não goteja: girar a agulha 90°, ou o bisel está no ligamento.</span></li>
+      <li><span class="step-n">5</span><span><strong>Pressão de abertura:</strong> Conectar o manômetro antes de coletar. Deixar o LCR subir e estabilizar (~1 min). Normal: 6–20 cmH₂O (até 25 em obesos). Acima de 20: HIC. Acima de 30: HIC grave.</span></li>
+      <li><span class="step-n">6</span><span>Coletar nos 4 tubos numerados: <br>
+        Tubo 1 — microbiologia (Gram, cultura, painel viral)<br>
+        Tubo 2 — bioquímica (glicose, proteína)<br>
+        Tubo 3 — citologia (contagem e diferencial)<br>
+        Tubo 4 — reserva ou citologia oncológica</span></li>
+      <li><span class="step-n">7</span><span>Recolocar o estilete antes de retirar a agulha — reduz a taxa de cefaleia pós-PL.</span></li>
+      <li><span class="step-n">8</span><span>Repouso em decúbito dorsal por 1 h (benefício não comprovado, mas ainda recomendado como conforto). Repouso prolongado não previne cefaleia.</span></li>
+    </ul>
+    <span class="ref">Doherty CM, Forbes RB. Diagnostic Lumbar Puncture. <em>Ulster Med J</em> 83(2):93–102, 2014. PMC4113153</span>
+    <span class="ref">Klotz JM et al. Lumbar puncture: considerations, procedure, and complications. <em>J Neurol</em> 270(6):3293–3305, 2023. PMC10295920</span>
+
+    <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Interpretação do LCR — resumo</strong>
+    <table>
+      <thead><tr><th>Parâmetro</th><th>Normal</th><th>Bacteriana</th><th>Viral</th><th>Fúngica/TB</th></tr></thead>
+      <tbody>
+        <tr><td>Aspecto</td><td>Cristalino</td><td>Turvo/purulento</td><td>Cristalino</td><td>Cristalino/xantocrômico</td></tr>
+        <tr><td>Leucócitos</td><td>&lt; 5/mm³</td><td>&gt; 1.000 (PMN)</td><td>10–1.000 (mono)</td><td>10–500 (mono)</td></tr>
+        <tr><td>Glicose</td><td>60–70% da glicemia</td><td>&lt; 40 mg/dL (&lt; 50%)</td><td>Normal</td><td>Baixa</td></tr>
+        <tr><td>Proteína</td><td>15–45 mg/dL</td><td>&gt; 200 mg/dL</td><td>Normal ou levemente ↑</td><td>↑↑</td></tr>
+        <tr><td>Pressão</td><td>&lt; 20 cmH₂O</td><td>↑↑</td><td>Normal ou ↑</td><td>↑↑ (cripto)</td></tr>
+      </tbody>
+    </table>
+
+    <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Complicações</strong>
+    <ul class="compl-list">
+      <li><span class="compl-name">Cefaleia pós-PL</span><span>10–30% com agulha de corte (Quincke); &lt; 5% com atraumática (Sprotte). Tratamento: repouso, hidratação, analgésicos, cafeína. Persistente (&gt; 72h): blood patch epidural.</span></li>
+      <li><span class="compl-name">Herniação transtentorial</span><span>Risco real em HIC não diagnosticada. Prevenção: TC antes se déficit focal ou papiledema.</span></li>
+      <li><span class="compl-name">Sangramento / hematoma espinal</span><span>Raro (&lt; 0,1%). Investigar se dor radicular nova após PL.</span></li>
+      <li><span class="compl-name">Infecção (meningite iatrogênica)</span><span>Raro. Usar máscara durante o procedimento — gotícula do operador é a principal fonte.</span></li>
+      <li><span class="compl-name">PL traumática</span><span>Agulha lesa vasos do epidural → LCR com sangue. Diferencia de HSA: sangue clarea do tubo 1 para o 4 (traumática) vs. xantocromia uniforme (HSA).</span></li>
+    </ul>
+
+    <div class="warn-box" style="margin-top:14px">
+      <strong>Pitfalls mais comuns:</strong>
+      <ul style="margin:6px 0 0 16px;line-height:1.8">
+        <li>Usar clorexidina alcoólica na pele da coluna → risco de aracnoidite química</li>
+        <li>Bisel perpendicular às fibras da dura → mais trauma = mais cefaleia</li>
+        <li>Medir pressão com paciente sentado → valor falsamente elevado, não confiável</li>
+        <li>Não numerar os tubos → impossível diferenciar PL traumática de HSA</li>
+        <li>Retardar antibiótico esperando TC + PL → cada hora sem antibiótico aumenta a mortalidade em meningite bacteriana</li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+</main>
+<script src="../assets/app.js"></script>
+</body>
+</html>

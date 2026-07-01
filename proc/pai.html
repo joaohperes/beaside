@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pressão Arterial Invasiva (PAI) — be·aside</title>
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+  :root{--proc:#3b82f6}
+  .proc-tag{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--proc);background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);padding:2px 9px;border-radius:20px;display:inline-block;margin-bottom:10px}
+  .ref{font-family:var(--mono);font-size:10.5px;color:var(--text3);border-left:2px solid var(--border2);padding:4px 10px;margin:6px 0 0;display:block;line-height:1.5}
+
+  .step-list{list-style:none;padding:0;margin:10px 0}
+  .step-list li{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text2);line-height:1.6}
+  .step-list li:last-child{border-bottom:none}
+  .step-n{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--proc);background:rgba(59,130,246,.12);border-radius:4px;padding:1px 7px;flex-shrink:0;margin-top:1px}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+  @media(max-width:700px){.two-col{grid-template-columns:1fr}}
+  .info-box{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px 16px;font-size:13px;color:var(--text2);line-height:1.6}
+  .info-box strong{color:var(--text)}
+  .warn-box{background:rgba(226,75,74,.07);border:1px solid rgba(226,75,74,.25);border-radius:8px;padding:14px 16px;font-size:13px;color:#f0b8b8;line-height:1.6}
+  .warn-box strong{color:#f5c6c6}
+  .ok-box{background:rgba(29,184,138,.07);border:1px solid rgba(29,184,138,.25);border-radius:8px;padding:14px 16px;font-size:13px;color:#bce8d8;line-height:1.6}
+  .ok-box strong{color:#d0f0e4}
+
+  /* SVG diagrama */
+  .svg-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin:12px 0;overflow-x:auto}
+  .svg-caption{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--proc);margin-bottom:10px;display:block}
+</style>
+</head>
+<body data-module="proc" data-page="pai">
+<main class="main">
+<section class="section" id="pai">
+  <h1 class="section-title">Pressão Arterial Invasiva (PAI)</h1>
+  <p class="section-subtitle">Anatomia da onda, amortecimento, PPV e armadilhas de interpretação.</p>
+
+  <div class="card" style="margin-top:0">
+    <span class="proc-tag">Pressão arterial invasiva</span>
+    <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:16px">
+      A linha arterial converte a pressão pulsátil da artéria em sinal elétrico contínuo. A qualidade dessa leitura depende do sistema de transdução — entender a onda e seus artefatos é tão importante quanto ter o número na tela.
+    </p>
+
+    <!-- ── SVG: Onda arterial normal ── -->
+    <strong style="font-size:13px;color:var(--text);display:block;margin-bottom:8px">Anatomia da onda arterial</strong>
+    <div class="svg-wrap">
+      <span class="svg-caption">Curva de pressão arterial — componentes normais</span>
+      <svg viewBox="0 0 700 220" width="100%" style="display:block;max-width:700px;margin:0 auto" aria-label="Curva de pressão arterial com componentes anotados">
+        <!-- fundo grid -->
+        <defs>
+          <pattern id="grid" width="50" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 50 0 L 0 0 0 40" fill="none" stroke="#2a2a3a" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+        <rect width="700" height="220" fill="#12121e" rx="6"/>
+        <rect width="700" height="220" fill="url(#grid)" rx="6"/>
+
+        <!-- eixo horizontal -->
+        <line x1="40" y1="185" x2="680" y2="185" stroke="#3a3a50" stroke-width="1"/>
+        <!-- eixo vertical -->
+        <line x1="40" y1="20" x2="40" y2="185" stroke="#3a3a50" stroke-width="1"/>
+
+        <!-- marcas eixo Y -->
+        <text x="32" y="188" fill="#555570" font-size="9" font-family="monospace" text-anchor="end">0</text>
+        <text x="32" y="148" fill="#555570" font-size="9" font-family="monospace" text-anchor="end">40</text>
+        <text x="32" y="108" fill="#555570" font-size="9" font-family="monospace" text-anchor="end">80</text>
+        <text x="32" y="68"  fill="#555570" font-size="9" font-family="monospace" text-anchor="end">120</text>
+        <text x="32" y="28"  fill="#555570" font-size="9" font-family="monospace" text-anchor="end">160</text>
+        <text x="10" y="110" fill="#555570" font-size="9" font-family="monospace" transform="rotate(-90,10,110)" text-anchor="middle">mmHg</text>
+
+        <!-- linhas de referência horizontais -->
+        <line x1="40" y1="148" x2="680" y2="148" stroke="#2a2a3a" stroke-width="0.8" stroke-dasharray="4,3"/>
+        <line x1="40" y1="108" x2="680" y2="108" stroke="#2a2a3a" stroke-width="0.8" stroke-dasharray="4,3"/>
+        <line x1="40" y1="68"  x2="680" y2="68"  stroke="#2a2a3a" stroke-width="0.8" stroke-dasharray="4,3"/>
+
+        <!-- CURVA — dois ciclos cardíacos -->
+        <!-- ciclo 1: começa em x=60, linha de base ~170 (PAD 70mmHg) -->
+        <!-- PAD = 70 → y = 185 - (70/160)*165 = 185-72 = 113 -->
+        <!-- PAS = 120 → y = 185 - (120/160)*165 = 185-124 = 61 -->
+        <!-- notch ~90mmHg → y = 185 - (90/160)*165 = 185-93 = 92 -->
+        <path d="
+          M 60,113
+          C 60,113 62,112 65,111
+          C 80,108 90,100 105,61
+          C 108,58 110,57 112,57
+          C 114,57 116,60 118,65
+          C 122,75 125,88 126,92
+          C 127,95 128,96 130,98
+          C 134,104 138,112 148,113
+          C 160,114 165,113 170,113
+        " fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <!-- ciclo 2: começa em x=170 -->
+        <path d="
+          M 170,113
+          C 170,113 172,112 175,111
+          C 190,108 200,100 215,61
+          C 218,58 220,57 222,57
+          C 224,57 226,60 228,65
+          C 232,75 235,88 236,92
+          C 237,95 238,96 240,98
+          C 244,104 248,112 258,113
+          C 270,114 275,113 280,113
+        " fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <!-- ciclo 3 parcial (mostra o padrão contínuo) -->
+        <path d="
+          M 280,113
+          C 280,113 282,112 285,111
+          C 300,108 310,100 325,61
+          C 328,58 330,57 332,57
+          C 334,57 336,60 338,65
+          C 342,75 345,88 346,92
+          C 347,95 348,96 350,98
+          C 354,104 358,112 368,113
+          C 380,114 385,113 390,113
+        " fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <!-- fade out -->
+        <path d="M 390,113 C 390,113 395,112 405,111 C 420,108 430,100 445,61" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" opacity="0.3"/>
+
+        <!-- ── ANOTAÇÕES ── ciclo 1 detalhado ── -->
+
+        <!-- ① upstroke -->
+        <line x1="88" y1="95" x2="70" y2="50" stroke="#60a5fa" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="68" y="46" fill="#93c5fd" font-size="10" font-family="monospace" text-anchor="middle">① upstroke</text>
+
+        <!-- ② pico sistólico PAS -->
+        <line x1="112" y1="57" x2="112" y2="32" stroke="#60a5fa" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="113" y="28" fill="#93c5fd" font-size="10" font-family="monospace" text-anchor="start">② PAS (pico)</text>
+        <!-- linha horizontal PAS -->
+        <line x1="60" y1="57" x2="172" y2="57" stroke="#3b82f6" stroke-width="0.8" stroke-dasharray="5,3" opacity="0.5"/>
+        <text x="180" y="60" fill="#3b82f6" font-size="9" font-family="monospace">120 mmHg</text>
+
+        <!-- ③ descida sistólica -->
+        <line x1="122" y1="76" x2="142" y2="48" stroke="#60a5fa" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="145" y="44" fill="#93c5fd" font-size="10" font-family="monospace">③ descida</text>
+
+        <!-- ④ notch dicrótico -->
+        <circle cx="130" cy="92" r="4" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
+        <line x1="134" y1="88" x2="155" y2="72" stroke="#f59e0b" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="157" y="70" fill="#fbbf24" font-size="10" font-family="monospace">④ notch dicrótico</text>
+
+        <!-- ⑤ curva diastólica -->
+        <line x1="142" y1="108" x2="162" y2="138" stroke="#60a5fa" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="164" y="142" fill="#93c5fd" font-size="10" font-family="monospace">⑤ diástole</text>
+
+        <!-- ⑥ PAD nadir -->
+        <line x1="170" y1="113" x2="200" y2="155" stroke="#60a5fa" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="202" y="159" fill="#93c5fd" font-size="10" font-family="monospace">⑥ PAD (nadir)</text>
+        <!-- linha horizontal PAD -->
+        <line x1="60" y1="113" x2="390" y2="113" stroke="#3b82f6" stroke-width="0.8" stroke-dasharray="5,3" opacity="0.3"/>
+        <text x="180" y="122" fill="#3b82f6" font-size="9" font-family="monospace">70 mmHg</text>
+
+        <!-- PAM -->
+        <line x1="60" y1="93" x2="390" y2="93" stroke="#1db88a" stroke-width="0.8" stroke-dasharray="5,3" opacity="0.5"/>
+        <text x="395" y="96" fill="#1db88a" font-size="9" font-family="monospace">PAM ~87</text>
+      </svg>
+    </div>
+    <div class="two-col" style="margin-top:12px">
+      <div style="font-size:13px;color:var(--text2);line-height:1.7">
+        <strong style="color:var(--text)">① Subida sistólica (upstroke)</strong><br>
+        Abertura da válvula aórtica → ejeção rápida. Inclinação reflete contratilidade e resistência vascular.
+        <br><br>
+        <strong style="color:var(--text)">② Pico sistólico (PAS)</strong><br>
+        Pressão máxima. Em artérias periféricas (radial vs. femoral), o pico é amplificado — PAS radial pode ser 10–20 mmHg maior que aórtica.
+        <br><br>
+        <strong style="color:var(--text)">③ Descida sistólica</strong><br>
+        Fim da ejeção, queda progressiva antes do fechamento aórtico.
+      </div>
+      <div style="font-size:13px;color:var(--text2);line-height:1.7">
+        <strong style="color:var(--text)">④ Incisura dicrótica (dicrotic notch)</strong><br>
+        Fechamento da válvula aórtica — separa sístole de diástole. Em choque séptico: notch precoce e mal definido. Em estenose aórtica: tardio e atenuado.
+        <br><br>
+        <strong style="color:var(--text)">⑤ Curva diastólica</strong><br>
+        Pressão cai até o próximo ciclo. Quanto mais rígida a aorta (idoso, HAS), mais abrupta.
+        <br><br>
+        <strong style="color:var(--text)">⑥ Nadir diastólico (PAD)</strong><br>
+        Pressão mínima. Reflete RVS e tempo de diástole.
+      </div>
+    </div>
+    <span class="ref">Arterial Pressure Monitoring — StatPearls. NCBI Bookshelf NBK556127. 2024.</span>
+    <span class="ref">Pauca AL et al. Applied physiology at the bedside: using invasive blood pressure as a true monitoring tool. <em>J Clin Monit Comput</em> 2025. PMC12696276</span>
+
+    <!-- ── Zeragem ── -->
+    <strong style="font-size:13px;color:var(--text);display:block;margin:18px 0 8px">Configuração e zeragem do transdutor</strong>
+    <ul class="step-list">
+      <li><span class="step-n">1</span><span><strong>Nível flebostático:</strong> Posicionar o transdutor no 4° espaço intercostal, linha axilar média — nível do átrio direito. Cada 10 cm de diferença geram ±7,5 mmHg de erro sistemático.</span></li>
+      <li><span class="step-n">2</span><span><strong>Zeragem:</strong> Abrir a torneira para o ar (não para o paciente), pressionar "zero" no monitor. Deve marcar 0 mmHg. Repetir ao mudar posição do paciente ou do transdutor.</span></li>
+      <li><span class="step-n">3</span><span><strong>Fast-flush test:</strong> Puxar e soltar a válvula de flush rápido. Onda quadrada + 1–2 oscilações que retornam rapidamente à linha de base = sistema criticamente amortecido (ideal).</span></li>
+    </ul>
+
+    <!-- ── SVG: Amortecimento ── -->
+    <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Problemas de amortecimento — fast-flush test</strong>
+    <div class="svg-wrap">
+      <span class="svg-caption">Fast-flush test — três padrões de amortecimento</span>
+      <svg viewBox="0 0 700 200" width="100%" style="display:block;max-width:700px;margin:0 auto" aria-label="Fast-flush test mostrando sistema normal, overdamped e underdamped">
+        <rect width="700" height="200" fill="#12121e" rx="6"/>
+
+        <!-- labels das três colunas -->
+        <text x="116" y="18" fill="#1db88a" font-size="10" font-family="monospace" text-anchor="middle" font-weight="bold">NORMAL</text>
+        <text x="350" y="18" fill="#f59e0b" font-size="10" font-family="monospace" text-anchor="middle" font-weight="bold">OVERDAMPING</text>
+        <text x="583" y="18" fill="#f87171" font-size="10" font-family="monospace" text-anchor="middle" font-weight="bold">UNDERDAMPING</text>
+
+        <!-- divisores verticais -->
+        <line x1="233" y1="25" x2="233" y2="185" stroke="#2a2a3a" stroke-width="1"/>
+        <line x1="466" y1="25" x2="466" y2="185" stroke="#2a2a3a" stroke-width="1"/>
+
+        <!-- linha de base para cada painel -->
+        <line x1="50"  y1="140" x2="220" y2="140" stroke="#2a2a3a" stroke-width="0.8"/>
+        <line x1="283" y1="140" x2="450" y2="140" stroke="#2a2a3a" stroke-width="0.8"/>
+        <line x1="516" y1="140" x2="680" y2="140" stroke="#2a2a3a" stroke-width="0.8"/>
+
+        <!-- ── NORMAL ── -->
+        <!-- onda quadrada do flush -->
+        <path d="M 55,140 L 55,50 L 100,50 L 100,140" fill="none" stroke="#1db88a" stroke-width="2"/>
+        <!-- 2 oscilações rápidas e amortecimento rápido -->
+        <path d="M 100,140 C 105,80 112,165 120,130 C 128,95 135,150 143,140 C 148,135 155,140 220,140"
+              fill="none" stroke="#1db88a" stroke-width="2" stroke-linecap="round"/>
+        <text x="116" y="178" fill="#6ee7b7" font-size="9" font-family="monospace" text-anchor="middle">2 oscilações → retorno rápido</text>
+        <text x="116" y="190" fill="#6ee7b7" font-size="9" font-family="monospace" text-anchor="middle">Sistema ideal</text>
+
+        <!-- ── OVERDAMPING ── -->
+        <path d="M 288,140 L 288,50 L 333,50 L 333,140" fill="none" stroke="#f59e0b" stroke-width="2"/>
+        <!-- retorno lento, sem oscilações, onda arredondada -->
+        <path d="M 333,140 C 345,100 360,125 380,135 C 395,140 410,140 450,140"
+              fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
+        <text x="350" y="178" fill="#fcd34d" font-size="9" font-family="monospace" text-anchor="middle">Sem oscilações → retorno lento</text>
+        <text x="350" y="190" fill="#fcd34d" font-size="9" font-family="monospace" text-anchor="middle">PAS↓ falsa | PAD↑ falsa</text>
+
+        <!-- ── UNDERDAMPING ── -->
+        <path d="M 521,140 L 521,50 L 566,50 L 566,140" fill="none" stroke="#f87171" stroke-width="2"/>
+        <!-- oscilações múltiplas e prolongadas -->
+        <path d="M 566,140 C 570,55 578,175 586,100 C 594,30 602,170 610,115 C 618,65 626,155 634,130 C 640,112 648,145 680,140"
+              fill="none" stroke="#f87171" stroke-width="2" stroke-linecap="round"/>
+        <text x="583" y="178" fill="#fca5a5" font-size="9" font-family="monospace" text-anchor="middle">Muitas oscilações → prolongadas</text>
+        <text x="583" y="190" fill="#fca5a5" font-size="9" font-family="monospace" text-anchor="middle">PAS↑ falsa | PAD↓ falsa</text>
+      </svg>
+    </div>
+
+    <div class="two-col" style="margin-top:12px">
+      <div class="warn-box">
+        <strong>Overdamping</strong><br>
+        Onda arredondada, sem notch dicrótico, subida lenta.<br>
+        <strong>Erro:</strong> PAS falsamente baixa, PAD falsamente alta.<br>
+        <strong>Causas:</strong> bolha de ar, dobra do cateter, coágulo na ponta, extensão muito longa.<br>
+        <strong>Conduta:</strong> flush suave, aspirar e descartar, trocar o sistema.
+      </div>
+      <div class="warn-box">
+        <strong>Underdamping</strong><br>
+        Onda espiculada, oscilações extras após a notch, subida íngreme.<br>
+        <strong>Erro:</strong> PAS falsamente alta, PAD falsamente baixa.<br>
+        <strong>Causas:</strong> extensão curta, sistema muito rígido.<br>
+        <strong>Conduta:</strong> adicionar filtro de amortecimento. Usar PAM nessa situação.
+      </div>
+    </div>
+    <div class="ok-box" style="margin-top:12px">
+      <strong>Regra prática:</strong> em dúvida sobre a acurácia da PAI, a <strong>PAM é o valor mais robusto</strong> — calculada a partir de toda a curva, menos afetada por problemas de amortecimento do que PAS e PAD isoladas.
+    </div>
+    <span class="ref">Invasive Arterial Pressure Monitoring: Reliable Values? <em>J Clin Med</em> 2025. PMC11822339</span>
+    <span class="ref">Abnormal arterial pressure waveforms — automatic detection. <em>Front Physiol</em> 2024. PMC11297833</span>
+
+    <!-- ── Leitura avançada ── -->
+    <strong style="font-size:13px;color:var(--text);display:block;margin:18px 0 8px">Leitura avançada — o que a onda diz além do número</strong>
+    <table>
+      <thead><tr><th>Sinal na onda</th><th>Interpretação clínica</th></tr></thead>
+      <tbody>
+        <tr><td>Subida sistólica muito lenta (pulsus tardus)</td><td>Estenose aórtica grave — obstrução de via de saída do VE</td></tr>
+        <tr><td>Amplitude pequena (pulsus parvus)</td><td>Baixo débito cardíaco — choque cardiogênico, tamponamento</td></tr>
+        <tr><td>Variação respiratória da amplitude &gt; 13% (PPV)</td><td>Responsividade a fluidos em VM controlada</td></tr>
+        <tr><td>Pulso alternante (pulsus alternans)</td><td>Alternância de picos altos e baixos → ICC grave, disfunção severa de VE</td></tr>
+        <tr><td>Pulso paradoxal &gt; 10 mmHg</td><td>Queda de PAS na inspiração → tamponamento, asma grave, auto-PEEP</td></tr>
+        <tr><td>Notch dicrótico precoce e proeminente</td><td>Baixa RVS — vasodilatação, sepse distributiva</td></tr>
+        <tr><td>Onda em "pico e cúpula" (spike and dome)</td><td>Cardiomiopatia hipertrófica obstrutiva (CMHO)</td></tr>
+      </tbody>
+    </table>
+    <span class="ref">Clinical review: Interpretation of arterial pressure wave in shock states. <em>Crit Care</em> 2006. PMC1414028</span>
+
+    <!-- ── SVG: PPV ── -->
+    <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">PPV — Variação de Pressão de Pulso</strong>
+    <div class="svg-wrap">
+      <span class="svg-caption">PPV — variação respiratória da pressão de pulso</span>
+      <svg viewBox="0 0 700 190" width="100%" style="display:block;max-width:700px;margin:0 auto" aria-label="PPV com variação respiratória da curva arterial">
+        <defs>
+          <pattern id="grid2" width="40" height="35" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 35" fill="none" stroke="#1e1e2e" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+        <rect width="700" height="190" fill="#12121e" rx="6"/>
+        <rect width="700" height="190" fill="url(#grid2)" rx="6"/>
+
+        <!-- linha de base -->
+        <line x1="40" y1="160" x2="680" y2="160" stroke="#2a2a3a" stroke-width="1"/>
+
+        <!-- ciclos respiratórios — barra de fundo indicando inspiração/expiração -->
+        <!-- expiração (escuro) - inspiração (ligeiramente mais claro) -->
+        <rect x="40"  y="25" width="120" height="140" fill="rgba(30,184,138,0.04)" rx="2"/>
+        <rect x="160" y="25" width="120" height="140" fill="rgba(59,130,246,0.06)" rx="2"/>
+        <rect x="280" y="25" width="120" height="140" fill="rgba(30,184,138,0.04)" rx="2"/>
+        <rect x="400" y="25" width="120" height="140" fill="rgba(59,130,246,0.06)" rx="2"/>
+        <rect x="520" y="25" width="120" height="140" fill="rgba(30,184,138,0.04)" rx="2"/>
+        <rect x="640" y="25" width="40"  height="140" fill="rgba(59,130,246,0.06)" rx="2"/>
+
+        <!-- labels respiração -->
+        <text x="100"  y="20" fill="#1db88a" font-size="9" font-family="monospace" text-anchor="middle">EXPIRAÇÃO</text>
+        <text x="220"  y="20" fill="#3b82f6" font-size="9" font-family="monospace" text-anchor="middle">INSPIRAÇÃO</text>
+        <text x="340"  y="20" fill="#1db88a" font-size="9" font-family="monospace" text-anchor="middle">EXPIRAÇÃO</text>
+        <text x="460"  y="20" fill="#3b82f6" font-size="9" font-family="monospace" text-anchor="middle">INSPIRAÇÃO</text>
+        <text x="580"  y="20" fill="#1db88a" font-size="9" font-family="monospace" text-anchor="middle">EXPIRAÇÃO</text>
+
+        <!-- curva arterial com variação respiratória (PPV ~18%) -->
+        <!-- expiração: picos mais altos (~125 mmHg) -->
+        <!-- inspiração: picos mais baixos (~100 mmHg) -->
+        <!-- PAS alto na expiração → y≈55; PAS baixo na inspiração → y≈80 -->
+        <!-- PAD ~65 → y≈115 -->
+
+        <!-- expiração 1 — pulsos grandes -->
+        <path d="M 42,115 C 42,115 46,113 50,112 C 60,108 65,95 72,55 C 74,52 76,50 78,50 C 80,50 82,54 84,60 C 88,72 90,88 92,94 C 94,100 96,112 102,115" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+        <path d="M 102,115 C 102,115 106,113 110,112 C 120,108 125,95 132,55 C 134,52 136,50 138,50 C 140,50 142,54 144,60 C 148,72 150,88 152,94 C 154,100 156,112 160,115" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+
+        <!-- inspiração 1 — pulsos menores -->
+        <path d="M 160,115 C 160,115 164,113 168,112 C 178,110 183,100 190,78 C 192,75 194,73 196,73 C 198,73 200,77 202,83 C 206,92 208,105 210,110 C 212,114 214,115 220,115" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+        <path d="M 220,115 C 220,115 224,113 228,112 C 238,110 243,100 250,78 C 252,75 254,73 256,73 C 258,73 260,77 262,83 C 266,92 268,105 270,110 C 272,114 274,115 280,115" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+
+        <!-- expiração 2 -->
+        <path d="M 280,115 C 280,115 284,113 288,112 C 298,108 303,95 310,55 C 312,52 314,50 316,50 C 318,50 320,54 322,60 C 326,72 328,88 330,94 C 332,100 334,112 340,115" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+        <path d="M 340,115 C 340,115 344,113 348,112 C 358,108 363,95 370,55 C 372,52 374,50 376,50 C 378,50 380,54 382,60 C 386,72 388,88 390,94 C 392,100 394,112 400,115" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+
+        <!-- inspiração 2 -->
+        <path d="M 400,115 C 400,115 404,113 408,112 C 418,110 423,100 430,78 C 432,75 434,73 436,73 C 438,73 440,77 442,83 C 446,92 448,105 450,110 C 452,114 454,115 460,115" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+        <path d="M 460,115 C 460,115 464,113 468,112 C 478,110 483,100 490,78 C 492,75 494,73 496,73 C 498,73 500,77 502,83 C 506,92 508,105 510,110 C 512,114 514,115 520,115" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+
+        <!-- expiração 3 -->
+        <path d="M 520,115 C 520,115 524,113 528,112 C 538,108 543,95 550,55 C 552,52 554,50 556,50 C 558,50 560,54 562,60 C 566,72 568,88 570,94 C 572,100 574,112 580,115 C 590,115 630,115 680,115" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+
+        <!-- anotações PP máx e PP mín -->
+        <!-- PPmáx: expiração, pico=50, nadir=115 → PP=65px ≈ 55mmHg -->
+        <line x1="78"  y1="50" x2="78" y2="115" stroke="#f59e0b" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="62" y="82" fill="#fbbf24" font-size="9" font-family="monospace" text-anchor="middle" transform="rotate(-90,62,82)">PP máx</text>
+        <!-- PPmín: inspiração, pico=73, nadir=115 → PP=42px ≈ 38mmHg -->
+        <line x1="196" y1="73" x2="196" y2="115" stroke="#f59e0b" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="210" y="93" fill="#fbbf24" font-size="9" font-family="monospace" text-anchor="middle" transform="rotate(-90,210,93)">PP mín</text>
+
+        <!-- fórmula PPV -->
+        <text x="350" y="175" fill="#f59e0b" font-size="11" font-family="monospace" text-anchor="middle">PPV = (PPmáx − PPmín) / [(PPmáx + PPmín)/2] × 100   →   &gt;13% = responsivo</text>
+      </svg>
+    </div>
+    <div class="info-box" style="margin-top:10px">
+      <strong>PPV &gt; 13%</strong> em VM controlada (sem esforço espontâneo, VC ≥ 8 mL/kg) = responsivo a volume. Sens. ~80%, Esp. ~85%.<br><br>
+      <strong>Inválido em:</strong> arritmias, respiração espontânea, PEEP alta, VC &lt; 8 mL/kg, hipertensão pulmonar direita, tórax aberto.
+    </div>
+    <span class="ref">Marik PE et al. Dynamic changes in arterial waveform derived variables and fluid responsiveness. <em>Crit Care Med</em> 37(9):2642–2647, 2009. PMID: 19602972</span>
+    <span class="ref">Pulse pressure variation and fluid responsiveness. <em>Ann Intensive Care</em> 2015. PMC4397629</span>
+
+    <!-- ── Discordância PAI vs Cuff ── -->
+    <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Discordância entre PAI e esfigmomanômetro</strong>
+    <div class="two-col" style="margin-top:0">
+      <div class="info-box">
+        <strong>PAI &gt; Cuff (&gt; 10–15 mmHg)</strong><br>
+        Vasoconstricção periférica intensa (noradrenalina em altas doses). A PAI radial amplifica o pico sistólico. PAM continua confiável.
+      </div>
+      <div class="warn-box">
+        <strong>Cuff &gt; PAI (PAI falsamente baixa)</strong><br>
+        Sugere problema técnico: coágulo, posição incorreta, overdamping. Fazer flush, verificar posição. Se paciente bem clinicamente → confiar no cuff e investigar o cateter.
+      </div>
+    </div>
+    <span class="ref">Should I Target BP from Arterial Line or the Cuff? <em>Crit Care Med</em> 2025. PMC12733910</span>
+
+    <!-- ── Pitfalls ── -->
+    <div class="warn-box" style="margin-top:14px">
+      <strong>Pitfalls mais comuns na PAI:</strong>
+      <ul style="margin:6px 0 0 16px;line-height:1.8">
+        <li>Transdutor fora do nível flebostático → erro sistemático (cada 10 cm = ±7,5 mmHg)</li>
+        <li>Não zerear após mudar posição do paciente</li>
+        <li>Confiar na PAS em overdamping → vasopressor desnecessário</li>
+        <li>Usar linha arterial para infundir drogas → isquemia irreversível</li>
+        <li>Não identificar pulsus paradoxal → tamponamento não diagnosticado</li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+</main>
+<script src="../assets/app.js"></script>
+</body>
+</html>
