@@ -51,137 +51,162 @@
     <strong style="font-size:13px;color:var(--text);display:block;margin-bottom:8px">Anatomia da onda arterial</strong>
     <div class="svg-wrap">
       <span class="svg-caption">Curva de pressão arterial — componentes normais</span>
-      <svg viewBox="0 0 700 220" width="100%" style="display:block;max-width:700px;margin:0 auto" aria-label="Curva de pressão arterial com componentes anotados">
-        <!-- fundo grid -->
+      <svg viewBox="0 0 700 240" width="100%" style="display:block;max-width:700px;margin:0 auto" aria-label="Curva de pressão arterial com componentes anotados">
         <defs>
-          <pattern id="grid" width="50" height="40" patternUnits="userSpaceOnUse">
-            <path d="M 50 0 L 0 0 0 40" fill="none" stroke="#2a2a3a" stroke-width="0.5"/>
+          <pattern id="grid" width="60" height="50" patternUnits="userSpaceOnUse">
+            <path d="M 60 0 L 0 0 0 50" fill="none" stroke="#1a1a2e" stroke-width="0.8"/>
           </pattern>
         </defs>
-        <rect width="700" height="220" fill="#12121e" rx="6"/>
-        <rect width="700" height="220" fill="url(#grid)" rx="6"/>
+        <rect width="700" height="240" fill="#12121e" rx="6"/>
+        <rect width="700" height="240" fill="url(#grid)" rx="6"/>
 
-        <!-- eixo horizontal -->
-        <line x1="40" y1="185" x2="680" y2="185" stroke="#3a3a50" stroke-width="1"/>
-        <!-- eixo vertical -->
-        <line x1="40" y1="20" x2="40" y2="185" stroke="#3a3a50" stroke-width="1"/>
+        <!-- eixo Y -->
+        <line x1="52" y1="18" x2="52" y2="210" stroke="#2a2a3a" stroke-width="1"/>
+        <!-- eixo X -->
+        <line x1="52" y1="210" x2="688" y2="210" stroke="#2a2a3a" stroke-width="1"/>
 
-        <!-- marcas eixo Y -->
-        <text x="32" y="188" fill="#555570" font-size="9" font-family="monospace" text-anchor="end">0</text>
-        <text x="32" y="148" fill="#555570" font-size="9" font-family="monospace" text-anchor="end">40</text>
-        <text x="32" y="108" fill="#555570" font-size="9" font-family="monospace" text-anchor="end">80</text>
-        <text x="32" y="68"  fill="#555570" font-size="9" font-family="monospace" text-anchor="end">120</text>
-        <text x="32" y="28"  fill="#555570" font-size="9" font-family="monospace" text-anchor="end">160</text>
-        <text x="10" y="110" fill="#555570" font-size="9" font-family="monospace" transform="rotate(-90,10,110)" text-anchor="middle">mmHg</text>
+        <!-- escala Y: y = 210 - (v/160)*175  →  0→210, 40→166, 80→123, 120→79, 160→35 -->
+        <text x="44" y="213" fill="#3a3a50" font-size="9" font-family="monospace" text-anchor="end">0</text>
+        <text x="44" y="169" fill="#3a3a50" font-size="9" font-family="monospace" text-anchor="end">40</text>
+        <text x="44" y="125" fill="#3a3a50" font-size="9" font-family="monospace" text-anchor="end">80</text>
+        <text x="44" y="82"  fill="#3a3a50" font-size="9" font-family="monospace" text-anchor="end">120</text>
+        <text x="44" y="38"  fill="#3a3a50" font-size="9" font-family="monospace" text-anchor="end">160</text>
+        <text x="14" y="130" fill="#3a3a50" font-size="9" font-family="monospace" transform="rotate(-90,14,130)" text-anchor="middle">mmHg</text>
 
-        <!-- linhas de referência horizontais -->
-        <line x1="40" y1="148" x2="680" y2="148" stroke="#2a2a3a" stroke-width="0.8" stroke-dasharray="4,3"/>
-        <line x1="40" y1="108" x2="680" y2="108" stroke="#2a2a3a" stroke-width="0.8" stroke-dasharray="4,3"/>
-        <line x1="40" y1="68"  x2="680" y2="68"  stroke="#2a2a3a" stroke-width="0.8" stroke-dasharray="4,3"/>
+        <!-- linhas ref grid -->
+        <line x1="52" y1="166" x2="688" y2="166" stroke="#1a1a2e" stroke-width="1" stroke-dasharray="4,5"/>
+        <line x1="52" y1="123" x2="688" y2="123" stroke="#1a1a2e" stroke-width="1" stroke-dasharray="4,5"/>
+        <line x1="52" y1="79"  x2="688" y2="79"  stroke="#1a1a2e" stroke-width="1" stroke-dasharray="4,5"/>
 
-        <!-- CURVA — dois ciclos cardíacos -->
-        <!-- ciclo 1: começa em x=60, linha de base ~170 (PAD 70mmHg) -->
-        <!-- PAD = 70 → y = 185 - (70/160)*165 = 185-72 = 113 -->
-        <!-- PAS = 120 → y = 185 - (120/160)*165 = 185-124 = 61 -->
-        <!-- notch ~90mmHg → y = 185 - (90/160)*165 = 185-93 = 92 -->
+        <!--
+          y = 210 - (v/160)*175
+          PAD=70  → y = 210 - 76.6 = 133
+          PAS=120 → y = 210 - 131.3 = 79
+          notch=90→ y = 210 - 98.4 = 112
+          PAM≈87  → y = 210 - 95.2 = 115
+        -->
+
+        <!-- linha PAM (verde) -->
+        <line x1="52" y1="115" x2="658" y2="115" stroke="#1db88a" stroke-width="0.9" stroke-dasharray="6,5" opacity="0.5"/>
+        <text x="661" y="118" fill="#1db88a" font-size="9" font-family="monospace" opacity="0.8">PAM</text>
+
+        <!-- CICLO 1 — espaçado, x=68→280 -->
+        <!--
+          baseline: x=68, y=133
+          upstroke médio: x=110, y=105  (①)
+          PAS pico: x=140, y=76        (②)
+          descida sistólica: x=162, y=100 (③)
+          notch: x=178, y=112           (④)
+          diástole: x=205, y=124        (⑤)
+          nadir/PAD: x=255, y=133       (⑥)
+        -->
         <path d="
-          M 60,113
-          C 60,113 62,112 65,111
-          C 80,108 90,100 105,61
-          C 108,58 110,57 112,57
-          C 114,57 116,60 118,65
-          C 122,75 125,88 126,92
-          C 127,95 128,96 130,98
-          C 134,104 138,112 148,113
-          C 160,114 165,113 170,113
-        " fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          M 68,133
+          C 78,133 90,132 105,128
+          C 118,124 126,106 138,78
+          C 141,73 143,72 140,72
+          C 144,72 148,78 154,90
+          C 160,102 164,108 168,112
+          C 172,116 175,113 178,112
+          C 182,111 186,118 195,126
+          C 208,133 228,134 255,133
+          C 268,133 278,133 290,133
+        " fill="none" stroke="#3b82f6" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
 
-        <!-- ciclo 2: começa em x=170 -->
+        <!-- CICLO 2 fade -->
         <path d="
-          M 170,113
-          C 170,113 172,112 175,111
-          C 190,108 200,100 215,61
-          C 218,58 220,57 222,57
-          C 224,57 226,60 228,65
-          C 232,75 235,88 236,92
-          C 237,95 238,96 240,98
-          C 244,104 248,112 258,113
-          C 270,114 275,113 280,113
-        " fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          M 290,133
+          C 298,133 306,132 318,129
+          C 328,126 334,112 344,92
+          C 347,88 350,86 353,86
+          C 356,86 360,90 364,99
+          C 369,109 372,116 375,119
+          C 378,122 380,120 382,119
+          C 385,118 388,123 394,128
+          C 402,133 416,134 430,133
+          C 440,133 450,133 460,133
+        " fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>
 
-        <!-- ciclo 3 parcial (mostra o padrão contínuo) -->
+        <!-- CICLO 3 fade -->
         <path d="
-          M 280,113
-          C 280,113 282,112 285,111
-          C 300,108 310,100 325,61
-          C 328,58 330,57 332,57
-          C 334,57 336,60 338,65
-          C 342,75 345,88 346,92
-          C 347,95 348,96 350,98
-          C 354,104 358,112 368,113
-          C 380,114 385,113 390,113
-        " fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          M 460,133
+          C 468,133 476,132 488,129
+          C 498,126 504,112 514,92
+          C 517,88 520,86 523,86
+          C 526,86 530,90 534,99
+          C 539,109 542,116 545,119
+          C 548,122 550,120 552,119
+          C 555,118 558,123 564,128
+          C 572,133 590,134 620,133
+          C 648,133 668,133 685,133
+        " fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.25"/>
 
-        <!-- fade out -->
-        <path d="M 390,113 C 390,113 395,112 405,111 C 420,108 430,100 445,61" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" opacity="0.3"/>
+        <!-- ── MARCADORES: linhas líderes + badges estilo step-n (fora da área lotada) ── -->
+        <!-- Todos os badges ficam ACIMA da curva (y < 60), separados horizontalmente -->
 
-        <!-- ── ANOTAÇÕES ── ciclo 1 detalhado ── -->
+        <!-- badge helper: cx,cy = centro do badge; linha líder vai até cx,cy+9 (base do badge) -->
+        <!-- tamanho do badge: 18×18, rx=4 → x=cx-9, y=cy-9 -->
 
-        <!-- ① upstroke -->
-        <line x1="88" y1="95" x2="70" y2="50" stroke="#60a5fa" stroke-width="1" stroke-dasharray="3,2"/>
-        <text x="68" y="46" fill="#93c5fd" font-size="10" font-family="monospace" text-anchor="middle">① upstroke</text>
+        <!-- 1 upstroke: ponto x=110, y=105 → badge centro em (90,42) -->
+        <line x1="110" y1="102" x2="90" y2="51" stroke="#3b82f6" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.45"/>
+        <rect x="81"  y="33" width="18" height="18" rx="4" fill="rgba(59,130,246,0.18)" stroke="none"/>
+        <text x="90"  y="42" fill="#93c5fd" font-size="11" font-family="monospace" text-anchor="middle" dominant-baseline="middle" font-weight="500">1</text>
 
-        <!-- ② pico sistólico PAS -->
-        <line x1="112" y1="57" x2="112" y2="32" stroke="#60a5fa" stroke-width="1" stroke-dasharray="3,2"/>
-        <text x="113" y="28" fill="#93c5fd" font-size="10" font-family="monospace" text-anchor="start">② PAS (pico)</text>
-        <!-- linha horizontal PAS -->
-        <line x1="60" y1="57" x2="172" y2="57" stroke="#3b82f6" stroke-width="0.8" stroke-dasharray="5,3" opacity="0.5"/>
-        <text x="180" y="60" fill="#3b82f6" font-size="9" font-family="monospace">120 mmHg</text>
+        <!-- 2 PAS pico: badge centro em (170,31) -->
+        <line x1="140" y1="69" x2="170" y2="40" stroke="#3b82f6" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.45"/>
+        <rect x="161" y="22" width="18" height="18" rx="4" fill="rgba(59,130,246,0.18)" stroke="none"/>
+        <text x="170" y="31" fill="#93c5fd" font-size="11" font-family="monospace" text-anchor="middle" dominant-baseline="middle" font-weight="500">2</text>
 
-        <!-- ③ descida sistólica -->
-        <line x1="122" y1="76" x2="142" y2="48" stroke="#60a5fa" stroke-width="1" stroke-dasharray="3,2"/>
-        <text x="145" y="44" fill="#93c5fd" font-size="10" font-family="monospace">③ descida</text>
+        <!-- 3 descida: badge centro em (210,42) -->
+        <line x1="162" y1="97" x2="210" y2="51" stroke="#3b82f6" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.45"/>
+        <rect x="201" y="33" width="18" height="18" rx="4" fill="rgba(59,130,246,0.18)" stroke="none"/>
+        <text x="210" y="42" fill="#93c5fd" font-size="11" font-family="monospace" text-anchor="middle" dominant-baseline="middle" font-weight="500">3</text>
 
-        <!-- ④ notch dicrótico -->
-        <circle cx="130" cy="92" r="4" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
-        <line x1="134" y1="88" x2="155" y2="72" stroke="#f59e0b" stroke-width="1" stroke-dasharray="3,2"/>
-        <text x="157" y="70" fill="#fbbf24" font-size="10" font-family="monospace">④ notch dicrótico</text>
+        <!-- 4 notch: badge centro em (256,42) amber -->
+        <line x1="178" y1="109" x2="256" y2="51" stroke="#f59e0b" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.5"/>
+        <rect x="247" y="33" width="18" height="18" rx="4" fill="rgba(245,158,11,0.18)" stroke="none"/>
+        <text x="256" y="42" fill="#fbbf24" font-size="11" font-family="monospace" text-anchor="middle" dominant-baseline="middle" font-weight="500">4</text>
 
-        <!-- ⑤ curva diastólica -->
-        <line x1="142" y1="108" x2="162" y2="138" stroke="#60a5fa" stroke-width="1" stroke-dasharray="3,2"/>
-        <text x="164" y="142" fill="#93c5fd" font-size="10" font-family="monospace">⑤ diástole</text>
+        <!-- 5 diástole: badge centro em (305,42) -->
+        <line x1="205" y1="121" x2="305" y2="51" stroke="#3b82f6" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.45"/>
+        <rect x="296" y="33" width="18" height="18" rx="4" fill="rgba(59,130,246,0.18)" stroke="none"/>
+        <text x="305" y="42" fill="#93c5fd" font-size="11" font-family="monospace" text-anchor="middle" dominant-baseline="middle" font-weight="500">5</text>
 
-        <!-- ⑥ PAD nadir -->
-        <line x1="170" y1="113" x2="200" y2="155" stroke="#60a5fa" stroke-width="1" stroke-dasharray="3,2"/>
-        <text x="202" y="159" fill="#93c5fd" font-size="10" font-family="monospace">⑥ PAD (nadir)</text>
-        <!-- linha horizontal PAD -->
-        <line x1="60" y1="113" x2="390" y2="113" stroke="#3b82f6" stroke-width="0.8" stroke-dasharray="5,3" opacity="0.3"/>
-        <text x="180" y="122" fill="#3b82f6" font-size="9" font-family="monospace">70 mmHg</text>
-
-        <!-- PAM -->
-        <line x1="60" y1="93" x2="390" y2="93" stroke="#1db88a" stroke-width="0.8" stroke-dasharray="5,3" opacity="0.5"/>
-        <text x="395" y="96" fill="#1db88a" font-size="9" font-family="monospace">PAM ~87</text>
+        <!-- 6 PAD nadir: badge centro em (355,160) -->
+        <line x1="255" y1="133" x2="355" y2="151" stroke="#3b82f6" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.45"/>
+        <rect x="346" y="151" width="18" height="18" rx="4" fill="rgba(59,130,246,0.18)" stroke="none"/>
+        <text x="355" y="160" fill="#93c5fd" font-size="11" font-family="monospace" text-anchor="middle" dominant-baseline="middle" font-weight="500">6</text>
       </svg>
+    </div>
+
+    <!-- legenda fora do SVG, usando .step-n real -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px 24px;margin-top:10px;padding:10px 4px">
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--text2)"><span class="step-n">1</span> Upstroke sistólico</div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--text2)"><span class="step-n" style="color:#fbbf24;background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.3)">4</span> Notch dicrótico — fechamento da válvula aórtica</div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--text2)"><span class="step-n">2</span> PAS — pico sistólico (120 mmHg)</div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--text2)"><span class="step-n">5</span> Curva diastólica</div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--text2)"><span class="step-n">3</span> Descida sistólica</div>
+      <div style="display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--text2)"><span class="step-n">6</span> PAD — nadir diastólico (70 mmHg)</div>
     </div>
     <div class="two-col" style="margin-top:12px">
       <div style="font-size:13px;color:var(--text2);line-height:1.7">
-        <strong style="color:var(--text)">① Subida sistólica (upstroke)</strong><br>
+        <strong style="color:var(--text)">1 — Subida sistólica (upstroke)</strong><br>
         Abertura da válvula aórtica → ejeção rápida. Inclinação reflete contratilidade e resistência vascular.
         <br><br>
-        <strong style="color:var(--text)">② Pico sistólico (PAS)</strong><br>
+        <strong style="color:var(--text)">2 — Pico sistólico (PAS)</strong><br>
         Pressão máxima. Em artérias periféricas (radial vs. femoral), o pico é amplificado — PAS radial pode ser 10–20 mmHg maior que aórtica.
         <br><br>
-        <strong style="color:var(--text)">③ Descida sistólica</strong><br>
+        <strong style="color:var(--text)">3 — Descida sistólica</strong><br>
         Fim da ejeção, queda progressiva antes do fechamento aórtico.
       </div>
       <div style="font-size:13px;color:var(--text2);line-height:1.7">
-        <strong style="color:var(--text)">④ Incisura dicrótica (dicrotic notch)</strong><br>
+        <strong style="color:var(--text)">4 — Incisura dicrótica (dicrotic notch)</strong><br>
         Fechamento da válvula aórtica — separa sístole de diástole. Em choque séptico: notch precoce e mal definido. Em estenose aórtica: tardio e atenuado.
         <br><br>
-        <strong style="color:var(--text)">⑤ Curva diastólica</strong><br>
+        <strong style="color:var(--text)">5 — Curva diastólica</strong><br>
         Pressão cai até o próximo ciclo. Quanto mais rígida a aorta (idoso, HAS), mais abrupta.
         <br><br>
-        <strong style="color:var(--text)">⑥ Nadir diastólico (PAD)</strong><br>
+        <strong style="color:var(--text)">6 — Nadir diastólico (PAD)</strong><br>
         Pressão mínima. Reflete RVS e tempo de diástole.
       </div>
     </div>
