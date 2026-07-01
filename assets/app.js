@@ -20,6 +20,20 @@ const MODULES = {
     root: 'hemo/',
     color: '#7c6ff7',
   },
+  neuro: {
+    id: 'neuro',
+    label: 'Neuro Guide',
+    subtitle: 'Neurocrítico',
+    root: 'neuro/',
+    color: '#9b6ff7',
+  },
+  proc: {
+    id: 'proc',
+    label: 'Procedimentos',
+    subtitle: 'Dúvidas de plantão',
+    root: 'proc/',
+    color: '#3b82f6',
+  },
 };
 
 // ── Índice de páginas por módulo ─────────────────────────────
@@ -62,6 +76,26 @@ const MODULE_PAGES = {
     {id:'calc-hemo',    file:'calc-hemo.html',    cat:'Ferramentas',              label:'Calculadoras',            title:'Calculadoras Hemodinâmicas',            subtitle:'Δ pCO₂ · VCI · VPP · Winter · DO₂'},
     {id:'pratica',      file:'pratica.html',      cat:'Ferramentas',              label:'Casos práticos',          title:'Prática — Casos Simulados',             subtitle:'4 casos cobrindo os 4 quadrantes'},
     {id:'siglas',       file:'siglas.html',       cat:'Ferramentas',              label:'Siglas',                  title:'Glossário de Siglas',                   subtitle:'Referência rápida de siglas hemodinâmicas'},
+    {id:'pearls',       file:'pearls.html',       cat:'Pearls & Pitfalls',        label:'Cards clínicos',          title:'Pearls & Pitfalls',                     subtitle:'Cenários de plantão: acerto, erro comum e o porquê do mecanismo'},
+    {id:'assistente',   file:'assistente.html',   cat:'Assistente IA',            label:'Assistente de conduta',   title:'Assistente de Conduta (IA)',            subtitle:'Discuta o caso hemodinâmico e receba sugestão de conduta'},
+  ],
+  neuro: [
+    {id:'fisio',        file:'fisio.html',        cat:'Fundamentos',              label:'Fisiologia neuro',        title:'Fisiologia do Neurocrítico',            subtitle:'PIC, PPC, autorregulação cerebral e limiar de isquemia'},
+    {id:'tce',          file:'tce.html',          cat:'Patologias',               label:'TCE grave',               title:'TCE Grave — Manejo na UTI',             subtitle:'Metas de PPC/PIC, osmoterapia e estratégia ventilatória'},
+    {id:'avc-i',        file:'avc-i.html',        cat:'Patologias',               label:'AVC isquêmico',           title:'AVC Isquêmico Agudo',                   subtitle:'Janela terapêutica, trombólise e trombectomia'},
+    {id:'avc-h',        file:'avc-h.html',        cat:'Patologias',               label:'AVC hemorrágico',         title:'AVC Hemorrágico — HSA e HIP',           subtitle:'Hemorragia subaracnóidea e intraparenquimatosa'},
+    {id:'enc',          file:'enc.html',          cat:'Patologias',               label:'Encefalopatias',          title:'Encefalopatias & Status Epiléptico',    subtitle:'Delirium, status não convulsivo e encefalopatia hepática'},
+    {id:'sedoanalgesia',file:'sedoanalgesia.html',cat:'Farmacologia',             label:'Sedoanalgesia neuro',     title:'Sedoanalgesia no Paciente Neuro',       subtitle:'Particularidades: evitar hipnóticos que elevam PIC, RASS-alvo, CIWA'},
+    {id:'calc-neuro',   file:'calc-neuro.html',   cat:'Ferramentas',              label:'Calculadoras',            title:'Calculadoras Neurológicas',             subtitle:'PPC · Osmolaridade · GCS · NIHSS · Hunt & Hess · Fisher'},
+    {id:'pearls',       file:'pearls.html',       cat:'Pearls & Pitfalls',        label:'Cards clínicos',          title:'Pearls & Pitfalls',                     subtitle:'Cenários de plantão: acerto, erro comum e o porquê do mecanismo'},
+    {id:'assistente',   file:'assistente.html',   cat:'Assistente IA',            label:'Assistente de conduta',   title:'Assistente de Conduta (IA)',            subtitle:'Discuta o caso neurológico e receba sugestão de conduta'},
+  ],
+  proc: [
+    {id:'acessos',      file:'acessos.html',      cat:'Dispositivos',             label:'Acessos vasculares',      title:'Acessos Vasculares',                    subtitle:'CVC, Shilley, acesso periférico difícil — dúvidas de plantão'},
+    {id:'vias-aereas',  file:'vias-aereas.html',  cat:'Dispositivos',             label:'Via aérea & traqueostomia', title:'Via Aérea & Traqueostomia',           subtitle:'IOT, TOT com sistema fechado, troca de traqueostomia'},
+    {id:'drenagem',     file:'drenagem.html',      cat:'Dispositivos',            label:'Drenagem & punções',      title:'Drenagem & Punções',                    subtitle:'Dreno torácico, toracocentese, paracentese, LP'},
+    {id:'monitorizacao',file:'monitorizacao.html', cat:'Dispositivos',            label:'Monitorização invasiva',  title:'Monitorização Invasiva',                subtitle:'Linha arterial, PAI, cateter de Swan-Ganz'},
+    {id:'pearls',       file:'pearls.html',       cat:'Pearls & Pitfalls',        label:'Dúvidas de plantão',      title:'Dúvidas de Plantão',                    subtitle:'As perguntas que ninguém responde no guia clássico'},
   ],
 };
 

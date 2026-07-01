@@ -218,6 +218,42 @@ const pearls = [
     porque: 'Pneumotórax hipertensivo e auto-PEEP extremo comprimem o coração e as grandes veias — DC cai a zero, mas o ritmo persiste (AESP). A desconexão do ventilador é simultânea ao diagnóstico e ao tratamento: custo zero, benefício potencial máximo.'
   },
 
+  // ── VNI & Alto Fluxo ───────────────────────────────────────
+  {
+    categoria: 'VNI & Alto Fluxo',
+    titulo: 'Índice ROX: quando parar a CNAF antes que seja tarde',
+    cenario: 'Paciente hipoxêmico em CNAF 60 L/min, FiO₂ 0,8. SpO₂ 91%, FR 28. Plantonista mantém a cânula "ainda está saturando".',
+    pearl: 'Calcule o índice ROX = (SpO₂/FiO₂) / FR. Aqui: (91/80) / 28 = 1,13/28 ≈ 0,04 — mas o cálculo correto usa FiO₂ como decimal: (91/0,8) / 28 = 4,06. ROX < 3,85 em 2h ou < 4,88 em 6–12h: alto risco de falha → intubar sem demora. ROX ≥ 4,88: baixo risco, manter CNAF.',
+    pitfall: 'Manter CNAF por mais tempo "para ver" em paciente com ROX baixo é a armadilha clássica. A CNAF mascara o aumento do trabalho respiratório — o paciente parece "confortável" até colapsar. IOT tardia em fadiga respiratória é mais arriscada que IOT oportuna.',
+    porque: 'Roca et al. (AJRCCM 2019): ROX avaliado em 2, 6 e 12h de CNAF. ROX < 3,85 prediz falha com sensibilidade e especificidade razoáveis. O mecanismo da CNAF: lavagem de espaço morto + PEEP intrínseco leve + aquecimento/umidificação. Quando esses efeitos não compensam o drive alto, a FR e o trabalho respiratório aumentam — ROX captura essa deterioração antes da dessaturação grave.'
+  },
+  {
+    categoria: 'VNI & Alto Fluxo',
+    titulo: 'DPOC exacerbado: VNI é tratamento, não último recurso',
+    cenario: 'DPOC com gasometria: pH 7,28, PaCO₂ 72 mmHg. Plantonista opta por O₂ por cateter nasal e "aguardar melhora com broncodilatador antes de tentar VNI".',
+    pearl: 'DPOC com acidose hipercápnica (pH < 7,35) é indicação de primeira linha para VNI (BiPAP). Iniciar imediatamente — não após falha de medidas convencionais. IPAP 12–16 / EPAP 4–6 cmH₂O. Meta: pH > 7,35 e FR < 25 em 1–2 h. Reavaliar gasometria em 1 h.',
+    pitfall: 'Usar O₂ por cateter nasal em DPOC hipercápnico sem VNI é erro grave: a hiperóxia eleva PaCO₂ ainda mais (inibe reflexo hipóxico, aumenta efeito Haldane, piora relação V/Q). Adiar VNI até "ver como evolui" frequentemente leva à IOT de emergência que era evitável.',
+    porque: 'Brochard et al. (NEJM 1995) e múltiplas metanálises: VNI em DPOC com acidose hipercápnica reduz IOT em ~50%, mortalidade hospitalar em ~50% e tempo de internação. O mecanismo: redução do trabalho respiratório pela pressão de suporte + melhora do esvaziamento alveolar pelo EPAP contra auto-PEEP. A janela é estreita — pH < 7,25 tem taxa de falha de VNI muito maior.'
+  },
+
+  // ── BNM ────────────────────────────────────────────────────
+  {
+    categoria: 'BNM',
+    titulo: 'Paralisar sem sedar: o erro imperdonável',
+    cenario: 'SDRA grave com assincronia. Residente inicia cisatracúrio sem verificar RASS. Paciente estava com RASS −1 (midazolam em dose baixa).',
+    pearl: 'Bloqueio neuromuscular EXIGE sedação profunda (RASS −4/−5, ou BIS 40–60) antes e durante toda a infusão. Paralisar paciente consciente é evento adverso grave: o paciente sente tudo (dor, dispneia, ansiedade) sem conseguir comunicar. Verificar RASS e BIS antes de ligar a bomba de BNM.',
+    pitfall: 'A urgência da SDRA grave às vezes leva a iniciar BNM precipitadamente. Checklist antes do BNM: sedação profunda confirmada? Analgesia otimizada? TOF baseline estabelecido? Proteção ocular prescrita? Profilaxia de TVP ajustada? Cada item é obrigatório.',
+    porque: 'Awareness durante BNM é uma das experiências mais traumáticas e deletérias para o paciente — associada a PTSD severo. Além disso, sem sedação adequada, o estresse catecolaminérgico do paciente consciente paradoxalmente aumenta o drive ventilatório e piora a assincronia que o BNM deveria resolver. Sedação profunda é pré-requisito absoluto.'
+  },
+  {
+    categoria: 'BNM',
+    titulo: 'TOF: monitorar para não paralisar além do necessário',
+    cenario: 'Cisatracúrio em infusão há 36 h. Equipe nunca fez TOF. Tenta reduzir dose ao "tatear".',
+    pearl: 'Monitorar BNM com TOF (train-of-four) estimulando nervo ulnar e contando contrações. Alvo: 1–2/4 contrações. TOF 0/4 = bloqueio profundo desnecessário (aumenta risco de fraqueza adquirida). TOF 4/4 = paciente escapando do BNM — risco de assincronia e P-SILI retornando. Avaliar TOF de 6/6 h.',
+    pitfall: 'Infundir BNM "na dose fixa" sem TOF é imprecisão perigosa: a dose de cisatracúrio necessária varia com temperatura, pH, interações medicamentosas e eliminação de Hofmann individual. Sem TOF, subdosa ou superdosa — ambos com consequências.',
+    porque: 'Fraqueza adquirida na UTI (ICUAW) ocorre em 25–50% dos pacientes com BNM prolongado + corticoide. BNM além do necessário acumula bloqueio residual nos dias seguintes ao desmame — que se soma ao VIDD e prolonga dependência de VM. TOF permite titular a dose mínima eficaz.'
+  },
+
   // ── Modos & Parâmetros ─────────────────────────────────────
   {
     categoria: 'Modos & Parâmetros',
@@ -226,6 +262,42 @@ const pearls = [
     pearl: 'Alvo de SpO₂ em VM: 92–96% (88–92% em SDRA). Reduza FiO₂ sistematicamente assim que o paciente estabilizar. FiO₂ >0,6 por tempo prolongado causa toxicidade pulmonar — atelectasia de absorção e lesão epitelial por estresse oxidativo.',
     pitfall: '"Tá saturando bem" não é motivo para manter FiO₂ alta. Hiperóxia é prejudicial em pacientes críticos — PILOT Trial (NEJM 2022) mostrou que SpO₂ alvo de 96–100% em VM não melhora desfechos vs alvo conservador de 90–94%.',
     porque: 'FiO₂ >0,6 por >24–48 h: o nitrogênio é lavado dos alvéolos → colapso por absorção + espécies reativas de oxigênio agridem o epitélio alveolar tipo II. O pulmão já lesado (SDRA, pneumonia) é especialmente vulnerável a esse segundo hit.'
+  },
+
+  // ── TCE ─────────────────────────────────────────────────────
+  {
+    categoria: 'TCE',
+    titulo: 'SDRA + TCE: a hipercapnia permissiva que você não pode usar',
+    cenario: 'Politrauma: TCE grave (Glasgow 7) + contusão pulmonar bilateral. SDRA confirmada, P/F 140. Equipe tenta LTVV mas PaCO₂ sobe para 55 mmHg com VC 6 mL/kg.',
+    pearl: 'Hipercapnia permissiva é CONTRAINDICADA no TCE com PIC elevada ou risco de herniação. Cada mmHg de PaCO₂ acima de 40 aumenta FSC ~4%, elevando PIC. Estratégia: LTVV + ↑FR até 35 irpm para manter PaCO₂ 35–40 mmHg. Se FR máxima não controla PaCO₂: considerar ECMO-VV ou NaHCO₃ para compensar acidose e ganhar espaço de FR.',
+    pitfall: 'Aceitar PaCO₂ 50–55 mmHg "como em qualquer SDRA" em paciente com TCE grave é um erro que pode precipitar herniação. O conflito VM-TCE não tem solução perfeita — mas hipercapnia no TCE ativo é a opção mais perigosa.',
+    porque: 'Vasoregulação cerebral: CO₂ é vasodilatador cerebral potente via mecanismo mediado por pH do LCR. PaCO₂ ↑10 mmHg → FSC ↑40% → VIC ↑ → PIC ↑. Com complacência intracraniana reduzida (edema + hematoma), pequenas elevações de PaCO₂ causam elevações desproporcionais de PIC. Brain Trauma Foundation 2023: alvo PaCO₂ 35–40 mmHg no TCE grave.'
+  },
+  {
+    categoria: 'TCE',
+    titulo: 'PEEP e drenagem venosa jugular: quanto é seguro',
+    cenario: 'TCE grave intubado. SDRA leve associada (P/F 230). Equipe eleva PEEP de 5 para 12 para melhorar oxigenação.',
+    pearl: 'PEEP alto eleva pressão intratorácica → reduz drenagem venosa jugular → ↑ PIC. No TCE, prefira PEEP mínimo (5–8 cmH₂O) que garanta SpO₂ ≥ 95% (alvo mais conservador que na SDRA). Só eleve PEEP acima de 8 com monitorização de PIC em paralelo — verifique se PIC sobe e avalie tradeoff.',
+    pitfall: 'Aplicar a tabela ARDSnet de PEEP/FiO₂ sem considerar o TCE pode elevar PEEP a 14–18 cmH₂O em SDRA moderada — valores que podem elevar PIC significativamente. No TCE, SpO₂ 95–98% > SpO₂ 88–95% da SDRA padrão.',
+    porque: 'A cabeça elevada a 30–45° e pescoço neutro facilita drenagem jugular — o posicionamento importa tanto quanto o PEEP. Com cada cmH₂O de PEEP acima de 5, a transmissão para a PIC é variável (~0,2–0,5 cmH₂O) dependendo da complacência pulmonar e cerebral. Em pulmão muito rígido (SDRA grave), mais PEEP transmite menos pressão — o paradoxo do TCE+SDRA.'
+  },
+
+  // ── Sedoanalgesia ──────────────────────────────────────────
+  {
+    categoria: 'Sedoanalgesia',
+    titulo: 'Propofol infusion syndrome: a complicação silenciosa',
+    cenario: 'Paciente em VM há 5 dias com propofol 40 mcg/kg/min para sedação profunda. Surgem acidose metabólica de nova origem, triglicérides 380 mg/dL e lactato 3,1 sem causa identificada.',
+    pearl: 'Suspeite de PRIS (Propofol Infusion Syndrome) em qualquer paciente com propofol > 48–72 h em doses altas: acidose metabólica + ↑triglicérides + ↑lactato + ↑CK (rabdomiólise) + arritmia ventricular. Suspenda imediatamente o propofol. PRIS tem mortalidade 30–66% se não reconhecido.',
+    pitfall: 'O PRIS é frequentemente confundido com deterioração da doença de base ou com sepse de foco não identificado. A tríade acidose + triglicérides + lactato em paciente com propofol prolongado é diagnóstica até prova em contrário. Monitorar TG e lactato diariamente em propofol > 48 h.',
+    porque: 'O propofol inibe a cadeia transportadora de elétrons na mitocôndria e o metabolismo de ácidos graxos — especialmente em doses > 4–5 mg/kg/h por > 48 h. A carga lipídica (propofol é emulsão 10% em lipídeo) também contribui para hipertrigliceridemia. Pediatria tem risco maior; adultos com doses altas e prolongadas são o grupo de risco na UTI.'
+  },
+  {
+    categoria: 'Sedoanalgesia',
+    titulo: 'Dexmedetomidina no desmame: o sedativo que não suprime o drive',
+    cenario: 'Paciente em desmame com PSV 8/PEEP 6. Ainda precisa de sedação (agitado, RASS +1). Médico usa propofol, que deprime o drive respiratório.',
+    pearl: 'Dexmedetomidina é o sedativo preferencial no desmame ativo: não suprime drive respiratório, permite ventilação espontânea coordenada e o paciente pode cooperar. Dose: 0,2–0,7 mcg/kg/h sem bolus de ataque na maioria dos casos. RASS alvo −1 a 0 durante PSV.',
+    pitfall: 'Sedar paciente em desmame com propofol ou midazolam em dose que suprima drive respiratório é contraproducente: a PSV precisa de esforço do paciente para funcionar. Propofol reduz FR e volume corrente — transforma PSV em modo quase-controlado e dificulta avaliação da capacidade real de desmame.',
+    porque: 'Dexmedetomidina age em receptores α2 adrenérgicos centrais — produz sedação e ansiólise sem depressão de centro respiratório bulbar. SEDCOM trial: dexmedetomidina vs midazolam — menor duração de VM (3,7 vs 5,6 dias), menor delirium, mesma mortalidade. Em desmame, o paciente pode ser acordado facilmente para o SBT mesmo com dexmedetomidina em infusão.'
   }
 ];
 

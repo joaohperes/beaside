@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neuro Guide — be·aside</title>
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+  .lp-hero{padding:36px 0 28px;border-bottom:1px solid var(--border);margin-bottom:32px}
+  .lp-eyebrow{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .lp-eyebrow::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
+  .lp-title{font-size:28px;font-weight:600;color:#e8ecf2;line-height:1.15;letter-spacing:-.02em;margin-bottom:12px}
+  .lp-desc{font-size:13.5px;color:var(--text2);line-height:1.75;max-width:580px}
+  .lp-start{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-family:var(--mono);font-size:11px;color:var(--accent);background:rgba(var(--accent-rgb),.08);border:1px solid rgba(var(--accent-rgb),.25);padding:8px 16px;border-radius:6px;text-decoration:none;transition:all .15s}
+  .lp-start:hover{background:rgba(var(--accent-rgb),.15);border-color:rgba(var(--accent-rgb),.45)}
+  .lp-start-arrow{transition:transform .15s}
+  .lp-start:hover .lp-start-arrow{transform:translateX(3px)}
+
+  .lp-wip{font-family:var(--mono);font-size:11px;color:var(--text3);background:var(--bg3);border:1px dashed var(--border2);border-radius:6px;padding:10px 14px;margin-top:20px;display:inline-block}
+
+  .lp-section-label{font-family:var(--mono);font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--text3);margin:28px 0 12px}
+  .lp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px}
+  @media(max-width:600px){.lp-grid{grid-template-columns:1fr}}
+
+  .lp-card{display:block;text-decoration:none;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 18px;transition:border-color .15s,background .15s}
+  .lp-card:hover{border-color:rgba(var(--accent-rgb),.4);background:var(--bg3)}
+  .lp-card-cat{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:6px}
+  .lp-card-title{font-size:13.5px;font-weight:600;color:#e8ecf2;margin-bottom:4px}
+  .lp-card-sub{font-size:12px;color:var(--text3);line-height:1.5}
+  .lp-card.empty{opacity:.45;pointer-events:none}
+</style>
+</head>
+<body data-module="neuro" data-page="">
+<main class="main">
+
+  <div class="lp-hero">
+    <div class="lp-eyebrow">Neuro Guide</div>
+    <div class="lp-title">Paciente Neurocrítico</div>
+    <p class="lp-desc">
+      TCE grave, AVC isquêmico e hemorrágico, status epiléptico e encefalopatias — abordados pela lógica da pressão de perfusão cerebral. O guia parte da fisiologia (PIC, PPC, autorregulação) e organiza o raciocínio por condição, com ênfase nas metas hemodinâmicas e ventilatórias específicas do paciente neurológico.
+    </p>
+    <a class="lp-start" href="fisio.html">Começar pela fisiologia <span class="lp-start-arrow">→</span></a>
+    <div class="lp-wip">⚙ Conteúdo em desenvolvimento — páginas marcadas como vazias serão preenchidas em breve.</div>
+  </div>
+
+  <div class="lp-section-label">Fundamentos</div>
+  <div class="lp-grid">
+    <a class="lp-card" href="fisio.html">
+      <div class="lp-card-cat">Fundamentos</div>
+      <div class="lp-card-title">Fisiologia do neurocrítico</div>
+      <div class="lp-card-sub">PIC, PPC, autorregulação cerebral e limiar de isquemia</div>
+    </a>
+  </div>
+
+  <div class="lp-section-label">Patologias</div>
+  <div class="lp-grid">
+    <a class="lp-card" href="tce.html">
+      <div class="lp-card-cat">Patologias</div>
+      <div class="lp-card-title">TCE grave</div>
+      <div class="lp-card-sub">Metas de PPC/PIC, osmoterapia e estratégia ventilatória</div>
+    </a>
+    <a class="lp-card" href="avc-i.html">
+      <div class="lp-card-cat">Patologias</div>
+      <div class="lp-card-title">AVC isquêmico</div>
+      <div class="lp-card-sub">Janela terapêutica, trombólise e trombectomia</div>
+    </a>
+    <a class="lp-card" href="avc-h.html">
+      <div class="lp-card-cat">Patologias</div>
+      <div class="lp-card-title">AVC hemorrágico</div>
+      <div class="lp-card-sub">Hemorragia subaracnóidea e intraparenquimatosa</div>
+    </a>
+    <a class="lp-card" href="enc.html">
+      <div class="lp-card-cat">Patologias</div>
+      <div class="lp-card-title">Encefalopatias & Status epiléptico</div>
+      <div class="lp-card-sub">Delirium, status não convulsivo e encefalopatia hepática</div>
+    </a>
+  </div>
+
+  <div class="lp-section-label">Farmacologia & Ferramentas</div>
+  <div class="lp-grid">
+    <a class="lp-card" href="sedoanalgesia.html">
+      <div class="lp-card-cat">Farmacologia</div>
+      <div class="lp-card-title">Sedoanalgesia no neuro</div>
+      <div class="lp-card-sub">Hipnóticos que elevam PIC, RASS-alvo por condição, CIWA</div>
+    </a>
+    <a class="lp-card" href="calc-neuro.html">
+      <div class="lp-card-cat">Ferramentas</div>
+      <div class="lp-card-title">Calculadoras</div>
+      <div class="lp-card-sub">PPC, osmolaridade, GCS, NIHSS, Hunt & Hess, Fisher</div>
+    </a>
+    <a class="lp-card" href="pearls.html">
+      <div class="lp-card-cat">Pearls & Pitfalls</div>
+      <div class="lp-card-title">Cards clínicos</div>
+      <div class="lp-card-sub">Cenários de plantão: o acerto, o erro comum e o mecanismo</div>
+    </a>
+    <a class="lp-card" href="assistente.html">
+      <div class="lp-card-cat">Assistente IA</div>
+      <div class="lp-card-title">Assistente de conduta</div>
+      <div class="lp-card-sub">Discuta o caso neurológico e receba sugestão de conduta</div>
+    </a>
+  </div>
+
+</main>
+<script src="../assets/app.js"></script>
+</body>
+</html>

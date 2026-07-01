@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dúvidas de Plantão — be·aside</title>
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+  :root{--proc:#3b82f6}
+  .dv-filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
+  .dv-tag{font-family:var(--mono);font-size:11px;color:var(--text2);background:var(--bg3);border:1px solid var(--border);padding:5px 12px;border-radius:20px;cursor:pointer;transition:all .15s}
+  .dv-tag:hover{border-color:var(--border2);color:var(--text)}
+  .dv-tag.active{color:var(--proc);background:rgba(59,130,246,.1);border-color:rgba(59,130,246,.35)}
+
+  .dv-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;margin-bottom:16px;overflow:hidden}
+  .dv-q{display:flex;align-items:flex-start;gap:14px;padding:16px 20px;cursor:pointer;user-select:none}
+  .dv-q:hover{background:var(--bg3)}
+  .dv-q-icon{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--proc);background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);padding:3px 8px;border-radius:5px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+  .dv-q-text{flex:1;font-size:14px;font-weight:500;color:#e8ecf2;line-height:1.5}
+  .dv-arrow{color:var(--text3);font-family:var(--mono);font-size:12px;flex-shrink:0;margin-top:2px;transition:transform .15s}
+  .dv-card.open .dv-arrow{transform:rotate(90deg)}
+
+  .dv-a{display:none;border-top:1px solid var(--border);padding:16px 20px;font-size:13.5px;line-height:1.7;color:var(--text2)}
+  .dv-card.open .dv-a{display:block}
+  .dv-a strong{color:#e8ecf2;font-weight:500}
+  .dv-a .dv-resposta{border-left:3px solid var(--proc);background:rgba(59,130,246,.06);border-radius:0 6px 6px 0;padding:11px 15px;margin-bottom:12px;color:var(--text)}
+  .dv-a .dv-racional{border-left:3px solid var(--border2);background:var(--bg3);border-radius:0 6px 6px 0;padding:11px 15px;font-size:13px;color:var(--text2)}
+  .dv-a .dv-lbl{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:5px}
+  .dv-a .dv-resposta .dv-lbl{color:var(--proc)}
+  .dv-a .dv-racional .dv-lbl{color:var(--text3)}
+  .dv-a ul{margin:6px 0 6px 18px;padding:0}
+  .dv-a li{margin:4px 0}
+  .dv-empty{color:var(--text3);font-size:13px;padding:20px 0}
+</style>
+</head>
+<body data-module="proc" data-page="pearls">
+<main class="main">
+<section class="section" id="pearls">
+  <h1 class="section-title">Dúvidas de Plantão</h1>
+  <p class="section-subtitle">As perguntas que surgem na beira do leito e que nenhum guia clássico responde diretamente.</p>
+
+  <div class="dv-filters" id="dv-filters"></div>
+  <div id="dv-cards"></div>
+</section>
+</main>
+<script src="../assets/app.js"></script>
+<script>
+// ============================================================
+// Dados — adicione novas dúvidas aqui.
+// Campos: categoria, pergunta, resposta (HTML simples), racional
+// ============================================================
+const duvidas = [
+
+  // ── Acessos vasculares ──────────────────────────────────────
+  {
+    categoria: 'Acesso vascular',
+    pergunta: 'O Shilley foi removido acidentalmente pelo paciente. Posso repassar no mesmo sítio?',
+    resposta: `<strong>Sim, é possível — dentro de uma janela de tempo e com USG.</strong>
+      <ul>
+        <li><strong>&lt; 2–4h:</strong> Trato provavelmente ainda patente. Tente repassar fio-guia pelo trajeto (técnica de Seldinger modificada) com USG. Mais rápido e menos traumático que nova punção.</li>
+        <li><strong>&lt; 24–48h:</strong> Trato começa a colabar, mas nova punção guiada por USG no mesmo sítio ainda é viável.</li>
+        <li><strong>&gt; 48–72h:</strong> Trato provavelmente fechado. Punção nova com USG — mesmo sítio ou contralateral.</li>
+        <li><strong>Se sinais de infecção relacionada ao cateter:</strong> Não repassar no mesmo sítio. Troca de sítio obrigatória.</li>
+      </ul>
+      <strong>Antes de qualquer manobra:</strong> Comprimir o sítio por ≥ 10 min. Avaliar embolia aérea (hipoxemia súbita, queda de PA, mill-wheel murmur) — posição Trendelenburg se suspeita.`,
+    racional: `O trato do cateter é um canal criado por dilatação progressiva. Nas primeiras horas, os tecidos ainda não contraíram — é como uma estrada ainda aberta. O hematoma local pode deslocar a anatomia e cegar o USG; por isso nunca tente sem visualização. O sítio femoral é alternativa rápida (menor risco de pneumotórax), mas maior risco de trombose e infecção. Jugular interna direita é o sítio preferencial por anatomia mais direta para VCS e compressibilidade.`,
+  },
+
+  {
+    categoria: 'Acesso vascular',
+    pergunta: 'Não tenho Shilley disponível. Posso usar um CVC duplo lúmen para hemodiálise?',
+    resposta: `<strong>Sim, em emergência funciona — mas com limitações importantes.</strong>
+      <ul>
+        <li><strong>Fluxo:</strong> CVC duplo lúmen oferece 100–150 mL/min (vs. 300–400 mL/min do Shilley). A sessão roda, mas com clearance menor.</li>
+        <li><strong>Compensação:</strong> Aumente o tempo de sessão (ex: 4h → 5–6h) para atingir Kt/V adequado. CRRT é preferível ao HD intermitente nessa situação — fluxo menor, mais compatível.</li>
+        <li><strong>Recirculação:</strong> Lúmens na mesma altura = sangue "limpo" reaspirado. Inverter as vias (proximal como retorno, distal como aspiração) pode ajudar — mas varia com o modelo.</li>
+        <li><strong>Usar como ponte:</strong> &lt; 24–48h até Shilley definitivo. Avise a equipe de diálise antes — os alarmes de pressão vão disparar.</li>
+      </ul>`,
+    racional: `O Shilley tem design com ponta em D (saídas arterial/venosa escalonadas e separadas), minimizando recirculação. O CVC padrão tem lúmens side-by-side ou concêntricos na mesma altura — o sangue que volta já limpo pode ser parcialmente reaspira do. Recirculação > 15–20% torna a diálise ineficiente. O diâmetro menor (7–8,5 Fr vs. 11,5–13,5 Fr do Shilley) é o principal limitante de fluxo.`,
+  },
+
+  {
+    categoria: 'Acesso vascular',
+    pergunta: 'Quando usar acesso intraósseo (IO)? E como posiciono?',
+    resposta: `<strong>Regra prática: 2 tentativas ou 2 minutos → IO.</strong>
+      <ul>
+        <li><strong>Indicações:</strong> PCR sem acesso em &lt; 2 min; choque grave refratário sem acesso viável; urgência de drogas e 2 tentativas periféricas falharam.</li>
+        <li><strong>Sítios (por preferência):</strong>
+          <ul>
+            <li>Tíbia proximal — padrão (2 cm abaixo da tuberosidade tibial, face medial)</li>
+            <li>Úmero proximal — fluxo maior (até 125 mL/min); preferir em PCR</li>
+            <li>Tíbia distal (maléolo medial) — alternativa</li>
+          </ul>
+        </li>
+        <li><strong>Confirmar posição:</strong> Aspirar medula (sangue escuro), depois flush 10 mL de SF. Observar se não há extravasamento subcutâneo.</li>
+        <li><strong>Duração:</strong> Substituir por acesso venoso assim que possível. Máximo 24h — idealmente &lt; 6–12h.</li>
+        <li><strong>Contraindicações relativas:</strong> fratura no osso-alvo, infecção local, prótese, IO prévio no mesmo sítio &lt; 24h.</li>
+      </ul>`,
+    racional: `O espaço medular é uma "veia que não colaba" — mantém fluxo mesmo em colapso cardiovascular grave. O dispositivo EZ-IO (drill) é o mais usado: insere em &lt; 10 segundos com treinamento mínimo. O úmero proximal tem absorção mais rápida por ter menos distância até a circulação central — relevante na PCR onde o tempo até efeito da droga importa. Osteomielite é complicação real se deixado por &gt; 24h.`,
+  },
+
+  {
+    categoria: 'Acesso vascular',
+    pergunta: 'Posso infundir noradrenalina em acesso periférico?',
+    resposta: `<strong>Sim — a evidência atual suporta o uso em periférico por curto prazo, com condições.</strong>
+      <ul>
+        <li><strong>Calibre mínimo:</strong> 18G (idealmente 16G), em veia antecubital, basílica ou cefálica. Evitar mão e pé.</li>
+        <li><strong>Concentração diluída:</strong> 4–8 mg em 250 mL SF (não usar concentrações de UCO em periférico).</li>
+        <li><strong>Dose:</strong> Evidência mais robusta para ≤ 0,1–0,25 mcg/kg/min. Doses maiores → providenciar central.</li>
+        <li><strong>Duração:</strong> Ponte por &lt; 6–12h enquanto acesso central é inserido.</li>
+        <li><strong>Vigilância obrigatória:</strong> Inspecionar o sítio a cada 1–2h. Eritema, palidez, enduração, dor = extravasamento → parar imediatamente.</li>
+        <li><strong>Se extravasar:</strong> Infiltrar fentolamina 5–10 mg em 10 mL SF subcutâneo ao redor do sítio. Alternativa: nitroglicerina tópica 2% (evidência limitada).</li>
+      </ul>`,
+    racional: `A dogma de "vasopressor só em central" surgiu do risco de extravasamento com necrose isquêmica. Revisões sistemáticas (2015–2022) mostram que o risco em veia calibrosa, bem posicionada, com concentração diluída e vigilância ativa é baixo e aceitável como ponte. O que mata é o atraso no vasopressor esperando o acesso central — não a via periférica supervisionada. Dopamina tem maior risco de necrose por extravasamento que a nora.`,
+  },
+
+  // ── Via aérea ───────────────────────────────────────────────
+  {
+    categoria: 'Via aérea',
+    pergunta: 'Como trocar uma traqueostomia com segurança?',
+    resposta: `<strong>A troca de traqueostomia é um procedimento de via aérea — não é rotina sem médico presente.</strong>
+
+      <strong>Troca eletiva (&gt; 7–10 dias):</strong> Trato maduro e epitelizado. Pode ser feita à beira do leito por médico ou enfermeiro treinado.
+      <strong>Troca precoce (&lt; 7 dias, especialmente &lt; 72h):</strong> Alto risco. Médico com experiência em via aérea presente. Laringoscópio e material de IOT completos na mesa.
+
+      <strong>Preparo antes da troca:</strong>
+      <ul>
+        <li>FiO₂ a 100% por 2–3 min antes</li>
+        <li>Na mesa: nova cânula (mesmo número + um número menor como backup), seringa, lubrificante, fixador, aspirador, Ambu com O₂, laringoscópio, TOT</li>
+        <li>Bougie ou cateter de troca dentro da cânula atual — fundamental em trocas difíceis ou precoces</li>
+        <li>Coxim sob os ombros: hiperextender o pescoço para abrir o estoma</li>
+      </ul>
+
+      <strong>Técnica:</strong>
+      <ol>
+        <li>Esvaziar cuff → aspirar traqueia → desconectar VM</li>
+        <li>Retirar cânula antiga em movimento suave e circular</li>
+        <li>Inserir nova cânula com obturador <em>imediatamente</em></li>
+        <li>Retirar o obturador, insuflar cuff, conectar VM</li>
+        <li>Confirmar: capnografia + ausculta bilateral</li>
+      </ol>`,
+    racional: `O estoma colapsa em 10–15 segundos após remoção da cânula em troca precoce — os tecidos ainda não estão epitelizados e o trato não tem memória. O bougie dentro da cânula antiga funciona como guia para a nova: você retira a antiga ao longo do fio e avança a nova sobre ele. Não confirmar com capnografia é o erro mais comum — ausculta sozinha não distingue intubação esofágica de traqueal. Esquecer de retirar o obturador (mandril) após inserção é raro mas fatal: o obturador oclui a cânula.`,
+  },
+
+  {
+    categoria: 'Via aérea',
+    pergunta: 'O que é uma traqueostomia com endocânula? Como limpar?',
+    resposta: `<strong>A endocânula (camisa interna) é um tubo removível que fica dentro da cânula externa.</strong>
+
+      <strong>Como funciona:</strong> A cânula externa fica fixada no estoma (com cuff, se aplicável). A endocânula encaixa dentro por sistema de trava (giro 90° ou botão — varia por fabricante: Portex, Shiley, Tracoe). Você remove e limpa a endocânula sem tocar na cânula externa.
+
+      <strong>Quando usar:</strong>
+      <ul>
+        <li>VM de longo prazo — facilita manutenção</li>
+        <li>Secreção espessa ou abundante — a endocânula crosta; você troca em 30 segundos</li>
+        <li>Desmame: alguns modelos têm endocânula fenestrada para fala com válvula de Passy-Muir</li>
+      </ul>
+
+      <strong>Limpeza da endocânula reutilizável:</strong>
+      <ol>
+        <li>Destrave e remova (não tire a cânula externa)</li>
+        <li>Mergulhe em H₂O₂ 3% por 5–10 min (solta crostas)</li>
+        <li>Limpe internamente com escova própria sob água corrente</li>
+        <li>Enxágue com SF ou água destilada</li>
+        <li>Reinsira e trave</li>
+      </ol>
+      Frequência: a cada 8–12h em pacientes com muita secreção; a cada 24h nos estáveis. Endocânula descartável: retire, descarte, coloque nova do pacote.`,
+    racional: `A endocânula reduz o diâmetro interno efetivo — uma traqueostomia 8.0 com endocânula tem fluxo de ar equivalente a um tubo ~7.0. Isso é clinicamente relevante no desmame: se o paciente tem alto trabalho respiratório, algumas equipes retiram a endocânula temporariamente durante o treino de respiração espontânea. Cuidado crítico: nunca confunda endocânula fenestrada (furos na curvatura) com a não fenestrada em paciente em VM — a fenestrada cria escape de ar e pode hipoventilar.`,
+  },
+
+  {
+    categoria: 'Via aérea',
+    pergunta: 'Como funciona o TOT com sistema fechado de aspiração?',
+    resposta: `<strong>Sistema fechado = cateter de aspiração encapsulado em manga estéril, conectado em linha ao circuito do ventilador.</strong> O paciente não desconecta do VM para aspirar.
+
+      <strong>Configuração:</strong> O sistema fica em Y entre o TOT e o circuito. O cateter fica dentro da manga em posição de repouso (recolhido). Uma válvula de sucção e uma de lavagem ficam na extremidade proximal. Ligado ao vácuo permanentemente.
+
+      <strong>Indicações principais:</strong>
+      <ul>
+        <li>SDRA com FiO₂ &gt; 0,6 ou PEEP &gt; 10 cmH₂O — cada desconexão causa desrecrutamento</li>
+        <li>Infecções de transmissão aérea (TB, COVID) — evita aerossol</li>
+        <li>ECMO, hipertensão pulmonar grave, cardiopatas instáveis</li>
+        <li>Na prática: muitas UTIs usam para todos os pacientes intubados</li>
+      </ul>
+
+      <strong>Como usar:</strong>
+      <ol>
+        <li>Avançar o cateter pela manga até a carina (sente resistência leve — recuar 1 cm)</li>
+        <li>Aplicar sucção com o polegar (máx. −150 mmHg)</li>
+        <li>Retirar com movimentos suaves enquanto aspira</li>
+        <li>Após: flush de 5–10 mL de SF pela válvula de lavagem com sucção breve — mantém o cateter limpo dentro da manga</li>
+        <li>Recolher o cateter completamente dentro da manga</li>
+      </ol>
+      <strong>Troca:</strong> A cada 72h (evidência não apoia troca diária).`,
+    racional: `A PEEP cria recrutamento alveolar que demora minutos a se restabelecer após desconexão — em SDRA grave, essa janela de desrecrutamento piora a hipoxemia e pode ser hemodinamicamente significativa. O sistema fechado mantém a PEEP durante a aspiração. O erro mais comum é não fazer o flush após aspirar: o cateter fica com secreção seca dentro, tornando-se fonte de contaminação e obstruindo o sistema. Sucção acima de −150 mmHg causa lesão de mucosa e atelectasia.`,
+  },
+
+];
+
+// ── render ──────────────────────────────────────────────────
+const cats=[...new Set(duvidas.map(d=>d.categoria))];
+let filtroAtivo='todos';
+
+function renderFilters(){
+  const el=document.getElementById('dv-filters');
+  el.innerHTML=['todos',...cats].map(c=>
+    '<button class="dv-tag'+(c===filtroAtivo?' active':'')+'" onclick="setFiltro(\''+c.replace(/'/g,"\\'")+'\')">'+(c==='todos'?'Todos':c)+'</button>'
+  ).join('');
+}
+function setFiltro(c){filtroAtivo=c;renderFilters();renderCards();}
+
+function toggleCard(el){el.closest('.dv-card').classList.toggle('open');}
+
+function renderCards(){
+  const el=document.getElementById('dv-cards');
+  const lista=filtroAtivo==='todos'?duvidas:duvidas.filter(d=>d.categoria===filtroAtivo);
+  if(!lista.length){
+    el.innerHTML='<p class="dv-empty">Nenhuma dúvida nesta categoria ainda.</p>';
+    return;
+  }
+  el.innerHTML=lista.map((d,i)=>`
+    <div class="dv-card" id="dv-${i}">
+      <div class="dv-q" onclick="toggleCard(this)">
+        <span class="dv-q-icon">${d.categoria}</span>
+        <span class="dv-q-text">${d.pergunta}</span>
+        <span class="dv-arrow">▶</span>
+      </div>
+      <div class="dv-a">
+        <div class="dv-resposta"><span class="dv-lbl">Resposta</span>${d.resposta}</div>
+        ${d.racional?`<div class="dv-racional"><span class="dv-lbl">Racional</span>${d.racional}</div>`:''}
+      </div>
+    </div>
+  `).join('');
+}
+
+renderFilters();
+renderCards();
+</script>
+</body>
+</html>

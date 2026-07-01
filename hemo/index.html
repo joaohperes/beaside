@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hemo Guide — be·aside</title>
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+  .lp-hero{padding:36px 0 28px;border-bottom:1px solid var(--border);margin-bottom:32px}
+  .lp-eyebrow{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .lp-eyebrow::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
+  .lp-title{font-size:28px;font-weight:600;color:#e8ecf2;line-height:1.15;letter-spacing:-.02em;margin-bottom:12px}
+  .lp-desc{font-size:13.5px;color:var(--text2);line-height:1.75;max-width:580px}
+  .lp-start{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-family:var(--mono);font-size:11px;color:var(--accent);background:rgba(var(--accent-rgb),.08);border:1px solid rgba(var(--accent-rgb),.25);padding:8px 16px;border-radius:6px;text-decoration:none;transition:all .15s}
+  .lp-start:hover{background:rgba(var(--accent-rgb),.15);border-color:rgba(var(--accent-rgb),.45)}
+  .lp-start-arrow{transition:transform .15s}
+  .lp-start:hover .lp-start-arrow{transform:translateX(3px)}
+
+  .lp-section-label{font-family:var(--mono);font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--text3);margin:28px 0 12px}
+  .lp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px}
+  @media(max-width:600px){.lp-grid{grid-template-columns:1fr}}
+
+  .lp-card{display:block;text-decoration:none;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 18px;transition:border-color .15s,background .15s}
+  .lp-card:hover{border-color:rgba(var(--accent-rgb),.4);background:var(--bg3)}
+  .lp-card-cat{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:6px}
+  .lp-card-title{font-size:13.5px;font-weight:600;color:#e8ecf2;margin-bottom:4px}
+  .lp-card-sub{font-size:12px;color:var(--text3);line-height:1.5}
+</style>
+</head>
+<body data-module="hemo" data-page="">
+<main class="main">
+
+  <div class="lp-hero">
+    <div class="lp-eyebrow">Hemo Guide</div>
+    <div class="lp-title">Hemodinâmica & Choque</div>
+    <p class="lp-desc">
+      Gasometria pareada, POCUS e drogas vasoativas integrados num raciocínio único. O guia parte da fisiologia (DO₂, Fick, Frank-Starling), passa pelos marcadores de perfusão (SvcO₂, Δ pCO₂) e chega à conduta — com os 4 quadrantes como ferramenta central de interpretação. Segue as recomendações da SSC 2026.
+    </p>
+    <a class="lp-start" href="fisio.html">Começar pela fisiologia <span class="lp-start-arrow">→</span></a>
+  </div>
+
+  <div class="lp-section-label">Fundamentos</div>
+  <div class="lp-grid">
+    <a class="lp-card" href="fisio.html">
+      <div class="lp-card-cat">Fundamentos</div>
+      <div class="lp-card-title">Fisiologia do choque</div>
+      <div class="lp-card-sub">DO₂, VO₂, Fick, Frank-Starling e choque críptico</div>
+    </a>
+    <a class="lp-card" href="do2.html">
+      <div class="lp-card-cat">Fundamentos</div>
+      <div class="lp-card-title">Oferta de O₂ (DO₂)</div>
+      <div class="lp-card-sub">Determinantes do transporte e intervenções sobre cada componente</div>
+    </a>
+  </div>
+
+  <div class="lp-section-label">Marcadores de perfusão</div>
+  <div class="lp-grid">
+    <a class="lp-card" href="scvo2.html">
+      <div class="lp-card-cat">Marcadores</div>
+      <div class="lp-card-title">SvcO₂</div>
+      <div class="lp-card-sub">Como interpretar e onde coletar a saturação venosa central</div>
+    </a>
+    <a class="lp-card" href="dpco2.html">
+      <div class="lp-card-cat">Marcadores</div>
+      <div class="lp-card-title">Δ pCO₂</div>
+      <div class="lp-card-sub">O marcador de fluxo que a SvcO₂ não captura</div>
+    </a>
+    <a class="lp-card" href="quadrantes.html">
+      <div class="lp-card-cat">Marcadores</div>
+      <div class="lp-card-title">Os 4 quadrantes</div>
+      <div class="lp-card-sub">Plano cartesiano SvcO₂ × Δ pCO₂ para interpretar a hipoperfusão</div>
+    </a>
+    <a class="lp-card" href="integracao.html">
+      <div class="lp-card-cat">Síntese</div>
+      <div class="lp-card-title">Integração clínica</div>
+      <div class="lp-card-sub">Gasometria pareada + POCUS VCI em conjunto</div>
+    </a>
+  </div>
+
+  <div class="lp-section-label">POCUS / Imagem</div>
+  <div class="lp-grid">
+    <a class="lp-card" href="vci.html">
+      <div class="lp-card-cat">POCUS</div>
+      <div class="lp-card-title">POCUS VCI</div>
+      <div class="lp-card-sub">Técnica, cIVC, dIVC e armadilhas de interpretação</div>
+    </a>
+    <a class="lp-card" href="rush.html">
+      <div class="lp-card-cat">POCUS</div>
+      <div class="lp-card-title">Protocolo RUSH</div>
+      <div class="lp-card-sub">Pump, Tank, Pipes — raciocínio rápido no choque indiferenciado</div>
+    </a>
+  </div>
+
+  <div class="lp-section-label">Terapêutica & Ferramentas</div>
+  <div class="lp-grid">
+    <a class="lp-card" href="drogas.html">
+      <div class="lp-card-cat">Terapêutica</div>
+      <div class="lp-card-title">Drogas vasoativas</div>
+      <div class="lp-card-sub">Noradrenalina, vasopressina, dobutamina — doses e escalonamento</div>
+    </a>
+    <a class="lp-card" href="fluxograma.html">
+      <div class="lp-card-cat">Síntese</div>
+      <div class="lp-card-title">Fluxograma integrado</div>
+      <div class="lp-card-sub">Do choque à conduta — padrão, gasometria, POCUS, drogas</div>
+    </a>
+    <a class="lp-card" href="pratica.html">
+      <div class="lp-card-cat">Ferramentas</div>
+      <div class="lp-card-title">Casos práticos</div>
+      <div class="lp-card-sub">4 casos simulados cobrindo os 4 quadrantes</div>
+    </a>
+    <a class="lp-card" href="pearls.html">
+      <div class="lp-card-cat">Pearls & Pitfalls</div>
+      <div class="lp-card-title">Cards clínicos</div>
+      <div class="lp-card-sub">Cenários de plantão: o acerto, o erro comum e o mecanismo</div>
+    </a>
+  </div>
+
+</main>
+<script src="../assets/app.js"></script>
+</body>
+</html>

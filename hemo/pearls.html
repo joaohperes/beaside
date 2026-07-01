@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pearls & Pitfalls — be·aside</title>
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+  .pp-filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
+  .pp-tag{font-family:var(--mono);font-size:11px;color:var(--text2);background:var(--bg3);border:1px solid var(--border);padding:5px 12px;border-radius:20px;cursor:pointer;transition:all .15s}
+  .pp-tag:hover{border-color:var(--border2);color:var(--text)}
+  .pp-tag.active{color:var(--purple);background:rgba(124,111,247,.1);border-color:rgba(124,111,247,.35)}
+  .pp-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin-bottom:18px}
+  .pp-card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:4px}
+  .pp-card-title{font-size:15px;font-weight:600;color:#e8ecf2}
+  .pp-cat{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--purple);background:rgba(124,111,247,.1);border:1px solid rgba(124,111,247,.25);padding:3px 10px;border-radius:20px;white-space:nowrap}
+  .pp-cenario{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:14px;font-style:italic}
+  .pp-row{border-left:3px solid;border-radius:0 6px 6px 0;padding:11px 15px;margin:10px 0;font-size:13.5px;line-height:1.65}
+  .pp-row .pp-lbl{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:5px}
+  .pp-pearl{border-color:var(--teal);background:rgba(29,184,138,.08);color:#bce8d8}
+  .pp-pearl .pp-lbl{color:var(--teal)}
+  .pp-pitfall{border-color:var(--red);background:rgba(226,75,74,.08);color:#f0b8b8}
+  .pp-pitfall .pp-lbl{color:var(--red)}
+  .pp-why{border-color:var(--border2);background:var(--bg3);color:var(--text2)}
+  .pp-why .pp-lbl{color:var(--text3)}
+  .pp-row strong{color:#e8ecf2;font-weight:500}
+  .pp-empty{color:var(--text3);font-size:13px;padding:20px 0}
+</style>
+</head>
+<body data-module="hemo" data-page="pearls">
+<main class="main">
+<section class="section" id="pearls">
+  <h1 class="section-title">Pearls &amp; Pitfalls</h1>
+  <p class="section-subtitle">Cenários de plantão: o raciocínio correto, o erro comum e o porquê do mecanismo.</p>
+
+  <div class="pp-filters" id="pp-filters"></div>
+  <div id="pp-cards"></div>
+</section>
+</main>
+<script src="../assets/app.js"></script>
+<script>
+// ============================================================
+// Dados: adicione novos cards a este array — sem mexer no HTML.
+// Campos: categoria, titulo, cenario, pearl, pitfall, porque
+// ============================================================
+const pearls = [
+
+  // ── Gasometria pareada ─────────────────────────────────────
+  {
+    categoria: 'Gasometria pareada',
+    titulo: 'SvcO₂ ≥ 70%: nem sempre é boa notícia',
+    cenario: 'Sepse distributiva. Gasometria pareada: SvcO₂ 74%, Δ pCO₂ 9 mmHg, lactato 4,2. Plantonista tranquilizado pela SvcO₂ "normal".',
+    pearl: 'Calcule o Δ pCO₂ = pCO₂ venosa − pCO₂ arterial. Aqui 9 mmHg → Q3 (falsa segurança): SvcO₂ normal com fluxo ruim. Suspeite de shunting microcirculatório ou hipóxia citopática. Não suspender ressuscitação com base na SvcO₂ isolada.',
+    pitfall: 'Tratar SvcO₂ ≥ 70% como meta atingida sem checar o Δ pCO₂ é o erro mais comum na interpretação da gasometria pareada. Em sepse avançada, a célula pode não extrair O₂ mesmo com fluxo preservado — SvcO₂ sobe paradoxalmente.',
+    porque: 'O Δ pCO₂ reflete o fluxo tecidual independente da extração de O₂. CO₂ acumula em tecidos hipoperfundidos mesmo quando a célula não extrai mais O₂ (falência mitocondrial). Os dois marcadores se complementam: SvcO₂ informa extração, Δ pCO₂ informa fluxo.'
+  },
+  {
+    categoria: 'Gasometria pareada',
+    titulo: 'Onde coletar a venosa central',
+    cenario: 'Paciente com CVC femoral. Colega coleta gasometria "venosa central" pelo cateter femoral para calcular SvcO₂.',
+    pearl: 'SvcO₂ deve ser coletada de CVC posicionado em veia cava superior (jugular interna ou subclávia), idealmente com a ponta na junção cavosupraatrial. Cateter femoral reflete SvcO₂ infradiafragmática — valores sistematicamente diferentes e não validados nos protocolos de choque.',
+    pitfall: 'Usar cateter femoral para SvcO₂ é uma das fontes mais comuns de erro na interpretação hemodinâmica. A diferença pode ser de 5–10% — suficiente para mudar quadrante e conduta.',
+    porque: 'Sangue que retorna das extremidades inferiores tem SvcO₂ estruturalmente diferente do sangue que retorna do coração, cérebro e extremidades superiores. A SvcO₂ da VCS reflete melhor a perfusão de órgãos nobres — que é o que os protocolos de sepse e choque estudaram e validaram.'
+  },
+
+  // ── POCUS VCI ─────────────────────────────────────────────
+  {
+    categoria: 'POCUS VCI',
+    titulo: 'VCI dilatada não é sempre contra-indicação de volume',
+    cenario: 'Paciente em VM com PEEP 12. VCI 2,4 cm com colapso 10%. Equipe não dá volume.',
+    pearl: 'Em paciente ventilado com PEEP alto, a VCI distende pela pressão intratorácica positiva — não necessariamente pela hipervolemia. PEEP alto → VCI dilatada mesmo em paciente responsivo a volume. Nesse contexto, use PLR (passive leg raising) com medida de VTI ou VPP (variação de pressão de pulso) para decidir.',
+    pitfall: 'Aplicar os cortes absolutos de VCI (> 2,1 cm = não dar volume) sem considerar o contexto ventilatório leva a negar ressuscitação a pacientes que precisam. A VCI perde especificidade diagnóstica com PEEP > 10 cmH₂O.',
+    porque: 'A VCI é um vaso de alta complacência. PEEP transmite pressão positiva ao compartimento torácico, distendendo a VCI independente do status volêmico. Índices dinâmicos (VPP, PLR + VTI) são mais confiáveis no paciente ventilado com drive reduzido.'
+  },
+  {
+    categoria: 'POCUS VCI',
+    titulo: 'Arritmia e o índice de colapso',
+    cenario: 'Paciente em FA com RVV irregular. VCI 1,6 cm com variação aparente. Colega calcula cIVC e inicia volume.',
+    pearl: 'Em arritmias (FA, bigeminismo), a variação da VCI não é confiável — ela muda com cada intervalo RR, não com a respiração. Prefira PLR + medida de VTI pelo eco para avaliar responsividade a volume. Ou defina empiricamente com bolus de 250 mL e reavalie DC/lactato.',
+    pitfall: 'Calcular índices de variabilidade de VCI (cIVC, dIVC) em pacientes com ritmo irregular gera valores espúrios e pode levar a conduta incorreta — tanto sobrecarga hídrica desnecessária quanto negação de volume necessário.',
+    porque: 'Os índices respirofásicos da VCI assumem variação determinada pelo ciclo respiratório. Em arritmias, a variação é determinada pelo intervalo RR variável, sobrepondo-se à respiratória e tornando o índice biologicamente inválido.'
+  },
+
+  // ── Fluidos e ressuscitação ────────────────────────────────
+  {
+    categoria: 'Fluidos',
+    titulo: '30 mL/kg não é protocolo fixo — é teto',
+    cenario: 'Sepse distributiva. Plantonista administra 30 mL/kg de SF "porque é o protocolo" sem reavaliar o paciente durante a infusão.',
+    pearl: 'O bundle 1h da SSC 2026 recomenda 30 mL/kg como volume inicial quando há sinais de hipoperfusão — mas reavalie com PLR/VTI ou POCUS VCI após cada 500 mL. Pare quando: sinais de sobrecarga (linhas B novas, VCI dilatando), PAM em alvo, ou melhora do lactato. Use cristaloide balanceado (Ringer lactato), não SF.',
+    pitfall: 'Administrar 30 mL/kg em bolus fixo sem reavaliação intermediária é um erro de protocolo. Muitos pacientes — especialmente cardiopatas e nefropatas — desenvolvem edema pulmonar antes de completar esse volume. O "30 mL/kg" é indicação de início, não de término.',
+    porque: 'FEAST trial (pediatria) e análises de sepse em adultos mostram que hiperressuscitação aumenta mortalidade. A estratégia deve ser titulada à resposta: melhora de PAM, queda de lactato, melhora de enchimento capilar. SF causa acidose hiperclorêmica e AKI (SMART trial: cristaloide balanceado reduz MAKE30 vs SF).'
+  },
+  {
+    categoria: 'Fluidos',
+    titulo: 'PLR: teste de volume sem dar volume',
+    cenario: 'Paciente em FA com VCI não confiável. Antes de dar volume, colega se propõe a fazer PLR.',
+    pearl: 'PLR (passive leg raising): elevar passivamente as pernas a 45° durante 1 min mobiliza ~300 mL de sangue das veias das pernas para o coração. Medir VTI subvalvar aórtico antes e depois — aumento ≥ 12–15% prediz responsividade a volume com acurácia > 85%. Retorne à posição original e o efeito se desfaz.',
+    pitfall: 'Fazer PLR sem medir VTI (ou DC por outros métodos) transforma o teste em apenas "levantar a perna" — sem o componente diagnóstico. A interpretação clínica isolada (PA subiu?) tem acurácia ruim. O VTI é o desfecho funcional que valida o teste.',
+    porque: 'O PLR funciona como um autotransfusão reversível e temporária. Como não dá volume externo, não há risco hemodinâmico nem de sobrecarga. É o único preditor dinâmico validado em FA, respiração espontânea e PEEP alto — exatamente os contextos onde VPP e VCI falham.'
+  },
+
+  // ── Vasopressores ──────────────────────────────────────────
+  {
+    categoria: 'Vasopressores',
+    titulo: 'PAM 65: alvo correto para qual paciente?',
+    cenario: 'Paciente de 72 anos, hipertenso crônico, em choque séptico. Equipe mantém PAM 65 mmHg como alvo conforme protocolo.',
+    pearl: 'Para pacientes ≥ 65 anos, o alvo de PAM pode ser 60–65 mmHg — não há benefício em manter PAM > 65 nessa faixa etária (OVATION trial, SSC 2026). Em hipertensos crônicos jovens, PAM 65 pode ser inadequada (pressão de perfusão cronicamente adaptada a valores mais altos) — considerar 70–75 mmHg se sinais de hipoperfusão persistem com PAM 65.',
+    pitfall: 'Tratar PAM 65 como alvo universal ignora a individualização. Pacientes idosos recebem cargas excessivas de vasopressor buscando metas que não reduzem mortalidade e aumentam arritmias. Pacientes hipertensos jovens podem estar cronicamente hipoperfundidos com PAM 65.',
+    porque: 'OVATION (JAMA 2020): RCT com PAM alvo 60–65 vs ≥ 75 mmHg em idosos — sem diferença em mortalidade, mas alvo baixo reduziu exposição a vasopressor e FA. SSC 2026 incorporou: PAM 60–65 para ≥ 65 anos. O alvo deve ser individualizado pela pressão basal e sinais de perfusão orgânica.'
+  },
+  {
+    categoria: 'Vasopressores',
+    titulo: 'Vasopressina: a segunda droga que não se titula',
+    cenario: 'Noradrenalina 0,4 μg/kg/min com PAM 60. Equipe aumenta Nora para 0,6 em vez de adicionar vasopressina.',
+    pearl: 'Vasopressina 0,03 U/min (dose fixa, sem titulação) deve ser adicionada como segunda droga quando Nora > 0,25–0,5 μg/kg/min para reduzir a dose de Nora (efeito poupador). A combinação tem mecanismos complementares: Nora = agonismo α1/β1; Vasopressina = agonismo V1 (receptor diferente, sem taquifilaxia cruzada).',
+    pitfall: 'Escalar noradrenalina indefinidamente sem adicionar vasopressina aumenta exposição a doses altas de catecolamina — associadas a isquemia periférica, arritmia e disfunção miocárdica. Vasopressina em dose fixa baixa é segura e farmacologicamente sinérgica.',
+    porque: 'VASST trial e metanálises confirmam efeito poupador de Nora com vasopressina. Vasopressina age em receptores V1 vasculares por mecanismo calcio-mediado distinto das catecolaminas — mantém eficácia mesmo em choque prolongado com downregulation adrenérgica. SSC 2026 mantém recomendação como segunda droga preferencial.'
+  },
+  {
+    categoria: 'Vasopressores',
+    titulo: 'Hidrocortisona: não é rotina, é para o choque refratário',
+    cenario: 'Paciente séptico em Nora 0,15 μg/kg/min, PAM 68 mmHg. Residente inicia hidrocortisona 200 mg/dia "para choque séptico".',
+    pearl: 'Hidrocortisona 200 mg/dia está indicada quando o vasopressor não mantém a PAM-alvo apesar de ressuscitação volêmica adequada E a dose de Nora está crescente por > 4 h (ou Nora > 0,25 μg/kg/min sem melhora). Não é indicada como rotina para todo choque séptico.',
+    pitfall: 'Usar corticoide de rotina em sepse não refratária não melhora mortalidade e aumenta hiperglicemia, fraqueza muscular e risco de infecção secundária. A indicação é restrita ao choque refratário a vasopressor — não ao diagnóstico de sepse.',
+    porque: 'ADRENAL (NEJM 2018) e APROCCHSS (NEJM 2018): hidrocortisona em choque refratário reduz tempo para reversão do choque e desmame de vasopressor, com impacto variável em mortalidade. O mecanismo é a insuficiência adrenal relativa induzida pelo estresse — comum no choque prolongado, mas não no início da sepse controlada.'
+  },
+
+  // ── Choque cardiogênico ────────────────────────────────────
+  {
+    categoria: 'Choque cardiogênico',
+    titulo: 'Volume no cardiogênico: o inimigo do VE',
+    cenario: 'IAM com choque cardiogênico. PAM 55, VCI dilatada 2,6 cm no eco. Plantonista prescreve 500 mL de Ringer "para ver a resposta".',
+    pearl: 'No choque cardiogênico com VCI dilatada e sinhas de congestão (linhas B, turgência jugular): não dar volume. A prioridade é noradrenalina (PAM ≥ 65) + dobutamina (se DC muito baixo). Eco bedside deve guiar: FEVE, VD, derrame.',
+    pitfall: 'Volume em cardiogênico com VD/VE sobrecarregado eleva ainda mais a pressão de enchimento ventricular, piora o edema pulmonar e aumenta a pós-carga do VD. É o erro mais letal no choque cardiogênico — frequentemente perpetuado por interpretar VCI dilatada como "precisa de volume" em vez de reconhecer que é sinal de congestão.',
+    porque: 'No VE insuficiente, a curva de Frank-Starling já está no platô ou na parte descendente. Volume adicional aumenta pressão de capilar pulmonar (EAP) sem aumentar DC. O VD dilatado (secundário ao EAP e à hipoxemia) piora ainda mais com volume — comprime o VE pelo fenômeno de interdependência ventricular.'
+  },
+  {
+    categoria: 'Choque cardiogênico',
+    titulo: 'Dobutamina: inotrópico que pode matar sem diagnóstico correto',
+    cenario: 'Paciente em choque. Suspeita de cardiogênico. Eco de beira não disponível. Colega inicia dobutamina empírica.',
+    pearl: 'Dobutamina EXIGE confirmação ecocardiográfica de disfunção sistólica e DC baixo antes de iniciar. Em choque hipovolêmico ou distributivo, dobutamina causa vasodilatação adicional (agonismo β2) e piora catastrófica da PAM — vasopressor sem diagnóstico é mais seguro enquanto aguarda o eco.',
+    pitfall: 'Iniciar dobutamina empírica em choque sem eco é potencialmente fatal. A dobutamina é cronotropa positiva (↑ FC → ↑ consumo de O₂ miocárdico), vasodilatadora periférica (↑ β2) e pode piorar hipotensão se o DC não era o problema. O inotrópico certo na situação errada mata.',
+    porque: 'Dobutamina tem efeito dose-dependente: β1 predomina em doses baixas (inotropismo), mas o efeito β2 vasodilatador é clinicamente significativo. Em paciente sem disfunção sistólica, o inotrópico aumenta FC e dilata sem aumentar DC — drop de PAM sem benefício. O eco confirma o diagnóstico antes de escalar inotrópico.'
+  },
+
+  // ── TEP / Obstrutivo ───────────────────────────────────────
+  {
+    categoria: 'Choque obstrutivo',
+    titulo: 'TEP maciço: trombolítico sem esperar AngioTC',
+    cenario: 'Paciente com dispneia, hipotensão (PAM 52), hipoxemia severa. Eco: VD dilatado, septo paradoxal. Plantonista aguarda AngioTC para confirmar antes de trombolisar.',
+    pearl: 'TEP com instabilidade hemodinâmica + evidência ecocardiográfica de disfunção de VD é indicação de trombólise sistêmica sem necessidade de AngioTC. Critérios: choque (PAM < 65 ou PA sistólica < 90) + eco sugestivo (VD dilatado, septo paradoxal) + quadro clínico compatível. Alteplase 100 mg em 2 h.',
+    pitfall: 'Aguardar AngioTC em TEP maciço com choque para "ter confirmação" é perder tempo fatal. O transporte para TC em instabilidade hemodinâmica é de alto risco; durante o exame o paciente pode ter parada. O eco + clínica é suficiente para indicar trombólise.',
+    porque: 'Mortalidade do TEP maciço sem trombólise é > 50%. A trombólise reduz mortalidade em > 50% nesse subgrupo. Risco de sangramento grave (~2–3%) é claramente superado pelo benefício quando há instabilidade hemodinâmica confirmada. ESC e ACC/AHA endossam trombólise baseada em eco + instabilidade sem necessidade de confirmação tomográfica.'
+  },
+  {
+    categoria: 'Choque obstrutivo',
+    titulo: 'Tamponamento: fluido não salva, a agulha salva',
+    cenario: 'Tamponamento cardíaco confirmado ao eco. PAM 55, taquicardia 118. Plantonista prescreve cristaloide 500 mL "para suporte enquanto chama cirurgia".',
+    pearl: 'Pericardiocentese é o tratamento definitivo. Volume pode ser usado APENAS como ponte transitória (10–15 min) enquanto prepara o procedimento — eleva levemente a pré-carga e pode ganhar tempo mínimo. Mas pericardiocentese não deve ser atrasada: o tamponamento piora com cada sístole.',
+    pitfall: 'Tratar tamponamento com volume como estratégia principal é erro de triagem. O fluido distende o pericárdio e aumenta a pressão de tamponamento, criando um círculo vicioso. Vasopressor como substituto da pericardiocentese é igualmente inadequado — nenhum vasopressor resolve obstrução mecânica ao enchimento cardíaco.',
+    porque: 'No tamponamento, a pressão pericárdica supera a pressão diastólica das câmaras. Volume aumenta pressão de enchimento ventricular, mas a pressão pericárdica sobe em paralelo — o gradiente de enchimento não melhora significativamente. A única solução é eliminar o derrame com agulha ou cirurgia. Betabloqueadores e diuréticos são contraindicados absolutos.'
+  },
+
+  // ── Lactato ────────────────────────────────────────────────
+  {
+    categoria: 'Lactato',
+    titulo: 'Lactato alto sem hipoperfusão: não sempre é choque',
+    cenario: 'Paciente em uso de metformina, insuficiência renal aguda, lactato 6,2 mmol/L. Equipe trata como choque e escala vasopressor apesar de PAM 75 e SvcO₂ 74%.',
+    pearl: 'Lactato elevado SEM hipoperfusão (PAM normal, SvcO₂ normal, Δ pCO₂ < 6, enchimento capilar normal): pesquise causas alternativas antes de escalar vasopressor. Principais: metformina (acúmulo em IRC), insuficiência hepática grave (falha de clearance), leucemia/linfoma (efeito Warburg), alcalose respiratória grave, adrenalina exógena.',
+    pitfall: 'Tratar hiperlactatemia isolada com vasopressor em paciente hemodinamicamente estável é errado e pode ser prejudicial. O vasopressor em PAM normal causa vasoconstrição desnecessária, reduz DC e pode piorar a perfusão orgânica — paradoxalmente piora o lactato.',
+    porque: 'O lactato tem duas fontes principais: hipoperfusão (tipo A) e causas não-hipóxicas (tipo B). Em tipo B, o excesso de lactato é metabólico ou por falha de clearance — não responde a vasopressor ou volume. O diagnóstico diferencial exige correlação com SvcO₂, Δ pCO₂ e exame clínico completo.'
+  },
+  {
+    categoria: 'Lactato',
+    titulo: 'Lactato clearance como meta de ressuscitação',
+    cenario: 'Sepse com lactato inicial 4,8 mmol/L. Após 2 h de ressuscitação: lactato 4,3. Equipe considera ressuscitação bem-sucedida porque houve "melhora".',
+    pearl: 'Lactato clearance ≥ 10% em 2 h é a meta validada (SSC 2026). Aqui: (4,8 − 4,3) / 4,8 × 100 = 10,4% — borderline, mas atingido. Avalie em conjunto: enchimento capilar < 3 s, PAM em alvo, diurese ≥ 0,5 mL/kg/h, Δ pCO₂ < 6. Lactato isolado não define ressuscitação completa.',
+    pitfall: 'Qualquer queda absoluta no lactato (mesmo de 0,2 mmol/L) não é meta — clearance relativo ≥ 10% é o parâmetro validado. E lactato seriado < 2 h entre coletas pode refletir variação analítica, não melhora clínica real. O lactato deve ser usado em contexto com outros marcadores.',
+    porque: 'Jones et al. (JAMA 2010): lactato clearance ≥ 10% em 2 h foi não inferior à SvcO₂ como meta de ressuscitação (28% vs 23% mortalidade; diferença não significativa). O mecanismo: clearance rápido reflete que a causa hipóxica foi revertida — o fígado e o rim eliminam lactato quando o fluxo está restaurado.'
+  },
+
+  // ── Sepse ──────────────────────────────────────────────────
+  {
+    categoria: 'Sepse',
+    titulo: 'Culturas antes do ATB — o intervalo aceitável',
+    cenario: 'Sepse grave. Médico aguarda 40 min para coletar culturas antes de iniciar ATB porque "não pode iniciar sem coletar".',
+    pearl: 'Colha culturas rapidamente (hemocultura × 2 de sítios distintos, + culturas de foco se acessível) e inicie ATB dentro de 1 h do reconhecimento de choque séptico — SSC 2026. Não adie o ATB por mais de 45 min aguardando culturas difíceis de coletar. Se foco não acessível em < 15 min: colha sangue e inicie ATB.',
+    pitfall: 'Aguardar coleta de culturas complicadas (urina por cateterismo, secreção de ferida, etc.) para iniciar ATB é o erro. Cada hora de ATB atrasado em choque séptico aumenta mortalidade em ~7–10% (Kumar et al.). A hemocultura é mandatória; as demais são desejáveis, não obrigatórias.',
+    porque: 'O valor diagnóstico das culturas coletadas APÓS o início do ATB ainda é significativo para muitos organismos — não é "zero". O custo de atrasar o ATB por mais de 1 h é sistematicamente maior que o custo de ter culturas com rendimento levemente reduzido. SSC 2026 mantém 1 h como meta em choque séptico confirmado.'
+  },
+  {
+    categoria: 'Sepse',
+    titulo: 'Acesso periférico para vasopressor: quando é seguro',
+    cenario: 'Choque séptico com PAM 52. CVC demorou. Residente aguarda CVC para iniciar vasopressor.',
+    pearl: 'SSC 2026: noradrenalina pode ser iniciada em acesso venoso periférico de bom calibre (antecubital, ≥ 18G) enquanto CVC é obtido. Usar concentração padrão (0,04–0,08 mg/mL). Monitorar o acesso a cada 2 h para sinais de extravasamento. CVC deve ser obtido o mais rapidamente possível, mas não deve atrasar o vasopressor.',
+    pitfall: 'Aguardar CVC para iniciar vasopressor em choque estabelecido é erro que aumenta exposição à hipotensão — cada minuto sem PAM em alvo agrava lesão orgânica. O risco de extravasamento periférico de noradrenalina é baixo (< 5%) e manejável; o risco de hipotensão prolongada é altíssimo.',
+    porque: 'Estudo de Permpikul (2019) e metanálises confirmam segurança de noradrenalina periférica por até 6–12 h em acesso de bom calibre e distante da articulação. Extravasamento grave é raro com concentrações padrão. SSC 2026 incorporou essa evidência como recomendação explícita.'
+  }
+];
+
+let filtroAtivo = 'Todos';
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function escAttr(s){return esc(s).replace(/"/g,'&quot;');}
+
+function renderFiltros(){
+  const cats = ['Todos', ...Array.from(new Set(pearls.map(p=>p.categoria)))];
+  document.getElementById('pp-filters').innerHTML = cats.map(c=>
+    '<button class="pp-tag'+(c===filtroAtivo?' active':'')+'" onclick="setFiltro(\''+escAttr(c)+'\')">'+esc(c)+'</button>'
+  ).join('');
+}
+function setFiltro(c){filtroAtivo=c;render();}
+
+function renderCards(){
+  const lista = filtroAtivo==='Todos' ? pearls : pearls.filter(p=>p.categoria===filtroAtivo);
+  const wrap = document.getElementById('pp-cards');
+  if(!lista.length){wrap.innerHTML='<div class="pp-empty">Nenhum card nesta categoria.</div>';return;}
+  wrap.innerHTML = lista.map(p=>
+    '<div class="pp-card">'+
+      '<div class="pp-card-head">'+
+        '<span class="pp-card-title">'+esc(p.titulo)+'</span>'+
+        '<span class="pp-cat" onclick="setFiltro(\''+escAttr(p.categoria)+'\')" style="cursor:pointer">'+esc(p.categoria)+'</span>'+
+      '</div>'+
+      '<div class="pp-cenario">'+esc(p.cenario)+'</div>'+
+      '<div class="pp-row pp-pearl"><span class="pp-lbl">✓ Pearl</span>'+esc(p.pearl)+'</div>'+
+      '<div class="pp-row pp-pitfall"><span class="pp-lbl">✗ Pitfall</span>'+esc(p.pitfall)+'</div>'+
+      '<div class="pp-row pp-why"><span class="pp-lbl">Por quê</span>'+esc(p.porque)+'</div>'+
+    '</div>'
+  ).join('');
+}
+function render(){renderFiltros();renderCards();}
+render();
+</script>
+</body>
+</html>

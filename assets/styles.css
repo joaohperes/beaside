@@ -15,6 +15,12 @@
 body[data-module="hemo"]{
   --accent:#e05555;--accent-d:#a03030;--accent-rgb:224,85,85;
 }
+body[data-module="neuro"]{
+  --accent:#9b6ff7;--accent-d:#6a44c4;--accent-rgb:155,111,247;
+}
+body[data-module="proc"]{
+  --accent:#3b82f6;--accent-d:#1d56c4;--accent-rgb:59,130,246;
+}
 body[data-module="hemo"] .quad.ok{border-color:rgba(var(--accent-rgb),.25)}
 body[data-module="hemo"] .quad.ok .quad-header{color:var(--accent)}
 body[data-module="hemo"] .alert-box.info{background:rgba(var(--accent-rgb),.06);border-color:rgba(var(--accent-rgb),.2)}
@@ -381,7 +387,7 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
 .glossary-footer.open .glossary-toggle-arrow{transform:rotate(90deg)}
 .glossary-footer.open .glossary-toggle{color:var(--text2)}
 .glossary-body{display:none;padding-bottom:24px}
-.glossary-footer.open .glossary-body{display:grid;grid-template-columns:repeat(4,1fr);gap:20px 32px;padding-top:12px}
+.glossary-footer.open .glossary-body{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:20px 32px;padding-top:12px}
 .glossary-section-title{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);margin-bottom:8px;font-weight:600}
 .glossary-dl{margin:0;padding:0}
 .glossary-dl div{display:grid;grid-template-columns:90px 1fr;gap:4px 8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04);align-items:baseline}

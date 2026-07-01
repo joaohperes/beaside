@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monitorização Invasiva — be·aside</title>
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+  :root{--proc:#3b82f6}
+  .proc-tag{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--proc);background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);padding:2px 9px;border-radius:20px;display:inline-block;margin-bottom:10px}
+  .ref{font-family:var(--mono);font-size:10.5px;color:var(--text3);border-left:2px solid var(--border2);padding:4px 10px;margin:6px 0 0;display:block;line-height:1.5}
+
+  .step-list{list-style:none;padding:0;margin:10px 0}
+  .step-list li{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text2);line-height:1.6}
+  .step-list li:last-child{border-bottom:none}
+  .step-n{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--proc);background:rgba(59,130,246,.12);border-radius:4px;padding:1px 7px;flex-shrink:0;margin-top:1px}
+
+  .pill-list{list-style:none;padding:0;margin:8px 0}
+  .pill-list li{font-size:13px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;line-height:1.55;align-items:flex-start}
+  .pill-list li:last-child{border-bottom:none}
+  .pill-list li::before{content:'—';font-family:var(--mono);color:var(--proc);flex-shrink:0;margin-top:1px}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+  .three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px}
+  @media(max-width:700px){.two-col,.three-col{grid-template-columns:1fr}}
+  .info-box{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px 16px;font-size:13px;color:var(--text2);line-height:1.6}
+  .info-box strong{color:var(--text)}
+  .warn-box{background:rgba(226,75,74,.07);border:1px solid rgba(226,75,74,.25);border-radius:8px;padding:14px 16px;font-size:13px;color:#f0b8b8;line-height:1.6}
+  .warn-box strong{color:#f5c6c6}
+  .ok-box{background:rgba(29,184,138,.07);border:1px solid rgba(29,184,138,.25);border-radius:8px;padding:14px 16px;font-size:13px;color:#bce8d8;line-height:1.6}
+  .ok-box strong{color:#d0f0e4}
+  .gap-note{font-family:var(--mono);font-size:11px;color:var(--text3);background:var(--bg3);border:1px dashed var(--border2);border-radius:6px;padding:8px 12px;margin-top:10px}
+
+  .mat-grid{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 0}
+  .mat-item{font-family:var(--mono);font-size:11px;color:var(--text2);background:var(--bg3);border:1px solid var(--border);border-radius:5px;padding:3px 9px}
+
+  .proc-nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 32px}
+  .proc-nav a{font-family:var(--mono);font-size:11px;color:var(--text2);background:var(--bg3);border:1px solid var(--border);padding:5px 13px;border-radius:20px;text-decoration:none;transition:all .15s}
+  .proc-nav a:hover{color:var(--proc);border-color:rgba(59,130,246,.4)}
+
+  .proc-divider{height:1px;background:var(--border);margin:40px 0 36px}
+
+  .compl-list{list-style:none;padding:0;margin:8px 0}
+  .compl-list li{font-size:13px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--border);display:grid;grid-template-columns:190px 1fr;gap:12px;line-height:1.55;align-items:baseline}
+  @media(max-width:600px){.compl-list li{grid-template-columns:1fr}}
+  .compl-list li:last-child{border-bottom:none}
+  .compl-name{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text)}
+
+  /* onda arterial */
+  .wave-box{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin:12px 0;font-size:13px;color:var(--text2);line-height:1.6}
+  .wave-label{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--proc);margin-bottom:6px;display:block}
+
+  /* tabela de Swan-Ganz pressões por câmara */
+  .chamber-row{display:grid;grid-template-columns:140px 120px 1fr;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text2);align-items:baseline}
+  .chamber-row:last-child{border-bottom:none}
+  .chamber-name{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text)}
+  .chamber-val{font-family:var(--mono);font-size:12px;color:var(--proc)}
+</style>
+</head>
+<body data-module="proc" data-page="monitorizacao">
+<main class="main">
+<section class="section" id="monitorizacao">
+  <h1 class="section-title">Monitorização Invasiva</h1>
+  <p class="section-subtitle">Pressão arterial invasiva (PAI) e cateter de artéria pulmonar (Swan-Ganz) — leitura de onda, parâmetros e interpretação hemodinâmica.</p>
+
+  <nav class="proc-nav">
+    <a href="#pai">Pressão arterial invasiva</a>
+    <a href="#swan">Swan-Ganz</a>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════════
+       1. PAI — PRESSÃO ARTERIAL INVASIVA
+  ══════════════════════════════════════════════════════════ -->
+  <div id="pai">
+    <div class="card" style="margin-top:0">
+      <span class="proc-tag">Pressão arterial invasiva</span>
+      <div class="card-title">Pressão arterial invasiva (PAI)</div>
+      <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:16px">
+        A linha arterial converte a pressão pulsátil da artéria em sinal elétrico contínuo. A qualidade dessa leitura depende do sistema de transdução — entender a onda e seus artefatos é tão importante quanto ter o número na tela.
+      </p>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin-bottom:10px">Anatomia da onda arterial</strong>
+      <div class="wave-box">
+        <span class="wave-label">Componentes da curva</span>
+        <div class="two-col" style="margin-top:0">
+          <div>
+            <strong style="color:var(--text)">① Subida sistólica (upstroke)</strong>
+            <p style="margin:4px 0 10px">Abertura da válvula aórtica → ejeção ventricular rápida. Inclinação da subida reflete contratilidade e resistência vascular.</p>
+            <strong style="color:var(--text)">② Pico sistólico (PS)</strong>
+            <p style="margin:4px 0 10px">Pressão máxima. Corresponde à PAS. Depende do volume ejetado e da complacência aórtica. Em artérias periféricas (radial vs. femoral), o pico sistólico é amplificado — PAS radial pode ser 10–20 mmHg maior que aórtica.</p>
+            <strong style="color:var(--text)">③ Descida sistólica</strong>
+            <p style="margin:4px 0 10px">Fim da ejeção, queda de pressão progressiva antes do fechamento aórtico.</p>
+          </div>
+          <div>
+            <strong style="color:var(--text)">④ Incisura dicrótica (dicrotic notch)</strong>
+            <p style="margin:4px 0 10px">Fechamento da válvula aórtica. Separa a sístole da diástole. Em choque séptico / baixa RVS: notch precoce e mal definido. Em estenose aórtica: notch tardio e atenuado.</p>
+            <strong style="color:var(--text)">⑤ Curva diastólica</strong>
+            <p style="margin:4px 0 10px">Pressão cai progressivamente até o próximo ciclo pela complacência aórtica. Quanto mais rígida a aorta (idoso, HAS), mais abrupta a queda.</p>
+            <strong style="color:var(--text)">⑥ Nadir diastólico (PD)</strong>
+            <p style="margin:4px 0 0">Pressão mínima. Reflete a resistência vascular periférica e o tempo de diástole.</p>
+          </div>
+        </div>
+      </div>
+      <span class="ref">Arterial Pressure Monitoring — StatPearls. NCBI Bookshelf NBK556127. 2024.</span>
+      <span class="ref">Pauca AL et al. Applied physiology at the bedside: using invasive blood pressure as a true monitoring tool. <em>J Clin Monit Comput</em> 2025. PMC12696276</span>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:18px 0 8px">Configuração e zeragem do transdutor</strong>
+      <ul class="step-list">
+        <li><span class="step-n">1</span><span><strong>Nível flebostático:</strong> Posicionar o transdutor no 4° espaço intercostal, linha axilar média — corresponde ao nível do átrio direito. Cada 10 cm de diferença entre o transdutor e esse ponto geram ±7,5 mmHg de erro sistemático.</span></li>
+        <li><span class="step-n">2</span><span><strong>Zeragem:</strong> Abrir a torneira para o ar (não para o paciente), pressionar "zero" no monitor. Deve marcar 0 mmHg. Repetir ao mudar a posição do paciente ou do transdutor.</span></li>
+        <li><span class="step-n">3</span><span><strong>Flush rápido (fast-flush test):</strong> Puxar e soltar a válvula de flush rápido. Uma onda quadrada seguida de 1–2 oscilações que retornam rapidamente à linha de base = sistema criticamente amortecido (ideal). Serve para detectar supera- ou subamorte­cimento.</span></li>
+      </ul>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Problemas de amortecimento</strong>
+      <div class="two-col" style="margin-top:0">
+        <div class="warn-box">
+          <strong>Superamortecimento (overdamping)</strong><br>
+          <strong>Onda:</strong> Arredondada, sem notch dicrótico visível, subida lenta.<br>
+          <strong>Erro:</strong> PAS falsamente baixa, PAD falsamente alta. PAM é relativamente preservada.<br>
+          <strong>Causas:</strong> Bolha de ar no sistema, dobra do cateter, coágulo na ponta, extensão muito longa.<br>
+          <strong>Conduta:</strong> Verificar extensões, fazer flush suave, aspirar e descartar pequena quantidade de sangue, trocar o sistema se persistir.
+        </div>
+        <div class="warn-box">
+          <strong>Subamorte­cimento (underdamping)</strong><br>
+          <strong>Onda:</strong> Espiculada, com oscilações extras após a notch, subida muito íngreme.<br>
+          <strong>Erro:</strong> PAS falsamente alta, PAD falsamente baixa. PAM é relativamente preservada.<br>
+          <strong>Causas:</strong> Extensão muito curta, rigidez do sistema, ausência de amortecedor.<br>
+          <strong>Conduta:</strong> Adicionar filtro de amortecimento ("damping device"), usar extensões mais complacentes. A PAM é o valor mais confiável nessa situação.
+        </div>
+      </div>
+      <span class="ref">Invasive Arterial Pressure Monitoring: Reliable Values? <em>J Clin Med</em> 2025. PMC11822339</span>
+      <span class="ref">Abnormal arterial pressure waveforms — automatic detection. <em>Front Physiol</em> 2024. PMC11297833</span>
+
+      <div class="ok-box" style="margin-top:14px">
+        <strong>Regra prática:</strong> Em situações de dúvida sobre a acurácia da PAI (onda amortecida, cateter com mal funcionamento), a <strong>PAM é o valor mais robusto</strong> — é calculada matematicamente a partir de toda a curva e é menos afetada por problemas de amortecimento do que PAS e PAD isoladas.
+      </div>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:18px 0 8px">Leitura avançada da onda — o que ela diz além do número</strong>
+      <table>
+        <thead><tr><th>Sinal na onda</th><th>Interpretação clínica</th></tr></thead>
+        <tbody>
+          <tr><td>Subida sistólica muito lenta (pulsus tardus)</td><td>Estenose aórtica grave — obstrução de via de saída do VE</td></tr>
+          <tr><td>Amplitude pequena (pulsus parvus)</td><td>Baixo débito cardíaco — choque cardiogênico, tamponamento</td></tr>
+          <tr><td>Variação respiratória da amplitude &gt; 13% (PPV)</td><td>Responsividade a fluidos em VM controlada — paciente responde a volume</td></tr>
+          <tr><td>Pulso alternante (pulsus alternans)</td><td>Alternância de picos altos e baixos → ICC grave, disfunção severa de VE</td></tr>
+          <tr><td>Pulso paradoxal &gt; 10 mmHg</td><td>Queda de PAS na inspiração → tamponamento cardíaco, asma grave, auto-PEEP</td></tr>
+          <tr><td>Notch dicrótico muito precoce e proeminente</td><td>Baixa resistência vascular — vasodil­atação, sepse distributiva</td></tr>
+          <tr><td>Onda em "pico e cúpula" (spike and dome)</td><td>Cardiomiopatia hipertrófica obstrutiva (CMHO)</td></tr>
+        </tbody>
+      </table>
+      <span class="ref">Clinical review: Interpretation of arterial pressure wave in shock states. <em>Crit Care</em> 2006. PMC1414028</span>
+      <span class="ref">Pulse pressure variation and fluid responsiveness. <em>Ann Intensive Care</em> 2015. PMC4397629</span>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">PPV — Variação de Pressão de Pulso</strong>
+      <div class="info-box">
+        <strong>Fórmula:</strong> PPV (%) = (PP<sub>máx</sub> − PP<sub>mín</sub>) / [(PP<sub>máx</sub> + PP<sub>mín</sub>) / 2] × 100<br><br>
+        <strong>Interpretação:</strong> PPV &gt; 13% em VM controlada (sem esforço respiratório, VC ≥ 8 mL/kg) = responsivo a volume com sensibilidade ~80% e especificidade ~85%.<br><br>
+        <strong>Limitações:</strong> Inválido em arritmias, respiração espontânea, PEEP muito alta, VC baixo (&lt; 8 mL/kg), hipertensão pulmonar direita e tórax aberto.
+      </div>
+      <span class="ref">Marik PE et al. Dynamic changes in arterial waveform derived variables and fluid responsiveness in mechanically ventilated patients. <em>Crit Care Med</em> 37(9):2642–2647, 2009. PMID: 19602972</span>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Discordância entre PAI e esfigmomanômetro</strong>
+      <p style="font-size:13px;color:var(--text2);line-height:1.6;margin:0 0 10px">É comum — especialmente em choque, vasoconstricção grave e uso de vasopressores em alta dose. Qual confiar?</p>
+      <div class="two-col" style="margin-top:0">
+        <div class="info-box">
+          <strong>PAI &gt; Cuff (diferença &gt; 10–15 mmHg)</strong><br>
+          Comum em vasoconstricção periférica intensa (altas doses de noradrenalina). A PAI radial pode superestimar a pressão aórtica central por amplificação periférica. Nesse caso, a PAM continua sendo mais confiável que a PAS isolada.
+        </div>
+        <div class="warn-box">
+          <strong>Cuff &gt; PAI (PAI falsamente baixa)</strong><br>
+          Sugere problema técnico: cateter com coágulo, posição incorreta, overdamping. Fazer flush, verificar posição, checar sistema. Se o paciente está clinicamente bem e a PAI ainda parece baixa → confiar no cuff e investigar o cateter.
+        </div>
+      </div>
+      <span class="ref">Should I Target BP from Arterial Line or the Cuff? <em>Crit Care Med</em> 2025. PMC12733910</span>
+
+      <div class="warn-box" style="margin-top:14px">
+        <strong>Pitfalls mais comuns na PAI:</strong>
+        <ul style="margin:6px 0 0 16px;line-height:1.8">
+          <li>Transdutor fora do nível flebostático → PA sistematicamente errada (cada 10 cm = ±7,5 mmHg)</li>
+          <li>Não zerear após mudar posição do paciente → valores incorretos</li>
+          <li>Confiar na PAS em overdamping → PAS falsamente baixa leva a vasopressor desnecessário</li>
+          <li>Usar linha arterial para infundir drogas → pode causar isquemia irreversível</li>
+          <li>Não identificar pulsus paradoxal → tamponamento não diagnosticado</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="proc-divider"></div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       2. SWAN-GANZ
+  ══════════════════════════════════════════════════════════ -->
+  <div id="swan">
+    <div class="card">
+      <span class="proc-tag">Cateter de artéria pulmonar</span>
+      <div class="card-title">Cateter de artéria pulmonar (Swan-Ganz)</div>
+      <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:16px">
+        O Swan-Ganz é um cateter de balão flutuante que avança pelo coração direito guiado pela curva de pressão até encravar na artéria pulmonar. Fornece medidas diretas de pressões do coração direito, débito cardíaco por termodiluição e SvO₂ mista — informações que a ecocardiografia não fornece de forma contínua. Seu uso reduziu significativamente nos últimos anos com a disseminação do POCUS, mas permanece insubstituível em situações específicas.
+      </p>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin-bottom:8px">Indicações atuais</strong>
+      <ul class="pill-list">
+        <li>Choque cardiogênico grave — distinção de fenótipos, titulação de inotrópicos e suporte circulatório mecânico</li>
+        <li>Hipertensão arterial pulmonar — diagnóstico formal (estudo hemodinâmico), teste de vasorreatividade com NO inalado</li>
+        <li>Choque de etiologia mista ou indeterminada, refratário à terapêutica inicial</li>
+        <li>Avaliação pré-transplante cardíaco e pré-cirurgia cardíaca de alto risco</li>
+        <li>Distinção entre EAP cardiogênico (PCWP &gt; 18) e SDRA/EAP não cardiogênico (PCWP ≤ 18)</li>
+      </ul>
+
+      <div class="gap-note">⚙ Múltiplos RCTs (PAC-Man, ESCAPE, FACTT) não demonstraram redução de mortalidade com uso rotineiro do Swan-Ganz em sepse, SDRA ou ICC. Seu uso deve ser reservado a situações onde a informação obtida vai mudar ativamente a conduta e não é obtível por métodos menos invasivos.</div>
+      <span class="ref">Harvey S et al. Assessment of the clinical effectiveness of pulmonary artery catheters (PAC-Man): a randomised controlled trial. <em>Lancet</em> 366(9484):472–477, 2005. PMID: 16084255</span>
+      <span class="ref">Wheeler AP et al. Pulmonary-artery versus central venous catheter to guide treatment of acute lung injury (FACTT). <em>N Engl J Med</em> 354(21):2213–2224, 2006. PMID: 16714768</span>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Material</strong>
+      <div class="mat-grid">
+        <span class="mat-item">Cateter de artéria pulmonar (4 lúmens + termodiluição)</span>
+        <span class="mat-item">Introdutor 8,5 Fr (sheath)</span>
+        <span class="mat-item">Kit de CVC completo para o introdutor</span>
+        <span class="mat-item">Monitor com módulo de pressão para 2 canais simultâneos</span>
+        <span class="mat-item">Seringa 1,5 mL para insuflar balão</span>
+        <span class="mat-item">Solução fria para termodiluição (se CO manual)</span>
+        <span class="mat-item">Campo estéril + paramentação máxima</span>
+      </div>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:18px 0 8px">Técnica de inserção</strong>
+
+      <div class="ok-box" style="margin-bottom:14px">
+        <strong>Sítio preferencial:</strong> Veia jugular interna direita — trajetória mais direta para o coração direito e artéria pulmonar. A JI esquerda e a subclávia funcionam, mas a curvatura do cateter é mais difícil. Femoral é possível, mas a distância aumenta o risco de loop.
+      </div>
+
+      <ul class="step-list">
+        <li><span class="step-n">1</span><span>Inserir o introdutor 8,5 Fr pela técnica de Seldinger na JI direita (igual ao CVC — ver página de Acessos). Conectar o canal distal do cateter ao transdutor de pressão.</span></li>
+        <li><span class="step-n">2</span><span>Testar o balão com 1,5 mL de ar antes de inserir. Verificar que infla simétricamente e esvazia completamente ao retirar a seringa.</span></li>
+        <li><span class="step-n">3</span><span>Introduzir o cateter com balão <strong>desinsuflado</strong> pelo introdutor até ~20 cm (posição estimada na VCS/AD). Insuflar o balão com 1,5 mL de ar.</span></li>
+        <li><span class="step-n">4</span><span><strong>Avançar guiado pela curva de pressão na tela</strong> — não avançar às cegas. A cada câmara, a curva muda de forma característica (ver abaixo).</span></li>
+        <li><span class="step-n">5</span><span>Ao obter a curva de encunhamento (PCWP): <strong>esvaziar o balão imediatamente</strong>. O cateter deve retornar espontaneamente à curva de AP. Se não retornar, não avançar mais — risco de infarto pulmonar.</span></li>
+        <li><span class="step-n">6</span><span>Fixar na profundidade onde o balão insuflado produz encunhamento e o desinsuflado retorna à curva de AP. Confirmar posição com Rx de tórax (ponta na AP proximal, dentro de 2 cm da linha mediana).</span></li>
+      </ul>
+      <span class="ref">Pulmonary Artery Catheterization — StatPearls. NCBI Bookshelf NBK482170. 2024.</span>
+      <span class="ref">Marino PL. The contemporary pulmonary artery catheter. Part 1: placement and waveform analysis. <em>J Intensive Care</em> 2022. PMC8894225</span>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Curvas de pressão por câmara — como reconhecer</strong>
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin:0 0 14px">
+        <div class="chamber-row" style="font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);padding-bottom:8px">
+          <span>Câmara</span><span>Pressões normais</span><span>Morfologia da onda</span>
+        </div>
+        <div class="chamber-row">
+          <span class="chamber-name">Átrio direito (AD)</span>
+          <span class="chamber-val">0–8 mmHg</span>
+          <span>Onda bifásica baixa (ondas a e v). Sem componente sistólico abrupto. Profundidade ~20 cm pela JI D.</span>
+        </div>
+        <div class="chamber-row">
+          <span class="chamber-name">Ventrículo direito (VD)</span>
+          <span class="chamber-val">Sist: 20–30<br>Diast: 0–8</span>
+          <span>Subida sistólica abrupta + queda para zero na diástole. Reconhecível — parece uma onda arterial, mas com diastólica próxima de zero. Profundidade ~30 cm pela JI D. Risco de arritmia.</span>
+        </div>
+        <div class="chamber-row">
+          <span class="chamber-name">Artéria pulmonar (AP)</span>
+          <span class="chamber-val">Sist: 20–30<br>Diast: 8–15<br>Média: 10–20</span>
+          <span>Igual ao VD na sístole, mas com <strong>diastólica elevada</strong> e notch dicrótico visível — a diferença-chave entre AP e VD. Profundidade ~45–50 cm pela JI D.</span>
+        </div>
+        <div class="chamber-row">
+          <span class="chamber-name">Encunhamento (PCWP)</span>
+          <span class="chamber-val">4–12 mmHg</span>
+          <span>Onda baixa, sem pulsação sistólica, bifásica (ondas a e v). Representa a pressão transmitida do AE. Esvaziar o balão <strong>imediatamente</strong> após medir.</span>
+        </div>
+      </div>
+      <span class="ref">Pulmonary Capillary Wedge Pressure — StatPearls. NCBI Bookshelf NBK557748. 2024.</span>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Parâmetros medidos e calculados</strong>
+      <table>
+        <thead><tr><th>Parâmetro</th><th>Normal</th><th>O que mede</th></tr></thead>
+        <tbody>
+          <tr><td>PVC / PAD (pressão AD)</td><td>0–8 mmHg</td><td>Pré-carga do VD; pressão de enchimento do AD</td></tr>
+          <tr><td>PAP sistólica</td><td>20–30 mmHg</td><td>Pós-carga do VD</td></tr>
+          <tr><td>PAP média (PAPm)</td><td>10–20 mmHg</td><td>Hipertensão pulmonar se &gt; 25 mmHg em repouso</td></tr>
+          <tr><td>PCWP (pressão de encunhamento)</td><td>4–12 mmHg</td><td>Substituto da pressão do AE / pré-carga do VE. &gt; 18 = EAP cardiogênico.</td></tr>
+          <tr><td>DC (débito cardíaco)</td><td>4–8 L/min</td><td>Termodiluição. Média de 3 medidas.</td></tr>
+          <tr><td>IC (índice cardíaco)</td><td>2,2–4 L/min/m²</td><td>DC / superfície corporal. Choque cardiogênico se &lt; 1,8.</td></tr>
+          <tr><td>RVS (resistência vasc. sistêmica)</td><td>800–1200 dyn·s·cm⁻⁵</td><td>(PAM − PVC) / DC × 80. Alta em vasoconstrição; baixa em vasodilatação/sepse.</td></tr>
+          <tr><td>RVP (resistência vasc. pulmonar)</td><td>&lt; 250 dyn·s·cm⁻⁵</td><td>(PAPm − PCWP) / DC × 80. Elevada em HP pré-capilar.</td></tr>
+          <tr><td>SvO₂ (sat. venosa mista)</td><td>65–75%</td><td>Balanço global DO₂/VO₂. Colhida no lúmen distal (AP).</td></tr>
+        </tbody>
+      </table>
+      <span class="ref">Pulmonary Artery Catheterization — StatPearls. NCBI Bookshelf NBK482170. 2024.</span>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Perfis hemodinâmicos nos 4 tipos de choque</strong>
+      <table>
+        <thead><tr><th>Tipo de choque</th><th>PVC</th><th>PCWP</th><th>DC/IC</th><th>RVS</th><th>SvO₂</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Distributivo</strong> (sepse, anafilaxia)</td><td>N / ↓</td><td>N / ↓</td><td>↑↑</td><td>↓↓</td><td>↑ (paradoxal)</td></tr>
+          <tr><td><strong>Cardiogênico</strong></td><td>↑</td><td>↑↑</td><td>↓↓</td><td>↑↑</td><td>↓↓</td></tr>
+          <tr><td><strong>Hipovolêmico</strong></td><td>↓↓</td><td>↓↓</td><td>↓</td><td>↑</td><td>↓</td></tr>
+          <tr><td><strong>Obstrutivo</strong> (tamponamento, TEP maciço)</td><td>↑↑</td><td>N / ↓ (tamponamento)<br>↑ (TEP)</td><td>↓↓</td><td>↑↑</td><td>↓↓</td></tr>
+        </tbody>
+      </table>
+
+      <div class="ok-box" style="margin-top:14px">
+        <strong>Diferença-chave: tamponamento vs. disfunção de VD (TEP maciço)</strong><br>
+        No tamponamento: equalização das pressões diastólicas (PVC ≈ PCWP ≈ PAP diastólica ≈ 15–20 mmHg).<br>
+        No TEP maciço: PAP sistólica muito elevada (&gt; 40–50 mmHg), VD dilatado, PCWP normal ou baixa.
+      </div>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Complicações</strong>
+      <ul class="compl-list">
+        <li><span class="compl-name">Arritmias</span><span>Mais comuns ao cruzar o VD (passagem pelo subvalvar). Geralmente autolimitadas. Risco aumentado em hipocalemia, isquemia e prolongamento do QT. Ter desfibrilador à mão.</span></li>
+        <li><span class="compl-name">Infarto pulmonar</span><span>Balão insuflado por mais de 10–15 s ou cateter migrado distalmente. Prevenção: esvaziar imediatamente após medir PCWP. Monitorizar curva de AP — se em encunhamento espontâneo, recuar o cateter.</span></li>
+        <li><span class="compl-name">Ruptura de AP</span><span>Rara mas catastrófica (&lt; 0,2%). Hemoptise durante a insuflação. Maior risco em HAP grave, idosos e anticoagulados. Não insuflar com força se resistência ao balão.</span></li>
+        <li><span class="compl-name">Nó / loop do cateter</span><span>Cateter avançado sem encontrar AP (loop no VD). Não forçar além de ~60 cm sem curva esperada. Retirar e reposicionar.</span></li>
+        <li><span class="compl-name">ICSRC / trombose</span><span>Mesmo risco do CVC. Remoção assim que não há mais indicação clínica ativa.</span></li>
+      </ul>
+
+      <div class="warn-box" style="margin-top:14px">
+        <strong>Pitfalls mais comuns:</strong>
+        <ul style="margin:6px 0 0 16px;line-height:1.8">
+          <li>Não reconhecer a transição VD → AP na curva → avançar demais, risco de loop</li>
+          <li>Deixar o balão insuflado → infarto pulmonar</li>
+          <li>Não esvaziar o balão ao recuar → ruptura de AP</li>
+          <li>Medir PCWP com balão superin­suflado (mais de 1,5 mL) → valor falsamente alto</li>
+          <li>Usar Swan-Ganz onde o POCUS seria suficiente → invasividade desnecessária sem benefício de mortalidade</li>
+        </ul>
+      </div>
+      <span class="ref">Pulmonary Artery Catheterization — StatPearls. NCBI Bookshelf NBK482170. 2024.</span>
+      <span class="ref">Marino PL. The contemporary pulmonary artery catheter. Part 1: placement and waveform analysis. <em>J Intensive Care</em> 2022. PMC8894225</span>
+    </div>
+  </div>
+
+</section>
+</main>
+<script src="../assets/app.js"></script>
+</body>
+</html>

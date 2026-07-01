@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assistente de conduta — be·aside</title>
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+  :root{--neuro:#9b6ff7}
+  .as-label{display:block;font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--text3);margin-bottom:8px}
+  .as-input,.as-textarea{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:var(--sans);font-size:14px;padding:11px 14px;line-height:1.6}
+  .as-input:focus,.as-textarea:focus{outline:none;border-color:var(--neuro)}
+  .as-textarea{resize:vertical;min-height:54px}
+  .as-btn{font-family:var(--mono);font-size:12px;color:var(--neuro);background:rgba(155,111,247,.1);border:1px solid rgba(155,111,247,.3);padding:9px 18px;border-radius:6px;cursor:pointer;transition:all .15s;white-space:nowrap}
+  .as-btn:hover:not(:disabled){background:rgba(155,111,247,.18);border-color:var(--neuro)}
+  .as-btn:disabled{opacity:.5;cursor:not-allowed}
+  .as-btn-ghost{color:var(--text2);background:var(--bg3);border-color:var(--border)}
+  .as-btn-ghost:hover:not(:disabled){background:var(--bg4);border-color:var(--border2)}
+  .as-status{font-family:var(--mono);font-size:12px;color:var(--text2)}
+  .as-status.err{color:var(--red)}
+
+  .as-disc{border-left:3px solid var(--red);background:rgba(226,75,74,.07);border-radius:0 6px 6px 0;margin:16px 0;font-size:13px;line-height:1.6}
+  .as-disc-bar{display:flex;align-items:center;gap:8px;padding:9px 14px;cursor:pointer;color:#f0a0a0}
+  .as-disc-bar strong{font-weight:500;color:#f0a0a0}
+  .as-disc-bar .as-disc-arrow{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--text3);transition:transform .15s}
+  .as-disc.open .as-disc-arrow{transform:rotate(180deg)}
+  .as-disc-body{display:none;padding:0 14px 12px 14px;color:#e8b0b0;line-height:1.65}
+  .as-disc.open .as-disc-body{display:block}
+
+  .case-layout{display:grid;grid-template-columns:240px 1fr;gap:0;margin-top:14px;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--bg2);min-height:520px}
+  .case-layout.collapsed{grid-template-columns:0 1fr}
+  .case-col{border-right:1px solid var(--border);background:var(--bg2);display:flex;flex-direction:column;overflow:hidden;transition:opacity .15s}
+  .case-layout.collapsed .case-col{opacity:0;pointer-events:none;border-right:none}
+  .case-list-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--border)}
+  .case-list-head span{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--text3)}
+  .case-new{font-family:var(--mono);font-size:11px;color:var(--neuro);background:none;border:1px solid rgba(155,111,247,.3);border-radius:5px;padding:4px 11px;cursor:pointer}
+  .case-new:hover{background:rgba(155,111,247,.1)}
+  .case-items{overflow-y:auto;flex:1}
+  .case-item{display:flex;align-items:center;gap:6px;padding:11px 16px;cursor:pointer;border-bottom:1px solid var(--border);transition:background .12s}
+  .case-item:hover{background:var(--bg3)}
+  .case-item.active{background:rgba(155,111,247,.08);box-shadow:inset 2px 0 0 var(--neuro)}
+  .case-item .ci-name{flex:1;font-size:13px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .case-item .ci-when{font-family:var(--mono);font-size:9px;color:var(--text3)}
+  .case-del{opacity:0;color:var(--text3);background:none;border:none;cursor:pointer;font-size:15px;line-height:1;padding:2px 4px}
+  .case-item:hover .case-del{opacity:1}
+  .case-del:hover{color:var(--red)}
+  .case-empty{padding:16px;font-size:12px;color:var(--text3);line-height:1.5}
+
+  .chat{display:flex;flex-direction:column;min-height:520px;min-width:0}
+  .chat-head{display:flex;align-items:center;gap:10px;padding:14px 20px;border-bottom:1px solid var(--border)}
+  .chat-toggle{background:none;border:1px solid var(--border);color:var(--text2);border-radius:6px;width:30px;height:30px;cursor:pointer;font-size:14px;line-height:1;flex-shrink:0;transition:all .12s}
+  .chat-toggle:hover{border-color:var(--border2);color:var(--text);background:var(--bg3)}
+  .chat-title{font-size:16px;font-weight:600;color:#e8ecf2}
+  .chat-rename{font-family:var(--mono);font-size:10px;color:var(--text3);background:none;border:none;cursor:pointer;text-decoration:underline}
+  .chat-rename:hover{color:var(--neuro)}
+  .msgs{flex:1;display:flex;flex-direction:column;gap:16px;padding:20px;overflow-y:auto}
+  .msg{max-width:90%}
+  .msg.user{align-self:flex-end;max-width:75%}
+  .msg.assistant{align-self:flex-start;width:100%}
+  .msg-role{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);margin-bottom:5px}
+  .msg.user .msg-role{text-align:right}
+  .bubble{border-radius:10px;padding:12px 15px;font-size:14px;line-height:1.7}
+  .msg.user .bubble{background:var(--bg4);border:1px solid var(--border2);white-space:pre-wrap}
+  .msg.assistant .bubble{background:var(--bg2);border:1px solid var(--border)}
+  .bubble h2{font-size:14px;font-weight:600;color:var(--neuro);margin:16px 0 7px;font-family:var(--sans)}
+  .bubble h2:first-child{margin-top:4px}
+  .bubble h3{font-size:13.5px;margin:14px 0 6px}
+  .bubble p{margin:7px 0}
+  .bubble ul,.bubble ol{margin:7px 0 7px 20px;padding:0}
+  .bubble li{margin:4px 0}
+  .bubble strong{color:#e8ecf2;font-weight:500}
+  .bubble em{font-style:italic;color:var(--text2)}
+  .bubble table{border-collapse:collapse;width:100%;margin:10px 0;font-size:13px}
+  .bubble th,.bubble td{border:1px solid var(--border);padding:6px 9px;text-align:left;vertical-align:top}
+  .bubble th{background:var(--bg3);color:var(--text2);font-family:var(--mono);font-weight:500;font-size:10.5px;text-transform:uppercase;letter-spacing:.05em}
+  .bubble pre{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:11px 13px;overflow-x:auto;margin:10px 0}
+  .bubble pre code{font-family:var(--mono);font-size:12.5px;color:var(--text);background:none;border:0;padding:0;white-space:pre}
+  .bubble code{font-family:var(--mono);font-size:12.5px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:1px 5px}
+  .bubble hr{border:none;border-top:1px solid var(--border);margin:12px 0}
+  .chat-empty{flex:1;display:flex;align-items:center;justify-content:center;color:var(--text3);font-size:13px;text-align:center;line-height:1.6;padding:30px}
+
+  .composer{display:flex;gap:10px;align-items:flex-end;padding:14px 20px;border-top:1px solid var(--border);background:var(--bg2)}
+  .composer .as-textarea{flex:1}
+  .chat-status{font-family:var(--mono);font-size:12px;color:var(--text2);padding:0 20px}
+  .chat-status.err{color:var(--red)}
+  .spinner{display:inline-block;width:13px;height:13px;border:2px solid var(--border2);border-top-color:var(--neuro);border-radius:50%;animation:spin .7s linear infinite;vertical-align:-2px;margin-right:6px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(2px);display:none;align-items:center;justify-content:center;z-index:200}
+  .modal-backdrop.show{display:flex}
+  .modal{background:var(--bg2);border:1px solid var(--border2);border-radius:12px;padding:22px;width:min(440px,calc(100vw - 40px));box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  .modal-title{font-size:15px;font-weight:600;color:#e8ecf2;margin-bottom:6px}
+  .modal-msg{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:16px}
+  .modal input{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:var(--sans);font-size:14px;padding:11px 14px;margin-bottom:18px}
+  .modal input:focus{outline:none;border-color:var(--neuro)}
+  .modal-actions{display:flex;justify-content:flex-end;gap:10px}
+
+  @media(max-width:760px){
+    .case-layout{grid-template-columns:160px 1fr}
+    .case-layout.collapsed{grid-template-columns:0 1fr}
+    .msg.user{max-width:88%}
+  }
+</style>
+</head>
+<body data-module="neuro" data-page="assistente">
+<main class="main">
+<section class="section" id="assistente">
+  <h1 class="section-title">Assistente de Conduta (IA)</h1>
+  <p class="section-subtitle">Discuta cada paciente em uma conversa contínua — o histórico do caso fica salvo neste navegador.</p>
+
+  <div class="as-disc" id="as-disc">
+    <div class="as-disc-bar" onclick="document.getElementById('as-disc').classList.toggle('open')">
+      <strong>⚠ Ferramenta de apoio — não substitui o julgamento clínico.</strong>
+      <span class="as-disc-arrow">▾</span>
+    </div>
+    <div class="as-disc-body">
+      As respostas são geradas por IA (Claude) e podem conter erros. Toda conduta é de responsabilidade do plantonista. <strong>Não use dados que identifiquem o paciente</strong> (nome real, registro): use apelido/leito e apenas dados clínicos.
+    </div>
+  </div>
+
+  <div id="as-senha-box" style="margin:18px 0">
+    <label class="as-label" for="as-senha">Senha de acesso</label>
+    <div style="display:flex;gap:10px;align-items:center;max-width:380px">
+      <input type="password" id="as-senha" class="as-input" autocomplete="off" placeholder="••••••••" style="max-width:260px">
+      <button class="as-btn" onclick="salvarSenha()">OK</button>
+    </div>
+    <div class="as-status" id="as-senha-status" style="margin-top:6px"></div>
+  </div>
+
+  <div class="case-layout" id="as-app" style="display:none">
+    <aside class="case-col">
+      <div class="case-list-head">
+        <span>Casos</span>
+        <button class="case-new" onclick="novoCaso()">+ Novo</button>
+      </div>
+      <div class="case-items" id="case-items"></div>
+    </aside>
+
+    <div class="chat" id="chat">
+      <!-- preenchido por JS -->
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="modal-backdrop" id="modal-backdrop">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-title" id="modal-title"></div>
+    <div class="modal-msg" id="modal-msg"></div>
+    <input type="text" id="modal-input" autocomplete="off" style="display:none">
+    <div class="modal-actions">
+      <button class="as-btn as-btn-ghost" id="modal-cancel">Cancelar</button>
+      <button class="as-btn" id="modal-ok">OK</button>
+    </div>
+  </div>
+</div>
+<script src="../assets/app.js"></script>
+<script>
+const LS_KEY='neuroguide-casos-v1';
+const SS_SENHA='vmguide-senha';
+let casos=[];
+let casoAtivo=null;
+
+function loadCasos(){
+  try{casos=JSON.parse(localStorage.getItem(LS_KEY))||[];}catch(e){casos=[];}
+  casos.sort((a,b)=>(b.updatedAt||0)-(a.updatedAt||0));
+}
+function saveCasos(){try{localStorage.setItem(LS_KEY,JSON.stringify(casos));}catch(e){}}
+function getCaso(id){return casos.find(c=>c.id===id);}
+function uid(){return 'c'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
+function fmtWhen(ts){if(!ts)return '';const d=new Date(ts);const h=String(d.getHours()).padStart(2,'0');const m=String(d.getMinutes()).padStart(2,'0');const dd=String(d.getDate()).padStart(2,'0');const mm=String(d.getMonth()+1).padStart(2,'0');return dd+'/'+mm+' '+h+':'+m;}
+
+function getSenha(){try{return sessionStorage.getItem(SS_SENHA)||'';}catch(e){return '';}}
+function salvarSenha(){
+  const v=document.getElementById('as-senha').value.trim();
+  const st=document.getElementById('as-senha-status');
+  if(!v){st.className='as-status err';st.textContent='Informe a senha.';return;}
+  try{sessionStorage.setItem(SS_SENHA,v);}catch(e){}
+  document.getElementById('as-senha-box').style.display='none';
+  document.getElementById('as-app').style.display='grid';
+  render();
+}
+
+let modalResolve=null;
+function modalClose(val){
+  document.getElementById('modal-backdrop').classList.remove('show');
+  const r=modalResolve;modalResolve=null;
+  if(r)r(val);
+}
+function uiPrompt(opts){
+  return new Promise(resolve=>{
+    modalResolve=resolve;
+    document.getElementById('modal-title').textContent=opts.title||'';
+    document.getElementById('modal-msg').textContent=opts.msg||'';
+    const inp=document.getElementById('modal-input');
+    inp.style.display='block';inp.value=opts.value||'';inp.placeholder=opts.placeholder||'';
+    const ok=document.getElementById('modal-ok');ok.textContent=opts.ok||'OK';ok.className='as-btn';
+    document.getElementById('modal-backdrop').classList.add('show');
+    setTimeout(()=>{inp.focus();inp.select();},30);
+    ok.onclick=()=>modalClose(inp.value.trim());
+    document.getElementById('modal-cancel').onclick=()=>modalClose(null);
+  });
+}
+function uiConfirm(opts){
+  return new Promise(resolve=>{
+    modalResolve=resolve;
+    document.getElementById('modal-title').textContent=opts.title||'';
+    document.getElementById('modal-msg').textContent=opts.msg||'';
+    document.getElementById('modal-input').style.display='none';
+    const ok=document.getElementById('modal-ok');ok.textContent=opts.ok||'Confirmar';
+    ok.className='as-btn'+(opts.danger?' as-btn-danger':'');
+    if(opts.danger)ok.style.cssText='color:var(--red);background:rgba(226,75,74,.1);border-color:rgba(226,75,74,.4)';else ok.style.cssText='';
+    document.getElementById('modal-backdrop').classList.add('show');
+    setTimeout(()=>ok.focus(),30);
+    ok.onclick=()=>modalClose(true);
+    document.getElementById('modal-cancel').onclick=()=>modalClose(false);
+  });
+}
+document.getElementById('modal-backdrop').addEventListener('keydown',e=>{
+  if(e.key==='Enter'){e.preventDefault();document.getElementById('modal-ok').click();}
+  else if(e.key==='Escape'){e.preventDefault();document.getElementById('modal-cancel').click();}
+});
+document.getElementById('modal-backdrop').addEventListener('mousedown',e=>{
+  if(e.target.id==='modal-backdrop')modalClose(modalResolve&&document.getElementById('modal-input').style.display==='none'?false:null);
+});
+
+async function novoCaso(){
+  const nome=await uiPrompt({title:'Novo caso',msg:'Apelido ou leito — NÃO use nome real do paciente.',placeholder:'ex: leito 7'});
+  if(!nome)return;
+  const c={id:uid(),nome:nome,messages:[],updatedAt:Date.now()};
+  casos.unshift(c);casoAtivo=c.id;saveCasos();render();
+  setTimeout(()=>{const t=document.getElementById('composer-input');if(t)t.focus();},50);
+}
+function abrirCaso(id){casoAtivo=id;render();}
+async function apagarCaso(id,e){
+  e.stopPropagation();
+  const c=getCaso(id);if(!c)return;
+  const ok=await uiConfirm({title:'Apagar caso',msg:'Apagar o caso "'+c.nome+'"? Isso remove o histórico deste navegador, sem desfazer.',ok:'Apagar',danger:true});
+  if(!ok)return;
+  casos=casos.filter(x=>x.id!==id);
+  if(casoAtivo===id)casoAtivo=casos.length?casos[0].id:null;
+  saveCasos();render();
+}
+async function renomearCaso(id){
+  const c=getCaso(id);if(!c)return;
+  const nome=await uiPrompt({title:'Renomear caso',value:c.nome,placeholder:'apelido/leito'});
+  if(!nome)return;
+  c.nome=nome;c.updatedAt=Date.now();saveCasos();render();
+}
+function toggleCasos(){document.getElementById('as-app').classList.toggle('collapsed');}
+
+function render(){renderList();renderChat();}
+function renderList(){
+  const wrap=document.getElementById('case-items');
+  if(!casos.length){wrap.innerHTML='<div class="case-empty">Nenhum caso ainda. Clique <strong>+ Novo</strong> para iniciar a discussão de um paciente.</div>';return;}
+  wrap.innerHTML=casos.map(c=>
+    '<div class="case-item'+(c.id===casoAtivo?' active':'')+'" onclick="abrirCaso(\''+c.id+'\')">'+
+      '<span class="ci-name" title="'+escAttr(c.nome)+'">'+esc(c.nome)+'</span>'+
+      '<span class="ci-when">'+fmtWhen(c.updatedAt)+'</span>'+
+      '<button class="case-del" title="Apagar" onclick="apagarCaso(\''+c.id+'\',event)">×</button>'+
+    '</div>'
+  ).join('');
+}
+function renderChat(){
+  const chat=document.getElementById('chat');
+  const c=getCaso(casoAtivo);
+  if(!c){
+    chat.innerHTML=
+      '<div class="chat-head">'+
+        '<button class="chat-toggle" title="Mostrar/ocultar casos" onclick="toggleCasos()">☰</button>'+
+        '<span class="chat-title" style="color:var(--text3);font-weight:400">Nenhum caso aberto</span>'+
+      '</div>'+
+      '<div class="chat-empty">Selecione um caso ou crie um&nbsp;<strong>+&nbsp;Novo</strong>&nbsp;para começar.</div>';
+    return;
+  }
+  let msgsHtml='';
+  if(!c.messages.length){
+    msgsHtml='<div class="chat-empty">Apresente o paciente: GCS, pupila, PIC/PPC se disponível, TC, anticoagulação em uso, exames…<br>O Claude vai sugerir conduta e você continua a discussão por aqui.</div>';
+  }else{
+    msgsHtml=c.messages.map(m=>
+      '<div class="msg '+m.role+'">'+
+        '<div class="msg-role">'+(m.role==='user'?'Plantonista':'Claude')+'</div>'+
+        '<div class="bubble">'+(m.role==='user'?esc(m.content):mdToHtml(m.content))+'</div>'+
+      '</div>'
+    ).join('');
+  }
+  const firstTurn=c.messages.length===0;
+  chat.innerHTML=
+    '<div class="chat-head">'+
+      '<button class="chat-toggle" title="Mostrar/ocultar casos" onclick="toggleCasos()">☰</button>'+
+      '<span class="chat-title">'+esc(c.nome)+'</span>'+
+      '<button class="chat-rename" onclick="renomearCaso(\''+c.id+'\')">renomear</button>'+
+    '</div>'+
+    '<div class="msgs" id="msgs">'+msgsHtml+'</div>'+
+    '<div class="chat-status" id="chat-status"></div>'+
+    '<div class="composer">'+
+      '<textarea class="as-textarea" id="composer-input" rows="2" placeholder="'+
+        (firstTurn?'Ex: Masc, 55 anos. TCE grave (GCS 7). TC: hematoma epidural D, desvio de linha média 8 mm. PAS 160 mmHg, FR 14. Pupila D midriática. Solicito avaliação.':'Pergunta de acompanhamento sobre este caso…')+
+      '"></textarea>'+
+      '<button class="as-btn" id="composer-send" onclick="enviar()">Enviar</button>'+
+    '</div>';
+  const ta=document.getElementById('composer-input');
+  ta.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key==='Enter'){e.preventDefault();enviar();}});
+  scrollMsgs();
+}
+function scrollMsgs(){const m=document.getElementById('msgs');if(m)m.scrollTop=m.scrollHeight;window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});}
+
+function enviar(){
+  const c=getCaso(casoAtivo);if(!c)return;
+  const ta=document.getElementById('composer-input');
+  const status=document.getElementById('chat-status');
+  const btn=document.getElementById('composer-send');
+  const texto=ta.value.trim();
+  status.className='chat-status';
+  if(!texto){status.className='chat-status err';status.textContent='Escreva uma mensagem.';return;}
+  const senha=getSenha();
+  if(!senha){status.className='chat-status err';status.textContent='Sessão expirou — recarregue e informe a senha.';return;}
+
+  c.messages.push({role:'user',content:texto});
+  c.updatedAt=Date.now();saveCasos();
+  renderChat();
+  const status2=document.getElementById('chat-status');
+  const btn2=document.getElementById('composer-send');
+  btn2.disabled=true;
+  status2.innerHTML='<span class="spinner"></span>Consultando o assistente…';
+
+  fetch('/api/sugerir-neuro',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','x-vmguide-senha':senha},
+    body:JSON.stringify({messages:c.messages.map(m=>({role:m.role,content:m.content}))})
+  }).then(async r=>{
+    const data=await r.json().catch(()=>({}));
+    if(!r.ok)throw new Error(data.error||('Erro '+r.status));
+    return data;
+  }).then(data=>{
+    c.messages.push({role:'assistant',content:data.sugestao||'(resposta vazia)'});
+    c.updatedAt=Date.now();saveCasos();
+    render();
+  }).catch(err=>{
+    const s=document.getElementById('chat-status');
+    if(s){s.className='chat-status err';s.textContent=err.message||'Falha na requisição.';}
+    const b=document.getElementById('composer-send');if(b)b.disabled=false;
+  });
+}
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function escAttr(s){return esc(s).replace(/"/g,'&quot;');}
+function mdToHtml(md){
+  const inline=s=>esc(s)
+    .replace(/`([^`]+?)`/g,'<code>$1</code>')
+    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+    .replace(/\*([^*\n]+?)\*/g,'<em>$1</em>');
+  const lines=String(md).split('\n');
+  let html='';let inList=false;let listTag='ul';
+  const closeList=()=>{if(inList){html+='</'+listTag+'>';inList=false;}};
+  const openList=tag=>{if(inList&&listTag!==tag)closeList();if(!inList){html+='<'+tag+'>';inList=true;listTag=tag;}};
+  const splitCells=s=>s.replace(/^\s*\|/,'').replace(/\|\s*$/,'').split('|').map(x=>x.trim());
+  const isSep=s=>s.includes('|')&&s.includes('-')&&/^\|?[\s:|-]*-[\s:|-]*\|?$/.test(s);
+  for(let i=0;i<lines.length;i++){
+    const line=lines[i].trim();
+    if(line.startsWith('```')){
+      closeList();const buf=[];i++;
+      while(i<lines.length&&!lines[i].trim().startsWith('```')){buf.push(lines[i]);i++;}
+      html+='<pre><code>'+esc(buf.join('\n'))+'</code></pre>';continue;
+    }
+    if(!line){closeList();continue;}
+    if(line.includes('|')&&i+1<lines.length&&isSep(lines[i+1].trim())){
+      closeList();
+      const head=splitCells(line);i++;let body='';
+      while(i+1<lines.length&&lines[i+1].trim().includes('|')&&lines[i+1].trim()){
+        body+='<tr>'+splitCells(lines[i+1].trim()).map(c=>'<td>'+inline(c)+'</td>').join('')+'</tr>';i++;
+      }
+      html+='<table><thead><tr>'+head.map(c=>'<th>'+inline(c)+'</th>').join('')+'</tr></thead><tbody>'+body+'</tbody></table>';
+      continue;
+    }
+    if(/^---+$/.test(line)){closeList();html+='<hr>';continue;}
+    if(line.startsWith('### ')){closeList();html+='<h3>'+inline(line.slice(4))+'</h3>';}
+    else if(line.startsWith('## ')){closeList();html+='<h2>'+inline(line.slice(3))+'</h2>';}
+    else if(line.startsWith('# ')){closeList();html+='<h2>'+inline(line.slice(2))+'</h2>';}
+    else if(/^\d+\.\s+/.test(line)){openList('ol');html+='<li>'+inline(line.replace(/^\d+\.\s+/,''))+'</li>';}
+    else if(/^[-*•]\s+/.test(line)){openList('ul');html+='<li>'+inline(line.replace(/^[-*•]\s+/,''))+'</li>';}
+    else{closeList();html+='<p>'+inline(line)+'</p>';}
+  }
+  closeList();return html;
+}
+
+loadCasos();
+casoAtivo=casos.length?casos[0].id:null;
+if(getSenha()){
+  document.getElementById('as-senha-box').style.display='none';
+  document.getElementById('as-app').style.display='grid';
+  render();
+}
+document.getElementById('as-senha').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();salvarSenha();}});
+</script>
+</body>
+</html>

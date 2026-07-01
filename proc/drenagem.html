@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drenagem & Punções — be·aside</title>
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+  :root{--proc:#3b82f6}
+  .proc-tag{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--proc);background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);padding:2px 9px;border-radius:20px;display:inline-block;margin-bottom:10px}
+  .ref{font-family:var(--mono);font-size:10.5px;color:var(--text3);border-left:2px solid var(--border2);padding:4px 10px;margin:6px 0 0;display:block;line-height:1.5}
+  .ref a{color:var(--text3);text-decoration:underline}
+
+  /* step list */
+  .step-list{list-style:none;padding:0;margin:10px 0}
+  .step-list li{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text2);line-height:1.6}
+  .step-list li:last-child{border-bottom:none}
+  .step-n{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--proc);background:rgba(59,130,246,.12);border-radius:4px;padding:1px 7px;flex-shrink:0;margin-top:1px}
+
+  /* pill list (indicações/CI) */
+  .pill-list{list-style:none;padding:0;margin:8px 0}
+  .pill-list li{font-size:13px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;line-height:1.55;align-items:flex-start}
+  .pill-list li:last-child{border-bottom:none}
+  .pill-list li::before{content:'—';font-family:var(--mono);color:var(--proc);flex-shrink:0;margin-top:1px}
+
+  /* boxes */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+  @media(max-width:600px){.two-col{grid-template-columns:1fr}}
+  .info-box{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px 16px;font-size:13px;color:var(--text2);line-height:1.6}
+  .info-box strong{color:var(--text)}
+  .warn-box{background:rgba(226,75,74,.07);border:1px solid rgba(226,75,74,.25);border-radius:8px;padding:14px 16px;font-size:13px;color:#f0b8b8;line-height:1.6}
+  .warn-box strong{color:#f5c6c6}
+  .ok-box{background:rgba(29,184,138,.07);border:1px solid rgba(29,184,138,.25);border-radius:8px;padding:14px 16px;font-size:13px;color:#bce8d8;line-height:1.6}
+  .ok-box strong{color:#d0f0e4}
+  .gap-note{font-family:var(--mono);font-size:11px;color:var(--text3);background:var(--bg3);border:1px dashed var(--border2);border-radius:6px;padding:8px 12px;margin-top:10px}
+
+  /* material tag */
+  .mat-grid{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 0}
+  .mat-item{font-family:var(--mono);font-size:11px;color:var(--text2);background:var(--bg3);border:1px solid var(--border);border-radius:5px;padding:3px 9px}
+
+  /* section anchor nav */
+  .proc-nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 32px}
+  .proc-nav a{font-family:var(--mono);font-size:11px;color:var(--text2);background:var(--bg3);border:1px solid var(--border);padding:5px 13px;border-radius:20px;text-decoration:none;transition:all .15s}
+  .proc-nav a:hover{color:var(--proc);border-color:rgba(59,130,246,.4)}
+
+  .proc-divider{height:1px;background:var(--border);margin:40px 0 36px}
+
+  .compl-list{list-style:none;padding:0;margin:8px 0}
+  .compl-list li{font-size:13px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--border);display:grid;grid-template-columns:180px 1fr;gap:12px;line-height:1.55;align-items:baseline}
+  @media(max-width:600px){.compl-list li{grid-template-columns:1fr}}
+  .compl-list li:last-child{border-bottom:none}
+  .compl-name{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text)}
+</style>
+</head>
+<body data-module="proc" data-page="drenagem">
+<main class="main">
+<section class="section" id="drenagem">
+  <h1 class="section-title">Drenagem &amp; Punções</h1>
+  <p class="section-subtitle">Toracocentese, dreno torácico, paracentese e punção lombar — indicação, material, técnica e complicações.</p>
+
+  <nav class="proc-nav">
+    <a href="#toracocentese">Toracocentese</a>
+    <a href="#dreno">Dreno torácico</a>
+    <a href="#paracentese">Paracentese</a>
+    <a href="#pl">Punção lombar</a>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════════
+       1. TORACOCENTESE
+  ══════════════════════════════════════════════════════════ -->
+  <div id="toracocentese">
+    <div class="card" style="margin-top:0">
+      <span class="proc-tag">Toracocentese</span>
+      <div class="card-title">Toracocentese</div>
+      <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:16px">
+        Punção do espaço pleural para remoção de líquido ou ar. Pode ser diagnóstica (coleta de amostra) ou terapêutica (alívio de derrame volumoso). <strong>USG obrigatório</strong> — reduz a taxa de pneumotórax de ~6% para &lt; 1%.
+      </p>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin-bottom:8px">Indicações</strong>
+      <div class="two-col" style="margin-top:0">
+        <div class="info-box">
+          <strong>Diagnóstica</strong>
+          <ul class="pill-list" style="margin-top:6px">
+            <li>Derrame pleural de etiologia não esclarecida</li>
+            <li>Suspeita de empiema ou derrame exsudativo</li>
+            <li>Suspeita de malignidade pleural</li>
+          </ul>
+        </div>
+        <div class="info-box">
+          <strong>Terapêutica</strong>
+          <ul class="pill-list" style="margin-top:6px">
+            <li>Derrame volumoso causando dispneia ou hipoxemia</li>
+            <li>Alívio sintomático em derrames malignos recorrentes</li>
+            <li>Hemotórax de baixo volume sem indicação cirúrgica</li>
+          </ul>
+        </div>
+      </div>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 6px">Contraindicações relativas</strong>
+      <ul class="pill-list">
+        <li>Coagulopatia grave não corrigida (INR &gt; 2,0 ou plaquetas &lt; 25.000) — mas evidência não suporta correção rotineira antes do procedimento</li>
+        <li>Paciente em VM com PEEP elevada — risco aumentado de pneumotórax hipertensivo</li>
+        <li>Derrame de pequeno volume (&lt; 1 cm na USG) — não há espaço seguro para punção</li>
+        <li>Infecção de pele na área de punção</li>
+      </ul>
+      <span class="ref">Puchalski J et al. Complications of thoracentesis: incidence, risk factors, and strategies for prevention. <em>Curr Opin Pulm Med</em> 2021. PMC8040091</span>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Material</strong>
+      <div class="mat-grid">
+        <span class="mat-item">USG com transdutor linear ou convexo</span>
+        <span class="mat-item">Agulha 21–22G (diagnóstica) ou kit de toracocentese</span>
+        <span class="mat-item">Seringa 20–60 mL</span>
+        <span class="mat-item">Extensão para drenagem + coletor</span>
+        <span class="mat-item">Lidocaína 1–2% + seringa 10 mL</span>
+        <span class="mat-item">Campo estéril + luvas + clorexidina</span>
+        <span class="mat-item">Frascos para análise (citológico, bioquímico, microbiológico)</span>
+      </div>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:18px 0 8px">Técnica passo a passo</strong>
+      <ul class="step-list">
+        <li><span class="step-n">1</span><span>Posicionar o paciente sentado na beira do leito, inclinado para frente com os braços apoiados numa mesa (posição de "cavalheiro"). Em pacientes que não sentam: decúbito lateral com o lado do derrame para baixo.</span></li>
+        <li><span class="step-n">2</span><span><strong>USG antes de marcar o sítio.</strong> Identificar o diafragma, o fígado (direita) ou o baço (esquerda), e a extensão do derrame. O sítio ideal é onde o derrame tem ≥ 1,5–2 cm de profundidade, livre de vasos e pulmão visíveis.</span></li>
+        <li><span class="step-n">3</span><span>Marcar o sítio com o transdutor ainda no lugar. A punção é feita <strong>acima da borda superior da costela</strong> — o feixe vasculonervoso (artéria, veia, nervo) corre abaixo da costela. Prefira o espaço intercostal posterior entre 7° e 9° costelas, linha escapular posterior.</span></li>
+        <li><span class="step-n">4</span><span>Antissepsia ampla + campo estéril. Anestesia local com lidocaína 1%: infiltrar pele, subcutâneo e peritela costal. Aspirar ao avançar — quando retornar líquido, você está no espaço pleural. Anestesie generosamente a pleura parietal (ela dói).</span></li>
+        <li><span class="step-n">5</span><span>Inserir a agulha de toracocentese ou o cateter do kit, aspirando continuamente. Ao retornar líquido, conectar a extensão e o sistema de coleta.</span></li>
+        <li><span class="step-n">6</span><span><strong>Terapêutica: limite de 1.000–1.500 mL por sessão.</strong> Parar antes se o paciente desenvolver tosse persistente, dor torácica ou sensação de aperto (sinais precoces de edema de reexpansão). Não há necessidade de limitar o volume se guiado por manometria pleural (pressão &gt; −20 cmH₂O é sinal de parada).</span></li>
+        <li><span class="step-n">7</span><span>Retirar o cateter em expiração (ou apneia pós-expiratória) — reduz o risco de entrada de ar. Comprimir e curativo oclusivo.</span></li>
+        <li><span class="step-n">8</span><span>Rx de tórax pós-procedimento <strong>não é obrigatório</strong> de rotina se feito com USG e o paciente está assintomático. Realizar se dúvida de posição, tosse ou dor.</span></li>
+      </ul>
+      <span class="ref">Feller-Kopman D et al. Thoracentesis - StatPearls. NCBI Bookshelf NBK441866. 2023.</span>
+      <span class="ref">Havelock T et al. BTS Guideline for Pleural Disease. <em>Thorax</em> 78(Suppl 3):s1–s42, 2023. PMC11037506</span>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Complicações</strong>
+      <ul class="compl-list">
+        <li><span class="compl-name">Pneumotórax</span><span>1–6% sem USG; &lt; 1% com USG. Maioria assintomática. Se &gt; 20% ou sintomático: dreno torácico.</span></li>
+        <li><span class="compl-name">Edema de reexpansão</span><span>Raro (&lt; 1%). Mais comum ao drenar &gt; 1.500 mL rapidamente. Apresenta-se com tosse, dispneia e hipoxemia minutos após o procedimento. Tratamento: O₂, diuréticos, suporte ventilatório se necessário.</span></li>
+        <li><span class="compl-name">Hemotórax</span><span>Laceração de artéria intercostal. Evitado pela punção acima da costela e Doppler na USG para identificar vasos colaterais.</span></li>
+        <li><span class="compl-name">Laceração de fígado/baço</span><span>Sítio muito baixo ou não visualização do diafragma. Sempre identificar o diafragma antes de puncionar.</span></li>
+        <li><span class="compl-name">Síncope vasovagal</span><span>Comum. Posicionar deitado se paciente com tônus vagal alto ou ansioso.</span></li>
+      </ul>
+
+      <div class="warn-box" style="margin-top:14px">
+        <strong>Pitfalls mais comuns:</strong>
+        <ul style="margin:6px 0 0 16px;line-height:1.8">
+          <li>Puncionar abaixo da costela → lacera artéria intercostal (corre na borda inferior)</li>
+          <li>Não identificar o diafragma → punção abdominal</li>
+          <li>Drenar &gt; 1.500 mL sem manometria → edema de reexpansão</li>
+          <li>Retirar cateter em inspiração → pneumotórax por sucção de ar</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="proc-divider"></div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       2. DRENO TORÁCICO
+  ══════════════════════════════════════════════════════════ -->
+  <div id="dreno">
+    <div class="card">
+      <span class="proc-tag">Dreno torácico</span>
+      <div class="card-title">Dreno torácico (toracostomia com dreno)</div>
+      <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:16px">
+        Inserção de tubo na cavidade pleural para drenagem contínua. Indicado quando a toracocentese simples é insuficiente — pneumotórax, hemotórax, empiema, derrame maligno de alto débito. Existem duas técnicas principais: <strong>dissecção romba</strong> (dreno de grande calibre, padrão em trauma) e <strong>Seldinger</strong> (dreno fino de pigtail, guiado por USG, preferível na UTI eletiva).
+      </p>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin-bottom:8px">Indicações</strong>
+      <div class="two-col" style="margin-top:0">
+        <div class="info-box">
+          <strong>Urgentes</strong>
+          <ul class="pill-list" style="margin-top:6px">
+            <li>Pneumotórax hipertensivo (imediato — agulha antes do dreno)</li>
+            <li>Pneumotórax aberto (primeiro ocluir, depois drenar)</li>
+            <li>Hemotórax volumoso (≥ 300–500 mL)</li>
+            <li>Pneumotórax em VM</li>
+          </ul>
+        </div>
+        <div class="info-box">
+          <strong>Eletivas</strong>
+          <ul class="pill-list" style="margin-top:6px">
+            <li>Pneumotórax espontâneo sintomático ou &gt; 20%</li>
+            <li>Empiema / derrame parapneumônico complicado</li>
+            <li>Quilotórax</li>
+            <li>Derrame maligno recorrente (com ou sem pleurodese)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="gap-note" style="margin-top:14px">⚙ BTS 2023: a decisão de drenar pneumotórax espontâneo primário deve ser guiada pelos <strong>sintomas e estabilidade clínica</strong>, não apenas pelo tamanho radiológico. Paciente estável, assintomático → observação antes de drenar.</div>
+      <span class="ref">Havelock T et al. BTS Guideline for Pleural Disease. <em>Thorax</em> 78(Suppl 3):s1–s42, 2023. PMC11037506</span>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Material</strong>
+      <div class="mat-grid">
+        <span class="mat-item">USG com transdutor</span>
+        <span class="mat-item">Dreno torácico (28–32 Fr trauma; pigtail 12–14 Fr eletivo)</span>
+        <span class="mat-item">Bisturi lâmina 11 ou 15</span>
+        <span class="mat-item">Pinça hemostática curva (Kelly)</span>
+        <span class="mat-item">Fio de sutura (seda 0 ou 1)</span>
+        <span class="mat-item">Sistema de selo d'água (Pleur-evac ou similar)</span>
+        <span class="mat-item">Lidocaína 1–2% + seringa</span>
+        <span class="mat-item">Campo estéril + clorexidina</span>
+      </div>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:18px 0 8px">Técnica — Dissecção romba (dreno de grande calibre)</strong>
+
+      <div class="ok-box" style="margin-bottom:14px">
+        <strong>Triângulo de segurança (BTS):</strong> Borda anterior do grande dorsal × borda lateral do peitoral maior × linha horizontal ao nível do mamilo × ápice axilar. A inserção é feita no <strong>5° espaço intercostal, linha axilar média ou anterior</strong>. Evitar posição posterior (dor no decúbito) e anterior (nervo torácico longo).
+      </div>
+
+      <ul class="step-list">
+        <li><span class="step-n">1</span><span>Posicionar: decúbito dorsal com o braço ipsilateral abduzido acima da cabeça (expõe a axila). Confirmar o lado com USG.</span></li>
+        <li><span class="step-n">2</span><span>Antissepsia ampla (incluir a axila) + campo estéril. Anestesia local generosa: infiltrar pele, subcutâneo, músculos intercostais e pleura parietal. Aspirar ao avançar para confirmar o espaço.</span></li>
+        <li><span class="step-n">3</span><span>Incisão horizontal de 2–3 cm no 5° espaço intercostal, <strong>acima da borda superior da 6ª costela</strong>.</span></li>
+        <li><span class="step-n">4</span><span>Dissecção romba com a Kelly fechada, progredindo pelo subcutâneo e músculo intercostal. Abrir a Kelly ao perfurar a pleura — sentirá "pop" e saída de ar ou líquido.</span></li>
+        <li><span class="step-n">5</span><span>Exploração digital do espaço pleural — confirma que não há aderências, pulmão ou diafragma na trajetória. Sempre antes de inserir o dreno.</span></li>
+        <li><span class="step-n">6</span><span>Introduzir o dreno com a pinça guiando a ponta, direcionado <strong>póstero-superiormente</strong> para derrame ou <strong>ântero-superiormente</strong> para pneumotórax. Inserir até o último orifício lateral estar dentro da cavidade.</span></li>
+        <li><span class="step-n">7</span><span>Conectar ao sistema de selo d'água. Confirmar funcionamento: oscilação da coluna d'água com a respiração (tidaling) e saída de ar ou líquido.</span></li>
+        <li><span class="step-n">8</span><span>Fixar com sutura em bolsa de tabaco ou U ao redor do dreno. Curativo oclusivo. Rx de tórax para confirmar posição.</span></li>
+      </ul>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Técnica — Seldinger (pigtail, preferível na UTI eletiva)</strong>
+      <ul class="step-list">
+        <li><span class="step-n">1</span><span>USG para marcar sítio (mesmo princípio da toracocentese). Técnica guiada por imagem em tempo real reduz complicações.</span></li>
+        <li><span class="step-n">2</span><span>Anestesia local. Punção com agulha introdutora aspirando continuamente.</span></li>
+        <li><span class="step-n">3</span><span>Ao retornar líquido/ar, introduzir o fio-guia pela agulha. Retirar a agulha mantendo o fio.</span></li>
+        <li><span class="step-n">4</span><span>Pequena incisão na pele + dilatadores progressivos sobre o fio.</span></li>
+        <li><span class="step-n">5</span><span>Introduzir o cateter pigtail sobre o fio, remover o fio, conectar ao sistema de drenagem.</span></li>
+        <li><span class="step-n">6</span><span>Confirmar posição com USG ou Rx.</span></li>
+      </ul>
+      <span class="ref">Porcel JM. Chest tube drainage of the pleural space: a concise review for pulmonologists. <em>Tuberc Respir Dis</em> 2018. PMC5903480</span>
+      <span class="ref">Fysh ET et al. Thoracentesis, Chest Tubes, and Tunneled Chest Drains. <em>Clin Chest Med</em> 2022. PMC9433149</span>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Gestão do dreno</strong>
+      <ul class="pill-list">
+        <li><strong>Aspiração ativa (−20 cmH₂O):</strong> Indicada em pulmão que não expande, fístula broncopleural de alto débito ou empiema espesso</li>
+        <li><strong>Selo d'água sem aspiração:</strong> Padrão para a maioria dos pneumotórax e derrames não complicados</li>
+        <li><strong>Clampeamento:</strong> Só para testar antes de retirar. Nunca clampar em pneumotórax ativo ou fístula broncopleural — risco de pneumotórax hipertensivo</li>
+        <li><strong>Retirada:</strong> Quando débito &lt; 100–200 mL/24h (derrame) ou ausência de borbulhamento por 24–48h (pneumotórax). Retirar em expiração máxima ou apneia. Comprimir e suturar imediatamente</li>
+      </ul>
+
+      <div class="warn-box" style="margin-top:14px">
+        <strong>Pitfalls mais comuns:</strong>
+        <ul style="margin:6px 0 0 16px;line-height:1.8">
+          <li>Inserir abaixo da 6ª costela → risco de laceração diafragmática e órgãos abdominais</li>
+          <li>Não fazer exploração digital → inserção em aderência ou pulmão</li>
+          <li>Clampar dreno em pneumotórax ativo → pneumotórax hipertensivo</li>
+          <li>Último orifício fora da cavidade → sucção de ar externo (sinal: borbulhamento constante sem melhora)</li>
+          <li>Não fixar bem → deslocamento do dreno com a movimentação do paciente</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="proc-divider"></div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       3. PARACENTESE
+  ══════════════════════════════════════════════════════════ -->
+  <div id="paracentese">
+    <div class="card">
+      <span class="proc-tag">Paracentese</span>
+      <div class="card-title">Paracentese abdominal</div>
+      <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:16px">
+        Punção da cavidade peritoneal para análise ou drenagem de ascite. Procedimento de baixíssimo risco — a taxa de sangramento clinicamente relevante é &lt; 0,3% mesmo em coagulopatia, e a maioria das "correções" de coagulação pré-procedimento não tem suporte em evidência.
+      </p>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin-bottom:8px">Indicações</strong>
+      <div class="two-col" style="margin-top:0">
+        <div class="info-box">
+          <strong>Diagnóstica</strong>
+          <ul class="pill-list" style="margin-top:6px">
+            <li>Ascite de primeira apresentação (investigar etiologia)</li>
+            <li>Suspeita de peritonite bacteriana espontânea (PBE): febre, dor abdominal, piora de encefalopatia, deterioração renal</li>
+            <li>Todo cirrótico internado deve fazer paracentese diagnóstica na admissão</li>
+          </ul>
+        </div>
+        <div class="info-box">
+          <strong>Terapêutica</strong>
+          <ul class="pill-list" style="margin-top:6px">
+            <li>Ascite volumosa com desconforto respiratório ou abdominal significativo</li>
+            <li>Ascite refratária ao tratamento clínico</li>
+            <li>Peritonite bacteriana espontânea (coleta + tratamento)</li>
+          </ul>
+        </div>
+      </div>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:14px 0 6px">Contraindicações relativas</strong>
+      <ul class="pill-list">
+        <li>CID ativa — única situação onde correção de coagulação pré-procedimento é razoável</li>
+        <li>Infecção de pele no sítio de punção</li>
+        <li>Obstrução intestinal com alças muito distendidas (risco de perfuração)</li>
+      </ul>
+
+      <div class="ok-box" style="margin-top:12px">
+        <strong>Coagulopatia e plaquetopenia no cirrótico:</strong> INR elevado e plaquetas baixas são a norma no cirrótico. A taxa de sangramento após paracentese <em>não aumenta</em> com INR até 8 ou plaquetas &gt; 20.000. Não transfundir PFC ou plaquetas rotineiramente. O EASL e o AASLD são explícitos nesse ponto.
+      </div>
+      <span class="ref">EASL Clinical Practice Guidelines for decompensated cirrhosis. <em>J Hepatol</em> 69(2):406–460, 2018.</span>
+      <span class="ref">Grabau CM et al. Performance standards for therapeutic abdominal paracentesis. <em>Hepatology</em> 2004. PMID: 15368437</span>
+      <span class="ref">Maher R et al. Risk of bleeding after abdominal paracentesis: systematic review. <em>Liver Int</em> 2024. PMC11331248</span>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Sítios de punção</strong>
+      <div class="two-col" style="margin-top:0">
+        <div class="ok-box">
+          <strong>Quadrante inferior esquerdo (preferencial)</strong><br>
+          2–4 cm súpero-medial à espinha ilíaca ântero-superior esquerda, lateral ao músculo reto abdominal. Parede mais fina, maior acúmulo de líquido, evita artéria epigástrica inferior.
+        </div>
+        <div class="info-box">
+          <strong>Linha média (alternativa)</strong><br>
+          2 cm abaixo do umbigo, na linha alba. Avascular — menor risco de sangramento. Evitar em gestantes e em quem tem circulação colateral visível na linha média (caput medusae).
+        </div>
+      </div>
+      <div class="gap-note" style="margin-top:10px">⚙ USG pré-procedimento é recomendado para confirmar a janela ascítica e identificar estruturas vasculares. Em ascite volumosa de cirrótico típico, o QIE é seguro sem USG em mãos experientes.</div>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Material</strong>
+      <div class="mat-grid">
+        <span class="mat-item">Agulha 20–22G ou cateter 14–18G (diagnóstica)</span>
+        <span class="mat-item">Kit de paracentese com cateter e extensão (terapêutica)</span>
+        <span class="mat-item">Seringa 20–60 mL</span>
+        <span class="mat-item">Sistema de drenagem / frascos a vácuo</span>
+        <span class="mat-item">Frascos para análise (citologia, cultura, bioquímica)</span>
+        <span class="mat-item">Albumina 20% para reposição (LVP &gt; 5 L)</span>
+        <span class="mat-item">Lidocaína 1% + campo estéril + clorexidina</span>
+      </div>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:18px 0 8px">Técnica passo a passo</strong>
+      <ul class="step-list">
+        <li><span class="step-n">1</span><span>Posicionar em decúbito dorsal leve com a cabeça elevada (~30°). Se possível, lado esquerdo levemente mais baixo para deslocar o líquido para o QIE.</span></li>
+        <li><span class="step-n">2</span><span>USG para confirmar a janela ascítica no sítio escolhido. Marcar o local.</span></li>
+        <li><span class="step-n">3</span><span>Antissepsia + campo estéril. Anestesia local com lidocaína 1% em pele e subcutâneo. Não é necessário anestesiar profundo — o peritônio tem sensibilidade limitada.</span></li>
+        <li><span class="step-n">4</span><span><strong>Técnica em Z (Z-track):</strong> Traccionar a pele 2 cm lateralmente com a mão não dominante, inserir a agulha perpendicular ao abdome, soltar a pele ao retirar a agulha. Cria um trajeto oblíquo que se fecha naturalmente e evita vazamento persistente de ascite.</span></li>
+        <li><span class="step-n">5</span><span>Avançar aspirando suavemente. Ao retornar líquido, manter a posição e conectar a extensão/sistema de drenagem.</span></li>
+        <li><span class="step-n">6</span><span><strong>Diagnóstica:</strong> Colher 30–60 mL para análise. Enviar para: contagem de células (neutrófilos &gt; 250/mm³ = PBE), proteínas, albumina (calcular SAAG), LDH, cultura em frasco de hemocultura à beira do leito (maior sensibilidade).</span></li>
+        <li><span class="step-n">7</span><span><strong>Terapêutica (LVP — large-volume paracentesis):</strong> Drenar até secar ou até 10–15 L. Não há limite de volume por sessão — o limite é a quantidade disponível.</span></li>
+        <li><span class="step-n">8</span><span>Retirar a agulha, curativo compressivo. Posicionar o paciente sobre o lado oposto ao sítio por 30 min para minimizar vazamento.</span></li>
+      </ul>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Reposição de albumina</strong>
+      <div class="warn-box">
+        <strong>LVP &gt; 5 litros: albumina obrigatória.</strong> Administrar <strong>8 g de albumina por litro retirado acima de 5 L</strong>, na forma de albumina 20% IV. Sem reposição, o paciente desenvolve disfunção circulatória pós-paracentese (DCPP): vasodilatação esplâncnica descompensada, queda do débito cardíaco, hiponatremia e síndrome hepatorrenal em até 20% dos casos.
+        <br><br>
+        <strong>Exemplo:</strong> Paracentese de 9 L → repor albumina para (9 − 5) = 4 L extras → 4 × 8 = <strong>32 g de albumina</strong> (160 mL de albumina 20%).
+      </div>
+      <span class="ref">EASL Clinical Practice Guidelines for decompensated cirrhosis. <em>J Hepatol</em> 2018.</span>
+      <span class="ref">Bernardi M et al. Albumin infusion in patients undergoing large-volume paracentesis: a meta-analysis. <em>J Hepatol</em> 2012. PMID: 22469631</span>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">SAAG — como interpretar</strong>
+      <table>
+        <thead><tr><th>SAAG (albumina sérica − albumina do líquido)</th><th>Interpretação</th><th>Exemplos</th></tr></thead>
+        <tbody>
+          <tr><td>≥ 1,1 g/dL</td><td>Hipertensão portal</td><td>Cirrose, ICC, Budd-Chiari, trombose porta</td></tr>
+          <tr><td>&lt; 1,1 g/dL</td><td>Sem hipertensão portal</td><td>Carcinomatose peritoneal, TB, pancreatite, síndrome nefrótica</td></tr>
+        </tbody>
+      </table>
+
+      <div class="warn-box" style="margin-top:14px">
+        <strong>Pitfalls mais comuns:</strong>
+        <ul style="margin:6px 0 0 16px;line-height:1.8">
+          <li>Não inocular frasco de hemocultura à beira do leito → sensibilidade da cultura cai de 80% para ~50%</li>
+          <li>Puncionar com cicatriz cirúrgica no trajeto → alça intestinal aderida à parede</li>
+          <li>Não repor albumina em LVP &gt; 5 L → síndrome hepatorrenal</li>
+          <li>Usar expansor não proteico (dextran, gelafundin) como substituto da albumina → sem eficácia equivalente para prevenção de DCPP</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="proc-divider"></div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       4. PUNÇÃO LOMBAR
+  ══════════════════════════════════════════════════════════ -->
+  <div id="pl">
+    <div class="card">
+      <span class="proc-tag">Punção lombar</span>
+      <div class="card-title">Punção lombar (PL)</div>
+      <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:16px">
+        Acesso ao espaço subaracnoide lombar para análise do LCR e medição da pressão de abertura. Na UTI, a indicação mais urgente é suspeita de meningite bacteriana — o diagnóstico microbiológico no LCR define o antibiótico e a duração do tratamento. <strong>Não atrase o antibiótico esperando a PL.</strong>
+      </p>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin-bottom:8px">Indicações</strong>
+      <ul class="pill-list">
+        <li>Suspeita de meningite bacteriana, viral ou fúngica</li>
+        <li>Hemorragia subaracnóidea com TC negativa (xantocromia no LCR até 14 dias)</li>
+        <li>Encefalite (incluindo autoimune), Guillain-Barré, esclerose múltipla</li>
+        <li>Hipertensão intracraniana benigna (medição + alívio terapêutico)</li>
+        <li>Meningite por criptococos com HIC (PL terapêutica repetida — reduz mortalidade)</li>
+        <li>Administração intratecal de quimioterápicos ou antibióticos</li>
+      </ul>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:14px 0 6px">Quando fazer TC antes da PL?</strong>
+      <div class="two-col" style="margin-top:0">
+        <div class="warn-box">
+          <strong>TC obrigatória antes:</strong>
+          <ul style="margin:6px 0 0 14px;line-height:1.8">
+            <li>Déficit neurológico focal novo</li>
+            <li>Papiledema ao fundo de olho</li>
+            <li>Rebaixamento do nível de consciência (GCS &lt; 14)</li>
+            <li>Crise convulsiva recente (&lt; 1 semana)</li>
+            <li>Imunodeprimido</li>
+          </ul>
+        </div>
+        <div class="ok-box">
+          <strong>Pode puncionar sem TC:</strong>
+          <ul style="margin:6px 0 0 14px;line-height:1.8">
+            <li>Meningismo sem déficit focal, sem papiledema, GCS ≥ 14</li>
+            <li>Nesse caso: antibiótico empírico imediato + PL logo após (sem esperar TC)</li>
+          </ul>
+          <strong>Regra:</strong> Nunca retarde o antibiótico por mais de 30–60 min esperando PL ou TC.
+        </div>
+      </div>
+      <span class="ref">van de Beek D et al. Community-acquired bacterial meningitis. <em>N Engl J Med</em> 374:1708–1720, 2016. PMID: 27116696</span>
+      <span class="ref">WHO Guidelines on meningitis diagnosis, treatment and care. NCBI Bookshelf NBK614844, 2023.</span>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 6px">Contraindicações</strong>
+      <ul class="pill-list">
+        <li>Lesão expansiva intracraniana com efeito de massa (risco de herniação) — fazer TC primeiro</li>
+        <li>Infecção de pele no sítio de punção</li>
+        <li>Plaquetas &lt; 20.000/mm³ (ou &lt; 50.000 se anticoagulado)</li>
+        <li>Anticoagulação plena com heparina não fracionada nas últimas 4–6h (HBPM: 24h)</li>
+        <li>Instabilidade hemodinâmica grave</li>
+      </ul>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Material</strong>
+      <div class="mat-grid">
+        <span class="mat-item">Agulha espinal 20–22G (atraumática — ponta Quincke ou Sprotte)</span>
+        <span class="mat-item">Manômetro de LCR + extensão em T</span>
+        <span class="mat-item">4 tubos numerados para coleta</span>
+        <span class="mat-item">Lidocaína 1% + seringa</span>
+        <span class="mat-item">Campo estéril + clorexidina aquosa (não alcoólica na coluna)</span>
+        <span class="mat-item">Estilete de reposição</span>
+      </div>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:18px 0 8px">Técnica passo a passo</strong>
+
+      <div class="two-col" style="margin-bottom:14px">
+        <div class="info-box">
+          <strong>Decúbito lateral (preferencial para pressão)</strong><br>
+          Joelhos fletidos ao peito, coluna em máxima flexão ("posição fetal"). Cabeça alinhada com o resto do corpo no plano horizontal. Única posição que fornece pressão de abertura confiável.
+        </div>
+        <div class="info-box">
+          <strong>Sentado (preferencial para obesos)</strong><br>
+          Sentado na beira do leito, inclinado para frente abraçando um travesseiro. Mais fácil de palpar as apófises em obesos. <strong>Não mede pressão de abertura com confiabilidade</strong> — se precisar da pressão, deite após puncionar.
+        </div>
+      </div>
+
+      <ul class="step-list">
+        <li><span class="step-n">1</span><span>Identificar o espaço L3–L4 ou L4–L5. <strong>Referência: linha de Tuffier</strong> — linha imaginária entre os topos das cristas ilíacas passa pelo processo espinhoso de L4. O espaço L3–L4 é imediatamente acima.</span></li>
+        <li><span class="step-n">2</span><span>Antissepsia com clorexidina aquosa (alcoólica é neurotóxica — não usar na coluna). Campo estéril. Anestesia local em pele e subcutâneo.</span></li>
+        <li><span class="step-n">3</span><span>Inserir a agulha espinal com o bisel orientado paralelamente às fibras da dura-máter (longitudinal = perpendicular ao eixo horizontal no decúbito lateral). Avançar com o estilete no lugar, ligeiramente em direção ao umbigo (~15° de ângulo cranial).</span></li>
+        <li><span class="step-n">4</span><span>Ao cruzar a dura, sente-se uma "queda" de resistência (pop). Remover o estilete — LCR deve gotejar. Se não goteja: girar a agulha 90°, ou o bisel está no ligamento.</span></li>
+        <li><span class="step-n">5</span><span><strong>Pressão de abertura:</strong> Conectar o manômetro antes de coletar. Deixar o LCR subir e estabilizar (~1 min). Normal: 6–20 cmH₂O (até 25 em obesos). Acima de 20: HIC. Acima de 30: HIC grave.</span></li>
+        <li><span class="step-n">6</span><span>Coletar nos 4 tubos numerados: <br>
+          Tubo 1 — microbiologia (Gram, cultura, painel viral)<br>
+          Tubo 2 — bioquímica (glicose, proteína)<br>
+          Tubo 3 — citologia (contagem e diferencial)<br>
+          Tubo 4 — reserva ou citologia oncológica</span></li>
+        <li><span class="step-n">7</span><span>Recolocar o estilete antes de retirar a agulha — reduz a taxa de cefaleia pós-PL.</span></li>
+        <li><span class="step-n">8</span><span>Repouso em decúbito dorsal por 1 h (benefício não comprovado, mas ainda recomendado como conforto). Repouso prolongado não previne cefaleia.</span></li>
+      </ul>
+      <span class="ref">Doherty CM, Forbes RB. Diagnostic Lumbar Puncture. <em>Ulster Med J</em> 83(2):93–102, 2014. PMC4113153</span>
+      <span class="ref">Klotz JM et al. Lumbar puncture: considerations, procedure, and complications. <em>J Neurol</em> 270(6):3293–3305, 2023. PMC10295920</span>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Interpretação do LCR — resumo</strong>
+      <table>
+        <thead><tr><th>Parâmetro</th><th>Normal</th><th>Bacteriana</th><th>Viral</th><th>Fúngica/TB</th></tr></thead>
+        <tbody>
+          <tr><td>Aspecto</td><td>Cristalino</td><td>Turvo/purulento</td><td>Cristalino</td><td>Cristalino/xantocrômico</td></tr>
+          <tr><td>Leucócitos</td><td>&lt; 5/mm³</td><td>&gt; 1.000 (PMN)</td><td>10–1.000 (mono)</td><td>10–500 (mono)</td></tr>
+          <tr><td>Glicose</td><td>60–70% da glicemia</td><td>&lt; 40 mg/dL (&lt; 50%)</td><td>Normal</td><td>Baixa</td></tr>
+          <tr><td>Proteína</td><td>15–45 mg/dL</td><td>&gt; 200 mg/dL</td><td>Normal ou levemente ↑</td><td>↑↑</td></tr>
+          <tr><td>Pressão</td><td>&lt; 20 cmH₂O</td><td>↑↑</td><td>Normal ou ↑</td><td>↑↑ (cripto)</td></tr>
+        </tbody>
+      </table>
+
+      <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Complicações</strong>
+      <ul class="compl-list">
+        <li><span class="compl-name">Cefaleia pós-PL</span><span>10–30% com agulha de corte (Quincke); &lt; 5% com atraumática (Sprotte). Tratamento: repouso, hidratação, analgésicos, cafeína. Persistente (&gt; 72h): blood patch epidural.</span></li>
+        <li><span class="compl-name">Herniação transtentorial</span><span>Risco real em HIC não diagnosticada. Prevenção: TC antes se déficit focal ou papiledema.</span></li>
+        <li><span class="compl-name">Sangramento / hematoma espinal</span><span>Raro (&lt; 0,1%). Investigar se dor radicular nova após PL.</span></li>
+        <li><span class="compl-name">Infecção (meningite iatrogênica)</span><span>Raro. Usar máscara durante o procedimento — gotícula do operador é a principal fonte.</span></li>
+        <li><span class="compl-name">PL traumática</span><span>Agulha lesa vasos do epidural → LCR com sangue. Diferencia de HSA: sangue clarea do tubo 1 para o 4 (traumática) vs. xantocromia uniforme (HSA).</span></li>
+      </ul>
+
+      <div class="warn-box" style="margin-top:14px">
+        <strong>Pitfalls mais comuns:</strong>
+        <ul style="margin:6px 0 0 16px;line-height:1.8">
+          <li>Usar clorexidina alcoólica na pele da coluna → risco de aracnoidite química</li>
+          <li>Bisel perpendicular às fibras da dura → mais trauma = mais cefaleia</li>
+          <li>Medir pressão com paciente sentado → valor falsamente elevado, não confiável</li>
+          <li>Não numerar os tubos → impossível diferenciar PL traumática de HSA</li>
+          <li>Retardar antibiótico esperando TC + PL → cada hora sem antibiótico aumenta a mortalidade em meningite bacteriana</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</section>
+</main>
+<script src="../assets/app.js"></script>
+</body>
+</html>

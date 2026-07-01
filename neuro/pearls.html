@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pearls & Pitfalls — be·aside</title>
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+  :root{--accent:#9b6ff7}
+  .pp-filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
+  .pp-tag{font-family:var(--mono);font-size:11px;color:var(--text2);background:var(--bg3);border:1px solid var(--border);padding:5px 12px;border-radius:20px;cursor:pointer;transition:all .15s}
+  .pp-tag:hover{border-color:var(--border2);color:var(--text)}
+  .pp-tag.active{color:var(--accent);background:rgba(155,111,247,.1);border-color:rgba(155,111,247,.35)}
+  .pp-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin-bottom:18px}
+  .pp-card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:4px}
+  .pp-card-title{font-size:15px;font-weight:600;color:#e8ecf2}
+  .pp-cat{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);background:rgba(155,111,247,.1);border:1px solid rgba(155,111,247,.25);padding:3px 10px;border-radius:20px;white-space:nowrap}
+  .pp-cenario{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:14px;font-style:italic}
+  .pp-row{border-left:3px solid;border-radius:0 6px 6px 0;padding:11px 15px;margin:10px 0;font-size:13.5px;line-height:1.65}
+  .pp-row .pp-lbl{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:5px}
+  .pp-pearl{border-color:var(--teal);background:rgba(29,184,138,.08);color:#bce8d8}
+  .pp-pearl .pp-lbl{color:var(--teal)}
+  .pp-pitfall{border-color:var(--red);background:rgba(226,75,74,.08);color:#f0b8b8}
+  .pp-pitfall .pp-lbl{color:var(--red)}
+  .pp-why{border-color:var(--border2);background:var(--bg3);color:var(--text2)}
+  .pp-why .pp-lbl{color:var(--text3)}
+  .pp-row strong{color:#e8ecf2;font-weight:500}
+  .pp-empty{color:var(--text3);font-size:13px;padding:20px 0}
+</style>
+</head>
+<body data-module="neuro" data-page="pearls">
+<main class="main">
+<section class="section" id="pearls">
+  <h1 class="section-title">Pearls &amp; Pitfalls</h1>
+  <p class="section-subtitle">Cenários de plantão: o raciocínio correto, o erro comum e o porquê do mecanismo.</p>
+
+  <div class="pp-filters" id="pp-filters"></div>
+  <div id="pp-cards"></div>
+</section>
+</main>
+<script src="../assets/app.js"></script>
+<script>
+// Adicione cards aqui — mesmo formato do hemo/pearls.html
+const pearls = [
+  // A PREENCHER
+];
+
+// ── render (idêntico ao hemo) ──────────────────────────────
+const cats=[...new Set(pearls.map(p=>p.categoria))];
+let filtroAtivo='todos';
+function renderFilters(){
+  const el=document.getElementById('pp-filters');
+  el.innerHTML=['todos',...cats].map(c=>
+    '<button class="pp-tag'+(c===filtroAtivo?' active':'')+'" onclick="setFiltro(\''+c.replace(/'/g,"\\'")+'\')">'+(c==='todos'?'Todos':c)+'</button>'
+  ).join('');
+}
+function setFiltro(c){filtroAtivo=c;renderFilters();renderCards();}
+function renderCards(){
+  const el=document.getElementById('pp-cards');
+  const lista=filtroAtivo==='todos'?pearls:pearls.filter(p=>p.categoria===filtroAtivo);
+  if(!lista.length){el.innerHTML='<p class="pp-empty">Nenhum card nesta categoria ainda.</p>';return;}
+  el.innerHTML=lista.map(p=>`
+    <div class="pp-card">
+      <div class="pp-card-head">
+        <span class="pp-card-title">${p.titulo}</span>
+        <span class="pp-cat">${p.categoria}</span>
+      </div>
+      ${p.cenario?`<p class="pp-cenario">${p.cenario}</p>`:''}
+      <div class="pp-row pp-pearl"><span class="pp-lbl">Pearl</span>${p.pearl}</div>
+      <div class="pp-row pp-pitfall"><span class="pp-lbl">Pitfall</span>${p.pitfall}</div>
+      ${p.porque?`<div class="pp-row pp-why"><span class="pp-lbl">Por quê</span>${p.porque}</div>`:''}
+    </div>
+  `).join('');
+}
+renderFilters();
+renderCards();
+</script>
+</body>
+</html>
