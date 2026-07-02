@@ -11,63 +11,66 @@
 </head>
 <body data-module="hemo" data-page="fisio">
 <main class="main">
-  <p class="section-title">Fisiologia do Choque</p>
-  <p class="section-sub">Base fisiológica — DO₂, VO₂, Fick, Frank-Starling e choque críptico</p>
-  
-  <div class="card">
-    <div class="card-title">Princípio de Fick — oferta vs. demanda</div>
-    <div class="quad-grid">
-      <div class="quad ok"><div class="quad-header" style="color:var(--accent);">DO₂ — oferta</div><div class="formula compact">DO<sub>2</sub><span class="op">=</span>DC<span class="op">×</span>CaO<sub>2</sub><span class="op">×</span><span class="num">10</span></div><div class="quad-body">O quanto de O₂ o coração entrega aos tecidos por minuto. Normal: <strong style="white-space:nowrap">950–1150 mL/min</strong>.</div></div>
-      <div class="quad ok"><div class="quad-header" style="color:var(--accent);">VO₂ — demanda (consumo)</div><div class="formula compact">VO<sub>2</sub><span class="op">=</span>DC<span class="op">×</span>(CaO<sub>2</sub><span class="op">−</span>CvO<sub>2</sub>)</div><div class="quad-body">O quanto de O₂ os tecidos efetivamente consomem. Normal: <strong>200–300 mL/min</strong>.</div></div>
-    </div>
-    <p style="font-size:13px;color:var(--muted);margin-top:10px;">Em condições normais, a oferta é cerca de <strong style="color:var(--text);">4× a demanda</strong> — taxa de extração de O₂ ≈ 25%. Se DC cai, Hb cai ou SaO₂ cai, a oferta despenca; os tecidos extraem mais O₂ e a saturação venosa retornante ao coração <strong style="color:var(--text);">diminui</strong>. É essa diferença que se mede como SvcO₂.</p>
-    <div class="alert-box info" style="margin-top:10px;"><div class="icon">i</div><div class="content"><strong>Por que DO₂ e VO₂ se conectam</strong>Quando DO₂ cai mas a demanda continua, o organismo compensa aumentando a extração — SvcO₂ cai. Quando a demanda excede a capacidade de extração (DO₂ crítico), surge metabolismo anaeróbico e lactato sobe. É a base de toda a interpretação dos quadrantes.</div></div>
+<section class="section" id="fisio">
+  <div class="hero-eyebrow">Hemodinâmica · Fundamentos</div>
+  <h1 class="section-title">Fisiologia do Choque</h1>
+  <p class="section-subtitle">Base fisiológica — DO₂, VO₂, Fick, Frank-Starling e choque críptico</p>
+
+  <div class="hero-meta">
+    <div class="hm-item"><span class="hm-k">DO₂ normal</span><span class="hm-v">950–1150 mL/min</span></div>
+    <div class="hm-item"><span class="hm-k">VO₂ normal</span><span class="hm-v">200–300 mL/min</span></div>
+    <div class="hm-item"><span class="hm-k">Extração O₂</span><span class="hm-v">~25%</span></div>
+    <div class="hm-item"><span class="hm-k">Choque críptico</span><span class="hm-v">Lactato &gt; 2</span></div>
   </div>
-  <div class="card">
-    <div class="card-title purple">Frank-Starling — fundamento da fluido-responsividade</div>
-    <p style="font-size:13px;color:var(--muted);">A força de contração ventricular aumenta com o estiramento das fibras miocárdicas (pré-carga). Em volumes baixos a curva é íngreme — pequenos aumentos de pré-carga geram grandes aumentos de volume sistólico. Após o platô, mais volume não gera mais débito; só congestão.</p>
-    <div class="quad-grid" style="margin-top:10px;">
-      <div class="quad ok"><div class="quad-header">Porção ascendente</div><div class="quad-body"><strong>Responsivo a volume</strong> — bolus aumenta DC. É o que PLR, VPP e cIVC tentam predizer. Aproximadamente metade dos pacientes em choque está aqui.</div></div>
-      <div class="quad ok"><div class="quad-header" style="color:var(--red);">Platô / queda</div><div class="quad-body"><strong>Não responsivo</strong> — bolus não aumenta DC, só congestão pulmonar e edema. Volume passa a ser deletério. Vasopressor ou inotrópico.</div></div>
-    </div>
-    <div class="alert-box warn" style="margin-top:10px;"><div class="icon">!</div><div class="content"><strong>Por que isso importa na beira do leito</strong>Sem testar, você não sabe em qual ponto da curva o paciente está. Daí a regra: nunca assumir que choque = volume. Sempre avaliar responsividade dinâmica (PLR + VTI, VPP, cIVC) antes de cada bolus.</div></div>
+
+  <div class="sec-h"><span class="sec-num">01</span><h2>Princípio de Fick — oferta vs demanda</h2></div>
+  <div class="two-col">
+    <div class="formula">DO<sub>2</sub><span class="op">=</span>DC<span class="op">×</span>CaO<sub>2</sub><span class="op">×</span><span class="num">10</span></div>
+    <div class="formula">VO<sub>2</sub><span class="op">=</span>DC<span class="op">×</span>(CaO<sub>2</sub><span class="op">−</span>CvO<sub>2</sub>)</div>
   </div>
-  <div class="card">
-    <div class="card-title amber">Choque críptico (oculto)</div>
-    <p style="font-size:13px;color:var(--muted);">Definição clássica: hipoperfusão tecidual presente em paciente com PAM aparentemente normal (≥ 65 mmHg) e sinais clínicos sutis ou ausentes. Identificado pela elevação do <strong style="color:var(--text);">lactato &gt; 2 mmol/L</strong> sem hipotensão franca.</p>
-    <table style="margin-top:10px;">
-      <tr><th>Achado</th><th>Interpretação</th></tr>
+  <p class="sec-lead">Em condições normais, a oferta é cerca de <strong>4× a demanda</strong> — taxa de extração de O₂ ≈ 25%. Se DC cai, Hb cai ou SaO₂ cai, a oferta despenca; os tecidos extraem mais O₂ e a saturação venosa retornante ao coração <strong>diminui</strong>. É essa diferença que se mede como SvcO₂.</p>
+  <div class="anatomy-note"><strong>Por que DO₂ e VO₂ se conectam:</strong> quando DO₂ cai mas a demanda continua, o organismo compensa aumentando a extração — SvcO₂ cai. Quando a demanda excede a capacidade de extração (DO₂ crítico), surge metabolismo anaeróbico e lactato sobe. É a base de toda a interpretação dos quadrantes.</div>
+
+  <div class="sec-h"><span class="sec-num">02</span><h2>Frank-Starling — fundamento da fluido-responsividade</h2></div>
+  <p class="sec-lead">A força de contração ventricular aumenta com o estiramento das fibras miocárdicas (pré-carga). Em volumes baixos a curva é íngreme — pequenos aumentos de pré-carga geram grandes aumentos de volume sistólico. Após o platô, mais volume não gera mais débito; só congestão.</p>
+  <div class="ind-grid">
+    <div class="ind-item"><span class="ind-t">Porção ascendente — responsivo a volume</span><span class="ind-d">Bolus aumenta DC. É o que PLR, VPP e cIVC tentam predizer. Aproximadamente metade dos pacientes em choque está aqui.</span></div>
+    <div class="ind-item"><span class="ind-t">Platô / queda — não responsivo</span><span class="ind-d">Bolus não aumenta DC, só congestão pulmonar e edema. Volume passa a ser deletério. Vasopressor ou inotrópico.</span></div>
+  </div>
+  <div class="warn-box"><strong>Por que isso importa na beira do leito:</strong> sem testar, você não sabe em qual ponto da curva o paciente está. Daí a regra — nunca assumir que choque = volume. Sempre avaliar responsividade dinâmica (PLR + VTI, VPP, cIVC) antes de cada bolus.</div>
+
+  <div class="sec-h"><span class="sec-num">03</span><h2>Choque críptico (oculto)</h2></div>
+  <p class="sec-lead">Hipoperfusão tecidual presente em paciente com PAM aparentemente normal (≥ 65 mmHg) e sinais clínicos sutis ou ausentes. Identificado pela elevação do <strong>lactato &gt; 2 mmol/L</strong> sem hipotensão franca.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Achado</th><th>Interpretação</th></tr></thead>
+    <tbody>
       <tr><td>PAM ≥ 65 mmHg</td><td>Aparentemente "estável"</td></tr>
       <tr><td>Lactato &gt; 2 mmol/L</td><td>Hipoperfusão tecidual já instalada</td></tr>
       <tr><td>Δ pCO₂ ≥ 6 mmHg</td><td>Confirma fluxo tecidual inadequado</td></tr>
       <tr><td>Enchimento capilar &gt; 3 s</td><td>Sinal precoce mesmo com PAM normal</td></tr>
-    </table>
-    <div class="alert-box danger" style="margin-top:10px;"><div class="icon">!</div><div class="content"><strong>Por que é perigoso</strong>O paciente parece "ok" pelos sinais vitais habituais, mas já está com dívida de O₂ ativa. Mortalidade comparável à do choque com hipotensão. Tratar com a mesma urgência: ressuscitação volêmica guiada, vasopressor se necessário, controle do foco. PAM em alvo não é igual a perfusão adequada.</div></div>
+    </tbody>
+  </table></div>
+  <div class="warn-box"><strong>Por que é perigoso:</strong> o paciente parece "ok" pelos sinais vitais habituais, mas já está com dívida de O₂ ativa. Mortalidade comparável à do choque com hipotensão. Tratar com a mesma urgência: ressuscitação volêmica guiada, vasopressor se necessário, controle do foco. PAM em alvo não é igual a perfusão adequada.</div>
+
+  <div class="sec-h"><span class="sec-num">04</span><h2>Por que dois parâmetros?</h2></div>
+  <div class="ind-grid">
+    <div class="ind-item"><span class="ind-t">SvcO₂</span><span class="ind-d">Reflete o <strong>balanço oferta vs consumo de O₂</strong>. Responde: os tecidos estão recebendo O₂ suficiente?</span></div>
+    <div class="ind-item"><span class="ind-t">Δ pCO₂</span><span class="ind-d">Reflete a <strong>adequação do fluxo sanguíneo tecidual</strong>. Responde: o CO₂ está sendo carreado adequadamente?</span></div>
   </div>
-  <div class="card">
-    <div class="card-title">Por que são necessários dois parâmetros?</div>
-    <div class="quad-grid">
-      <div class="quad ok"><div class="quad-header">SvcO₂</div><div class="quad-body">Reflete o <strong>balanço oferta vs. consumo de O₂</strong>. Responde: os tecidos estão recebendo O₂ suficiente?</div></div>
-      <div class="quad ok"><div class="quad-header">Δ pCO₂</div><div class="quad-body">Reflete a <strong>adequação do fluxo sanguíneo tecidual</strong>. Responde: o CO₂ está sendo carreado adequadamente?</div></div>
-    </div>
-    <div class="alert-box warn" style="margin-top:10px;">
-      <div class="icon">!</div>
-      <div class="content"><strong>Por que a SvcO₂ isolada não é suficiente?</strong>Na sepse hiperdinâmica e na hipóxia citopática, a SvcO₂ pode ser normal ou elevada mesmo com hipoperfusão tecidual real. O Δ pCO₂ desmascara esses cenários.</div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-title coral">Tipos de hipóxia tecidual</div>
-    <table>
-      <tr><th>Tipo</th><th>Mecanismo</th><th>SvcO₂</th></tr>
+  <div class="warn-box"><strong>Por que a SvcO₂ isolada não basta:</strong> na sepse hiperdinâmica e na hipóxia citopática, a SvcO₂ pode ser normal ou elevada mesmo com hipoperfusão tecidual real. O Δ pCO₂ desmascara esses cenários.</div>
+
+  <div class="sec-h"><span class="sec-num">05</span><h2>Tipos de hipóxia tecidual</h2></div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Tipo</th><th>Mecanismo</th><th>SvcO₂</th></tr></thead>
+    <tbody>
       <tr><td>Hipóxica</td><td>Queda da SatO₂ arterial</td><td><span class="pill pill-red">Baixa</span></td></tr>
       <tr><td>Anêmica</td><td>Queda da hemoglobina</td><td><span class="pill pill-red">Baixa</span></td></tr>
       <tr><td>Estagnante</td><td>Queda do débito cardíaco</td><td><span class="pill pill-red">Baixa</span></td></tr>
       <tr><td>Citopática</td><td>Disfunção mitocondrial — célula não utiliza O₂</td><td><span class="pill pill-amber">Alta (falsa)</span></td></tr>
-    </table>
-  </div>
+    </tbody>
+  </table></div>
 </section>
 </main>
 <script src="../assets/app.js"></script>
-
 </body>
 </html>

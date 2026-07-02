@@ -15,29 +15,44 @@
 <body data-module="vm" data-page="hipercapnia">
 <main class="main">
 <section class="section" id="hipercapnia">
+  <div class="hero-eyebrow">Ventilação Mecânica · Trocas gasosas</div>
   <h1 class="section-title">Hipercapnia Permissiva <a class="share-link" href="#hipercapnia" onclick="copyLink(event,'#hipercapnia')"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></a></h1>
   <p class="section-subtitle">Quando e como aceitar a elevação da PaCO₂ para proteger o pulmão</p>
-  <p class="prose">Hipercapnia permissiva é a aceitação da ↑PaCO₂ e acidose respiratória resultante de estratégias que protegem o pulmão (↓VC, ↓FR). Não é um objetivo — é uma consequência tolerada. Não se aplica a pacientes com hipercapnia crônica onde o alvo é manter o pH normal, não normalizar a PaCO₂. <span class="src">[UpToDate — Permissive hypercapnia during MV in adults]</span></p>
-  <div class="card-grid col3">
-    <div class="concept-card teal"><div class="label">pH ≥ 7,25</div><div class="value">Não tratar</div><div class="desc">Acidose geralmente bem tolerada. Manter estratégia protetora. UpToDate: "not corrected since this level of acidosis is generally well tolerated".</div></div>
-    <div class="concept-card amber"><div class="label">pH 7,21 – 7,24</div><div class="value">Individualizar</div><div class="desc">Considerar NaHCO₃ se instabilidade hemodinâmica associada. Avaliar o contexto clínico individual.</div></div>
-    <div class="concept-card coral"><div class="label">pH ≤ 7,20</div><div class="value">Corrigir</div><div class="desc">NaHCO₃ IV. Meta: pH ≤7,20 (não normalizar). Não usar bicarb para normalizar — gera CO₂ paradoxal. Reduzir NaHCO₃ em 24h após melhora.</div></div>
+
+  <div class="hero-meta cols-3">
+    <div class="hm-item"><span class="hm-k">Limiar de correção</span><span class="hm-v">pH ≤ 7,20</span></div>
+    <div class="hm-item"><span class="hm-k">Velocidade ↑ PaCO₂</span><span class="hm-v">&lt; 10 mmHg/h</span></div>
+    <div class="hm-item"><span class="hm-k">Contraindicação clássica</span><span class="hm-v">TCE / ↑ PIC</span></div>
   </div>
-  <h3>Técnica de titulação <span class="src">[UpToDate — Permissive hypercapnia]</span></h3>
-  <p class="prose">A PaCO₂ deve elevar-se lentamente — preferencialmente &lt;10 mmHg/hora. A elevação deve ser ainda mais lenta quando PaCO₂ >80 mmHg. Não há limite absoluto superior, mas níveis >100 mmHg raramente são necessários. Ajustes devem ser incrementais: reduzir FR não mais que 2–3 irpm ou VC não mais que 25–50 mL por vez.</p>
-  <h3>Contraindicações <span class="src">[UpToDate — Permissive hypercapnia]</span></h3>
+
+  <div class="anatomy-note"><strong>Conceito:</strong> Hipercapnia permissiva é a aceitação da ↑PaCO₂ e acidose respiratória resultante de estratégias que protegem o pulmão (↓VC, ↓FR). Não é um objetivo — é uma <strong>consequência tolerada</strong>. Não se aplica a pacientes com hipercapnia crônica, onde o alvo é manter o pH normal, não normalizar a PaCO₂.</div>
+  <div class="ref">UpToDate — Permissive hypercapnia during MV in adults</div>
+
+  <div class="sec-h"><span class="sec-num">01</span><h2>Faixas de pH e conduta</h2></div>
+  <div class="ind-grid cols-3">
+    <div class="ind-item"><span class="ind-t">pH ≥ 7,25 — não tratar</span><span class="ind-d">Acidose geralmente bem tolerada. Manter estratégia protetora. "Not corrected since this level of acidosis is generally well tolerated".</span></div>
+    <div class="ind-item"><span class="ind-t">pH 7,21–7,24 — individualizar</span><span class="ind-d">Considerar NaHCO₃ se instabilidade hemodinâmica associada. Avaliar o contexto clínico individual.</span></div>
+    <div class="ind-item"><span class="ind-t">pH ≤ 7,20 — corrigir</span><span class="ind-d">NaHCO₃ IV. Meta: pH ≤7,20 (não normalizar) — normalizar gera CO₂ paradoxal. Reduzir NaHCO₃ em 24h após melhora.</span></div>
+  </div>
+
+  <div class="sec-h"><span class="sec-num">02</span><h2>Técnica de titulação</h2></div>
+  <p class="sec-lead">A PaCO₂ deve elevar-se lentamente — preferencialmente <strong>&lt;10 mmHg/hora</strong>, e ainda mais devagar quando PaCO₂ >80 mmHg. Não há limite absoluto superior, mas níveis >100 mmHg raramente são necessários. Ajustes incrementais: reduzir FR não mais que 2–3 irpm ou VC não mais que 25–50 mL por vez.</p>
+  <div class="ref">UpToDate — Permissive hypercapnia</div>
+
+  <div class="sec-h"><span class="sec-num">03</span><h2>Contraindicações</h2></div>
   <div class="table-wrap"><table>
     <thead><tr><th>Contraindicação</th><th>Mecanismo</th><th>Alternativa prática</th></tr></thead>
     <tbody>
-      <tr><td><strong>TCE / hipertensão intracraniana</strong></td><td>CO₂ vasodilatador cerebral → ↑ FSC → ↑ PIC → risco de herniação. Hipercapnia também ↓ pH liquórico.</td><td>Normoventilação (PaCO₂ 35–40 mmHg). Se SDRA + TCE: LTVV pode ser usada SE hipercapnia/acidose forem evitadas.</td></tr>
+      <tr><td><strong>TCE / hipertensão intracraniana</strong></td><td>CO₂ vasodilatador cerebral → ↑ FSC → ↑ PIC → risco de herniação. Também ↓ pH liquórico.</td><td>Normoventilação (PaCO₂ 35–40 mmHg). Se SDRA + TCE: LTVV pode ser usada SE hipercapnia/acidose forem evitadas.</td></tr>
       <tr><td><strong>Epilepsia ativa</strong></td><td>Hipercapnia pode ↓ limiar convulsivo</td><td>Controlar status antes de aceitar hipercapnia</td></tr>
       <tr><td><strong>Gestação</strong></td><td>PaCO₂ basal da grávida: ~32 mmHg. Hipercapnia materna pode comprometer trocas fetais.</td><td>Meta: PaCO₂ materno ~32 mmHg</td></tr>
       <tr><td><strong>HAP + disfunção de VD</strong></td><td>Hipercapnia → ↑ RVP → piora sobrecarga do VD já comprometido</td><td>Cautela; individualizar; considerar iNO</td></tr>
       <tr><td><strong>Hipovolemia grave</strong></td><td>Hipercapnia causa vasodilatação sistêmica → hipotensão</td><td>Corrigir volemia antes de aceitar hipercapnia significativa</td></tr>
-      <tr><td><strong>Cardiopatia com DAC / FA / HP</strong></td><td>Hipercapnia → ↑ output simpático → taquicardia, ↑ consumo O₂ miocárdico.</td><td>Considerar como contraindicação relativa; individualizar</td></tr>
+      <tr><td><strong>Cardiopatia com DAC / FA / HP</strong></td><td>Hipercapnia → ↑ output simpático → taquicardia, ↑ consumo O₂ miocárdico.</td><td>Contraindicação relativa; individualizar</td></tr>
     </tbody>
   </table></div>
-  <div class="callout amber"><strong>NaHCO₃ — paradoxo do CO₂:</strong> O bicarbonato tamponeia H⁺ mas gera CO₂ como subproduto: H⁺ + HCO₃⁻ → H₂O + CO₂. Em VM limitada, o CO₂ gerado pode elevar paradoxalmente a PaCO₂. Usar Carbicarb (mistura equimolar de carbonato e bicarbonato de sódio) corrige acidemia sem gerar CO₂ — mas sua disponibilidade é limitada. Infundir NaHCO₃ lentamente e reavalie gasometria em 30–60 min. <span class="src">[UpToDate — Permissive hypercapnia]</span></div>
+  <div class="tip-box"><strong>NaHCO₃ — paradoxo do CO₂:</strong> O bicarbonato tamponeia H⁺ mas gera CO₂ como subproduto: H⁺ + HCO₃⁻ → H₂O + CO₂. Em VM limitada, o CO₂ gerado pode elevar paradoxalmente a PaCO₂. Carbicarb (mistura equimolar de carbonato e bicarbonato de sódio) corrige acidemia sem gerar CO₂ — mas disponibilidade limitada. Infundir NaHCO₃ lentamente e reavaliar gasometria em 30–60 min.</div>
+  <div class="ref">UpToDate — Permissive hypercapnia</div>
 </section>
 </main>
 <script src="../assets/app.js"></script>

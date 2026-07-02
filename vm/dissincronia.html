@@ -15,12 +15,14 @@
 <body data-module="vm" data-page="dissincronia">
 <main class="main">
 <section class="section" id="dissincronia">
+  <div class="hero-eyebrow">Ventilação Mecânica · Interação P-V</div>
   <h1 class="section-title">Dissincronia Paciente-Ventilador <a class="share-link" href="#dissincronia" onclick="copyLink(event,'#dissincronia')"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></a></h1>
   <p class="section-subtitle">Tipos, diagnóstico pelas curvas de pressão/fluxo/volume e conduta</p>
 
-  <p class="prose">Dissincronia paciente-ventilador ocorre quando há descoordenação entre o drive neural do paciente e o ciclo entregue pelo ventilador. Prevalência: até <strong>25% dos ciclos</strong> em pacientes em modo assistido. Associada a ↑ duração da VM, ↑ mortalidade, piora de SDRA. O diagnóstico é feito pela análise das curvas de pressão, fluxo e volume no display do ventilador. <span class="src">[UpToDate — Patient-ventilator dyssynchrony]</span></p>
+  <div class="anatomy-note">Dissincronia paciente-ventilador ocorre quando há descoordenação entre o drive neural do paciente e o ciclo entregue pelo ventilador. Prevalência: até <strong>25% dos ciclos</strong> em pacientes em modo assistido. Associada a ↑ duração da VM, ↑ mortalidade, piora de SDRA. O diagnóstico é feito pela análise das curvas de pressão, fluxo e volume no display do ventilador.</div>
+  <div class="ref">UpToDate — Patient-ventilator dyssynchrony</div>
 
-  <h3>Tipos de dissincronia e diagnóstico pelas curvas <span class="src">[UpToDate — Patient-ventilator dyssynchrony, Table 2]</span></h3>
+  <div class="sec-h"><span class="sec-num">01</span><h2>Tipos e diagnóstico pelas curvas</h2></div>
   <div class="table-wrap"><table>
     <thead><tr><th>Tipo</th><th>O que é</th><th>Curva diagnóstica</th><th>Conduta</th></tr></thead>
     <tbody>
@@ -63,15 +65,19 @@
     </tbody>
   </table></div>
 
-  <h3>Abordagem sistemática da dissincronia <span class="src">[UpToDate — Patient-ventilator dyssynchrony]</span></h3>
-  <div class="step-list">
-    <div class="step-item teal"><div class="s-label"><span>Passo 1</span><span>Identificar</span></div><div class="s-body">Analisar curvas de pressão, fluxo e volume no display. Observar FR no display vs FR programada (diferença = respirações espontâneas). FR display > FR programada + FR irregular = dissincronia.</div></div>
-    <div class="step-item teal"><div class="s-label"><span>Passo 2</span><span>Excluir causas</span></div><div class="s-body">Antes de ajustar ventilador: excluir dor (CPOT/BPS), ansiedade, febre, broncoespasmo, secreção, auto-PEEP, pneumotórax. Tratar a causa antes de modificar o modo.</div></div>
-    <div class="step-item teal"><div class="s-label"><span>Passo 3</span><span>Ajustar modo</span></div><div class="s-body">Ajustar parâmetros conforme tipo de dissincronia (tabela acima). Se refratário ao AC-VC: considerar AC-PC. Se refratário a qualquer modo assistido: avaliar necessidade de bloqueio neuromuscular temporário (apenas em SDRA grave).</div></div>
-    <div class="step-item amber"><div class="s-label"><span>Cuidado</span><span>Sedação</span></div><div class="s-body">Usar sedação como solução padrão para dissincronia é errado — piora VIDD, prolonga VM, aumenta delirium. Tratar a causa. Sedação profunda apenas quando estritamente necessária.</div></div>
-  </div>
+  <div class="sec-h"><span class="sec-num">02</span><h2>Abordagem sistemática</h2></div>
+  <ol class="tl">
+    <li><span class="tl-n">1</span><span class="tl-b"><strong>Identificar.</strong> Analisar curvas de pressão, fluxo e volume no display. Observar FR no display vs FR programada (diferença = respirações espontâneas). FR display > FR programada + FR irregular = dissincronia.</span></li>
+    <li><span class="tl-n">2</span><span class="tl-b"><strong>Excluir causas.</strong> Antes de ajustar o ventilador: excluir dor (CPOT/BPS), ansiedade, febre, broncoespasmo, secreção, auto-PEEP, pneumotórax. Tratar a causa antes de modificar o modo.</span></li>
+    <li><span class="tl-n">3</span><span class="tl-b"><strong>Ajustar modo.</strong> Ajustar parâmetros conforme o tipo de dissincronia (tabela acima). Se refratário ao AC-VC: considerar AC-PC. Se refratário a qualquer modo assistido: avaliar bloqueio neuromuscular temporário (apenas em SDRA grave).</span></li>
+  </ol>
+  <div class="pitfall-h">O que não fazer</div>
+  <ul class="pitfall-list">
+    <li>Usar <strong>sedação como solução padrão</strong> para dissincronia — piora VIDD, prolonga VM, aumenta delirium. Tratar a causa; sedação profunda apenas quando estritamente necessária.</li>
+  </ul>
 
-  <div class="callout purple"><strong>Dissincronia grave em SDRA:</strong> Double triggering e reverse triggering em SDRA podem gerar esforços inspiratórios que amplificam a pressão transpulmonar (P-SILI: patient self-inflicted lung injury). Nesse cenário, bloqueio neuromuscular por 48h pode reduzir mortalidade (ACURASYS trial: RR 0,68; mortalidade 31,6 vs 40,7%). PHOENIX trial (2023) não replicou, mas em pacientes com P/F &lt;150 e assincronia grave, ainda é considerado. <span class="src">[UpToDate — ARDS ventilator management; ACURASYS; PHOENIX trial 2023]</span></div>
+  <div class="anatomy-note"><strong>Dissincronia grave em SDRA:</strong> Double triggering e reverse triggering em SDRA podem gerar esforços inspiratórios que amplificam a pressão transpulmonar (P-SILI: patient self-inflicted lung injury). Nesse cenário, bloqueio neuromuscular por 48h pode reduzir mortalidade (ACURASYS trial: RR 0,68; mortalidade 31,6 vs 40,7%). PHOENIX trial (2023) não replicou, mas em pacientes com P/F &lt;150 e assincronia grave ainda é considerado.</div>
+  <div class="ref">UpToDate — ARDS ventilator management; ACURASYS; PHOENIX trial 2023</div>
 </section>
 </main>
 <script src="../assets/app.js"></script>

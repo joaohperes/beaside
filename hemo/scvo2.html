@@ -11,47 +11,51 @@
 </head>
 <body data-module="hemo" data-page="scvo2">
 <main class="main">
-  <p class="section-title">SvcO₂</p>
-  <p class="section-sub">Saturação venosa central — coleta, interpretação e armadilhas</p>
-  
-  <div class="card">
-    <div class="card-title">Definição e coleta</div>
-    <p style="font-size:13px;color:var(--muted);">Medida pelo cateter venoso central posicionado na <strong style="color:var(--text)">veia cava superior</strong>. Representa o O₂ remanescente após a perfusão dos tecidos de cabeça, pescoço e membros superiores.</p>
-    <div class="alert-box warn" style="margin-top:10px;">
-      <div class="icon">!</div>
-      <div class="content"><strong>Coleta periférica não equivale à SvcO₂</strong>Sangue de veia periférica representa perfusão regional local e não substitui a coleta do CVC para avaliação hemodinâmica sistêmica.</div>
-    </div>
+<section class="section" id="scvo2">
+  <div class="hero-eyebrow">Hemodinâmica · Saturação venosa</div>
+  <h1 class="section-title">SvcO₂</h1>
+  <p class="section-subtitle">Saturação venosa central — coleta, interpretação e armadilhas</p>
+
+  <div class="hero-meta">
+    <div class="hm-item"><span class="hm-k">Meta ressuscitação</span><span class="hm-v">≥ 70%</span></div>
+    <div class="hm-item"><span class="hm-k">Zona de alerta</span><span class="hm-v">60–70%</span></div>
+    <div class="hm-item"><span class="hm-k">Grave</span><span class="hm-v">&lt; 60%</span></div>
+    <div class="hm-item"><span class="hm-k">Falso alto</span><span class="hm-v">&gt; 80%</span></div>
   </div>
-  <div class="card">
-    <div class="card-title blue">Valores de referência</div>
-    <table>
-      <tr><th>SvcO₂</th><th>Interpretação</th><th>Conduta</th></tr>
+
+  <div class="sec-h"><span class="sec-num">01</span><h2>Definição e coleta</h2></div>
+  <p class="sec-lead">Medida pelo cateter venoso central posicionado na <strong>veia cava superior</strong>. Representa o O₂ remanescente após a perfusão dos tecidos de cabeça, pescoço e membros superiores.</p>
+  <div class="warn-box"><strong>Coleta periférica não equivale à SvcO₂:</strong> sangue de veia periférica representa perfusão regional local e não substitui a coleta do CVC para avaliação hemodinâmica sistêmica.</div>
+
+  <div class="sec-h"><span class="sec-num">02</span><h2>Valores de referência</h2></div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>SvcO₂</th><th>Interpretação</th><th>Conduta</th></tr></thead>
+    <tbody>
       <tr><td><span class="pill pill-red">&lt; 60%</span></td><td>Hipoperfusão grave / baixo débito crítico</td><td>Ação imediata</td></tr>
       <tr><td><span class="pill pill-amber">60–70%</span></td><td>Zona de alerta</td><td>Avaliar DC, Hb, SatO₂</td></tr>
       <tr><td><span class="pill pill-green">≥ 70%</span></td><td>Meta na ressuscitação</td><td>Manter + avaliar Δ pCO₂</td></tr>
       <tr><td><span class="pill pill-coral">&gt; 80%</span></td><td>Atenção — pode ser falso</td><td>Verificar armadilhas</td></tr>
-    </table>
-  </div>
-  <div class="card">
-    <div class="card-title red">Armadilhas: SvcO₂ elevada não significa segurança</div>
-    <div class="flow">
-      <div class="flow-step"><div class="flow-line"><div class="flow-dot">1</div><div class="flow-connector"></div></div><div class="flow-content"><div class="flow-title">Circulação hiperdinâmica da sepse</div><div class="flow-desc">Débito cardíaco muito elevado — o sangue passa rapidamente pelos tecidos, com pouca extração de O₂. Pode haver shunting microcirculatório com hipóxia regional ativa.</div></div></div>
-      <div class="flow-step"><div class="flow-line"><div class="flow-dot">2</div><div class="flow-connector"></div></div><div class="flow-content"><div class="flow-title">Hipóxia citopática</div><div class="flow-desc">Disfunção mitocondrial grave — as células não conseguem utilizar o O₂ disponível. SvcO₂ elevada com lactato alto e acidose ativa. O O₂ está disponível, mas não gera ATP.</div></div></div>
-      <div class="flow-step"><div class="flow-line"><div class="flow-dot">3</div></div><div class="flow-content"><div class="flow-title">Outras causas</div><div class="flow-desc">FiO₂ muito elevada, cateter mal posicionado ou em cunha, sedação profunda (redução do consumo), cirrose avançada, ICC com shunt esquerda-direita.</div></div></div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-title purple">SvcO₂ vs. SvO₂ mista</div>
-    <table>
-      <tr><th>Parâmetro</th><th>Acesso</th><th>Diferença</th></tr>
+    </tbody>
+  </table></div>
+
+  <div class="sec-h"><span class="sec-num">03</span><h2>Armadilhas — SvcO₂ elevada não significa segurança</h2></div>
+  <ol class="tl">
+    <li><span class="tl-n">1</span><span class="tl-b"><strong>Circulação hiperdinâmica da sepse.</strong> Débito cardíaco muito elevado — o sangue passa rapidamente pelos tecidos, com pouca extração de O₂. Pode haver shunting microcirculatório com hipóxia regional ativa.</span></li>
+    <li><span class="tl-n">2</span><span class="tl-b"><strong>Hipóxia citopática.</strong> Disfunção mitocondrial grave — as células não conseguem utilizar o O₂ disponível. SvcO₂ elevada com lactato alto e acidose ativa. O O₂ está disponível, mas não gera ATP.</span></li>
+    <li><span class="tl-n">3</span><span class="tl-b"><strong>Outras causas.</strong> FiO₂ muito elevada, cateter mal posicionado ou em cunha, sedação profunda (redução do consumo), cirrose avançada, ICC com shunt esquerda-direita.</span></li>
+  </ol>
+
+  <div class="sec-h"><span class="sec-num">04</span><h2>SvcO₂ vs SvO₂ mista</h2></div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Parâmetro</th><th>Acesso</th><th>Diferença</th></tr></thead>
+    <tbody>
       <tr><td>SvcO₂</td><td>CVC (veia cava superior)</td><td>Aprox. 5–7% acima da SvO₂ mista na doença crítica</td></tr>
       <tr><td>SvO₂ mista</td><td>Cateter de Swan-Ganz (artéria pulmonar)</td><td>Padrão-ouro — representa todo o organismo</td></tr>
-    </table>
-    <p style="font-size:12px;color:var(--muted);margin-top:8px;">Na sepse, o padrão pode se inverter: a SvcO₂ pode ser menor que a SvO₂ real pelo desvio de fluxo da circulação esplâncnica.</p>
-  </div>
+    </tbody>
+  </table></div>
+  <div class="anatomy-note">Na sepse, o padrão pode se inverter: a SvcO₂ pode ser menor que a SvO₂ real pelo desvio de fluxo da circulação esplâncnica.</div>
 </section>
 </main>
 <script src="../assets/app.js"></script>
-
 </body>
 </html>

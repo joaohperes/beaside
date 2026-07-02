@@ -15,8 +15,18 @@
 <body data-module="vm" data-page="indutores">
 <main class="main">
 <section class="section" id="indutores">
+  <div class="hero-eyebrow">Ventilação Mecânica · Intubação</div>
   <h1 class="section-title">Indutores para RSI <a class="share-link" href="#indutores" onclick="copyLink(event,'#indutores')"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></a></h1>
   <p class="section-subtitle">Perfil farmacológico completo e algoritmo de escolha por cenário clínico — baseado em UpToDate RSI Induction Agents (Mar 2026) e FCCS</p>
+
+  <div class="hero-meta">
+    <div class="hm-item"><span class="hm-k">Padrão / choque</span><span class="hm-v">Etomidato</span></div>
+    <div class="hm-item"><span class="hm-k">Broncoespasmo</span><span class="hm-v">Cetamina</span></div>
+    <div class="hm-item"><span class="hm-k">Status epiléptico</span><span class="hm-v">Propofol</span></div>
+    <div class="hm-item"><span class="hm-k">Evitar no choque</span><span class="hm-v">Propofol</span></div>
+  </div>
+
+  <div class="sec-h"><span class="sec-num">01</span><h2>Perfil farmacológico comparado</h2></div>
   <div class="table-wrap"><table>
     <thead><tr><th>Propriedade</th><th>Etomidato</th><th>Cetamina</th><th>Propofol</th><th>Midazolam</th></tr></thead>
     <tbody>
@@ -32,7 +42,7 @@
     </tbody>
   </table></div>
   <p class="prose" style="font-size:12.5px;color:var(--text3)">* UpToDate: "A systematic review of 11 studies found no evidence to justify restrictions on ketamine use for RSI in the setting of elevated ICP." Evitar cetamina se hipertensão arterial grave (PAM >120) ou sinais de herniação. <br>** UpToDate: etomidato em dose única "is an acceptable induction agent for patients with severe sepsis." Hidrocortisona 100 mg IV apenas se choque refratório a fluido E vasopressor.</p>
-  <h3>Algoritmo de escolha por cenário <span class="src">[UpToDate — RSI Induction Agents; FCCS Tab. 2-2]</span></h3>
+  <div class="sec-h"><span class="sec-num">02</span><h2>Algoritmo de escolha por cenário</h2></div>
   <div class="scenario-list">
     <div class="scenario-item"><div class="s-ctx">Geral / estável</div><div class="s-first"><strong>Etomidato 0,3 mg/kg</strong></div><div class="s-note">Alternativa: Propofol 1,5–2 mg/kg se hemodin. estável. Padrão na maioria dos serviços de urgência.</div></div>
     <div class="scenario-item"><div class="s-ctx">Choque / instabilidade hemodinâmica</div><div class="s-first"><strong>Etomidato 0,15 mg/kg</strong></div><div class="s-note">Alternativa: Cetamina 1 mg/kg. Ressuc. pré-IOT obrigatória. Ambos causam ↓ PA em choque grave — dose reduzida em 25–50%.</div></div>
@@ -43,6 +53,7 @@
     <div class="scenario-item"><div class="s-ctx">Cardiopata / DAC / dissecção aórtica</div><div class="s-first"><strong>Etomidato 0,3 mg/kg</strong></div><div class="s-note">UpToDate: "We suggest etomidate for induction of the patient with significant cardiovascular disease." Adicionar Fentanil 3 mcg/kg IV lento como pré-tratamento.</div></div>
     <div class="scenario-item"><div class="s-ctx">Sepse com choque refratário</div><div class="s-first"><strong>Etomidato 0,15 mg/kg</strong></div><div class="s-note">UpToDate: "suggest low-dose IV etomidate (0.15 mg/kg) or, alternatively, IV ketamine (1 mg/kg)." Se choque refratário a fluido + DVA: Hidrocortisona 100 mg IV.</div></div>
   </div>
+  <div class="ref">UpToDate — RSI Induction Agents; FCCS Tab. 2-2</div>
 </section>
 </main>
 <script src="../assets/app.js"></script>

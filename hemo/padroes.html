@@ -11,122 +11,117 @@
 </head>
 <body data-module="hemo" data-page="padroes">
 <main class="main">
-  <p class="section-title">Padrões Hemodinâmicos</p>
-  <p class="section-sub">Tabelas de referência por tipo de choque</p>
-  
+<section class="section" id="padroes">
+  <div class="hero-eyebrow">Hemodinâmica · Padrões de choque</div>
+  <h1 class="section-title">Padrões Hemodinâmicos</h1>
+  <p class="section-subtitle">Tabelas de referência por tipo de choque</p>
 
-  <div class="card">
-    <div class="card-title purple">Os 4 tipos de choque — perfil hemodinâmico completo</div>
-    <div class="table-wrap"><table>
-      <tr><th>Tipo</th><th>DC / IC</th><th>RVS</th><th>PVC</th><th>PoAP</th><th>PAP</th><th>SvO₂</th><th>Exemplo</th></tr>
+  <div class="hero-meta">
+    <div class="hm-item"><span class="hm-k">Alto fluxo</span><span class="hm-v">Distributivo</span></div>
+    <div class="hm-item"><span class="hm-k">Baixo fluxo</span><span class="hm-v">Hipo · Cardio · Obstrutivo</span></div>
+    <div class="hm-item"><span class="hm-k">PP normal</span><span class="hm-v">40–60 mmHg</span></div>
+    <div class="hm-item"><span class="hm-k">Preditor dinâmico</span><span class="hm-v">PLR + VTI</span></div>
+  </div>
+
+  <div class="sec-h"><span class="sec-num">01</span><h2>Os 4 tipos de choque — perfil completo</h2></div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Tipo</th><th>DC / IC</th><th>RVS</th><th>PVC</th><th>PoAP</th><th>PAP</th><th>SvO₂</th><th>Exemplo</th></tr></thead>
+    <tbody>
       <tr><td><span class="pill pill-red">Hipovolêmico</span></td><td>Baixo</td><td>Alta</td><td>Baixa</td><td>Baixa</td><td>Normal</td><td>Baixa</td><td>Hemorragia, desidratação, queimadura</td></tr>
       <tr><td><span class="pill pill-coral">Distributivo</span></td><td>Alto</td><td>Baixa</td><td>Baixa/normal</td><td>Baixa/normal</td><td>Normal</td><td>Alta (falsa)</td><td>Sepse, anafilaxia, neurogênico</td></tr>
       <tr><td><span class="pill pill-amber">Cardiogênico</span></td><td>Baixo</td><td>Alta</td><td>Alta</td><td><strong style="color:var(--amber);">Alta</strong></td><td>Alta</td><td>Baixa</td><td>IAM, miocardite, arritmia</td></tr>
       <tr><td><span class="pill pill-blue">TEP / obstrutivo VD</span></td><td>Baixo</td><td>Alta</td><td>Alta</td><td>Normal/baixa</td><td><strong style="color:var(--amber);">Alta</strong></td><td>Baixa</td><td>TEP maciço (sobrecarga de VD)</td></tr>
       <tr><td><span class="pill pill-blue">Tamponamento</span></td><td>Baixo</td><td>Alta</td><td>Alta</td><td>Alta (equalizada)</td><td>Alta (equalizada)</td><td>Baixa</td><td>Tamponamento pericárdico, pneumotórax hipertensivo</td></tr>
-    </table></div>
-    <p style="font-size:12px;color:var(--muted);margin-top:8px;">DC = débito cardíaco · IC = índice cardíaco · RVS = resistência vascular sistêmica · PVC = pressão venosa central · PoAP = pressão de oclusão da artéria pulmonar (wedge / PAOP) · PAP = pressão da artéria pulmonar</p>
-    <p style="font-size:12px;color:var(--muted);margin-top:6px;"><span style="color:var(--amber);font-weight:600;">Em destaque amarelo</span> · achado-chave que define o padrão hemodinâmico em cada tipo de choque.</p>
-    <div style="margin-top:14px;">
-      <div class="card-title" style="margin-bottom:8px;">Diagnóstico rápido pelo padrão hemodinâmico</div>
-      <div class="table-wrap"><table>
-        <tr><th>Achado-chave</th><th>+ Outros parâmetros</th><th>Diagnóstico</th></tr>
-        <tr><td><strong>PoAP alta</strong></td><td>PAP normal ou alta · PVC alta</td><td><span class="pill pill-amber">Cardiogênico</span></td></tr>
-        <tr><td><strong>PoAP normal/baixa</strong></td><td>PAP alta · VD dilatado</td><td><span class="pill pill-blue">TEP / obstrutivo de VD</span></td></tr>
-        <tr><td><strong>PoAP e PAP equalizadas e altas</strong></td><td>PVC alta · derrame pericárdico</td><td><span class="pill pill-blue">Tamponamento</span></td></tr>
-        <tr><td><strong>PoAP baixa</strong></td><td>DC baixo · PVC baixa · RVS alta</td><td><span class="pill pill-red">Hipovolêmico</span></td></tr>
-        <tr><td><strong>DC alto</strong></td><td>RVS baixa · PP alargada</td><td><span class="pill pill-coral">Distributivo</span></td></tr>
-      </table></div>
-    </div>
-  </div>
+    </tbody>
+  </table></div>
+  <p class="prose" style="font-size:12px;color:var(--text3)">DC = débito cardíaco · IC = índice cardíaco · RVS = resistência vascular sistêmica · PVC = pressão venosa central · PoAP = pressão de oclusão da artéria pulmonar (wedge / PAOP) · PAP = pressão da artéria pulmonar. <span style="color:var(--amber);">Em amarelo</span> = achado-chave que define o padrão.</p>
 
-  <div class="card">
-    <div class="card-title">Classificação por fluxo — alto vs. baixo débito</div>
-    <p style="font-size:13px;color:var(--muted);">Eixo complementar à classificação anatômica. Define rapidamente a abordagem inicial: <strong>distributivo é o único choque de alto fluxo</strong>; todos os outros são de baixo fluxo.</p>
-    <div class="quad-grid" style="margin-top:10px;">
-      <div class="quad ok" style="border-color:rgba(251,146,60,0.35);">
-        <div class="quad-header" style="color:var(--coral);">Alto fluxo (DC alto)</div>
-        <div class="quad-body"><strong>Distributivo</strong> (sepse, anafilaxia, neurogênico, insuficiência hepática avançada). RVS muito baixa, PP alargada, pele quente. <strong>Vasopressor</strong> é a 1ª intervenção; volume guiado por dinâmicos.</div>
-      </div>
-      <div class="quad ok" style="border-color:rgba(248,113,113,0.35);">
-        <div class="quad-header" style="color:var(--red);">Baixo fluxo (DC baixo)</div>
-        <div class="quad-body"><strong>Hipovolêmico, cardiogênico, obstrutivo</strong>. RVS compensatoriamente elevada, PP estreita, pele fria. Tratamento varia conforme o subtipo: volume (hipovolêmico), inotrópico (cardiogênico) ou tratar a causa (obstrutivo).</div>
-      </div>
-    </div>
-    <div class="alert-box warn" style="margin-top:10px;"><div class="icon">!</div><div class="content"><strong>Atenção a sobreposições</strong>Sepse pode ter componente de baixo fluxo (cardiomiopatia séptica) — DC normal ou baixo apesar de RVS reduzida. Cardiogênico pode evoluir com vasoplegia secundária. Reavaliar o padrão com POCUS sempre que a clínica não bate com o esperado.</div></div>
-  </div>
+  <div class="sec-h"><span class="sec-num">02</span><h2>Diagnóstico rápido pelo padrão</h2></div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Achado-chave</th><th>+ Outros parâmetros</th><th>Diagnóstico</th></tr></thead>
+    <tbody>
+      <tr><td><strong>PoAP alta</strong></td><td>PAP normal ou alta · PVC alta</td><td><span class="pill pill-amber">Cardiogênico</span></td></tr>
+      <tr><td><strong>PoAP normal/baixa</strong></td><td>PAP alta · VD dilatado</td><td><span class="pill pill-blue">TEP / obstrutivo de VD</span></td></tr>
+      <tr><td><strong>PoAP e PAP equalizadas e altas</strong></td><td>PVC alta · derrame pericárdico</td><td><span class="pill pill-blue">Tamponamento</span></td></tr>
+      <tr><td><strong>PoAP baixa</strong></td><td>DC baixo · PVC baixa · RVS alta</td><td><span class="pill pill-red">Hipovolêmico</span></td></tr>
+      <tr><td><strong>DC alto</strong></td><td>RVS baixa · PP alargada</td><td><span class="pill pill-coral">Distributivo</span></td></tr>
+    </tbody>
+  </table></div>
 
-  <div class="card">
-    <div class="card-title blue">PoAP e PAP — interpretação prática</div>
-    <p style="font-size:13px;color:var(--muted);">Medidas obtidas pelo cateter de Swan-Ganz (artéria pulmonar). Pouco usadas hoje na prática rotineira (POCUS substitui na maioria dos casos), mas <strong>caem em prova</strong> e ainda são úteis em centros de transplante e cirurgia cardíaca.</p>
-    <div class="table-wrap"><table>
-      <tr><th>Medida</th><th>O que reflete</th><th>Valor normal</th><th>Alterações</th></tr>
+  <div class="sec-h"><span class="sec-num">03</span><h2>Classificação por fluxo</h2></div>
+  <p class="sec-lead">Eixo complementar à classificação anatômica. Define rapidamente a abordagem inicial: <strong>distributivo é o único choque de alto fluxo</strong>; todos os outros são de baixo fluxo.</p>
+  <div class="ind-grid">
+    <div class="ind-item"><span class="ind-t">Alto fluxo (DC alto)</span><span class="ind-d"><strong>Distributivo</strong> (sepse, anafilaxia, neurogênico, insuficiência hepática avançada). RVS muito baixa, PP alargada, pele quente. Vasopressor é a 1ª intervenção; volume guiado por dinâmicos.</span></div>
+    <div class="ind-item"><span class="ind-t">Baixo fluxo (DC baixo)</span><span class="ind-d"><strong>Hipovolêmico, cardiogênico, obstrutivo</strong>. RVS compensatoriamente elevada, PP estreita, pele fria. Tratamento varia: volume (hipovolêmico), inotrópico (cardiogênico) ou tratar a causa (obstrutivo).</span></div>
+  </div>
+  <div class="warn-box"><strong>Atenção a sobreposições:</strong> sepse pode ter componente de baixo fluxo (cardiomiopatia séptica) — DC normal ou baixo apesar de RVS reduzida. Cardiogênico pode evoluir com vasoplegia secundária. Reavaliar o padrão com POCUS sempre que a clínica não bate com o esperado.</div>
+
+  <div class="sec-h"><span class="sec-num">04</span><h2>PoAP e PAP — interpretação prática</h2></div>
+  <p class="sec-lead">Medidas obtidas pelo cateter de Swan-Ganz. Pouco usadas hoje (POCUS substitui na maioria dos casos), mas <strong>caem em prova</strong> e ainda são úteis em centros de transplante e cirurgia cardíaca.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Medida</th><th>O que reflete</th><th>Valor normal</th><th>Alterações</th></tr></thead>
+    <tbody>
       <tr><td><strong>PoAP</strong> (wedge / PAOP)</td><td>Pressão no átrio esquerdo — pré-carga do VE</td><td>6–12 mmHg</td><td>↑ em IC esquerda, estenose mitral, sobrecarga de volume · ↓ em hipovolemia</td></tr>
       <tr><td><strong>PAP sistólica</strong></td><td>Pressão sistólica na artéria pulmonar</td><td>15–30 mmHg</td><td>↑ em hipertensão pulmonar, TEP, IC esquerda crônica</td></tr>
       <tr><td><strong>PAP diastólica</strong></td><td>Pressão diastólica na artéria pulmonar</td><td>4–12 mmHg</td><td>Aproxima-se da PoAP em ausência de doença pulmonar</td></tr>
       <tr><td><strong>PAP média</strong></td><td>Média da pressão pulmonar</td><td>9–18 mmHg</td><td>HP se &gt; 25 mmHg em repouso (definição clássica)</td></tr>
-    </table></div>
-    <div class="quad-grid" style="margin-top:12px;">
-      <div class="quad ok"><div class="quad-header" style="color:var(--amber);">PoAP alta + PAP alta</div><div class="quad-body"><strong>HP pós-capilar</strong> — a causa é o coração esquerdo. Tratar IC esquerda.</div></div>
-      <div class="quad ok"><div class="quad-header" style="color:var(--blue);">PoAP normal + PAP alta</div><div class="quad-body"><strong>HP pré-capilar</strong> — TEP, HAP idiopática, doença pulmonar. Tratar a causa pulmonar.</div></div>
-    </div>
-    <div class="alert-box info" style="margin-top:10px;"><div class="icon">i</div><div class="content"><strong>Por que ainda importa</strong>Mesmo sem Swan-Ganz, o conceito ajuda a interpretar o eco point-of-care: VD dilatado com septo paradoxal sugere PAP alta; AE dilatado e linhas B sugere PoAP alta. POCUS substitui Swan na maioria dos cenários hoje.</div></div>
+    </tbody>
+  </table></div>
+  <div class="ind-grid">
+    <div class="ind-item"><span class="ind-t">PoAP alta + PAP alta</span><span class="ind-d"><strong>HP pós-capilar</strong> — a causa é o coração esquerdo. Tratar IC esquerda.</span></div>
+    <div class="ind-item"><span class="ind-t">PoAP normal + PAP alta</span><span class="ind-d"><strong>HP pré-capilar</strong> — TEP, HAP idiopática, doença pulmonar. Tratar a causa pulmonar.</span></div>
   </div>
+  <div class="anatomy-note"><strong>Por que ainda importa:</strong> mesmo sem Swan-Ganz, o conceito ajuda a interpretar o eco point-of-care: VD dilatado com septo paradoxal sugere PAP alta; AE dilatado e linhas B sugerem PoAP alta.</div>
 
-  <div class="card">
-    <div class="card-title">Pressão de pulso — o que revela</div>
-    <div class="formula">PP<span class="op">=</span>PAS<span class="op">−</span>PAD</div>
-    <p style="font-size:13px;color:var(--muted);margin:8px 0;">Normal: 40–60 mmHg. Reflete indiretamente o volume sistólico e a complacência aórtica.</p>
-    <table>
-      <tr><th>Pressão de pulso</th><th>Interpretação</th><th>Pensar em</th></tr>
+  <div class="sec-h"><span class="sec-num">05</span><h2>Pressão de pulso — o que revela</h2></div>
+  <div class="formula">PP<span class="op">=</span>PAS<span class="op">−</span>PAD</div>
+  <p class="sec-lead">Normal: 40–60 mmHg. Reflete indiretamente o volume sistólico e a complacência aórtica.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Pressão de pulso</th><th>Interpretação</th><th>Pensar em</th></tr></thead>
+    <tbody>
       <tr><td><span class="pill pill-red">Estreita &lt; 25 mmHg</span></td><td>Baixo volume sistólico</td><td>Hipovolemia, tamponamento, cardiogênico — pode responder a volume</td></tr>
       <tr><td><span class="pill pill-green">Normal 40–60 mmHg</span></td><td>Volume sistólico preservado</td><td>Distributivo (sepse, vasoplegia)</td></tr>
       <tr><td><span class="pill pill-amber">Alargada &gt; 60 mmHg</span></td><td>Baixa resistência periférica</td><td>Vasoplegia, insuficiência aórtica, circulação hiperdinâmica</td></tr>
-    </table>
-    <div class="alert-box info" style="margin-top:10px;"><div class="icon">i</div><div class="content">Pressão diastólica baixa com PP alargada sugere vasoplegia — resistência vascular diminuída. Vasopressor em vez de volume.</div></div>
-  </div>
+    </tbody>
+  </table></div>
+  <div class="anatomy-note">Pressão diastólica baixa com PP alargada sugere vasoplegia — resistência vascular diminuída. Vasopressor em vez de volume.</div>
 
-  <div class="card">
-    <div class="card-title blue">Variação de Pressão de Pulso (VPP) — paciente intubado</div>
-    <div class="formula">VPP<span class="op">=</span><span class="frac"><span>PP<sub>max</sub> − PP<sub>min</sub></span><span>(PP<sub>max</sub> + PP<sub>min</sub>) / 2</span></span><span class="op">×</span><span class="num">100</span></div>
-    <div class="tag-row">
-      <span class="tag">Válido: VM controlada · Vt ≥ 8 mL/kg · Ritmo sinusal</span>
-    </div>
-    <table>
-      <tr><th>VPP</th><th>Interpretação</th></tr>
+  <div class="sec-h"><span class="sec-num">06</span><h2>Variação de Pressão de Pulso (VPP)</h2></div>
+  <div class="formula"><span class="frac"><span>PP<sub>max</sub> − PP<sub>min</sub></span><span>(PP<sub>max</sub> + PP<sub>min</sub>) / 2</span></span><span class="op">×</span><span class="num">100</span></div>
+  <div class="mat-grid"><span class="mat-item">Válido: VM controlada · Vt ≥ 8 mL/kg · Ritmo sinusal</span></div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>VPP</th><th>Interpretação</th></tr></thead>
+    <tbody>
       <tr><td><span class="pill pill-green">&lt; 9%</span></td><td>Não responsivo a volume</td></tr>
       <tr><td><span class="pill pill-amber">9–13%</span></td><td>Zona cinzenta — considerar fluid challenge</td></tr>
       <tr><td><span class="pill pill-red">&gt; 13%</span></td><td>Responsivo a volume — repor com segurança</td></tr>
-    </table>
-    <div class="alert-box warn" style="margin-top:10px;"><div class="icon">!</div><div class="content"><strong>Limitações da VPP</strong>Ventilação espontânea ou assistida · FA / arritmias · Vt &lt; 8 mL/kg · Hipertensão abdominal · Disfunção grave de VD. Nessas situações preferir PLR com medida de VTI.</div></div>
-  </div>
+    </tbody>
+  </table></div>
+  <div class="warn-box"><strong>Limitações da VPP:</strong> ventilação espontânea ou assistida · FA / arritmias · Vt &lt; 8 mL/kg · hipertensão abdominal · disfunção grave de VD. Nessas situações preferir PLR com medida de VTI.</div>
 
-  <div class="card">
-    <div class="card-title">PLR + VTI — avaliação funcional universal</div>
-    <div class="flow">
-      <div class="flow-step"><div class="flow-line"><div class="flow-dot">1</div><div class="flow-connector"></div></div><div class="flow-content"><div class="flow-title">Posição inicial</div><div class="flow-desc">Paciente em decúbito dorsal com cabeceira a 45°. Medir VTI subvalvar aórtico (VSVE) pelo Doppler pulsado no ecocardiograma point-of-care.</div></div></div>
-      <div class="flow-step"><div class="flow-line"><div class="flow-dot">2</div><div class="flow-connector"></div></div><div class="flow-content"><div class="flow-title">Manobra PLR</div><div class="flow-desc">Deitar completamente e elevar os MMII a 45° por 60–90 s. Isso mobiliza 300–500 mL de sangue venoso para o tórax — equivale a um bolus passivo e reversível.</div></div></div>
-      <div class="flow-step"><div class="flow-line"><div class="flow-dot">3</div><div class="flow-connector"></div></div><div class="flow-content"><div class="flow-title">Medir VTI após PLR</div><div class="flow-desc">Repetir medida do VTI subvalvar. Aumento ≥ 12–15% prediz responsividade a volume com alta sensibilidade e especificidade.</div></div></div>
-      <div class="flow-step"><div class="flow-line"><div class="flow-dot">4</div></div><div class="flow-content"><div class="flow-title">Retornar à posição inicial</div><div class="flow-desc">O efeito é totalmente reversível — sem risco de sobrecarga hídrica. Válido em ventilação espontânea, mecânica, arritmias e DPOC.</div></div></div>
-    </div>
-    <div class="alert-box info"><div class="icon">i</div><div class="content">O PLR com VTI é o preditor de responsividade a volume mais robusto disponível à beira do leito — recomendado pelo SSC 2026 como método dinâmico preferencial.</div></div>
-  </div>
+  <div class="sec-h"><span class="sec-num">07</span><h2>PLR + VTI — avaliação funcional universal</h2></div>
+  <ol class="tl">
+    <li><span class="tl-n">1</span><span class="tl-b"><strong>Posição inicial.</strong> Paciente em decúbito dorsal com cabeceira a 45°. Medir VTI subvalvar aórtico (VSVE) pelo Doppler pulsado no eco point-of-care.</span></li>
+    <li><span class="tl-n">2</span><span class="tl-b"><strong>Manobra PLR.</strong> Deitar completamente e elevar os MMII a 45° por 60–90 s. Mobiliza 300–500 mL de sangue venoso para o tórax — equivale a um bolus passivo e reversível.</span></li>
+    <li><span class="tl-n">3</span><span class="tl-b"><strong>Medir VTI após PLR.</strong> Repetir a medida do VTI subvalvar. Aumento ≥ 12–15% prediz responsividade a volume com alta sensibilidade e especificidade.</span></li>
+    <li><span class="tl-n">4</span><span class="tl-b"><strong>Retornar à posição inicial.</strong> O efeito é totalmente reversível — sem risco de sobrecarga hídrica. Válido em ventilação espontânea, mecânica, arritmias e DPOC.</span></li>
+  </ol>
+  <div class="anatomy-note">O PLR com VTI é o preditor de responsividade a volume mais robusto disponível à beira do leito — recomendado pelo SSC 2026 como método dinâmico preferencial.</div>
 
-  <div class="card">
-    <div class="card-title amber">Diferenciando cardiogênico de obstrutivo</div>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">Ambos têm DC baixo, RVS alta e PVC alta — o POCUS diferencia:</p>
-    <table>
-      <tr><th>Achado POCUS</th><th>Cardiogênico</th><th>Obstrutivo</th></tr>
+  <div class="sec-h"><span class="sec-num">08</span><h2>Cardiogênico vs obstrutivo</h2></div>
+  <p class="sec-lead">Ambos têm DC baixo, RVS alta e PVC alta — o POCUS diferencia:</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Achado POCUS</th><th>Cardiogênico</th><th>Obstrutivo</th></tr></thead>
+    <tbody>
       <tr><td>Função VE</td><td>Reduzida</td><td>Normal ou hiperdinâmica</td></tr>
       <tr><td>VCI</td><td>Dilatada, pouco colapsável</td><td>Dilatada, pouco colapsável</td></tr>
       <tr><td>Pericárdio</td><td>Sem derrame (em geral)</td><td>Derrame em tamponamento</td></tr>
       <tr><td>Pulmão</td><td>Linhas B difusas (congestão)</td><td>Linhas A (TEP) ou ausência de deslizamento (pneumotórax)</td></tr>
       <tr><td>VD</td><td>Pode dilatar em IAM de VD</td><td>Dilatado em TEP maciço (D paradoxal)</td></tr>
-    </table>
-  </div>
+    </tbody>
+  </table></div>
 </section>
 </main>
 <script src="../assets/app.js"></script>
-
 </body>
 </html>

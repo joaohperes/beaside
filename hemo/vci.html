@@ -11,120 +11,88 @@
 </head>
 <body data-module="hemo" data-page="vci">
 <main class="main">
-  <p class="section-title">POCUS — VCI &amp; Fluido-Responsividade</p>
-  <p class="section-sub">Predição vs. confirmação — quando e como testar responsividade a volume</p>
+<section class="section" id="vci">
+  <div class="hero-eyebrow">Hemodinâmica · POCUS</div>
+  <h1 class="section-title">POCUS — VCI &amp; Fluido-Responsividade</h1>
+  <p class="section-subtitle">Predição vs confirmação — quando e como testar responsividade a volume</p>
 
-  <div class="card">
-    <div class="card-title purple">O conceito que a galera confunde — prediz ≠ confirma</div>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:12px;">Toda avaliação de fluido-responsividade tem dois momentos distintos. Confundir os dois leva a dar volume quando não devia — ou não dar quando devia.</p>
-    <div class="quad-grid">
-      <div class="quad ok" style="border-color:rgba(251,191,36,0.35);">
-        <div class="quad-header" style="color:var(--amber);">Prediz responsividade</div>
-        <div class="quad-body" style="font-size:12.5px;">
-          Avaliação <strong>estática ou passiva</strong> — estima a probabilidade de o paciente responder a volume. Não mobiliza fluido real.<br><br>
-          <span style="display:block;margin-top:6px;"><strong style="color:var(--text);">VPP &gt; 13%</strong> <span style="color:var(--muted);">— VM + ritmo regular + Vt ≥ 8 mL/kg</span></span>
-          <span style="display:block;margin-top:4px;"><strong style="color:var(--text);">cIVC &gt; 50%</strong> <span style="color:var(--muted);">— ventilação espontânea</span></span>
-          <span style="display:block;margin-top:4px;"><strong style="color:var(--text);">dIVC &gt; 18%</strong> <span style="color:var(--muted);">— VM, sem esforço espontâneo</span></span>
-          <span style="display:block;margin-top:4px;"><strong style="color:var(--text);">VCI &lt; 1,5 cm</strong> <span style="color:var(--muted);">— qualquer modo</span></span>
-          <br><span style="font-size:11px;color:var(--muted);">Diz: <em>"provavelmente vai responder"</em> — mas não prova.</span>
-        </div>
-      </div>
-      <div class="quad ok" style="border-color:rgba(var(--accent-rgb),0.35);">
-        <div class="quad-header" style="color:var(--accent);">Confirma responsividade</div>
-        <div class="quad-body" style="font-size:12.5px;">
-          Teste <strong>funcional dinâmico</strong> — mobiliza volume real (endógeno ou exógeno) e mede o efeito no débito cardíaco via VTI.<br><br>
-          <span style="display:block;margin-top:6px;"><strong style="color:var(--text);">PLR + ΔVTi ≥ 10–15%</strong> <span style="color:var(--muted);">— universal, vale em arritmia e VM</span></span>
-          <span style="display:block;margin-top:4px;"><strong style="color:var(--text);">Mini-bolus 100 mL + ΔVTi ≥ 10%</strong> <span style="color:var(--muted);">— quando PLR é contraindicado</span></span>
-          <span style="display:block;margin-top:4px;"><strong style="color:var(--text);">EEO 30 s + ΔVTi ≥ 5%</strong> <span style="color:var(--muted);">— VM, apneia expiratória</span></span>
-          <br><span style="font-size:11px;color:var(--muted);">Diz: <em>"testamos, o DC subiu — pode dar volume"</em>.</span>
-        </div>
-      </div>
+  <div class="hero-meta">
+    <div class="hm-item"><span class="hm-k">cIVC (espontânea)</span><span class="hm-v">&gt; 50% responsivo</span></div>
+    <div class="hm-item"><span class="hm-k">dIVC (VM)</span><span class="hm-v">&gt; 18% responsivo</span></div>
+    <div class="hm-item"><span class="hm-k">Confirmação universal</span><span class="hm-v">PLR + ΔVTI ≥ 10–15%</span></div>
+    <div class="hm-item"><span class="hm-k">Local de medida</span><span class="hm-v">1–2 cm da AD</span></div>
+  </div>
+
+  <div class="sec-h"><span class="sec-num">01</span><h2>O conceito que confunde — prediz ≠ confirma</h2></div>
+  <p class="sec-lead">Toda avaliação de fluido-responsividade tem dois momentos distintos. Confundir os dois leva a dar volume quando não devia — ou não dar quando devia.</p>
+  <div class="ind-grid">
+    <div class="ind-item"><span class="ind-t">Prediz responsividade</span><span class="ind-d">Avaliação <strong>estática ou passiva</strong> — estima a probabilidade de responder a volume; não mobiliza fluido real.<br>VPP &gt; 13% (VM + ritmo regular + Vt ≥ 8 mL/kg) · cIVC &gt; 50% (espontânea) · dIVC &gt; 18% (VM sem esforço) · VCI &lt; 1,5 cm (qualquer modo).<br><em>Diz: "provavelmente vai responder" — mas não prova.</em></span></div>
+    <div class="ind-item"><span class="ind-t">Confirma responsividade</span><span class="ind-d">Teste <strong>funcional dinâmico</strong> — mobiliza volume real e mede o efeito no débito via VTI.<br>PLR + ΔVTI ≥ 10–15% (universal, vale em arritmia e VM) · Mini-bolus 100 mL + ΔVTI ≥ 10% · EEO 30 s + ΔVTI ≥ 5% (VM, apneia expiratória).<br><em>Diz: "testamos, o DC subiu — pode dar volume".</em></span></div>
+  </div>
+  <div class="warn-box"><strong>Por que isso importa na prática:</strong> VPP alta ou VCI colapsável são probabilidades, não certezas. Em taquicardia, fibrilação atrial, PEEP alto ou esforço respiratório, todos os índices estáticos perdem acurácia. Nesses casos, pular direto para o teste funcional (PLR + VTI) é mais seguro do que confiar na predição.</div>
+
+  <div class="sec-h"><span class="sec-num">02</span><h2>Fluxo de decisão à beira do leito</h2></div>
+  <ol class="tl">
+    <li><span class="tl-n">1</span><span class="tl-b"><strong>Há hipoperfusão que justifique volume?</strong> Lactato &gt; 2, enchimento capilar &gt; 3 s, PAM caindo, oligúria. Sem indicação clínica, não testar responsividade.</span></li>
+    <li><span class="tl-n">2</span><span class="tl-b"><strong>Avaliar o modo ventilatório e limitações.</strong> VM + ritmo regular + Vt ≥ 8 mL/kg → VPP e dIVC têm boa acurácia. Se algum critério falha (arritmia, esforço, PEEP alto, espontâneo) → ir para PLR direto.</span></li>
+    <li><span class="tl-n">3</span><span class="tl-b"><strong>Predição (se aplicável).</strong> VPP &gt; 13%, cIVC &gt; 50%, dIVC &gt; 18% ou VCI &lt; 1,5 cm → sugere responsividade. Zona cinzenta ou limitações → confirmar com teste funcional.</span></li>
+    <li><span class="tl-n">4</span><span class="tl-b"><strong>Confirmação funcional — PLR + VTI.</strong> Elevar MMII 45° por 60–90 s. Medir VTI aórtico antes e durante. ΔVTI ≥ 10–15% → responsivo → bolus 250–500 mL. Negativo → não dar volume, investigar outro mecanismo.</span></li>
+  </ol>
+
+  <div class="sec-h"><span class="sec-num">03</span><h2>Técnica de aquisição</h2></div>
+  <ol class="tl">
+    <li><span class="tl-n">1</span><span class="tl-b"><strong>Janela subcostal longitudinal.</strong> Probe em posição subxifoide, indicador voltado para cima (cefálico). Obter visão longitudinal da VCI entrando no átrio direito.</span></li>
+    <li><span class="tl-n">2</span><span class="tl-b"><strong>Local de medida.</strong> 1–2 cm da junção VCI–átrio direito (ou 3 cm da AD). Utilizar as veias hepáticas como referência anatômica.</span></li>
+    <li><span class="tl-n">3</span><span class="tl-b"><strong>M-mode.</strong> Ativar M-mode perpendicular ao eixo longitudinal da VCI. Medir no mínimo 3 ciclos respiratórios. Registrar diâmetro máximo (expiração) e mínimo (inspiração).</span></li>
+    <li><span class="tl-n">4</span><span class="tl-b"><strong>Aplicar a fórmula correta.</strong> Ventilação espontânea → índice de colapsibilidade (cIVC) · Ventilação mecânica → índice de distensibilidade (dIVC).</span></li>
+  </ol>
+
+  <div class="sec-h"><span class="sec-num">04</span><h2>Fórmulas — selecionar pelo modo</h2></div>
+  <div class="two-col">
+    <div class="ok-box">
+      <div style="font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:10px;">Ventilação espontânea</div>
+      <div class="formula compact" style="margin-bottom:12px;">cIVC<span class="op">=</span><span class="frac"><span>D<sub>max</sub> − D<sub>min</sub></span><span>D<sub>max</sub></span></span><span class="op">×</span><span class="num">100</span></div>
+      <div style="font-size:12.5px;line-height:1.8;"><span class="pill pill-green">&gt; 50%</span> Responsivo &nbsp; <span class="pill pill-amber">20–50%</span> Zona cinzenta &nbsp; <span class="pill pill-red">&lt; 20%</span> Não responsivo</div>
+      <div style="margin-top:10px;font-size:11px;color:var(--text2);">VCI <strong>colapsa</strong> na inspiração — queda da pressão intratorácica puxa sangue.</div>
     </div>
-    <div class="alert-box warn" style="margin-top:12px;">
-      <div class="icon">!</div>
-      <div class="content">
-        <strong>Por que isso importa na prática</strong>
-        VPP alta ou VCI colapsável são probabilidades, não certezas. Em taquicardia, fibrilação atrial, PEEP alto ou esforço respiratório, todos os índices estáticos perdem acurácia. Nesses casos, pular direto para o teste funcional (PLR + VTI) é mais seguro do que confiar na predição.
-      </div>
+    <div class="info-box">
+      <div style="font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--purple);margin-bottom:10px;">Ventilação mecânica</div>
+      <div class="formula purple compact" style="margin-bottom:12px;">dIVC<span class="op">=</span><span class="frac"><span>D<sub>max</sub> − D<sub>min</sub></span><span>D<sub>min</sub></span></span><span class="op">×</span><span class="num">100</span></div>
+      <div style="font-size:12.5px;line-height:1.8;"><span class="pill pill-green">&gt; 18%</span> Responsivo &nbsp; <span class="pill pill-red">&lt; 18%</span> Não responsivo</div>
+      <div style="margin-top:10px;font-size:11px;color:var(--text2);">VCI <strong>dilata</strong> na inspiração — pressão positiva empurra contra parede. <span style="color:var(--amber);">Válido: Vt ≥ 8 mL/kg, ritmo regular, sem esforço.</span></div>
     </div>
   </div>
 
-  <div class="card">
-    <div class="card-title">Fluxo de decisão à beira do leito</div>
-    <div class="flow">
-      <div class="flow-step"><div class="flow-line"><div class="flow-dot">1</div><div class="flow-connector"></div></div><div class="flow-content"><div class="flow-title">Há hipoperfusão que justifique volume?</div><div class="flow-desc">Lactato &gt; 2, enchimento capilar &gt; 3 s, PAM caindo, oligúria. Sem indicação clínica, não testar responsividade — não há razão para dar volume.</div></div></div>
-      <div class="flow-step"><div class="flow-line"><div class="flow-dot">2</div><div class="flow-connector"></div></div><div class="flow-content"><div class="flow-title">Avaliar o modo ventilatório e limitações</div><div class="flow-desc">VM + ritmo regular + Vt ≥ 8 mL/kg → VPP e dIVC têm boa acurácia. Se algum critério falha (arritmia, esforço, PEEP alto, espontâneo) → ir para PLR direto.</div></div></div>
-      <div class="flow-step"><div class="flow-line"><div class="flow-dot">3</div><div class="flow-connector"></div></div><div class="flow-content"><div class="flow-title">Predição (se aplicável)</div><div class="flow-desc">VPP &gt; 13%, cIVC &gt; 50%, dIVC &gt; 18% ou VCI &lt; 1,5 cm → sugere responsividade. Zona cinzenta ou limitações → confirmar com teste funcional.</div></div></div>
-      <div class="flow-step"><div class="flow-line"><div class="flow-dot">4</div></div><div class="flow-content"><div class="flow-title">Confirmação funcional — PLR + VTI</div><div class="flow-desc">Elevar MMII 45° por 60–90 s. Medir VTI aórtico antes e durante. ΔVTi ≥ 10–15% → responsivo → dar bolus 250–500 mL. Negativo → não responsivo → não dar volume, investigar outro mecanismo.</div></div></div>
-    </div>
+  <div class="sec-h"><span class="sec-num">05</span><h2>Interpretação do diâmetro absoluto</h2></div>
+  <div class="vci-bar">
+    <div class="vci-seg" style="width:28%;background:rgba(248,113,113,0.2);color:var(--red);">&lt; 1,5 cm<span>Hipovolemia</span></div>
+    <div class="vci-seg" style="width:35%;background:rgba(251,191,36,0.15);color:var(--amber);">1,5 – 2,1 cm<span>Indeterminado</span></div>
+    <div class="vci-seg" style="width:37%;background:rgba(var(--accent-rgb),0.15);color:var(--accent);">&gt; 2,1 cm<span>Congestão / VD</span></div>
   </div>
-
-  <div class="card">
-    <div class="card-title">Técnica de aquisição</div>
-    <div class="flow">
-      <div class="flow-step"><div class="flow-line"><div class="flow-dot">1</div><div class="flow-connector"></div></div><div class="flow-content"><div class="flow-title">Janela subcostal longitudinal</div><div class="flow-desc">Probe em posição subxifoide, indicador voltado para cima (cefálico). Obter visão longitudinal da VCI entrando no átrio direito.</div></div></div>
-      <div class="flow-step"><div class="flow-line"><div class="flow-dot">2</div><div class="flow-connector"></div></div><div class="flow-content"><div class="flow-title">Local de medida</div><div class="flow-desc">1–2 cm da junção VCI–átrio direito (ou 3 cm da AD). Utilizar as veias hepáticas como referência anatômica.</div></div></div>
-      <div class="flow-step"><div class="flow-line"><div class="flow-dot">3</div><div class="flow-connector"></div></div><div class="flow-content"><div class="flow-title">M-mode</div><div class="flow-desc">Ativar M-mode perpendicular ao eixo longitudinal da VCI. Medir no mínimo 3 ciclos respiratórios. Registrar diâmetro máximo (expiração) e mínimo (inspiração).</div></div></div>
-      <div class="flow-step"><div class="flow-line"><div class="flow-dot">4</div></div><div class="flow-content"><div class="flow-title">Aplicar a fórmula correta para o modo ventilatório</div><div class="flow-desc">Ventilação espontânea → índice de colapsibilidade (cIVC) · Ventilação mecânica → índice de distensibilidade (dIVC)</div></div></div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-title blue">Fórmulas — selecionar pelo modo ventilatório</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px;">
-
-      <div style="background:rgba(var(--accent-rgb),.05);border:1px solid rgba(var(--accent-rgb),.25);border-radius:12px;padding:18px;">
-        <div style="font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:12px;">Ventilação espontânea</div>
-        <div class="formula compact" style="margin-bottom:14px;">cIVC<span class="op">=</span><span class="frac"><span>D<sub>max</sub> − D<sub>min</sub></span><span>D<sub>max</sub></span></span><span class="op">×</span><span class="num">100</span></div>
-        <div style="display:flex;flex-direction:column;gap:6px;font-size:12.5px;">
-          <div style="display:flex;align-items:center;gap:8px;"><span style="font-family:var(--mono);font-weight:700;color:var(--accent);min-width:52px;">&gt; 50%</span><span style="color:var(--text);">Responsivo</span></div>
-          <div style="display:flex;align-items:center;gap:8px;"><span style="font-family:var(--mono);font-weight:700;color:var(--amber);min-width:52px;">20–50%</span><span style="color:var(--text2);">Zona cinzenta</span></div>
-          <div style="display:flex;align-items:center;gap:8px;"><span style="font-family:var(--mono);font-weight:700;color:var(--red);min-width:52px;">&lt; 20%</span><span style="color:var(--text2);">Não responsivo</span></div>
-        </div>
-        <div style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(var(--accent-rgb),.15);font-size:11px;color:var(--text2);line-height:1.5;">VCI <strong style="color:var(--text);">colapsa</strong> na inspiração — queda da pressão intratorácica puxa sangue.</div>
-      </div>
-
-      <div style="background:rgba(124,111,247,.05);border:1px solid rgba(124,111,247,.25);border-radius:12px;padding:18px;">
-        <div style="font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--purple);margin-bottom:12px;">Ventilação mecânica</div>
-        <div class="formula purple compact" style="margin-bottom:14px;">dIVC<span class="op">=</span><span class="frac"><span>D<sub>max</sub> − D<sub>min</sub></span><span>D<sub>min</sub></span></span><span class="op">×</span><span class="num">100</span></div>
-        <div style="display:flex;flex-direction:column;gap:6px;font-size:12.5px;">
-          <div style="display:flex;align-items:center;gap:8px;"><span style="font-family:var(--mono);font-weight:700;color:var(--accent);min-width:52px;">&gt; 18%</span><span style="color:var(--text);">Responsivo</span></div>
-          <div style="display:flex;align-items:center;gap:8px;"><span style="font-family:var(--mono);font-weight:700;color:var(--red);min-width:52px;">&lt; 18%</span><span style="color:var(--text2);">Não responsivo</span></div>
-        </div>
-        <div style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(124,111,247,.15);font-size:11px;color:var(--text2);line-height:1.5;">VCI <strong style="color:var(--text);">dilata</strong> na inspiração — pressão positiva empurra contra parede. <span style="color:var(--amber);">Válido: Vt ≥ 8 mL/kg, ritmo regular, sem esforço espontâneo.</span></div>
-      </div>
-
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-title amber">Interpretação do diâmetro absoluto</div>
-    <div class="vci-bar">
-      <div class="vci-seg" style="width:28%;background:rgba(248,113,113,0.2);color:var(--red);">&lt; 1,5 cm<span>Hipovolemia</span></div>
-      <div class="vci-seg" style="width:35%;background:rgba(251,191,36,0.15);color:var(--amber);">1,5 – 2,1 cm<span>Indeterminado</span></div>
-      <div class="vci-seg" style="width:37%;background:rgba(var(--accent-rgb),0.15);color:var(--accent);">&gt; 2,1 cm<span>Congestão / VD</span></div>
-    </div>
-    <table>
-      <tr><th>Diâmetro</th><th>Variação</th><th>Interpretação</th></tr>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Diâmetro</th><th>Variação</th><th>Interpretação</th></tr></thead>
+    <tbody>
       <tr><td>&lt; 1,5 cm</td><td>Qualquer colapso</td><td><span class="pill pill-red">Hipovolemia</span> — muito provavelmente responsivo</td></tr>
       <tr><td>1,5–2,1 cm</td><td>Variável</td><td><span class="pill pill-amber">Zona cinzenta</span> — realizar PLR ou fluid challenge</td></tr>
       <tr><td>&gt; 2,1 cm</td><td>&lt; 20% colapso</td><td><span class="pill pill-green">Congestão / PVC elevada</span> — não responsivo, avaliar VD</td></tr>
-    </table>
-  </div>
-  <div class="card">
-    <div class="card-title red">Limitações relevantes</div>
-    <table>
-      <tr><th>Situação</th><th>Problema</th></tr>
+    </tbody>
+  </table></div>
+
+  <div class="sec-h"><span class="sec-num">06</span><h2>Limitações relevantes</h2></div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Situação</th><th>Problema</th></tr></thead>
+    <tbody>
       <tr><td>Taquipneia / esforço respiratório aumentado</td><td>Colapso da VCI mesmo sem hipovolemia — falso positivo</td></tr>
       <tr><td>Pressão abdominal elevada</td><td>Ascite, obesidade e gestação alteram diâmetro e variação</td></tr>
       <tr><td>Disfunção de VD / TEP</td><td>VCI dilatada sem hipervolemia real</td></tr>
       <tr><td>PEEP elevado</td><td>VCI artificialmente dilatada em ventilação mecânica</td></tr>
       <tr><td>Fibrilação atrial / arritmias</td><td>Variação respiratória irregular — difícil de padronizar</td></tr>
       <tr><td>Janela acústica inadequada</td><td>Obesidade, cirurgia prévia, curativo abdominal</td></tr>
-    </table>
-    <div class="alert-box warn" style="margin-top:10px;"><div class="icon">!</div><div class="content"><strong>PLR como alternativa universal (SSC 2026)</strong>Elevar MMII a 45° por 60–90 s. Válido em ventilação espontânea, mecânica e na presença de arritmias, sem necessidade de acesso central. Aumento do VTI aórtico ou subvalvar esquerdo &gt; 12–15% prediz responsividade a volume.</div></div>
-  </div>
+    </tbody>
+  </table></div>
+  <div class="anatomy-note"><strong>PLR como alternativa universal (SSC 2026):</strong> elevar MMII a 45° por 60–90 s. Válido em ventilação espontânea, mecânica e na presença de arritmias, sem necessidade de acesso central. Aumento do VTI aórtico ou subvalvar esquerdo &gt; 12–15% prediz responsividade a volume.</div>
 </section>
 </main>
 <script src="../assets/app.js"></script>
-
 </body>
 </html>

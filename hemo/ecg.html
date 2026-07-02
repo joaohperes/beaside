@@ -11,97 +11,90 @@
 </head>
 <body data-module="hemo" data-page="ecg">
 <main class="main">
-  <p class="section-title">ECG no Choque</p>
-  <p class="section-sub">Padrões que mudam conduta: IAM de VD, TEP, tamponamento, arritmias</p>
-  
+<section class="section" id="ecg">
+  <div class="hero-eyebrow">Hemodinâmica · Eletrocardiograma</div>
+  <h1 class="section-title">ECG no Choque</h1>
+  <p class="section-subtitle">Padrões que mudam conduta: IAM de VD, TEP, tamponamento, arritmias</p>
 
-  <div class="alert-box warn">
-    <div class="icon">!</div>
-    <div class="content"><strong>ECG é ferramenta de triagem, não de exclusão</strong>ECG normal não exclui TEP maciço, tamponamento inicial nem isquemia posterior. Sempre interpretar no contexto clínico e integrar com POCUS, gasometria e exame físico.</div>
+  <div class="hero-meta">
+    <div class="hm-item"><span class="hm-k">IAM inferior</span><span class="hm-v">Fazer V3R / V4R</span></div>
+    <div class="hm-item"><span class="hm-k">TEP</span><span class="hm-v">S1Q3T3 · T V1–V4</span></div>
+    <div class="hm-item"><span class="hm-k">Tamponamento</span><span class="hm-v">Alternância elétrica</span></div>
+    <div class="hm-item"><span class="hm-k">Arritmia instável</span><span class="hm-v">Cardioversão já</span></div>
   </div>
 
-  <div class="card">
-    <div class="card-title red">IAM com supra de ST — reconhecimento rápido</div>
-    <div class="table-wrap"><table>
-      <tr><th>Território</th><th>Derivações com supra</th><th>Artéria culpada</th><th>Implicação no choque</th></tr>
+  <div class="warn-box"><strong>ECG é ferramenta de triagem, não de exclusão.</strong> ECG normal não exclui TEP maciço, tamponamento inicial nem isquemia posterior. Sempre interpretar no contexto clínico e integrar com POCUS, gasometria e exame físico.</div>
+
+  <div class="sec-h"><span class="sec-num">01</span><h2>IAM com supra de ST</h2></div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Território</th><th>Derivações com supra</th><th>Artéria culpada</th><th>Implicação no choque</th></tr></thead>
+    <tbody>
       <tr><td><strong>Anterior extenso</strong></td><td>V1–V6, I, aVL</td><td>DA proximal</td><td>Disfunção de VE grave — choque cardiogênico de pior prognóstico</td></tr>
       <tr><td><strong>Inferior</strong></td><td>II, III, aVF</td><td>CD ou Cx</td><td>Atenção: pode ter acometimento de VD — ver abaixo</td></tr>
       <tr><td><strong>VD</strong></td><td>V3R–V4R (derivações direitas)</td><td>CD proximal</td><td>Dependente de pré-carga — volume com cautela, evitar nitratos</td></tr>
       <tr><td><strong>Posterior</strong></td><td>Infra em V1–V3 + onda R alta</td><td>CD ou Cx posterior</td><td>Espelho do supra posterior — derivações V7–V9 confirmam</td></tr>
       <tr><td><strong>Lateral alto</strong></td><td>I, aVL</td><td>DA diagonal ou Cx</td><td>Frequentemente pequeno mas pode ser isolado — não subestimar</td></tr>
-    </table></div>
-    <div class="alert-box danger" style="margin-top:10px;"><div class="icon">!</div><div class="content"><strong>IAM de VD — armadilha hemodinâmica</strong>Supra em II, III, aVF → sempre fazer V3R e V4R. Supra ≥ 1 mm em V4R = IAM de VD. Esses pacientes têm VD dependente de pré-carga: volume 250–500 mL antes de vasopressor. Nitratos e diuréticos podem precipitar colapso hemodinâmico súbito.</div></div>
-  </div>
+    </tbody>
+  </table></div>
+  <div class="warn-box"><strong>IAM de VD — armadilha hemodinâmica:</strong> supra em II, III, aVF → sempre fazer V3R e V4R. Supra ≥ 1 mm em V4R = IAM de VD. Esses pacientes têm VD dependente de pré-carga: volume 250–500 mL antes de vasopressor. Nitratos e diuréticos podem precipitar colapso hemodinâmico súbito.</div>
 
-  <div class="card">
-    <div class="card-title blue">TEP de alto risco — padrões eletrocardiográficos</div>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">Nenhum padrão é patognomônico. O mais específico (S1Q3T3) tem sensibilidade baixa (~20%). O ECG no TEP serve para suporte diagnóstico e para excluir IAM como diagnóstico diferencial.</p>
-    <div class="table-wrap"><table>
-      <tr><th>Achado</th><th>Significado</th><th>Sensibilidade</th></tr>
+  <div class="sec-h"><span class="sec-num">02</span><h2>TEP de alto risco — padrões</h2></div>
+  <p class="sec-lead">Nenhum padrão é patognomônico. O mais específico (S1Q3T3) tem sensibilidade baixa (~20%). O ECG no TEP serve para suporte diagnóstico e para excluir IAM como diferencial.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Achado</th><th>Significado</th><th>Sensibilidade</th></tr></thead>
+    <tbody>
       <tr><td><strong>S1Q3T3</strong></td><td>Onda S em DI + onda Q + inversão de T em DIII</td><td>~20%</td></tr>
       <tr><td><strong>Bloqueio de ramo direito (completo ou incompleto)</strong></td><td>Sobrecarga aguda de VD</td><td>~25%</td></tr>
       <tr><td><strong>Inversão de onda T em V1–V4</strong></td><td>Sobrecarga de VD — correlaciona com PAP elevada</td><td>~34%</td></tr>
       <tr><td><strong>Taquicardia sinusal</strong></td><td>Achado mais frequente (~40%) — inespecífico</td><td>~40%</td></tr>
       <tr><td><strong>Fibrilação atrial / flutter</strong></td><td>Sobrecarga atrial direita por hipertensão pulmonar aguda</td><td>&lt;10%</td></tr>
       <tr><td><strong>ECG normal</strong></td><td>Presente em ~20% dos casos confirmados de TEP</td><td>—</td></tr>
-    </table></div>
-    <div class="alert-box info" style="margin-top:10px;"><div class="icon">i</div><div class="content"><strong>Combinação com POCUS</strong>VD dilatado no POCUS + S1Q3T3 + hipotensão = TEP de alto risco até prova em contrário. Não esperar TC se instabilidade hemodinâmica — considerar trombólise empírica conforme protocolo.</div></div>
-  </div>
+    </tbody>
+  </table></div>
+  <div class="anatomy-note"><strong>Combinação com POCUS:</strong> VD dilatado no POCUS + S1Q3T3 + hipotensão = TEP de alto risco até prova em contrário. Não esperar TC se instabilidade hemodinâmica — considerar trombólise empírica conforme protocolo.</div>
 
-  <div class="card">
-    <div class="card-title amber">Tamponamento pericárdico — pistas no ECG</div>
-    <div class="quad-grid">
-      <div class="quad warn">
-        <div class="quad-header">Microvoltagem</div>
-        <div class="quad-body">QRS amplitude &lt; 5 mm em derivações dos membros e &lt; 10 mm nas precordiais. Frequente em derrames volumosos. Também ocorre em obesidade, DPOC e mixedema.</div>
-      </div>
-      <div class="quad warn">
-        <div class="quad-header">Alternância elétrica</div>
-        <div class="quad-body">Variação cíclica da amplitude e/ou eixo do QRS. <strong>Muito específico</strong> para tamponamento hemodinâmico — coração "balançando" no líquido pericárdico. Raramente ocorre por outra causa.</div>
-      </div>
-    </div>
-    <div class="alert-box danger" style="margin-top:10px;"><div class="icon">!</div><div class="content"><strong>Tríade de Beck</strong>Hipotensão + estase jugular + bulhas abafadas. Quando associada à alternância elétrica e microvoltagem no ECG = tamponamento confirmado clinicamente. POCUS de janela subcostal é confirmatório e guia a pericardiocentese.</div></div>
+  <div class="sec-h"><span class="sec-num">03</span><h2>Tamponamento pericárdico — pistas</h2></div>
+  <div class="ind-grid">
+    <div class="ind-item"><span class="ind-t">Microvoltagem</span><span class="ind-d">QRS amplitude &lt; 5 mm em derivações dos membros e &lt; 10 mm nas precordiais. Frequente em derrames volumosos. Também em obesidade, DPOC e mixedema.</span></div>
+    <div class="ind-item"><span class="ind-t">Alternância elétrica</span><span class="ind-d">Variação cíclica da amplitude e/ou eixo do QRS. <strong>Muito específico</strong> para tamponamento hemodinâmico — coração "balançando" no líquido. Raramente ocorre por outra causa.</span></div>
   </div>
+  <div class="warn-box"><strong>Tríade de Beck:</strong> hipotensão + estase jugular + bulhas abafadas. Quando associada à alternância elétrica e microvoltagem no ECG = tamponamento confirmado clinicamente. POCUS de janela subcostal é confirmatório e guia a pericardiocentese.</div>
 
-  <div class="card">
-    <div class="card-title coral">Arritmias com repercussão hemodinâmica</div>
-    <div class="table-wrap"><table>
-      <tr><th>Arritmia</th><th>Critério de instabilidade</th><th>Conduta imediata</th></tr>
+  <div class="sec-h"><span class="sec-num">04</span><h2>Arritmias com repercussão hemodinâmica</h2></div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Arritmia</th><th>Critério de instabilidade</th><th>Conduta imediata</th></tr></thead>
+    <tbody>
       <tr><td><strong>FA com resposta ventricular rápida</strong></td><td>PAM &lt; 65 + sinais de hipoperfusão + FC &gt; 150</td><td>Cardioversão elétrica sincronizada (200 J bifásico). Se estável: controle de frequência</td></tr>
       <tr><td><strong>Flutter atrial</strong></td><td>Instabilidade hemodinâmica</td><td>Cardioversão elétrica sincronizada (50–100 J bifásico)</td></tr>
       <tr><td><strong>Taquicardia ventricular monomórfica</strong></td><td>Com pulso + instabilidade</td><td>Cardioversão elétrica sincronizada (100 J). Sem pulso → PCR</td></tr>
       <tr><td><strong>Taquicardia ventricular polimórfica / FV</strong></td><td>Sempre instável</td><td>Desfibrilação (200 J bifásico) + PCR protocolo</td></tr>
       <tr><td><strong>BAV total / BAVT</strong></td><td>FC &lt; 40 + hipotensão</td><td>Atropina 0,5–1 mg IV; se refratário → marca-passo transcutâneo</td></tr>
       <tr><td><strong>Taquicardia sinusal</strong></td><td>FC &gt; 120 com choque</td><td>Tratar a causa do choque — controle de frequência é contraproducente</td></tr>
-    </table></div>
-    <div class="alert-box warn" style="margin-top:10px;"><div class="icon">!</div><div class="content"><strong>Regra do plantão</strong>Toda arritmia com instabilidade hemodinâmica requer cardioversão imediata — não espere a amiodarona fazer efeito. Amiodarona é opção em pacientes estáveis ou como manutenção do ritmo após cardioversão bem-sucedida.</div></div>
-  </div>
+    </tbody>
+  </table></div>
+  <div class="warn-box"><strong>Regra do plantão:</strong> toda arritmia com instabilidade hemodinâmica requer cardioversão imediata — não espere a amiodarona fazer efeito. Amiodarona é opção em pacientes estáveis ou como manutenção do ritmo após cardioversão bem-sucedida.</div>
 
-  <div class="card">
-    <div class="card-title purple">Distúrbios metabólicos no ECG — quando o choque é a causa</div>
-    <div class="table-wrap"><table>
-      <tr><th>Distúrbio</th><th>Achado no ECG</th><th>Quando suspeitar no choque</th></tr>
-      <tr><td><strong>Hipercalemia grave</strong></td><td>Onda T apiculada → QRS alargado → onda sinusoidal → FV</td><td>Choque séptico com IRA · rhabdomiólise · hemólise maciça</td></tr>
+  <div class="sec-h"><span class="sec-num">05</span><h2>Distúrbios metabólicos no ECG</h2></div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Distúrbio</th><th>Achado no ECG</th><th>Quando suspeitar no choque</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Hipercalemia grave</strong></td><td>Onda T apiculada → QRS alargado → onda sinusoidal → FV</td><td>Choque séptico com IRA · rabdomiólise · hemólise maciça</td></tr>
       <tr><td><strong>Hipocalemia</strong></td><td>Onda U proeminente · ST rebaixado · alargamento de QT</td><td>Sepse com perdas GI · uso de diuréticos · hiperaldosteronismo</td></tr>
       <tr><td><strong>Hipotermia</strong></td><td>Onda J de Osborn (deflexão positiva no ponto J) · FC bradicárdica</td><td>Choque + temperatura &lt; 35°C — medir temperatura central</td></tr>
       <tr><td><strong>Acidose grave</strong></td><td>QRS alargado · PR prolongado (efeito da hipercalemia associada)</td><td>Qualquer choque com pH &lt; 7,1 · intoxicação por antidepressivos tricíclicos</td></tr>
-    </table></div>
-  </div>
+    </tbody>
+  </table></div>
 
-  <div class="card">
-    <div class="card-title">Checklist ECG rápido no choque — 60 segundos</div>
-    <div class="flow">
-      <div class="flow-step"><div class="flow-line"><div class="flow-dot">1</div><div class="flow-connector"></div></div><div class="flow-content"><div class="flow-title">Ritmo e frequência</div><div class="flow-desc">Sinusal? Taquicardico (&gt; 100)? Bradicárdico (&lt; 60)? FA/flutter? Taquicardia ventricular?</div></div></div>
-      <div class="flow-step"><div class="flow-line"><div class="flow-dot">2</div><div class="flow-connector"></div></div><div class="flow-content"><div class="flow-title">Supra de ST</div><div class="flow-desc">Alguma derivação com supra? → Ativar protocolo IAM. Inferior → fazer V3R/V4R. Difuso? Pensar pericardite ou espasmo.</div></div></div>
-      <div class="flow-step"><div class="flow-line"><div class="flow-dot">3</div><div class="flow-connector"></div></div><div class="flow-content"><div class="flow-title">Sinais de sobrecarga de VD</div><div class="flow-desc">S1Q3T3? Bloqueio de ramo direito? Inversão T em V1–V4? → TEP até prova em contrário.</div></div></div>
-      <div class="flow-step"><div class="flow-line"><div class="flow-dot">4</div><div class="flow-connector"></div></div><div class="flow-content"><div class="flow-title">Microvoltagem / alternância elétrica</div><div class="flow-desc">QRS &lt; 5 mm nos membros + alternância de amplitude → tamponamento. POCUS subcostal imediato.</div></div></div>
-      <div class="flow-step"><div class="flow-line"><div class="flow-dot">5</div></div><div class="flow-content"><div class="flow-title">Distúrbios metabólicos</div><div class="flow-desc">Onda T apiculada (hipercalemia)? QRS alargado difuso? Onda U? → Checar eletrólitos e gasometria.</div></div></div>
-    </div>
-  </div>
-
+  <div class="sec-h"><span class="sec-num">06</span><h2>Checklist ECG rápido — 60 segundos</h2></div>
+  <ol class="tl">
+    <li><span class="tl-n">1</span><span class="tl-b"><strong>Ritmo e frequência.</strong> Sinusal? Taquicárdico (&gt; 100)? Bradicárdico (&lt; 60)? FA/flutter? Taquicardia ventricular?</span></li>
+    <li><span class="tl-n">2</span><span class="tl-b"><strong>Supra de ST.</strong> Alguma derivação com supra? → Ativar protocolo IAM. Inferior → fazer V3R/V4R. Difuso? Pensar pericardite ou espasmo.</span></li>
+    <li><span class="tl-n">3</span><span class="tl-b"><strong>Sinais de sobrecarga de VD.</strong> S1Q3T3? Bloqueio de ramo direito? Inversão T em V1–V4? → TEP até prova em contrário.</span></li>
+    <li><span class="tl-n">4</span><span class="tl-b"><strong>Microvoltagem / alternância elétrica.</strong> QRS &lt; 5 mm nos membros + alternância de amplitude → tamponamento. POCUS subcostal imediato.</span></li>
+    <li><span class="tl-n">5</span><span class="tl-b"><strong>Distúrbios metabólicos.</strong> Onda T apiculada (hipercalemia)? QRS alargado difuso? Onda U? → Checar eletrólitos e gasometria.</span></li>
+  </ol>
 </section>
 </main>
 <script src="../assets/app.js"></script>
-
 </body>
 </html>

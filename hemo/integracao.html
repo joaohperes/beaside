@@ -11,45 +11,35 @@
 </head>
 <body data-module="hemo" data-page="integracao">
 <main class="main">
-  <p class="section-title">Integração Clínica</p>
-  <p class="section-sub">Gasometria pareada + POCUS VCI em conjunto</p>
-  
-  <div class="card">
-    <div class="card-title purple">Regra fundamental</div>
-    <div class="quad-grid">
-      <div class="quad" style="border-color:rgba(var(--accent-rgb),0.3);"><div class="quad-header">Gasometria pareada</div><div class="quad-body">Responde: <strong>SE há hipoperfusão</strong> e qual o mecanismo (oferta vs. fluxo)</div></div>
-      <div class="quad" style="border-color:rgba(var(--accent-rgb),0.3);"><div class="quad-header">POCUS VCI</div><div class="quad-body">Responde: <strong>POR QUE</strong> e se o paciente vai <strong>responder a volume</strong></div></div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-title">Cenário 1 — Hipoperfusão + VCI colapsável</div>
-    <div class="formula" style="font-size:12px;">Δ pCO₂ ≥ 6  +  SvcO₂ baixa  +  VCI &lt; 1,5 cm ou cIVC &gt; 50%</div>
-    <div class="alert-box info" style="margin-top:10px;"><div class="icon">→</div><div class="content"><strong>Hipovolemia confirmada — reposição volêmica com segurança</strong><br>Cristaloide balanceado 250–500 mL em bolus. Reavaliar SvcO₂, Δ pCO₂ e VCI após cada bolus. Metas: Δ pCO₂ &lt; 6 mmHg e SvcO₂ &gt; 70%.</div></div>
-  </div>
-  <div class="card">
-    <div class="card-title red">Cenário 2 — Hipoperfusão + VCI dilatada</div>
-    <div class="formula" style="color:var(--red);font-size:12px;">Δ pCO₂ ≥ 6  +  SvcO₂ baixa  +  VCI &gt; 2,1 cm ou dIVC &lt; 18%</div>
-    <div class="alert-box danger" style="margin-top:10px;"><div class="icon">!</div><div class="content"><strong>Baixo débito com congestão — não administrar volume</strong><br>Considerar disfunção ventricular (ecocardiografia de urgência), TEP ou tamponamento. Avaliar vasopressor (noradrenalina) e/ou inotrópico (dobutamina). Ecocardiografia point-of-care orienta a decisão.</div></div>
-  </div>
-  <div class="card">
-    <div class="card-title amber">Cenário 3 — Zona cinzenta de VCI</div>
-    <div class="formula" style="color:var(--amber);font-size:12px;">Hipoperfusão presente  +  VCI 1,5–2,1 cm ou cIVC 20–50%</div>
-    <div class="alert-box warn" style="margin-top:10px;"><div class="icon">→</div><div class="content"><strong>Utilizar PLR para decidir (SSC 2026)</strong><br>Elevar MMII a 45° por 60–90 s. Medir VTI aórtico antes e após. Aumento &gt; 12–15% — responsivo, administrar volume. Sem resposta — não administrar volume, avaliar vasopressor.</div></div>
-  </div>
-  <div class="card">
-    <div class="card-title coral">Cenário 4 — SvcO₂ normal com Δ pCO₂ elevado (o mais traiçoeiro)</div>
-    <div class="formula" style="color:var(--coral);font-size:12px;">SvcO₂ ≥ 70%  +  Δ pCO₂ ≥ 6  +  VCI qualquer</div>
-    <div class="alert-box danger" style="margin-top:10px;"><div class="icon">!</div><div class="content"><strong>SvcO₂ é falsa segurança</strong><br>O Δ pCO₂ elevado revela fluxo tecidual inadequado apesar da saturação venosa aparentemente normal. Considerar sepse hiperdinâmica, hipóxia citopática ou foco não controlado. VCI colapsável — tentar volume; sem resposta — considerar inotrópico.</div></div>
-  </div>
-  <div class="card">
-    <div class="card-title">Painel multimodal completo (SSC 2026)</div>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">Nenhum parâmetro isolado é suficiente. Avaliar em conjunto:</p>
-    <div class="tag-row"><span class="pill pill-blue">SvcO₂</span><span class="pill pill-blue">Δ pCO₂</span><span class="pill pill-blue">Lactato</span><span class="pill pill-blue">Enchimento capilar</span><span class="pill pill-blue">PAM</span><span class="pill pill-blue">POCUS VCI</span><span class="pill pill-blue">Diurese</span></div>
-    <div class="alert-box info" style="margin-top:12px;"><div class="icon">→</div><div class="content"><strong>Treinar a integração na prática</strong>Veja a aba <strong>Prática</strong> com 4 casos simulados cobrindo os 4 quadrantes — para treinar a leitura combinada dos parâmetros antes do plantão.</div></div>
-  </div>
+<section class="section" id="integracao">
+  <div class="hero-eyebrow">Hemodinâmica · Síntese</div>
+  <h1 class="section-title">Integração Clínica</h1>
+  <p class="section-subtitle">Gasometria pareada + POCUS VCI em conjunto</p>
+
+  <div class="anatomy-note"><strong>Regra fundamental:</strong> a <strong>gasometria pareada</strong> responde <em>se há</em> hipoperfusão e qual o mecanismo (oferta vs fluxo); o <strong>POCUS VCI</strong> responde <em>por quê</em> e se o paciente vai <strong>responder a volume</strong>.</div>
+
+  <div class="sec-h"><span class="sec-num">01</span><h2>Cenário 1 — Hipoperfusão + VCI colapsável</h2></div>
+  <div class="formula" style="font-size:12px;">Δ pCO₂ ≥ 6 &nbsp;+&nbsp; SvcO₂ baixa &nbsp;+&nbsp; VCI &lt; 1,5 cm ou cIVC &gt; 50%</div>
+  <div class="ok-box"><strong>Hipovolemia confirmada — reposição volêmica com segurança.</strong> Cristaloide balanceado 250–500 mL em bolus. Reavaliar SvcO₂, Δ pCO₂ e VCI após cada bolus. Metas: Δ pCO₂ &lt; 6 mmHg e SvcO₂ &gt; 70%.</div>
+
+  <div class="sec-h"><span class="sec-num">02</span><h2>Cenário 2 — Hipoperfusão + VCI dilatada</h2></div>
+  <div class="formula red" style="font-size:12px;">Δ pCO₂ ≥ 6 &nbsp;+&nbsp; SvcO₂ baixa &nbsp;+&nbsp; VCI &gt; 2,1 cm ou dIVC &lt; 18%</div>
+  <div class="warn-box"><strong>Baixo débito com congestão — não administrar volume.</strong> Considerar disfunção ventricular (ecocardiografia de urgência), TEP ou tamponamento. Avaliar vasopressor (noradrenalina) e/ou inotrópico (dobutamina). Ecocardiografia point-of-care orienta a decisão.</div>
+
+  <div class="sec-h"><span class="sec-num">03</span><h2>Cenário 3 — Zona cinzenta de VCI</h2></div>
+  <div class="formula amber" style="font-size:12px;">Hipoperfusão presente &nbsp;+&nbsp; VCI 1,5–2,1 cm ou cIVC 20–50%</div>
+  <div class="tip-box"><strong>Utilizar PLR para decidir (SSC 2026).</strong> Elevar MMII a 45° por 60–90 s. Medir VTI aórtico antes e após. Aumento &gt; 12–15% — responsivo, administrar volume. Sem resposta — não administrar volume, avaliar vasopressor.</div>
+
+  <div class="sec-h"><span class="sec-num">04</span><h2>Cenário 4 — SvcO₂ normal com Δ pCO₂ elevado</h2></div>
+  <div class="formula coral" style="font-size:12px;">SvcO₂ ≥ 70% &nbsp;+&nbsp; Δ pCO₂ ≥ 6 &nbsp;+&nbsp; VCI qualquer</div>
+  <div class="warn-box"><strong>SvcO₂ é falsa segurança.</strong> O Δ pCO₂ elevado revela fluxo tecidual inadequado apesar da saturação venosa aparentemente normal. Considerar sepse hiperdinâmica, hipóxia citopática ou foco não controlado. VCI colapsável — tentar volume; sem resposta — considerar inotrópico.</div>
+
+  <div class="sec-h"><span class="sec-num">05</span><h2>Painel multimodal completo (SSC 2026)</h2></div>
+  <p class="sec-lead">Nenhum parâmetro isolado é suficiente. Avaliar em conjunto:</p>
+  <div class="mat-grid"><span class="mat-item">SvcO₂</span><span class="mat-item">Δ pCO₂</span><span class="mat-item">Lactato</span><span class="mat-item">Enchimento capilar</span><span class="mat-item">PAM</span><span class="mat-item">POCUS VCI</span><span class="mat-item">Diurese</span></div>
+  <div class="anatomy-note"><strong>Treinar a integração na prática:</strong> veja a aba <strong>Prática</strong> com 4 casos simulados cobrindo os 4 quadrantes — para treinar a leitura combinada dos parâmetros antes do plantão.</div>
 </section>
 </main>
 <script src="../assets/app.js"></script>
-
 </body>
 </html>

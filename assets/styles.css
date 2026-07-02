@@ -492,6 +492,8 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
 .warn-box strong{color:#f5c6c6}
 .ok-box{background:rgba(29,184,138,.07);border:1px solid rgba(29,184,138,.25);border-radius:8px;padding:14px 16px;font-size:13px;color:#bce8d8;line-height:1.6}
 .ok-box strong{color:#d0f0e4}
+.tip-box{background:rgba(240,160,48,.07);border:1px solid rgba(240,160,48,.25);border-radius:8px;padding:14px 16px;font-size:13px;color:#f5d29a;line-height:1.6}
+.tip-box strong{color:#f8dcae;font-weight:500}
 /* SVG wrapper */
 .svg-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin:12px 0;overflow-x:auto}
 .svg-caption{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:10px;display:block}

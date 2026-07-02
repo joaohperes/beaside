@@ -15,8 +15,18 @@
 <body data-module="vm" data-page="modos">
 <main class="main">
 <section class="section" id="modos">
+  <div class="hero-eyebrow">Ventilação Mecânica · Modos</div>
   <h1 class="section-title">Modos de Ventilação Mecânica <a class="share-link" href="#modos" onclick="copyLink(event,'#modos')"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></a></h1>
   <p class="section-subtitle">AC-VC · AC-PC · SIMV-PSV · PSV — classificação, vantagens e indicações</p>
+
+  <div class="hero-meta">
+    <div class="hm-item"><span class="hm-k">Padrão inicial</span><span class="hm-v">AC-VC</span></div>
+    <div class="hm-item"><span class="hm-k">Pressão fixa</span><span class="hm-v">AC-PC</span></div>
+    <div class="hm-item"><span class="hm-k">Evitar como inicial</span><span class="hm-v">SIMV</span></div>
+    <div class="hm-item"><span class="hm-k">Desmame</span><span class="hm-v">PSV</span></div>
+  </div>
+
+  <div class="sec-h"><span class="sec-num">01</span><h2>Panorama dos modos</h2></div>
   <div class="table-wrap"><table>
     <thead><tr><th>Modo</th><th>Estratégia</th><th>Trigger</th><th>Suporte por resp.</th><th>Indicação principal</th></tr></thead>
     <tbody>
@@ -26,10 +36,13 @@
       <tr><td><strong>PSV</strong></td><td>Pressão-suportada</td><td>Apenas paciente</td><td>Parcial — por esforço do paciente</td><td><span class="badge blue">Desmame</span> Drive respiratório presente, RASS ≥ −2. <span class="td-bad">Contraindicado sem respiração espontânea.</span></td></tr>
     </tbody>
   </table></div>
-  <div class="callout purple"><strong>Por que o SIMV ficou obsoleto como modo inicial?</strong> Em respirações espontâneas acima da FR mínima, o paciente realiza 100% do trabalho muscular — o ventilador não suporta essas respirações (a menos que PSV seja adicionado). Isso ↑ trabalho respiratório comparado ao AC. FCCS: "Not a good mode for critically ill patients — increased work of breathing compared with AC". A abordagem moderna é AC com desmame progressivo de suporte de pressão. <span class="src">[FCCS Tab. 5-6; UpToDate — Modes MV]</span></div>
-  <h3>AC-VC vs AC-PC — diferenças práticas <span class="src">[UpToDate — ARDS ventilator management, Table 4]</span></h3>
+  <div class="warn-box"><strong>Por que o SIMV ficou obsoleto como modo inicial?</strong> Em respirações espontâneas acima da FR mínima, o paciente realiza 100% do trabalho muscular — o ventilador não suporta essas respirações (a menos que PSV seja adicionado). Isso ↑ trabalho respiratório comparado ao AC. FCCS: "Not a good mode for critically ill patients — increased work of breathing compared with AC". A abordagem moderna é AC com desmame progressivo de suporte de pressão.</div>
+  <div class="ref">FCCS Tab. 5-6; UpToDate — Modes MV</div>
+
+  <div class="sec-h"><span class="sec-num">02</span><h2>AC-VC vs AC-PC</h2></div>
+  <p class="sec-lead">A diferença prática está em <strong>o que você garante</strong> e <strong>o que você tem de monitorar</strong>.</p>
   <div class="table-wrap"><table>
-    <thead><tr><th>Aspecto</th><th>AC-VC (Volume-controlado)</th><th>AC-PC (Pressão-controlada)</th></tr></thead>
+    <thead><tr><th>Aspecto</th><th>AC-VC (Volume-controlado)</th><th>AC-PC (Pressão-controlado)</th></tr></thead>
     <tbody>
       <tr><td><strong>O que é garantido</strong></td><td>Volume corrente (VC fixo)</td><td>Pressão inspiratória (fixa)</td></tr>
       <tr><td><strong>Vantagem principal</strong></td><td class="td-ok">VM mínima garantida; familiaridade clínica</td><td>Pressões controladas; melhor tolerância pelo paciente</td></tr>
@@ -38,8 +51,13 @@
       <tr><td><strong>Indicação preferencial</strong></td><td>Início de VM, SDRA, instabilidade hemodinâmica</td><td>Fístula aérea, dissincronia refratária</td></tr>
     </tbody>
   </table></div>
-  <h3>PSV — configuração no desmame <span class="src">[FCCS Cap. 5 B; UpToDate — Overview IMV ICU]</span></h3>
-  <p class="prose">Em PSV, o paciente controla FR, tempo inspiratório e influencia o VC. A ciclagem ocorre quando o fluxo cai a <strong>25% do pico</strong>. Para desmame, ajustar o nível de PS para atingir: VC 6–8 mL/kg PBW, FR &lt; 30 irpm, VM adequada. Importante: <em>cuff leak</em> no tubo pode impedir a ciclagem adequada pois o fluxo nunca cai ao limiar de 25%.</p>
+  <div class="ref">UpToDate — ARDS ventilator management, Table 4</div>
+
+  <div class="sec-h"><span class="sec-num">03</span><h2>PSV — configuração no desmame</h2></div>
+  <p class="sec-lead">Em PSV, o paciente controla FR, tempo inspiratório e influencia o VC. A ciclagem ocorre quando o fluxo cai a <strong>25% do pico</strong>.</p>
+  <p class="prose">Para desmame, ajustar o nível de PS para atingir: VC 6–8 mL/kg PBW, FR &lt; 30 irpm, VM adequada.</p>
+  <div class="tip-box"><strong>Atenção ao cuff leak:</strong> vazamento no tubo pode impedir a ciclagem adequada em PSV, pois o fluxo nunca cai ao limiar de 25% — a inspiração se prolonga indevidamente.</div>
+  <div class="ref">FCCS Cap. 5 B; UpToDate — Overview IMV ICU</div>
 </section>
 </main>
 <script src="../assets/app.js"></script>
