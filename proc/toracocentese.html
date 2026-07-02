@@ -13,123 +13,102 @@
 <link rel="stylesheet" href="../assets/styles.css">
 <style>
   :root{--proc:#3b82f6}
-  .proc-tag{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--proc);background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);padding:2px 9px;border-radius:20px;display:inline-block;margin-bottom:10px}
-  .ref{font-family:var(--mono);font-size:10.5px;color:var(--text3);border-left:2px solid var(--border2);padding:4px 10px;margin:6px 0 0;display:block;line-height:1.5}
-  .ref a{color:var(--text3);text-decoration:underline}
-
-  .step-list{list-style:none;padding:0;margin:10px 0}
-  .step-list li{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text2);line-height:1.6}
-  .step-list li:last-child{border-bottom:none}
-  .step-n{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--proc);background:rgba(59,130,246,.12);border-radius:4px;padding:1px 7px;flex-shrink:0;margin-top:1px}
-
-  .pill-list{list-style:none;padding:0;margin:8px 0}
-  .pill-list li{font-size:13px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;line-height:1.55;align-items:flex-start}
-  .pill-list li:last-child{border-bottom:none}
-  .pill-list li::before{content:'—';font-family:var(--mono);color:var(--proc);flex-shrink:0;margin-top:1px}
-
-  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
-  @media(max-width:600px){.two-col{grid-template-columns:1fr}}
-  .info-box{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px 16px;font-size:13px;color:var(--text2);line-height:1.6}
-  .info-box strong{color:var(--text)}
-  .warn-box{background:rgba(226,75,74,.07);border:1px solid rgba(226,75,74,.25);border-radius:8px;padding:14px 16px;font-size:13px;color:#f0b8b8;line-height:1.6}
-  .warn-box strong{color:#f5c6c6}
-
-  .mat-grid{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 0}
-  .mat-item{font-family:var(--mono);font-size:11px;color:var(--text2);background:var(--bg3);border:1px solid var(--border);border-radius:5px;padding:3px 9px}
-
-  .compl-list{list-style:none;padding:0;margin:8px 0}
-  .compl-list li{font-size:13px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--border);display:grid;grid-template-columns:180px 1fr;gap:12px;line-height:1.55;align-items:baseline}
-  @media(max-width:600px){.compl-list li{grid-template-columns:1fr}}
-  .compl-list li:last-child{border-bottom:none}
-  .compl-name{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text)}
 </style>
 </head>
 <body data-module="proc" data-page="toracocentese">
 <main class="main">
 <section class="section" id="toracocentese">
+
+  <div class="hero-eyebrow">Procedimentos — Pleura</div>
   <h1 class="section-title">Toracocentese</h1>
   <p class="section-subtitle">Punção do espaço pleural diagnóstica e terapêutica — indicações, técnica com USG e complicações.</p>
 
-  <div class="card" style="margin-top:0">
-    <span class="proc-tag">Toracocentese</span>
-    <div class="card-title">Toracocentese</div>
-    <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:16px">
-      Punção do espaço pleural para remoção de líquido ou ar. Pode ser diagnóstica (coleta de amostra) ou terapêutica (alívio de derrame volumoso). <strong>USG obrigatório</strong> — reduz a taxa de pneumotórax de ~6% para &lt; 1%.
-    </p>
+  <div class="hero-meta">
+    <div class="hm-item"><span class="hm-k">Guia</span><span class="hm-v">USG obrigatório</span></div>
+    <div class="hm-item"><span class="hm-k">Sítio</span><span class="hm-v">Acima da costela</span></div>
+    <div class="hm-item"><span class="hm-k">Limite terapêutico</span><span class="hm-v">1.000–1.500 mL</span></div>
+    <div class="hm-item"><span class="hm-k">Pneumotórax</span><span class="hm-v">&lt; 1% com USG</span></div>
+  </div>
 
-    <strong style="font-size:13px;color:var(--text);display:block;margin-bottom:8px">Indicações</strong>
-    <div class="two-col" style="margin-top:0">
-      <div class="info-box">
-        <strong>Diagnóstica</strong>
-        <ul class="pill-list" style="margin-top:6px">
-          <li>Derrame pleural de etiologia não esclarecida</li>
-          <li>Suspeita de empiema ou derrame exsudativo</li>
-          <li>Suspeita de malignidade pleural</li>
-        </ul>
-      </div>
-      <div class="info-box">
-        <strong>Terapêutica</strong>
-        <ul class="pill-list" style="margin-top:6px">
-          <li>Derrame volumoso causando dispneia ou hipoxemia</li>
-          <li>Alívio sintomático em derrames malignos recorrentes</li>
-          <li>Hemotórax de baixo volume sem indicação cirúrgica</li>
-        </ul>
-      </div>
+  <p class="sec-lead">
+    Punção do espaço pleural para remoção de líquido ou ar. Pode ser diagnóstica (coleta de amostra) ou terapêutica (alívio de derrame volumoso). <strong>USG obrigatório</strong> — reduz a taxa de pneumotórax de ~6% para &lt; 1%.
+  </p>
+
+  <!-- ── 01 · Indicações ── -->
+  <div class="sec-h"><span class="sec-num">01</span><h2>Indicações</h2></div>
+  <div class="two-col">
+    <div class="info-box">
+      <strong>Diagnóstica</strong>
+      <ul class="pill-list" style="margin-top:6px">
+        <li>Derrame pleural de etiologia não esclarecida</li>
+        <li>Suspeita de empiema ou derrame exsudativo</li>
+        <li>Suspeita de malignidade pleural</li>
+      </ul>
     </div>
-
-    <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 6px">Contraindicações relativas</strong>
-    <ul class="pill-list">
-      <li>Coagulopatia grave não corrigida (INR &gt; 2,0 ou plaquetas &lt; 25.000) — mas evidência não suporta correção rotineira antes do procedimento</li>
-      <li>Paciente em VM com PEEP elevada — risco aumentado de pneumotórax hipertensivo</li>
-      <li>Derrame de pequeno volume (&lt; 1 cm na USG) — não há espaço seguro para punção</li>
-      <li>Infecção de pele na área de punção</li>
-    </ul>
-    <span class="ref">Puchalski J et al. Complications of thoracentesis: incidence, risk factors, and strategies for prevention. <em>Curr Opin Pulm Med</em> 2021. PMC8040091</span>
-
-    <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Material</strong>
-    <div class="mat-grid">
-      <span class="mat-item">USG com transdutor linear ou convexo</span>
-      <span class="mat-item">Agulha 21–22G (diagnóstica) ou kit de toracocentese</span>
-      <span class="mat-item">Seringa 20–60 mL</span>
-      <span class="mat-item">Extensão para drenagem + coletor</span>
-      <span class="mat-item">Lidocaína 1–2% + seringa 10 mL</span>
-      <span class="mat-item">Campo estéril + luvas + clorexidina</span>
-      <span class="mat-item">Frascos para análise (citológico, bioquímico, microbiológico)</span>
-    </div>
-
-    <strong style="font-size:13px;color:var(--text);display:block;margin:18px 0 8px">Técnica passo a passo</strong>
-    <ul class="step-list">
-      <li><span class="step-n">1</span><span>Posicionar o paciente sentado na beira do leito, inclinado para frente com os braços apoiados numa mesa (posição de "cavalheiro"). Em pacientes que não sentam: decúbito lateral com o lado do derrame para baixo.</span></li>
-      <li><span class="step-n">2</span><span><strong>USG antes de marcar o sítio.</strong> Identificar o diafragma, o fígado (direita) ou o baço (esquerda), e a extensão do derrame. O sítio ideal é onde o derrame tem ≥ 1,5–2 cm de profundidade, livre de vasos e pulmão visíveis.</span></li>
-      <li><span class="step-n">3</span><span>Marcar o sítio com o transdutor ainda no lugar. A punção é feita <strong>acima da borda superior da costela</strong> — o feixe vasculonervoso (artéria, veia, nervo) corre abaixo da costela. Prefira o espaço intercostal posterior entre 7° e 9° costelas, linha escapular posterior.</span></li>
-      <li><span class="step-n">4</span><span>Antissepsia ampla + campo estéril. Anestesia local com lidocaína 1%: infiltrar pele, subcutâneo e peritela costal. Aspirar ao avançar — quando retornar líquido, você está no espaço pleural. Anestesie generosamente a pleura parietal (ela dói).</span></li>
-      <li><span class="step-n">5</span><span>Inserir a agulha de toracocentese ou o cateter do kit, aspirando continuamente. Ao retornar líquido, conectar a extensão e o sistema de coleta.</span></li>
-      <li><span class="step-n">6</span><span><strong>Terapêutica: limite de 1.000–1.500 mL por sessão.</strong> Parar antes se o paciente desenvolver tosse persistente, dor torácica ou sensação de aperto (sinais precoces de edema de reexpansão). Não há necessidade de limitar o volume se guiado por manometria pleural (pressão &gt; −20 cmH₂O é sinal de parada).</span></li>
-      <li><span class="step-n">7</span><span>Retirar o cateter em expiração (ou apneia pós-expiratória) — reduz o risco de entrada de ar. Comprimir e curativo oclusivo.</span></li>
-      <li><span class="step-n">8</span><span>Rx de tórax pós-procedimento <strong>não é obrigatório</strong> de rotina se feito com USG e o paciente está assintomático. Realizar se dúvida de posição, tosse ou dor.</span></li>
-    </ul>
-    <span class="ref">Feller-Kopman D et al. Thoracentesis - StatPearls. NCBI Bookshelf NBK441866. 2023.</span>
-    <span class="ref">Havelock T et al. BTS Guideline for Pleural Disease. <em>Thorax</em> 78(Suppl 3):s1–s42, 2023. PMC11037506</span>
-
-    <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Complicações</strong>
-    <ul class="compl-list">
-      <li><span class="compl-name">Pneumotórax</span><span>1–6% sem USG; &lt; 1% com USG. Maioria assintomática. Se &gt; 20% ou sintomático: dreno torácico.</span></li>
-      <li><span class="compl-name">Edema de reexpansão</span><span>Raro (&lt; 1%). Mais comum ao drenar &gt; 1.500 mL rapidamente. Apresenta-se com tosse, dispneia e hipoxemia minutos após o procedimento. Tratamento: O₂, diuréticos, suporte ventilatório se necessário.</span></li>
-      <li><span class="compl-name">Hemotórax</span><span>Laceração de artéria intercostal. Evitado pela punção acima da costela e Doppler na USG para identificar vasos colaterais.</span></li>
-      <li><span class="compl-name">Laceração de fígado/baço</span><span>Sítio muito baixo ou não visualização do diafragma. Sempre identificar o diafragma antes de puncionar.</span></li>
-      <li><span class="compl-name">Síncope vasovagal</span><span>Comum. Posicionar deitado se paciente com tônus vagal alto ou ansioso.</span></li>
-    </ul>
-
-    <div class="warn-box" style="margin-top:14px">
-      <strong>Pitfalls mais comuns:</strong>
-      <ul style="margin:6px 0 0 16px;line-height:1.8">
-        <li>Puncionar abaixo da costela → lacera artéria intercostal (corre na borda inferior)</li>
-        <li>Não identificar o diafragma → punção abdominal</li>
-        <li>Drenar &gt; 1.500 mL sem manometria → edema de reexpansão</li>
-        <li>Retirar cateter em inspiração → pneumotórax por sucção de ar</li>
+    <div class="info-box">
+      <strong>Terapêutica</strong>
+      <ul class="pill-list" style="margin-top:6px">
+        <li>Derrame volumoso causando dispneia ou hipoxemia</li>
+        <li>Alívio sintomático em derrames malignos recorrentes</li>
+        <li>Hemotórax de baixo volume sem indicação cirúrgica</li>
       </ul>
     </div>
   </div>
+
+  <!-- ── 02 · Contraindicações relativas ── -->
+  <div class="sec-h"><span class="sec-num">02</span><h2>Contraindicações relativas</h2></div>
+  <ul class="pill-list">
+    <li>Coagulopatia grave não corrigida (INR &gt; 2,0 ou plaquetas &lt; 25.000) — mas evidência não suporta correção rotineira antes do procedimento</li>
+    <li>Paciente em VM com PEEP elevada — risco aumentado de pneumotórax hipertensivo</li>
+    <li>Derrame de pequeno volume (&lt; 1 cm na USG) — não há espaço seguro para punção</li>
+    <li>Infecção de pele na área de punção</li>
+  </ul>
+  <span class="ref">Puchalski J et al. Complications of thoracentesis: incidence, risk factors, and strategies for prevention. <em>Curr Opin Pulm Med</em> 2021. PMC8040091</span>
+
+  <!-- ── 03 · Material ── -->
+  <div class="sec-h"><span class="sec-num">03</span><h2>Material</h2></div>
+  <div class="mat-grid">
+    <span class="mat-item">USG com transdutor linear ou convexo</span>
+    <span class="mat-item">Agulha 21–22G (diagnóstica) ou kit de toracocentese</span>
+    <span class="mat-item">Seringa 20–60 mL</span>
+    <span class="mat-item">Extensão para drenagem + coletor</span>
+    <span class="mat-item">Lidocaína 1–2% + seringa 10 mL</span>
+    <span class="mat-item">Campo estéril + luvas + clorexidina</span>
+    <span class="mat-item">Frascos para análise (citológico, bioquímico, microbiológico)</span>
+  </div>
+
+  <!-- ── 04 · Técnica ── -->
+  <div class="sec-h"><span class="sec-num">04</span><h2>Técnica passo a passo</h2></div>
+  <ol class="tl">
+    <li><span class="tl-n">1</span><span class="tl-b">Posicionar o paciente sentado na beira do leito, inclinado para frente com os braços apoiados numa mesa (posição de "cavalheiro"). Em pacientes que não sentam: decúbito lateral com o lado do derrame para baixo.</span></li>
+    <li><span class="tl-n">2</span><span class="tl-b"><strong>USG antes de marcar o sítio.</strong> Identificar o diafragma, o fígado (direita) ou o baço (esquerda), e a extensão do derrame. O sítio ideal é onde o derrame tem ≥ 1,5–2 cm de profundidade, livre de vasos e pulmão visíveis.</span></li>
+    <li><span class="tl-n">3</span><span class="tl-b">Marcar o sítio com o transdutor ainda no lugar. A punção é feita <strong>acima da borda superior da costela</strong> — o feixe vasculonervoso (artéria, veia, nervo) corre abaixo da costela. Prefira o espaço intercostal posterior entre 7° e 9° costelas, linha escapular posterior.</span></li>
+    <li><span class="tl-n">4</span><span class="tl-b">Antissepsia ampla + campo estéril. Anestesia local com lidocaína 1%: infiltrar pele, subcutâneo e peritela costal. Aspirar ao avançar — quando retornar líquido, você está no espaço pleural. Anestesie generosamente a pleura parietal (ela dói).</span></li>
+    <li><span class="tl-n">5</span><span class="tl-b">Inserir a agulha de toracocentese ou o cateter do kit, aspirando continuamente. Ao retornar líquido, conectar a extensão e o sistema de coleta.</span></li>
+    <li><span class="tl-n">6</span><span class="tl-b"><strong>Terapêutica: limite de 1.000–1.500 mL por sessão.</strong> Parar antes se o paciente desenvolver tosse persistente, dor torácica ou sensação de aperto (sinais precoces de edema de reexpansão). Não há necessidade de limitar o volume se guiado por manometria pleural (pressão &gt; −20 cmH₂O é sinal de parada).</span></li>
+    <li><span class="tl-n">7</span><span class="tl-b">Retirar o cateter em expiração (ou apneia pós-expiratória) — reduz o risco de entrada de ar. Comprimir e curativo oclusivo.</span></li>
+    <li><span class="tl-n">8</span><span class="tl-b">Rx de tórax pós-procedimento <strong>não é obrigatório</strong> de rotina se feito com USG e o paciente está assintomático. Realizar se dúvida de posição, tosse ou dor.</span></li>
+  </ol>
+  <span class="ref">Feller-Kopman D et al. Thoracentesis - StatPearls. NCBI Bookshelf NBK441866. 2023.</span>
+  <span class="ref">Havelock T et al. BTS Guideline for Pleural Disease. <em>Thorax</em> 78(Suppl 3):s1–s42, 2023. PMC11037506</span>
+
+  <!-- ── 05 · Complicações & pitfalls ── -->
+  <div class="sec-h"><span class="sec-num">05</span><h2>Complicações &amp; pitfalls</h2></div>
+  <div class="compl-grid">
+    <div class="compl-item"><span class="c-name">Pneumotórax</span><span class="c-desc">1–6% sem USG; &lt; 1% com USG. Maioria assintomática. Se &gt; 20% ou sintomático: dreno torácico.</span></div>
+    <div class="compl-item"><span class="c-name">Edema de reexpansão</span><span class="c-desc">Raro (&lt; 1%). Mais comum ao drenar &gt; 1.500 mL rapidamente. Apresenta-se com tosse, dispneia e hipoxemia minutos após o procedimento. Tratamento: O₂, diuréticos, suporte ventilatório se necessário.</span></div>
+    <div class="compl-item"><span class="c-name">Hemotórax</span><span class="c-desc">Laceração de artéria intercostal. Evitado pela punção acima da costela e Doppler na USG para identificar vasos colaterais.</span></div>
+    <div class="compl-item"><span class="c-name">Laceração de fígado/baço</span><span class="c-desc">Sítio muito baixo ou não visualização do diafragma. Sempre identificar o diafragma antes de puncionar.</span></div>
+    <div class="compl-item"><span class="c-name">Síncope vasovagal</span><span class="c-desc">Comum. Posicionar deitado se paciente com tônus vagal alto ou ansioso.</span></div>
+  </div>
+
+  <div class="pitfall-h">O que não fazer</div>
+  <ul class="pitfall-list">
+    <li>Puncionar abaixo da costela → lacera artéria intercostal (corre na borda inferior)</li>
+    <li>Não identificar o diafragma → punção abdominal</li>
+    <li>Drenar &gt; 1.500 mL sem manometria → edema de reexpansão</li>
+    <li>Retirar cateter em inspiração → pneumotórax por sucção de ar</li>
+  </ul>
 
 </section>
 </main>

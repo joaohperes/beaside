@@ -11,179 +11,142 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/styles.css">
-<style>
-  :root{--proc:#3b82f6}
-  .proc-tag{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--proc);background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);padding:2px 9px;border-radius:20px;display:inline-block;margin-bottom:10px}
-  .ref{font-family:var(--mono);font-size:10.5px;color:var(--text3);border-left:2px solid var(--border2);padding:4px 10px;margin:6px 0 0;display:block;line-height:1.5}
 
-  .step-list{list-style:none;padding:0;margin:10px 0}
-  .step-list li{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text2);line-height:1.6}
-  .step-list li:last-child{border-bottom:none}
-  .step-n{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--proc);background:rgba(59,130,246,.12);border-radius:4px;padding:1px 7px;flex-shrink:0;margin-top:1px}
-
-  .pill-list{list-style:none;padding:0;margin:8px 0}
-  .pill-list li{font-size:13px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;line-height:1.55;align-items:flex-start}
-  .pill-list li:last-child{border-bottom:none}
-  .pill-list li::before{content:'—';font-family:var(--mono);color:var(--proc);flex-shrink:0;margin-top:1px}
-
-  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
-  @media(max-width:600px){.two-col{grid-template-columns:1fr}}
-  .info-box{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px 16px;font-size:13px;color:var(--text2);line-height:1.6}
-  .info-box strong{color:var(--text)}
-  .warn-box{background:rgba(226,75,74,.07);border:1px solid rgba(226,75,74,.25);border-radius:8px;padding:14px 16px;font-size:13px;color:#f0b8b8;line-height:1.6}
-  .warn-box strong{color:#f5c6c6}
-  .ok-box{background:rgba(29,184,138,.07);border:1px solid rgba(29,184,138,.25);border-radius:8px;padding:14px 16px;font-size:13px;color:#bce8d8;line-height:1.6}
-  .ok-box strong{color:#d0f0e4}
-  .gap-note{font-family:var(--mono);font-size:11px;color:var(--text3);background:var(--bg3);border:1px dashed var(--border2);border-radius:6px;padding:8px 12px;margin-top:10px}
-
-  .mat-grid{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 0}
-  .mat-item{font-family:var(--mono);font-size:11px;color:var(--text2);background:var(--bg3);border:1px solid var(--border);border-radius:5px;padding:3px 9px}
-
-  .proc-divider{height:1px;background:var(--border);margin:40px 0 36px}
-
-  .compl-list{list-style:none;padding:0;margin:8px 0}
-  .compl-list li{font-size:13px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--border);display:grid;grid-template-columns:200px 1fr;gap:12px;line-height:1.55;align-items:baseline}
-  @media(max-width:600px){.compl-list li{grid-template-columns:1fr}}
-  .compl-list li:last-child{border-bottom:none}
-  .compl-name{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text)}
-
-  .svg-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin:12px 0;overflow-x:auto}
-  .svg-caption{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--proc);margin-bottom:10px;display:block}
-
-  /* dúvidas de plantão */
-  .dv-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;margin-bottom:12px;overflow:hidden}
-  .dv-q{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;cursor:pointer;user-select:none}
-  .dv-q:hover{background:var(--bg3)}
-  .dv-q-icon{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--proc);background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);padding:3px 8px;border-radius:5px;white-space:nowrap;flex-shrink:0;margin-top:1px}
-  .dv-q-text{flex:1;font-size:13.5px;font-weight:500;color:#e8ecf2;line-height:1.5}
-  .dv-arrow{color:var(--text3);font-family:var(--mono);font-size:12px;flex-shrink:0;margin-top:2px;transition:transform .15s}
-  .dv-card.open .dv-arrow{transform:rotate(90deg)}
-  .dv-a{display:none;border-top:1px solid var(--border);padding:14px 18px;font-size:13px;line-height:1.7;color:var(--text2)}
-  .dv-card.open .dv-a{display:block}
-  .dv-a strong{color:#e8ecf2;font-weight:500}
-  .dv-a .dv-resposta{border-left:3px solid var(--proc);background:rgba(59,130,246,.06);border-radius:0 6px 6px 0;padding:11px 15px;margin-bottom:10px;color:var(--text)}
-  .dv-a .dv-racional{border-left:3px solid var(--border2);background:var(--bg3);border-radius:0 6px 6px 0;padding:11px 15px;font-size:12.5px;color:var(--text2)}
-  .dv-a .dv-lbl{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:5px}
-  .dv-a .dv-resposta .dv-lbl{color:var(--proc)}
-  .dv-a .dv-racional .dv-lbl{color:var(--text3)}
-  .dv-a ul{margin:6px 0 6px 18px;padding:0}
-  .dv-a li{margin:4px 0}
-  .section-sub{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--text3);margin:32px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-</style>
 </head>
 <body data-module="proc" data-page="cvc">
 <main class="main">
 <section class="section" id="cvc">
+
+  <div class="hero-eyebrow">Procedimentos — Acesso vascular</div>
   <h1 class="section-title">Cateter Venoso Central</h1>
   <p class="section-subtitle">Indicações, comparação de sítios, técnica completa (jugular interna direita) e dúvidas de plantão com referências.</p>
 
-  <div class="card" style="margin-top:0">
-    <span class="proc-tag">Cateter venoso central</span>
-    <div class="card-title">Cateter venoso central (CVC)</div>
-    <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:16px">
-      Acesso venoso em veia de grande calibre para infusão de drogas vasoativas, NPT, medição de PVC e coleta de SvcO₂. A técnica de Seldinger é o padrão universal. <strong>USG em tempo real</strong> é recomendado por todas as diretrizes — reduz falha de punção, pneumotórax e punção arterial acidental.
-    </p>
-
-    <strong style="font-size:13px;color:var(--text);display:block;margin-bottom:8px">Indicações</strong>
-    <ul class="pill-list">
-      <li>Drogas vasoativas (noradrenalina, vasopressina, adrenalina) — concentração plena</li>
-      <li>Nutrição parenteral total (NPT) com osmolaridade &gt; 900 mOsm/L</li>
-      <li>Monitorização de PVC e SvcO₂</li>
-      <li>Acesso periférico impossível ou inadequado</li>
-      <li>Hemodiálise (cateter de duplo-lúmen de grande calibre — Shilley)</li>
-      <li>Marca-passo transvenoso temporário</li>
-    </ul>
-
-    <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Comparação dos sítios</strong>
-    <table>
-      <thead><tr><th>Sítio</th><th>Vantagens</th><th>Desvantagens</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Jugular interna direita</strong><br>(padrão)</td><td>Trajetória direta para VCS; facilmente compressível; ângulo favorável; menor risco de pneumotórax</td><td>Desconforto ao movimentar o pescoço; risco de infecção ligeiramente maior que subclávia</td></tr>
-        <tr><td><strong>Subclávia</strong></td><td>Menor taxa de ICSRC; fixação fácil; mais confortável</td><td>Maior risco de pneumotórax (~2–3%); não compressível em caso de sangramento; contraindicada em coagulopatia grave</td></tr>
-        <tr><td><strong>Femoral</strong></td><td>Sem risco de pneumotórax; mais segura em coagulopatia; acesso mais rápido na urgência</td><td>Maior risco de trombose e infecção; limita deambulação; menor qualidade de PVC</td></tr>
-        <tr><td><strong>Jugular interna esquerda</strong></td><td>Alternativa se direita inviável</td><td>Risco de lesão do ducto torácico; trajetória mais oblíqua para VCS</td></tr>
-      </tbody>
-    </table>
-    <span class="ref">Parienti JJ et al. Intravascular Complications of Central Venous Catheterization by Insertion Site. <em>N Engl J Med</em> 373:1220–1229, 2015. DOI: 10.1056/NEJMoa1500964</span>
-    <span class="ref">Brass P et al. Ultrasound guidance versus anatomical landmarks for internal jugular vein catheterization. <em>Cochrane Database Syst Rev</em> CD006962, 2015. DOI: 10.1002/14651858.CD006962.pub2</span>
-
-    <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Material</strong>
-    <div class="mat-grid">
-      <span class="mat-item">Kit de CVC (agulha introductora, fio-guia J, dilatador, cateter)</span>
-      <span class="mat-item">USG com transdutor linear</span>
-      <span class="mat-item">Lidocaína 1–2% + seringa 10 mL</span>
-      <span class="mat-item">Bisturi lâmina 11</span>
-      <span class="mat-item">Fio de sutura (seda 2-0 ou 3-0)</span>
-      <span class="mat-item">Solução salina para flush dos lúmens</span>
-      <span class="mat-item">Campo estéril amplo + avental + clorexidina alcoólica</span>
-      <span class="mat-item">Máscara + gorro (paramentação completa — medida de barreira máxima)</span>
-    </div>
-
-    <strong style="font-size:13px;color:var(--text);display:block;margin:18px 0 8px">Técnica — Jugular interna direita (abordagem central)</strong>
-
-    <div class="ok-box" style="margin-bottom:14px">
-      <strong>Anatomia-chave:</strong> A veia jugular interna (VJI) corre lateral e anterior à artéria carótida comum. O ponto de entrada é no ápice do triângulo de Sedillot — entre as cabeças esternal e clavicular do esternocleidomastóideo, 2–3 cm acima da clavícula. O USG confirma a posição (veia é compressível; artéria pulsa e não colapsa).
-    </div>
-
-    <!-- SVG 1: Anatomia — corte transversal (USG) + vista lateral -->
-
-
-    <ul class="step-list">
-      <li><span class="step-n">1</span><span><strong>Paramentação máxima:</strong> avental estéril, luvas estéreis, máscara, gorro. Campo estéril amplo. Antissepsia com clorexidina alcoólica — aguardar secar antes de puncionar.</span></li>
-      <li><span class="step-n">2</span><span>Trendelenburg 15°: distende as veias do pescoço e reduz risco de embolia aérea. Cabeça rodada ~30° para o lado oposto ao procedimento (não exagerar — rotação excessiva sobrepõe a VJI à carótida).</span></li>
-      <li><span class="step-n">3</span><span><strong>USG antes de puncionar:</strong> visualizar a VJI em eixo curto (cross-section). Confirmar compressibilidade, posição lateral à carótida e ausência de trombose. Marcar o sítio. Se possível, usar USG em tempo real.</span></li>
-      <li><span class="step-n">4</span><span>Anestesia local com lidocaína 1% em pele e subcutâneo no sítio marcado.</span></li>
-      <li><span class="step-n">5</span><span>Inserir a agulha introductora a <strong>45° em relação à pele</strong>, direcionada para o mamilo ipsilateral, aspirando continuamente. Ao retornar sangue venoso (escuro, sem pulsação), estabilizar a agulha com a mão não dominante.</span></li>
-      <li><span class="step-n">6</span><span>Introduzir o <strong>fio-guia J</strong> pela agulha com a curva apontando para baixo (em direção ao coração). Deve deslizar sem resistência. <strong>Nunca forçar o fio</strong> — resistência = posição incorreta da agulha.</span></li>
-      <li><span class="step-n">7</span><span>Retirar a agulha mantendo o fio. Pequena incisão na pele com bisturi. Passar o dilatador sobre o fio com movimento firme e rotacional. Retirar o dilatador, comprimir.</span></li>
-      <li><span class="step-n">8</span><span>Introduzir o cateter sobre o fio. Para a jugular interna direita adulto: inserir até <strong>14–16 cm</strong> (ponta na junção atriocaval). Retirar o fio enquanto mantém o cateter.</span></li>
-      <li><span class="step-n">9</span><span>Aspirar e lavar todos os lúmens com SF. Tampar. Fixar com sutura e curativo estéril.</span></li>
-      <li><span class="step-n">10</span><span><strong>Confirmação:</strong> Rx de tórax obrigatório — ponta do cateter deve estar na VCS, acima da junção cavoatrial, sem pneumotórax. Alternativa rápida: USG transtorácico com flush de SF agitado (aparece como "neve" no VD).</span></li>
-    </ul>
-
-
-    <span class="ref">McGee DC, Gould MK. Preventing Complications of Central Venous Catheterization. <em>N Engl J Med</em> 348:1123–1133, 2003. DOI: 10.1056/NEJMra011883</span>
-    <span class="ref">Frykholm P et al. Clinical guidelines on central venous catheterisation. <em>Acta Anaesthesiol Scand</em> 58(5):508–524, 2014. PMID: 24593804</span>
-    <span class="ref">Central Venous Catheter Insertion. StatPearls, NCBI Bookshelf NBK557798. 2024.</span>
-
-    <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Profundidade de inserção por sítio</strong>
-    <table>
-      <thead><tr><th>Sítio</th><th>Profundidade (adulto)</th><th>Ponto de referência</th></tr></thead>
-      <tbody>
-        <tr><td>Jugular interna direita</td><td>14–16 cm</td><td>Ponta na VCS, acima do átrio</td></tr>
-        <tr><td>Jugular interna esquerda</td><td>16–18 cm</td><td>Trajetória mais longa até VCS</td></tr>
-        <tr><td>Subclávia direita</td><td>14–16 cm</td><td></td></tr>
-        <tr><td>Subclávia esquerda</td><td>16–18 cm</td><td></td></tr>
-        <tr><td>Femoral</td><td>20–25 cm</td><td>Ponta na veia cava inferior</td></tr>
-      </tbody>
-    </table>
-
-    <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Complicações</strong>
-    <ul class="compl-list">
-      <li><span class="compl-name">Punção arterial</span><span>Sangue pulsátil, vermelho-vivo. Retirar imediatamente e comprimir ≥ 10 min. Nunca dilatar sobre uma artéria puncionada. Com USG: raro (&lt; 1%).</span></li>
-      <li><span class="compl-name">Pneumotórax</span><span>Risco de 1–3% na subclávia; &lt; 0,5% na jugular com USG. Rx pós-procedimento confirma. Sintomático ou &gt; 20%: dreno.</span></li>
-      <li><span class="compl-name">Embolia aérea</span><span>Paciente em Trendelenburg + agulha aberta. Prevenção: tampar imediatamente ao retirar a agulha. Se ocorrer: Trendelenburg, decúbito lateral esquerdo, O₂ 100%.</span></li>
-      <li><span class="compl-name">Malposição do cateter</span><span>Cateter na subclávia contralateral ou jugular interna. Identificado no Rx. Pode ser reposicionado com fio-guia.</span></li>
-      <li><span class="compl-name">ICSRC (infecção)</span><span>Prevenção: paramentação máxima, antissepsia com clorexidina alcoólica, remoção precoce quando não necessário. Preferir jugular ou subclávia à femoral.</span></li>
-      <li><span class="compl-name">Arritmia</span><span>Fio-guia ou ponta do cateter no átrio/ventrículo. Reposicionar o cateter 1–2 cm para cima.</span></li>
-    </ul>
-
-    <div class="warn-box" style="margin-top:14px">
-      <strong>Pitfalls mais comuns:</strong>
-      <ul style="margin:6px 0 0 16px;line-height:1.8">
-        <li>Forçar o fio-guia com resistência → perfuração venosa ou arritmia</li>
-        <li>Não fazer paramentação máxima → maior risco de ICSRC</li>
-        <li>Confirmar apenas com ausculta → não detecta malposição assintomática</li>
-        <li>Deixar o cateter femoral &gt; 5–7 dias → risco desproporcionalmente alto de trombose e infecção</li>
-        <li>Não confirmar se sangue venoso (vs. arterial) antes de dilatar → dilatar sobre a carótida = catástrofe</li>
-      </ul>
-    </div>
+  <div class="hero-meta">
+    <div class="hm-item"><span class="hm-k">Técnica</span><span class="hm-v">Seldinger</span></div>
+    <div class="hm-item"><span class="hm-k">Sítio padrão</span><span class="hm-v">VJI direita</span></div>
+    <div class="hm-item"><span class="hm-k">Guia</span><span class="hm-v">USG em tempo real</span></div>
+    <div class="hm-item"><span class="hm-k">Confirmação</span><span class="hm-v">Rx de tórax</span></div>
   </div>
 
-  <div class="proc-divider"></div>
+  <!-- ── 01 · Visão geral ── -->
+  <div class="sec-h"><span class="sec-num">01</span><h2>Visão geral &amp; indicações</h2></div>
+  <p class="sec-lead">
+    Acesso venoso em veia de grande calibre para infusão de drogas vasoativas, NPT, medição de PVC e coleta de SvcO₂. A técnica de Seldinger é o padrão universal. <strong>USG em tempo real</strong> é recomendado por todas as diretrizes — reduz falha de punção, pneumotórax e punção arterial acidental.
+  </p>
 
+  <div class="ind-grid">
+    <div class="ind-item"><span class="ind-t">Drogas vasoativas</span><span class="ind-d">Noradrenalina, vasopressina, adrenalina — concentração plena</span></div>
+    <div class="ind-item"><span class="ind-t">Nutrição parenteral total</span><span class="ind-d">NPT com osmolaridade &gt; 900 mOsm/L</span></div>
+    <div class="ind-item"><span class="ind-t">Monitorização</span><span class="ind-d">PVC e SvcO₂</span></div>
+    <div class="ind-item"><span class="ind-t">Acesso difícil</span><span class="ind-d">Acesso periférico impossível ou inadequado</span></div>
+    <div class="ind-item"><span class="ind-t">Hemodiálise</span><span class="ind-d">Cateter de duplo-lúmen de grande calibre — Shilley</span></div>
+    <div class="ind-item"><span class="ind-t">Marca-passo</span><span class="ind-d">Marca-passo transvenoso temporário</span></div>
+  </div>
+
+  <!-- ── 02 · Escolha do sítio ── -->
+  <div class="sec-h"><span class="sec-num">02</span><h2>Escolha do sítio</h2></div>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Sítio</th><th>Vantagens</th><th>Desvantagens</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Jugular interna direita</strong><span class="site-tag">padrão</span></td><td>Trajetória direta para VCS; facilmente compressível; ângulo favorável; menor risco de pneumotórax</td><td>Desconforto ao movimentar o pescoço; risco de infecção ligeiramente maior que subclávia</td></tr>
+      <tr><td><strong>Subclávia</strong></td><td>Menor taxa de ICSRC; fixação fácil; mais confortável</td><td>Maior risco de pneumotórax (~2–3%); não compressível em caso de sangramento; contraindicada em coagulopatia grave</td></tr>
+      <tr><td><strong>Femoral</strong></td><td>Sem risco de pneumotórax; mais segura em coagulopatia; acesso mais rápido na urgência</td><td>Maior risco de trombose e infecção; limita deambulação; menor qualidade de PVC</td></tr>
+      <tr><td><strong>Jugular interna esquerda</strong></td><td>Alternativa se direita inviável</td><td>Risco de lesão do ducto torácico; trajetória mais oblíqua para VCS</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <span class="ref">Parienti JJ et al. Intravascular Complications of Central Venous Catheterization by Insertion Site. <em>N Engl J Med</em> 373:1220–1229, 2015. DOI: 10.1056/NEJMoa1500964</span>
+  <span class="ref">Brass P et al. Ultrasound guidance versus anatomical landmarks for internal jugular vein catheterization. <em>Cochrane Database Syst Rev</em> CD006962, 2015. DOI: 10.1002/14651858.CD006962.pub2</span>
+
+  <!-- ── 03 · Material ── -->
+  <div class="sec-h"><span class="sec-num">03</span><h2>Material</h2></div>
+  <div class="mat-grid">
+    <span class="mat-item">Kit de CVC (agulha introductora, fio-guia J, dilatador, cateter)</span>
+    <span class="mat-item">USG com transdutor linear</span>
+    <span class="mat-item">Lidocaína 1–2% + seringa 10 mL</span>
+    <span class="mat-item">Bisturi lâmina 11</span>
+    <span class="mat-item">Fio de sutura (seda 2-0 ou 3-0)</span>
+    <span class="mat-item">Solução salina para flush dos lúmens</span>
+    <span class="mat-item">Campo estéril amplo + avental + clorexidina alcoólica</span>
+    <span class="mat-item">Máscara + gorro (paramentação completa — medida de barreira máxima)</span>
+  </div>
+
+  <!-- ── 04 · Técnica ── -->
+  <div class="sec-h"><span class="sec-num">04</span><h2>Técnica — jugular interna direita</h2></div>
+
+  <div class="anatomy-note">
+    <strong>Anatomia-chave:</strong> A veia jugular interna (VJI) corre lateral e anterior à artéria carótida comum. O ponto de entrada é no ápice do triângulo de Sedillot — entre as cabeças esternal e clavicular do esternocleidomastóideo, 2–3 cm acima da clavícula. O USG confirma a posição (veia é compressível; artéria pulsa e não colapsa).
+  </div>
+
+  <div class="phase-lbl">Preparo</div>
+  <ol class="tl">
+    <li><span class="tl-n">1</span><span class="tl-b"><strong>Paramentação máxima:</strong> avental estéril, luvas estéreis, máscara, gorro. Campo estéril amplo. Antissepsia com clorexidina alcoólica — aguardar secar antes de puncionar.</span></li>
+    <li><span class="tl-n">2</span><span class="tl-b">Trendelenburg 15°: distende as veias do pescoço e reduz risco de embolia aérea. Cabeça rodada ~30° para o lado oposto ao procedimento (não exagerar — rotação excessiva sobrepõe a VJI à carótida).</span></li>
+    <li><span class="tl-n">3</span><span class="tl-b"><strong>USG antes de puncionar:</strong> visualizar a VJI em eixo curto (cross-section). Confirmar compressibilidade, posição lateral à carótida e ausência de trombose. Marcar o sítio. Se possível, usar USG em tempo real.</span></li>
+    <li><span class="tl-n">4</span><span class="tl-b">Anestesia local com lidocaína 1% em pele e subcutâneo no sítio marcado.</span></li>
+  </ol>
+
+  <div class="phase-lbl">Punção</div>
+  <ol class="tl">
+    <li><span class="tl-n">5</span><span class="tl-b">Inserir a agulha introductora a <strong>45° em relação à pele</strong>, direcionada para o mamilo ipsilateral, aspirando continuamente. Ao retornar sangue venoso (escuro, sem pulsação), estabilizar a agulha com a mão não dominante.</span></li>
+    <li><span class="tl-n">6</span><span class="tl-b">Introduzir o <strong>fio-guia J</strong> pela agulha com a curva apontando para baixo (em direção ao coração). Deve deslizar sem resistência. <strong>Nunca forçar o fio</strong> — resistência = posição incorreta da agulha.</span></li>
+  </ol>
+
+  <div class="phase-lbl">Dilatação &amp; cateter</div>
+  <ol class="tl">
+    <li><span class="tl-n">7</span><span class="tl-b">Retirar a agulha mantendo o fio. Pequena incisão na pele com bisturi. Passar o dilatador sobre o fio com movimento firme e rotacional. Retirar o dilatador, comprimir.</span></li>
+    <li><span class="tl-n">8</span><span class="tl-b">Introduzir o cateter sobre o fio. Para a jugular interna direita adulto: inserir até <strong>14–16 cm</strong> (ponta na junção atriocaval). Retirar o fio enquanto mantém o cateter.</span></li>
+  </ol>
+
+  <div class="phase-lbl">Finalização</div>
+  <ol class="tl">
+    <li><span class="tl-n">9</span><span class="tl-b">Aspirar e lavar todos os lúmens com SF. Tampar. Fixar com sutura e curativo estéril.</span></li>
+    <li><span class="tl-n">10</span><span class="tl-b"><strong>Confirmação:</strong> Rx de tórax obrigatório — ponta do cateter deve estar na VCS, acima da junção cavoatrial, sem pneumotórax. Alternativa rápida: USG transtorácico com flush de SF agitado (aparece como "neve" no VD).</span></li>
+  </ol>
+
+  <span class="ref" style="margin-top:18px">McGee DC, Gould MK. Preventing Complications of Central Venous Catheterization. <em>N Engl J Med</em> 348:1123–1133, 2003. DOI: 10.1056/NEJMra011883</span>
+  <span class="ref">Frykholm P et al. Clinical guidelines on central venous catheterisation. <em>Acta Anaesthesiol Scand</em> 58(5):508–524, 2014. PMID: 24593804</span>
+  <span class="ref">Central Venous Catheter Insertion. StatPearls, NCBI Bookshelf NBK557798. 2024.</span>
+
+  <!-- ── 05 · Profundidade ── -->
+  <div class="sec-h"><span class="sec-num">05</span><h2>Profundidade de inserção</h2></div>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Sítio</th><th>Profundidade (adulto)</th><th>Ponto de referência</th></tr></thead>
+    <tbody>
+      <tr><td>Jugular interna direita</td><td class="td-mono">14–16 cm</td><td>Ponta na VCS, acima do átrio</td></tr>
+      <tr><td>Jugular interna esquerda</td><td class="td-mono">16–18 cm</td><td>Trajetória mais longa até VCS</td></tr>
+      <tr><td>Subclávia direita</td><td class="td-mono">14–16 cm</td><td></td></tr>
+      <tr><td>Subclávia esquerda</td><td class="td-mono">16–18 cm</td><td></td></tr>
+      <tr><td>Femoral</td><td class="td-mono">20–25 cm</td><td>Ponta na veia cava inferior</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- ── 06 · Complicações ── -->
+  <div class="sec-h"><span class="sec-num">06</span><h2>Complicações &amp; pitfalls</h2></div>
+  <div class="compl-grid">
+    <div class="compl-item"><span class="c-name">Punção arterial</span><span class="c-desc">Sangue pulsátil, vermelho-vivo. Retirar imediatamente e comprimir ≥ 10 min. <strong>Nunca dilatar sobre uma artéria puncionada.</strong> Com USG: raro (&lt; 1%).</span></div>
+    <div class="compl-item"><span class="c-name">Pneumotórax</span><span class="c-desc">Risco de 1–3% na subclávia; &lt; 0,5% na jugular com USG. Rx pós-procedimento confirma. Sintomático ou &gt; 20%: dreno.</span></div>
+    <div class="compl-item"><span class="c-name">Embolia aérea</span><span class="c-desc">Paciente em Trendelenburg + agulha aberta. Prevenção: tampar imediatamente ao retirar a agulha. Se ocorrer: Trendelenburg, decúbito lateral esquerdo, O₂ 100%.</span></div>
+    <div class="compl-item"><span class="c-name">Malposição do cateter</span><span class="c-desc">Cateter na subclávia contralateral ou jugular interna. Identificado no Rx. Pode ser reposicionado com fio-guia.</span></div>
+    <div class="compl-item"><span class="c-name">ICSRC (infecção)</span><span class="c-desc">Prevenção: paramentação máxima, antissepsia com clorexidina alcoólica, remoção precoce quando não necessário. Preferir jugular ou subclávia à femoral.</span></div>
+    <div class="compl-item"><span class="c-name">Arritmia</span><span class="c-desc">Fio-guia ou ponta do cateter no átrio/ventrículo. Reposicionar o cateter 1–2 cm para cima.</span></div>
+  </div>
+
+  <div class="pitfall-h">O que não fazer</div>
+  <ul class="pitfall-list">
+    <li>Forçar o fio-guia com resistência → perfuração venosa ou arritmia</li>
+    <li>Não fazer paramentação máxima → maior risco de ICSRC</li>
+    <li>Confirmar apenas com ausculta → não detecta malposição assintomática</li>
+    <li>Deixar o cateter femoral &gt; 5–7 dias → risco desproporcionalmente alto de trombose e infecção</li>
+    <li>Não confirmar se sangue venoso (vs. arterial) antes de dilatar → <strong>dilatar sobre a carótida = catástrofe</strong></li>
+  </ul>
+
+  <!-- ── Dúvidas de plantão ── -->
   <div id="plantao">
-    <h2 class="section-sub">Dúvidas de plantão</h2>
+  <div class="sec-h" style="margin-top:56px"><span class="sec-num">07</span><h2>Dúvidas de plantão</h2></div>
 
     <div class="dv-card" onclick="this.classList.toggle('open')">
       <div class="dv-q">

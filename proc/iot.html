@@ -13,214 +13,175 @@
 <link rel="stylesheet" href="../assets/styles.css">
 <style>
   :root{--proc:#3b82f6}
-  .proc-tag{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--proc);background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);padding:2px 9px;border-radius:20px;display:inline-block;margin-bottom:10px}
-  .ref{font-family:var(--mono);font-size:10.5px;color:var(--text3);border-left:2px solid var(--border2);padding:4px 10px;margin:6px 0 0;display:block;line-height:1.5}
-
-  .step-list{list-style:none;padding:0;margin:10px 0}
-  .step-list li{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text2);line-height:1.6}
-  .step-list li:last-child{border-bottom:none}
-  .step-n{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--proc);background:rgba(59,130,246,.12);border-radius:4px;padding:1px 7px;flex-shrink:0;margin-top:1px}
-
-  .pill-list{list-style:none;padding:0;margin:8px 0}
-  .pill-list li{font-size:13px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;line-height:1.55;align-items:flex-start}
-  .pill-list li:last-child{border-bottom:none}
-  .pill-list li::before{content:'—';font-family:var(--mono);color:var(--proc);flex-shrink:0;margin-top:1px}
-
-  .checklist{list-style:none;padding:0;margin:8px 0}
-  .checklist li{font-size:13px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;line-height:1.5}
-  .checklist li:last-child{border-bottom:none}
-  .checklist li::before{content:'□';font-family:var(--mono);color:var(--proc);flex-shrink:0}
-
-  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
-  @media(max-width:600px){.two-col{grid-template-columns:1fr}}
   .three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px}
   @media(max-width:700px){.three-col{grid-template-columns:1fr}}
-  .info-box{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px 16px;font-size:13px;color:var(--text2);line-height:1.6}
-  .info-box strong{color:var(--text)}
-  .warn-box{background:rgba(226,75,74,.07);border:1px solid rgba(226,75,74,.25);border-radius:8px;padding:14px 16px;font-size:13px;color:#f0b8b8;line-height:1.6}
-  .warn-box strong{color:#f5c6c6}
-  .ok-box{background:rgba(29,184,138,.07);border:1px solid rgba(29,184,138,.25);border-radius:8px;padding:14px 16px;font-size:13px;color:#bce8d8;line-height:1.6}
-  .ok-box strong{color:#d0f0e4}
-  .gap-note{font-family:var(--mono);font-size:11px;color:var(--text3);background:var(--bg3);border:1px dashed var(--border2);border-radius:6px;padding:8px 12px;margin-top:10px}
-
-  .mat-grid{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 0}
-  .mat-item{font-family:var(--mono);font-size:11px;color:var(--text2);background:var(--bg3);border:1px solid var(--border);border-radius:5px;padding:3px 9px}
 </style>
 </head>
 <body data-module="proc" data-page="iot">
 <main class="main">
 <section class="section" id="iot">
+
+  <div class="hero-eyebrow">Procedimentos — Via aérea</div>
   <h1 class="section-title">IOT / RSI</h1>
   <p class="section-subtitle">Intubação orotraqueal em sequência rápida — os 7 P, indutores, bloqueadores neuromusculares e confirmação de posição.</p>
 
-  <div class="card" style="margin-top:0">
-    <span class="proc-tag">Intubação orotraqueal</span>
-    <div class="card-title">Intubação orotraqueal (IOT) — sequência rápida (RSI)</div>
-    <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:16px">
-      A RSI (rapid sequence intubation) é o padrão para intubação de emergência no adulto: indução anestésica + bloqueio neuromuscular simultâneos para obter condições de intubação em &lt; 60 segundos, com mínimo risco de aspiração. Na UTI, a maioria das intubações é de urgência — planejar é prevenir complicações.
-    </p>
+  <div class="hero-meta">
+    <div class="hm-item"><span class="hm-k">Técnica</span><span class="hm-v">Sequência rápida (RSI)</span></div>
+    <div class="hm-item"><span class="hm-k">Meta pré-oxi</span><span class="hm-v">SpO₂ ≥ 95%</span></div>
+    <div class="hm-item"><span class="hm-k">Confirmação</span><span class="hm-v">Capnografia (EtCO₂)</span></div>
+    <div class="hm-item"><span class="hm-k">Cuff</span><span class="hm-v">20–30 cmH₂O</span></div>
+  </div>
 
-    <strong style="font-size:13px;color:var(--text);display:block;margin-bottom:8px">Indicações de IOT</strong>
-    <ul class="pill-list">
-      <li>Falência respiratória hipoxêmica ou hipercápnica refratária a O₂ suplementar ou VNI</li>
-      <li>Rebaixamento de consciência com perda de proteção de via aérea (GCS ≤ 8)</li>
-      <li>Obstrução de via aérea iminente (angioedema, epiglotite, trauma facial)</li>
-      <li>Choque refratário com deterioração neurológica (hipoxemia cerebral)</li>
-      <li>Necessidade de sedação profunda para procedimento ou controle de agitação grave</li>
-    </ul>
+  <p class="sec-lead" style="margin-top:24px">
+    A RSI (rapid sequence intubation) é o padrão para intubação de emergência no adulto: indução anestésica + bloqueio neuromuscular simultâneos para obter condições de intubação em &lt; 60 segundos, com mínimo risco de aspiração. Na UTI, a maioria das intubações é de urgência — <strong>planejar é prevenir complicações</strong>.
+  </p>
 
-    <strong style="font-size:13px;color:var(--text);display:block;margin:16px 0 8px">Material — checklist pré-IOT</strong>
-    <div class="mat-grid">
-      <span class="mat-item">Laringoscópio (lâmina curva n° 3 ou 4) + videolaringoscópio se disponível</span>
-      <span class="mat-item">TOT 7,0–8,0 (mulher) / 7,5–9,0 (homem) + cuff testado</span>
-      <span class="mat-item">Seringa 10 mL para insuflar cuff</span>
-      <span class="mat-item">Guia / bougie</span>
-      <span class="mat-item">Ambu + máscara facial + O₂</span>
-      <span class="mat-item">Aspirador com sonda rígida (Yankauer) ligado e funcionando</span>
-      <span class="mat-item">Capnógrafo ou detector colorimétrico de CO₂</span>
-      <span class="mat-item">VM pronto e configurado</span>
-      <span class="mat-item">Drogas preparadas (indutor + bloqueador neuromuscular + vasopressor de resgate)</span>
-      <span class="mat-item">Acesso venoso pérvio + monitorização (ECG, SpO₂, PA)</span>
+  <!-- ── 01 · Indicações ── -->
+  <div class="sec-h"><span class="sec-num">01</span><h2>Indicações de IOT</h2></div>
+  <div class="ind-grid">
+    <div class="ind-item"><span class="ind-d">Falência respiratória hipoxêmica ou hipercápnica refratária a O₂ suplementar ou VNI</span></div>
+    <div class="ind-item"><span class="ind-d">Rebaixamento de consciência com perda de proteção de via aérea (GCS ≤ 8)</span></div>
+    <div class="ind-item"><span class="ind-d">Obstrução de via aérea iminente (angioedema, epiglotite, trauma facial)</span></div>
+    <div class="ind-item"><span class="ind-d">Choque refratário com deterioração neurológica (hipoxemia cerebral)</span></div>
+    <div class="ind-item"><span class="ind-d">Necessidade de sedação profunda para procedimento ou controle de agitação grave</span></div>
+  </div>
+
+  <!-- ── 02 · Material ── -->
+  <div class="sec-h"><span class="sec-num">02</span><h2>Material — checklist pré-IOT</h2></div>
+  <div class="mat-grid">
+    <span class="mat-item">Laringoscópio (lâmina curva n° 3 ou 4) + videolaringoscópio se disponível</span>
+    <span class="mat-item">TOT 7,0–8,0 (mulher) / 7,5–9,0 (homem) + cuff testado</span>
+    <span class="mat-item">Seringa 10 mL para insuflar cuff</span>
+    <span class="mat-item">Guia / bougie</span>
+    <span class="mat-item">Ambu + máscara facial + O₂</span>
+    <span class="mat-item">Aspirador com sonda rígida (Yankauer) ligado e funcionando</span>
+    <span class="mat-item">Capnógrafo ou detector colorimétrico de CO₂</span>
+    <span class="mat-item">VM pronto e configurado</span>
+    <span class="mat-item">Drogas preparadas (indutor + bloqueador neuromuscular + vasopressor de resgate)</span>
+    <span class="mat-item">Acesso venoso pérvio + monitorização (ECG, SpO₂, PA)</span>
+  </div>
+
+  <!-- ── 03 · Os 7 P da RSI ── -->
+  <div class="sec-h"><span class="sec-num">03</span><h2>Os 7 P da RSI</h2></div>
+
+  <div class="phase-lbl">1 — Preparo</div>
+  <p style="font-size:13px;color:var(--text2);line-height:1.6;margin:0">Reunir material, checar aspirador, configurar VM, preparar drogas, ter vasopressor à mão. Definir o plano A (laringoscopia direta), plano B (videolaringoscópio ou bougie) e plano C (via aérea cirúrgica). Comunicar a equipe.</p>
+
+  <div class="phase-lbl">2 — Posicionamento</div>
+  <div class="two-col" style="margin-top:0">
+    <div class="info-box">
+      <strong>Posição "sniffing" (padrão)</strong><br>
+      Pescoço levemente fletido + cabeça em extensão no atlanto-occipital. Alinha eixos oral, faríngeo e laríngeo. Coxim de 7–10 cm sob a cabeça.
     </div>
-
-    <strong style="font-size:13px;color:var(--text);display:block;margin:18px 0 8px">Os 7 P da RSI</strong>
-
-    <!-- Preparo -->
-    <div style="margin-bottom:10px">
-      <div style="font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--proc);margin-bottom:6px">1 — Preparo</div>
-      <p style="font-size:13px;color:var(--text2);line-height:1.6;margin:0">Reunir material, checar aspirador, configurar VM, preparar drogas, ter vasopressor à mão. Definir o plano A (laringoscopia direta), plano B (videolaringoscópio ou bougie) e plano C (via aérea cirúrgica). Comunicar a equipe.</p>
-    </div>
-
-    <!-- Posicionamento -->
-    <div style="margin-bottom:10px">
-      <div style="font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--proc);margin-bottom:6px">2 — Posicionamento</div>
-      <div class="two-col" style="margin-top:0">
-        <div class="info-box">
-          <strong>Posição "sniffing" (padrão)</strong><br>
-          Pescoço levemente fletido + cabeça em extensão no atlanto-occipital. Alinha eixos oral, faríngeo e laríngeo. Coxim de 7–10 cm sob a cabeça.
-        </div>
-        <div class="ok-box">
-          <strong>Posição "ramped" (obesos e gestantes)</strong><br>
-          Cabeceira a 20–30°, meato auditivo externo alinhado horizontalmente com o esterno. Aumenta a capacidade residual funcional, prolonga o tempo de apneia segura e melhora a visibilidade glótica.
-        </div>
-      </div>
-      <span class="ref">Turner JS et al. Bed-up-head-elevated position versus sniffing position in rapid sequence intubation. <em>Emerg Med J</em> 2024. PMC11279501</span>
-    </div>
-
-    <!-- Pré-oxigenação -->
-    <div style="margin-bottom:10px">
-      <div style="font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--proc);margin-bottom:6px">3 — Pré-oxigenação</div>
-      <p style="font-size:13px;color:var(--text2);line-height:1.6;margin:0 0 8px">Meta: SpO₂ ≥ 95% (idealmente 100%) antes da indução. Denitrogenação alveolar cria reserva de O₂ que tolera 3–8 min de apneia em adulto saudável; muito menos no crítico.</p>
-      <div class="three-col" style="margin-top:0">
-        <div class="info-box">
-          <strong>Máscara não-reinalante</strong><br>
-          FiO₂ 0,85–0,9. 3–5 min de respiração espontânea. Padrão para quem consegue ventilar adequadamente.
-        </div>
-        <div class="info-box">
-          <strong>VNI / CPAP</strong><br>
-          Preferível em hipoxemia grave (P/F &lt; 150). Mantém recrutamento alveolar. 3–5 min a FiO₂ 1,0 e PEEP 5–8 cmH₂O.
-        </div>
-        <div class="ok-box">
-          <strong>HFNO (cânula nasal de alto fluxo)</strong><br>
-          Pode ser mantida durante a laringoscopia (apneic oxygenation / NODESAT). Fluxo 40–70 L/min prolonga o tempo de apneia segura — especialmente útil no obeso e no crítico.
-        </div>
-      </div>
-      <span class="ref">Papazian L et al. Use of high-flow nasal cannula oxygenation during endotracheal intubation in ICU patients. <em>Intensive Care Med</em> 46(12):2234–2243, 2020. PMID: 32749526</span>
-    </div>
-
-    <!-- Pré-tratamento -->
-    <div style="margin-bottom:10px">
-      <div style="font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--proc);margin-bottom:6px">4 — Pré-tratamento (seletivo)</div>
-      <ul class="pill-list">
-        <li><strong>Fentanil 1–3 mcg/kg IV (2–3 min antes):</strong> Atenua resposta simpática à laringoscopia (taquicardia, hipertensão, elevação de PIC). Indicado em TCE grave, doença coronariana, aneurisma. Cuidado: hipotensão em instáveis.</li>
-        <li><strong>Lidocaína 1,5 mg/kg IV (3 min antes):</strong> Uso controverso para atenuar elevação de PIC na laringoscopia. Evidência limitada; algumas equipes de neurointensivismo ainda usam.</li>
-        <li><strong>Vasopressor de resgate preparado:</strong> Noradrenalina ou efedrina prontos. Hipotensão pós-indução ocorre em 20–40% dos pacientes críticos.</li>
-      </ul>
-    </div>
-
-    <!-- Paralisia + Indução -->
-    <div style="margin-bottom:10px">
-      <div style="font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--proc);margin-bottom:6px">5 — Indução + Paralisia</div>
-      <p style="font-size:13px;color:var(--text2);line-height:1.6;margin:0 0 10px">Indutor e bloqueador neuromuscular administrados em sequência rápida. Sem ventilação com máscara entre as duas drogas (risco de insuflar estômago e aspiração).</p>
-
-      <strong style="font-size:13px;color:var(--text);display:block;margin-bottom:8px">Indutores</strong>
-      <table>
-        <thead><tr><th>Droga</th><th>Dose</th><th>Perfil</th><th>Quando usar / evitar</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Ketamina</strong></td><td>1–2 mg/kg IV</td><td>Broncodilatadora, mantém tônus simpático, analgésica. Não deprime o drive respiratório em doses únicas.</td><td>✓ 1ª escolha na UTI: choque, broncoespasmo, asma. Evitar em HIC grave (aumenta PIC) — evidência mais recente questiona isso, mas incerteza persiste.</td></tr>
-          <tr><td><strong>Etomidato</strong></td><td>0,3 mg/kg IV</td><td>Hemodinamicamente neutro. Inibe 11β-hidroxilase → supressão adrenal por 12–24h após dose única.</td><td>✓ Instabilidade hemodinâmica grave quando ketamina não disponível. Evitar em sepse (supressão adrenal aumenta mortalidade em meta-análises recentes).</td></tr>
-          <tr><td><strong>Propofol</strong></td><td>1–2 mg/kg IV</td><td>Rápido, curta duração. Hipotensor por vasodilatação e depressão miocárdica.</td><td>✓ Paciente hemodinamicamente estável, sem choque. Evitar em instáveis — queda de PA é frequente e relevante.</td></tr>
-          <tr><td><strong>Midazolam</strong></td><td>0,1–0,3 mg/kg IV</td><td>Início lento (2–3 min). Hipotensor. Sem analgesia.</td><td>Evitar como indutor único para RSI. Se usado: combinar com opioide.</td></tr>
-        </tbody>
-      </table>
-      <span class="ref">Matchett G et al. Induction agents for emergency airway management in critically ill patients. <em>J Intensive Care Med</em> 2024. PMC11186535</span>
-      <span class="ref">Matchett G et al. Ketamine versus etomidate for induction in critically ill adults: Bayesian meta-analysis. <em>Crit Care Med</em> 2024. PMC10874027</span>
-
-      <strong style="font-size:13px;color:var(--text);display:block;margin:14px 0 8px">Bloqueadores neuromusculares</strong>
-      <table>
-        <thead><tr><th>Droga</th><th>Dose RSI</th><th>Onset</th><th>Duração</th><th>Reversor</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Succinilcolina</strong></td><td>1,5 mg/kg IV</td><td>45–60 s</td><td>8–12 min</td><td>Não tem (despolarizante — metabolismo plasmático)</td></tr>
-          <tr><td><strong>Rocurônio</strong></td><td>1,2 mg/kg IV</td><td>60–90 s</td><td>45–75 min</td><td>Sugamadex 16 mg/kg (reverte em &lt; 3 min)</td></tr>
-        </tbody>
-      </table>
-
-      <div class="warn-box" style="margin-top:12px">
-        <strong>Contraindicações da succinilcolina — hipercalemia lethal:</strong>
-        <ul style="margin:6px 0 0 16px;line-height:1.8">
-          <li>Queimadura &gt; 24–72h (não usar até 2 anos após)</li>
-          <li>Lesão muscular extensa / síndrome de imobilização prolongada (&gt; 5–7 dias)</li>
-          <li>Lesão neurológica com plegia (AVE, LM, Guillain-Barré) &gt; 24–72h</li>
-          <li>Miopatias, distrofia muscular</li>
-          <li>Hipercalemia conhecida</li>
-          <li>Hipertermia maligna ou história familiar</li>
-        </ul>
-        <strong style="display:block;margin-top:8px">Nessas situações: rocurônio 1,2 mg/kg + sugamadex disponível.</strong>
-      </div>
-      <span class="ref">Succinylcholine Chloride — StatPearls. NCBI Bookshelf NBK499984. 2024.</span>
-      <span class="ref">Tran DTT et al. Rocuronium versus succinylcholine for rapid sequence induction. <em>Cochrane Database Syst Rev</em> CD002788, 2015. PMC7104695</span>
-    </div>
-
-    <!-- Passagem do tubo -->
-    <div style="margin-bottom:10px">
-      <div style="font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--proc);margin-bottom:6px">6 — Passagem do tubo</div>
-      <ul class="step-list">
-        <li><span class="step-n">1</span><span>Aguardar 45–60 s após o bloqueador neuromuscular (fasciculações cessam). Abrir a boca com técnica tesoura (polegar sobre molar inferior, indicador sobre superior), inserir o laringoscópio pela comissura labial direita deslocando a língua para a esquerda.</span></li>
-        <li><span class="step-n">2</span><span>Lâmina curva (Macintosh): encaixar a ponta na vallécula (espaço entre base da língua e epiglote) e elevar em direção ao teto — <strong>não bascular</strong>. Visualizar as cordas vocais.</span></li>
-        <li><span class="step-n">3</span><span>Se visualização difícil: manobra BURP (Backward-Upward-Right Pressure) sobre a laringe, ou trocar para videolaringoscópio. <strong>Nunca aplicar força excessiva</strong> — lesão de dentes e tecidos moles.</span></li>
-        <li><span class="step-n">4</span><span>Inserir o TOT com o cuff passando ~3 cm abaixo das cordas. Profundidade padrão: <strong>23 cm na comissura labial para homens, 21 cm para mulheres</strong>. Insuflar o cuff.</span></li>
-        <li><span class="step-n">5</span><span>Retirar o guia/bougie se usado. Conectar ao VM.</span></li>
-      </ul>
-    </div>
-
-    <!-- Confirmação -->
-    <div style="margin-bottom:0">
-      <div style="font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--proc);margin-bottom:6px">7 — Confirmação + pós-IOT</div>
-      <ul class="pill-list">
-        <li><strong>Capnografia (EtCO₂):</strong> Padrão-ouro. Onda retangular de CO₂ confirma posição traqueal. Ausência de onda = esôfago.</li>
-        <li><strong>Ausculta bilateral + epigástrio:</strong> Complementar — não substitui capnografia.</li>
-        <li><strong>SpO₂:</strong> Não é método de confirmação — pode demorar para cair em intubação esofágica.</li>
-        <li><strong>Rx de tórax:</strong> Confirma profundidade. Ponta do TOT deve estar 3–5 cm acima da carina (aproximadamente ao nível da clavícula no Rx).</li>
-        <li><strong>Pressão do cuff:</strong> Medir e manter entre <strong>20–30 cmH₂O</strong>. Abaixo: aspiração; acima: isquemia de mucosa traqueal.</li>
-        <li><strong>Sedoanalgesia:</strong> Iniciar imediatamente após confirmação. Não deixar o paciente acordar com o tubo.</li>
-        <li><strong>Vasopressor:</strong> Hipotensão pós-IOT ocorre em até 40% — ter noradrenalina pronta para infundir.</li>
-      </ul>
-      <span class="ref">Jaber S et al. An intervention to decrease complications related to endotracheal intubation in the ICU: a prospective, multiple-center study. <em>Intensive Care Med</em> 36(2):248–255, 2010. PMID: 19921149</span>
-      <span class="ref">Difficult Airway Management in the ICU: A Narrative Review. <em>J Clin Med</em> 2025. PMC12295989</span>
-    </div>
-
-    <div class="warn-box" style="margin-top:16px">
-      <strong>Pitfalls mais comuns na IOT em UTI:</strong>
-      <ul style="margin:6px 0 0 16px;line-height:1.8">
-        <li>Não pré-oxigenar adequadamente → dessaturação na primeira tentativa</li>
-        <li>Hipotensão pós-indução por não ter vasopressor pronto → PCR por hipoperfusão coronariana</li>
-        <li>Confirmar posição só com ausculta → intubação esofágica não diagnosticada</li>
-        <li>Não checar o cuff antes de usar → perde o cuff na hora de insuflar</li>
-        <li>Tentar múltiplas vezes sem trocar de estratégia → sangramento, edema e via aérea impossível</li>
-        <li>Usar succinilcolina em paciente queimado ou com plegia subaguda → PCR por hipercalemia</li>
-      </ul>
+    <div class="ok-box">
+      <strong>Posição "ramped" (obesos e gestantes)</strong><br>
+      Cabeceira a 20–30°, meato auditivo externo alinhado horizontalmente com o esterno. Aumenta a capacidade residual funcional, prolonga o tempo de apneia segura e melhora a visibilidade glótica.
     </div>
   </div>
+  <span class="ref">Turner JS et al. Bed-up-head-elevated position versus sniffing position in rapid sequence intubation. <em>Emerg Med J</em> 2024. PMC11279501</span>
+
+  <div class="phase-lbl">3 — Pré-oxigenação</div>
+  <p style="font-size:13px;color:var(--text2);line-height:1.6;margin:0 0 8px">Meta: SpO₂ ≥ 95% (idealmente 100%) antes da indução. Denitrogenação alveolar cria reserva de O₂ que tolera 3–8 min de apneia em adulto saudável; muito menos no crítico.</p>
+  <div class="three-col" style="margin-top:0">
+    <div class="info-box">
+      <strong>Máscara não-reinalante</strong><br>
+      FiO₂ 0,85–0,9. 3–5 min de respiração espontânea. Padrão para quem consegue ventilar adequadamente.
+    </div>
+    <div class="info-box">
+      <strong>VNI / CPAP</strong><br>
+      Preferível em hipoxemia grave (P/F &lt; 150). Mantém recrutamento alveolar. 3–5 min a FiO₂ 1,0 e PEEP 5–8 cmH₂O.
+    </div>
+    <div class="ok-box">
+      <strong>HFNO (cânula nasal de alto fluxo)</strong><br>
+      Pode ser mantida durante a laringoscopia (apneic oxygenation / NODESAT). Fluxo 40–70 L/min prolonga o tempo de apneia segura — especialmente útil no obeso e no crítico.
+    </div>
+  </div>
+  <span class="ref">Papazian L et al. Use of high-flow nasal cannula oxygenation during endotracheal intubation in ICU patients. <em>Intensive Care Med</em> 46(12):2234–2243, 2020. PMID: 32749526</span>
+
+  <div class="phase-lbl">4 — Pré-tratamento (seletivo)</div>
+  <div class="ind-grid">
+    <div class="ind-item"><span class="ind-t">Fentanil 1–3 mcg/kg IV (2–3 min antes)</span><span class="ind-d">Atenua resposta simpática à laringoscopia (taquicardia, hipertensão, elevação de PIC). Indicado em TCE grave, doença coronariana, aneurisma. Cuidado: hipotensão em instáveis.</span></div>
+    <div class="ind-item"><span class="ind-t">Lidocaína 1,5 mg/kg IV (3 min antes)</span><span class="ind-d">Uso controverso para atenuar elevação de PIC na laringoscopia. Evidência limitada; algumas equipes de neurointensivismo ainda usam.</span></div>
+    <div class="ind-item"><span class="ind-t">Vasopressor de resgate preparado</span><span class="ind-d">Noradrenalina ou efedrina prontos. Hipotensão pós-indução ocorre em 20–40% dos pacientes críticos.</span></div>
+  </div>
+
+  <div class="phase-lbl">5 — Indução + Paralisia</div>
+  <p style="font-size:13px;color:var(--text2);line-height:1.6;margin:0 0 10px">Indutor e bloqueador neuromuscular administrados em sequência rápida. Sem ventilação com máscara entre as duas drogas (risco de insuflar estômago e aspiração).</p>
+
+  <strong style="font-size:13px;color:var(--text);display:block;margin-bottom:8px">Indutores</strong>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Droga</th><th>Dose</th><th>Perfil</th><th>Quando usar / evitar</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Ketamina</strong></td><td class="td-mono">1–2 mg/kg IV</td><td>Broncodilatadora, mantém tônus simpático, analgésica. Não deprime o drive respiratório em doses únicas.</td><td>✓ 1ª escolha na UTI: choque, broncoespasmo, asma. Evitar em HIC grave (aumenta PIC) — evidência mais recente questiona isso, mas incerteza persiste.</td></tr>
+      <tr><td><strong>Etomidato</strong></td><td class="td-mono">0,3 mg/kg IV</td><td>Hemodinamicamente neutro. Inibe 11β-hidroxilase → supressão adrenal por 12–24h após dose única.</td><td>✓ Instabilidade hemodinâmica grave quando ketamina não disponível. Evitar em sepse (supressão adrenal aumenta mortalidade em meta-análises recentes).</td></tr>
+      <tr><td><strong>Propofol</strong></td><td class="td-mono">1–2 mg/kg IV</td><td>Rápido, curta duração. Hipotensor por vasodilatação e depressão miocárdica.</td><td>✓ Paciente hemodinamicamente estável, sem choque. Evitar em instáveis — queda de PA é frequente e relevante.</td></tr>
+      <tr><td><strong>Midazolam</strong></td><td class="td-mono">0,1–0,3 mg/kg IV</td><td>Início lento (2–3 min). Hipotensor. Sem analgesia.</td><td>Evitar como indutor único para RSI. Se usado: combinar com opioide.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <span class="ref">Matchett G et al. Induction agents for emergency airway management in critically ill patients. <em>J Intensive Care Med</em> 2024. PMC11186535</span>
+  <span class="ref">Matchett G et al. Ketamine versus etomidate for induction in critically ill adults: Bayesian meta-analysis. <em>Crit Care Med</em> 2024. PMC10874027</span>
+
+  <strong style="font-size:13px;color:var(--text);display:block;margin:14px 0 8px">Bloqueadores neuromusculares</strong>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Droga</th><th>Dose RSI</th><th>Onset</th><th>Duração</th><th>Reversor</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Succinilcolina</strong></td><td class="td-mono">1,5 mg/kg IV</td><td class="td-mono">45–60 s</td><td class="td-mono">8–12 min</td><td>Não tem (despolarizante — metabolismo plasmático)</td></tr>
+      <tr><td><strong>Rocurônio</strong></td><td class="td-mono">1,2 mg/kg IV</td><td class="td-mono">60–90 s</td><td class="td-mono">45–75 min</td><td>Sugamadex 16 mg/kg (reverte em &lt; 3 min)</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="warn-box" style="margin-top:12px">
+    <strong>Contraindicações da succinilcolina — hipercalemia lethal:</strong>
+    <ul style="margin:6px 0 0 16px;line-height:1.8">
+      <li>Queimadura &gt; 24–72h (não usar até 2 anos após)</li>
+      <li>Lesão muscular extensa / síndrome de imobilização prolongada (&gt; 5–7 dias)</li>
+      <li>Lesão neurológica com plegia (AVE, LM, Guillain-Barré) &gt; 24–72h</li>
+      <li>Miopatias, distrofia muscular</li>
+      <li>Hipercalemia conhecida</li>
+      <li>Hipertermia maligna ou história familiar</li>
+    </ul>
+    <strong style="display:block;margin-top:8px">Nessas situações: rocurônio 1,2 mg/kg + sugamadex disponível.</strong>
+  </div>
+  <span class="ref">Succinylcholine Chloride — StatPearls. NCBI Bookshelf NBK499984. 2024.</span>
+  <span class="ref">Tran DTT et al. Rocuronium versus succinylcholine for rapid sequence induction. <em>Cochrane Database Syst Rev</em> CD002788, 2015. PMC7104695</span>
+
+  <div class="phase-lbl">6 — Passagem do tubo</div>
+  <ol class="tl">
+    <li><span class="tl-n">1</span><span class="tl-b">Aguardar 45–60 s após o bloqueador neuromuscular (fasciculações cessam). Abrir a boca com técnica tesoura (polegar sobre molar inferior, indicador sobre superior), inserir o laringoscópio pela comissura labial direita deslocando a língua para a esquerda.</span></li>
+    <li><span class="tl-n">2</span><span class="tl-b">Lâmina curva (Macintosh): encaixar a ponta na vallécula (espaço entre base da língua e epiglote) e elevar em direção ao teto — <strong>não bascular</strong>. Visualizar as cordas vocais.</span></li>
+    <li><span class="tl-n">3</span><span class="tl-b">Se visualização difícil: manobra BURP (Backward-Upward-Right Pressure) sobre a laringe, ou trocar para videolaringoscópio. <strong>Nunca aplicar força excessiva</strong> — lesão de dentes e tecidos moles.</span></li>
+    <li><span class="tl-n">4</span><span class="tl-b">Inserir o TOT com o cuff passando ~3 cm abaixo das cordas. Profundidade padrão: <strong>23 cm na comissura labial para homens, 21 cm para mulheres</strong>. Insuflar o cuff.</span></li>
+    <li><span class="tl-n">5</span><span class="tl-b">Retirar o guia/bougie se usado. Conectar ao VM.</span></li>
+  </ol>
+
+  <div class="phase-lbl">7 — Confirmação + pós-IOT</div>
+  <div class="ind-grid">
+    <div class="ind-item"><span class="ind-t">Capnografia (EtCO₂)</span><span class="ind-d">Padrão-ouro. Onda retangular de CO₂ confirma posição traqueal. Ausência de onda = esôfago.</span></div>
+    <div class="ind-item"><span class="ind-t">Ausculta bilateral + epigástrio</span><span class="ind-d">Complementar — não substitui capnografia.</span></div>
+    <div class="ind-item"><span class="ind-t">SpO₂</span><span class="ind-d">Não é método de confirmação — pode demorar para cair em intubação esofágica.</span></div>
+    <div class="ind-item"><span class="ind-t">Rx de tórax</span><span class="ind-d">Confirma profundidade. Ponta do TOT deve estar 3–5 cm acima da carina (aproximadamente ao nível da clavícula no Rx).</span></div>
+    <div class="ind-item"><span class="ind-t">Pressão do cuff</span><span class="ind-d">Medir e manter entre <strong>20–30 cmH₂O</strong>. Abaixo: aspiração; acima: isquemia de mucosa traqueal.</span></div>
+    <div class="ind-item"><span class="ind-t">Sedoanalgesia</span><span class="ind-d">Iniciar imediatamente após confirmação. Não deixar o paciente acordar com o tubo.</span></div>
+    <div class="ind-item"><span class="ind-t">Vasopressor</span><span class="ind-d">Hipotensão pós-IOT ocorre em até 40% — ter noradrenalina pronta para infundir.</span></div>
+  </div>
+  <span class="ref">Jaber S et al. An intervention to decrease complications related to endotracheal intubation in the ICU: a prospective, multiple-center study. <em>Intensive Care Med</em> 36(2):248–255, 2010. PMID: 19921149</span>
+  <span class="ref">Difficult Airway Management in the ICU: A Narrative Review. <em>J Clin Med</em> 2025. PMC12295989</span>
+
+  <!-- ── 04 · Pitfalls ── -->
+  <div class="sec-h"><span class="sec-num">04</span><h2>O que não fazer</h2></div>
+  <div class="pitfall-h">Pitfalls mais comuns na IOT em UTI</div>
+  <ul class="pitfall-list">
+    <li>Não pré-oxigenar adequadamente → dessaturação na primeira tentativa</li>
+    <li>Hipotensão pós-indução por não ter vasopressor pronto → PCR por hipoperfusão coronariana</li>
+    <li>Confirmar posição só com ausculta → intubação esofágica não diagnosticada</li>
+    <li>Não checar o cuff antes de usar → perde o cuff na hora de insuflar</li>
+    <li>Tentar múltiplas vezes sem trocar de estratégia → sangramento, edema e via aérea impossível</li>
+    <li>Usar succinilcolina em paciente queimado ou com plegia subaguda → PCR por hipercalemia</li>
+  </ul>
 
 </section>
 </main>
