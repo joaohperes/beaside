@@ -66,9 +66,10 @@ Algumas páginas têm componentes sob medida — preserve-os, não converta para
 
 ### Status do design system por módulo
 
-- ✅ **proc, hemo, VM** — no design system unificado.
-- ⏳ **neuro** — ainda no estilo antigo (`.card`/`.callout`/`.concept-card`). É o próximo
-  candidato natural à migração. ~9 páginas.
+- ✅ **proc, hemo, VM, neuro** — no design system unificado (`.page-head`, `.hero-meta`,
+  `.sec-h`, `.ind-grid`, boxes, `.tl`).
+- ⏳ **neuro (conteúdo)** — páginas stub ainda sem miolo clínico: `avc-i`, `avc-h`, `enc`,
+  `calc-neuro`; `pearls` sem cards. Shell e markup prontos para o parceiro preencher.
 
 ## Assistente de IA (`api/`)
 
