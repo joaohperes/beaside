@@ -148,7 +148,6 @@ function buildShell(){
       : '<span class="header-title">Guias clínicos de UTI</span>')+
     '<div class="header-actions">'+
       '<button class="btn-search" onclick="openSearch()" type="button"><span>Buscar</span> <kbd>⌘K</kbd></button>'+
-      (mod?'<button class="btn-plantao" id="btnPlantao" type="button" onclick="togglePlantao()">Plantão</button>':'')+
       '<button class="menu-btn" type="button" onclick="toggleMenu()">Menu</button>'+
     '</div>';
 
@@ -235,19 +234,6 @@ function toggleNavGroup(btn){
   try{st=JSON.parse(localStorage.getItem('vmguide-nav-open-'+mod))||{};}catch(e){st={};}
   st[cat]=open;
   try{localStorage.setItem('vmguide-nav-open-'+mod,JSON.stringify(st));}catch(e){}
-}
-
-// ── Modo plantão ─────────────────────────────────────────────
-function setPlantaoBtn(on){
-  const btn=document.getElementById('btnPlantao');
-  if(!btn)return;
-  if(on){btn.textContent='Sair do Plantão';btn.classList.add('active');}
-  else{btn.textContent='Plantão';btn.classList.remove('active');}
-}
-function togglePlantao(){
-  const on=document.body.classList.toggle('plantao-mode');
-  setPlantaoBtn(on);
-  try{localStorage.setItem('vmguide-plantao',on?'1':'0');}catch(e){}
 }
 
 // ── Share / Toast ────────────────────────────────────────────
@@ -692,7 +678,6 @@ function buildGlossaryFooter(){
 // ============================================================
 document.addEventListener('DOMContentLoaded',()=>{
   buildShell();
-  try{if(localStorage.getItem('vmguide-plantao')==='1'){document.body.classList.add('plantao-mode');setPlantaoBtn(true);}}catch(e){}
   initProgress();
   initSearchKeys();
   buildGlossaryFooter();
