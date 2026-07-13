@@ -18,7 +18,7 @@ const MODULES = {
     label: 'Hemo Guide',
     subtitle: 'Hemodinâmica & Choque',
     root: 'hemo/',
-    color: '#7c6ff7',
+    color: '#e05555',
   },
   neuro: {
     id: 'neuro',
@@ -48,6 +48,7 @@ const MODULE_PAGES = {
     {id:'hipercapnia',  file:'hipercapnia.html',  cat:'Patologias',               label:'Hipercapnia permissiva',  title:'Hipercapnia Permissiva',                subtitle:'Quando e como aceitar a elevação da PaCO₂'},
     {id:'tce',          file:'tce.html',          cat:'Patologias',               label:'VM no TCE',               title:'VM no TCE — Estratégia Neuroprotetora', subtitle:'Metas de PPC / PIC · Normoventilação'},
     {id:'complicacoes', file:'complicacoes.html', cat:'Monitorização & Segurança',label:'Complicações da VM',      title:'Complicações da VM',                    subtitle:'Reconhecimento precoce, fisiopatologia e conduta'},
+    {id:'capnografia',  file:'capnografia.html',  cat:'Monitorização & Segurança',label:'Capnografia & EtCO₂',     title:'Capnografia & EtCO₂',                   subtitle:'Confirmação de IOT, monitorização contínua e uso na PCR'},
     {id:'dissincronia', file:'dissincronia.html', cat:'Monitorização & Segurança',label:'Dissincronia P-V',        title:'Dissincronia Paciente-Ventilador',      subtitle:'Tipos, diagnóstico pelas curvas e conduta'},
     {id:'bnm',          file:'bnm.html',          cat:'Monitorização & Segurança',label:'Bloqueio neuromuscular',  title:'Bloqueio Neuromuscular na SDRA',        subtitle:'Quando paralisar, qual agente e por quanto tempo'},
     {id:'desmame',      file:'desmame.html',      cat:'Desmame',                  label:'SAT / SBT / Extubação',   title:'Desmame Ventilatório — SAT / SBT / Extubação', subtitle:'Critérios, protocolo e T-piece vs PSV baixo'},
@@ -80,12 +81,15 @@ const MODULE_PAGES = {
     {id:'assistente',   file:'assistente.html',   cat:'Assistente IA',            label:'Assistente de conduta',   title:'Assistente de Conduta (IA)',            subtitle:'Discuta o caso hemodinâmico e receba sugestão de conduta'},
   ],
   neuro: [
-    {id:'fisio',        file:'fisio.html',        cat:'Fundamentos',              label:'Fisiologia neuro',        title:'Fisiologia do Neurocrítico',            subtitle:'PIC, PPC, autorregulação cerebral e limiar de isquemia'},
-    {id:'tce',          file:'tce.html',          cat:'Patologias',               label:'TCE grave',               title:'TCE Grave — Manejo na UTI',             subtitle:'Metas de PPC/PIC, osmoterapia e estratégia ventilatória'},
+    {id:'fisio',        file:'fisio.html',        cat:'Fundamentos',              label:'Fisiologia neuro',        title:'Fisiologia do Neurocrítico',            subtitle:'Monro-Kellie, PPC, autorregulação cerebral e herniação'},
+    {id:'tce',          file:'tce.html',          cat:'Patologias',               label:'Hemodinâmica & PIC',      title:'Hemodinâmica e Manejo Aprofundado da PIC', subtitle:'Metas de PAS/PAM por etiologia e algoritmo em degraus'},
     {id:'avc-i',        file:'avc-i.html',        cat:'Patologias',               label:'AVC isquêmico',           title:'AVC Isquêmico Agudo',                   subtitle:'Janela terapêutica, trombólise e trombectomia'},
     {id:'avc-h',        file:'avc-h.html',        cat:'Patologias',               label:'AVC hemorrágico',         title:'AVC Hemorrágico — HSA e HIP',           subtitle:'Hemorragia subaracnóidea e intraparenquimatosa'},
     {id:'enc',          file:'enc.html',          cat:'Patologias',               label:'Encefalopatias',          title:'Encefalopatias & Status Epiléptico',    subtitle:'Delirium, status não convulsivo e encefalopatia hepática'},
-    {id:'sedoanalgesia',file:'sedoanalgesia.html',cat:'Farmacologia',             label:'Sedoanalgesia neuro',     title:'Sedoanalgesia no Paciente Neuro',       subtitle:'Particularidades: evitar hipnóticos que elevam PIC, RASS-alvo, CIWA'},
+    {id:'vm',           file:'vm.html',           cat:'Patologias',               label:'VM no neurocrítico',      title:'Manejo Ventilatório no Neurocrítico',   subtitle:'PEEP, PaCO₂, hiperventilação e desmame'},
+    {id:'metabolico',   file:'metabolico.html',   cat:'Patologias',               label:'Metabólico & hídrico',    title:'Manejo Metabólico, Hídrico e Infeccioso', subtitle:'Balanço hídrico, glicemia, sódio, febre e multidisciplinar'},
+    {id:'pos-op',       file:'pos-op.html',       cat:'Patologias',               label:'Pós-op & DVE',            title:'Pós-Operatório e Drenagem Neurocirúrgica', subtitle:'DVE, herniações atípicas e anticonvulsivantes perioperatórios'},
+    {id:'sedoanalgesia',file:'sedoanalgesia.html',cat:'Farmacologia',             label:'Sedoanalgesia neuro',     title:'Sedoanalgesia, RASS e Bloqueio Neuromuscular', subtitle:'Drogas, diluições e metas de RASS por cenário'},
     {id:'calc-neuro',   file:'calc-neuro.html',   cat:'Ferramentas',              label:'Calculadoras',            title:'Calculadoras Neurológicas',             subtitle:'PPC · Osmolaridade · GCS · NIHSS · Hunt & Hess · Fisher'},
     {id:'pearls',       file:'pearls.html',       cat:'Pearls & Pitfalls',        label:'Cards clínicos',          title:'Pearls & Pitfalls',                     subtitle:'Cenários de plantão: acerto, erro comum e o porquê do mecanismo'},
     {id:'assistente',   file:'assistente.html',   cat:'Assistente IA',            label:'Assistente de conduta',   title:'Assistente de Conduta (IA)',            subtitle:'Discuta o caso neurológico e receba sugestão de conduta'},
@@ -103,6 +107,7 @@ const MODULE_PAGES = {
     {id:'pl',            file:'pl.html',            cat:'Drenagem & punções',      label:'Punção lombar',           title:'Punção Lombar',                         subtitle:'Quando fazer TC antes, manômetro, 4 tubos e tabela de LCR'},
     {id:'pai',           file:'pai.html',           cat:'Monitorização invasiva',  label:'PAI — onda arterial',     title:'Pressão Arterial Invasiva (PAI)',        subtitle:'Anatomia da onda, amortecimento, PPV e armadilhas'},
     {id:'swan',          file:'swan.html',          cat:'Monitorização invasiva',  label:'Swan-Ganz',               title:'Cateter de Artéria Pulmonar (Swan-Ganz)',subtitle:'Inserção, curvas por câmara, parâmetros e perfis de choque'},
+    {id:'ritmo',         file:'ritmo.html',         cat:'Emergência cardíaca',     label:'Cardioversão & marca-passo',title:'Cardioversão, Desfibrilação & Marca-passo',subtitle:'Choque sincronizado, desfibrilação e marca-passo transcutâneo/transvenoso'},
     {id:'pearls',        file:'pearls.html',        cat:'Pearls & Pitfalls',       label:'Dúvidas de plantão',      title:'Dúvidas de Plantão',                    subtitle:'As perguntas que ninguém responde no guia clássico'},
   ],
 };
@@ -123,23 +128,28 @@ function buildShell(){
   const curId=currentPageId();
   const pages=getPages();
   const root=getRootPath();
+  const modMeta=MODULES[mod];
 
   // Header
   const header=document.createElement('header');
   header.className='header';
   header.innerHTML=
-    '<a class="header-logo" href="'+root+'index.html" style="text-decoration:none;display:flex;align-items:center;gap:8px">'+
-      '<svg class="header-logo-bars" width="12" height="15" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">'+
+    '<a class="header-logo" href="'+root+'index.html" aria-label="be·aside — hub">'+
+      '<svg class="header-logo-bars" width="12" height="15" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'+
         '<rect x="0" y="2" width="6" height="20" rx="3" fill="var(--accent)"/>'+
         '<rect x="10" y="0" width="6" height="15" rx="3" fill="var(--accent)" opacity=".55"/>'+
       '</svg>'+
-      '<span style="font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.12em;color:#fff;opacity:.92">be·aside</span>'+
+      '<span class="header-wordmark">be·aside</span>'+
     '</a>'+
-    '<span class="header-title">'+(MODULES[mod]?MODULES[mod].subtitle:'Guias Clínicos de UTI')+'</span>'+
+    (modMeta
+      ? '<span class="header-sep" aria-hidden="true"></span>'+
+        '<span class="header-mod"><span class="header-mod-dot" aria-hidden="true"></span>'+modMeta.label+'</span>'+
+        '<span class="header-title">'+modMeta.subtitle+'</span>'
+      : '<span class="header-title">Guias clínicos de UTI</span>')+
     '<div class="header-actions">'+
-      '<button class="btn-search" onclick="openSearch()">Buscar <kbd>⌘K</kbd></button>'+
-      (mod?'<button class="btn-plantao" id="btnPlantao" onclick="togglePlantao()">Plantão</button>':'')+
-      '<button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>'+
+      '<button class="btn-search" onclick="openSearch()" type="button"><span>Buscar</span> <kbd>⌘K</kbd></button>'+
+      (mod?'<button class="btn-plantao" id="btnPlantao" type="button" onclick="togglePlantao()">Plantão</button>':'')+
+      '<button class="menu-btn" type="button" onclick="toggleMenu()">Menu</button>'+
     '</div>';
 
   const progress=document.createElement('div');progress.id='progress';
@@ -149,6 +159,7 @@ function buildShell(){
   // Sidebar
   const nav=document.createElement('nav');
   nav.className='sidebar';nav.id='sidebar';
+  nav.setAttribute('aria-label','Navegação do módulo');
 
   if(pages.length){
     // Dentro de um módulo: sidebar normal com seções colapsáveis
@@ -161,12 +172,18 @@ function buildShell(){
     let openState={};
     try{openState=JSON.parse(localStorage.getItem('vmguide-nav-open-'+mod))||{};}catch(e){openState={};}
     const curCat=(pages.find(p=>p.id===curId)||{}).cat;
-    let html='<a class="nav-back" href="'+root+'index.html">← Hub</a>';
-    groups.forEach(g=>{
+    let html=
+      '<a class="nav-back" href="'+root+'index.html"><span class="nav-back-arrow">←</span> Hub</a>'+
+      '<div class="sidebar-mod">'+
+        '<div class="sidebar-mod-k">Módulo</div>'+
+        '<a class="sidebar-mod-v" href="index.html">'+(modMeta?modMeta.subtitle:mod)+'</a>'+
+      '</div>';
+    groups.forEach((g,gi)=>{
       const saved=openState[g.cat];
-      const open=saved===true||(saved===undefined&&g.cat===curCat);
+      // Na landing do módulo (sem page id): abre só o 1º grupo. Em páginas: abre a categoria ativa.
+      const open=saved===true||(saved===undefined&&(g.cat===curCat||(!curId&&gi===0)));
       html+='<div class="sidebar-group'+(open?' open':'')+'" data-cat="'+g.cat.replace(/"/g,'&quot;')+'">'+
-              '<button class="sidebar-section" onclick="toggleNavGroup(this)">'+
+              '<button class="sidebar-section" type="button" onclick="toggleNavGroup(this)">'+
                 '<span>'+g.cat+'</span><span class="sg-arrow">▸</span>'+
               '</button>'+
               '<div class="sidebar-group-items">';
@@ -179,9 +196,14 @@ function buildShell(){
     nav.innerHTML=html;
   } else {
     // Hub: sidebar com links dos módulos
-    let html='<div class="sidebar-group open"><div class="sidebar-group-items">';
+    let html=
+      '<div class="sidebar-mod">'+
+        '<div class="sidebar-mod-k">Navegação</div>'+
+        '<div class="sidebar-mod-v">Módulos</div>'+
+      '</div>'+
+      '<div class="sidebar-group open"><div class="sidebar-group-items">';
     Object.values(MODULES).forEach(m=>{
-      html+='<a class="nav-link" href="'+m.root+(MODULE_PAGES[m.id][0].file)+'">'+m.label+'</a>';
+      html+='<a class="nav-link" href="'+m.root+'">'+m.label+'</a>';
     });
     html+='</div></div>';
     nav.innerHTML=html;

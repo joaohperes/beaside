@@ -9,72 +9,135 @@
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/styles.css">
-<style>
-  .lp-hero{padding:36px 0 28px;border-bottom:1px solid var(--border);margin-bottom:32px}
-  .lp-eyebrow{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin-bottom:14px;display:flex;align-items:center;gap:8px}
-  .lp-eyebrow::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
-  .lp-title{font-size:28px;font-weight:600;color:#e8ecf2;line-height:1.15;letter-spacing:-.02em;margin-bottom:12px}
-  .lp-desc{font-size:13.5px;color:var(--text2);line-height:1.75;max-width:580px}
-  .lp-start{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-family:var(--mono);font-size:11px;color:var(--accent);background:rgba(var(--accent-rgb),.08);border:1px solid rgba(var(--accent-rgb),.25);padding:8px 16px;border-radius:6px;text-decoration:none;transition:all .15s}
-  .lp-start:hover{background:rgba(var(--accent-rgb),.15);border-color:rgba(var(--accent-rgb),.45)}
-  .lp-start-arrow{transition:transform .15s}
-  .lp-start:hover .lp-start-arrow{transform:translateX(3px)}
-
-  .lp-section-label{font-family:var(--mono);font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--text3);margin:28px 0 12px}
-  .lp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px}
-  @media(max-width:600px){.lp-grid{grid-template-columns:1fr}}
-
-  .lp-card{display:block;text-decoration:none;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 18px;transition:border-color .15s,background .15s}
-  .lp-card:hover{border-color:rgba(var(--accent-rgb),.4);background:var(--bg3)}
-  .lp-card-cat{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:6px}
-  .lp-card-title{font-size:13.5px;font-weight:600;color:#e8ecf2;margin-bottom:4px}
-  .lp-card-sub{font-size:12px;color:var(--text3);line-height:1.5}
-</style>
 </head>
 <body data-module="proc" data-page="">
 <main class="main">
 
   <div class="lp-hero">
-    <div class="lp-eyebrow">Procedimentos</div>
-    <div class="lp-title">Procedimentos de UTI</div>
-    <p class="lp-desc">
-      Não é um manual de técnica — é um guia de dúvidas reais de plantão. O que fazer quando o Shilley saiu, como trocar uma traqueostomia com segurança, se dá pra usar noradrenalina em periférico. Cada pergunta vem com a resposta prática, o racional clínico e a referência que a suporta.
-    </p>
-    <a class="lp-start" href="pearls.html">Ver dúvidas de plantão <span class="lp-start-arrow">→</span></a>
+    <div class="lp-hero-row">
+      <div>
+        <div class="lp-eyebrow">Procedimentos</div>
+        <h1 class="lp-title">Procedimentos de UTI</h1>
+        <p class="lp-desc">
+          Não é um manual de técnica — é um guia de dúvidas reais de plantão. O que fazer quando o Shilley saiu, como trocar uma traqueostomia com segurança, se dá pra usar noradrenalina em periférico. Cada tópico com racional clínico e referência.
+        </p>
+        <a class="lp-start" href="pearls.html">Ver dúvidas de plantão <span class="lp-start-arrow">→</span></a>
+      </div>
+      <aside class="lp-panel" aria-label="Resumo do módulo">
+        <div class="lp-panel-label">módulo <span>online</span></div>
+        <div class="lp-panel-stats">
+          <div class="lp-stat"><div class="lp-stat-k">Páginas</div><div class="lp-stat-v">14</div></div>
+          <div class="lp-stat"><div class="lp-stat-k">Foco</div><div class="lp-stat-v" style="font-size:12px;padding-top:2px">Plantão</div></div>
+          <div class="lp-stat"><div class="lp-stat-k">Acessos</div><div class="lp-stat-v" style="font-size:12px">CVC · IO</div></div>
+          <div class="lp-stat"><div class="lp-stat-k">Via aérea</div><div class="lp-stat-v" style="font-size:12px">IOT · TQ</div></div>
+        </div>
+        <div class="lp-panel-foot">
+          <span>plantão · referência rápida</span>
+          <span style="color:var(--accent)">04</span>
+        </div>
+      </aside>
+    </div>
   </div>
 
-  <div class="lp-section-label">Dispositivos</div>
+  <div class="lp-section-label">Acesso vascular</div>
   <div class="lp-grid">
-    <a class="lp-card" href="acessos.html">
-      <div class="lp-card-cat">Dispositivos</div>
-      <div class="lp-card-title">Acessos vasculares</div>
-      <div class="lp-card-sub">CVC, Shilley, noradrenalina periférica e acesso intraósseo</div>
+    <a class="lp-card" href="cvc.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Acesso vascular</div><span class="lp-card-idx">01</span></div>
+      <div class="lp-card-title">Cateter venoso central</div>
+      <div class="lp-card-sub">Seldinger, escolha de sítio, profundidade e complicações</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
-    <a class="lp-card" href="vias-aereas.html">
-      <div class="lp-card-cat">Dispositivos</div>
-      <div class="lp-card-title">Via aérea & traqueostomia</div>
-      <div class="lp-card-sub">Troca de traqueostomia, endocânula e sistema fechado de aspiração</div>
+    <a class="lp-card" href="linha-arterial.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Acesso vascular</div><span class="lp-card-idx">02</span></div>
+      <div class="lp-card-title">Linha arterial</div>
+      <div class="lp-card-sub">Técnica, zeragem, Allen test e armadilhas do sítio</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
-    <a class="lp-card" href="drenagem.html">
-      <div class="lp-card-cat">Dispositivos</div>
-      <div class="lp-card-title">Drenagem & punções</div>
-      <div class="lp-card-sub">Dreno torácico, toracocentese, paracentese, punção lombar</div>
-    </a>
-    <a class="lp-card" href="monitorizacao.html">
-      <div class="lp-card-cat">Dispositivos</div>
-      <div class="lp-card-title">Monitorização invasiva</div>
-      <div class="lp-card-sub">Linha arterial, PAI, cateter de Swan-Ganz</div>
+    <a class="lp-card" href="io.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Acesso vascular</div><span class="lp-card-idx">03</span></div>
+      <div class="lp-card-title">Acesso intraósseo</div>
+      <div class="lp-card-sub">Quando usar, sítios, técnica e drogas compatíveis</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
   </div>
 
-  <div class="lp-section-label">Dúvidas de plantão</div>
+  <div class="lp-section-label">Via aérea</div>
   <div class="lp-grid">
+    <a class="lp-card" href="iot.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Via aérea</div><span class="lp-card-idx">04</span></div>
+      <div class="lp-card-title">IOT — Sequência rápida (RSI)</div>
+      <div class="lp-card-sub">Os 7 P: preparo, posição, pré-O₂, pré-trat., indução, passagem, confirmação</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
+    <a class="lp-card" href="vad.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Via aérea</div><span class="lp-card-idx">05</span></div>
+      <div class="lp-card-title">Via aérea difícil &amp; CICO</div>
+      <div class="lp-card-sub">LEMON, algoritmo DAS 4 planos e cricotireoidotomia</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
+    <a class="lp-card" href="traqueo.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Via aérea</div><span class="lp-card-idx">06</span></div>
+      <div class="lp-card-title">Traqueostomia &amp; cuidados</div>
+      <div class="lp-card-sub">Troca de cânula, endocânula e sistema fechado</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
+  </div>
+
+  <div class="lp-section-label">Drenagem &amp; punções</div>
+  <div class="lp-grid">
+    <a class="lp-card" href="toracocentese.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Drenagem</div><span class="lp-card-idx">07</span></div>
+      <div class="lp-card-title">Toracocentese</div>
+      <div class="lp-card-sub">Técnica, limite de drenagem e complicações</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
+    <a class="lp-card" href="dreno.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Drenagem</div><span class="lp-card-idx">08</span></div>
+      <div class="lp-card-title">Dreno torácico</div>
+      <div class="lp-card-sub">Triângulo de segurança BTS, técnica e regras de clampeamento</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
+    <a class="lp-card" href="paracentese.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Drenagem</div><span class="lp-card-idx">09</span></div>
+      <div class="lp-card-title">Paracentese</div>
+      <div class="lp-card-sub">Coagulopatia, Z-track, albumina e SAAG</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
+    <a class="lp-card" href="pl.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Drenagem</div><span class="lp-card-idx">10</span></div>
+      <div class="lp-card-title">Punção lombar</div>
+      <div class="lp-card-sub">Quando fazer TC antes, manômetro, 4 tubos e tabela de LCR</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
+  </div>
+
+  <div class="lp-section-label">Monitorização &amp; emergência</div>
+  <div class="lp-grid">
+    <a class="lp-card" href="pai.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Monitorização</div><span class="lp-card-idx">11</span></div>
+      <div class="lp-card-title">PAI — onda arterial</div>
+      <div class="lp-card-sub">Anatomia da onda, amortecimento, PPV e armadilhas</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
+    <a class="lp-card" href="swan.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Monitorização</div><span class="lp-card-idx">12</span></div>
+      <div class="lp-card-title">Swan-Ganz</div>
+      <div class="lp-card-sub">Inserção, curvas por câmara, parâmetros e perfis de choque</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
+    <a class="lp-card" href="ritmo.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Emergência</div><span class="lp-card-idx">13</span></div>
+      <div class="lp-card-title">Cardioversão &amp; marca-passo</div>
+      <div class="lp-card-sub">Choque sincronizado, desfibrilação e marca-passo</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
     <a class="lp-card" href="pearls.html">
-      <div class="lp-card-cat">Pearls & Pitfalls</div>
+      <div class="lp-card-top"><div class="lp-card-cat">Pearls</div><span class="lp-card-idx">14</span></div>
       <div class="lp-card-title">Dúvidas de plantão</div>
-      <div class="lp-card-sub">Shilley, traqueostomia, sistema fechado, noradrenalina periférica, IO — com referências</div>
+      <div class="lp-card-sub">Shilley, traqueostomia, Nora periférica, IO — com referências</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
   </div>
 

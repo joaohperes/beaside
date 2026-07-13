@@ -12,291 +12,605 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#080a0d;--bg2:#0f1215;--bg3:#161b20;
-  --border:#1e2530;--border2:#2a3545;
+  --bg:#07090c;--bg2:#0d1014;--bg3:#141a20;--bg4:#1a222c;
+  --border:#1c2430;--border2:#2a3545;
   --text:#d4d8e0;--text2:#7a8496;--text3:#404a5c;
-  --teal:#1db88a;--purple:#7c6ff7;--blue:#3b9eff;--amber:#f0a030;
+  --teal:#1db88a;--purple:#9b6ff7;--blue:#3b82f6;--red:#e05555;--amber:#f0a030;
   --mono:'IBM Plex Mono',monospace;
   --sans:'IBM Plex Sans',sans-serif;
+  --ease:cubic-bezier(.2,.8,.2,1);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
   font-family:var(--sans);background:var(--bg);color:var(--text);
   min-height:100vh;overflow-x:hidden;
-  /* subtle dot grid */
-  background-image:radial-gradient(circle,#1e2530 1px,transparent 1px);
-  background-size:28px 28px;
 }
 
-/* ── ambient glow behind content ── */
+/* ── scene ── */
 .scene{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-.glow{position:absolute;border-radius:50%;filter:blur(120px);opacity:.18}
-.glow-teal{width:600px;height:600px;background:#1db88a;top:-120px;left:50%;transform:translateX(-50%)}
-.glow-purple{width:400px;height:400px;background:#7c6ff7;bottom:-60px;right:-60px}
-.glow-blue{width:300px;height:300px;background:#3b9eff;bottom:0;left:-80px}
+.scene-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(28,36,48,.55) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(28,36,48,.55) 1px,transparent 1px);
+  background-size:48px 48px;
+  mask-image:radial-gradient(ellipse 75% 65% at 50% 30%,#000 20%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 75% 65% at 50% 30%,#000 20%,transparent 75%);
+}
+.glow{position:absolute;border-radius:50%;filter:blur(100px);opacity:.22}
+.glow-teal{width:520px;height:520px;background:#1db88a;top:-160px;left:50%;transform:translateX(-50%)}
+.glow-red{width:320px;height:320px;background:#e05555;top:35%;left:-80px;opacity:.12}
+.glow-purple{width:360px;height:360px;background:#9b6ff7;bottom:-40px;right:-60px;opacity:.14}
+.glow-blue{width:280px;height:280px;background:#3b82f6;bottom:10%;left:30%;opacity:.08}
 
-/* ── wrap ── */
-.hub{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:72px 24px 64px}
+/* trace ECG de fundo — ritmo sinusal (P–QRS–T) */
+.trace{
+  position:absolute;left:0;right:0;top:40%;
+  height:100px;opacity:.13;
+}
+.trace svg{
+  width:200%;height:100%;
+  animation:trace-scroll 20s linear infinite;
+}
+.trace .ecg-glow{
+  stroke:#1db88a;stroke-width:3.2;opacity:.22;
+  filter:blur(.6px);
+}
+.trace .ecg-line{
+  stroke:#1db88a;stroke-width:1.35;opacity:.95;
+}
+.trace path{
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+@keyframes trace-scroll{to{transform:translateX(-50%)}}
 
-/* ── logo ── */
-.logo{display:flex;align-items:center;gap:10px;margin-bottom:52px;text-decoration:none}
-.logo-icon{opacity:.9}
+/* ── shell ── */
+.hub{
+  position:relative;z-index:1;
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  max-width:1100px;margin:0 auto;
+  padding:28px 28px 48px;
+}
+
+/* ── top bar ── */
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;margin-bottom:56px;
+  opacity:0;animation:rise .7s var(--ease) .05s forwards;
+}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-icon{opacity:.95}
 .logo-icon rect:first-child{animation:bar-pulse 2.4s ease-in-out infinite}
 .logo-icon rect:last-child{animation:bar-pulse 2.4s ease-in-out infinite .6s}
 @keyframes bar-pulse{0%,100%{opacity:1}50%{opacity:.35}}
-.logo-wordmark{font-family:var(--mono);font-size:17px;font-weight:500;letter-spacing:.14em;color:#fff;opacity:.92}
+.logo-wordmark{
+  font-family:var(--mono);font-size:15px;font-weight:500;
+  letter-spacing:.14em;color:#fff;opacity:.94;
+}
+.top-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.meta-pill{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.06em;
+  color:var(--text2);padding:6px 11px;border-radius:999px;
+  background:rgba(255,255,255,.02);
+  border:1px solid var(--border);
+}
+.meta-pill .live{
+  width:6px;height:6px;border-radius:50%;background:var(--teal);
+  box-shadow:0 0 0 0 rgba(29,184,138,.5);
+  animation:live-ping 2s ease-out infinite;
+}
+@keyframes live-ping{
+  0%{box-shadow:0 0 0 0 rgba(29,184,138,.45)}
+  70%{box-shadow:0 0 0 7px rgba(29,184,138,0)}
+  100%{box-shadow:0 0 0 0 rgba(29,184,138,0)}
+}
 
-/* ── headline ── */
-.headline{text-align:center;max-width:520px;margin-bottom:64px}
-.headline-eyebrow{
+/* ── hero ── */
+.hero{
+  margin-bottom:48px;
+  opacity:0;animation:rise .75s var(--ease) .12s forwards;
+}
+.hero-row{
+  display:grid;
+  grid-template-columns:1.35fr .85fr;
+  gap:36px;align-items:end;
+}
+.hero-eyebrow{
   display:inline-flex;align-items:center;gap:8px;
   font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--teal);margin-bottom:20px;
-  padding:5px 14px;border-radius:20px;
-  background:rgba(29,184,138,.08);border:1px solid rgba(29,184,138,.2);
+  color:var(--teal);margin-bottom:18px;
+  padding:5px 12px 5px 10px;border-radius:999px;
+  background:rgba(29,184,138,.07);border:1px solid rgba(29,184,138,.2);
 }
-.headline-eyebrow::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--teal)}
-.headline h1{
-  font-size:clamp(28px,5.5vw,46px);font-weight:600;
-  line-height:1.1;letter-spacing:-.03em;
-  color:#fff;margin-bottom:16px;
+.hero-eyebrow::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--teal);flex-shrink:0}
+.hero h1{
+  font-size:clamp(34px,5.2vw,56px);font-weight:600;
+  line-height:1.05;letter-spacing:-.035em;color:#fff;
+  margin-bottom:18px;
 }
-.headline h1 span{
-  background:linear-gradient(135deg,#1db88a 0%,#34d399 60%,#6ee7b7 100%);
+.hero h1 .grad{
+  background:linear-gradient(120deg,#1db88a 0%,#34d399 45%,#6ee7b7 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
-.headline p{font-size:14px;color:var(--text2);line-height:1.75;max-width:400px;margin:0 auto}
-
-/* ── grid ── */
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-  width:100%;max-width:760px;
+.hero-lead{
+  font-size:15px;color:var(--text2);line-height:1.7;
+  max-width:440px;font-weight:300;
 }
+
+/* side panel — vitals strip */
+.hero-panel{
+  border:1px solid var(--border);
+  border-radius:16px;
+  background:linear-gradient(165deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
+  padding:18px 18px 14px;
+  position:relative;overflow:hidden;
+}
+.hero-panel::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(29,184,138,.35),transparent);
+}
+.panel-label{
+  font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--text3);margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;
+}
+.panel-label span{color:var(--teal);opacity:.85}
+.panel-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:10px;padding:12px 12px 10px;
+}
+.stat-k{
+  font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--text3);margin-bottom:6px;
+}
+.stat-v{
+  font-family:var(--mono);font-size:20px;font-weight:500;color:#fff;
+  letter-spacing:-.02em;line-height:1;
+}
+.stat-v small{font-size:11px;color:var(--text2);font-weight:400;margin-left:3px}
+.panel-foot{
+  margin-top:12px;padding-top:10px;border-top:1px solid var(--border);
+  font-family:var(--mono);font-size:10px;color:var(--text3);
+  display:flex;justify-content:space-between;gap:8px;
+}
+
+/* ── section head ── */
+.section-head{
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:16px;
+  opacity:0;animation:rise .7s var(--ease) .2s forwards;
+}
+.section-head h2{
+  font-family:var(--mono);font-size:10px;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--text3);
+  white-space:nowrap;
+}
+.section-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+
+/* ── bento ── */
+.bento{
+  display:grid;
+  grid-template-columns:1.15fr 1fr;
+  grid-template-rows:auto auto;
+  gap:12px;
+}
+.bento .card:nth-child(1){opacity:0;animation:rise .7s var(--ease) .28s forwards}
+.bento .card:nth-child(2){opacity:0;animation:rise .7s var(--ease) .36s forwards}
+.bento .card:nth-child(3){opacity:0;animation:rise .7s var(--ease) .44s forwards}
+.bento .card:nth-child(4){opacity:0;animation:rise .7s var(--ease) .52s forwards}
 
 /* ── card ── */
 .card{
-  position:relative;border-radius:18px;padding:28px 28px 24px;
+  position:relative;border-radius:18px;
   text-decoration:none;overflow:hidden;
   background:var(--bg2);
   border:1px solid var(--border);
-  transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .25s,box-shadow .25s;
+  transition:transform .3s var(--ease),border-color .3s,box-shadow .3s;
   display:flex;flex-direction:column;
+  min-height:220px;
+  padding:24px 24px 20px;
+  isolation:isolate;
 }
-/* glass shimmer on top edge */
 .card::before{
   content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);
-  pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);
+  pointer-events:none;z-index:2;
 }
-/* glow layer */
+/* soft color wash */
 .card::after{
-  content:'';position:absolute;inset:0;border-radius:18px;
-  background:radial-gradient(ellipse at top,var(--c-glow,rgba(29,184,138,.07)) 0%,transparent 60%);
-  opacity:0;transition:opacity .3s;pointer-events:none;
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 100% 0%,var(--c-glow,rgba(29,184,138,.12)) 0%,transparent 55%),
+    linear-gradient(180deg,rgba(255,255,255,.015),transparent 40%);
+  opacity:.7;transition:opacity .35s;pointer-events:none;z-index:0;
 }
 .card:hover{
-  transform:translateY(-4px);
+  transform:translateY(-5px);
   border-color:var(--c-border,rgba(29,184,138,.4));
-  box-shadow:0 0 0 1px var(--c-border,rgba(29,184,138,.15)),0 20px 60px rgba(0,0,0,.5),0 0 40px var(--c-shadow,rgba(29,184,138,.08));
+  box-shadow:
+    0 0 0 1px var(--c-border,rgba(29,184,138,.12)),
+    0 24px 64px rgba(0,0,0,.55),
+    0 0 48px var(--c-shadow,rgba(29,184,138,.1));
 }
 .card:hover::after{opacity:1}
 
-/* card — active */
-.card.active{cursor:pointer}
+/* accent rail */
+.card-rail{
+  position:absolute;left:0;top:22px;bottom:22px;width:2px;
+  border-radius:0 2px 2px 0;
+  background:var(--c-accent,var(--teal));
+  opacity:.55;transition:opacity .25s,top .25s,bottom .25s;
+  z-index:2;
+}
+.card:hover .card-rail{opacity:1;top:14px;bottom:14px}
 
-/* card — coming soon */
-.card.soon{opacity:.5;pointer-events:none}
+.card > *{position:relative;z-index:1}
 
-/* ── card internals ── */
-.c-badge{
+/* card header row */
+.card-top{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  margin-bottom:18px;
+}
+.card-icon{
+  width:40px;height:40px;border-radius:11px;
+  display:grid;place-items:center;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.06);
+  color:var(--c-accent,var(--teal));
+  transition:border-color .25s,background .25s,transform .3s var(--ease);
+}
+.card:hover .card-icon{
+  border-color:var(--c-border,rgba(29,184,138,.35));
+  background:var(--c-glow,rgba(29,184,138,.1));
+  transform:scale(1.04);
+}
+.card-idx{
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+  color:var(--text3);
+}
+.card:hover .card-idx{color:var(--c-accent,var(--teal))}
+
+.card-badge{
   display:inline-flex;align-items:center;gap:7px;
   font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--c-accent,var(--teal));margin-bottom:18px;
+  color:var(--c-accent,var(--teal));margin-bottom:10px;
 }
-.c-dot{width:6px;height:6px;border-radius:50%;background:var(--c-accent,var(--teal));flex-shrink:0}
-.soon-tag{
-  font-family:var(--mono);font-size:9px;letter-spacing:.08em;
-  background:var(--bg3);border:1px solid var(--border2);
-  color:var(--text3);padding:1px 7px;border-radius:3px;margin-left:4px;
+.card-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--c-accent,var(--teal));flex-shrink:0;
 }
-.c-title{
-  font-size:22px;font-weight:600;color:#fff;
-  line-height:1.15;letter-spacing:-.02em;margin-bottom:10px;
-  flex-grow:0;
+
+.card-title{
+  font-size:24px;font-weight:600;color:#fff;
+  line-height:1.12;letter-spacing:-.025em;margin-bottom:10px;
 }
-.c-sub{font-size:12.5px;color:var(--text2);line-height:1.6;margin-bottom:20px;flex-grow:1}
-.c-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:22px}
-.c-tag{
+.card-sub{
+  font-size:13px;color:var(--text2);line-height:1.6;
+  margin-bottom:18px;flex-grow:1;max-width:36ch;
+}
+.card-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:18px}
+.card-tag{
   font-family:var(--mono);font-size:10px;
   padding:3px 9px;border-radius:5px;
-  background:rgba(255,255,255,.03);
+  background:rgba(255,255,255,.025);
   border:1px solid var(--border2);
   color:var(--text3);
-  transition:border-color .2s,color .2s;
+  transition:border-color .2s,color .2s,background .2s;
 }
-.card:hover .c-tag{border-color:rgba(255,255,255,.08);color:var(--text2)}
-.c-cta{
-  display:flex;align-items:center;gap:7px;
+.card:hover .card-tag{
+  border-color:rgba(255,255,255,.1);
+  color:var(--text2);
+  background:rgba(255,255,255,.04);
+}
+.card-cta{
+  display:flex;align-items:center;gap:8px;
   font-family:var(--mono);font-size:11px;letter-spacing:.04em;
   color:var(--c-accent,var(--teal));
-  opacity:.65;transition:opacity .2s,gap .2s;
+  opacity:.7;transition:opacity .2s,gap .25s var(--ease);
   margin-top:auto;
 }
-.card:hover .c-cta{opacity:1;gap:10px}
-.c-cta-arrow{font-size:14px;transition:transform .2s}
-.card:hover .c-cta-arrow{transform:translateX(3px)}
-
-/* ── icon strip on cards ── */
-.c-icon{
-  position:absolute;top:-18px;right:-18px;
-  opacity:.13;transition:opacity .35s,transform .35s;
+.card:hover .card-cta{opacity:1;gap:12px}
+.card-cta-arrow{
+  display:inline-grid;place-items:center;
+  width:22px;height:22px;border-radius:6px;
+  border:1px solid currentColor;opacity:.5;
+  transition:opacity .2s,transform .25s var(--ease),background .2s;
+  font-size:12px;line-height:1;
 }
-.card:hover .c-icon{opacity:.22;transform:scale(1.04)}
-
-/* ── divider line between active + soon ── */
-.grid-divider{
-  grid-column:1/-1;
-  display:flex;align-items:center;gap:12px;
-  margin:6px 0 2px;
+.card:hover .card-cta-arrow{
+  opacity:1;transform:translateX(2px);
+  background:var(--c-glow,rgba(29,184,138,.12));
 }
-.grid-divider-line{flex:1;height:1px;background:var(--border)}
-.grid-divider-label{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--text3)}
+
+/* featured card (VM) spans taller feel via extra padding */
+.card.featured{min-height:260px;padding:28px 28px 22px}
+.card.featured .card-title{font-size:28px}
+.card.featured .card-sub{font-size:13.5px;max-width:42ch}
+
+/* watermark glyph */
+.card-mark{
+  position:absolute;right:-8px;bottom:-12px;
+  font-family:var(--mono);font-size:120px;font-weight:600;
+  letter-spacing:-.06em;line-height:1;
+  color:var(--c-accent,var(--teal));
+  opacity:.04;pointer-events:none;z-index:0;
+  transition:opacity .35s,transform .4s var(--ease);
+  user-select:none;
+}
+.card:hover .card-mark{opacity:.07;transform:translate(-6px,-6px)}
 
 /* ── footer ── */
 .footer{
-  margin-top:60px;text-align:center;
-  font-family:var(--mono);font-size:10px;
-  color:var(--text3);letter-spacing:.04em;line-height:2;
+  margin-top:auto;padding-top:48px;
+  display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
+  gap:16px;
+  opacity:0;animation:rise .7s var(--ease) .6s forwards;
 }
-.footer a{color:var(--text3);text-decoration:none}
-.footer a:hover{color:var(--text2)}
+.footer-left{
+  font-family:var(--mono);font-size:10px;
+  color:var(--text3);letter-spacing:.03em;line-height:1.8;
+}
+.footer-left strong{color:var(--text2);font-weight:500}
+.footer-right{
+  font-family:var(--mono);font-size:10px;color:var(--text3);
+  letter-spacing:.04em;
+}
+
+/* ── motion ── */
+@keyframes rise{
+  from{opacity:0;transform:translateY(14px)}
+  to{opacity:1;transform:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .topbar,.hero,.section-head,.bento .card,.footer{animation:none;opacity:1}
+  .trace svg,.logo-icon rect,.meta-pill .live{animation:none}
+  .card:hover{transform:none}
+}
 
 /* ── responsive ── */
-@media(max-width:620px){
-  .hub{padding:56px 18px 48px}
-  .grid{grid-template-columns:1fr}
-  .headline h1{font-size:26px}
-  .c-title{font-size:19px}
+@media(max-width:860px){
+  .hero-row{grid-template-columns:1fr;gap:28px}
+  .hero-panel{max-width:420px}
+}
+@media(max-width:720px){
+  .hub{padding:22px 18px 40px}
+  .bento{grid-template-columns:1fr}
+  .card,.card.featured{min-height:0}
+  .card.featured .card-title,.card-title{font-size:22px}
+  .topbar{margin-bottom:40px}
+  .hero{margin-bottom:36px}
+  .hero h1{font-size:32px}
+  .meta-pill.hide-sm{display:none}
 }
 </style>
 </head>
 <body>
 
-<div class="scene">
+<div class="scene" aria-hidden="true">
+  <div class="scene-grid"></div>
   <div class="glow glow-teal"></div>
+  <div class="glow glow-red"></div>
   <div class="glow glow-purple"></div>
   <div class="glow glow-blue"></div>
+  <div class="trace">
+    <!--
+      Ritmo sinusal (lead II-like): baseline → P → PR → QRS (qRs) → ST → T → TP
+      4 batimentos + cópia idêntica (loop seamless com translateX(-50%)).
+    -->
+    <svg viewBox="0 0 1600 100" preserveAspectRatio="none" aria-hidden="true">
+      <path class="ecg-glow" d="
+        M0 58 L18 58 C24 58 26 50 32 49 C38 48 40 56 44 58 L58 58 L62 62 L68 14 L74 82 L80 58 L96 58 C108 58 112 40 122 38 C134 36 142 50 148 58 L200 58
+        L218 58 C224 58 226 50 232 49 C238 48 240 56 244 58 L258 58 L262 62 L268 14 L274 82 L280 58 L296 58 C308 58 312 40 322 38 C334 36 342 50 348 58 L400 58
+        L418 58 C424 58 426 50 432 49 C438 48 440 56 444 58 L458 58 L462 62 L468 14 L474 82 L480 58 L496 58 C508 58 512 40 522 38 C534 36 542 50 548 58 L600 58
+        L618 58 C624 58 626 50 632 49 C638 48 640 56 644 58 L658 58 L662 62 L668 14 L674 82 L680 58 L696 58 C708 58 712 40 722 38 C734 36 742 50 748 58 L800 58
+        L818 58 C824 58 826 50 832 49 C838 48 840 56 844 58 L858 58 L862 62 L868 14 L874 82 L880 58 L896 58 C908 58 912 40 922 38 C934 36 942 50 948 58 L1000 58
+        L1018 58 C1024 58 1026 50 1032 49 C1038 48 1040 56 1044 58 L1058 58 L1062 62 L1068 14 L1074 82 L1080 58 L1096 58 C1108 58 1112 40 1122 38 C1134 36 1142 50 1148 58 L1200 58
+        L1218 58 C1224 58 1226 50 1232 49 C1238 48 1240 56 1244 58 L1258 58 L1262 62 L1268 14 L1274 82 L1280 58 L1296 58 C1308 58 1312 40 1322 38 C1334 36 1342 50 1348 58 L1400 58
+        L1418 58 C1424 58 1426 50 1432 49 C1438 48 1440 56 1444 58 L1458 58 L1462 62 L1468 14 L1474 82 L1480 58 L1496 58 C1508 58 1512 40 1522 38 C1534 36 1542 50 1548 58 L1600 58
+      "/>
+      <path class="ecg-line" d="
+        M0 58 L18 58 C24 58 26 50 32 49 C38 48 40 56 44 58 L58 58 L62 62 L68 14 L74 82 L80 58 L96 58 C108 58 112 40 122 38 C134 36 142 50 148 58 L200 58
+        L218 58 C224 58 226 50 232 49 C238 48 240 56 244 58 L258 58 L262 62 L268 14 L274 82 L280 58 L296 58 C308 58 312 40 322 38 C334 36 342 50 348 58 L400 58
+        L418 58 C424 58 426 50 432 49 C438 48 440 56 444 58 L458 58 L462 62 L468 14 L474 82 L480 58 L496 58 C508 58 512 40 522 38 C534 36 542 50 548 58 L600 58
+        L618 58 C624 58 626 50 632 49 C638 48 640 56 644 58 L658 58 L662 62 L668 14 L674 82 L680 58 L696 58 C708 58 712 40 722 38 C734 36 742 50 748 58 L800 58
+        L818 58 C824 58 826 50 832 49 C838 48 840 56 844 58 L858 58 L862 62 L868 14 L874 82 L880 58 L896 58 C908 58 912 40 922 38 C934 36 942 50 948 58 L1000 58
+        L1018 58 C1024 58 1026 50 1032 49 C1038 48 1040 56 1044 58 L1058 58 L1062 62 L1068 14 L1074 82 L1080 58 L1096 58 C1108 58 1112 40 1122 38 C1134 36 1142 50 1148 58 L1200 58
+        L1218 58 C1224 58 1226 50 1232 49 C1238 48 1240 56 1244 58 L1258 58 L1262 62 L1268 14 L1274 82 L1280 58 L1296 58 C1308 58 1312 40 1322 38 C1334 36 1342 50 1348 58 L1400 58
+        L1418 58 C1424 58 1426 50 1432 49 C1438 48 1440 56 1444 58 L1458 58 L1462 62 L1468 14 L1474 82 L1480 58 L1496 58 C1508 58 1512 40 1522 38 C1534 36 1542 50 1548 58 L1600 58
+      "/>
+    </svg>
+  </div>
 </div>
 
 <div class="hub">
 
-  <a class="logo" href="index.html">
-    <svg class="logo-icon" width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="2" width="6" height="20" rx="3" fill="#1db88a"/>
-      <rect x="10" y="0" width="6" height="15" rx="3" fill="#1db88a" opacity=".55"/>
-    </svg>
-    <span class="logo-wordmark">be·aside</span>
-  </a>
+  <header class="topbar">
+    <a class="logo" href="index.html" aria-label="be·aside — início">
+      <svg class="logo-icon" width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="0" y="2" width="6" height="20" rx="3" fill="#1db88a"/>
+        <rect x="10" y="0" width="6" height="15" rx="3" fill="#1db88a" opacity=".55"/>
+      </svg>
+      <span class="logo-wordmark">be·aside</span>
+    </a>
+    <div class="top-meta">
+      <span class="meta-pill"><span class="live" aria-hidden="true"></span>à beira do leito</span>
+      <span class="meta-pill hide-sm">4 módulos</span>
+      <span class="meta-pill hide-sm">pt-BR</span>
+    </div>
+  </header>
 
-  <div class="headline">
-    <div class="headline-eyebrow">Guias clínicos de UTI &amp; Emergência</div>
-    <h1>Conhecimento<br><span>à beira do leito</span></h1>
-    <p>Fundamentos, condutas e calculadoras para o plantonista. Conteúdo curado, sem ruído.</p>
+  <section class="hero">
+    <div class="hero-row">
+      <div>
+        <div class="hero-eyebrow">Guias clínicos de UTI &amp; Emergência</div>
+        <h1>Conhecimento<br><span class="grad">à beira do leito</span></h1>
+        <p class="hero-lead">Fundamentos, condutas e calculadoras para o plantonista. Conteúdo curado, sem ruído — feito para ser consultado entre um paciente e o próximo.</p>
+      </div>
+
+      <aside class="hero-panel" aria-label="Resumo do guia">
+        <div class="panel-label">status <span>online</span></div>
+        <div class="panel-stats">
+          <div class="stat">
+            <div class="stat-k">Módulos</div>
+            <div class="stat-v">04</div>
+          </div>
+          <div class="stat">
+            <div class="stat-k">Foco</div>
+            <div class="stat-v" style="font-size:13px;letter-spacing:0;line-height:1.25;padding-top:2px">UTI · ER</div>
+          </div>
+          <div class="stat">
+            <div class="stat-k">Assistente</div>
+            <div class="stat-v" style="font-size:13px;letter-spacing:0">IA <small>3 guias</small></div>
+          </div>
+          <div class="stat">
+            <div class="stat-k">Atualizado</div>
+            <div class="stat-v" style="font-size:13px;letter-spacing:0">jun/26</div>
+          </div>
+        </div>
+        <div class="panel-foot">
+          <span>plantão · referência rápida</span>
+          <span style="color:var(--teal)">v2</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <div class="section-head">
+    <h2>Escolha o módulo</h2>
+    <div class="section-line" aria-hidden="true"></div>
   </div>
 
-  <div class="grid">
+  <div class="bento">
 
-    <!-- VM Guide -->
-    <a class="card active"
+    <!-- VM -->
+    <a class="card featured"
        href="vm/"
-       style="--c-accent:#1db88a;--c-border:rgba(29,184,138,.35);--c-glow:rgba(29,184,138,.1);--c-shadow:rgba(29,184,138,.12)">
-      <svg class="c-icon" width="130" height="130" viewBox="0 0 24 24" fill="none" stroke="#1db88a" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M5 8h8.5a2.5 2.5 0 1 0 -2.34 -3.24"/>
-        <path d="M3 12h15.5a2.5 2.5 0 1 1 -2.34 3.24"/>
-        <path d="M4 16h5.5a2.5 2.5 0 1 1 -2.34 3.24"/>
-      </svg>
-      <div class="c-badge"><span class="c-dot"></span>VM Guide</div>
-      <div class="c-title">Ventilação<br>Mecânica</div>
-      <div class="c-sub">Modos, parâmetros, SDRA, desmame, dissincronia e assistente de conduta com IA.</div>
-      <div class="c-tags">
-        <span class="c-tag">SDRA · Prona</span>
-        <span class="c-tag">DPOC &amp; Asma</span>
-        <span class="c-tag">Desmame</span>
-        <span class="c-tag">Pearls &amp; Pitfalls</span>
-        <span class="c-tag">Assistente IA</span>
+       style="--c-accent:#1db88a;--c-border:rgba(29,184,138,.4);--c-glow:rgba(29,184,138,.14);--c-shadow:rgba(29,184,138,.12)">
+      <span class="card-rail" aria-hidden="true"></span>
+      <span class="card-mark" aria-hidden="true">01</span>
+      <div class="card-top">
+        <div class="card-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 8h8.5a2.5 2.5 0 1 0 -2.34 -3.24"/>
+            <path d="M3 12h15.5a2.5 2.5 0 1 1 -2.34 3.24"/>
+            <path d="M4 16h5.5a2.5 2.5 0 1 1 -2.34 3.24"/>
+          </svg>
+        </div>
+        <span class="card-idx">01</span>
       </div>
-      <div class="c-cta">Abrir guia <span class="c-cta-arrow">→</span></div>
+      <div class="card-badge"><span class="card-dot"></span>VM Guide</div>
+      <div class="card-title">Ventilação<br>Mecânica</div>
+      <div class="card-sub">Modos, parâmetros, SDRA, desmame, dissincronia e assistente de conduta com IA.</div>
+      <div class="card-tags">
+        <span class="card-tag">SDRA · Prona</span>
+        <span class="card-tag">DPOC &amp; Asma</span>
+        <span class="card-tag">Desmame</span>
+        <span class="card-tag">Pearls &amp; Pitfalls</span>
+        <span class="card-tag">Assistente IA</span>
+      </div>
+      <div class="card-cta">Abrir guia <span class="card-cta-arrow">→</span></div>
     </a>
 
-    <!-- Hemo Guide -->
-    <a class="card active"
+    <!-- Hemo -->
+    <a class="card"
        href="hemo/"
-       style="--c-accent:#e05555;--c-border:rgba(224,85,85,.35);--c-glow:rgba(224,85,85,.1);--c-shadow:rgba(224,85,85,.12)">
-      <svg class="c-icon" width="130" height="130" viewBox="0 0 24 24" fill="none" stroke="#e05555" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/>
-        <path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/>
-      </svg>
-      <div class="c-badge"><span class="c-dot"></span>Hemo Guide</div>
-      <div class="c-title">Hemodinâmica<br>&amp; Choque</div>
-      <div class="c-sub">Gasometria pareada, POCUS VCI, quadrantes SvcO₂ × Δ pCO₂, vasopressores e casos simulados.</div>
-      <div class="c-tags">
-        <span class="c-tag">SvcO₂ · Δ pCO₂</span>
-        <span class="c-tag">POCUS VCI</span>
-        <span class="c-tag">Vasopressores</span>
-        <span class="c-tag">Pearls & Pitfalls</span>
-        <span class="c-tag">Assistente IA</span>
+       style="--c-accent:#e05555;--c-border:rgba(224,85,85,.4);--c-glow:rgba(224,85,85,.14);--c-shadow:rgba(224,85,85,.12)">
+      <span class="card-rail" aria-hidden="true"></span>
+      <span class="card-mark" aria-hidden="true">02</span>
+      <div class="card-top">
+        <div class="card-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/>
+            <path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/>
+          </svg>
+        </div>
+        <span class="card-idx">02</span>
       </div>
-      <div class="c-cta">Abrir guia <span class="c-cta-arrow">→</span></div>
+      <div class="card-badge"><span class="card-dot"></span>Hemo Guide</div>
+      <div class="card-title">Hemodinâmica<br>&amp; Choque</div>
+      <div class="card-sub">Gasometria pareada, POCUS VCI, quadrantes SvcO₂ × Δ pCO₂, vasopressores e casos simulados.</div>
+      <div class="card-tags">
+        <span class="card-tag">SvcO₂ · Δ pCO₂</span>
+        <span class="card-tag">POCUS VCI</span>
+        <span class="card-tag">Vasopressores</span>
+        <span class="card-tag">Assistente IA</span>
+      </div>
+      <div class="card-cta">Abrir guia <span class="card-cta-arrow">→</span></div>
     </a>
 
-    <!-- Neuro Guide -->
-    <a class="card active"
+    <!-- Neuro -->
+    <a class="card"
        href="neuro/"
-       style="--c-accent:#9b6ff7;--c-border:rgba(155,111,247,.35);--c-glow:rgba(155,111,247,.1);--c-shadow:rgba(155,111,247,.12)">
-      <svg class="c-icon" width="130" height="130" viewBox="0 0 24 24" fill="none" stroke="#9b6ff7" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-1.66Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-1.66Z"/>
-      </svg>
-      <div class="c-badge"><span class="c-dot"></span>Neuro Guide</div>
-      <div class="c-title">Paciente<br>Neurocrítico</div>
-      <div class="c-sub">TCE grave, AVC hemorrágico, hipertensão intracraniana e monitorização neurológica avançada.</div>
-      <div class="c-tags">
-        <span class="c-tag">PIC · PPC</span>
-        <span class="c-tag">AVC</span>
-        <span class="c-tag">Status epiléptico</span>
-        <span class="c-tag">Pearls &amp; Pitfalls</span>
-        <span class="c-tag">Assistente IA</span>
+       style="--c-accent:#9b6ff7;--c-border:rgba(155,111,247,.4);--c-glow:rgba(155,111,247,.14);--c-shadow:rgba(155,111,247,.12)">
+      <span class="card-rail" aria-hidden="true"></span>
+      <span class="card-mark" aria-hidden="true">03</span>
+      <div class="card-top">
+        <div class="card-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-1.66Z"/>
+            <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-1.66Z"/>
+          </svg>
+        </div>
+        <span class="card-idx">03</span>
       </div>
-      <div class="c-cta">Abrir guia <span class="c-cta-arrow">→</span></div>
+      <div class="card-badge"><span class="card-dot"></span>Neuro Guide</div>
+      <div class="card-title">Paciente<br>Neurocrítico</div>
+      <div class="card-sub">TCE grave, AVC hemorrágico, hipertensão intracraniana e monitorização neurológica avançada.</div>
+      <div class="card-tags">
+        <span class="card-tag">PIC · PPC</span>
+        <span class="card-tag">AVC</span>
+        <span class="card-tag">Status epiléptico</span>
+        <span class="card-tag">Assistente IA</span>
+      </div>
+      <div class="card-cta">Abrir guia <span class="card-cta-arrow">→</span></div>
     </a>
 
-    <!-- Procedimentos -->
-    <a class="card active"
+    <!-- Proc -->
+    <a class="card"
        href="proc/"
-       style="--c-accent:#3b82f6;--c-border:rgba(59,130,246,.35);--c-glow:rgba(59,130,246,.1);--c-shadow:rgba(59,130,246,.12)">
-      <svg class="c-icon" width="130" height="130" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
-        <path d="m9 12 2 2 4-4"/><path d="M5 7c0-1.1.9-2 2-2h10a2 2 0 0 1 2 2v12H5V7Z"/><path d="M22 19H2"/>
-      </svg>
-      <div class="c-badge"><span class="c-dot"></span>Procedimentos</div>
-      <div class="c-title">Procedimentos<br>de UTI</div>
-      <div class="c-sub">Acessos vasculares, via aérea e traqueostomia — as dúvidas de plantão que nenhum guia responde diretamente.</div>
-      <div class="c-tags">
-        <span class="c-tag">CVC · Shilley</span>
-        <span class="c-tag">Traqueostomia</span>
-        <span class="c-tag">Nora periférica</span>
-        <span class="c-tag">Dúvidas de plantão</span>
+       style="--c-accent:#3b82f6;--c-border:rgba(59,130,246,.4);--c-glow:rgba(59,130,246,.14);--c-shadow:rgba(59,130,246,.12)">
+      <span class="card-rail" aria-hidden="true"></span>
+      <span class="card-mark" aria-hidden="true">04</span>
+      <div class="card-top">
+        <div class="card-icon" aria-hidden="true">
+          <!-- seringa -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m18 2 4 4"/>
+            <path d="m17 7 3-3"/>
+            <path d="M19 9 8.7 19.3a2.1 2.1 0 0 1-3-3L16 6"/>
+            <path d="m11 13 4 4"/>
+            <path d="m5 19-3 3"/>
+            <path d="m14 4 6 6"/>
+          </svg>
+        </div>
+        <span class="card-idx">04</span>
       </div>
-      <div class="c-cta">Abrir guia <span class="c-cta-arrow">→</span></div>
+      <div class="card-badge"><span class="card-dot"></span>Procedimentos</div>
+      <div class="card-title">Procedimentos<br>de UTI</div>
+      <div class="card-sub">Acessos vasculares, via aérea e traqueostomia — as dúvidas de plantão que nenhum guia responde diretamente.</div>
+      <div class="card-tags">
+        <span class="card-tag">CVC · Shilley</span>
+        <span class="card-tag">Traqueostomia</span>
+        <span class="card-tag">Nora periférica</span>
+        <span class="card-tag">Dúvidas de plantão</span>
+      </div>
+      <div class="card-cta">Abrir guia <span class="card-cta-arrow">→</span></div>
     </a>
 
   </div>
 
-  <div class="footer">
-    <div>Material de apoio clínico — não substitui julgamento médico individualizado</div>
-    <div style="margin-top:4px;opacity:.55">João H. Peres · César A. Seidler Junior · Atualizado jun/2026</div>
-  </div>
+  <footer class="footer">
+    <div class="footer-left">
+      <strong>Material de apoio clínico</strong> — não substitui julgamento médico individualizado<br>
+      João H. Peres · César A. Seidler Junior
+    </div>
+    <div class="footer-right">Atualizado jun/2026</div>
+  </footer>
 
 </div>
 </body>

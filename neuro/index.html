@@ -9,100 +9,115 @@
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/styles.css">
-<style>
-  .lp-hero{padding:36px 0 28px;border-bottom:1px solid var(--border);margin-bottom:32px}
-  .lp-eyebrow{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin-bottom:14px;display:flex;align-items:center;gap:8px}
-  .lp-eyebrow::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
-  .lp-title{font-size:28px;font-weight:600;color:#e8ecf2;line-height:1.15;letter-spacing:-.02em;margin-bottom:12px}
-  .lp-desc{font-size:13.5px;color:var(--text2);line-height:1.75;max-width:580px}
-  .lp-start{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-family:var(--mono);font-size:11px;color:var(--accent);background:rgba(var(--accent-rgb),.08);border:1px solid rgba(var(--accent-rgb),.25);padding:8px 16px;border-radius:6px;text-decoration:none;transition:all .15s}
-  .lp-start:hover{background:rgba(var(--accent-rgb),.15);border-color:rgba(var(--accent-rgb),.45)}
-  .lp-start-arrow{transition:transform .15s}
-  .lp-start:hover .lp-start-arrow{transform:translateX(3px)}
-
-  .lp-wip{font-family:var(--mono);font-size:11px;color:var(--text3);background:var(--bg3);border:1px dashed var(--border2);border-radius:6px;padding:10px 14px;margin-top:20px;display:inline-block}
-
-  .lp-section-label{font-family:var(--mono);font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--text3);margin:28px 0 12px}
-  .lp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px}
-  @media(max-width:600px){.lp-grid{grid-template-columns:1fr}}
-
-  .lp-card{display:block;text-decoration:none;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 18px;transition:border-color .15s,background .15s}
-  .lp-card:hover{border-color:rgba(var(--accent-rgb),.4);background:var(--bg3)}
-  .lp-card-cat{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:6px}
-  .lp-card-title{font-size:13.5px;font-weight:600;color:#e8ecf2;margin-bottom:4px}
-  .lp-card-sub{font-size:12px;color:var(--text3);line-height:1.5}
-  .lp-card.empty{opacity:.45;pointer-events:none}
-</style>
 </head>
 <body data-module="neuro" data-page="">
 <main class="main">
 
   <div class="lp-hero">
-    <div class="lp-eyebrow">Neuro Guide</div>
-    <div class="lp-title">Paciente Neurocrítico</div>
-    <p class="lp-desc">
-      TCE grave, AVC isquêmico e hemorrágico, status epiléptico e encefalopatias — abordados pela lógica da pressão de perfusão cerebral. O guia parte da fisiologia (PIC, PPC, autorregulação) e organiza o raciocínio por condição, com ênfase nas metas hemodinâmicas e ventilatórias específicas do paciente neurológico.
-    </p>
-    <a class="lp-start" href="fisio.html">Começar pela fisiologia <span class="lp-start-arrow">→</span></a>
-    <div class="lp-wip">⚙ Conteúdo em desenvolvimento — páginas marcadas como vazias serão preenchidas em breve.</div>
+    <div class="lp-hero-row">
+      <div>
+        <div class="lp-eyebrow">Neuro Guide</div>
+        <h1 class="lp-title">Paciente Neurocrítico</h1>
+        <p class="lp-desc">
+          TCE grave, AVC, status epiléptico e encefalopatias — pela lógica da pressão de perfusão cerebral. O guia parte da fisiologia (PIC, PPC, autorregulação) e organiza o raciocínio por condição, com ênfase nas metas hemodinâmicas e ventilatórias.
+        </p>
+        <a class="lp-start" href="fisio.html">Começar pela fisiologia <span class="lp-start-arrow">→</span></a>
+        <div class="lp-wip">Algumas páginas ainda em construção — marcadas como “em breve”.</div>
+      </div>
+      <aside class="lp-panel" aria-label="Resumo do módulo">
+        <div class="lp-panel-label">módulo <span>parcial</span></div>
+        <div class="lp-panel-stats">
+          <div class="lp-stat"><div class="lp-stat-k">Páginas</div><div class="lp-stat-v">12</div></div>
+          <div class="lp-stat"><div class="lp-stat-k">Prontas</div><div class="lp-stat-v">07</div></div>
+          <div class="lp-stat"><div class="lp-stat-k">Assistente</div><div class="lp-stat-v" style="font-size:12px">IA</div></div>
+          <div class="lp-stat"><div class="lp-stat-k">Eixo</div><div class="lp-stat-v" style="font-size:12px">PIC · PPC</div></div>
+        </div>
+        <div class="lp-panel-foot">
+          <span>plantão · referência rápida</span>
+          <span style="color:var(--accent)">03</span>
+        </div>
+      </aside>
+    </div>
   </div>
 
   <div class="lp-section-label">Fundamentos</div>
   <div class="lp-grid">
     <a class="lp-card" href="fisio.html">
-      <div class="lp-card-cat">Fundamentos</div>
+      <div class="lp-card-top"><div class="lp-card-cat">Fundamentos</div><span class="lp-card-idx">01</span></div>
       <div class="lp-card-title">Fisiologia do neurocrítico</div>
       <div class="lp-card-sub">PIC, PPC, autorregulação cerebral e limiar de isquemia</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
   </div>
 
   <div class="lp-section-label">Patologias</div>
   <div class="lp-grid">
     <a class="lp-card" href="tce.html">
-      <div class="lp-card-cat">Patologias</div>
-      <div class="lp-card-title">TCE grave</div>
-      <div class="lp-card-sub">Metas de PPC/PIC, osmoterapia e estratégia ventilatória</div>
+      <div class="lp-card-top"><div class="lp-card-cat">Patologias</div><span class="lp-card-idx">02</span></div>
+      <div class="lp-card-title">Hemodinâmica e manejo da PIC</div>
+      <div class="lp-card-sub">Metas de PAS/PAM por etiologia e algoritmo de PIC em degraus</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
-    <a class="lp-card" href="avc-i.html">
-      <div class="lp-card-cat">Patologias</div>
+    <a class="lp-card empty" href="avc-i.html" aria-disabled="true" tabindex="-1">
+      <div class="lp-card-top"><div class="lp-card-cat">Patologias</div><span class="lp-badge-soon">em breve</span></div>
       <div class="lp-card-title">AVC isquêmico</div>
       <div class="lp-card-sub">Janela terapêutica, trombólise e trombectomia</div>
     </a>
-    <a class="lp-card" href="avc-h.html">
-      <div class="lp-card-cat">Patologias</div>
+    <a class="lp-card empty" href="avc-h.html" aria-disabled="true" tabindex="-1">
+      <div class="lp-card-top"><div class="lp-card-cat">Patologias</div><span class="lp-badge-soon">em breve</span></div>
       <div class="lp-card-title">AVC hemorrágico</div>
       <div class="lp-card-sub">Hemorragia subaracnóidea e intraparenquimatosa</div>
     </a>
-    <a class="lp-card" href="enc.html">
-      <div class="lp-card-cat">Patologias</div>
-      <div class="lp-card-title">Encefalopatias & Status epiléptico</div>
+    <a class="lp-card empty" href="enc.html" aria-disabled="true" tabindex="-1">
+      <div class="lp-card-top"><div class="lp-card-cat">Patologias</div><span class="lp-badge-soon">em breve</span></div>
+      <div class="lp-card-title">Encefalopatias &amp; Status epiléptico</div>
       <div class="lp-card-sub">Delirium, status não convulsivo e encefalopatia hepática</div>
+    </a>
+    <a class="lp-card" href="vm.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Patologias</div><span class="lp-card-idx">05</span></div>
+      <div class="lp-card-title">Manejo ventilatório no neurocrítico</div>
+      <div class="lp-card-sub">PEEP, PaCO₂, hiperventilação e desmame</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
+    <a class="lp-card" href="metabolico.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Patologias</div><span class="lp-card-idx">06</span></div>
+      <div class="lp-card-title">Metabólico, hídrico e infeccioso</div>
+      <div class="lp-card-sub">Balanço hídrico, glicemia, sódio, febre e multidisciplinar</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
+    <a class="lp-card" href="pos-op.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Patologias</div><span class="lp-card-idx">07</span></div>
+      <div class="lp-card-title">Pós-operatório e DVE</div>
+      <div class="lp-card-sub">Drenagem ventricular, herniações atípicas e anticonvulsivantes</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
   </div>
 
-  <div class="lp-section-label">Farmacologia & Ferramentas</div>
+  <div class="lp-section-label">Farmacologia &amp; Ferramentas</div>
   <div class="lp-grid">
     <a class="lp-card" href="sedoanalgesia.html">
-      <div class="lp-card-cat">Farmacologia</div>
-      <div class="lp-card-title">Sedoanalgesia no neuro</div>
-      <div class="lp-card-sub">Hipnóticos que elevam PIC, RASS-alvo por condição, CIWA</div>
+      <div class="lp-card-top"><div class="lp-card-cat">Farmacologia</div><span class="lp-card-idx">08</span></div>
+      <div class="lp-card-title">Sedoanalgesia, RASS e BNM</div>
+      <div class="lp-card-sub">Drogas, diluições e metas de RASS por cenário</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
-    <a class="lp-card" href="calc-neuro.html">
-      <div class="lp-card-cat">Ferramentas</div>
+    <a class="lp-card empty" href="calc-neuro.html" aria-disabled="true" tabindex="-1">
+      <div class="lp-card-top"><div class="lp-card-cat">Ferramentas</div><span class="lp-badge-soon">em breve</span></div>
       <div class="lp-card-title">Calculadoras</div>
-      <div class="lp-card-sub">PPC, osmolaridade, GCS, NIHSS, Hunt & Hess, Fisher</div>
+      <div class="lp-card-sub">PPC, osmolaridade, GCS, NIHSS, Hunt &amp; Hess, Fisher</div>
     </a>
-    <a class="lp-card" href="pearls.html">
-      <div class="lp-card-cat">Pearls & Pitfalls</div>
+    <a class="lp-card empty" href="pearls.html" aria-disabled="true" tabindex="-1">
+      <div class="lp-card-top"><div class="lp-card-cat">Pearls</div><span class="lp-badge-soon">em breve</span></div>
       <div class="lp-card-title">Cards clínicos</div>
       <div class="lp-card-sub">Cenários de plantão: o acerto, o erro comum e o mecanismo</div>
     </a>
     <a class="lp-card" href="assistente.html">
-      <div class="lp-card-cat">Assistente IA</div>
+      <div class="lp-card-top"><div class="lp-card-cat">Assistente IA</div><span class="lp-card-idx">11</span></div>
       <div class="lp-card-title">Assistente de conduta</div>
       <div class="lp-card-sub">Discuta o caso neurológico e receba sugestão de conduta</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
   </div>
 

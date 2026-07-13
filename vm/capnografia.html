@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capnografia &amp; EtCO₂ — be·aside</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body data-module="vm" data-page="capnografia">
+<main class="main">
+<section class="section" id="capnografia">
+  <header class="page-head">
+    <div class="hero-eyebrow">Ventilação Mecânica · Monitorização</div>
+      <h1 class="section-title">Capnografia &amp; EtCO₂ <a class="share-link" href="#capnografia" onclick="copyLink(event,'#capnografia')"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></a></h1>
+      <p class="section-subtitle">Confirmação de IOT, monitorização contínua e capnografia na PCR</p>
+  </header>
+
+  <div class="hm-item"><span class="hm-k">Gradiente PaCO₂−EtCO₂</span><span class="hm-v">2–5 mmHg</span></div>
+    <div class="hm-item"><span class="hm-k">RCE na PCR</span><span class="hm-v">↑ EtCO₂ abrupto</span></div>
+  </div>
+
+  <div class="anatomy-note"><strong>Princípio:</strong> a capnografia mede o CO₂ exalado ciclo a ciclo — é o único método que confirma <strong>posição do tubo</strong> e <strong>qualidade de compressões</strong> em tempo real, além de rastrear tendências de ventilação sem gasometrias seriadas. Onda ausente após IOT = tubo esofágico até prova em contrário.</div>
+  <div class="ref">UpToDate — Carbon dioxide monitoring (capnography)</div>
+
+  <div class="sec-h"><span class="sec-num">01</span><h2>Capnografia vs capnometria</h2></div>
+  <div class="ind-grid cols-3">
+    <div class="ind-item"><span class="ind-t">Capnometria</span><span class="ind-d">Mede apenas o valor numérico do EtCO₂ — sem a forma de onda. Menos informação, mas suficiente para confirmação pontual.</span></div>
+    <div class="ind-item"><span class="ind-t">Capnografia</span><span class="ind-d">Exibe a curva (onda) além do número. Permite reconhecer padrões de doença (broncoespasmo, reinalação, vazamento) e não apenas o valor isolado.</span></div>
+    <div class="ind-item"><span class="ind-t">Mainstream vs sidestream</span><span class="ind-d">Mainstream: sensor no circuito, resposta mais rápida, mais peso no tubo. Sidestream: aspira amostra para análise remota, mais usado em VNI/paciente não intubado.</span></div>
+  </div>
+
+  <div class="sec-h"><span class="sec-num">02</span><h2>Confirmação de IOT</h2></div>
+  <div class="ok-box"><strong>Padrão-ouro à beira do leito.</strong> Onda de capnografia presente e sustentada por ≥ 6 ciclos confirma posição traqueal do tubo com sensibilidade e especificidade próximas de 100% — superior à ausculta isolada. Ausência de onda (ou onda que desaparece rapidamente) = extubar e reintubar, não insistir em ausculta duvidosa.</div>
+  <div class="warn-box"><strong>Armadilha:</strong> em PCR com fluxo sanguíneo pulmonar muito baixo (compressões ineficazes) ou obstrução completa de via aérea, pode haver tubo traqueal correto com EtCO₂ muito baixo ou ausente — a ausência de onda não é 100% específica para tubo esofágico nesse contexto. Correlacionar com o quadro clínico.</div>
+  <div class="ref">UpToDate — Carbon dioxide monitoring; AHA — ACLS 2020 guidelines</div>
+
+  <div class="sec-h"><span class="sec-num">03</span><h2>Capnografia na PCR</h2></div>
+  <ol class="tl">
+    <li><span class="tl-n">1</span><div class="tl-b"><strong>Qualidade das compressões.</strong> EtCO₂ &lt; 10 mmHg durante RCP sustentada sugere compressões inadequadas ou baixo débito gerado — otimizar profundidade/frequência de compressão.</div></li>
+    <li><span class="tl-n">2</span><div class="tl-b"><strong>Retorno da circulação espontânea (RCE).</strong> Elevação abrupta e sustentada do EtCO₂ (tipicamente &gt;40 mmHg) é um dos sinais mais precoces e confiáveis de RCE — muitas vezes antes do pulso palpável.</div></li>
+    <li><span class="tl-n">3</span><div class="tl-b"><strong>Valor prognóstico.</strong> EtCO₂ persistentemente &lt;10 mmHg após 20 min de RCP bem conduzida associa-se a prognóstico muito reservado — pode auxiliar (não substitui julgamento clínico) na decisão de encerrar esforços.</div></li>
+  </ol>
+  <div class="ref">AHA — ACLS 2020 guidelines; UpToDate — Advanced cardiac life support in adults</div>
+
+  <div class="sec-h"><span class="sec-num">04</span><h2>Gradiente PaCO₂ − EtCO₂ e monitorização contínua</h2></div>
+  <p class="sec-lead">Em condições normais o EtCO₂ é 2–5 mmHg <strong>menor</strong> que a PaCO₂ (espaço morto alveolar fisiológico). O gradiente aumenta sempre que o espaço morto aumenta — permitindo usar o EtCO₂ como <em>tendência</em> contínua e não substituto direto da gasometria.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Situação</th><th>Efeito no gradiente</th><th>Interpretação</th></tr></thead>
+    <tbody>
+      <tr><td><strong>TEP / baixo débito cardíaco</strong></td><td class="td-warn">↑ gradiente</td><td>↑ espaço morto por hipoperfusão alveolar — EtCO₂ cai desproporcionalmente à PaCO₂</td></tr>
+      <tr><td><strong>Broncoespasmo / DPOC</strong></td><td class="td-warn">↑ gradiente</td><td>Esvaziamento alveolar heterogêneo distorce o platô da curva</td></tr>
+      <tr><td><strong>Vazamento no circuito / cuff</strong></td><td class="td-bad">EtCO₂ subestimado</td><td>Onda de baixa amplitude, sem platô definido — verificar cuff e conexões</td></tr>
+      <tr><td><strong>Pulmão normal, boa perfusão</strong></td><td class="td-ok">2–5 mmHg</td><td>EtCO₂ confiável como substituto de tendência da PaCO₂</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tip-box"><strong>Uso prático:</strong> após calibrar o gradiente com uma gasometria inicial, o EtCO₂ contínuo permite detectar tendências de piora (ex.: TEP agudo, deterioração hemodinâmica) sem repetir gasometrias a cada ajuste — reserve a gasometria para confirmar mudanças relevantes ou decisões críticas.</div>
+  <div class="ref">UpToDate — Carbon dioxide monitoring (capnography)</div>
+
+  <div class="pitfall-h">O que não fazer</div>
+  <ul class="pitfall-list">
+    <li>Confiar apenas na ausculta para confirmar IOT quando há capnógrafo disponível</li>
+    <li>Tratar o EtCO₂ como substituto direto da PaCO₂ sem checar o gradiente basal do paciente</li>
+    <li>Ignorar onda de baixa amplitude ou sem platô — geralmente indica vazamento, não normalidade</li>
+    <li>Descartar capnografia ausente em PCR sem considerar baixo fluxo pulmonar como causa alternativa</li>
+  </ul>
+</section>
+</main>
+<script src="../assets/app.js"></script>
+</body>
+</html>

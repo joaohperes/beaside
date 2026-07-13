@@ -9,130 +9,177 @@
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/styles.css">
-<style>
-  .lp-hero{padding:36px 0 28px;border-bottom:1px solid var(--border);margin-bottom:32px}
-  .lp-eyebrow{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin-bottom:14px;display:flex;align-items:center;gap:8px}
-  .lp-eyebrow::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
-  .lp-title{font-size:28px;font-weight:600;color:#e8ecf2;line-height:1.15;letter-spacing:-.02em;margin-bottom:12px}
-  .lp-desc{font-size:13.5px;color:var(--text2);line-height:1.75;max-width:580px}
-  .lp-start{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-family:var(--mono);font-size:11px;color:var(--accent);background:rgba(var(--accent-rgb),.08);border:1px solid rgba(var(--accent-rgb),.25);padding:8px 16px;border-radius:6px;text-decoration:none;transition:all .15s}
-  .lp-start:hover{background:rgba(var(--accent-rgb),.15);border-color:rgba(var(--accent-rgb),.45)}
-  .lp-start-arrow{transition:transform .15s}
-  .lp-start:hover .lp-start-arrow{transform:translateX(3px)}
-
-  .lp-section-label{font-family:var(--mono);font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--text3);margin:28px 0 12px}
-  .lp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px}
-  @media(max-width:600px){.lp-grid{grid-template-columns:1fr}}
-
-  .lp-card{display:block;text-decoration:none;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 18px;transition:border-color .15s,background .15s}
-  .lp-card:hover{border-color:rgba(var(--accent-rgb),.4);background:var(--bg3)}
-  .lp-card-cat{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:6px}
-  .lp-card-title{font-size:13.5px;font-weight:600;color:#e8ecf2;margin-bottom:4px}
-  .lp-card-sub{font-size:12px;color:var(--text3);line-height:1.5}
-</style>
 </head>
 <body data-module="vm" data-page="">
 <main class="main">
 
   <div class="lp-hero">
-    <div class="lp-eyebrow">VM Guide</div>
-    <div class="lp-title">Ventilação Mecânica</div>
-    <p class="lp-desc">
-      Do ciclo ventilatório à extubação — um guia organizado para o plantonista que precisa configurar, monitorar e desmamar um paciente em VM. O conteúdo segue a progressão natural do raciocínio clínico: fisiologia → configuração inicial → patologias específicas → desmame → farmacologia.
-    </p>
-    <a class="lp-start" href="fisiologia.html">Começar pela fisiologia <span class="lp-start-arrow">→</span></a>
+    <div class="lp-hero-row">
+      <div>
+        <div class="lp-eyebrow">VM Guide</div>
+        <h1 class="lp-title">Ventilação Mecânica</h1>
+        <p class="lp-desc">
+          Do ciclo ventilatório à extubação — um guia organizado para o plantonista que precisa configurar, monitorar e desmamar um paciente em VM. Progressão natural: fisiologia → configuração → patologias → desmame → farmacologia.
+        </p>
+        <a class="lp-start" href="fisiologia.html">Começar pela fisiologia <span class="lp-start-arrow">→</span></a>
+      </div>
+      <aside class="lp-panel" aria-label="Resumo do módulo">
+        <div class="lp-panel-label">módulo <span>online</span></div>
+        <div class="lp-panel-stats">
+          <div class="lp-stat"><div class="lp-stat-k">Páginas</div><div class="lp-stat-v">21</div></div>
+          <div class="lp-stat"><div class="lp-stat-k">Foco</div><div class="lp-stat-v" style="font-size:12px;padding-top:2px">UTI · ER</div></div>
+          <div class="lp-stat"><div class="lp-stat-k">Assistente</div><div class="lp-stat-v" style="font-size:12px">IA</div></div>
+          <div class="lp-stat"><div class="lp-stat-k">Início</div><div class="lp-stat-v" style="font-size:12px">Fisiologia</div></div>
+        </div>
+        <div class="lp-panel-foot">
+          <span>plantão · referência rápida</span>
+          <span style="color:var(--accent)">01</span>
+        </div>
+      </aside>
+    </div>
   </div>
 
   <div class="lp-section-label">Fundamentos</div>
   <div class="lp-grid">
     <a class="lp-card" href="fisiologia.html">
-      <div class="lp-card-cat">Fundamentos</div>
+      <div class="lp-card-top"><div class="lp-card-cat">Fundamentos</div><span class="lp-card-idx">01</span></div>
       <div class="lp-card-title">Fisiologia da VM</div>
       <div class="lp-card-sub">Ciclo ventilatório, mecânica pulmonar e efeitos hemodinâmicos da pressão positiva</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
     <a class="lp-card" href="modos.html">
-      <div class="lp-card-cat">Fundamentos</div>
+      <div class="lp-card-top"><div class="lp-card-cat">Fundamentos</div><span class="lp-card-idx">02</span></div>
       <div class="lp-card-title">Modos de VM</div>
       <div class="lp-card-sub">AC-VC, AC-PC, SIMV-PSV, PSV — quando usar cada um</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
     <a class="lp-card" href="parametros.html">
-      <div class="lp-card-cat">Fundamentos</div>
+      <div class="lp-card-top"><div class="lp-card-cat">Fundamentos</div><span class="lp-card-idx">03</span></div>
       <div class="lp-card-title">Parâmetros iniciais</div>
       <div class="lp-card-sub">Configuração passo a passo para o paciente recém-intubado</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
   </div>
 
   <div class="lp-section-label">Patologias</div>
   <div class="lp-grid">
     <a class="lp-card" href="sdra.html">
-      <div class="lp-card-cat">Patologias</div>
+      <div class="lp-card-top"><div class="lp-card-cat">Patologias</div><span class="lp-card-idx">04</span></div>
       <div class="lp-card-title">SDRA — Ventilação Protetora</div>
       <div class="lp-card-sub">Low tidal volume, driving pressure, tabela ARDSnet</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
     <a class="lp-card" href="prona.html">
-      <div class="lp-card-cat">Patologias</div>
+      <div class="lp-card-top"><div class="lp-card-cat">Patologias</div><span class="lp-card-idx">05</span></div>
       <div class="lp-card-title">Posição prona</div>
       <div class="lp-card-sub">Indicação, técnica e critérios de reversão na SDRA grave</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
     <a class="lp-card" href="dpoc-asma.html">
-      <div class="lp-card-cat">Patologias</div>
-      <div class="lp-card-title">DPOC & Asma</div>
+      <div class="lp-card-top"><div class="lp-card-cat">Patologias</div><span class="lp-card-idx">06</span></div>
+      <div class="lp-card-title">DPOC &amp; Asma</div>
       <div class="lp-card-sub">Hiperinsuflação dinâmica, auto-PEEP e estratégia expiratória</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
+    <a class="lp-card" href="hipercapnia.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Patologias</div><span class="lp-card-idx">07</span></div>
+      <div class="lp-card-title">Hipercapnia permissiva</div>
+      <div class="lp-card-sub">Quando e como aceitar a elevação da PaCO₂</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
     <a class="lp-card" href="tce.html">
-      <div class="lp-card-cat">Patologias</div>
+      <div class="lp-card-top"><div class="lp-card-cat">Patologias</div><span class="lp-card-idx">08</span></div>
       <div class="lp-card-title">VM no TCE</div>
       <div class="lp-card-sub">Normoventilação, metas de PPC/PIC e PEEP no neurológico</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
   </div>
 
-  <div class="lp-section-label">Monitorização & Desmame</div>
+  <div class="lp-section-label">Monitorização &amp; Desmame</div>
   <div class="lp-grid">
+    <a class="lp-card" href="capnografia.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Monitorização</div><span class="lp-card-idx">09</span></div>
+      <div class="lp-card-title">Capnografia &amp; EtCO₂</div>
+      <div class="lp-card-sub">Confirmação de IOT, monitorização contínua e uso na PCR</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
     <a class="lp-card" href="dissincronia.html">
-      <div class="lp-card-cat">Monitorização</div>
+      <div class="lp-card-top"><div class="lp-card-cat">Monitorização</div><span class="lp-card-idx">10</span></div>
       <div class="lp-card-title">Dissincronia P-V</div>
       <div class="lp-card-sub">Reconhecer pelos gráficos e corrigir na beira do leito</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
     <a class="lp-card" href="complicacoes.html">
-      <div class="lp-card-cat">Monitorização</div>
+      <div class="lp-card-top"><div class="lp-card-cat">Monitorização</div><span class="lp-card-idx">11</span></div>
       <div class="lp-card-title">Complicações da VM</div>
       <div class="lp-card-sub">VILI, barotrauma, PAV e instabilidade hemodinâmica</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
+    <a class="lp-card" href="bnm.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Monitorização</div><span class="lp-card-idx">12</span></div>
+      <div class="lp-card-title">Bloqueio neuromuscular</div>
+      <div class="lp-card-sub">Quando paralisar, qual agente e por quanto tempo</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
     <a class="lp-card" href="desmame.html">
-      <div class="lp-card-cat">Desmame</div>
+      <div class="lp-card-top"><div class="lp-card-cat">Desmame</div><span class="lp-card-idx">13</span></div>
       <div class="lp-card-title">SAT / SBT / Extubação</div>
       <div class="lp-card-sub">Critérios, protocolo e IRRS — quando e como extubar</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
     <a class="lp-card" href="vni.html">
-      <div class="lp-card-cat">Desmame</div>
-      <div class="lp-card-title">VNI & Alto Fluxo</div>
+      <div class="lp-card-top"><div class="lp-card-cat">Desmame</div><span class="lp-card-idx">14</span></div>
+      <div class="lp-card-title">VNI &amp; Alto Fluxo</div>
       <div class="lp-card-sub">Quando evitar a IOT — e quando não insistir (índice ROX)</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
   </div>
 
-  <div class="lp-section-label">Farmacologia & Referência</div>
+  <div class="lp-section-label">Farmacologia &amp; Referência</div>
   <div class="lp-grid">
     <a class="lp-card" href="indutores.html">
-      <div class="lp-card-cat">Farmacologia</div>
+      <div class="lp-card-top"><div class="lp-card-cat">Farmacologia</div><span class="lp-card-idx">15</span></div>
       <div class="lp-card-title">Indutores para RSI</div>
       <div class="lp-card-sub">Ketamina, etomidato, propofol — perfil e algoritmo por cenário</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
     <a class="lp-card" href="sedoanalgesia.html">
-      <div class="lp-card-cat">Farmacologia</div>
+      <div class="lp-card-top"><div class="lp-card-cat">Farmacologia</div><span class="lp-card-idx">16</span></div>
       <div class="lp-card-title">Sedoanalgesia</div>
       <div class="lp-card-sub">RASS-alvo, escalas, protocolos de analgesia-first</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
     <a class="lp-card" href="calculadora.html">
-      <div class="lp-card-cat">Referência</div>
+      <div class="lp-card-top"><div class="lp-card-cat">Referência</div><span class="lp-card-idx">17</span></div>
       <div class="lp-card-title">Calculadoras</div>
       <div class="lp-card-sub">PBW, VC ideal, driving pressure, P/F, IRRS</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
+    <a class="lp-card" href="tabelas.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Referência</div><span class="lp-card-idx">18</span></div>
+      <div class="lp-card-title">Tabelas rápidas</div>
+      <div class="lp-card-sub">Consulta de plantão — situação vs estratégia</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
     <a class="lp-card" href="pearls.html">
-      <div class="lp-card-cat">Pearls & Pitfalls</div>
+      <div class="lp-card-top"><div class="lp-card-cat">Pearls</div><span class="lp-card-idx">19</span></div>
       <div class="lp-card-title">Cards clínicos</div>
       <div class="lp-card-sub">Cenários de plantão: o acerto, o erro comum e o mecanismo</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
+    <a class="lp-card" href="quiz.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Pearls</div><span class="lp-card-idx">20</span></div>
+      <div class="lp-card-title">Caso clínico / Quiz</div>
+      <div class="lp-card-sub">Quiz de múltipla escolha para treinar o raciocínio</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
+    <a class="lp-card" href="assistente.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Assistente IA</div><span class="lp-card-idx">21</span></div>
+      <div class="lp-card-title">Assistente de conduta</div>
+      <div class="lp-card-sub">Cole a anamnese e receba sugestão de conduta ventilatória</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
   </div>
 
