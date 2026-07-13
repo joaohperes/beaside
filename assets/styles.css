@@ -335,7 +335,9 @@ td strong{color:#e8ecf2;font-weight:500}
 .lp-panel-label span{color:var(--accent)}
 .lp-panel-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .lp-stat{
-  background:var(--bg2);border:1px solid var(--border);border-radius:9px;padding:11px 12px 10px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:9px;padding:11px 12px 10px;
 }
 .lp-stat-k{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:5px}
 .lp-stat-v{font-family:var(--mono);font-size:16px;font-weight:500;color:#fff;letter-spacing:-.02em;line-height:1.15}
