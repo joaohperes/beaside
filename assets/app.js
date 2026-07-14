@@ -673,11 +673,115 @@ function buildGlossaryFooter(){
   main.appendChild(footer);
 }
 
+// ── Tabelas stackable no mobile ──────────────────────────────
+// Todas as tabelas com ≥2 colunas viram cards no mobile (sem scroll horizontal).
+// Cabeçalho: <thead>, 1ª linha só de <th>, ou fallback "Coluna N".
+function _cellText(el){
+  return (el.textContent||'').replace(/\s+/g,' ').trim();
+}
+function _rowCells(row){
+  return [...row.children].filter(c=>c.tagName==='TD'||c.tagName==='TH');
+}
+function _maxCols(table){
+  let n=0;
+  table.querySelectorAll('tr').forEach(r=>{n=Math.max(n,_rowCells(r).length);});
+  return n;
+}
+function _isHeaderRow(row){
+  if(!row)return false;
+  if(row.parentElement&&row.parentElement.tagName==='THEAD')return true;
+  const cells=_rowCells(row);
+  if(!cells.length)return false;
+  // só <th>
+  if(cells.every(c=>c.tagName==='TH'))return true;
+  // maioria th
+  const ths=cells.filter(c=>c.tagName==='TH').length;
+  return ths>=Math.ceil(cells.length*0.6);
+}
+function prepareStackableTables(root){
+  const scope=root||document;
+  scope.querySelectorAll('table').forEach(table=>{
+    if(table.dataset.stackReady==='1')return;
+    // UI de busca / chrome — não stackar
+    if(table.closest('.search-modal,.search-results,.header,.sidebar'))return;
+    // layout tables com role=presentation
+    if(table.getAttribute('role')==='presentation')return;
+
+    const cols=_maxCols(table);
+    if(cols<2)return; // 1 coluna: não estoura, não stacka
+
+    let headers=[];
+    let headRow=null;
+    const theadRow=table.querySelector('thead tr');
+    if(theadRow){
+      headRow=theadRow;
+      headers=_rowCells(theadRow).map(_cellText);
+    }else{
+      const first=table.querySelector('tr');
+      if(_isHeaderRow(first)){
+        headRow=first;
+        headers=_rowCells(first).map(_cellText);
+        first.classList.add('table-stack-head');
+      }
+    }
+    // preenche labels faltantes
+    while(headers.length<cols)headers.push('Coluna '+(headers.length+1));
+    headers=headers.map((h,i)=>h||('Coluna '+(i+1)));
+
+    const bodyRows=[...table.querySelectorAll('tr')].filter(r=>{
+      if(r===headRow||r.classList.contains('table-stack-head'))return false;
+      if(r.parentElement&&r.parentElement.tagName==='THEAD')return false;
+      if(_isHeaderRow(r)&&!r.querySelector('td'))return false;
+      return _rowCells(r).some(c=>c.tagName==='TD');
+    });
+
+    bodyRows.forEach(row=>{
+      _rowCells(row).forEach((cell,i)=>{
+        // não sobrescreve label manual
+        if(!cell.getAttribute('data-label')&&headers[i]){
+          cell.setAttribute('data-label',headers[i]);
+        }
+      });
+    });
+
+    table.dataset.stackReady='1';
+    table.classList.add('table-stackable');
+    let wrap=table.closest('.table-wrap');
+    if(wrap){
+      wrap.classList.add('table-stack');
+    }else{
+      const w=document.createElement('div');
+      w.className='table-wrap table-stack';
+      table.parentNode.insertBefore(w,table);
+      w.appendChild(table);
+    }
+  });
+}
+// expõe para assistentes / páginas com HTML dinâmico
+window.prepareStackableTables=prepareStackableTables;
+
+function observeStackableTables(){
+  if(typeof MutationObserver==='undefined')return;
+  const mo=new MutationObserver(muts=>{
+    let need=false;
+    for(const m of muts){
+      if(m.addedNodes&&m.addedNodes.length){need=true;break;}
+    }
+    if(!need)return;
+    // debounce
+    clearTimeout(observeStackableTables._t);
+    observeStackableTables._t=setTimeout(()=>prepareStackableTables(),40);
+  });
+  mo.observe(document.documentElement,{childList:true,subtree:true});
+}
+
 // ============================================================
 // BOOT
 // ============================================================
 document.addEventListener('DOMContentLoaded',()=>{
   buildShell();
+  prepareStackableTables();
+  observeStackableTables();
   initProgress();
   initSearchKeys();
   buildGlossaryFooter();

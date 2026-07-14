@@ -379,7 +379,9 @@ function mdToHtml(md){
       while(i+1<lines.length&&lines[i+1].trim().includes('|')&&lines[i+1].trim()){
         body+='<tr>'+splitCells(lines[i+1].trim()).map(c=>'<td>'+inline(c)+'</td>').join('')+'</tr>';i++;
       }
-      html+='<table><thead><tr>'+head.map(c=>'<th>'+inline(c)+'</th>').join('')+'</tr></thead><tbody>'+body+'</tbody></table>';
+      html+='<div class="table-wrap">
+<table><thead><tr>'+head.map(c=>'<th>'+inline(c)+'</th>').join('')+'</tr></thead><tbody>'+body+'</tbody></table>
+</div>';
       continue;
     }
     if(/^---+$/.test(line)){closeList();html+='<hr>';continue;}
