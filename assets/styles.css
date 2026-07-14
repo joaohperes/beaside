@@ -219,11 +219,16 @@ td strong{color:#e8ecf2;font-weight:500}
 .step-item.purple .s-label{background:rgba(124,111,247,.12);color:var(--purple)}
 .step-item.amber .s-label{background:rgba(240,160,48,.12);color:var(--amber)}
 .step-item.coral .s-label{background:rgba(232,88,64,.12);color:var(--coral)}
-.badge{display:inline-block;font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;padding:2px 8px;border-radius:4px;margin-right:4px}
-.badge.teal{background:rgba(29,184,138,.15);color:var(--teal)}
-.badge.red{background:rgba(226,75,74,.15);color:#f08080}
-.badge.blue{background:rgba(59,158,255,.15);color:var(--blue)}
-.badge.amber{background:rgba(240,160,48,.15);color:var(--amber)}
+.badge{
+  display:inline;padding:0;margin:0 6px 0 0;
+  border:none;border-radius:0;background:transparent;
+  font-family:var(--mono);font-size:10px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.08em;
+}
+.badge.teal{color:var(--teal)}
+.badge.red{color:#f08080}
+.badge.blue{color:var(--blue)}
+.badge.amber{color:var(--amber)}
 /* Quiz */
 .quiz-box{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:24px;margin:20px 0}
 .quiz-case{font-size:13.5px;color:var(--text);line-height:1.7;margin-bottom:20px;padding:16px;background:var(--bg4);border-radius:8px;border-left:3px solid var(--blue)}
@@ -374,23 +379,7 @@ td strong{color:#e8ecf2;font-weight:500}
     margin:10px 0;
   }
 
-  /* pills dentro de tabela empilhada: sem chip — texto com cor */
-  .table-wrap.table-stack .pill{
-    display:inline;
-    padding:0;margin:0;
-    border:none;border-radius:0;
-    background:transparent!important;
-    font-family:var(--sans);font-size:14.5px;font-weight:600;
-    letter-spacing:-.01em;white-space:normal;line-height:1.35;
-  }
-  .table-wrap.table-stack .pill-coral{color:var(--coral)}
-  .table-wrap.table-stack .pill-amber{color:var(--amber)}
-  .table-wrap.table-stack .pill-red{color:var(--red)}
-  .table-wrap.table-stack .pill-blue{color:#60a5fa}
-  .table-wrap.table-stack .pill-purple{color:var(--purple)}
-  .table-wrap.table-stack .pill-green{color:var(--teal)}
-  .table-wrap.table-stack .pill-gray{color:var(--text2)}
-  /* 1ª célula (tipo de choque) como título do card */
+  /* 1ª célula com label semântico = título do card (ex. tipo de choque) */
   .table-wrap.table-stack tbody td:first-child:has(.pill),
   .table-wrap.table-stack > table > tr:not(.table-stack-head) > td:first-child:has(.pill){
     grid-template-columns:1fr;
@@ -400,6 +389,9 @@ td strong{color:#e8ecf2;font-weight:500}
   .table-wrap.table-stack tbody td:first-child:has(.pill)::before,
   .table-wrap.table-stack > table > tr:not(.table-stack-head) > td:first-child:has(.pill)::before{
     display:none;
+  }
+  .table-wrap.table-stack td:first-child .pill{
+    font-family:var(--sans);font-size:14.5px;font-weight:600;
   }
   .formula{max-width:100%;font-size:12.5px}
   .peep-row{flex-wrap:wrap;gap:6px}
@@ -634,16 +626,50 @@ td strong{color:#e8ecf2;font-weight:500}
 .card-title.teal::before,.card-title.coral::before,.card-title.blue::before,
 .card-title.red::before,.card-title.green::before,.card-title.amber::before,
 .card-title.purple::before{background:var(--accent)}
-/* Pills hemo (hemo-choque usa pill-* direto, vm usa --teal via .tag) */
-.pill{display:inline-block;padding:2px 10px;border-radius:20px;font-family:var(--mono);font-size:11px;font-weight:600;white-space:nowrap}
-.pill-green{background:rgba(52,211,153,.15);color:var(--green);border:1px solid rgba(52,211,153,.3)}
-.pill-amber{background:rgba(240,160,48,.15);color:var(--amber);border:1px solid rgba(240,160,48,.3)}
-.pill-red{background:rgba(226,75,74,.15);color:var(--red);border:1px solid rgba(226,75,74,.3)}
-.pill-coral{background:rgba(232,88,64,.15);color:var(--coral);border:1px solid rgba(232,88,64,.3)}
-.pill-blue{background:rgba(96,165,250,.15);color:#60a5fa;border:1px solid rgba(96,165,250,.3)}
-.pill-gray{background:rgba(148,163,184,.1);color:#94a3b8;border:1px solid rgba(148,163,184,.25)}
-.pill[title]{cursor:help}
-.pill-purple{background:rgba(124,111,247,.15);color:var(--purple);border:1px solid rgba(124,111,247,.3)}
+/* Labels semânticos — texto com cor (sem chip/cápsula) */
+.pill{
+  display:inline;
+  padding:0;margin:0;
+  border:none;border-radius:0;
+  background:transparent;
+  font-family:var(--sans);
+  font-size:inherit;
+  font-weight:600;
+  letter-spacing:-.01em;
+  line-height:1.35;
+  white-space:normal;
+  vertical-align:baseline;
+}
+.pill-green{color:var(--green)}
+.pill-amber{color:var(--amber)}
+.pill-red{color:var(--red)}
+.pill-coral{color:var(--coral)}
+.pill-blue{color:#60a5fa}
+.pill-gray{color:#94a3b8}
+.pill-purple{color:var(--purple)}
+.pill-teal{color:var(--teal)}
+.pill[title]{cursor:help;border-bottom:1px dotted currentColor;border-bottom-color:rgba(255,255,255,.2)}
+/* thresholds / valores: mono */
+td .pill,th .pill,.formula + * .pill,.scale-line .pill{
+  font-family:var(--mono);font-size:.92em;font-weight:500;letter-spacing:.01em;
+}
+/* legenda (ex. mat-item com Forte / Condicional): dot + label */
+.mat-item:has(> .pill)::before{display:none}
+.mat-item > .pill{
+  font-family:var(--sans);font-size:13px;font-weight:600;
+}
+.mat-item > .pill::before{
+  content:'';
+  display:inline-block;
+  width:7px;height:7px;border-radius:50%;
+  background:currentColor;
+  margin-right:9px;
+  vertical-align:middle;
+  position:relative;top:-1px;
+  opacity:.9;
+}
+/* separador entre dois labels na mesma célula */
+.pill + .pill{margin-left:.15em}
 /* Alert boxes */
 .alert-box{border-radius:8px;padding:12px 14px;margin:10px 0;font-size:13px;display:flex;gap:10px;align-items:flex-start}
 .alert-box.info{background:rgba(29,184,138,.08);border:1px solid rgba(29,184,138,.2)}
@@ -784,7 +810,19 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
 .vci-seg{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:10px;font-weight:600;flex-direction:column;line-height:1.2}
 .vci-seg span{font-size:9px;font-weight:400;opacity:.8}
 /* Tag row (hemo version) */
-.tag-row{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.tag-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:8px 0 12px}
+.tag{
+  display:inline;
+  font-family:var(--mono);font-size:11px;font-weight:400;
+  color:var(--text3);letter-spacing:.02em;
+  padding:0;border:none;background:none;border-radius:0;
+}
+.tag-row .tag:not(:last-child)::after{
+  content:'·';
+  margin-left:10px;
+  color:var(--text3);opacity:.55;
+  font-weight:400;
+}
 /* Hemo quad-plane (for quadrantes page) */
 .qp-y-axis{grid-column:1;grid-row:2/span 2;display:flex;flex-direction:column;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:10px;color:var(--text2);letter-spacing:.05em;padding:8px 0;text-align:center}
 .qp-y-axis .qp-axis-name{writing-mode:vertical-rl;transform:rotate(180deg);text-transform:uppercase;font-weight:600;color:var(--text);letter-spacing:.08em;padding:8px 0}
@@ -896,7 +934,11 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
 .ind-item .ind-d{font-size:12.5px;color:var(--text2);line-height:1.65;font-weight:300}
 .ind-item .ind-d strong{color:var(--text);font-weight:500}
 /* tag inline em células de tabela */
-.site-tag{font-family:var(--mono);font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);background:rgba(var(--accent-rgb),.12);border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:middle}
+.site-tag{
+  font-family:var(--mono);font-size:9px;font-weight:600;text-transform:uppercase;
+  letter-spacing:.08em;color:var(--accent);background:none;border:none;border-radius:0;
+  padding:0;margin-left:6px;vertical-align:middle;
+}
 /* material */
 /* Material — checklist (não chips) */
 .mat-grid{
