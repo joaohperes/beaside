@@ -6,58 +6,69 @@
 
 // ── Tema claro / escuro ──────────────────────────────────────
 const THEME_KEY='beaside-theme';
+const THEME_BTN_HTML=
+  '<span class="theme-icon theme-icon-sun" aria-hidden="true">'+
+    '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">'+
+      '<circle cx="12" cy="12" r="4"/>'+
+      '<path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>'+
+    '</svg>'+
+  '</span>'+
+  '<span class="theme-icon theme-icon-moon" aria-hidden="true">'+
+    '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">'+
+      '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>'+
+    '</svg>'+
+  '</span>';
 function getTheme(){
   try{const t=localStorage.getItem(THEME_KEY);if(t==='light'||t==='dark')return t;}catch(e){}
   return 'dark';
 }
-function themeIcon(theme){
-  // botão mostra o que o clique VAI ativar (sol = ir para claro, lua = ir para escuro)
-  if(theme==='dark'){
-    return '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>';
-  }
-  return '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+function prefersReduceMotion(){
+  return !!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 }
 function syncThemeButtons(t){
   document.querySelectorAll('[data-theme-toggle]').forEach(btn=>{
+    if(!btn.dataset.iconsReady){
+      btn.innerHTML=THEME_BTN_HTML;
+      btn.dataset.iconsReady='1';
+    }
     const next=t==='light'?'dark':'light';
-    btn.innerHTML=themeIcon(t);
     btn.setAttribute('aria-label', next==='light'?'Ativar modo claro':'Ativar modo escuro');
     btn.setAttribute('title', next==='light'?'Modo claro':'Modo escuro');
     btn.setAttribute('aria-pressed', t==='light'?'true':'false');
   });
 }
-function applyTheme(theme,opts){
+function applyTheme(theme){
   const t=(theme==='light'||theme==='dark')?theme:'dark';
-  const animate=opts&&opts.animate;
-  const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const root=document.documentElement;
-
-  if(animate&&!reduce){
-    root.classList.add('theme-switching');
-    document.querySelectorAll('[data-theme-toggle]').forEach(btn=>{
-      btn.classList.remove('theme-btn-spin');
-      // reflow para reiniciar animação
-      void btn.offsetWidth;
-      btn.classList.add('theme-btn-spin');
-    });
-  }
-
-  root.setAttribute('data-theme',t);
+  document.documentElement.setAttribute('data-theme',t);
   try{localStorage.setItem(THEME_KEY,t);}catch(e){}
   syncThemeButtons(t);
-
-  if(animate&&!reduce){
-    clearTimeout(applyTheme._tid);
-    applyTheme._tid=setTimeout(()=>{
-      root.classList.remove('theme-switching');
-      document.querySelectorAll('[data-theme-toggle]').forEach(btn=>btn.classList.remove('theme-btn-spin'));
-    },380);
-  }
 }
 function toggleTheme(){
-  applyTheme(getTheme()==='light'?'dark':'light',{animate:true});
+  const next=getTheme()==='light'?'dark':'light';
+  // animação do botão (ícones empilhados via CSS)
+  document.querySelectorAll('[data-theme-toggle]').forEach(btn=>{
+    btn.classList.remove('is-toggling');
+    void btn.offsetWidth;
+    btn.classList.add('is-toggling');
+    clearTimeout(btn._togTid);
+    btn._togTid=setTimeout(()=>btn.classList.remove('is-toggling'),420);
+  });
+  // transição de página: View Transition API (crossfade limpo) ou fallback suave
+  if(document.startViewTransition&&!prefersReduceMotion()){
+    document.startViewTransition(()=>applyTheme(next));
+    return;
+  }
+  if(!prefersReduceMotion()){
+    const root=document.documentElement;
+    root.classList.add('theme-switching');
+    applyTheme(next);
+    clearTimeout(toggleTheme._tid);
+    toggleTheme._tid=setTimeout(()=>root.classList.remove('theme-switching'),320);
+    return;
+  }
+  applyTheme(next);
 }
-// aplica cedo (theme-boot.js já pode ter setado; sem animação no load)
+// aplica cedo (theme-boot.js já pode ter setado; sincroniza botões no DOMContentLoaded)
 try{applyTheme(getTheme());}catch(e){}
 
 // ── Módulos disponíveis ──────────────────────────────────────

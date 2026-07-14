@@ -439,42 +439,41 @@ body{
 
 /* theme toggle (hub) */
 .btn-theme{
+  position:relative;
   display:inline-flex;align-items:center;justify-content:center;
   width:34px;height:32px;padding:0;margin-right:4px;
   background:rgba(255,255,255,.03);border:1px solid var(--border);
   border-radius:8px;color:var(--text2);cursor:pointer;
   transition:border-color .15s,color .15s,background .15s,transform .15s;
-  overflow:hidden;
 }
 .btn-theme:hover{border-color:var(--border2);color:var(--text);background:rgba(255,255,255,.05)}
-.btn-theme:active{transform:scale(.92)}
-.btn-theme svg{display:block;transition:transform .35s cubic-bezier(.22,.8,.24,1),opacity .25s ease}
-.btn-theme.theme-btn-spin svg{animation:theme-icon-swap .38s cubic-bezier(.22,.8,.24,1)}
-@keyframes theme-icon-swap{
-  0%{transform:rotate(0deg) scale(1);opacity:1}
-  40%{transform:rotate(90deg) scale(.55);opacity:0}
-  41%{transform:rotate(-90deg) scale(.55);opacity:0}
-  100%{transform:rotate(0deg) scale(1);opacity:1}
+.btn-theme:active{transform:scale(.94)}
+.btn-theme .theme-icon{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .28s ease,transform .38s cubic-bezier(.34,1.3,.64,1);
 }
-html.theme-switching,
-html.theme-switching body,
-html.theme-switching .card,
-html.theme-switching .hero-panel,
-html.theme-switching .stat,
-html.theme-switching .value,
-html.theme-switching .meta-pill,
-html.theme-switching .btn-theme,
-html.theme-switching .btn-primary,
-html.theme-switching .btn-ghost,
-html.theme-switching .logo-wordmark,
-html.theme-switching .hero h1,
-html.theme-switching .hero-lead,
-html.theme-switching .footer{
-  transition:background-color .32s ease,background .32s ease,color .28s ease,border-color .32s ease,box-shadow .32s ease!important;
+.btn-theme .theme-icon svg{display:block}
+html:not([data-theme="light"]) .btn-theme .theme-icon-sun{opacity:1;transform:rotate(0) scale(1)}
+html:not([data-theme="light"]) .btn-theme .theme-icon-moon{opacity:0;transform:rotate(-90deg) scale(.5);pointer-events:none}
+html[data-theme="light"] .btn-theme .theme-icon-sun{opacity:0;transform:rotate(90deg) scale(.5);pointer-events:none}
+html[data-theme="light"] .btn-theme .theme-icon-moon{opacity:1;transform:rotate(0) scale(1)}
+.btn-theme.is-toggling{animation:theme-btn-pulse .42s cubic-bezier(.34,1.2,.64,1)}
+@keyframes theme-btn-pulse{
+  0%{transform:scale(1)} 35%{transform:scale(.88)} 70%{transform:scale(1.06)} 100%{transform:scale(1)}
+}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.32s;animation-timing-function:ease}
+::view-transition-old(root){animation-name:theme-fade-out}
+::view-transition-new(root){animation-name:theme-fade-in}
+@keyframes theme-fade-out{from{opacity:1}to{opacity:0}}
+@keyframes theme-fade-in{from{opacity:0}to{opacity:1}}
+html.theme-switching body,html.theme-switching .hub{
+  transition:background-color .28s ease,color .24s ease!important;
 }
 @media(prefers-reduced-motion:reduce){
-  .btn-theme.theme-btn-spin svg{animation:none}
-  html.theme-switching,html.theme-switching *{transition:none!important}
+  .btn-theme .theme-icon{transition:none}
+  .btn-theme.is-toggling{animation:none}
+  ::view-transition-old(root),::view-transition-new(root){animation:none}
 }
 
 /* light theme — hub */
@@ -788,46 +787,49 @@ function getTheme(){
   try{const t=localStorage.getItem(THEME_KEY);if(t==='light'||t==='dark')return t;}catch(e){}
   return 'dark';
 }
-function themeIcon(theme){
-  if(theme==='dark'){
-    return '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>';
-  }
-  return '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+const THEME_BTN_HTML=
+  '<span class="theme-icon theme-icon-sun" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></span>'+
+  '<span class="theme-icon theme-icon-moon" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>';
+function prefersReduceMotion(){
+  return !!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 }
 function syncThemeButtons(t){
-  document.querySelectorAll('[data-theme-toggle]').forEach(btn=>{
-    const next=t==='light'?'dark':'light';
-    btn.innerHTML=themeIcon(t);
+  document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){
+    if(!btn.dataset.iconsReady){btn.innerHTML=THEME_BTN_HTML;btn.dataset.iconsReady='1';}
+    var next=t==='light'?'dark':'light';
     btn.setAttribute('aria-label',next==='light'?'Ativar modo claro':'Ativar modo escuro');
     btn.setAttribute('title',next==='light'?'Modo claro':'Modo escuro');
     btn.setAttribute('aria-pressed',t==='light'?'true':'false');
   });
 }
-function applyTheme(theme,opts){
-  const t=(theme==='light'||theme==='dark')?theme:'dark';
-  const animate=opts&&opts.animate;
-  const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const root=document.documentElement;
-  if(animate&&!reduce){
-    root.classList.add('theme-switching');
-    document.querySelectorAll('[data-theme-toggle]').forEach(btn=>{
-      btn.classList.remove('theme-btn-spin');
-      void btn.offsetWidth;
-      btn.classList.add('theme-btn-spin');
-    });
-  }
-  root.setAttribute('data-theme',t);
+function applyTheme(theme){
+  var t=(theme==='light'||theme==='dark')?theme:'dark';
+  document.documentElement.setAttribute('data-theme',t);
   try{localStorage.setItem(THEME_KEY,t);}catch(e){}
   syncThemeButtons(t);
-  if(animate&&!reduce){
-    clearTimeout(applyTheme._tid);
-    applyTheme._tid=setTimeout(function(){
-      root.classList.remove('theme-switching');
-      document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){btn.classList.remove('theme-btn-spin');});
-    },380);
-  }
 }
-function toggleTheme(){applyTheme(getTheme()==='light'?'dark':'light',{animate:true});}
+function toggleTheme(){
+  var next=getTheme()==='light'?'dark':'light';
+  document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){
+    btn.classList.remove('is-toggling');
+    void btn.offsetWidth;
+    btn.classList.add('is-toggling');
+    clearTimeout(btn._togTid);
+    btn._togTid=setTimeout(function(){btn.classList.remove('is-toggling');},420);
+  });
+  if(document.startViewTransition&&!prefersReduceMotion()){
+    document.startViewTransition(function(){applyTheme(next);});
+    return;
+  }
+  if(!prefersReduceMotion()){
+    document.documentElement.classList.add('theme-switching');
+    applyTheme(next);
+    clearTimeout(toggleTheme._tid);
+    toggleTheme._tid=setTimeout(function(){document.documentElement.classList.remove('theme-switching');},320);
+    return;
+  }
+  applyTheme(next);
+}
 applyTheme(getTheme());
 </script>
 </body>

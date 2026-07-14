@@ -1243,80 +1243,87 @@ p,li,.sec-lead,.ind-d,.lp-desc,.card-sub,.section-subtitle{
 
 /* ═══════════ THEME TOGGLE ═══════════ */
 .btn-theme{
+  position:relative;
   display:inline-flex;align-items:center;justify-content:center;
   width:34px;height:32px;padding:0;
   background:rgba(255,255,255,.03);border:1px solid var(--border);
   border-radius:8px;color:var(--text2);cursor:pointer;
-  transition:border-color .15s,color .15s,background .15s,transform .15s,box-shadow .2s;
+  transition:border-color .15s,color .15s,background .15s,transform .15s;
   flex-shrink:0;
-  overflow:hidden;
 }
 .btn-theme:hover{border-color:var(--border2);color:var(--text);background:rgba(255,255,255,.05)}
-.btn-theme:active{transform:scale(.92)}
-.btn-theme svg{
-  display:block;
-  transition:transform .35s cubic-bezier(.22,.8,.24,1),opacity .25s ease;
+.btn-theme:active{transform:scale(.94)}
+.btn-theme .theme-icon{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .28s ease,transform .38s cubic-bezier(.34,1.3,.64,1);
 }
-.btn-theme.theme-btn-spin svg{
-  animation:theme-icon-swap .38s cubic-bezier(.22,.8,.24,1);
+.btn-theme .theme-icon svg{display:block}
+/* dark: mostra sol (próxima ação = claro) */
+html:not([data-theme="light"]) .btn-theme .theme-icon-sun{
+  opacity:1;transform:rotate(0deg) scale(1);
 }
-@keyframes theme-icon-swap{
-  0%{transform:rotate(0deg) scale(1);opacity:1}
-  40%{transform:rotate(90deg) scale(.55);opacity:0}
-  41%{transform:rotate(-90deg) scale(.55);opacity:0}
-  100%{transform:rotate(0deg) scale(1);opacity:1}
+html:not([data-theme="light"]) .btn-theme .theme-icon-moon{
+  opacity:0;transform:rotate(-90deg) scale(.5);
+  pointer-events:none;
+}
+/* light: mostra lua (próxima ação = escuro) */
+html[data-theme="light"] .btn-theme .theme-icon-sun{
+  opacity:0;transform:rotate(90deg) scale(.5);
+  pointer-events:none;
+}
+html[data-theme="light"] .btn-theme .theme-icon-moon{
+  opacity:1;transform:rotate(0deg) scale(1);
+}
+/* micro-bounce no clique */
+.btn-theme.is-toggling .theme-icon{
+  transition-duration:.42s;
+}
+.btn-theme.is-toggling{
+  animation:theme-btn-pulse .42s cubic-bezier(.34,1.2,.64,1);
+}
+@keyframes theme-btn-pulse{
+  0%{transform:scale(1)}
+  35%{transform:scale(.88)}
+  70%{transform:scale(1.06)}
+  100%{transform:scale(1)}
 }
 
-/* transição suave só durante a troca de tema (não no hover diário) */
-html.theme-switching,
+/* View Transition API — crossfade limpo da página inteira */
+::view-transition-old(root),
+::view-transition-new(root){
+  animation-duration:.32s;
+  animation-timing-function:ease;
+}
+::view-transition-old(root){animation-name:theme-fade-out}
+::view-transition-new(root){animation-name:theme-fade-in}
+@keyframes theme-fade-out{
+  from{opacity:1}
+  to{opacity:0}
+}
+@keyframes theme-fade-in{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+/* fallback (sem View Transition): só body/header/sidebar, bem sutil */
 html.theme-switching body,
 html.theme-switching .header,
 html.theme-switching .sidebar,
 html.theme-switching .main,
-html.theme-switching .card,
-html.theme-switching .table-wrap,
-html.theme-switching .ind-item,
-html.theme-switching .hero-meta,
-html.theme-switching .lp-card,
-html.theme-switching .lp-panel,
-html.theme-switching .lp-stat,
-html.theme-switching .formula-card,
-html.theme-switching .mat-grid,
-html.theme-switching .warn-box,
-html.theme-switching .ok-box,
-html.theme-switching .tip-box,
-html.theme-switching .info-box,
-html.theme-switching .anatomy-note,
-html.theme-switching .nav-link,
-html.theme-switching .btn-theme,
-html.theme-switching .btn-search,
-html.theme-switching .menu-btn,
-html.theme-switching .sub-nav-btn,
-html.theme-switching .q-tile,
-html.theme-switching .iq-detail,
-html.theme-switching .page-head,
-html.theme-switching .section-title,
-html.theme-switching .sec-h h2,
-html.theme-switching thead th,
-html.theme-switching th,
-html.theme-switching td,
-html.theme-switching .tl .tl-b,
-html.theme-switching .tl .tl-b strong,
-html.theme-switching .search-modal,
-html.theme-switching .toast{
-  transition:
-    background-color .32s ease,
-    background .32s ease,
-    color .28s ease,
-    border-color .32s ease,
-    box-shadow .32s ease,
-    fill .28s ease,
-    stroke .28s ease !important;
+html.theme-switching .hub{
+  transition:background-color .28s ease,color .24s ease !important;
 }
+
 @media(prefers-reduced-motion:reduce){
-  .btn-theme.theme-btn-spin svg{animation:none}
-  html.theme-switching,
-  html.theme-switching *{transition:none!important}
+  .btn-theme .theme-icon{transition:none}
+  .btn-theme.is-toggling{animation:none}
+  ::view-transition-old(root),
+  ::view-transition-new(root){animation:none}
+  html.theme-switching body,
+  html.theme-switching .header,
+  html.theme-switching .sidebar,
+  html.theme-switching .main{transition:none!important}
 }
 
 /* ═══════════ LIGHT THEME ═══════════ */
