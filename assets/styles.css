@@ -737,6 +737,12 @@ td .pill,th .pill{
 }
 /* separador entre dois labels na mesma célula */
 .pill + .pill{margin-left:.15em}
+/* qualificadores (congestão, TEP, etc.): neutros, fora da cor do tipo */
+.pill-qual{
+  color:var(--text2);font-weight:400;font-size:inherit;
+  letter-spacing:-.01em;white-space:nowrap;
+}
+td:first-child:has(.pill-qual){white-space:nowrap}
 /* Alert boxes */
 .alert-box{border-radius:8px;padding:12px 14px;margin:10px 0;font-size:13px;display:flex;gap:10px;align-items:flex-start}
 .alert-box.info{background:rgba(29,184,138,.08);border:1px solid rgba(29,184,138,.2)}
