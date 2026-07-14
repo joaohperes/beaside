@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   /* tokens premium — quiet dark */
@@ -8,8 +9,8 @@
   --purple:#9b6ff7;--amber:#f0a030;--coral:#e85840;
   --blue:#3b82f6;--red:#e05555;
   --sidebar-w:256px;--header-h:56px;
-  --mono:'IBM Plex Mono',ui-monospace,monospace;
-  --sans:'IBM Plex Sans',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
   --ease:cubic-bezier(.22,.8,.24,1);
   /* accent — cor primária do módulo ativo */
   --accent:#1db88a;--accent-d:#0f6e56;--accent-rgb:29,184,138;
@@ -31,6 +32,8 @@ body{
   font-family:var(--sans);background:var(--bg);color:var(--text);
   font-size:14.5px;line-height:1.65;overflow-x:hidden;
   -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  font-feature-settings:'cv11','ss01','ss03';
+  letter-spacing:-.011em;
 }
 ::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{background:var(--bg2)}
@@ -648,15 +651,16 @@ td strong{color:#e8ecf2;font-weight:500}
 .pill-gray{color:#94a3b8}
 .pill-purple{color:var(--purple)}
 .pill-teal{color:var(--teal)}
-.pill[title]{cursor:help;border-bottom:1px dotted currentColor;border-bottom-color:rgba(255,255,255,.2)}
-/* thresholds / valores: mono */
-td .pill,th .pill,.formula + * .pill,.scale-line .pill{
-  font-family:var(--mono);font-size:.92em;font-weight:500;letter-spacing:.01em;
+.pill[title]{cursor:help}
+/* labels semânticos: sempre sans (premium); mono só em .formula / .td-mono / doses */
+td .pill,th .pill{
+  font-family:var(--sans);font-size:13.5px;font-weight:600;letter-spacing:-.015em;
+  white-space:nowrap;
 }
 /* legenda (ex. mat-item com Forte / Condicional): dot + label */
 .mat-item:has(> .pill)::before{display:none}
 .mat-item > .pill{
-  font-family:var(--sans);font-size:13px;font-weight:600;
+  font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:-.01em;
 }
 .mat-item > .pill::before{
   content:'';
