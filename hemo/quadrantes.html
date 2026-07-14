@@ -13,34 +13,112 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-.main{max-width:1080px;padding:32px 32px;}
-#chart-wrap{margin:14px 0 6px;user-select:none;}
-#quad-svg{width:100%;height:auto;display:block;}
-.q-area{cursor:pointer;transition:opacity .18s;}
-.q-area.dimmed{opacity:.18;}
-
-.iq-detail{margin-top:14px;border-radius:10px;border:1px solid var(--border);overflow:hidden;animation:fadeUp .16s ease;}
+.main{max-width:1080px;padding:32px 32px}
+/* ── matriz 2×2 ── */
+.qmap{
+  display:grid;
+  grid-template-columns:28px 1fr 1fr;
+  grid-template-rows:auto 1fr 1fr auto;
+  gap:8px 10px;
+  margin:8px 0 4px;
+  align-items:stretch;
+}
+.qmap-y{
+  grid-column:1;grid-row:2/4;
+  writing-mode:vertical-rl;transform:rotate(180deg);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:10px;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--text3);
+}
+.qmap-x{
+  grid-column:2/4;grid-row:4;
+  text-align:center;padding-top:4px;
+  font-family:var(--mono);font-size:10px;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--text3);
+}
+.qmap-axis-hi,.qmap-axis-lo{
+  font-family:var(--mono);font-size:9px;color:var(--text3);
+  letter-spacing:.04em;text-align:center;padding:0 4px 2px;
+}
+.qmap-axis-hi{grid-column:2/4;grid-row:1}
+.qmap-axis-lo{display:none}
+.q-tile{
+  position:relative;
+  display:flex;flex-direction:column;justify-content:center;gap:6px;
+  min-height:118px;padding:16px 16px 14px;
+  border:1px solid var(--border);border-radius:12px;
+  background:var(--bg2);
+  cursor:pointer;text-align:left;
+  transition:border-color .18s,box-shadow .18s,background .18s,opacity .18s,transform .18s;
+}
+.q-tile:hover{
+  transform:translateY(-1px);
+  box-shadow:0 10px 28px rgba(0,0,0,.12);
+}
+.q-tile.dimmed{opacity:.38}
+.q-tile.active{opacity:1;box-shadow:0 0 0 1px rgba(var(--q-rgb),.35),0 12px 32px rgba(0,0,0,.1)}
+.q-tile-id{
+  font-family:var(--mono);font-size:10px;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--q);
+}
+.q-tile-title{
+  font-size:15px;font-weight:600;color:var(--text);
+  letter-spacing:-.02em;line-height:1.25;
+}
+.q-tile-crit{
+  font-family:var(--mono);font-size:11px;color:var(--text2);
+  letter-spacing:.01em;line-height:1.4;
+}
+.q-tile-edge{
+  position:absolute;left:0;top:12px;bottom:12px;width:3px;
+  border-radius:0 2px 2px 0;background:var(--q);opacity:.85;
+}
+.q-tile-q4{--q:var(--red);--q-rgb:214,61,61;grid-column:2;grid-row:2}
+.q-tile-q3{--q:var(--coral);--q-rgb:212,69,48;grid-column:3;grid-row:2}
+.q-tile-q2{--q:var(--amber);--q-rgb:184,118,12;grid-column:2;grid-row:3}
+.q-tile-q1{--q:var(--teal);--q-rgb:13,154,114;grid-column:3;grid-row:3}
+.qmap-hint{
+  grid-column:2/4;margin-top:2px;
+  font-size:12px;color:var(--text3);text-align:center;
+}
+.iq-detail{margin-top:16px;border-radius:12px;border:1px solid var(--border);overflow:hidden;animation:fadeUp .16s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
-.iq-detail-inner{padding:18px 20px;}
-.iq-detail-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
-.iq-detail-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
-.iq-detail-name{font-size:14px;font-weight:600;color:#e0e6f0;flex:1;}
-.iq-detail-crit{font-family:var(--mono);font-size:10px;color:var(--text3);background:var(--bg3);border:1px solid var(--border);padding:3px 9px;border-radius:5px;white-space:nowrap;}
-.iq-detail-desc{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:12px;}
-.iq-detail-action-label{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--text3);margin-bottom:7px;}
-.iq-detail-action{font-size:13px;color:var(--text);line-height:1.65;padding:11px 14px;border-radius:8px;border-left:3px solid;}
-.iq-detail.d-q1{background:rgba(var(--accent-rgb),.04);border-color:rgba(var(--accent-rgb),.2);}
-.iq-detail.d-q1 .iq-detail-dot{background:var(--accent);}
-.iq-detail.d-q1 .iq-detail-action{border-color:var(--accent);background:rgba(var(--accent-rgb),.06);}
-.iq-detail.d-q2{background:rgba(240,160,48,.04);border-color:rgba(240,160,48,.2);}
-.iq-detail.d-q2 .iq-detail-dot{background:#f0a030;}
-.iq-detail.d-q2 .iq-detail-action{border-color:#f0a030;background:rgba(240,160,48,.06);}
-.iq-detail.d-q3{background:rgba(232,120,40,.04);border-color:rgba(232,120,40,.2);}
-.iq-detail.d-q3 .iq-detail-dot{background:#e87828;}
-.iq-detail.d-q3 .iq-detail-action{border-color:#e87828;background:rgba(232,120,40,.06);}
-.iq-detail.d-q4{background:rgba(220,60,60,.05);border-color:rgba(220,60,60,.22);}
-.iq-detail.d-q4 .iq-detail-dot{background:#dc3c3c;}
-.iq-detail.d-q4 .iq-detail-action{border-color:#dc3c3c;background:rgba(220,60,60,.07);}
+.iq-detail-inner{padding:18px 20px}
+.iq-detail-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.iq-detail-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.iq-detail-name{font-size:14.5px;font-weight:600;color:var(--text);flex:1;letter-spacing:-.015em}
+.iq-detail-crit{font-family:var(--mono);font-size:10.5px;color:var(--text2);background:var(--bg3);border:1px solid var(--border);padding:4px 10px;border-radius:6px;white-space:nowrap}
+.iq-detail-desc{font-size:13.5px;color:var(--text2);line-height:1.7;margin-bottom:14px}
+.iq-detail-action-label{font-family:var(--mono);font-size:9.5px;text-transform:uppercase;letter-spacing:.12em;color:var(--text3);margin-bottom:7px}
+.iq-detail-action{font-size:13.5px;color:var(--text);line-height:1.65;padding:12px 14px;border-radius:8px;border-left:3px solid}
+.iq-detail.d-q1{background:rgba(var(--accent-rgb),.04);border-color:rgba(var(--accent-rgb),.2)}
+.iq-detail.d-q1 .iq-detail-dot{background:var(--accent)}
+.iq-detail.d-q1 .iq-detail-action{border-color:var(--accent);background:rgba(var(--accent-rgb),.06)}
+.iq-detail.d-q2{background:rgba(240,160,48,.05);border-color:rgba(240,160,48,.22)}
+.iq-detail.d-q2 .iq-detail-dot{background:var(--amber)}
+.iq-detail.d-q2 .iq-detail-action{border-color:var(--amber);background:rgba(240,160,48,.07)}
+.iq-detail.d-q3{background:rgba(232,88,64,.05);border-color:rgba(232,88,64,.22)}
+.iq-detail.d-q3 .iq-detail-dot{background:var(--coral)}
+.iq-detail.d-q3 .iq-detail-action{border-color:var(--coral);background:rgba(232,88,64,.07)}
+.iq-detail.d-q4{background:rgba(220,60,60,.05);border-color:rgba(220,60,60,.22)}
+.iq-detail.d-q4 .iq-detail-dot{background:var(--red)}
+.iq-detail.d-q4 .iq-detail-action{border-color:var(--red);background:rgba(220,60,60,.07)}
+.read-axes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
+.read-axis{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+.read-axis-k{font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+.read-axis-d{font-size:13px;color:var(--text2);line-height:1.55}
+.read-axis-d strong{color:var(--text);font-weight:600}
+@media(max-width:680px){
+  .qmap{grid-template-columns:22px 1fr;grid-template-rows:auto}
+  .qmap-y{grid-row:2/span 2}
+  .q-tile-q4,.q-tile-q3,.q-tile-q2,.q-tile-q1{grid-column:2}
+  .q-tile-q4{grid-row:2}.q-tile-q3{grid-row:3}.q-tile-q2{grid-row:4}.q-tile-q1{grid-row:5}
+  .qmap-x{grid-column:2;grid-row:6}
+  .qmap-axis-hi{grid-column:2;grid-row:1}
+  .qmap-hint{grid-column:2}
+  .q-tile{min-height:96px}
+  .read-axes{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body data-module="hemo" data-page="quadrantes">
@@ -48,126 +126,46 @@
   <header class="page-head">
     <div class="hero-eyebrow">Hemodinâmica · Interpretação</div>
       <h1 class="section-title">Quadrantes SvcO₂ × Δ pCO₂</h1>
-      <p class="section-subtitle">Clique em cada quadrante para ver o mecanismo e a conduta</p>
+      <p class="section-subtitle">Toque em um quadrante para ver o mecanismo e a conduta</p>
   </header>
 
   <div class="card">
     <div class="card-title purple">Mapa — SvcO₂ × Δ pCO₂</div>
-    <div id="chart-wrap">
-      <!--
-        viewBox 480 × 290
-        margens: top=8 right=8 bottom=44 left=36
-        plot: x1=36 x2=472 y1=8 y2=246  w=436 h=238
-        X 40–100%: x(p) = 36 + 436*(p-40)/60
-          40→36  50→108.7  60→181.3  70→254  80→326.7  90→399.3  100→472
-        Y 0–12: y(v) = 246 - 238*(v/12)
-          0→246  2→206.3  4→166.7  6→127  8→87.3  10→47.7  12→8
-      -->
-      <svg id="quad-svg" viewBox="0 0 480 290" xmlns="http://www.w3.org/2000/svg"
-           font-family="Inter,'Inter',sans-serif">
-        <defs>
-          <clipPath id="pc"><rect x="36" y="8" width="436" height="238"/></clipPath>
-        </defs>
 
-        <!-- fundo -->
-        <rect x="36" y="8" width="436" height="238" fill="#080c10"/>
+    <div class="qmap" role="group" aria-label="Mapa de quadrantes SvcO₂ por delta pCO₂">
+      <div class="qmap-axis-hi">Δ pCO₂ ≥ 6 mmHg</div>
+      <div class="qmap-y" aria-hidden="true">Δ pCO₂ ↑</div>
 
-        <!-- grid Y muito sutil -->
-        <g clip-path="url(#pc)" stroke="#111820" stroke-width=".6">
-          <line x1="36" y1="206" x2="472" y2="206"/>
-          <line x1="36" y1="167" x2="472" y2="167"/>
-          <line x1="36" y1="127" x2="472" y2="127" stroke="#18242f" stroke-width=".8"/>
-          <line x1="36" y1="87"  x2="472" y2="87"/>
-          <line x1="36" y1="48"  x2="472" y2="48"/>
-        </g>
-        <!-- grid X muito sutil -->
-        <g clip-path="url(#pc)" stroke="#111820" stroke-width=".6">
-          <line x1="109" y1="8" x2="109" y2="246"/>
-          <line x1="181" y1="8" x2="181" y2="246"/>
-          <line x1="254" y1="8" x2="254" y2="246" stroke="#18242f" stroke-width=".8"/>
-          <line x1="327" y1="8" x2="327" y2="246"/>
-          <line x1="399" y1="8" x2="399" y2="246"/>
-        </g>
+      <button type="button" class="q-tile q-tile-q4 q-area" id="area-q4" data-q="q4">
+        <span class="q-tile-edge" aria-hidden="true"></span>
+        <span class="q-tile-id">Q4 · Baixo débito</span>
+        <span class="q-tile-title">Choque confirmado</span>
+        <span class="q-tile-crit">SvcO₂ &lt; 70% · Δ pCO₂ ≥ 6</span>
+      </button>
+      <button type="button" class="q-tile q-tile-q3 q-area" id="area-q3" data-q="q3">
+        <span class="q-tile-edge" aria-hidden="true"></span>
+        <span class="q-tile-id">Q3 · Falsa segurança</span>
+        <span class="q-tile-title">Cenário traiçoeiro</span>
+        <span class="q-tile-crit">SvcO₂ ≥ 70% · Δ pCO₂ ≥ 6</span>
+      </button>
+      <button type="button" class="q-tile q-tile-q2 q-area" id="area-q2" data-q="q2">
+        <span class="q-tile-edge" aria-hidden="true"></span>
+        <span class="q-tile-id">Q2 · Oferta</span>
+        <span class="q-tile-title">Problema na oferta</span>
+        <span class="q-tile-crit">SvcO₂ &lt; 70% · Δ pCO₂ &lt; 6</span>
+      </button>
+      <button type="button" class="q-tile q-tile-q1 q-area" id="area-q1" data-q="q1">
+        <span class="q-tile-edge" aria-hidden="true"></span>
+        <span class="q-tile-id">Q1 · Adequado</span>
+        <span class="q-tile-title">Ressuscitação ok</span>
+        <span class="q-tile-crit">SvcO₂ ≥ 70% · Δ pCO₂ &lt; 6</span>
+      </button>
 
-        <!-- fills mínimos -->
-        <rect class="q-area" id="area-q4" data-q="q4" x="36"  y="8"   width="218" height="119" fill="#c83030" fill-opacity=".07"/>
-        <rect class="q-area" id="area-q3" data-q="q3" x="254" y="8"   width="218" height="119" fill="#d06820" fill-opacity=".05"/>
-        <rect class="q-area" id="area-q2" data-q="q2" x="36"  y="127" width="218" height="119" fill="#c09018" fill-opacity=".05"/>
-        <rect class="q-area" id="area-q1" data-q="q1" x="254" y="127" width="218" height="119" fill="#1aa880" fill-opacity=".06"/>
-
-        <!-- bordas coloridas finas -->
-        <rect x="36"  y="8"   width="218" height="119" fill="none" stroke="#c83030" stroke-opacity=".14" stroke-width=".7"/>
-        <rect x="254" y="8"   width="218" height="119" fill="none" stroke="#d06820" stroke-opacity=".12" stroke-width=".7"/>
-        <rect x="36"  y="127" width="218" height="119" fill="none" stroke="#c09018" stroke-opacity=".12" stroke-width=".7"/>
-        <rect x="254" y="127" width="218" height="119" fill="none" stroke="#1aa880" stroke-opacity=".14" stroke-width=".7"/>
-
-        <!-- threshold dashes -->
-        <line x1="254" y1="8"   x2="254" y2="246" stroke="#182430" stroke-width="1" stroke-dasharray="3 3"/>
-        <line x1="36"  y1="127" x2="472" y2="127" stroke="#182430" stroke-width="1" stroke-dasharray="3 3"/>
-
-        <!-- eixos minimalistas — sem seta, só a linha termina -->
-        <line x1="36" y1="246" x2="474" y2="246" stroke="#1e3040" stroke-width="1"/>
-        <polygon points="472,243 477,246 472,249" fill="#1e3040"/>
-        <line x1="36" y1="246" x2="36" y2="6" stroke="#1e3040" stroke-width="1"/>
-        <polygon points="33,8 36,3 39,8" fill="#1e3040"/>
-
-        <!-- labels Y — só threshold e extremos, bem pequenos -->
-        <g font-size="7.5" fill="#243344" text-anchor="end">
-          <text x="32" y="249">0</text>
-          <text x="32" y="130" fill="#304858" font-weight="500">6</text>
-          <text x="32" y="11">12</text>
-        </g>
-        <text transform="rotate(-90,9,127)" x="9" y="127" text-anchor="middle"
-              font-size="7" fill="#1e3040" letter-spacing=".04em">Δ pCO₂</text>
-
-        <!-- labels X — só threshold e extremos -->
-        <g font-size="7.5" fill="#243344" text-anchor="middle">
-          <text x="36"  y="259">40%</text>
-          <text x="254" y="259" fill="#304858" font-weight="500">70%</text>
-          <text x="472" y="259">100%</text>
-        </g>
-        <text x="254" y="274" text-anchor="middle" font-size="7" fill="#1e3040" letter-spacing=".04em">SvcO₂</text>
-
-        <!-- labels quadrantes — Inter, centralizados -->
-        <!--
-          Q4: cx=145 cy=67   Q3: cx=363 cy=67
-          Q2: cx=145 cy=186  Q1: cx=363 cy=186
-          layout: tag y=cy-22, título y=cy-7, chip rect top=cy+2 h=13, chip text y=cy+12
-        -->
-        <g clip-path="url(#pc)">
-          <!-- Q4 -->
-          <text x="145" y="45"  text-anchor="middle" font-size="6"   fill="#c83030" font-weight="600" letter-spacing=".1em">Q4 — BAIXO DÉBITO</text>
-          <text x="145" y="60"  text-anchor="middle" font-size="9.5" fill="#a8b8cc" font-weight="500">Choque confirmado</text>
-          <rect x="145" y="67" width="1" height="1" fill="none"/><!-- medida: texto ~108px wide → x=91 w=108 -->
-          <rect x="91"  y="67" width="108" height="13" rx="3.5" fill="#c83030" fill-opacity=".09" stroke="#c83030" stroke-opacity=".2" stroke-width=".6"/>
-          <text x="145" y="77"  text-anchor="middle" font-size="6"   fill="#c83030" fill-opacity=".8">SvcO₂ &lt; 70% · Δ pCO₂ ≥ 6</text>
-
-          <!-- Q3 -->
-          <text x="363" y="45"  text-anchor="middle" font-size="6"   fill="#d06820" font-weight="600" letter-spacing=".1em">Q3 — FALSA SEGURANÇA</text>
-          <text x="363" y="60"  text-anchor="middle" font-size="9.5" fill="#a8b8cc" font-weight="500">Cenário traiçoeiro</text>
-          <rect x="305" y="67" width="116" height="13" rx="3.5" fill="#d06820" fill-opacity=".08" stroke="#d06820" stroke-opacity=".18" stroke-width=".6"/>
-          <text x="363" y="77"  text-anchor="middle" font-size="6"   fill="#d06820" fill-opacity=".8">SvcO₂ ≥ 70% · Δ pCO₂ ≥ 6</text>
-
-          <!-- Q2 -->
-          <text x="145" y="164" text-anchor="middle" font-size="6"   fill="#c09018" font-weight="600" letter-spacing=".1em">Q2 — OFERTA</text>
-          <text x="145" y="179" text-anchor="middle" font-size="9.5" fill="#a8b8cc" font-weight="500">Problema na oferta</text>
-          <rect x="91"  y="186" width="108" height="13" rx="3.5" fill="#c09018" fill-opacity=".08" stroke="#c09018" stroke-opacity=".18" stroke-width=".6"/>
-          <text x="145" y="196" text-anchor="middle" font-size="6"   fill="#c09018" fill-opacity=".8">SvcO₂ &lt; 70% · Δ pCO₂ &lt; 6</text>
-
-          <!-- Q1 -->
-          <text x="363" y="164" text-anchor="middle" font-size="6"   fill="#1aa880" font-weight="600" letter-spacing=".1em">Q1 — ADEQUADO</text>
-          <text x="363" y="179" text-anchor="middle" font-size="9.5" fill="#a8b8cc" font-weight="500">Ressuscitação ok</text>
-          <rect x="305" y="186" width="116" height="13" rx="3.5" fill="#1aa880" fill-opacity=".08" stroke="#1aa880" stroke-opacity=".2" stroke-width=".6"/>
-          <text x="363" y="196" text-anchor="middle" font-size="6"   fill="#1aa880" fill-opacity=".8">SvcO₂ ≥ 70% · Δ pCO₂ &lt; 6</text>
-        </g>
-
-        <!-- anotações threshold — quase invisíveis -->
-        <text x="257" y="123" font-size="6.5" fill="#18242e" font-style="italic">Δ pCO₂ = 6</text>
-        <text x="257" y="243" font-size="6.5" fill="#18242e" font-style="italic">SvcO₂ = 70%</text>
-      </svg>
+      <div class="qmap-x">SvcO₂ → &nbsp;·&nbsp; corte em 70%</div>
     </div>
+    <p class="qmap-hint">Clique em um quadrante para expandir mecanismo e conduta</p>
 
-    <div id="iqDetail" class="iq-detail" style="display:none;">
+    <div id="iqDetail" class="iq-detail" style="display:none" hidden>
       <div class="iq-detail-inner">
         <div class="iq-detail-header">
           <div class="iq-detail-dot" id="detDot"></div>
@@ -195,18 +193,18 @@
   </div>
 
   <div class="card">
-    <div class="card-title">Como ler o gráfico</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px;">
-      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px;">
-        <div style="font-family:var(--mono);font-size:10px;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">Eixo X — SvcO₂</div>
-        <p style="font-size:12.5px;color:var(--text2);line-height:1.55;">Mede a extração de O₂ pelos tecidos. <strong style="color:var(--text);">Baixa (&lt; 70%)</strong> = tecidos sugando mais O₂, oferta insuficiente para a demanda. Vai para a esquerda no gráfico.</p>
+    <div class="card-title">Como ler o mapa</div>
+    <div class="read-axes">
+      <div class="read-axis">
+        <div class="read-axis-k" style="color:var(--accent)">Eixo X — SvcO₂</div>
+        <p class="read-axis-d">Mede a extração de O₂ pelos tecidos. <strong>Baixa (&lt; 70%)</strong> = tecidos sugando mais O₂ — oferta insuficiente para a demanda. Vai para a esquerda no mapa.</p>
       </div>
-      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px;">
-        <div style="font-family:var(--mono);font-size:10px;color:var(--purple);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">Eixo Y — Δ pCO₂</div>
-        <p style="font-size:12.5px;color:var(--text2);line-height:1.55;">Mede a adequação do fluxo tecidual. <strong style="color:var(--text);">Alto (≥ 6 mmHg)</strong> = CO₂ acumulando — fluxo insuficiente para carreá-lo. Vai para cima no gráfico.</p>
+      <div class="read-axis">
+        <div class="read-axis-k" style="color:var(--purple)">Eixo Y — Δ pCO₂</div>
+        <p class="read-axis-d">Mede a adequação do fluxo tecidual. <strong>Alto (≥ 6 mmHg)</strong> = CO₂ acumulando — fluxo insuficiente para carreá-lo. Vai para cima no mapa.</p>
       </div>
     </div>
-    <div class="alert-box info" style="margin-top:12px;">
+    <div class="alert-box info" style="margin-top:12px">
       <div class="icon">i</div>
       <div class="content"><strong>Por que Q3 é o mais perigoso?</strong> Na sepse hiperdinâmica e na hipóxia citopática, a SvcO₂ pode ser normal ou elevada mesmo com hipoperfusão tecidual real. O paciente parece "ressuscitado" mas o Δ pCO₂ ≥ 6 desmascara que o fluxo tecidual ainda está inadequado.</div>
     </div>
@@ -216,16 +214,16 @@
 <script src="../assets/app.js"></script>
 <script>
 const data = {
-  q1:{cls:'d-q1',dot:'#1db88a',name:'Q1 — Ressuscitação adequada',crit:'SvcO₂ ≥ 70% · Δ pCO₂ < 6',
+  q1:{cls:'d-q1',dot:'var(--teal)',name:'Q1 — Ressuscitação adequada',crit:'SvcO₂ ≥ 70% · Δ pCO₂ < 6',
     desc:'Oferta de O₂ preservada e fluxo tecidual adequado. Os dois parâmetros excluem hipoperfusão global significativa. Se lactato ainda elevado, considerar hiperlactatemia tipo B (clearance prejudicado, hipermetabolismo).',
     action:'Manter monitoramento clínico. Repetir lactato em 2 h. Verificar PAM, diurese e enchimento capilar. Se lactato persistentemente alto sem hipoperfusão — investigar causa tipo B.'},
-  q2:{cls:'d-q2',dot:'#f0a030',name:'Q2 — Problema na oferta de O₂',crit:'SvcO₂ < 70% · Δ pCO₂ < 6',
+  q2:{cls:'d-q2',dot:'var(--amber)',name:'Q2 — Problema na oferta de O₂',crit:'SvcO₂ < 70% · Δ pCO₂ < 6',
     desc:'Tecidos extraindo mais O₂ que o normal, mas o fluxo sanguíneo tecidual está mantido (Δ pCO₂ ok). O problema está na oferta: queda da Hb, queda da SaO₂ ou queda do débito cardíaco — não no fluxo em si.',
     action:'Investigar tríade da oferta: Hemoglobina (transfundir se Hb < 7–8 g/dL) · SaO₂ (otimizar FiO₂, revisar VM) · Débito cardíaco (eco — inotrópico se FE reduzida).'},
-  q3:{cls:'d-q3',dot:'#e87828',name:'Q3 — Falsa segurança',crit:'SvcO₂ ≥ 70% · Δ pCO₂ ≥ 6',
+  q3:{cls:'d-q3',dot:'var(--coral)',name:'Q3 — Falsa segurança',crit:'SvcO₂ ≥ 70% · Δ pCO₂ ≥ 6',
     desc:'Cenário mais traiçoeiro. SvcO₂ "normal" engana: pode haver shunting arteriovenoso (sepse hiperdinâmica), hipóxia citopática (mitocôndria não consome O₂) ou foco infeccioso não controlado. O Δ pCO₂ ≥ 6 revela que o fluxo tecidual está inadequado.',
     action:'Não se tranquilizar com a SvcO₂. Reavaliar lactato seriado, eco cardíaco (função VE, DC). Controlar foco infeccioso. Otimizar vasopressor; considerar dobutamina se baixo DC confirmado. Repetir gasometria venosa em 1–2 h.'},
-  q4:{cls:'d-q4',dot:'#dc3c3c',name:'Q4 — Baixo débito / Choque confirmado',crit:'SvcO₂ < 70% · Δ pCO₂ ≥ 6',
+  q4:{cls:'d-q4',dot:'var(--red)',name:'Q4 — Baixo débito / Choque confirmado',crit:'SvcO₂ < 70% · Δ pCO₂ ≥ 6',
     desc:'Ambos alterados: oferta inadequada E fluxo tecidual insuficiente. Maior urgência clínica — é o padrão clássico de choque com baixo débito. A combinação implica que os tecidos estão ao mesmo tempo privados de O₂ e acumulando CO₂.',
     action:'Identificar mecanismo via POCUS (RUSH): hipovolemia → testar fluido-responsividade (PLR + VTI) · disfunção VE → inotrópico (dobutamina) · vasoplegia → vasopressor (noradrenalina) · obstrutivo → tratar causa (tamponamento, TEP). Reavaliação a cada 30–60 min.'}
 };
@@ -236,7 +234,8 @@ function selectQ(q){
   const el=document.getElementById('area-'+q);
   el.classList.remove('dimmed');el.classList.add('active');
   const p=document.getElementById('iqDetail');
-  p.className='iq-detail '+d.cls;p.style.display='block';
+  p.hidden=false;p.style.display='block';
+  p.className='iq-detail '+d.cls;
   document.getElementById('detDot').style.background=d.dot;
   document.getElementById('detName').textContent=d.name;
   document.getElementById('detCrit').textContent=d.crit;

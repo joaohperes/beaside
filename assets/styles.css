@@ -1077,7 +1077,7 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
 .tl li:last-child::before{display:none}
 .tl .tl-n{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--accent);background:rgba(var(--accent-rgb),.12);border-radius:5px;width:23px;height:23px;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1}
 .tl .tl-b{font-size:13px;color:var(--text2);line-height:1.65;padding-top:2px}
-.tl .tl-b strong{color:#e8ecf2;font-weight:500}
+.tl .tl-b strong{color:var(--text);font-weight:600}
 /* complicações */
 .compl-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
 @media(max-width:680px){.compl-grid{grid-template-columns:1fr}}
@@ -1341,7 +1341,10 @@ html[data-theme="light"] h3,
 html[data-theme="light"] .sec-h h2,
 html[data-theme="light"] td strong,
 html[data-theme="light"] .pp-card-title,
-html[data-theme="light"] .search-hit .sh-title{
+html[data-theme="light"] .search-hit .sh-title,
+html[data-theme="light"] .tl .tl-b strong,
+html[data-theme="light"] .iq-detail-name,
+html[data-theme="light"] .iq-detail-action{
   color:#0f1419;
 }
 html[data-theme="light"] .ind-item,
