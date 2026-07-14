@@ -178,12 +178,32 @@ h3{font-size:15px;font-weight:500;color:#e8ecf2;margin:28px 0 12px}
   background:var(--bg2);
 }
 .table-wrap table{width:100%;margin:0;border:none;border-radius:0}
-table{width:100%;border-collapse:collapse;font-size:13px;max-width:100%}
-thead th,th{background:var(--bg3);color:var(--text2);font-weight:500;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;padding:10px 14px;text-align:left!important;border-bottom:1px solid var(--border);white-space:nowrap}
-tbody td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:middle;line-height:1.55;word-break:break-word}
+table{width:100%;border-collapse:collapse;font-size:13.5px;max-width:100%}
+thead th,th{
+  background:var(--bg3);color:var(--text2);font-weight:500;font-size:11px;
+  text-transform:uppercase;letter-spacing:.07em;
+  padding:12px 18px;text-align:left!important;
+  border-bottom:1px solid var(--border);white-space:nowrap;
+}
+tbody td{
+  padding:14px 18px;border-bottom:1px solid var(--border);
+  color:var(--text);vertical-align:middle;line-height:1.55;
+  word-break:break-word;
+}
 tbody tr:last-child td{border-bottom:none}
 tbody tr:hover td{background:rgba(255,255,255,.02)}
 td strong{color:#e8ecf2;font-weight:500}
+/* 1ª coluna com label semântico: respiro em relação à célula seguinte */
+td:first-child:has(.pill){
+  min-width:9.5em;
+  padding-right:22px;
+  white-space:nowrap;
+}
+td:first-child .pill{
+  display:inline-block;
+  margin:0;
+  white-space:nowrap;
+}
 .td-mono{font-family:var(--mono);font-size:12px}
 .td-ok{color:var(--accent);font-weight:500}
 .td-warn{color:var(--amber);font-weight:500}
@@ -280,8 +300,11 @@ td strong{color:#e8ecf2;font-weight:500}
   /* tables fallback scroll (só se NÃO for stackable) */
   .table-wrap:not(.table-stack){margin:12px 0;border-radius:10px}
   .table-wrap:not(.table-stack) table{width:max-content;min-width:100%;max-width:none}
-  thead th,th{padding:8px 10px;font-size:10.5px;letter-spacing:.04em}
-  tbody td{padding:8px 10px;font-size:12.5px}
+  thead th,th{padding:10px 12px;font-size:10.5px;letter-spacing:.04em}
+  tbody td{padding:12px 14px;font-size:13px}
+  .scale-legend,.scale-item{font-size:13.5px}
+  .scale-item .pill{font-size:13.5px}
+  .scale-note{font-size:12.5px}
 
   /* ── table stack: cada linha vira card (todas as tabelas ≥2 col) ── */
   .table-wrap.table-stack{
@@ -654,9 +677,34 @@ td strong{color:#e8ecf2;font-weight:500}
 .pill[title]{cursor:help}
 /* labels semânticos: sempre sans (premium); mono só em .formula / .td-mono / doses */
 td .pill,th .pill{
-  font-family:var(--sans);font-size:13.5px;font-weight:600;letter-spacing:-.015em;
+  font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:-.015em;
   white-space:nowrap;
 }
+/* escalas sob fórmulas (cIVC / dIVC etc.) */
+.scale-k{
+  font-family:var(--mono);font-size:10px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.12em;
+  margin-bottom:12px;
+}
+.scale-legend{
+  display:flex;flex-wrap:wrap;align-items:baseline;
+  gap:10px 18px;
+  font-size:14px;line-height:1.5;
+  color:var(--text);
+  margin:2px 0 0;
+}
+.scale-item{
+  display:inline-flex;align-items:baseline;gap:7px;
+  font-size:14px;color:var(--text2);font-weight:400;
+}
+.scale-item .pill{
+  font-family:var(--sans);font-size:14px;font-weight:600;
+  letter-spacing:-.01em;white-space:nowrap;
+}
+.scale-note{
+  margin:14px 0 0;font-size:13px;line-height:1.6;color:var(--text2);
+}
+.scale-note strong{color:var(--text);font-weight:500}
 /* legenda (ex. mat-item com Forte / Condicional): dot + label */
 .mat-item:has(> .pill)::before{display:none}
 .mat-item > .pill{
