@@ -4,6 +4,37 @@
 // data-module="vm" data-page="sdra" nos <body> das páginas
 // ============================================================
 
+// ── Tema claro / escuro ──────────────────────────────────────
+const THEME_KEY='beaside-theme';
+function getTheme(){
+  try{const t=localStorage.getItem(THEME_KEY);if(t==='light'||t==='dark')return t;}catch(e){}
+  return 'dark';
+}
+function themeIcon(theme){
+  // botão mostra o que o clique VAI ativar (sol = ir para claro, lua = ir para escuro)
+  if(theme==='dark'){
+    return '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>';
+  }
+  return '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+}
+function applyTheme(theme){
+  const t=(theme==='light'||theme==='dark')?theme:'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  try{localStorage.setItem(THEME_KEY,t);}catch(e){}
+  document.querySelectorAll('[data-theme-toggle]').forEach(btn=>{
+    const next=t==='light'?'dark':'light';
+    btn.innerHTML=themeIcon(t);
+    btn.setAttribute('aria-label', next==='light'?'Ativar modo claro':'Ativar modo escuro');
+    btn.setAttribute('title', next==='light'?'Modo claro':'Modo escuro');
+    btn.setAttribute('aria-pressed', t==='light'?'true':'false');
+  });
+}
+function toggleTheme(){
+  applyTheme(getTheme()==='light'?'dark':'light');
+}
+// aplica cedo (theme-boot.js já pode ter setado; sincroniza botões depois)
+try{applyTheme(getTheme());}catch(e){}
+
 // ── Módulos disponíveis ──────────────────────────────────────
 const MODULES = {
   vm: {
@@ -147,6 +178,7 @@ function buildShell(){
         '<span class="header-title">'+modMeta.subtitle+'</span>'
       : '<span class="header-title">Guias clínicos de UTI</span>')+
     '<div class="header-actions">'+
+      '<button class="btn-theme" data-theme-toggle type="button" onclick="toggleTheme()" aria-label="Alternar tema"></button>'+
       '<button class="btn-search" onclick="openSearch()" type="button"><span>Buscar</span> <kbd>⌘K</kbd></button>'+
       '<button class="menu-btn" type="button" onclick="toggleMenu()">Menu</button>'+
     '</div>';
@@ -780,6 +812,7 @@ function observeStackableTables(){
 // ============================================================
 document.addEventListener('DOMContentLoaded',()=>{
   buildShell();
+  applyTheme(getTheme()); // atualiza ícone do toggle no header
   prepareStackableTables();
   observeStackableTables();
   initProgress();
