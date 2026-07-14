@@ -17,10 +17,7 @@ function themeIcon(theme){
   }
   return '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
 }
-function applyTheme(theme){
-  const t=(theme==='light'||theme==='dark')?theme:'dark';
-  document.documentElement.setAttribute('data-theme',t);
-  try{localStorage.setItem(THEME_KEY,t);}catch(e){}
+function syncThemeButtons(t){
   document.querySelectorAll('[data-theme-toggle]').forEach(btn=>{
     const next=t==='light'?'dark':'light';
     btn.innerHTML=themeIcon(t);
@@ -29,10 +26,38 @@ function applyTheme(theme){
     btn.setAttribute('aria-pressed', t==='light'?'true':'false');
   });
 }
-function toggleTheme(){
-  applyTheme(getTheme()==='light'?'dark':'light');
+function applyTheme(theme,opts){
+  const t=(theme==='light'||theme==='dark')?theme:'dark';
+  const animate=opts&&opts.animate;
+  const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root=document.documentElement;
+
+  if(animate&&!reduce){
+    root.classList.add('theme-switching');
+    document.querySelectorAll('[data-theme-toggle]').forEach(btn=>{
+      btn.classList.remove('theme-btn-spin');
+      // reflow para reiniciar animação
+      void btn.offsetWidth;
+      btn.classList.add('theme-btn-spin');
+    });
+  }
+
+  root.setAttribute('data-theme',t);
+  try{localStorage.setItem(THEME_KEY,t);}catch(e){}
+  syncThemeButtons(t);
+
+  if(animate&&!reduce){
+    clearTimeout(applyTheme._tid);
+    applyTheme._tid=setTimeout(()=>{
+      root.classList.remove('theme-switching');
+      document.querySelectorAll('[data-theme-toggle]').forEach(btn=>btn.classList.remove('theme-btn-spin'));
+    },380);
+  }
 }
-// aplica cedo (theme-boot.js já pode ter setado; sincroniza botões depois)
+function toggleTheme(){
+  applyTheme(getTheme()==='light'?'dark':'light',{animate:true});
+}
+// aplica cedo (theme-boot.js já pode ter setado; sem animação no load)
 try{applyTheme(getTheme());}catch(e){}
 
 // ── Módulos disponíveis ──────────────────────────────────────

@@ -1247,11 +1247,77 @@ p,li,.sec-lead,.ind-d,.lp-desc,.card-sub,.section-subtitle{
   width:34px;height:32px;padding:0;
   background:rgba(255,255,255,.03);border:1px solid var(--border);
   border-radius:8px;color:var(--text2);cursor:pointer;
-  transition:border-color .15s,color .15s,background .15s;
+  transition:border-color .15s,color .15s,background .15s,transform .15s,box-shadow .2s;
   flex-shrink:0;
+  overflow:hidden;
 }
 .btn-theme:hover{border-color:var(--border2);color:var(--text);background:rgba(255,255,255,.05)}
-.btn-theme svg{display:block}
+.btn-theme:active{transform:scale(.92)}
+.btn-theme svg{
+  display:block;
+  transition:transform .35s cubic-bezier(.22,.8,.24,1),opacity .25s ease;
+}
+.btn-theme.theme-btn-spin svg{
+  animation:theme-icon-swap .38s cubic-bezier(.22,.8,.24,1);
+}
+@keyframes theme-icon-swap{
+  0%{transform:rotate(0deg) scale(1);opacity:1}
+  40%{transform:rotate(90deg) scale(.55);opacity:0}
+  41%{transform:rotate(-90deg) scale(.55);opacity:0}
+  100%{transform:rotate(0deg) scale(1);opacity:1}
+}
+
+/* transição suave só durante a troca de tema (não no hover diário) */
+html.theme-switching,
+html.theme-switching body,
+html.theme-switching .header,
+html.theme-switching .sidebar,
+html.theme-switching .main,
+html.theme-switching .card,
+html.theme-switching .table-wrap,
+html.theme-switching .ind-item,
+html.theme-switching .hero-meta,
+html.theme-switching .lp-card,
+html.theme-switching .lp-panel,
+html.theme-switching .lp-stat,
+html.theme-switching .formula-card,
+html.theme-switching .mat-grid,
+html.theme-switching .warn-box,
+html.theme-switching .ok-box,
+html.theme-switching .tip-box,
+html.theme-switching .info-box,
+html.theme-switching .anatomy-note,
+html.theme-switching .nav-link,
+html.theme-switching .btn-theme,
+html.theme-switching .btn-search,
+html.theme-switching .menu-btn,
+html.theme-switching .sub-nav-btn,
+html.theme-switching .q-tile,
+html.theme-switching .iq-detail,
+html.theme-switching .page-head,
+html.theme-switching .section-title,
+html.theme-switching .sec-h h2,
+html.theme-switching thead th,
+html.theme-switching th,
+html.theme-switching td,
+html.theme-switching .tl .tl-b,
+html.theme-switching .tl .tl-b strong,
+html.theme-switching .search-modal,
+html.theme-switching .toast{
+  transition:
+    background-color .32s ease,
+    background .32s ease,
+    color .28s ease,
+    border-color .32s ease,
+    box-shadow .32s ease,
+    fill .28s ease,
+    stroke .28s ease !important;
+}
+@media(prefers-reduced-motion:reduce){
+  .btn-theme.theme-btn-spin svg{animation:none}
+  html.theme-switching,
+  html.theme-switching *{transition:none!important}
+}
 
 /* ═══════════ LIGHT THEME ═══════════ */
 html[data-theme="light"]{

@@ -443,10 +443,39 @@ body{
   width:34px;height:32px;padding:0;margin-right:4px;
   background:rgba(255,255,255,.03);border:1px solid var(--border);
   border-radius:8px;color:var(--text2);cursor:pointer;
-  transition:border-color .15s,color .15s,background .15s;
+  transition:border-color .15s,color .15s,background .15s,transform .15s;
+  overflow:hidden;
 }
 .btn-theme:hover{border-color:var(--border2);color:var(--text);background:rgba(255,255,255,.05)}
-.btn-theme svg{display:block}
+.btn-theme:active{transform:scale(.92)}
+.btn-theme svg{display:block;transition:transform .35s cubic-bezier(.22,.8,.24,1),opacity .25s ease}
+.btn-theme.theme-btn-spin svg{animation:theme-icon-swap .38s cubic-bezier(.22,.8,.24,1)}
+@keyframes theme-icon-swap{
+  0%{transform:rotate(0deg) scale(1);opacity:1}
+  40%{transform:rotate(90deg) scale(.55);opacity:0}
+  41%{transform:rotate(-90deg) scale(.55);opacity:0}
+  100%{transform:rotate(0deg) scale(1);opacity:1}
+}
+html.theme-switching,
+html.theme-switching body,
+html.theme-switching .card,
+html.theme-switching .hero-panel,
+html.theme-switching .stat,
+html.theme-switching .value,
+html.theme-switching .meta-pill,
+html.theme-switching .btn-theme,
+html.theme-switching .btn-primary,
+html.theme-switching .btn-ghost,
+html.theme-switching .logo-wordmark,
+html.theme-switching .hero h1,
+html.theme-switching .hero-lead,
+html.theme-switching .footer{
+  transition:background-color .32s ease,background .32s ease,color .28s ease,border-color .32s ease,box-shadow .32s ease!important;
+}
+@media(prefers-reduced-motion:reduce){
+  .btn-theme.theme-btn-spin svg{animation:none}
+  html.theme-switching,html.theme-switching *{transition:none!important}
+}
 
 /* light theme — hub */
 html[data-theme="light"]{
@@ -765,10 +794,7 @@ function themeIcon(theme){
   }
   return '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
 }
-function applyTheme(theme){
-  const t=(theme==='light'||theme==='dark')?theme:'dark';
-  document.documentElement.setAttribute('data-theme',t);
-  try{localStorage.setItem(THEME_KEY,t);}catch(e){}
+function syncThemeButtons(t){
   document.querySelectorAll('[data-theme-toggle]').forEach(btn=>{
     const next=t==='light'?'dark':'light';
     btn.innerHTML=themeIcon(t);
@@ -777,7 +803,31 @@ function applyTheme(theme){
     btn.setAttribute('aria-pressed',t==='light'?'true':'false');
   });
 }
-function toggleTheme(){applyTheme(getTheme()==='light'?'dark':'light');}
+function applyTheme(theme,opts){
+  const t=(theme==='light'||theme==='dark')?theme:'dark';
+  const animate=opts&&opts.animate;
+  const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root=document.documentElement;
+  if(animate&&!reduce){
+    root.classList.add('theme-switching');
+    document.querySelectorAll('[data-theme-toggle]').forEach(btn=>{
+      btn.classList.remove('theme-btn-spin');
+      void btn.offsetWidth;
+      btn.classList.add('theme-btn-spin');
+    });
+  }
+  root.setAttribute('data-theme',t);
+  try{localStorage.setItem(THEME_KEY,t);}catch(e){}
+  syncThemeButtons(t);
+  if(animate&&!reduce){
+    clearTimeout(applyTheme._tid);
+    applyTheme._tid=setTimeout(function(){
+      root.classList.remove('theme-switching');
+      document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){btn.classList.remove('theme-btn-spin');});
+    },380);
+  }
+}
+function toggleTheme(){applyTheme(getTheme()==='light'?'dark':'light',{animate:true});}
 applyTheme(getTheme());
 </script>
 </body>
