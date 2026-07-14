@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script src="assets/theme-boot.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conectando… — be·aside</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#06080b;--text:#e6e9ef;--text2:#8b93a3;--teal:#1db88a;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --sans:'Inter',system-ui,sans-serif;
+}
+html[data-theme="light"]{--bg:#f4f5f7;--text:#1a2030;--text2:#5c6578;--teal:#0d9a72}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  font-family:var(--sans);background:var(--bg);color:var(--text);
+  -webkit-font-smoothing:antialiased;
+}
+.box{text-align:center;padding:32px 24px;max-width:360px}
+.logo{
+  font-family:var(--mono);font-size:13px;letter-spacing:.16em;color:var(--teal);
+  margin-bottom:20px;
+}
+.msg{font-size:15px;color:var(--text2);line-height:1.5}
+.msg.err{color:#e05555}
+.spin{
+  width:28px;height:28px;margin:0 auto 16px;border-radius:50%;
+  border:2px solid rgba(29,184,138,.2);border-top-color:var(--teal);
+  animation:r .7s linear infinite;
+}
+@keyframes r{to{transform:rotate(360deg)}}
+a{color:var(--teal)}
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="logo">be·aside</div>
+  <div class="spin" id="spin" aria-hidden="true"></div>
+  <p class="msg" id="msg" role="status">Finalizando login…</p>
+</div>
+<script src="assets/auth-config.js"></script>
+<script src="assets/auth.js"></script>
+<script>
+(async function(){
+  var msg=document.getElementById('msg');
+  var spin=document.getElementById('spin');
+  try{
+    await BeAsideAuth.init();
+    await BeAsideAuth.handleOAuthCallback();
+    // Se handleRedirectCallback já redirecionou, não chega aqui
+    if(BeAsideAuth.isSignedIn()){
+      msg.textContent='Tudo certo. Indo para o hub…';
+      location.replace(BeAsideAuth.getConfig().AFTER_SIGN_IN||'index.html');
+      return;
+    }
+    spin.style.display='none';
+    msg.className='msg err';
+    msg.innerHTML='Não foi possível concluir o login social. <a href="login.html">Tentar de novo</a>';
+  }catch(e){
+    console.error(e);
+    spin.style.display='none';
+    msg.className='msg err';
+    msg.innerHTML=(BeAsideAuth.clerkErrorMessage(e)||'Erro no callback.')+
+      ' <a href="login.html">Voltar</a>';
+  }
+})();
+</script>
+</body>
+</html>

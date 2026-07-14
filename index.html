@@ -114,6 +114,43 @@ body{
   width:5px;height:5px;border-radius:50%;background:var(--teal);
   box-shadow:0 0 0 3px rgba(29,184,138,.12);
 }
+.btn-entrar{
+  display:inline-flex;align-items:center;
+  font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.06em;
+  color:var(--text);text-decoration:none;
+  padding:7px 14px;border-radius:8px;
+  border:1px solid var(--border2);
+  background:rgba(255,255,255,.04);
+  transition:border-color .15s,background .15s,color .15s,transform .12s;
+}
+.btn-entrar:hover{
+  border-color:rgba(29,184,138,.45);color:#fff;
+  background:rgba(29,184,138,.1);
+}
+.btn-entrar:active{transform:scale(.97)}
+.auth-chip{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.04em;
+  color:var(--text);padding:5px 6px 5px 10px;border-radius:8px;
+  border:1px solid var(--border);background:rgba(255,255,255,.03);
+  max-width:200px;
+}
+.auth-chip-dot{
+  width:6px;height:6px;border-radius:50%;background:var(--teal);
+  box-shadow:0 0 0 3px rgba(29,184,138,.15);flex-shrink:0;
+}
+.auth-chip-name{
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  color:var(--text2);max-width:100px;
+}
+.auth-chip-out{
+  font-family:var(--mono);font-size:10px;letter-spacing:.06em;
+  color:var(--text2);background:transparent;border:1px solid var(--border);
+  border-radius:6px;padding:4px 8px;cursor:pointer;
+  transition:color .15s,border-color .15s,background .15s;
+}
+.auth-chip-out:hover{color:var(--text);border-color:var(--border2);background:rgba(255,255,255,.04)}
+.auth-chip-out:disabled{opacity:.5;cursor:wait}
 
 /* ── hero ── */
 .hero{
@@ -496,6 +533,18 @@ html[data-theme="light"] .logo-wordmark{color:#0f1419}
 html[data-theme="light"] .meta-pill{
   background:rgba(15,23,42,.03);border-color:var(--border);color:var(--text2);
 }
+html[data-theme="light"] .btn-entrar{
+  background:rgba(15,23,42,.03);border-color:var(--border2);color:var(--text);
+}
+html[data-theme="light"] .btn-entrar:hover{
+  border-color:rgba(13,154,114,.4);background:rgba(13,154,114,.08);color:#0f1419;
+}
+html[data-theme="light"] .auth-chip{
+  background:rgba(15,23,42,.03);border-color:var(--border);
+}
+html[data-theme="light"] .auth-chip-out:hover{
+  background:rgba(15,23,42,.05);
+}
 html[data-theme="light"] .hero h1{color:#0f1419}
 html[data-theme="light"] .hero-lead{color:var(--text2)}
 html[data-theme="light"] .hero-panel{
@@ -577,8 +626,9 @@ html[data-theme="light"] .footer-left strong{color:var(--text2)}
       <span class="logo-wordmark">be·aside</span>
     </a>
     <div class="top-meta">
+      <a class="btn-entrar" href="login.html">Entrar</a>
       <button class="btn-theme" data-theme-toggle type="button" onclick="toggleTheme()" aria-label="Alternar tema"></button>
-      <span class="meta-pill"><span class="live" aria-hidden="true"></span>à beira do leito</span>
+      <span class="meta-pill hide-sm"><span class="live" aria-hidden="true"></span>à beira do leito</span>
       <span class="meta-pill hide-sm">UTI · PS</span>
     </div>
   </header>
@@ -831,6 +881,20 @@ function toggleTheme(){
   applyTheme(next);
 }
 applyTheme(getTheme());
+</script>
+<script src="assets/auth-config.js"></script>
+<script src="assets/auth.js"></script>
+<script>
+(async function hubAuth(){
+  var slot=document.querySelector('.btn-entrar');
+  if(!slot||!window.BeAsideAuth) return;
+  try{
+    await BeAsideAuth.init();
+    BeAsideAuth.paintHubAuth(slot);
+  }catch(e){
+    /* sem key / offline — mantém botão Entrar */
+  }
+})();
 </script>
 </body>
 </html>

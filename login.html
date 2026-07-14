@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script src="assets/theme-boot.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entrar — be·aside</title>
+<meta name="description" content="Acesse o be·aside — guias clínicos de UTI e emergência à beira do leito.">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#06080b;--bg2:#0c0f13;--bg3:#12171d;--bg4:#1a2028;
+  --border:rgba(255,255,255,.06);--border2:rgba(255,255,255,.1);
+  --text:#e6e9ef;--text2:#8b93a3;--text3:#505868;
+  --teal:#1db88a;--teal-soft:rgba(29,184,138,.12);
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --ease:cubic-bezier(.22,.8,.24,1);
+  --shadow:0 24px 80px rgba(0,0,0,.45);
+}
+html[data-theme="light"]{
+  color-scheme:light;
+  --bg:#f4f5f7;--bg2:#ffffff;--bg3:#eef0f4;--bg4:#e5e8ee;
+  --border:rgba(15,23,42,.09);--border2:rgba(15,23,42,.15);
+  --text:#1a2030;--text2:#5c6578;--text3:#8b93a5;
+  --teal:#0d9a72;--teal-soft:rgba(13,154,114,.1);
+  --shadow:0 24px 64px rgba(15,23,42,.1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{max-width:100%;overflow-x:clip}
+body{
+  font-family:var(--sans);background:var(--bg);color:var(--text);
+  min-height:100vh;max-width:100%;overflow-x:clip;
+  -webkit-font-smoothing:antialiased;
+  font-feature-settings:'cv11','ss01','ss03';
+  letter-spacing:-.011em;
+}
+
+.scene{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.scene-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 70% 55% at 50% 40%,#000 10%,transparent 70%);
+  -webkit-mask-image:radial-gradient(ellipse 70% 55% at 50% 40%,#000 10%,transparent 70%);
+  opacity:.7;
+}
+html[data-theme="light"] .scene-grid{
+  background-image:
+    linear-gradient(rgba(15,23,42,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(15,23,42,.05) 1px,transparent 1px);
+}
+.glow{
+  position:absolute;width:520px;height:420px;border-radius:50%;
+  background:var(--teal);filter:blur(120px);opacity:.12;
+  top:-140px;left:50%;transform:translateX(-50%);
+}
+html[data-theme="light"] .glow{opacity:.08}
+
+.login-shell{
+  position:relative;z-index:1;
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  max-width:440px;margin:0 auto;
+  padding:28px 22px 40px;
+}
+
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:40px;
+  opacity:0;animation:rise .7s var(--ease) .04s forwards;
+}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none}
+.logo-wordmark{
+  font-family:var(--mono);font-size:14px;font-weight:500;
+  letter-spacing:.16em;color:#fff;
+}
+html[data-theme="light"] .logo-wordmark{color:#0f1419}
+.top-actions{display:flex;align-items:center;gap:8px}
+.link-back{
+  font-family:var(--mono);font-size:11px;color:var(--text2);
+  text-decoration:none;padding:7px 10px;border-radius:8px;
+  border:1px solid transparent;transition:color .15s,border-color .15s,background .15s;
+}
+.link-back:hover{color:var(--text);border-color:var(--border);background:rgba(255,255,255,.03)}
+html[data-theme="light"] .link-back:hover{background:rgba(15,23,42,.03)}
+
+.btn-theme{
+  position:relative;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:34px;height:32px;padding:0;
+  background:rgba(255,255,255,.03);border:1px solid var(--border);
+  border-radius:8px;color:var(--text2);cursor:pointer;
+  transition:border-color .15s,color .15s,background .15s,transform .15s;
+}
+html[data-theme="light"] .btn-theme{background:rgba(15,23,42,.03)}
+.btn-theme:hover{border-color:var(--border2);color:var(--text)}
+.btn-theme:active{transform:scale(.94)}
+.btn-theme .theme-icon{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .28s ease,transform .38s cubic-bezier(.34,1.3,.64,1);
+}
+html:not([data-theme="light"]) .btn-theme .theme-icon-sun{opacity:1;transform:none}
+html:not([data-theme="light"]) .btn-theme .theme-icon-moon{opacity:0;transform:rotate(-90deg) scale(.5);pointer-events:none}
+html[data-theme="light"] .btn-theme .theme-icon-sun{opacity:0;transform:rotate(90deg) scale(.5);pointer-events:none}
+html[data-theme="light"] .btn-theme .theme-icon-moon{opacity:1;transform:none}
+.btn-theme.is-toggling{animation:theme-btn-pulse .42s cubic-bezier(.34,1.2,.64,1)}
+@keyframes theme-btn-pulse{
+  0%{transform:scale(1)}35%{transform:scale(.88)}70%{transform:scale(1.06)}100%{transform:scale(1)}
+}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.32s;animation-timing-function:ease}
+::view-transition-old(root){animation-name:theme-fade-out}
+::view-transition-new(root){animation-name:theme-fade-in}
+@keyframes theme-fade-out{from{opacity:1}to{opacity:0}}
+@keyframes theme-fade-in{from{opacity:0}to{opacity:1}}
+
+.login-card{
+  border:1px solid var(--border);border-radius:20px;
+  background:linear-gradient(165deg,rgba(255,255,255,.04),rgba(255,255,255,.012));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04),var(--shadow);
+  padding:28px 26px 24px;
+  opacity:0;animation:rise .75s var(--ease) .1s forwards;
+}
+html[data-theme="light"] .login-card{
+  background:linear-gradient(165deg,#fff,#fafbfc);
+  box-shadow:0 16px 48px rgba(15,23,42,.08),inset 0 1px 0 #fff;
+}
+.login-card::before{
+  content:'';display:block;height:1px;margin:-28px -26px 22px;
+  background:linear-gradient(90deg,transparent,rgba(29,184,138,.4),transparent);
+}
+html[data-theme="light"] .login-card::before{
+  background:linear-gradient(90deg,transparent,rgba(13,154,114,.35),transparent);
+}
+
+.login-kicker{
+  font-family:var(--mono);font-size:10px;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--teal);
+  margin-bottom:12px;
+}
+.login-title{
+  font-size:26px;font-weight:600;letter-spacing:-.03em;line-height:1.15;
+  color:#fff;margin-bottom:8px;
+}
+html[data-theme="light"] .login-title{color:#0f1419}
+.login-lead{
+  font-size:14px;color:var(--text2);line-height:1.6;font-weight:300;
+  margin-bottom:24px;
+}
+
+.social{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.btn-social{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;padding:12px 16px;border-radius:12px;
+  font-family:var(--sans);font-size:14px;font-weight:500;
+  letter-spacing:-.01em;cursor:pointer;
+  border:1px solid var(--border);background:rgba(255,255,255,.03);
+  color:var(--text);transition:border-color .15s,background .15s,transform .12s;
+}
+html[data-theme="light"] .btn-social{background:#fff}
+.btn-social:hover{border-color:var(--border2);background:rgba(255,255,255,.05)}
+html[data-theme="light"] .btn-social:hover{background:var(--bg3)}
+.btn-social:active{transform:scale(.99)}
+.btn-social svg{flex-shrink:0}
+.btn-social:disabled{opacity:.55;cursor:not-allowed;transform:none}
+
+.divider{
+  display:flex;align-items:center;gap:12px;
+  margin:4px 0 18px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--text3);
+}
+.divider::before,.divider::after{
+  content:'';flex:1;height:1px;background:var(--border);
+}
+
+.field{margin-bottom:14px}
+.field label{
+  display:block;font-family:var(--mono);font-size:10px;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--text3);
+  margin-bottom:7px;
+}
+.field input{
+  width:100%;padding:12px 14px;border-radius:11px;
+  border:1px solid var(--border);background:rgba(0,0,0,.22);
+  color:var(--text);font-family:var(--sans);font-size:14.5px;
+  outline:none;transition:border-color .15s,box-shadow .15s,background .15s;
+}
+html[data-theme="light"] .field input{background:#fff}
+.field input::placeholder{color:var(--text3)}
+.field input:focus{
+  border-color:rgba(29,184,138,.45);
+  box-shadow:0 0 0 3px rgba(29,184,138,.12);
+}
+.field-row{
+  display:flex;align-items:center;justify-content:space-between;
+  margin:-4px 0 16px;
+}
+.field-row a{
+  font-size:12.5px;color:var(--text2);text-decoration:none;
+  transition:color .15s;cursor:pointer;
+}
+.field-row a:hover{color:var(--teal)}
+
+.btn-primary{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;padding:13px 16px;border-radius:12px;border:none;
+  font-family:var(--sans);font-size:14.5px;font-weight:600;
+  letter-spacing:-.015em;cursor:pointer;
+  color:#04120c;background:var(--teal);
+  box-shadow:0 10px 28px rgba(29,184,138,.25);
+  transition:transform .15s,box-shadow .2s,filter .15s;
+}
+html[data-theme="light"] .btn-primary{color:#fff;box-shadow:0 10px 28px rgba(13,154,114,.28)}
+.btn-primary:hover{filter:brightness(1.06);transform:translateY(-1px);box-shadow:0 14px 32px rgba(29,184,138,.3)}
+.btn-primary:active{transform:none}
+.btn-primary:disabled{opacity:.6;cursor:not-allowed;transform:none;filter:none}
+
+.form-status{
+  min-height:18px;margin-top:12px;
+  font-size:13px;color:var(--text2);text-align:center;line-height:1.4;
+}
+.form-status.err{color:#e05555}
+.form-status.ok{color:var(--teal)}
+
+.login-foot{
+  margin-top:22px;padding-top:18px;border-top:1px solid var(--border);
+  text-align:center;font-size:13px;color:var(--text2);line-height:1.55;
+}
+.login-foot a{color:var(--teal);text-decoration:none;font-weight:500;cursor:pointer}
+.login-foot a:hover{text-decoration:underline}
+.login-foot .muted{display:inline-block;margin-top:10px;font-weight:400;color:var(--text2)}
+
+.login-meta{
+  margin-top:auto;padding-top:32px;
+  text-align:center;
+  font-family:var(--mono);font-size:10px;color:var(--text3);
+  letter-spacing:.04em;line-height:1.7;
+  opacity:0;animation:rise .7s var(--ease) .2s forwards;
+}
+.login-meta a{color:var(--text3);text-decoration:none}
+.login-meta a:hover{color:var(--text2)}
+
+.setup-banner{
+  display:none;margin-bottom:16px;padding:12px 14px;border-radius:12px;
+  border:1px solid rgba(224,85,85,.35);background:rgba(224,85,85,.08);
+  font-size:13px;color:var(--text2);line-height:1.5;
+}
+.setup-banner.show{display:block}
+.setup-banner strong{color:var(--text);font-weight:500}
+
+#clerk-captcha{margin:8px 0 4px;min-height:0}
+.panel-verify{display:none}
+.panel-verify.show{display:block}
+.panel-main.hide{display:none}
+.panel-reset{display:none}
+.panel-reset.show{display:block}
+
+@keyframes rise{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .login-card,.topbar,.login-meta{animation:none;opacity:1}
+  .btn-theme .theme-icon{transition:none}
+  .btn-theme.is-toggling{animation:none}
+  ::view-transition-old(root),::view-transition-new(root){animation:none}
+}
+@media(max-width:480px){
+  .login-shell{padding:22px 16px 36px}
+  .login-card{padding:24px 18px 20px}
+  .login-card::before{margin:-24px -18px 20px}
+  .login-title{font-size:23px}
+}
+</style>
+</head>
+<body>
+
+<div class="scene" aria-hidden="true">
+  <div class="scene-grid"></div>
+  <div class="glow"></div>
+</div>
+
+<div class="login-shell">
+  <header class="topbar">
+    <a class="logo" href="index.html" aria-label="be·aside — início">
+      <svg width="18" height="22" viewBox="0 0 18 22" fill="none" aria-hidden="true">
+        <rect x="0" y="2" width="6" height="20" rx="3" fill="#1db88a"/>
+        <rect x="10" y="0" width="6" height="15" rx="3" fill="#1db88a" opacity=".55"/>
+      </svg>
+      <span class="logo-wordmark">be·aside</span>
+    </a>
+    <div class="top-actions">
+      <a class="link-back" href="index.html">← Hub</a>
+      <button class="btn-theme" data-theme-toggle type="button" onclick="toggleTheme()" aria-label="Alternar tema"></button>
+    </div>
+  </header>
+
+  <main class="login-card" aria-labelledby="login-title">
+    <div class="setup-banner" id="setup-banner" role="alert">
+      <strong>Clerk não configurado.</strong>
+      Cole a Publishable Key em <code>assets/auth-config.js</code>
+      ou defina <code>CLERK_PUBLISHABLE_KEY</code> na Vercel.
+    </div>
+
+    <div class="login-kicker" id="login-kicker">Acesso</div>
+    <h1 class="login-title" id="login-title">Entrar no be·aside</h1>
+    <p class="login-lead" id="login-lead">Guias de UTI e emergência à beira do leito. Entre para sincronizar sua conta.</p>
+
+    <!-- MAIN: social + email/senha -->
+    <div class="panel-main" id="panel-main">
+      <div class="social">
+        <button type="button" class="btn-social" id="btn-google">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="#EA4335" d="M12 10.2v3.9h5.5c-.2 1.3-1.6 3.9-5.5 3.9-3.3 0-6-2.7-6-6s2.7-6 6-6c1.9 0 3.1.8 3.9 1.5l2.6-2.5C16.8 3.2 14.6 2 12 2 6.5 2 2 6.5 2 12s4.5 10 10 10c5.8 0 9.6-4.1 9.6-9.8 0-.7-.1-1.2-.2-1.7H12z"/>
+            <path fill="#4285F4" d="M12 22c2.6 0 4.8-.9 6.4-2.3l-3.1-2.4c-.9.6-2 1-3.3 1-3.2 0-5.9-2.1-6.9-5l-3.2 2.5C3.7 19.5 7.5 22 12 22z"/>
+            <path fill="#FBBC05" d="M5.1 13.3c-.2-.6-.3-1.2-.3-1.9s.1-1.3.3-1.9L1.9 7.1C1.3 8.4 1 9.9 1 11.4s.3 3 1 4.3l3.1-2.4z"/>
+            <path fill="#4285F4" d="M12 5.5c1.6 0 3 .6 4.1 1.6l3.1-3C17.3 2.2 14.9 1 12 1 7.5 1 3.6 3.6 1.9 7.4l3.2 2.5C6.1 7.6 8.8 5.5 12 5.5z"/>
+            <path fill="#34A853" d="M5.1 13.3l-3.2 2.4C3.7 19.5 7.5 22 12 22v-3.8c-3.2 0-5.9-2.1-6.9-5z" opacity="0"/>
+          </svg>
+          Continuar com Google
+        </button>
+        <button type="button" class="btn-social" id="btn-apple" hidden>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.05 12.54c-.02-2.15 1.76-3.18 1.84-3.23-1-1.46-2.56-1.66-3.11-1.68-1.32-.13-2.58.78-3.25.78-.67 0-1.71-.76-2.81-.74-1.45.02-2.78.84-3.53 2.14-1.5 2.61-.38 6.47 1.08 8.58.72 1.03 1.57 2.19 2.69 2.15 1.08-.04 1.49-.7 2.8-.7 1.3 0 1.67.7 2.81.68 1.16-.02 1.9-1.05 2.61-2.09.82-1.2 1.16-2.36 1.18-2.42-.03-.01-2.26-.87-2.29-3.44zm-2.15-6.3c.6-.72 1-1.73.89-2.73-.86.03-1.9.57-2.51 1.3-.55.64-1.03 1.67-.9 2.65.95.07 1.93-.48 2.52-1.22z"/>
+          </svg>
+          Continuar com Apple
+        </button>
+      </div>
+
+      <div class="divider">ou e-mail</div>
+
+      <form id="login-form" novalidate>
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="voce@hospital.com">
+        </div>
+        <div class="field">
+          <label for="password">Senha</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required placeholder="••••••••" minlength="8">
+        </div>
+        <div class="field-row" id="forgot-row">
+          <span></span>
+          <a id="forgot" role="button" tabindex="0">Esqueci a senha</a>
+        </div>
+        <!-- Clerk bot protection (sign-up) -->
+        <div id="clerk-captcha"></div>
+        <button type="submit" class="btn-primary" id="btn-submit">Entrar</button>
+        <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+
+    <!-- VERIFY: código e-mail -->
+    <div class="panel-verify" id="panel-verify">
+      <form id="verify-form" novalidate>
+        <div class="field">
+          <label for="code">Código do e-mail</label>
+          <input id="code" name="code" type="text" inputmode="numeric" autocomplete="one-time-code" required placeholder="123456" maxlength="8">
+        </div>
+        <button type="submit" class="btn-primary" id="btn-verify">Confirmar</button>
+        <div class="form-status" id="verify-status" role="status" aria-live="polite"></div>
+      </form>
+      <div class="login-foot" style="border:0;margin-top:12px;padding-top:0">
+        <a id="back-to-main" role="button" tabindex="0">← Voltar</a>
+      </div>
+    </div>
+
+    <!-- RESET: esqueci senha -->
+    <div class="panel-reset" id="panel-reset">
+      <form id="reset-form" novalidate>
+        <div class="field" id="reset-email-field">
+          <label for="reset-email">E-mail</label>
+          <input id="reset-email" type="email" autocomplete="email" placeholder="voce@hospital.com">
+        </div>
+        <div class="field" id="reset-code-field" style="display:none">
+          <label for="reset-code">Código</label>
+          <input id="reset-code" type="text" inputmode="numeric" autocomplete="one-time-code" placeholder="123456">
+        </div>
+        <div class="field" id="reset-pass-field" style="display:none">
+          <label for="reset-pass">Nova senha</label>
+          <input id="reset-pass" type="password" autocomplete="new-password" minlength="8" placeholder="mín. 8 caracteres">
+        </div>
+        <button type="submit" class="btn-primary" id="btn-reset">Enviar código</button>
+        <div class="form-status" id="reset-status" role="status" aria-live="polite"></div>
+      </form>
+      <div class="login-foot" style="border:0;margin-top:12px;padding-top:0">
+        <a id="back-from-reset" role="button" tabindex="0">← Voltar ao login</a>
+      </div>
+    </div>
+
+    <div class="login-foot" id="login-foot">
+      <span id="mode-hint">Ainda não tem conta? <a id="toggle-mode" role="button" tabindex="0">Criar conta</a></span>
+      <br>
+      <a href="index.html" class="muted">Continuar no hub sem login →</a>
+    </div>
+  </main>
+
+  <p class="login-meta">
+    Sessão gerenciada por Clerk · <a href="index.html">be·aside</a> · material de apoio clínico
+  </p>
+</div>
+
+<script src="assets/auth-config.js"></script>
+<script src="assets/auth.js"></script>
+<script>
+const THEME_KEY='beaside-theme';
+const THEME_BTN_HTML=
+  '<span class="theme-icon theme-icon-sun" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></span>'+
+  '<span class="theme-icon theme-icon-moon" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>';
+
+function getTheme(){
+  try{const t=localStorage.getItem(THEME_KEY);if(t==='light'||t==='dark')return t;}catch(e){}
+  return 'dark';
+}
+function prefersReduceMotion(){
+  return !!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+}
+function syncThemeButtons(t){
+  document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){
+    if(!btn.dataset.iconsReady){btn.innerHTML=THEME_BTN_HTML;btn.dataset.iconsReady='1';}
+    var next=t==='light'?'dark':'light';
+    btn.setAttribute('aria-label',next==='light'?'Ativar modo claro':'Ativar modo escuro');
+    btn.setAttribute('title',next==='light'?'Modo claro':'Modo escuro');
+  });
+}
+function applyTheme(theme){
+  var t=(theme==='light'||theme==='dark')?theme:'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  try{localStorage.setItem(THEME_KEY,t);}catch(e){}
+  syncThemeButtons(t);
+}
+function toggleTheme(){
+  var next=getTheme()==='light'?'dark':'light';
+  document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){
+    btn.classList.remove('is-toggling');void btn.offsetWidth;btn.classList.add('is-toggling');
+    clearTimeout(btn._togTid);btn._togTid=setTimeout(function(){btn.classList.remove('is-toggling');},420);
+  });
+  if(document.startViewTransition&&!prefersReduceMotion()){
+    document.startViewTransition(function(){applyTheme(next);});
+    return;
+  }
+  applyTheme(next);
+}
+applyTheme(getTheme());
+
+/* ── auth UI state ── */
+var mode='sign-in'; /* sign-in | sign-up */
+var verifyKind=null; /* email_signup | second_factor */
+var resetStep='email'; /* email | code */
+
+function setStatus(elId, msg, kind){
+  var el=document.getElementById(elId||'form-status');
+  if(!el) return;
+  el.className='form-status'+(kind?' '+kind:'');
+  el.textContent=msg||'';
+}
+
+function showPanel(name){
+  document.getElementById('panel-main').classList.toggle('hide', name!=='main');
+  document.getElementById('panel-verify').classList.toggle('show', name==='verify');
+  document.getElementById('panel-reset').classList.toggle('show', name==='reset');
+  document.getElementById('login-foot').style.display = name==='main' ? '' : 'none';
+}
+
+function setMode(next){
+  mode=next;
+  var isUp=mode==='sign-up';
+  document.getElementById('login-kicker').textContent=isUp?'Conta':'Acesso';
+  document.getElementById('login-title').textContent=isUp?'Criar conta':'Entrar no be·aside';
+  document.getElementById('login-lead').textContent=isUp
+    ?'Crie sua conta com e-mail ou provedor social. Em seguida, confirme o e-mail se pedido.'
+    :'Guias de UTI e emergência à beira do leito. Entre para sincronizar sua conta.';
+  document.getElementById('btn-submit').textContent=isUp?'Criar conta':'Entrar';
+  document.getElementById('password').autocomplete=isUp?'new-password':'current-password';
+  document.getElementById('forgot-row').style.display=isUp?'none':'flex';
+  document.getElementById('mode-hint').innerHTML=isUp
+    ?'Já tem conta? <a id="toggle-mode" role="button" tabindex="0">Entrar</a>'
+    :'Ainda não tem conta? <a id="toggle-mode" role="button" tabindex="0">Criar conta</a>';
+  document.getElementById('toggle-mode').addEventListener('click',function(e){
+    e.preventDefault();
+    setMode(mode==='sign-in'?'sign-up':'sign-in');
+    setStatus('form-status','','');
+  });
+  setStatus('form-status','','');
+}
+
+function goAfterAuth(){
+  var dest=(BeAsideAuth.getConfig().AFTER_SIGN_IN)||'index.html';
+  location.href=dest;
+}
+
+function setBusy(busy){
+  ['btn-submit','btn-google','btn-apple','btn-verify','btn-reset'].forEach(function(id){
+    var b=document.getElementById(id);
+    if(b) b.disabled=!!busy;
+  });
+}
+
+/* wire */
+document.getElementById('toggle-mode').addEventListener('click',function(e){
+  e.preventDefault();
+  setMode(mode==='sign-in'?'sign-up':'sign-in');
+});
+
+document.getElementById('btn-google').addEventListener('click',async function(){
+  setStatus('form-status','Redirecionando para o Google…','');
+  setBusy(true);
+  try{
+    await BeAsideAuth.oauth('google');
+  }catch(err){
+    setBusy(false);
+    setStatus('form-status',BeAsideAuth.clerkErrorMessage(err),'err');
+  }
+});
+
+document.getElementById('btn-apple').addEventListener('click',async function(){
+  setStatus('form-status','Redirecionando para a Apple…','');
+  setBusy(true);
+  try{
+    await BeAsideAuth.oauth('apple');
+  }catch(err){
+    setBusy(false);
+    setStatus('form-status',BeAsideAuth.clerkErrorMessage(err),'err');
+  }
+});
+
+document.getElementById('login-form').addEventListener('submit',async function(e){
+  e.preventDefault();
+  var email=document.getElementById('email').value.trim();
+  var pass=document.getElementById('password').value;
+  if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    setStatus('form-status','Informe um e-mail válido.','err');
+    document.getElementById('email').focus();
+    return;
+  }
+  if(!pass||pass.length<8){
+    setStatus('form-status','A senha precisa ter pelo menos 8 caracteres.','err');
+    document.getElementById('password').focus();
+    return;
+  }
+  setBusy(true);
+  setStatus('form-status',mode==='sign-up'?'Criando conta…':'Entrando…','');
+  try{
+    var result;
+    if(mode==='sign-up'){
+      result=await BeAsideAuth.signUpWithPassword(email,pass);
+      if(result.status==='complete'){setStatus('form-status','Conta criada.','ok');goAfterAuth();return;}
+      if(result.status==='needs_email_verification'){
+        verifyKind='email_signup';
+        document.getElementById('login-title').textContent='Confirme o e-mail';
+        document.getElementById('login-lead').textContent='Enviamos um código para '+email+'. Digite-o abaixo.';
+        showPanel('verify');
+        setStatus('verify-status','Código enviado.','ok');
+        setBusy(false);
+        return;
+      }
+    }else{
+      result=await BeAsideAuth.signInWithPassword(email,pass);
+      if(result.status==='complete'){setStatus('form-status','Login ok.','ok');goAfterAuth();return;}
+      if(result.status==='needs_second_factor'){
+        verifyKind='second_factor';
+        document.getElementById('login-title').textContent='Verificação';
+        document.getElementById('login-lead').textContent='Enviamos um código de verificação para o seu e-mail.';
+        showPanel('verify');
+        setStatus('verify-status','Código enviado.','ok');
+        setBusy(false);
+        return;
+      }
+    }
+    setStatus('form-status',result.message||('Status: '+result.status),'err');
+  }catch(err){
+    setStatus('form-status',BeAsideAuth.clerkErrorMessage(err),'err');
+  }
+  setBusy(false);
+});
+
+document.getElementById('verify-form').addEventListener('submit',async function(e){
+  e.preventDefault();
+  var code=document.getElementById('code').value.trim();
+  if(!code){setStatus('verify-status','Informe o código.','err');return;}
+  setBusy(true);
+  setStatus('verify-status','Validando…','');
+  try{
+    var result=verifyKind==='second_factor'
+      ? await BeAsideAuth.verifySecondFactor(code)
+      : await BeAsideAuth.verifyEmailCode(code);
+    if(result.status==='complete'){
+      setStatus('verify-status','Confirmado.','ok');
+      goAfterAuth();
+      return;
+    }
+    setStatus('verify-status',result.message||'Código inválido.','err');
+  }catch(err){
+    setStatus('verify-status',BeAsideAuth.clerkErrorMessage(err),'err');
+  }
+  setBusy(false);
+});
+
+document.getElementById('back-to-main').addEventListener('click',function(e){
+  e.preventDefault();
+  showPanel('main');
+  setMode(mode);
+});
+
+document.getElementById('forgot').addEventListener('click',function(e){
+  e.preventDefault();
+  resetStep='email';
+  document.getElementById('login-title').textContent='Recuperar senha';
+  document.getElementById('login-lead').textContent='Enviaremos um código para o seu e-mail.';
+  document.getElementById('reset-email-field').style.display='';
+  document.getElementById('reset-code-field').style.display='none';
+  document.getElementById('reset-pass-field').style.display='none';
+  document.getElementById('btn-reset').textContent='Enviar código';
+  var pre=document.getElementById('email').value.trim();
+  if(pre) document.getElementById('reset-email').value=pre;
+  setStatus('reset-status','','');
+  showPanel('reset');
+});
+
+document.getElementById('back-from-reset').addEventListener('click',function(e){
+  e.preventDefault();
+  showPanel('main');
+  setMode('sign-in');
+});
+
+document.getElementById('reset-form').addEventListener('submit',async function(e){
+  e.preventDefault();
+  setBusy(true);
+  try{
+    if(resetStep==='email'){
+      var email=document.getElementById('reset-email').value.trim();
+      if(!email){setStatus('reset-status','Informe o e-mail.','err');setBusy(false);return;}
+      setStatus('reset-status','Enviando código…','');
+      await BeAsideAuth.startPasswordReset(email);
+      resetStep='code';
+      document.getElementById('reset-email-field').style.display='none';
+      document.getElementById('reset-code-field').style.display='';
+      document.getElementById('reset-pass-field').style.display='';
+      document.getElementById('btn-reset').textContent='Redefinir senha';
+      setStatus('reset-status','Código enviado. Defina a nova senha.','ok');
+    }else{
+      var code=document.getElementById('reset-code').value.trim();
+      var np=document.getElementById('reset-pass').value;
+      if(!code||!np||np.length<8){
+        setStatus('reset-status','Código e nova senha (mín. 8) são obrigatórios.','err');
+        setBusy(false);return;
+      }
+      setStatus('reset-status','Redefinindo…','');
+      var result=await BeAsideAuth.completePasswordReset(code,np);
+      if(result.status==='complete'){
+        setStatus('reset-status','Senha atualizada.','ok');
+        goAfterAuth();
+        return;
+      }
+      setStatus('reset-status',result.message||'Falha ao redefinir.','err');
+    }
+  }catch(err){
+    setStatus('reset-status',BeAsideAuth.clerkErrorMessage(err),'err');
+  }
+  setBusy(false);
+});
+
+/* boot Clerk */
+(async function boot(){
+  setBusy(true);
+  setStatus('form-status','Carregando…','');
+  try{
+    await BeAsideAuth.init();
+    var cfg=BeAsideAuth.getConfig()||{};
+    var appleBtn=document.getElementById('btn-apple');
+    if(appleBtn) appleBtn.hidden = cfg.OAUTH_APPLE===false;
+    var googleBtn=document.getElementById('btn-google');
+    if(googleBtn && cfg.OAUTH_GOOGLE===false) googleBtn.hidden=true;
+    if(BeAsideAuth.isSignedIn()){
+      setStatus('form-status','Você já está logado. Indo para o hub…','ok');
+      setTimeout(goAfterAuth,400);
+      return;
+    }
+    setStatus('form-status','','');
+    setBusy(false);
+  }catch(err){
+    setBusy(false);
+    var missing=BeAsideAuth.getLoadError()==='missing_key'||
+      !(BeAsideAuth.getConfig().PUBLISHABLE_KEY);
+    if(missing){
+      document.getElementById('setup-banner').classList.add('show');
+      setStatus('form-status','Configure a Publishable Key do Clerk para testar.','err');
+    }else{
+      setStatus('form-status',BeAsideAuth.clerkErrorMessage(err)||'Falha ao iniciar auth.','err');
+    }
+  }
+})();
+</script>
+</body>
+</html>

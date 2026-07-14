@@ -21,6 +21,8 @@ opcional em Vercel Functions.
 - **`assets/theme-boot.js`** — no `<head>` de **todas** as páginas; aplica tema salvo antes
   do paint (`localStorage` key `beaside-theme`).
 - **Hub** (`index.html`) tem CSS e JS de tema próprios (não usa `app.js` no shell).
+- **Login (Clerk, real):** `login.html` + `assets/auth.js` + `sso-callback.html`. E-mail/senha (+ verificação de código), Google OAuth testado; Apple desligado no UI (`OAUTH_APPLE: false`). Hub: **Entrar** ou chip nome + **Sair**. **Módulos abertos sem login** (gate futuro = plano/assinatura, não login sozinho).
+- **Auth config:** `assets/auth-config.js` (`PUBLISHABLE_KEY` pk_* — pública) e env Vercel `CLERK_PUBLISHABLE_KEY` + `api/clerk-config.js`. **Não** commitar `sk_*`. App dev: `arriving-seasnail-55`.
 
 ### Arquivos-chave de assets
 
@@ -29,7 +31,10 @@ opcional em Vercel Functions.
 | `assets/styles.css` | Design system, shell, mobile stack, light theme |
 | `assets/app.js` | Shell, busca, tema, `prepareStackableTables` |
 | `assets/theme-boot.js` | Anti-FOUC do tema |
+| `assets/auth.js` / `auth-config.js` | Cliente Clerk (vanilla) |
+| `login.html` / `sso-callback.html` | UI login + callback OAuth |
 | `api/sugerir*.js` | Assistentes (senha compartilhada ainda) |
+| `api/clerk-config.js` | Expõe só a publishable key |
 | `api/knowledge.js` | Gerado — `npm run extract-knowledge` |
 
 ---
@@ -164,7 +169,8 @@ Exemplos: `Ventilação Mecânica · SDRA`, `Hemodinâmica · POCUS`, `Neurocrí
 - `api/sugerir.js` (VM), `sugerir-hemo.js`, `sugerir-neuro.js`.
 - Gate atual: senha `VMGUIDE_SENHA` (compartilhada) + `ANTHROPIC_API_KEY`.
 - Knowledge: regenerar com `npm run extract-knowledge` após mudanças clínicas relevantes.
-- **Futuro (produto):** auth (Clerk etc.) + assinatura; IA com cota (custo de API).
+- **Auth (Clerk) — status jul/2026:** login real ok (Google OAuth + UI e-mail/senha). Dashboard: e-mail+senha; **username off**; Google SSO on; Apple off. Origins: `localhost` + `https://be-aside.vercel.app`. `CLERK_SECRET_KEY` ainda **não** usada (só quando proteger API de IA).
+- **Futuro (produto):** assinatura + cota de IA; gate por **plano**, não por login sozinho. Secret key só na Vercel se validar sessão no server.
 
 ---
 
@@ -208,7 +214,8 @@ Resumo do que foi estabilizado (não reverter sem pedido):
 4. Material em checklist; labels semânticos (fim dos chips); Inter + JetBrains Mono.
 5. Light mode + View Transition + botão animado.
 6. Hemo: VCI/fórmulas, RUSH qualificadores, SSC sem tooltips, quadrantes em matriz 2×2 com cores distintas.
-7. Preço/produto e auth discutidos, **não implementados** (só documentados acima).
+7. **Auth Clerk** no front (login, OAuth Google, hub chip); módulos livres; assinatura/paywall ainda não.
+8. Preço/produto e cota de IA: documentados, **não** implementados.
 
 ---
 
@@ -221,3 +228,5 @@ Resumo do que foi estabilizado (não reverter sem pedido):
 - Não usar `--accent` do hemo (vermelho) para “sucesso”/Q1.
 - Não inventar anti-cópia como “segurança de venda”.
 - Não editar `api/knowledge.js` à mão.
+- Não commitar `CLERK_SECRET_KEY` / `sk_*`.
+- Não trancar módulos só com “estar logado” (gate = plano, quando existir).
