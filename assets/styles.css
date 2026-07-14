@@ -110,14 +110,23 @@ a.sidebar-mod-v:focus-visible{outline:1px solid rgba(var(--accent-rgb),.45);outl
 .sidebar-group-items{display:none;padding:2px 0 6px}
 .sidebar-group.open .sidebar-group-items{display:block}
 .nav-link{
+  position:relative;
   display:block;padding:7px 18px 7px 18px;margin:1px 10px;font-size:12.5px;color:var(--text2);
-  text-decoration:none;border-radius:7px;border-left:none;
-  transition:all .15s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  text-decoration:none;border-radius:6px;border-left:none;
+  transition:color .15s,background .15s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
 .nav-link:hover{color:var(--text);background:rgba(255,255,255,.03)}
 .nav-link.active{
   color:var(--accent);background:rgba(var(--accent-rgb),.09);
-  box-shadow:inset 2px 0 0 var(--accent);
+  /* barra reta (sem curva): pseudo, não box-shadow em pill arredondado */
+  box-shadow:none;
+  border-radius:0 6px 6px 0;
+}
+.nav-link.active::before{
+  content:'';
+  position:absolute;left:0;top:0;bottom:0;
+  width:2px;background:var(--accent);
+  border-radius:0;
 }
 .main{
   margin-left:var(--sidebar-w);margin-top:var(--header-h);
@@ -138,14 +147,14 @@ h3{font-size:15px;font-weight:500;color:#e8ecf2;margin:28px 0 12px}
 .share-link{display:inline-flex;align-items:center;color:var(--text3);margin-left:10px;vertical-align:middle;cursor:pointer;opacity:.45;transition:opacity .15s,color .15s;text-decoration:none}
 .share-link svg{display:block}
 .share-link:hover{color:var(--accent);opacity:1}
-.callout{border-left:3px solid;padding:12px 16px;border-radius:0 6px 6px 0;margin:16px 0;font-size:13.5px;line-height:1.65}
+.callout{border-left:3px solid;padding:12px 16px;border-radius:0 6px 6px 0;margin:18px 0;font-size:13.5px;line-height:1.65}
 .callout strong{font-weight:500}
 .callout.teal{border-color:var(--teal);background:rgba(29,184,138,.08);color:#a0e8d0}
 .callout.amber{border-color:var(--amber);background:rgba(240,160,48,.08);color:#f5d090}
 .callout.red{border-color:var(--red);background:rgba(226,75,74,.08);color:#f0a0a0}
 .callout.purple{border-color:var(--purple);background:rgba(124,111,247,.08);color:#c0b8fe}
 .callout.blue{border-color:var(--blue);background:rgba(59,158,255,.08);color:#a0ccff}
-.card-grid{display:grid;gap:12px;margin:16px 0}
+.card-grid{display:grid;gap:14px;margin:16px 0 4px}
 .card-grid.col2{grid-template-columns:1fr 1fr}
 .card-grid.col3{grid-template-columns:1fr 1fr 1fr}
 .concept-card{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:16px;transition:border-color .2s}
@@ -874,7 +883,7 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
 .sec-lead strong{color:var(--text);font-weight:500}
 @media(max-width:680px){.sec-h h2{white-space:normal}}
 /* grid de itens term+detail (indicações, complicações, etc) */
-.ind-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.ind-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0 4px}
 .ind-grid.cols-3{grid-template-columns:1fr 1fr 1fr}
 @media(max-width:680px){.ind-grid,.ind-grid.cols-3{grid-template-columns:1fr}}
 .ind-item{
@@ -917,7 +926,7 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
 .anatomy-note{
   border-left:2px solid var(--teal);background:rgba(29,184,138,.06);
   border-radius:0 12px 12px 0;padding:16px 18px;font-size:13.5px;color:#bce8d8;
-  line-height:1.7;margin:14px 0 6px;
+  line-height:1.7;margin:18px 0;
 }
 .anatomy-note strong{color:#d0f0e4;font-weight:500}
 /* técnica: fases + timeline */
@@ -947,16 +956,95 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
 .pitfall-list li::before{content:'✕';font-family:var(--mono);font-size:11px;color:var(--red);flex-shrink:0;margin-top:2px}
 .pitfall-list strong{color:#f5c6c6;font-weight:500}
 /* boxes informativos (compartilhados entre páginas proc) */
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0 4px}
 @media(max-width:680px){.two-col{grid-template-columns:1fr}}
-.info-box{background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:12px;padding:16px 18px;font-size:13.5px;color:var(--text2);line-height:1.7}
+.info-box,.warn-box,.ok-box,.tip-box{
+  margin:18px 0;padding:16px 18px;font-size:13.5px;line-height:1.7;border-radius:12px;
+}
+.info-box{background:rgba(255,255,255,.025);border:1px solid var(--border);color:var(--text2)}
 .info-box strong{color:var(--text)}
-.warn-box{background:rgba(226,75,74,.06);border:1px solid rgba(226,75,74,.2);border-radius:12px;padding:16px 18px;font-size:13.5px;color:#f0b8b8;line-height:1.7}
+.warn-box{background:rgba(226,75,74,.06);border:1px solid rgba(226,75,74,.2);color:#f0b8b8}
 .warn-box strong{color:#f5c6c6}
-.ok-box{background:rgba(29,184,138,.06);border:1px solid rgba(29,184,138,.2);border-radius:12px;padding:16px 18px;font-size:13.5px;color:#bce8d8;line-height:1.7}
+.ok-box{background:rgba(29,184,138,.06);border:1px solid rgba(29,184,138,.2);color:#bce8d8}
 .ok-box strong{color:#d0f0e4}
-.tip-box{background:rgba(240,160,48,.06);border:1px solid rgba(240,160,48,.2);border-radius:12px;padding:16px 18px;font-size:13.5px;color:#f5d29a;line-height:1.7}
+.tip-box{background:rgba(240,160,48,.06);border:1px solid rgba(240,160,48,.2);color:#f5d29a}
 .tip-box strong{color:#f8dcae;font-weight:500}
+/* respiro entre blocos do design system (evita cards/boxes colados) */
+.ind-grid + .warn-box,
+.ind-grid + .ok-box,
+.ind-grid + .tip-box,
+.ind-grid + .info-box,
+.ind-grid + .anatomy-note,
+.ind-grid + .table-wrap,
+.ind-grid + .pitfall-h,
+.ind-grid + .ref,
+.two-col + .warn-box,
+.two-col + .ok-box,
+.two-col + .tip-box,
+.two-col + .info-box,
+.two-col + .anatomy-note,
+.table-wrap + .warn-box,
+.table-wrap + .ok-box,
+.table-wrap + .tip-box,
+.table-wrap + .info-box,
+.table-wrap + .anatomy-note,
+.tl + .warn-box,
+.tl + .ok-box,
+.tl + .tip-box,
+.tl + .info-box,
+.tl + .anatomy-note,
+.tl + .ref,
+.anatomy-note + .warn-box,
+.anatomy-note + .ok-box,
+.anatomy-note + .tip-box,
+.anatomy-note + .info-box,
+.anatomy-note + .ind-grid,
+.anatomy-note + .table-wrap,
+.anatomy-note + .tl,
+.sec-lead + .ind-grid,
+.sec-lead + .table-wrap,
+.sec-lead + .two-col,
+.sec-lead + .anatomy-note,
+.formula + .warn-box,
+.formula + .ok-box,
+.formula + .tip-box,
+.formula + .info-box,
+.formula + .anatomy-note,
+.warn-box + .ok-box,
+.warn-box + .tip-box,
+.warn-box + .info-box,
+.warn-box + .anatomy-note,
+.warn-box + .ind-grid,
+.warn-box + .table-wrap,
+.ok-box + .warn-box,
+.ok-box + .tip-box,
+.tip-box + .warn-box,
+.tip-box + .ok-box,
+.info-box + .warn-box,
+.compl-grid + .warn-box,
+.compl-grid + .ok-box,
+.compl-grid + .tip-box,
+.pitfall-list + .warn-box,
+.pitfall-list + .ok-box,
+.pitfall-list + .tip-box,
+.pitfall-list + .ref{
+  margin-top:20px;
+}
+.ind-grid + .sec-h,
+.two-col + .sec-h,
+.table-wrap + .sec-h,
+.warn-box + .sec-h,
+.ok-box + .sec-h,
+.tip-box + .sec-h,
+.info-box + .sec-h,
+.anatomy-note + .sec-h,
+.tl + .sec-h,
+.pitfall-list + .sec-h{
+  margin-top:44px;
+}
+.compl-grid{margin:16px 0 4px}
+.pitfall-list{margin:0 0 4px}
+.table-wrap{margin:16px 0}
 /* SVG wrapper */
 .svg-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin:12px 0;overflow-x:auto}
 .svg-caption{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:10px;display:block}
