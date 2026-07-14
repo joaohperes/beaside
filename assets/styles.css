@@ -302,9 +302,11 @@ td:first-child .pill{
   .table-wrap:not(.table-stack) table{width:max-content;min-width:100%;max-width:none}
   thead th,th{padding:10px 12px;font-size:10.5px;letter-spacing:.04em}
   tbody td{padding:12px 14px;font-size:13px}
-  .scale-legend,.scale-item{font-size:13.5px}
-  .scale-item .pill{font-size:13.5px}
-  .scale-note{font-size:12.5px}
+  .scale-legend li,.scale-lbl{font-size:12px}
+  .scale-legend .pill{font-size:11.5px}
+  .scale-note{font-size:12px}
+  .vci-seg-v{font-size:12.5px}
+  .vci-seg-l{font-size:11.5px}
 
   /* ── table stack: cada linha vira card (todas as tabelas ≥2 col) ── */
   .table-wrap.table-stack{
@@ -680,6 +682,15 @@ td .pill,th .pill{
   font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:-.015em;
   white-space:nowrap;
 }
+/* card neutro para fórmulas (sem fundo teal/verde do ok-box) */
+.formula-card{
+  border:1px solid var(--border);border-radius:14px;
+  background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
+  padding:18px 18px 16px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.03);
+}
+.formula-card .formula{margin:0 0 14px}
+.formula.formula-coral,.formula-card .formula.compact:not(.purple){color:var(--coral)}
 /* escalas sob fórmulas (cIVC / dIVC etc.) */
 .scale-k{
   font-family:var(--mono);font-size:10px;font-weight:600;
@@ -687,24 +698,28 @@ td .pill,th .pill{
   margin-bottom:12px;
 }
 .scale-legend{
-  display:flex;flex-wrap:wrap;align-items:baseline;
-  gap:10px 18px;
-  font-size:14px;line-height:1.5;
-  color:var(--text);
-  margin:2px 0 0;
+  list-style:none;margin:0;padding:0;
+  display:flex;flex-direction:column;gap:6px;
 }
-.scale-item{
-  display:inline-flex;align-items:baseline;gap:7px;
-  font-size:14px;color:var(--text2);font-weight:400;
+.scale-legend li{
+  display:grid;
+  grid-template-columns:4.5rem 1fr;
+  align-items:baseline;gap:10px;
+  font-size:12.5px;line-height:1.4;
 }
-.scale-item .pill{
-  font-family:var(--sans);font-size:14px;font-weight:600;
-  letter-spacing:-.01em;white-space:nowrap;
+.scale-legend .pill{
+  font-family:var(--mono);font-size:12px;font-weight:500;
+  letter-spacing:.01em;white-space:nowrap;
+  justify-self:start;
 }
+.scale-lbl{color:var(--text2);font-weight:400;font-size:12.5px}
 .scale-note{
-  margin:14px 0 0;font-size:13px;line-height:1.6;color:var(--text2);
+  margin:14px 0 0;padding-top:12px;
+  border-top:1px solid var(--border);
+  font-size:12.5px;line-height:1.55;color:var(--text2);
 }
 .scale-note strong{color:var(--text);font-weight:500}
+.scale-valid{color:var(--amber)}
 /* legenda (ex. mat-item com Forte / Condicional): dot + label */
 .mat-item:has(> .pill)::before{display:none}
 .mat-item > .pill{
@@ -857,10 +872,33 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
 .nav-back-arrow{opacity:.7}
 /* section-sub (hemo uses this class for subtitle) */
 .section-sub{font-size:13px;color:var(--text2);margin-bottom:24px;line-height:1.5}
-/* vci-bar */
-.vci-bar{display:flex;height:36px;border-radius:8px;overflow:hidden;margin:12px 0;border:1px solid var(--border)}
-.vci-seg{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:10px;font-weight:600;flex-direction:column;line-height:1.2}
-.vci-seg span{font-size:9px;font-weight:400;opacity:.8}
+/* vci-bar — faixa de diâmetro absoluto */
+.vci-bar{
+  display:flex;min-height:56px;border-radius:12px;overflow:hidden;
+  margin:14px 0 16px;border:1px solid var(--border);
+}
+.vci-seg{
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:4px;
+  padding:12px 10px;text-align:center;
+  line-height:1.25;
+}
+.vci-seg-v{
+  font-family:var(--mono);font-size:13px;font-weight:600;
+  letter-spacing:.01em;
+}
+.vci-seg-l{
+  font-family:var(--sans);font-size:12px;font-weight:400;
+  opacity:.9;letter-spacing:-.01em;
+}
+.vci-seg-lo{background:rgba(224,85,85,.16);color:var(--red)}
+.vci-seg-mid{background:rgba(240,160,48,.14);color:var(--amber)}
+.vci-seg-hi{background:rgba(29,184,138,.14);color:var(--teal)}
+@media(max-width:600px){
+  .vci-bar{flex-direction:column;min-height:0}
+  .vci-seg{width:100%!important;min-height:48px;padding:12px 14px;align-items:flex-start}
+  .scale-legend li{grid-template-columns:4rem 1fr}
+}
 /* Tag row (hemo version) */
 .tag-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:8px 0 12px}
 .tag{

@@ -50,32 +50,32 @@
 
   <div class="sec-h"><span class="sec-num">04</span><h2>Fórmulas — selecionar pelo modo</h2></div>
   <div class="two-col">
-    <div class="ok-box">
-      <div class="scale-k" style="color:var(--accent)">Ventilação espontânea</div>
-      <div class="formula compact" style="margin-bottom:14px">cIVC<span class="op">=</span><span class="frac"><span>D<sub>max</sub> − D<sub>min</sub></span><span>D<sub>max</sub></span></span><span class="op">×</span><span class="num">100</span></div>
-      <div class="scale-legend">
-        <span class="scale-item"><span class="pill pill-green">&gt; 50%</span> Responsivo</span>
-        <span class="scale-item"><span class="pill pill-amber">20–50%</span> Zona cinzenta</span>
-        <span class="scale-item"><span class="pill pill-red">&lt; 20%</span> Não responsivo</span>
-      </div>
+    <div class="formula-card">
+      <div class="scale-k" style="color:var(--coral)">Ventilação espontânea</div>
+      <div class="formula compact formula-coral">cIVC<span class="op">=</span><span class="frac"><span>D<sub>max</sub> − D<sub>min</sub></span><span>D<sub>max</sub></span></span><span class="op">×</span><span class="num">100</span></div>
+      <ul class="scale-legend">
+        <li><span class="pill pill-green">&gt; 50%</span><span class="scale-lbl">Responsivo</span></li>
+        <li><span class="pill pill-amber">20–50%</span><span class="scale-lbl">Zona cinzenta</span></li>
+        <li><span class="pill pill-red">&lt; 20%</span><span class="scale-lbl">Não responsivo</span></li>
+      </ul>
       <p class="scale-note">VCI <strong>colapsa</strong> na inspiração — queda da pressão intratorácica puxa sangue.</p>
     </div>
-    <div class="info-box">
+    <div class="formula-card">
       <div class="scale-k" style="color:var(--purple)">Ventilação mecânica</div>
-      <div class="formula purple compact" style="margin-bottom:14px">dIVC<span class="op">=</span><span class="frac"><span>D<sub>max</sub> − D<sub>min</sub></span><span>D<sub>min</sub></span></span><span class="op">×</span><span class="num">100</span></div>
-      <div class="scale-legend">
-        <span class="scale-item"><span class="pill pill-green">&gt; 18%</span> Responsivo</span>
-        <span class="scale-item"><span class="pill pill-red">&lt; 18%</span> Não responsivo</span>
-      </div>
-      <p class="scale-note">VCI <strong>dilata</strong> na inspiração — pressão positiva empurra contra parede. <span style="color:var(--amber)">Válido: Vt ≥ 8 mL/kg, ritmo regular, sem esforço.</span></p>
+      <div class="formula purple compact">dIVC<span class="op">=</span><span class="frac"><span>D<sub>max</sub> − D<sub>min</sub></span><span>D<sub>min</sub></span></span><span class="op">×</span><span class="num">100</span></div>
+      <ul class="scale-legend">
+        <li><span class="pill pill-green">&gt; 18%</span><span class="scale-lbl">Responsivo</span></li>
+        <li><span class="pill pill-red">&lt; 18%</span><span class="scale-lbl">Não responsivo</span></li>
+      </ul>
+      <p class="scale-note">VCI <strong>dilata</strong> na inspiração — pressão positiva empurra contra parede. <span class="scale-valid">Válido: Vt ≥ 8 mL/kg, ritmo regular, sem esforço.</span></p>
     </div>
   </div>
 
   <div class="sec-h"><span class="sec-num">05</span><h2>Interpretação do diâmetro absoluto</h2></div>
-  <div class="vci-bar">
-    <div class="vci-seg" style="width:28%;background:rgba(248,113,113,0.2);color:var(--red);">&lt; 1,5 cm<span>Hipovolemia</span></div>
-    <div class="vci-seg" style="width:35%;background:rgba(251,191,36,0.15);color:var(--amber);">1,5 – 2,1 cm<span>Indeterminado</span></div>
-    <div class="vci-seg" style="width:37%;background:rgba(var(--accent-rgb),0.15);color:var(--accent);">&gt; 2,1 cm<span>Congestão / VD</span></div>
+  <div class="vci-bar" role="img" aria-label="Diâmetro da VCI e interpretação">
+    <div class="vci-seg vci-seg-lo" style="width:28%"><span class="vci-seg-v">&lt; 1,5 cm</span><span class="vci-seg-l">Hipovolemia</span></div>
+    <div class="vci-seg vci-seg-mid" style="width:35%"><span class="vci-seg-v">1,5 – 2,1 cm</span><span class="vci-seg-l">Indeterminado</span></div>
+    <div class="vci-seg vci-seg-hi" style="width:37%"><span class="vci-seg-v">&gt; 2,1 cm</span><span class="vci-seg-l">Congestão / VD</span></div>
   </div>
   <div class="table-wrap"><table>
     <thead><tr><th>Diâmetro</th><th>Variação</th><th>Interpretação</th></tr></thead>
