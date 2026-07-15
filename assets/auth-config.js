@@ -22,6 +22,7 @@ window.BEASIDE_AUTH = {
   AFTER_SIGN_IN: 'index.html',
   AFTER_SIGN_UP: 'index.html',
   AFTER_SIGN_OUT: 'index.html',
+  ACCOUNT_PAGE: 'conta.html',
   SSO_CALLBACK: 'sso-callback.html',
 
   /** Estratégias sociais (desligue se ainda não configurou no Clerk) */

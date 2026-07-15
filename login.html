@@ -1047,6 +1047,12 @@ function goAfterAuth(kind){
   var dest = (window.BeAsideAuth && BeAsideAuth.afterAuthUrl)
     ? BeAsideAuth.afterAuthUrl(kind || 'sign-in')
     : ((BeAsideAuth.getConfig().AFTER_SIGN_IN)||'index.html');
+  try{
+    var next=new URLSearchParams(location.search).get('next');
+    if(next && next.charAt(0)==='/' && next.indexOf('//')===-1){
+      dest=next;
+    }
+  }catch(e){}
   location.replace(dest);
 }
 

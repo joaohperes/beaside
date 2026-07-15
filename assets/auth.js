@@ -481,8 +481,33 @@
     await clerk.signOut({ redirectUrl: absoluteUrl(cfg.AFTER_SIGN_OUT || 'index.html') });
   }
 
+  var hubMenuDocBound = false;
+
+  function closeAllAuthMenus() {
+    document.querySelectorAll('[data-auth-chip]').forEach(function (wrap) {
+      wrap.classList.remove('is-open');
+      var t = wrap.querySelector('[data-auth-menu-toggle]');
+      var m = wrap.querySelector('.auth-menu');
+      if (t) t.setAttribute('aria-expanded', 'false');
+      if (m) m.hidden = true;
+    });
+  }
+
+  function ensureHubMenuDocClose() {
+    if (hubMenuDocBound) return;
+    hubMenuDocBound = true;
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest || !e.target.closest('[data-auth-chip]')) {
+        closeAllAuthMenus();
+      }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeAllAuthMenus();
+    });
+  }
+
   /**
-   * Atualiza chrome do hub: troca "Entrar" por chip do usuário + sair.
+   * Atualiza chrome do hub: chip com menu (conta + sair).
    * @param {HTMLElement|null} slot — elemento .btn-entrar ou container
    */
   function paintHubAuth(slot) {
@@ -506,26 +531,61 @@
     var user = getUser();
     var name = displayName(user);
     var email = primaryEmail(user);
+    var accountHref = absoluteUrl(cfg.ACCOUNT_PAGE || 'conta.html');
 
-    var chip = document.createElement('div');
-    chip.setAttribute('data-auth-chip', '1');
-    chip.className = 'auth-chip';
-    chip.innerHTML =
+    var wrap = document.createElement('div');
+    wrap.setAttribute('data-auth-chip', '1');
+    wrap.className = 'auth-chip-wrap';
+    wrap.innerHTML =
+      '<button type="button" class="auth-chip" data-auth-menu-toggle aria-expanded="false" aria-haspopup="menu">' +
       '<span class="auth-chip-dot" aria-hidden="true"></span>' +
       '<span class="auth-chip-name" title="' +
       escapeAttr(email || name) +
       '">' +
       escapeHtml(name) +
       '</span>' +
-      '<button type="button" class="auth-chip-out" data-auth-signout>Sair</button>';
-    parent.insertBefore(chip, slot);
+      '<span class="auth-chip-caret" aria-hidden="true">▾</span>' +
+      '</button>' +
+      '<div class="auth-menu" role="menu" hidden>' +
+      (email
+        ? '<div class="auth-menu-email" title="' +
+          escapeAttr(email) +
+          '">' +
+          escapeHtml(email) +
+          '</div>'
+        : '') +
+      '<a class="auth-menu-item" role="menuitem" href="' +
+      escapeAttr(accountHref) +
+      '">Minha conta</a>' +
+      '<button type="button" class="auth-menu-item auth-menu-danger" role="menuitem" data-auth-signout>Sair</button>' +
+      '</div>';
 
-    var btn = chip.querySelector('[data-auth-signout]');
+    parent.insertBefore(wrap, slot);
+    ensureHubMenuDocClose();
+
+    var toggle = wrap.querySelector('[data-auth-menu-toggle]');
+    var menu = wrap.querySelector('.auth-menu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var open = !wrap.classList.contains('is-open');
+        closeAllAuthMenus();
+        if (open) {
+          wrap.classList.add('is-open');
+          menu.hidden = false;
+          toggle.setAttribute('aria-expanded', 'true');
+        }
+      });
+    }
+
+    var btn = wrap.querySelector('[data-auth-signout]');
     if (btn) {
-      btn.addEventListener('click', function () {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
         btn.disabled = true;
-        signOut().catch(function (e) {
-          console.error(e);
+        closeAllAuthMenus();
+        signOut().catch(function (err) {
+          console.error(err);
           btn.disabled = false;
         });
       });
@@ -549,6 +609,27 @@
       .catch(function () {
         /* sem key / offline — mantém Entrar */
       });
+  }
+
+  /**
+   * Página de conta: exige sessão ou redireciona ao login.
+   * @returns {Promise<object|null>} user ou null se redirecionou
+   */
+  async function requireSignedIn(loginPath) {
+    await init();
+    if (isSignedIn()) return getUser();
+    var dest = absoluteUrl(loginPath || 'login.html');
+    try {
+      var ret = encodeURIComponent(
+        global.location.pathname + global.location.search + global.location.hash
+      );
+      if (dest.indexOf('?') === -1) dest += '?next=' + ret;
+      else dest += '&next=' + ret;
+    } catch (e) {
+      /* ignore */
+    }
+    global.location.replace(dest);
+    return null;
   }
 
   function escapeHtml(s) {
@@ -580,6 +661,8 @@
     signOut: signOut,
     paintHubAuth: paintHubAuth,
     bindHubAuth: bindHubAuth,
+    requireSignedIn: requireSignedIn,
+    closeAllAuthMenus: closeAllAuthMenus,
     clerkErrorMessage: clerkErrorMessage,
     afterAuthUrl: afterAuthUrl,
     getClerk: function () {
