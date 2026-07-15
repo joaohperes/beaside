@@ -217,6 +217,21 @@ html[data-theme="light"] .field input:focus{
   border-color:rgba(224,85,85,.55);
   box-shadow:0 0 0 3px rgba(224,85,85,.1);
 }
+.field input.is-valid{
+  border-color:rgba(29,184,138,.4);
+}
+html[data-theme="light"] .field input.is-valid{
+  border-color:rgba(13,154,114,.4);
+}
+.field-msg{
+  display:none;
+  margin-top:6px;
+  font-size:12px;
+  line-height:1.35;
+  color:#e05555;
+}
+.field-msg.show{display:block}
+.field-msg.ok{color:var(--teal)}
 .field-row{
   display:flex;align-items:center;justify-content:space-between;
   margin:-2px 0 14px;
@@ -496,18 +511,21 @@ html[data-theme="light"] #clerk-captcha:not(:empty){background:rgba(15,23,42,.02
           <div class="field-grid-2" id="name-fields">
             <div class="field">
               <label for="first-name">Nome</label>
-              <input id="first-name" name="firstName" type="text" autocomplete="given-name" placeholder="Nome" maxlength="50">
+              <input id="first-name" name="firstName" type="text" autocomplete="given-name" placeholder="Nome" maxlength="50" aria-describedby="err-first-name">
+              <div class="field-msg" id="err-first-name" role="alert"></div>
             </div>
             <div class="field">
               <label for="last-name">Sobrenome</label>
-              <input id="last-name" name="lastName" type="text" autocomplete="family-name" placeholder="Sobrenome" maxlength="50">
+              <input id="last-name" name="lastName" type="text" autocomplete="family-name" placeholder="Sobrenome" maxlength="50" aria-describedby="err-last-name">
+              <div class="field-msg" id="err-last-name" role="alert"></div>
             </div>
           </div>
         </div>
 
         <div class="field">
           <label for="email">E-mail</label>
-          <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="seu@e-mail.com">
+          <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="seu@e-mail.com" aria-describedby="err-email">
+          <div class="field-msg" id="err-email" role="alert"></div>
         </div>
 
         <div class="form-sec-h signup-only" id="sec-security-h">
@@ -517,15 +535,17 @@ html[data-theme="light"] #clerk-captcha:not(:empty){background:rgba(15,23,42,.02
 
         <div class="field">
           <label for="password">Senha</label>
-          <input id="password" name="password" type="password" autocomplete="current-password" required placeholder="••••••••" minlength="8">
+          <input id="password" name="password" type="password" autocomplete="current-password" required placeholder="••••••••" minlength="8" aria-describedby="err-password">
           <div class="pw-meter signup-only" id="pw-meter" data-score="0" aria-hidden="true">
             <span></span><span></span><span></span><span></span>
           </div>
           <div class="pw-score-lbl signup-only" id="pw-score-lbl" data-score="0"></div>
+          <div class="field-msg" id="err-password" role="alert"></div>
         </div>
         <div class="field signup-only" id="password-confirm-field">
           <label for="password-confirm">Confirmar senha</label>
-          <input id="password-confirm" name="passwordConfirm" type="password" autocomplete="new-password" placeholder="Digite a senha de novo" minlength="8">
+          <input id="password-confirm" name="passwordConfirm" type="password" autocomplete="new-password" placeholder="Digite a senha de novo" minlength="8" aria-describedby="err-password-confirm">
+          <div class="field-msg" id="err-password-confirm" role="alert"></div>
         </div>
         <div class="pw-hint signup-only" id="pw-hint">
           <p class="pw-hint-static" id="pw-hint-static">Use 8+ caracteres, letra, número e maiúscula ou símbolo.</p>
@@ -729,6 +749,173 @@ function openPasswordHint(force){
   if(force || mode==='sign-up') hint.classList.add('is-open');
 }
 
+var NAME_OK=/^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ'’\-\s]*$/;
+var EMAIL_OK=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function setFieldState(inputId, errId, state, msg){
+  /* state: '' | 'invalid' | 'valid' */
+  var input=document.getElementById(inputId);
+  var err=document.getElementById(errId);
+  if(!input) return;
+  input.classList.remove('is-invalid','is-valid');
+  if(state==='invalid') input.classList.add('is-invalid');
+  if(state==='valid') input.classList.add('is-valid');
+  if(err){
+    err.textContent=msg||'';
+    err.classList.toggle('show', !!(msg && state==='invalid'));
+    err.classList.toggle('ok', state==='valid' && !!msg);
+  }
+}
+
+function clearAllFieldStates(){
+  ['first-name','last-name','email','password','password-confirm'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el){
+      el.classList.remove('is-invalid','is-valid');
+      delete el.dataset.touched;
+    }
+  });
+  ['err-first-name','err-last-name','err-email','err-password','err-password-confirm'].forEach(function(id){
+    var err=document.getElementById(id);
+    if(err){
+      err.textContent='';
+      err.classList.remove('show','ok');
+    }
+  });
+}
+
+function nameError(raw, label){
+  var v=String(raw||'').trim();
+  if(!v) return label+' é obrigatório.';
+  if(v.length<2) return label+' precisa ter pelo menos 2 letras.';
+  if(!NAME_OK.test(v)) return label+' inválido — use só letras (sem números).';
+  if(/\d/.test(v)) return label+' não pode conter números.';
+  return '';
+}
+
+function emailError(raw){
+  var v=String(raw||'').trim();
+  if(!v) return 'E-mail é obrigatório.';
+  if(v.indexOf('@')===-1) return 'E-mail inválido — falta o @.';
+  if(!EMAIL_OK.test(v)) return 'E-mail inválido. Ex.: nome@hospital.com';
+  return '';
+}
+
+function passwordError(pw, forSignup){
+  var p=String(pw||'');
+  if(!p) return forSignup?'Senha é obrigatória.':'Informe a senha.';
+  if(!forSignup){
+    if(p.length<8) return 'A senha precisa ter pelo menos 8 caracteres.';
+    return '';
+  }
+  var checks=passwordChecks(p, p); /* match self for rules */
+  if(!checks.len) return 'Mínimo de 8 caracteres.';
+  if(!checks.letter) return 'Inclua pelo menos 1 letra.';
+  if(!checks.number) return 'Inclua pelo menos 1 número.';
+  if(!checks.complex) return 'Inclua 1 maiúscula ou 1 símbolo (!@#…).';
+  if(!checks.mix) return 'Senha óbvia demais (sequência ou padrão comum).';
+  if(passwordScore(p)<3) return 'Senha ainda fraca — misture letras, números e maiúsc. ou símbolo.';
+  return '';
+}
+
+function confirmError(pw, conf){
+  var c=String(conf||'');
+  if(!c) return 'Confirme a senha.';
+  if(c!==String(pw||'')) return 'As senhas não coincidem.';
+  return '';
+}
+
+function shouldShowField(input){
+  if(!input) return false;
+  return input.dataset.touched==='1' || String(input.value||'').length>0;
+}
+
+function validateNameField(id, errId, label, force){
+  var input=document.getElementById(id);
+  if(!input) return true;
+  if(mode!=='sign-up'){
+    setFieldState(id, errId, '', '');
+    return true;
+  }
+  if(!force && !shouldShowField(input)){
+    setFieldState(id, errId, '', '');
+    return true;
+  }
+  var msg=nameError(input.value, label);
+  if(msg){
+    setFieldState(id, errId, 'invalid', msg);
+    return false;
+  }
+  setFieldState(id, errId, 'valid', '');
+  return true;
+}
+
+function validateEmailField(force){
+  var input=document.getElementById('email');
+  if(!input) return true;
+  if(!force && !shouldShowField(input)){
+    setFieldState('email','err-email','','');
+    return true;
+  }
+  var msg=emailError(input.value);
+  if(msg){
+    setFieldState('email','err-email','invalid', msg);
+    return false;
+  }
+  setFieldState('email','err-email','valid','');
+  return true;
+}
+
+function validatePasswordField(force){
+  var input=document.getElementById('password');
+  if(!input) return true;
+  if(!force && !shouldShowField(input)){
+    setFieldState('password','err-password','','');
+    return true;
+  }
+  var forSignup=mode==='sign-up';
+  var msg=passwordError(input.value, forSignup);
+  if(msg){
+    setFieldState('password','err-password','invalid', msg);
+    return false;
+  }
+  setFieldState('password','err-password','valid','');
+  return true;
+}
+
+function validateConfirmField(force){
+  if(mode!=='sign-up'){
+    setFieldState('password-confirm','err-password-confirm','','');
+    return true;
+  }
+  var input=document.getElementById('password-confirm');
+  var pw=document.getElementById('password');
+  if(!input) return true;
+  if(!force && !shouldShowField(input)){
+    setFieldState('password-confirm','err-password-confirm','','');
+    return true;
+  }
+  var msg=confirmError(pw?pw.value:'', input.value);
+  if(msg){
+    setFieldState('password-confirm','err-password-confirm','invalid', msg);
+    return false;
+  }
+  setFieldState('password-confirm','err-password-confirm','valid','');
+  return true;
+}
+
+function runLiveValidation(opts){
+  opts=opts||{};
+  var force=!!opts.force;
+  if(mode==='sign-up'){
+    validateNameField('first-name','err-first-name','Nome', force);
+    validateNameField('last-name','err-last-name','Sobrenome', force);
+  }
+  validateEmailField(force);
+  validatePasswordField(force);
+  validateConfirmField(force);
+}
+
 function updatePasswordUI(){
   if(mode!=='sign-up') return;
   var pw=document.getElementById('password').value;
@@ -755,51 +942,38 @@ function updatePasswordUI(){
     lbl.setAttribute('data-score', String(score));
     lbl.textContent=pw?scoreLabel(score):'';
   }
+  validatePasswordField(false);
+  validateConfirmField(false);
 }
 
 function validateSignupForm(){
-  var first=document.getElementById('first-name').value.trim();
-  var last=document.getElementById('last-name').value.trim();
-  var email=document.getElementById('email').value.trim();
-  var pass=document.getElementById('password').value;
-  var conf=document.getElementById('password-confirm').value;
-
-  if(!first || first.length<2){
-    return {ok:false, msg:'Informe seu nome (mín. 2 caracteres).', focus:'first-name'};
-  }
-  if(!last || last.length<2){
-    return {ok:false, msg:'Informe seu sobrenome (mín. 2 caracteres).', focus:'last-name'};
-  }
-  if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-    return {ok:false, msg:'Informe um e-mail válido.', focus:'email'};
-  }
+  /* força mostrar todos os erros de campo */
+  ['first-name','last-name','email','password','password-confirm'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el) el.dataset.touched='1';
+  });
   openPasswordHint(true);
-  var checks=passwordChecks(pass, conf);
-  if(!checks.len){
-    return {ok:false, msg:'A senha precisa ter pelo menos 8 caracteres.', focus:'password'};
-  }
-  if(!checks.letter){
-    return {ok:false, msg:'A senha precisa ter pelo menos 1 letra.', focus:'password'};
-  }
-  if(!checks.number){
-    return {ok:false, msg:'A senha precisa ter pelo menos 1 número.', focus:'password'};
-  }
-  if(!checks.complex){
-    return {ok:false, msg:'Inclua 1 letra maiúscula ou 1 símbolo (ex.: ! @ #).', focus:'password'};
-  }
-  if(!checks.mix){
-    return {ok:false, msg:'Essa senha é fácil demais (sequência ou padrão comum). Escolha outra.', focus:'password'};
-  }
-  if(passwordScore(pass)<3){
-    return {ok:false, msg:'Senha ainda fraca. Misture letras, números e maiúscula ou símbolo.', focus:'password'};
-  }
-  if(!conf){
-    return {ok:false, msg:'Confirme a senha.', focus:'password-confirm'};
-  }
-  if(!checks.match){
-    return {ok:false, msg:'As senhas não coincidem.', focus:'password-confirm'};
-  }
-  return {ok:true, firstName:first, lastName:last, email:email, password:pass};
+  updatePasswordUI();
+
+  var okFirst=validateNameField('first-name','err-first-name','Nome', true);
+  var okLast=validateNameField('last-name','err-last-name','Sobrenome', true);
+  var okEmail=validateEmailField(true);
+  var okPass=validatePasswordField(true);
+  var okConf=validateConfirmField(true);
+
+  if(!okFirst) return {ok:false, msg:nameError(document.getElementById('first-name').value,'Nome'), focus:'first-name'};
+  if(!okLast) return {ok:false, msg:nameError(document.getElementById('last-name').value,'Sobrenome'), focus:'last-name'};
+  if(!okEmail) return {ok:false, msg:emailError(document.getElementById('email').value), focus:'email'};
+  if(!okPass) return {ok:false, msg:passwordError(document.getElementById('password').value, true), focus:'password'};
+  if(!okConf) return {ok:false, msg:confirmError(document.getElementById('password').value, document.getElementById('password-confirm').value), focus:'password-confirm'};
+
+  return {
+    ok:true,
+    firstName:document.getElementById('first-name').value.trim(),
+    lastName:document.getElementById('last-name').value.trim(),
+    email:document.getElementById('email').value.trim(),
+    password:document.getElementById('password').value,
+  };
 }
 
 function setMode(next){
@@ -823,6 +997,7 @@ function setMode(next){
   if(ln) ln.required=isUp;
   var hint=document.getElementById('pw-hint');
   if(hint) hint.classList.remove('is-open');
+  clearAllFieldStates();
   document.getElementById('mode-hint').innerHTML=isUp
     ?'Já tem conta? <a id="toggle-mode" role="button" tabindex="0">Entrar</a>'
     :'Ainda não tem conta? <a id="toggle-mode" role="button" tabindex="0">Criar conta</a>';
@@ -890,13 +1065,35 @@ document.getElementById('btn-apple').addEventListener('click',async function(){
   }
 });
 
-['password','password-confirm'].forEach(function(id){
+function bindLiveField(id, onInput){
   var el=document.getElementById(id);
   if(!el) return;
-  el.addEventListener('input', updatePasswordUI);
-  el.addEventListener('focus', function(){
-    if(mode==='sign-up') openPasswordHint(true);
+  el.addEventListener('input', function(){
+    el.dataset.touched='1';
+    if(onInput) onInput();
+    else runLiveValidation();
   });
+  el.addEventListener('blur', function(){
+    el.dataset.touched='1';
+    if(onInput) onInput();
+    else runLiveValidation({force:true});
+  });
+}
+
+bindLiveField('first-name', function(){ validateNameField('first-name','err-first-name','Nome', true); });
+bindLiveField('last-name', function(){ validateNameField('last-name','err-last-name','Sobrenome', true); });
+bindLiveField('email', function(){ validateEmailField(true); });
+bindLiveField('password', function(){
+  if(mode==='sign-up'){
+    openPasswordHint(true);
+    updatePasswordUI();
+  }else{
+    validatePasswordField(true);
+  }
+});
+bindLiveField('password-confirm', function(){
+  openPasswordHint(true);
+  updatePasswordUI();
 });
 
 document.getElementById('login-form').addEventListener('submit',async function(e){
@@ -907,26 +1104,29 @@ document.getElementById('login-form').addEventListener('submit',async function(e
     var v=validateSignupForm();
     if(!v.ok){
       setStatus('form-status', v.msg, 'err');
-      if(v.focus) document.getElementById(v.focus).focus();
-      updatePasswordUI();
+      if(v.focus){
+        var fe=document.getElementById(v.focus);
+        if(fe) fe.focus();
+      }
       return;
     }
     email=v.email;
     pass=v.password;
     profile={ firstName:v.firstName, lastName:v.lastName };
   }else{
-    email=document.getElementById('email').value.trim();
-    pass=document.getElementById('password').value;
-    if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-      setStatus('form-status','Informe um e-mail válido.','err');
-      document.getElementById('email').focus();
+    var emEl=document.getElementById('email');
+    var pwEl=document.getElementById('password');
+    if(emEl) emEl.dataset.touched='1';
+    if(pwEl) pwEl.dataset.touched='1';
+    var okE=validateEmailField(true);
+    var okP=validatePasswordField(true);
+    if(!okE || !okP){
+      setStatus('form-status', !okE ? emailError(emEl.value) : passwordError(pwEl.value, false), 'err');
+      if(!okE) emEl.focus(); else pwEl.focus();
       return;
     }
-    if(!pass||pass.length<8){
-      setStatus('form-status','A senha precisa ter pelo menos 8 caracteres.','err');
-      document.getElementById('password').focus();
-      return;
-    }
+    email=emEl.value.trim();
+    pass=pwEl.value;
   }
 
   setBusy(true);
