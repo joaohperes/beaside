@@ -234,7 +234,7 @@ a.link-cta:focus-visible{
   display:block;width:100%;max-width:100%;
   overflow-x:auto;-webkit-overflow-scrolling:touch;
   overscroll-behavior-x:contain;
-  margin:16px 0;border-radius:10px;border:1px solid var(--border);
+  margin:20px 0;border-radius:10px;border:1px solid var(--border);
   background:var(--bg2);
 }
 .table-wrap table{width:100%;margin:0;border:none;border-radius:0}
@@ -274,7 +274,7 @@ td:first-child .pill{
   grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr);
   gap:20px 28px;
   align-items:start;
-  margin:8px 0 12px;
+  margin:20px 0 24px;
 }
 .peep-how-k{
   font-family:var(--mono);font-size:10px;font-weight:500;
@@ -358,11 +358,11 @@ td:first-child .pill{
 
 /* Exemplo clínico sob o painel */
 .peep-example{
-  margin:22px 0 8px;
+  margin:28px 0 20px;
   border:1px solid var(--border);border-radius:14px;
   background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
   box-shadow:inset 0 1px 0 rgba(255,255,255,.03);
-  padding:18px 18px 16px;
+  padding:20px 20px 18px;
 }
 .peep-example-head{
   display:flex;align-items:center;justify-content:space-between;gap:12px;
@@ -993,7 +993,7 @@ td .pill,th .pill{
 .formula-card{
   border:1px solid var(--border);border-radius:14px;
   background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
-  padding:18px 18px 16px;
+  padding:20px 20px 18px;margin:22px 0;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.03);
 }
 .formula-card .formula{margin:0 0 14px}
@@ -1051,7 +1051,7 @@ td .pill,th .pill{
 }
 td:first-child:has(.pill-qual){white-space:nowrap}
 /* Alert boxes */
-.alert-box{border-radius:8px;padding:12px 14px;margin:10px 0;font-size:13px;display:flex;gap:10px;align-items:flex-start}
+.alert-box{border-radius:10px;padding:14px 16px;margin:20px 0;font-size:13px;display:flex;gap:10px;align-items:flex-start}
 .alert-box.info{background:rgba(29,184,138,.08);border:1px solid rgba(29,184,138,.2)}
 .alert-box.warn{background:rgba(240,160,48,.08);border:1px solid rgba(240,160,48,.2)}
 .alert-box.danger{background:rgba(226,75,74,.08);border:1px solid rgba(226,75,74,.2)}
@@ -1241,7 +1241,7 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
 }
 /* ═══════════ PROC PAGE DESIGN SYSTEM (redesign 2026-07) ═══════════ */
 /* Usado pelas páginas do módulo proc; classes prefixadas para não colidir */
-.ref{font-family:var(--mono);font-size:10.5px;color:var(--text3);border-left:2px solid var(--border2);padding:4px 10px;margin:6px 0 0;display:block;line-height:1.5}
+.ref{font-family:var(--mono);font-size:10.5px;color:var(--text3);border-left:2px solid var(--border2);padding:4px 10px;margin:12px 0 4px;display:block;line-height:1.5}
 /* Referência inline com tooltip (hover) — substitui blocos .ref repetidos dentro do texto */
 .ref-mark{position:relative;display:inline-flex;align-items:center;justify-content:center;width:13px;height:13px;margin-left:5px;margin-right:1px;border-radius:50%;background:rgba(var(--accent-rgb),.12);border:1px solid rgba(var(--accent-rgb),.4);color:var(--accent);font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:9.5px;font-weight:600;line-height:1;cursor:default;vertical-align:middle;top:-4px;transition:background .15s,border-color .15s}
 .ref-mark::before{content:'';position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(3px);border:5px solid transparent;border-top-color:var(--bg2);opacity:0;visibility:hidden;transition:opacity .12s ease,transform .12s ease;pointer-events:none;z-index:21}
@@ -1274,10 +1274,15 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
   font-size:14.5px;color:var(--text2);line-height:1.7;max-width:52ch;
   margin-bottom:0;font-weight:300;
 }
-.page-head + .alert-box,
-.page-head + .anatomy-note,
 .page-head + .hero-meta,
 .page-head + .sub-nav{margin-top:4px}
+.page-head + .alert-box,
+.page-head + .anatomy-note,
+.page-head + .info-box,
+.page-head + .warn-box,
+.page-head + .ok-box,
+.page-head + .tip-box,
+.page-head + .table-wrap{margin-top:22px}
 /* sub-nav sob o head (ex. drogas) */
 .page-head + .alert-box + .sub-nav,
 .page-head ~ .sub-nav{
@@ -1308,15 +1313,30 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
 .hm-item:last-child{border-right:none}
 .hm-k{display:block;font-family:var(--mono);font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--text3);margin-bottom:5px}
 .hm-v{font-size:13px;font-weight:500;color:#fff}
-/* respiro: meta-resumo não cola no lead / primeira seção */
+/* respiro: meta-resumo não cola no lead / cards / primeira seção */
 .hero-meta + .sec-lead{
-  margin-top:22px;
+  margin-top:24px;
 }
 .hero-meta + .sec-h{
-  margin-top:36px;
+  margin-top:40px;
 }
 .hero-meta + .sec-lead + .sec-h{
-  margin-top:40px;
+  margin-top:44px;
+}
+.hero-meta + .anatomy-note,
+.hero-meta + .info-box,
+.hero-meta + .warn-box,
+.hero-meta + .ok-box,
+.hero-meta + .tip-box,
+.hero-meta + .alert-box,
+.hero-meta + .table-wrap,
+.hero-meta + .ind-grid,
+.hero-meta + .formula-card,
+.hero-meta + .mat-grid,
+.hero-meta + .svg-wrap,
+.hero-meta + .peep-panel,
+.hero-meta + .two-col{
+  margin-top:28px;
 }
 @media(max-width:680px){
   .hero-meta,.hero-meta.cols-2,.hero-meta.cols-3{grid-template-columns:1fr 1fr}
@@ -1336,7 +1356,7 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
 .sec-lead strong{color:var(--text);font-weight:500}
 @media(max-width:680px){.sec-h h2{white-space:normal}}
 /* grid de itens term+detail (indicações, complicações, etc) */
-.ind-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0 4px}
+.ind-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0 8px}
 .ind-grid.cols-3{grid-template-columns:1fr 1fr 1fr}
 @media(max-width:680px){.ind-grid,.ind-grid.cols-3{grid-template-columns:1fr}}
 .ind-item{
@@ -1358,7 +1378,7 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
 /* Material — checklist (não chips) */
 .mat-grid{
   display:flex;flex-direction:column;gap:0;
-  margin:14px 0 0;
+  margin:20px 0;
   border:1px solid var(--border);border-radius:12px;overflow:hidden;
   background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.01));
 }
@@ -1384,7 +1404,7 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
  * Antes: .pill-list sem CSS → bullets nativos desalinhados do DS.
  */
 .pill-list{
-  list-style:none;margin:14px 0 4px;padding:0;
+  list-style:none;margin:20px 0;padding:0;
   border:1px solid var(--border);border-radius:12px;overflow:hidden;
   background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.01));
 }
@@ -1447,8 +1467,8 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
 /* nota de anatomia / conceito-chave */
 .anatomy-note{
   border-left:2px solid var(--teal);background:rgba(29,184,138,.06);
-  border-radius:0 12px 12px 0;padding:16px 18px;font-size:13.5px;color:#bce8d8;
-  line-height:1.7;margin:18px 0;
+  border-radius:0 12px 12px 0;padding:18px 20px;font-size:13.5px;color:#bce8d8;
+  line-height:1.7;margin:28px 0;
 }
 .anatomy-note strong{color:#d0f0e4;font-weight:500}
 /* técnica: fases + timeline */
@@ -1481,7 +1501,7 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0 4px}
 @media(max-width:680px){.two-col{grid-template-columns:1fr}}
 .info-box,.warn-box,.ok-box,.tip-box{
-  margin:18px 0;padding:16px 18px;font-size:13.5px;line-height:1.7;border-radius:12px;
+  margin:24px 0;padding:18px 20px;font-size:13.5px;line-height:1.7;border-radius:12px;
 }
 .two-col > .info-box,
 .two-col > .warn-box,
@@ -1510,22 +1530,36 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
 .ind-grid + .table-wrap,
 .ind-grid + .pitfall-h,
 .ind-grid + .ref,
+.ind-grid + .formula-card,
+.ind-grid + .svg-wrap,
+.ind-grid + .mat-grid,
+.ind-grid + .peep-panel,
 .two-col + .warn-box,
 .two-col + .ok-box,
 .two-col + .tip-box,
 .two-col + .info-box,
 .two-col + .anatomy-note,
+.two-col + .table-wrap,
+.two-col + .ref,
 .table-wrap + .warn-box,
 .table-wrap + .ok-box,
 .table-wrap + .tip-box,
 .table-wrap + .info-box,
 .table-wrap + .anatomy-note,
+.table-wrap + .formula-card,
+.table-wrap + .svg-wrap,
+.table-wrap + .mat-grid,
+.table-wrap + .peep-panel,
+.table-wrap + .ind-grid,
 .tl + .warn-box,
 .tl + .ok-box,
 .tl + .tip-box,
 .tl + .info-box,
 .tl + .anatomy-note,
 .tl + .ref,
+.tl + .table-wrap,
+.tl + .formula-card,
+.tl + .peep-panel,
 .anatomy-note + .warn-box,
 .anatomy-note + .ok-box,
 .anatomy-note + .tip-box,
@@ -1533,34 +1567,123 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
 .anatomy-note + .ind-grid,
 .anatomy-note + .table-wrap,
 .anatomy-note + .tl,
+.anatomy-note + .formula-card,
+.anatomy-note + .svg-wrap,
+.anatomy-note + .mat-grid,
+.anatomy-note + .peep-panel,
+.anatomy-note + .ref,
 .sec-lead + .ind-grid,
 .sec-lead + .table-wrap,
 .sec-lead + .two-col,
 .sec-lead + .anatomy-note,
+.sec-lead + .info-box,
+.sec-lead + .warn-box,
+.sec-lead + .ok-box,
+.sec-lead + .tip-box,
+.sec-lead + .formula-card,
+.sec-lead + .svg-wrap,
+.sec-lead + .mat-grid,
+.sec-lead + .peep-panel,
+.sec-lead + .peep-example,
 .formula + .warn-box,
 .formula + .ok-box,
 .formula + .tip-box,
 .formula + .info-box,
 .formula + .anatomy-note,
+.formula-card + .warn-box,
+.formula-card + .ok-box,
+.formula-card + .tip-box,
+.formula-card + .info-box,
+.formula-card + .anatomy-note,
+.formula-card + .table-wrap,
+.formula-card + .ref,
+.svg-wrap + .warn-box,
+.svg-wrap + .ok-box,
+.svg-wrap + .tip-box,
+.svg-wrap + .info-box,
+.svg-wrap + .anatomy-note,
+.svg-wrap + .table-wrap,
+.svg-wrap + .ref,
+.mat-grid + .warn-box,
+.mat-grid + .ok-box,
+.mat-grid + .tip-box,
+.mat-grid + .info-box,
+.mat-grid + .anatomy-note,
+.mat-grid + .table-wrap,
+.mat-grid + .ref,
 .warn-box + .ok-box,
 .warn-box + .tip-box,
 .warn-box + .info-box,
 .warn-box + .anatomy-note,
 .warn-box + .ind-grid,
 .warn-box + .table-wrap,
+.warn-box + .ref,
+.warn-box + .formula-card,
 .ok-box + .warn-box,
 .ok-box + .tip-box,
+.ok-box + .info-box,
+.ok-box + .anatomy-note,
+.ok-box + .ref,
+.ok-box + .table-wrap,
 .tip-box + .warn-box,
 .tip-box + .ok-box,
+.tip-box + .info-box,
+.tip-box + .anatomy-note,
+.tip-box + .ref,
+.tip-box + .table-wrap,
 .info-box + .warn-box,
+.info-box + .ok-box,
+.info-box + .tip-box,
+.info-box + .anatomy-note,
+.info-box + .ref,
+.info-box + .table-wrap,
+.info-box + .ind-grid,
+.peep-panel + .peep-example,
+.peep-panel + .ref,
+.peep-panel + .warn-box,
+.peep-panel + .tip-box,
+.peep-example + .ref,
+.peep-example + .warn-box,
+.peep-example + .tip-box,
+.peep-example + .info-box,
 .compl-grid + .warn-box,
 .compl-grid + .ok-box,
 .compl-grid + .tip-box,
+.compl-grid + .info-box,
+.compl-grid + .ref,
 .pitfall-list + .warn-box,
 .pitfall-list + .ok-box,
 .pitfall-list + .tip-box,
-.pitfall-list + .ref{
-  margin-top:20px;
+.pitfall-list + .ref,
+.alert-box + .table-wrap,
+.alert-box + .sec-h,
+.alert-box + .anatomy-note{
+  margin-top:26px;
+}
+/* referência sob card: não colar no bloco seguinte */
+.anatomy-note + .ref,
+.info-box + .ref,
+.warn-box + .ref,
+.ok-box + .ref,
+.tip-box + .ref,
+.table-wrap + .ref,
+.tl + .ref,
+.formula-card + .ref,
+.svg-wrap + .ref,
+.peep-panel + .ref,
+.peep-example + .ref,
+.mat-grid + .ref{
+  margin-top:14px;
+}
+.ref + .sec-h,
+.ref + .anatomy-note,
+.ref + .info-box,
+.ref + .warn-box,
+.ref + .ok-box,
+.ref + .tip-box,
+.ref + .table-wrap,
+.ref + .peep-panel{
+  margin-top:32px;
 }
 .ind-grid + .sec-h,
 .two-col + .sec-h,
@@ -1571,14 +1694,20 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
 .info-box + .sec-h,
 .anatomy-note + .sec-h,
 .tl + .sec-h,
-.pitfall-list + .sec-h{
-  margin-top:44px;
+.pitfall-list + .sec-h,
+.formula-card + .sec-h,
+.svg-wrap + .sec-h,
+.mat-grid + .sec-h,
+.peep-panel + .sec-h,
+.peep-example + .sec-h,
+.compl-grid + .sec-h{
+  margin-top:48px;
 }
-.compl-grid{margin:16px 0 4px}
+.compl-grid{margin:20px 0 8px}
 .pitfall-list{margin:0 0 4px}
 .table-wrap{margin:16px 0}
 /* SVG wrapper */
-.svg-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin:12px 0;overflow-x:auto}
+.svg-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin:20px 0;overflow-x:auto}
 .svg-caption{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:10px;display:block}
 /* step-n legado (usado em legendas de SVG) */
 .step-n{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--accent);background:rgba(var(--accent-rgb),.12);border-radius:4px;padding:1px 7px;flex-shrink:0;margin-top:1px}
