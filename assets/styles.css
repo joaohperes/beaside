@@ -148,6 +148,50 @@ a.sidebar-mod-v:focus-visible{outline:1px solid rgba(var(--accent-rgb),.45);outl
 h3{font-size:15px;font-weight:500;color:#e8ecf2;margin:28px 0 12px}
 .src{font-family:var(--mono);font-size:10px;color:var(--text3);margin-left:6px;vertical-align:middle}
 .share-link{display:inline-flex;align-items:center;color:var(--text3);margin-left:10px;vertical-align:middle;cursor:pointer;opacity:.45;transition:opacity .15s,color .15s;text-decoration:none}
+
+/* Links de conteúdo — sem roxo/sublinhado de browser */
+.section a.text-link,
+.section a:not([class]):not(.share-link){
+  color:var(--accent);
+  font-weight:500;
+  text-decoration:none;
+  border-bottom:1px solid rgba(var(--accent-rgb),.35);
+  transition:color .15s,border-color .15s,background .15s;
+  border-radius:2px;
+}
+.section a.text-link:hover,
+.section a:not([class]):not(.share-link):hover{
+  color:var(--accent);
+  border-bottom-color:var(--accent);
+  background:rgba(var(--accent-rgb),.08);
+}
+.section a.text-link:focus-visible,
+.section a:not([class]):not(.share-link):focus-visible{
+  outline:2px solid rgba(var(--accent-rgb),.45);
+  outline-offset:2px;
+}
+/* CTA compacto em boxes (preferir a link corrido longo) */
+a.link-cta{
+  display:inline-flex;align-items:center;gap:6px;
+  margin-top:10px;
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.04em;
+  color:var(--accent);
+  text-decoration:none;
+  padding:8px 12px;border-radius:8px;
+  border:1px solid rgba(var(--accent-rgb),.32);
+  background:rgba(var(--accent-rgb),.08);
+  transition:background .15s,border-color .15s,transform .12s;
+}
+a.link-cta:hover{
+  background:rgba(var(--accent-rgb),.14);
+  border-color:rgba(var(--accent-rgb),.5);
+}
+a.link-cta:active{transform:scale(.98)}
+a.link-cta:focus-visible{
+  outline:2px solid rgba(var(--accent-rgb),.45);
+  outline-offset:2px;
+}
 .share-link svg{display:block}
 .share-link:hover{color:var(--accent);opacity:1}
 .callout{border-left:3px solid;padding:12px 16px;border-radius:0 6px 6px 0;margin:18px 0;font-size:13.5px;line-height:1.65}
@@ -1909,6 +1953,19 @@ html[data-theme="light"] .calc-field select{
 }
 html[data-theme="light"] .nav-back{
   color:var(--text2);
+}
+html[data-theme="light"] .section a.text-link,
+html[data-theme="light"] .section a:not([class]):not(.share-link){
+  color:var(--accent);
+  border-bottom-color:rgba(var(--accent-rgb),.4);
+}
+html[data-theme="light"] a.link-cta{
+  color:var(--accent);
+  background:rgba(var(--accent-rgb),.08);
+  border-color:rgba(var(--accent-rgb),.28);
+}
+html[data-theme="light"] a.link-cta:hover{
+  background:rgba(var(--accent-rgb),.14);
 }
 html[data-theme="light"] .peep-ladder-wrap{
   background:linear-gradient(180deg,#fff,#fafbfc);
