@@ -125,18 +125,14 @@ body{
   background:rgba(255,255,255,.04);
   transition:border-color .15s,background .15s,color .15s,transform .12s,opacity .15s;
 }
-/* evita flash de "Entrar" enquanto o Clerk não resolve (e se houver hint de sessão) */
-.btn-entrar.auth-pending{
-  visibility:hidden;
-  pointer-events:none;
-  min-width:4.5rem; /* reserva espaço no topbar */
-}
 .btn-entrar:hover{
   border-color:rgba(29,184,138,.45);color:#fff;
   background:rgba(29,184,138,.1);
 }
 .btn-entrar:active{transform:scale(.97)}
-.auth-chip-wrap.is-optimistic .auth-chip{opacity:.92}
+/* chip pintado no boot (inline) — some com o paint real do auth.js */
+.auth-chip-wrap.is-boot .auth-chip{cursor:default}
+.auth-chip-wrap.is-optimistic .auth-chip{opacity:.96}
 .auth-chip-wrap{
   position:relative;
   display:inline-flex;
@@ -694,7 +690,37 @@ html[data-theme="light"] .footer-left strong{color:var(--text2)}
       <span class="logo-wordmark">be·aside</span>
     </a>
     <div class="top-meta">
-      <a class="btn-entrar auth-pending" href="login.html" aria-hidden="true">Entrar</a>
+      <a class="btn-entrar" id="btn-entrar" href="login.html">Entrar</a>
+      <script>
+      /* Boot síncrono: evita buraco no topbar e flash de Entrar se já logou neste browser */
+      (function(){
+        var slot=document.getElementById('btn-entrar');
+        if(!slot||!slot.parentNode) return;
+        var hint=null;
+        try{hint=JSON.parse(localStorage.getItem('beaside-auth-hint')||'null');}catch(e){}
+        if(!hint||!(hint.shortName||hint.fullName||hint.email)) return;
+        var full=String(hint.fullName||hint.shortName||'').trim();
+        var short=String(hint.shortName||(full.split(/\s+/)[0])||'Conta').trim();
+        var email=String(hint.email||'');
+        var tip=(full&&email)?(full+' · '+email):(email||full||short);
+        function esc(s){
+          return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+        }
+        var wrap=document.createElement('div');
+        wrap.setAttribute('data-auth-chip','1');
+        wrap.setAttribute('data-auth-boot','1');
+        wrap.className='auth-chip-wrap is-optimistic is-boot';
+        wrap.innerHTML=
+          '<button type="button" class="auth-chip" tabindex="-1" aria-hidden="true">'+
+          '<span class="auth-chip-dot" aria-hidden="true"></span>'+
+          '<span class="auth-chip-name" title="'+esc(tip)+'">'+esc(short)+'</span>'+
+          '<span class="auth-chip-caret" aria-hidden="true">▾</span>'+
+          '</button>';
+        slot.parentNode.insertBefore(wrap,slot);
+        slot.hidden=true;
+        slot.style.display='none';
+      })();
+      </script>
       <button class="btn-theme" data-theme-toggle type="button" onclick="toggleTheme()" aria-label="Alternar tema"></button>
       <span class="meta-pill hide-sm"><span class="live" aria-hidden="true"></span>à beira do leito</span>
       <span class="meta-pill hide-sm">UTI · PS</span>
@@ -950,8 +976,8 @@ function toggleTheme(){
 }
 applyTheme(getTheme());
 </script>
-<script src="assets/auth-config.js?v=3"></script>
-<script src="assets/auth.js?v=3"></script>
+<script src="assets/auth-config.js?v=5"></script>
+<script src="assets/auth.js?v=5"></script>
 <script>
 (function hubAuth(){
   var slot=document.querySelector('.btn-entrar');
