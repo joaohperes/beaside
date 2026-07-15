@@ -60,12 +60,12 @@ html[data-theme="light"] body{
 }
 html[data-theme="light"] .scene-grid{
   background-image:
-    linear-gradient(rgba(15,23,42,.055) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(15,23,42,.055) 1px,transparent 1px);
+    linear-gradient(rgba(15,23,42,.09) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(15,23,42,.09) 1px,transparent 1px);
   /* mesma lógica do dark: foco no centro, fade nas bordas */
   mask-image:radial-gradient(ellipse 72% 58% at 50% 38%,#000 12%,transparent 72%);
   -webkit-mask-image:radial-gradient(ellipse 72% 58% at 50% 38%,#000 12%,transparent 72%);
-  opacity:.75;
+  opacity:.85;
 }
 .glow{
   position:absolute;width:520px;height:420px;border-radius:50%;
@@ -148,16 +148,19 @@ html[data-theme="light"] .btn-theme .theme-icon-moon{opacity:1;transform:none}
   padding:28px 26px 24px;
   opacity:0;animation:rise .75s var(--ease) .1s forwards;
 }
-/* light: card vidro (como dark semi-transparente) — grid aparece por dentro e por fora */
+/*
+ * light: card semi-transparente SEM blur forte.
+ * backdrop-filter:blur dissolve as linhas do grid (no dark o fill é ~4% e o grid passa nítido).
+ */
 html[data-theme="light"] .login-card{
-  background:linear-gradient(165deg, rgba(255,255,255,.72), rgba(255,255,255,.58));
-  border-color:rgba(15,23,42,.1);
+  background:linear-gradient(165deg, rgba(255,255,255,.42), rgba(255,255,255,.28));
+  border-color:rgba(15,23,42,.12);
   box-shadow:
-    0 1px 0 rgba(255,255,255,.75) inset,
-    0 24px 64px rgba(15,23,42,.1),
-    0 8px 28px rgba(13,154,114,.06);
-  backdrop-filter:blur(18px) saturate(1.15);
-  -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    0 1px 0 rgba(255,255,255,.55) inset,
+    0 24px 64px rgba(15,23,42,.08),
+    0 8px 28px rgba(13,154,114,.05);
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
 }
 .login-card::before{
   content:'';display:block;height:1px;margin:-28px -26px 22px;
@@ -226,9 +229,9 @@ html[data-theme="light"] .btn-social:hover{background:var(--bg3)}
   outline:none;transition:border-color .15s,box-shadow .15s,background .15s;
 }
 html[data-theme="light"] .field input{
-  background:rgba(255,255,255,.88);
-  border-color:rgba(15,23,42,.12);
-  box-shadow:0 1px 0 rgba(15,23,42,.03);
+  background:rgba(255,255,255,.92);
+  border-color:rgba(15,23,42,.14);
+  box-shadow:0 1px 0 rgba(15,23,42,.04);
 }
 .field input::placeholder{color:var(--text3);opacity:.85}
 .field input:focus{
