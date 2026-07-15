@@ -490,11 +490,65 @@
   }
 
   async function signOut() {
+    clearAuthHint();
     await init();
     await clerk.signOut({ redirectUrl: absoluteUrl(cfg.AFTER_SIGN_OUT || 'index.html') });
   }
 
+  var AUTH_HINT_KEY = 'beaside-auth-hint';
   var hubMenuDocBound = false;
+
+  function readAuthHint() {
+    try {
+      var raw = global.localStorage.getItem(AUTH_HINT_KEY);
+      if (!raw) return null;
+      var o = JSON.parse(raw);
+      if (o && (o.shortName || o.fullName || o.email)) return o;
+    } catch (e) {
+      /* private mode */
+    }
+    return null;
+  }
+
+  function writeAuthHint(user) {
+    if (!user) {
+      clearAuthHint();
+      return;
+    }
+    try {
+      global.localStorage.setItem(
+        AUTH_HINT_KEY,
+        JSON.stringify({
+          shortName: shortDisplayName(user),
+          fullName: displayName(user),
+          email: primaryEmail(user),
+          t: Date.now(),
+        })
+      );
+    } catch (e) {
+      /* ignore */
+    }
+  }
+
+  function clearAuthHint() {
+    try {
+      global.localStorage.removeItem(AUTH_HINT_KEY);
+    } catch (e) {
+      /* ignore */
+    }
+  }
+
+  function markAuthReady(slot) {
+    if (slot) {
+      slot.classList.remove('auth-pending');
+      slot.removeAttribute('aria-hidden');
+    }
+    try {
+      document.documentElement.setAttribute('data-auth-ready', '1');
+    } catch (e) {
+      /* ignore */
+    }
+  }
 
   function closeAllAuthMenus() {
     document.querySelectorAll('[data-auth-chip]').forEach(function (wrap) {
@@ -525,19 +579,29 @@
   }
 
   /**
-   * Atualiza chrome do hub: chip com menu (conta + sair).
-   * @param {HTMLElement|null} slot — elemento .btn-entrar ou container
+   * Monta o chip (sessão real ou hint otimista do localStorage).
+   * @param {HTMLElement|null} slot
+   * @param {{optimistic?: boolean, profile?: {shortName?:string,fullName?:string,email?:string}}|null} opts
    */
-  function paintHubAuth(slot) {
+  function paintHubAuth(slot, opts) {
     if (!slot) return;
     var parent = slot.parentElement;
     if (!parent) return;
+    opts = opts || {};
 
     parent.querySelectorAll('[data-auth-chip]').forEach(function (n) {
       n.remove();
     });
 
-    if (!isSignedIn()) {
+    var optimistic = !!opts.optimistic;
+    var profile = opts.profile || null;
+    var signedIn = optimistic ? !!profile : isSignedIn();
+
+    if (!signedIn) {
+      if (!optimistic) {
+        clearAuthHint();
+        markAuthReady(slot);
+      }
       slot.hidden = false;
       slot.style.display = '';
       return;
@@ -546,16 +610,29 @@
     slot.hidden = true;
     slot.style.display = 'none';
 
-    var user = getUser();
-    var fullName = displayName(user);
-    var shortName = shortDisplayName(user);
-    var email = primaryEmail(user);
+    var fullName;
+    var shortName;
+    var email;
+    if (profile) {
+      fullName = profile.fullName || profile.shortName || '';
+      shortName = profile.shortName || (fullName && fullName.split(/\s+/)[0]) || 'Conta';
+      email = profile.email || '';
+    } else {
+      var user = getUser();
+      fullName = displayName(user);
+      shortName = shortDisplayName(user);
+      email = primaryEmail(user);
+      writeAuthHint(user);
+      markAuthReady(slot);
+    }
+
     var accountHref = absoluteUrl(cfg.ACCOUNT_PAGE || 'conta.html');
     var tip = fullName && email ? fullName + ' · ' + email : email || fullName || shortName;
 
     var wrap = document.createElement('div');
     wrap.setAttribute('data-auth-chip', '1');
-    wrap.className = 'auth-chip-wrap';
+    wrap.className = 'auth-chip-wrap' + (optimistic ? ' is-optimistic' : '');
+    if (optimistic) wrap.setAttribute('data-auth-optimistic', '1');
     wrap.innerHTML =
       '<button type="button" class="auth-chip" data-auth-menu-toggle aria-expanded="false" aria-haspopup="menu" aria-label="' +
       escapeAttr('Conta de ' + (fullName || shortName)) +
@@ -606,25 +683,39 @@
     var btn = wrap.querySelector('[data-auth-signout]');
     if (btn) {
       btn.addEventListener('click', function (e) {
+        e.preventDefault();
         e.stopPropagation();
+        if (btn.dataset.busy === '1') return;
+        btn.dataset.busy = '1';
         btn.disabled = true;
-        closeAllAuthMenus();
+        btn.textContent = 'Saindo…';
         signOut().catch(function (err) {
           console.error(err);
+          btn.dataset.busy = '';
           btn.disabled = false;
+          btn.textContent = 'Sair';
         });
       });
     }
   }
 
   /**
-   * Liga o slot do hub e re-pinta em mudanças de sessão.
+   * Liga o slot do hub: pinta chip otimista na hora (sem flash de "Entrar") e confirma com Clerk.
    */
   function bindHubAuth(slot) {
     if (!slot) return Promise.resolve();
+
+    // 1) imediatamente: se já logou antes neste browser, mostra o chip sem esperar o SDK
+    var hint = readAuthHint();
+    if (hint) {
+      paintHubAuth(slot, { optimistic: true, profile: hint });
+    }
+
+    // 2) confirma com Clerk
     return init()
       .then(function () {
         paintHubAuth(slot);
+        markAuthReady(slot);
         if (clerk && typeof clerk.addListener === 'function') {
           clerk.addListener(function () {
             paintHubAuth(slot);
@@ -632,7 +723,12 @@
         }
       })
       .catch(function () {
-        /* sem key / offline — mantém Entrar */
+        /* sem key / offline */
+        if (!readAuthHint()) {
+          slot.hidden = false;
+          slot.style.display = '';
+        }
+        markAuthReady(slot);
       });
   }
 

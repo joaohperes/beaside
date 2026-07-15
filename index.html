@@ -123,13 +123,20 @@ body{
   padding:7px 14px;border-radius:8px;
   border:1px solid var(--border2);
   background:rgba(255,255,255,.04);
-  transition:border-color .15s,background .15s,color .15s,transform .12s;
+  transition:border-color .15s,background .15s,color .15s,transform .12s,opacity .15s;
+}
+/* evita flash de "Entrar" enquanto o Clerk não resolve (e se houver hint de sessão) */
+.btn-entrar.auth-pending{
+  visibility:hidden;
+  pointer-events:none;
+  min-width:4.5rem; /* reserva espaço no topbar */
 }
 .btn-entrar:hover{
   border-color:rgba(29,184,138,.45);color:#fff;
   background:rgba(29,184,138,.1);
 }
 .btn-entrar:active{transform:scale(.97)}
+.auth-chip-wrap.is-optimistic .auth-chip{opacity:.92}
 .auth-chip-wrap{
   position:relative;
   display:inline-flex;
@@ -155,7 +162,7 @@ body{
 }
 .auth-chip-name{
   overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
-  color:var(--text2);max-width:88px;
+  color:var(--text2);max-width:7.5em; /* 1º nome curto, sem “João Henriq…” */
 }
 .auth-menu-name{
   font-size:13px;font-weight:600;letter-spacing:-.02em;
@@ -173,9 +180,11 @@ body{
   background:var(--bg2,#0c0f13);
   box-shadow:0 16px 48px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.03);
   display:none;flex-direction:column;gap:2px;
-  z-index:50;
+  z-index:120;
+  pointer-events:auto;
 }
 .auth-chip-wrap.is-open .auth-menu{display:flex}
+.auth-menu-item{pointer-events:auto;position:relative;z-index:1}
 .auth-menu-email{
   font-family:var(--mono);font-size:10px;letter-spacing:.02em;
   color:var(--text3);padding:4px 10px 10px;
@@ -685,7 +694,7 @@ html[data-theme="light"] .footer-left strong{color:var(--text2)}
       <span class="logo-wordmark">be·aside</span>
     </a>
     <div class="top-meta">
-      <a class="btn-entrar" href="login.html">Entrar</a>
+      <a class="btn-entrar auth-pending" href="login.html" aria-hidden="true">Entrar</a>
       <button class="btn-theme" data-theme-toggle type="button" onclick="toggleTheme()" aria-label="Alternar tema"></button>
       <span class="meta-pill hide-sm"><span class="live" aria-hidden="true"></span>à beira do leito</span>
       <span class="meta-pill hide-sm">UTI · PS</span>
@@ -941,8 +950,8 @@ function toggleTheme(){
 }
 applyTheme(getTheme());
 </script>
-<script src="assets/auth-config.js"></script>
-<script src="assets/auth.js"></script>
+<script src="assets/auth-config.js?v=3"></script>
+<script src="assets/auth.js?v=3"></script>
 <script>
 (function hubAuth(){
   var slot=document.querySelector('.btn-entrar');
