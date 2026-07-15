@@ -32,6 +32,10 @@
   .pai-annot-txt{fill:#93c5fd}
   .pai-annot-fill-amb{fill:rgba(245,158,11,.18)}
   .pai-annot-txt-amb{fill:#fbbf24}
+  /* PPV: anotações PP máx/mín + fórmula — alto contraste (âmbar legia mal) */
+  .pai-pp-line{stroke:#e8ecf4;stroke-opacity:.9}
+  .pai-pp-label{fill:#e8ecf4}
+  .pai-pp-formula{fill:#e8ecf4}
 
   html[data-theme="light"] .pai-chart-bg{fill:#f1f4f8}
   html[data-theme="light"] .pai-grid-stroke{stroke:#dce1e9}
@@ -46,7 +50,9 @@
   html[data-theme="light"] .pai-annot-txt{fill:#2563eb}
   html[data-theme="light"] .pai-annot-fill-amb{fill:rgba(245,158,11,.14)}
   html[data-theme="light"] .pai-annot-txt-amb{fill:#b45309}
-  html[data-theme="light"] .svg-wrap .pai-chart-bg{/* herda */}
+  html[data-theme="light"] .pai-pp-line{stroke:#1a2030;stroke-opacity:.75}
+  html[data-theme="light"] .pai-pp-label{fill:#1a2030}
+  html[data-theme="light"] .pai-pp-formula{fill:#1a2030}
 
   /* cards over/under alinhados às cores das curvas */
   .damp-cards{margin-top:16px;gap:16px}
@@ -266,53 +272,53 @@
   <div class="svg-wrap">
     <span class="svg-caption">Fast-flush test — três padrões de amortecimento</span>
     <svg viewBox="0 0 700 200" width="100%" style="display:block;max-width:700px;margin:0 auto" aria-label="Fast-flush test mostrando sistema normal, overdamped e underdamped">
-      <rect width="700" height="200" fill="#12121e" rx="6"/>
+      <rect class="pai-chart-bg" width="700" height="200" rx="6"/>
 
       <text x="116" y="18" fill="#1db88a" font-size="10" font-family="monospace" text-anchor="middle" font-weight="bold">NORMAL</text>
       <text x="350" y="18" fill="#f59e0b" font-size="10" font-family="monospace" text-anchor="middle" font-weight="bold">OVERDAMPING</text>
       <text x="583" y="18" fill="#f87171" font-size="10" font-family="monospace" text-anchor="middle" font-weight="bold">UNDERDAMPING</text>
 
-      <line x1="233" y1="25" x2="233" y2="185" stroke="#2a2a3a" stroke-width="1"/>
-      <line x1="466" y1="25" x2="466" y2="185" stroke="#2a2a3a" stroke-width="1"/>
+      <line class="pai-axis" x1="233" y1="25" x2="233" y2="185" stroke-width="1"/>
+      <line class="pai-axis" x1="466" y1="25" x2="466" y2="185" stroke-width="1"/>
 
-      <line x1="50"  y1="140" x2="220" y2="140" stroke="#2a2a3a" stroke-width="0.8"/>
-      <line x1="283" y1="140" x2="450" y2="140" stroke="#2a2a3a" stroke-width="0.8"/>
-      <line x1="516" y1="140" x2="680" y2="140" stroke="#2a2a3a" stroke-width="0.8"/>
+      <line class="pai-axis" x1="50"  y1="140" x2="220" y2="140" stroke-width="0.8"/>
+      <line class="pai-axis" x1="283" y1="140" x2="450" y2="140" stroke-width="0.8"/>
+      <line class="pai-axis" x1="516" y1="140" x2="680" y2="140" stroke-width="0.8"/>
 
       <path d="M 55,140 L 55,50 L 100,50 L 100,140" fill="none" stroke="#1db88a" stroke-width="2"/>
       <path d="M 100,140 C 105,80 112,165 120,130 C 128,95 135,150 143,140 C 148,135 155,140 220,140"
             fill="none" stroke="#1db88a" stroke-width="2" stroke-linecap="round"/>
-      <text x="116" y="178" fill="#6ee7b7" font-size="9" font-family="monospace" text-anchor="middle">2 oscilações → retorno rápido</text>
-      <text x="116" y="190" fill="#6ee7b7" font-size="9" font-family="monospace" text-anchor="middle">Sistema ideal</text>
+      <text class="pai-sub-ok" x="116" y="178" font-size="9" font-family="monospace" text-anchor="middle">2 oscilações → retorno rápido</text>
+      <text class="pai-sub-ok" x="116" y="190" font-size="9" font-family="monospace" text-anchor="middle">Sistema ideal</text>
 
       <path d="M 288,140 L 288,50 L 333,50 L 333,140" fill="none" stroke="#f59e0b" stroke-width="2"/>
       <path d="M 333,140 C 345,100 360,125 380,135 C 395,140 410,140 450,140"
             fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
-      <text x="350" y="178" fill="#fcd34d" font-size="9" font-family="monospace" text-anchor="middle">Sem oscilações → retorno lento</text>
-      <text x="350" y="190" fill="#fcd34d" font-size="9" font-family="monospace" text-anchor="middle">PAS↓ falsa | PAD↑ falsa</text>
+      <text class="pai-sub-over" x="350" y="178" font-size="9" font-family="monospace" text-anchor="middle">Sem oscilações → retorno lento</text>
+      <text class="pai-sub-over" x="350" y="190" font-size="9" font-family="monospace" text-anchor="middle">PAS↓ falsa | PAD↑ falsa</text>
 
       <path d="M 521,140 L 521,50 L 566,50 L 566,140" fill="none" stroke="#f87171" stroke-width="2"/>
       <path d="M 566,140 C 570,55 578,175 586,100 C 594,30 602,170 610,115 C 618,65 626,155 634,130 C 640,112 648,145 680,140"
             fill="none" stroke="#f87171" stroke-width="2" stroke-linecap="round"/>
-      <text x="583" y="178" fill="#fca5a5" font-size="9" font-family="monospace" text-anchor="middle">Muitas oscilações → prolongadas</text>
-      <text x="583" y="190" fill="#fca5a5" font-size="9" font-family="monospace" text-anchor="middle">PAS↑ falsa | PAD↓ falsa</text>
+      <text class="pai-sub-under" x="583" y="178" font-size="9" font-family="monospace" text-anchor="middle">Muitas oscilações → prolongadas</text>
+      <text class="pai-sub-under" x="583" y="190" font-size="9" font-family="monospace" text-anchor="middle">PAS↑ falsa | PAD↓ falsa</text>
     </svg>
   </div>
 
-  <div class="two-col" style="margin-top:12px">
-    <div class="warn-box">
-      <strong>Overdamping</strong><br>
-      Onda arredondada, sem notch dicrótico, subida lenta.<br>
-      <strong>Erro:</strong> PAS falsamente baixa, PAD falsamente alta.<br>
-      <strong>Causas:</strong> bolha de ar, dobra do cateter, coágulo na ponta, extensão muito longa.<br>
-      <strong>Conduta:</strong> flush suave, aspirar e descartar, trocar o sistema.
+  <div class="two-col damp-cards">
+    <div class="damp-card damp-card--over">
+      <strong class="damp-card-title">Overdamping</strong>
+      <p>Onda arredondada, sem notch dicrótico, subida lenta.</p>
+      <p><strong>Erro:</strong> PAS falsamente baixa, PAD falsamente alta.</p>
+      <p><strong>Causas:</strong> bolha de ar, dobra do cateter, coágulo na ponta, extensão muito longa.</p>
+      <p><strong>Conduta:</strong> flush suave, aspirar e descartar, trocar o sistema.</p>
     </div>
-    <div class="warn-box">
-      <strong>Underdamping</strong><br>
-      Onda espiculada, oscilações extras após a notch, subida íngreme.<br>
-      <strong>Erro:</strong> PAS falsamente alta, PAD falsamente baixa.<br>
-      <strong>Causas:</strong> extensão curta, sistema muito rígido.<br>
-      <strong>Conduta:</strong> adicionar filtro de amortecimento. Usar PAM nessa situação.
+    <div class="damp-card damp-card--under">
+      <strong class="damp-card-title">Underdamping</strong>
+      <p>Onda espiculada, oscilações extras após a notch, subida íngreme.</p>
+      <p><strong>Erro:</strong> PAS falsamente alta, PAD falsamente baixa.</p>
+      <p><strong>Causas:</strong> extensão curta, sistema muito rígido.</p>
+      <p><strong>Conduta:</strong> adicionar filtro de amortecimento. Usar PAM nessa situação.</p>
     </div>
   </div>
   <div class="ok-box" style="margin-top:12px">
@@ -346,20 +352,20 @@
     <svg viewBox="0 0 700 190" width="100%" style="display:block;max-width:700px;margin:0 auto" aria-label="PPV com variação respiratória da curva arterial">
       <defs>
         <pattern id="grid2" width="40" height="35" patternUnits="userSpaceOnUse">
-          <path d="M 40 0 L 0 0 0 35" fill="none" stroke="#1e1e2e" stroke-width="0.5"/>
+          <path class="pai-grid-stroke" d="M 40 0 L 0 0 0 35" fill="none" stroke-width="0.5"/>
         </pattern>
       </defs>
-      <rect width="700" height="190" fill="#12121e" rx="6"/>
+      <rect class="pai-chart-bg" width="700" height="190" rx="6"/>
       <rect width="700" height="190" fill="url(#grid2)" rx="6"/>
 
-      <line x1="40" y1="160" x2="680" y2="160" stroke="#2a2a3a" stroke-width="1"/>
+      <line class="pai-axis" x1="40" y1="160" x2="680" y2="160" stroke-width="1"/>
 
-      <rect x="40"  y="25" width="120" height="140" fill="rgba(30,184,138,0.04)" rx="2"/>
-      <rect x="160" y="25" width="120" height="140" fill="rgba(59,130,246,0.06)" rx="2"/>
-      <rect x="280" y="25" width="120" height="140" fill="rgba(30,184,138,0.04)" rx="2"/>
-      <rect x="400" y="25" width="120" height="140" fill="rgba(59,130,246,0.06)" rx="2"/>
-      <rect x="520" y="25" width="120" height="140" fill="rgba(30,184,138,0.04)" rx="2"/>
-      <rect x="640" y="25" width="40"  height="140" fill="rgba(59,130,246,0.06)" rx="2"/>
+      <rect class="pai-band-exp" x="40"  y="25" width="120" height="140" rx="2"/>
+      <rect class="pai-band-insp" x="160" y="25" width="120" height="140" rx="2"/>
+      <rect class="pai-band-exp" x="280" y="25" width="120" height="140" rx="2"/>
+      <rect class="pai-band-insp" x="400" y="25" width="120" height="140" rx="2"/>
+      <rect class="pai-band-exp" x="520" y="25" width="120" height="140" rx="2"/>
+      <rect class="pai-band-insp" x="640" y="25" width="40"  height="140" rx="2"/>
 
       <text x="100"  y="20" fill="#1db88a" font-size="9" font-family="monospace" text-anchor="middle">EXPIRAÇÃO</text>
       <text x="220"  y="20" fill="#3b82f6" font-size="9" font-family="monospace" text-anchor="middle">INSPIRAÇÃO</text>
@@ -381,12 +387,12 @@
 
       <path d="M 520,115 C 520,115 524,113 528,112 C 538,108 543,95 550,55 C 552,52 554,50 556,50 C 558,50 560,54 562,60 C 566,72 568,88 570,94 C 572,100 574,112 580,115 C 590,115 630,115 680,115" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
 
-      <line x1="78"  y1="50" x2="78" y2="115" stroke="#f59e0b" stroke-width="1" stroke-dasharray="3,2"/>
-      <text x="62" y="82" fill="#fbbf24" font-size="9" font-family="monospace" text-anchor="middle" transform="rotate(-90,62,82)">PP máx</text>
-      <line x1="196" y1="73" x2="196" y2="115" stroke="#f59e0b" stroke-width="1" stroke-dasharray="3,2"/>
-      <text x="210" y="93" fill="#fbbf24" font-size="9" font-family="monospace" text-anchor="middle" transform="rotate(-90,210,93)">PP mín</text>
+      <line class="pai-pp-line" x1="78"  y1="50" x2="78" y2="115" stroke-width="1.25" stroke-dasharray="3,2"/>
+      <text class="pai-pp-label" x="62" y="82" font-size="10" font-family="monospace" font-weight="600" text-anchor="middle" transform="rotate(-90,62,82)">PP máx</text>
+      <line class="pai-pp-line" x1="196" y1="73" x2="196" y2="115" stroke-width="1.25" stroke-dasharray="3,2"/>
+      <text class="pai-pp-label" x="210" y="93" font-size="10" font-family="monospace" font-weight="600" text-anchor="middle" transform="rotate(-90,210,93)">PP mín</text>
 
-      <text x="350" y="175" fill="#f59e0b" font-size="11" font-family="monospace" text-anchor="middle">PPV = (PPmáx − PPmín) / [(PPmáx + PPmín)/2] × 100   →   &gt;13% = responsivo</text>
+      <text class="pai-pp-formula" x="350" y="175" font-size="11" font-family="monospace" font-weight="500" text-anchor="middle">PPV = (PPmáx − PPmín) / [(PPmáx + PPmín)/2] × 100   →   &gt;13% = responsivo</text>
     </svg>
   </div>
   <div class="info-box" style="margin-top:10px">
