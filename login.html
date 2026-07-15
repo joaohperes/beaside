@@ -465,10 +465,15 @@ html[data-theme="light"] #clerk-captcha:not(:empty){background:rgba(15,23,42,.02
   ::view-transition-old(root),::view-transition-new(root){animation:none}
 }
 @media(max-width:480px){
-  .login-shell{padding:22px 16px 36px}
+  .login-shell{
+    padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(36px,env(safe-area-inset-bottom,0px) + 16px) max(16px,env(safe-area-inset-left,0px));
+  }
   .login-card{padding:24px 18px 20px}
   .login-card::before{margin:-24px -18px 20px}
   .login-title{font-size:23px}
+  .btn-theme{width:40px;height:40px}
+  .btn-primary,.btn-social{min-height:44px}
+  .field input{min-height:44px;font-size:16px} /* 16px evita zoom iOS */
 }
 </style>
 </head>

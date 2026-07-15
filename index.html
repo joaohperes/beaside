@@ -4,7 +4,7 @@
 <script src="assets/theme-boot.js"></script>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>be·aside — Guias clínicos de UTI & Emergência</title>
 <meta name="description" content="Conhecimento clínico à beira do leito. Ventilação, hemodinâmica, neurocrítico e procedimentos — curado para o plantonista de UTI e PS.">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -505,13 +505,34 @@ body{
   .values{grid-template-columns:1fr}
 }
 @media(max-width:720px){
-  .hub{padding:22px 16px 44px;max-width:100%;box-sizing:border-box}
-  .topbar{margin-bottom:48px}
+  .hub{
+    padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(44px,env(safe-area-inset-bottom,0px) + 20px) max(16px,env(safe-area-inset-left,0px));
+    max-width:100%;box-sizing:border-box;
+  }
+  .topbar{margin-bottom:40px;gap:10px;align-items:center}
+  .top-meta{gap:6px;flex-shrink:0}
+  .btn-theme{width:40px;height:40px;margin-right:2px}
+  .btn-entrar{min-height:40px;padding:9px 14px;font-size:12px}
+  /* chip + menu: alvos de toque e menu dentro da tela */
+  .auth-chip{
+    min-height:40px;padding:8px 12px;max-width:min(160px,42vw);
+  }
+  .auth-chip-name{max-width:6.5em}
+  .auth-menu{
+    right:0;left:auto;
+    min-width:min(260px,calc(100vw - 32px));
+    max-width:calc(100vw - 24px);
+    width:max-content;
+    box-shadow:0 18px 48px rgba(0,0,0,.5);
+  }
+  .auth-menu-item{min-height:44px;padding:12px 12px;font-size:14px}
+  .auth-menu-name{padding:10px 12px 4px;font-size:14px}
+  .auth-menu-email{padding:2px 12px 12px;font-size:11px;white-space:normal;word-break:break-all}
   .hero{margin-bottom:40px}
   .hero h1{font-size:32px;word-break:break-word}
   .hero-lead{font-size:15px;max-width:none}
-  .hero-actions{width:100%}
-  .btn-primary,.btn-ghost{flex:1 1 auto;justify-content:center}
+  .hero-actions{width:100%;flex-wrap:wrap}
+  .btn-primary,.btn-ghost{flex:1 1 auto;justify-content:center;min-height:44px}
   .bento{grid-template-columns:1fr;margin-bottom:48px;max-width:100%}
   .card,.card.featured{min-height:0;max-width:100%;padding:22px 18px 18px}
   .card.featured .card-title,.card-title{font-size:22px}
@@ -521,6 +542,11 @@ body{
   .value{padding:18px 16px}
   .hero-panel{max-width:100%}
   .authors-row{gap:20px}
+}
+@media(max-width:400px){
+  .logo-wordmark{font-size:12px;letter-spacing:.12em}
+  .auth-chip-name{max-width:5em}
+  .hero h1{font-size:28px}
 }
 
 /* theme toggle (hub) */
