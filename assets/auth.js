@@ -336,7 +336,7 @@
     };
   }
 
-  async function signUpWithPassword(email, password) {
+  async function signUpWithPassword(email, password, profile) {
     await init();
 
     // Garante placeholder de captcha (Bot sign-up protection / Smart CAPTCHA)
@@ -346,11 +346,17 @@
       );
     }
 
+    var payload = {
+      emailAddress: email,
+      password: password,
+    };
+    if (profile && typeof profile === 'object') {
+      if (profile.firstName) payload.firstName = String(profile.firstName).trim();
+      if (profile.lastName) payload.lastName = String(profile.lastName).trim();
+    }
+
     var attempt = await withTimeout(
-      clerk.client.signUp.create({
-        emailAddress: email,
-        password: password,
-      }),
+      clerk.client.signUp.create(payload),
       DEFAULT_OP_TIMEOUT_MS,
       'Cadastro'
     );

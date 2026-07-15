@@ -165,6 +165,11 @@ html[data-theme="light"] .login-title{color:#0f1419}
   border:1px solid var(--border);background:rgba(255,255,255,.03);
   color:var(--text);transition:border-color .15s,background .15s,transform .12s;
 }
+/* display:flex do botão sobrescreve o [hidden] nativo — forçar ocultar */
+.btn-social[hidden],
+#btn-apple[hidden]{
+  display:none !important;
+}
 html[data-theme="light"] .btn-social{background:#fff}
 .btn-social:hover{border-color:var(--border2);background:rgba(255,255,255,.05)}
 html[data-theme="light"] .btn-social:hover{background:var(--bg3)}
@@ -200,6 +205,10 @@ html[data-theme="light"] .field input{background:#fff}
   border-color:rgba(29,184,138,.45);
   box-shadow:0 0 0 3px rgba(29,184,138,.12);
 }
+.field input.is-invalid{
+  border-color:rgba(224,85,85,.55);
+  box-shadow:0 0 0 3px rgba(224,85,85,.1);
+}
 .field-row{
   display:flex;align-items:center;justify-content:space-between;
   margin:-4px 0 16px;
@@ -209,6 +218,63 @@ html[data-theme="light"] .field input{background:#fff}
   transition:color .15s;cursor:pointer;
 }
 .field-row a:hover{color:var(--teal)}
+.field-grid-2{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;
+  margin-bottom:0;
+}
+.field-grid-2 .field{margin-bottom:14px}
+@media(max-width:400px){
+  .field-grid-2{grid-template-columns:1fr}
+}
+.signup-only{display:none !important}
+body.is-signup .signup-only{display:block !important}
+body.is-signup .field-grid-2.signup-only{display:grid !important}
+body.is-signup .pw-meter.signup-only{display:flex !important}
+body.is-signup #forgot-row{display:none !important}
+.pw-hint{
+  margin:-6px 0 14px;
+  padding:10px 12px;border-radius:10px;
+  border:1px solid var(--border);background:rgba(255,255,255,.02);
+  font-size:12px;color:var(--text2);line-height:1.45;
+}
+html[data-theme="light"] .pw-hint{background:rgba(15,23,42,.02)}
+.pw-hint-title{
+  font-family:var(--mono);font-size:10px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--text3);margin-bottom:8px;
+}
+.pw-rules{list-style:none;display:flex;flex-direction:column;gap:5px;margin:0;padding:0}
+.pw-rules li{
+  display:flex;align-items:flex-start;gap:8px;
+  font-size:12.5px;color:var(--text3);
+}
+.pw-rules li::before{
+  content:'';width:7px;height:7px;margin-top:5px;border-radius:50%;
+  flex-shrink:0;background:var(--text3);opacity:.55;
+}
+.pw-rules li.ok{color:var(--text2)}
+.pw-rules li.ok::before{background:var(--teal);opacity:1}
+.pw-rules li.bad{color:#e05555}
+.pw-rules li.bad::before{background:#e05555;opacity:1}
+.pw-meter{
+  display:flex;gap:4px;margin:8px 0 0;
+}
+.pw-meter span{
+  flex:1;height:3px;border-radius:2px;
+  background:rgba(255,255,255,.08);
+  transition:background .15s;
+}
+html[data-theme="light"] .pw-meter span{background:rgba(15,23,42,.08)}
+.pw-meter[data-score="1"] span:nth-child(1){background:#e05555}
+.pw-meter[data-score="2"] span:nth-child(-n+2){background:#e0a000}
+.pw-meter[data-score="3"] span:nth-child(-n+3){background:var(--teal)}
+.pw-meter[data-score="4"] span{background:var(--teal)}
+.pw-score-lbl{
+  margin-top:6px;font-size:11.5px;color:var(--text3);
+}
+.pw-score-lbl[data-score="1"]{color:#e05555}
+.pw-score-lbl[data-score="2"]{color:#c99500}
+.pw-score-lbl[data-score="3"],
+.pw-score-lbl[data-score="4"]{color:var(--teal)}
 
 .btn-primary{
   display:flex;align-items:center;justify-content:center;gap:8px;
@@ -348,6 +414,16 @@ html[data-theme="light"] #clerk-captcha:not(:empty){background:rgba(15,23,42,.02
       <div class="divider">ou e-mail</div>
 
       <form id="login-form" novalidate>
+        <div class="field-grid-2 signup-only" id="name-fields">
+          <div class="field">
+            <label for="first-name">Nome</label>
+            <input id="first-name" name="firstName" type="text" autocomplete="given-name" placeholder="João" maxlength="50">
+          </div>
+          <div class="field">
+            <label for="last-name">Sobrenome</label>
+            <input id="last-name" name="lastName" type="text" autocomplete="family-name" placeholder="Silva" maxlength="50">
+          </div>
+        </div>
         <div class="field">
           <label for="email">E-mail</label>
           <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="voce@hospital.com">
@@ -355,6 +431,24 @@ html[data-theme="light"] #clerk-captcha:not(:empty){background:rgba(15,23,42,.02
         <div class="field">
           <label for="password">Senha</label>
           <input id="password" name="password" type="password" autocomplete="current-password" required placeholder="••••••••" minlength="8">
+          <div class="pw-meter signup-only" id="pw-meter" data-score="0" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="pw-score-lbl signup-only" id="pw-score-lbl" data-score="0"></div>
+        </div>
+        <div class="field signup-only" id="password-confirm-field">
+          <label for="password-confirm">Confirmar senha</label>
+          <input id="password-confirm" name="passwordConfirm" type="password" autocomplete="new-password" placeholder="Repita a senha" minlength="8">
+        </div>
+        <div class="pw-hint signup-only" id="pw-hint">
+          <div class="pw-hint-title">Requisitos da senha</div>
+          <ul class="pw-rules" id="pw-rules">
+            <li data-rule="len">Pelo menos 8 caracteres</li>
+            <li data-rule="letter">Pelo menos 1 letra</li>
+            <li data-rule="number">Pelo menos 1 número</li>
+            <li data-rule="mix">Evite sequências óbvias (12345678, abcdef…)</li>
+            <li data-rule="match">As duas senhas coincidem</li>
+          </ul>
         </div>
         <div class="field-row" id="forgot-row">
           <span></span>
@@ -480,17 +574,142 @@ function showPanel(name){
   document.getElementById('login-foot').style.display = name==='main' ? '' : 'none';
 }
 
+/* ── validação de senha (cadastro) ── */
+var COMMON_WEAK=/^(12345678|123456789|1234567890|password|senha123|qwertyui|abcdefghi|11111111|00000000|abcdefgh|senha1234|password1|iloveyou|admin123)$/i;
+var SEQUENCES=['0123456789','9876543210','abcdefghijklmnopqrstuvwxyz','zyxwvutsrqponmlkjihgfedcba','qwertyuiop','asdfghjkl','zxcvbnm'];
+
+function hasObviousSequence(pw){
+  var lower=String(pw||'').toLowerCase();
+  if(COMMON_WEAK.test(lower)) return true;
+  if(/(.)\1{4,}/.test(lower)) return true; /* aaaaa */
+  for(var i=0;i<SEQUENCES.length;i++){
+    var seq=SEQUENCES[i];
+    for(var j=0;j<=seq.length-6;j++){
+      if(lower.indexOf(seq.slice(j,j+6))!==-1) return true;
+    }
+  }
+  return false;
+}
+
+function passwordChecks(pw, confirm){
+  var p=String(pw||'');
+  var c=confirm==null?'':String(confirm);
+  return {
+    len: p.length>=8,
+    letter: /[A-Za-zÀ-ÿ]/.test(p),
+    number: /\d/.test(p),
+    mix: p.length>0 && !hasObviousSequence(p),
+    match: c.length>0 && p===c,
+  };
+}
+
+function passwordScore(pw){
+  var p=String(pw||'');
+  if(!p) return 0;
+  var score=0;
+  if(p.length>=8) score++;
+  if(p.length>=12) score++;
+  if(/[A-Za-zÀ-ÿ]/.test(p) && /\d/.test(p)) score++;
+  if(/[^A-Za-z0-9À-ÿ]/.test(p) || (/[a-z]/.test(p) && /[A-Z]/.test(p))) score++;
+  if(hasObviousSequence(p)) score=Math.min(score,1);
+  return Math.max(0, Math.min(4, score));
+}
+
+function scoreLabel(score){
+  if(score<=0) return '';
+  if(score===1) return 'Senha fraca';
+  if(score===2) return 'Senha razoável — ainda dá para melhorar';
+  if(score===3) return 'Senha boa';
+  return 'Senha forte';
+}
+
+function updatePasswordUI(){
+  if(mode!=='sign-up') return;
+  var pw=document.getElementById('password').value;
+  var conf=document.getElementById('password-confirm').value;
+  var checks=passwordChecks(pw, conf);
+  var rules=document.getElementById('pw-rules');
+  if(rules){
+    rules.querySelectorAll('[data-rule]').forEach(function(li){
+      var key=li.getAttribute('data-rule');
+      var ok=!!checks[key];
+      var touched=pw.length>0 || conf.length>0;
+      li.classList.remove('ok','bad');
+      if(!touched) return;
+      if(key==='match' && !conf.length) return;
+      li.classList.add(ok?'ok':'bad');
+    });
+  }
+  var score=passwordScore(pw);
+  var meter=document.getElementById('pw-meter');
+  var lbl=document.getElementById('pw-score-lbl');
+  if(meter) meter.setAttribute('data-score', String(score));
+  if(lbl){
+    lbl.setAttribute('data-score', String(score));
+    lbl.textContent=pw?scoreLabel(score):'';
+  }
+}
+
+function validateSignupForm(){
+  var first=document.getElementById('first-name').value.trim();
+  var last=document.getElementById('last-name').value.trim();
+  var email=document.getElementById('email').value.trim();
+  var pass=document.getElementById('password').value;
+  var conf=document.getElementById('password-confirm').value;
+
+  if(!first || first.length<2){
+    return {ok:false, msg:'Informe seu nome (mín. 2 caracteres).', focus:'first-name'};
+  }
+  if(!last || last.length<2){
+    return {ok:false, msg:'Informe seu sobrenome (mín. 2 caracteres).', focus:'last-name'};
+  }
+  if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    return {ok:false, msg:'Informe um e-mail válido.', focus:'email'};
+  }
+  var checks=passwordChecks(pass, conf);
+  if(!checks.len){
+    return {ok:false, msg:'A senha precisa ter pelo menos 8 caracteres.', focus:'password'};
+  }
+  if(!checks.letter){
+    return {ok:false, msg:'A senha precisa ter pelo menos 1 letra.', focus:'password'};
+  }
+  if(!checks.number){
+    return {ok:false, msg:'A senha precisa ter pelo menos 1 número.', focus:'password'};
+  }
+  if(!checks.mix){
+    return {ok:false, msg:'Essa senha é fácil demais (sequência ou padrão comum). Escolha outra.', focus:'password'};
+  }
+  if(passwordScore(pass)<2){
+    return {ok:false, msg:'Senha fraca demais. Misture letras, números e evite padrões óbvios.', focus:'password'};
+  }
+  if(!conf){
+    return {ok:false, msg:'Confirme a senha.', focus:'password-confirm'};
+  }
+  if(!checks.match){
+    return {ok:false, msg:'As senhas não coincidem.', focus:'password-confirm'};
+  }
+  return {ok:true, firstName:first, lastName:last, email:email, password:pass};
+}
+
 function setMode(next){
   mode=next;
   var isUp=mode==='sign-up';
+  document.body.classList.toggle('is-signup', isUp);
   document.getElementById('login-kicker').textContent=isUp?'Conta':'Acesso';
   document.getElementById('login-title').textContent=isUp?'Criar conta':'Entrar no be·aside';
   document.getElementById('login-lead').textContent=isUp
-    ?'Crie sua conta com e-mail ou provedor social. Em seguida, confirme o e-mail se pedido.'
+    ?'Preencha seus dados. Você vai confirmar o e-mail com um código em seguida.'
     :'Guias de UTI e emergência à beira do leito. Entre para sincronizar sua conta.';
   document.getElementById('btn-submit').textContent=isUp?'Criar conta':'Entrar';
   document.getElementById('password').autocomplete=isUp?'new-password':'current-password';
+  document.getElementById('password').placeholder=isUp?'mín. 8 caracteres, letra e número':'••••••••';
   document.getElementById('forgot-row').style.display=isUp?'none':'flex';
+  var conf=document.getElementById('password-confirm');
+  if(conf) conf.required=isUp;
+  var fn=document.getElementById('first-name');
+  var ln=document.getElementById('last-name');
+  if(fn) fn.required=isUp;
+  if(ln) ln.required=isUp;
   document.getElementById('mode-hint').innerHTML=isUp
     ?'Já tem conta? <a id="toggle-mode" role="button" tabindex="0">Entrar</a>'
     :'Ainda não tem conta? <a id="toggle-mode" role="button" tabindex="0">Criar conta</a>';
@@ -500,6 +719,13 @@ function setMode(next){
     setStatus('form-status','','');
   });
   setStatus('form-status','','');
+  if(isUp) updatePasswordUI();
+  else{
+    var meter=document.getElementById('pw-meter');
+    var lbl=document.getElementById('pw-score-lbl');
+    if(meter) meter.setAttribute('data-score','0');
+    if(lbl){ lbl.textContent=''; lbl.setAttribute('data-score','0'); }
+  }
 }
 
 function goAfterAuth(kind){
@@ -551,20 +777,41 @@ document.getElementById('btn-apple').addEventListener('click',async function(){
   }
 });
 
+['password','password-confirm'].forEach(function(id){
+  var el=document.getElementById(id);
+  if(el) el.addEventListener('input', updatePasswordUI);
+});
+
 document.getElementById('login-form').addEventListener('submit',async function(e){
   e.preventDefault();
-  var email=document.getElementById('email').value.trim();
-  var pass=document.getElementById('password').value;
-  if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-    setStatus('form-status','Informe um e-mail válido.','err');
-    document.getElementById('email').focus();
-    return;
+  var email, pass, profile;
+
+  if(mode==='sign-up'){
+    var v=validateSignupForm();
+    if(!v.ok){
+      setStatus('form-status', v.msg, 'err');
+      if(v.focus) document.getElementById(v.focus).focus();
+      updatePasswordUI();
+      return;
+    }
+    email=v.email;
+    pass=v.password;
+    profile={ firstName:v.firstName, lastName:v.lastName };
+  }else{
+    email=document.getElementById('email').value.trim();
+    pass=document.getElementById('password').value;
+    if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+      setStatus('form-status','Informe um e-mail válido.','err');
+      document.getElementById('email').focus();
+      return;
+    }
+    if(!pass||pass.length<8){
+      setStatus('form-status','A senha precisa ter pelo menos 8 caracteres.','err');
+      document.getElementById('password').focus();
+      return;
+    }
   }
-  if(!pass||pass.length<8){
-    setStatus('form-status','A senha precisa ter pelo menos 8 caracteres.','err');
-    document.getElementById('password').focus();
-    return;
-  }
+
   setBusy(true);
   syncCaptchaTheme();
   setStatus(
@@ -577,7 +824,7 @@ document.getElementById('login-form').addEventListener('submit',async function(e
   try{
     var result;
     if(mode==='sign-up'){
-      result=await BeAsideAuth.signUpWithPassword(email,pass);
+      result=await BeAsideAuth.signUpWithPassword(email, pass, profile);
       if(result.status==='complete'){setStatus('form-status','Conta criada.','ok');goAfterAuth('sign-up');return;}
       if(result.status==='needs_email_verification'){
         verifyKind='email_signup';
@@ -703,9 +950,16 @@ document.getElementById('reset-form').addEventListener('submit',async function(e
     await BeAsideAuth.init();
     var cfg=BeAsideAuth.getConfig()||{};
     var appleBtn=document.getElementById('btn-apple');
-    if(appleBtn) appleBtn.hidden = cfg.OAUTH_APPLE===false;
+    if(appleBtn){
+      var showApple=cfg.OAUTH_APPLE===true;
+      appleBtn.hidden=!showApple;
+      appleBtn.style.display=showApple?'':'none';
+    }
     var googleBtn=document.getElementById('btn-google');
-    if(googleBtn && cfg.OAUTH_GOOGLE===false) googleBtn.hidden=true;
+    if(googleBtn && cfg.OAUTH_GOOGLE===false){
+      googleBtn.hidden=true;
+      googleBtn.style.display='none';
+    }
     if(BeAsideAuth.isSignedIn()){
       setStatus('form-status','Você já está logado. Indo para o hub…','ok');
       setTimeout(function(){ goAfterAuth('sign-in'); },400);
