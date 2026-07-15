@@ -21,8 +21,9 @@ opcional em Vercel Functions.
 - **`assets/theme-boot.js`** — no `<head>` de **todas** as páginas; aplica tema salvo antes
   do paint (`localStorage` key `beaside-theme`).
 - **Hub** (`index.html`) tem CSS e JS de tema próprios (não usa `app.js` no shell).
-- **Login (Clerk, real):** `login.html` + `assets/auth.js` + `sso-callback.html`. E-mail/senha (+ verificação de código), Google OAuth testado; Apple desligado no UI (`OAUTH_APPLE: false`). Hub: **Entrar** ou chip nome + **Sair**. **Módulos abertos sem login** (gate futuro = plano/assinatura, não login sozinho).
+- **Login (Clerk, real):** `login.html` + `assets/auth.js` + `sso-callback.html` + `conta.html`. E-mail/senha (+ verificação de código + captcha), Google OAuth; Apple off no UI (`OAUTH_APPLE: false`). Hub: **Entrar** ou chip (1º nome) → menu (nome completo, e-mail, Minha conta, Sair). **Módulos abertos sem login** (gate futuro = plano/assinatura, não login sozinho).
 - **Auth config:** `assets/auth-config.js` (`PUBLISHABLE_KEY` pk_* — pública) e env Vercel `CLERK_PUBLISHABLE_KEY` + `api/clerk-config.js`. **Não** commitar `sk_*`. App dev: `arriving-seasnail-55`.
+- **Sessão no hub (sem FOUC):** hint `localStorage['beaside-auth-hint']` + boot síncrono no topbar do `index.html` (chip otimista); `auth.js` confirma com Clerk.
 
 ### Arquivos-chave de assets
 
@@ -204,9 +205,9 @@ Exemplos: `Ventilação Mecânica · SDRA`, `Hemodinâmica · POCUS`, `Neurocrí
 
 ---
 
-## Histórico recente (sessão de produto UI — jul/2026)
+## Histórico recente
 
-Resumo do que foi estabilizado (não reverter sem pedido):
+### Sessão produto UI (jul/2026 — anterior)
 
 1. Shell premium + hub editorial; remoção do modo Plantão.
 2. `hero-meta` restaurado sitewide; neuro no DS; polish landings.
@@ -214,8 +215,38 @@ Resumo do que foi estabilizado (não reverter sem pedido):
 4. Material em checklist; labels semânticos (fim dos chips); Inter + JetBrains Mono.
 5. Light mode + View Transition + botão animado.
 6. Hemo: VCI/fórmulas, RUSH qualificadores, SSC sem tooltips, quadrantes em matriz 2×2 com cores distintas.
-7. **Auth Clerk** no front (login, OAuth Google, hub chip); módulos livres; assinatura/paywall ainda não.
+7. Auth Clerk no front (base); módulos livres; assinatura/paywall ainda não.
 8. Preço/produto e cota de IA: documentados, **não** implementados.
+
+### Sessão 15/jul/2026 — auth E2E + polish clínico/UI
+
+**Não reverter sem pedido.** Commits em `main` (resumo): `efe359d`…`e67ed70`.
+
+#### Auth / produto conta
+
+1. **Login ponta a ponta** endurecido: timeouts, erros pt-BR, `#clerk-captcha`, redirects, callback OAuth.
+2. **Cadastro robusto:** nome + sobrenome, confirmar senha, checklist de força, maiúscula/símbolo, mín. **3** letras no nome; Apple oculto de verdade (CSS `display:none` sobre `hidden`).
+3. **Validação ao digitar** nos campos (borda + mensagem sob o input).
+4. **Login light ambient:** glow/grid no fundo; card **opaco** (grid só fora do formulário — preferência do usuário).
+5. **Hub chip:** só **primeiro nome**; clique abre **menu** (nome completo, e-mail, Minha conta, Sair); topbar `z-index` alto para o menu receber clique.
+6. **`conta.html`:** perfil/sessão/provedor; exige login; `?next=` no login para voltar.
+7. **Sem flash de Entrar / buraco no topbar:** `beaside-auth-hint` no `localStorage` + script boot síncrono no `index.html` + confirmação Clerk.
+8. Dashboard Clerk (manual): redirects `$DEVHOST /`, e-mail+senha, Google, captcha; paths Account Portal ok.
+
+#### Conteúdo / design system
+
+9. **PAI (`proc/pai.html`):** SVGs com tokens dark/light; cards over/under com cor das curvas + respiro; legendas fast-flush maiores; anotações PPV em alto contraste (não âmbar).
+10. **Listas sitewide:** `.pill-list` estilizada como checklist do DS (antes sem CSS = bullets nativos).
+11. **Respiro** `.hero-meta + .sec-lead` (não colar meta no lead).
+12. **Indicações** em `ind-grid` onde havia two-col + info-box + ul (toracocentese, paracentese, dreno, drenagem, etc.).
+13. Markup `hero-meta`/`sec-lead` normalizado em várias páginas **proc**.
+
+#### Ainda pendente (próximas frentes)
+
+- Gate por **plano** / paywall; cota de IA; `CLERK_SECRET_KEY` no server.
+- Clerk **production** (`pk_live_`) quando for produto fechado.
+- Neuro: preencher stubs.
+- Domínio próprio.
 
 ---
 
@@ -230,3 +261,6 @@ Resumo do que foi estabilizado (não reverter sem pedido):
 - Não editar `api/knowledge.js` à mão.
 - Não commitar `CLERK_SECRET_KEY` / `sk_*`.
 - Não trancar módulos só com “estar logado” (gate = plano, quando existir).
+- Não deixar `.pill-list` sem estilo (usar checklist DS ou `ind-grid` / `mat-grid`).
+- Não reintroduzir flash de “Entrar” no hub (manter hint + boot síncrono).
+- Não deixar card de login semi-transparente com grid “por dentro” (preferência: card opaco).
