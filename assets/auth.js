@@ -227,13 +227,17 @@
     return 'Conta';
   }
 
-  /** Nome curto para o chip do hub (só primeiro nome). */
+  /** Nome curto para o chip do hub (sempre só a 1ª palavra). */
   function shortDisplayName(user) {
     if (!user) return '';
-    if (user.firstName) return String(user.firstName).trim();
-    var full = displayName(user);
-    if (!full) return 'Conta';
-    return full.split(/\s+/)[0] || full;
+    var base =
+      (user.firstName && String(user.firstName).trim()) ||
+      (user.fullName && String(user.fullName).trim()) ||
+      displayName(user) ||
+      '';
+    if (!base) return 'Conta';
+    // "João Henrique" / "João Henrique Peres" → "João"
+    return base.split(/\s+/)[0] || base;
   }
 
   function primaryEmail(user) {
@@ -505,11 +509,16 @@
   function ensureHubMenuDocClose() {
     if (hubMenuDocBound) return;
     hubMenuDocBound = true;
-    document.addEventListener('click', function (e) {
-      if (!e.target.closest || !e.target.closest('[data-auth-chip]')) {
+    // pointerdown em captura: fecha antes de outros handlers, mas ignora o chip/menu
+    document.addEventListener(
+      'pointerdown',
+      function (e) {
+        if (!e.target || !e.target.closest) return;
+        if (e.target.closest('[data-auth-chip]')) return;
         closeAllAuthMenus();
-      }
-    });
+      },
+      true
+    );
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') closeAllAuthMenus();
     });

@@ -89,6 +89,8 @@ body{
 
 /* ── top bar ── */
 .topbar{
+  position:relative;
+  z-index:100; /* acima do hero — senão o menu do chip não recebe clique */
   display:flex;align-items:center;justify-content:space-between;
   gap:16px;margin-bottom:72px;
   opacity:0;animation:rise .8s var(--ease) .04s forwards;
@@ -131,7 +133,7 @@ body{
 .auth-chip-wrap{
   position:relative;
   display:inline-flex;
-  z-index:40;
+  z-index:110;
 }
 .auth-chip{
   display:inline-flex;align-items:center;gap:8px;
