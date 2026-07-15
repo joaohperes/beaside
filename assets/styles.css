@@ -170,10 +170,12 @@ h3{font-size:15px;font-weight:500;color:#e8ecf2;margin:28px 0 12px}
   outline:2px solid rgba(var(--accent-rgb),.45);
   outline-offset:2px;
 }
-/* CTA compacto em boxes (preferir a link corrido longo) */
+/* CTA compacto em boxes — sempre abaixo do texto, nunca colado no parágrafo */
 a.link-cta{
-  display:inline-flex;align-items:center;gap:6px;
-  margin-top:10px;
+  display:flex;align-items:center;gap:6px;
+  width:fit-content;max-width:100%;
+  box-sizing:border-box;
+  margin:12px 0 0;
   font-family:var(--mono);font-size:11px;font-weight:500;
   letter-spacing:.04em;
   color:var(--accent);
@@ -191,6 +193,20 @@ a.link-cta:active{transform:scale(.98)}
 a.link-cta:focus-visible{
   outline:2px solid rgba(var(--accent-rgb),.45);
   outline-offset:2px;
+}
+/* corpo de box com título em strong:first-child (display:block) */
+.info-box > .box-body,
+.warn-box > .box-body,
+.ok-box > .box-body,
+.tip-box > .box-body{
+  margin:0;padding:0;
+  font-size:inherit;line-height:inherit;color:inherit;
+}
+.info-box > strong:first-child + .box-body,
+.warn-box > strong:first-child + .box-body,
+.ok-box > strong:first-child + .box-body,
+.tip-box > strong:first-child + .box-body{
+  margin-top:4px;
 }
 .share-link svg{display:block}
 .share-link:hover{color:var(--accent);opacity:1}
