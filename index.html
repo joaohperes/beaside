@@ -153,7 +153,11 @@ body{
 }
 .auth-chip-name{
   overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
-  color:var(--text2);max-width:110px;
+  color:var(--text2);max-width:88px;
+}
+.auth-menu-name{
+  font-size:13px;font-weight:600;letter-spacing:-.02em;
+  color:var(--text);padding:8px 10px 2px;
 }
 .auth-chip-caret{
   font-size:9px;color:var(--text3);line-height:1;margin-left:1px;
@@ -172,10 +176,11 @@ body{
 .auth-chip-wrap.is-open .auth-menu{display:flex}
 .auth-menu-email{
   font-family:var(--mono);font-size:10px;letter-spacing:.02em;
-  color:var(--text3);padding:8px 10px 10px;
+  color:var(--text3);padding:4px 10px 10px;
   border-bottom:1px solid var(--border);margin-bottom:4px;
   overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
 }
+.auth-menu-name + .auth-menu-email{padding-top:2px}
 .auth-menu-item{
   display:flex;align-items:center;
   font-family:var(--sans);font-size:13px;font-weight:500;

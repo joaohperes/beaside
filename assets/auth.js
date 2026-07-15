@@ -227,6 +227,15 @@
     return 'Conta';
   }
 
+  /** Nome curto para o chip do hub (só primeiro nome). */
+  function shortDisplayName(user) {
+    if (!user) return '';
+    if (user.firstName) return String(user.firstName).trim();
+    var full = displayName(user);
+    if (!full) return 'Conta';
+    return full.split(/\s+/)[0] || full;
+  }
+
   function primaryEmail(user) {
     if (!user) return '';
     return (
@@ -529,24 +538,31 @@
     slot.style.display = 'none';
 
     var user = getUser();
-    var name = displayName(user);
+    var fullName = displayName(user);
+    var shortName = shortDisplayName(user);
     var email = primaryEmail(user);
     var accountHref = absoluteUrl(cfg.ACCOUNT_PAGE || 'conta.html');
+    var tip = fullName && email ? fullName + ' · ' + email : email || fullName || shortName;
 
     var wrap = document.createElement('div');
     wrap.setAttribute('data-auth-chip', '1');
     wrap.className = 'auth-chip-wrap';
     wrap.innerHTML =
-      '<button type="button" class="auth-chip" data-auth-menu-toggle aria-expanded="false" aria-haspopup="menu">' +
+      '<button type="button" class="auth-chip" data-auth-menu-toggle aria-expanded="false" aria-haspopup="menu" aria-label="' +
+      escapeAttr('Conta de ' + (fullName || shortName)) +
+      '">' +
       '<span class="auth-chip-dot" aria-hidden="true"></span>' +
       '<span class="auth-chip-name" title="' +
-      escapeAttr(email || name) +
+      escapeAttr(tip) +
       '">' +
-      escapeHtml(name) +
+      escapeHtml(shortName) +
       '</span>' +
       '<span class="auth-chip-caret" aria-hidden="true">▾</span>' +
       '</button>' +
       '<div class="auth-menu" role="menu" hidden>' +
+      (fullName
+        ? '<div class="auth-menu-name">' + escapeHtml(fullName) + '</div>'
+        : '') +
       (email
         ? '<div class="auth-menu-email" title="' +
           escapeAttr(email) +
@@ -649,6 +665,7 @@
     isSignedIn: isSignedIn,
     getUser: getUser,
     displayName: displayName,
+    shortDisplayName: shortDisplayName,
     primaryEmail: primaryEmail,
     signInWithPassword: signInWithPassword,
     signUpWithPassword: signUpWithPassword,
