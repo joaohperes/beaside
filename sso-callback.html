@@ -57,7 +57,16 @@ a{color:var(--teal)}
     // Se handleRedirectCallback já redirecionou, não chega aqui
     if(BeAsideAuth.isSignedIn()){
       msg.textContent='Tudo certo. Indo para o hub…';
-      location.replace(BeAsideAuth.getConfig().AFTER_SIGN_IN||'index.html');
+      var dest = BeAsideAuth.afterAuthUrl
+        ? BeAsideAuth.afterAuthUrl('sign-in')
+        : (BeAsideAuth.getConfig().AFTER_SIGN_IN||'index.html');
+      location.replace(dest);
+      return;
+    }
+    // Aguarda um instante: cookie de sessão às vezes assenta após o callback
+    await new Promise(function(r){ setTimeout(r, 400); });
+    if(BeAsideAuth.isSignedIn()){
+      location.replace(BeAsideAuth.afterAuthUrl('sign-in'));
       return;
     }
     spin.style.display='none';

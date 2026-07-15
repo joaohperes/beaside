@@ -885,14 +885,13 @@ applyTheme(getTheme());
 <script src="assets/auth-config.js"></script>
 <script src="assets/auth.js"></script>
 <script>
-(async function hubAuth(){
+(function hubAuth(){
   var slot=document.querySelector('.btn-entrar');
   if(!slot||!window.BeAsideAuth) return;
-  try{
-    await BeAsideAuth.init();
-    BeAsideAuth.paintHubAuth(slot);
-  }catch(e){
-    /* sem key / offline — mantém botão Entrar */
+  if(typeof BeAsideAuth.bindHubAuth==='function'){
+    BeAsideAuth.bindHubAuth(slot);
+  }else{
+    BeAsideAuth.init().then(function(){ BeAsideAuth.paintHubAuth(slot); }).catch(function(){});
   }
 })();
 </script>

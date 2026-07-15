@@ -169,7 +169,7 @@ Exemplos: `Ventilação Mecânica · SDRA`, `Hemodinâmica · POCUS`, `Neurocrí
 - `api/sugerir.js` (VM), `sugerir-hemo.js`, `sugerir-neuro.js`.
 - Gate atual: senha `VMGUIDE_SENHA` (compartilhada) + `ANTHROPIC_API_KEY`.
 - Knowledge: regenerar com `npm run extract-knowledge` após mudanças clínicas relevantes.
-- **Auth (Clerk) — status jul/2026:** login real ok (Google OAuth + UI e-mail/senha). Dashboard: e-mail+senha; **username off**; Google SSO on; Apple off. Origins: `localhost` + `https://be-aside.vercel.app`. `CLERK_SECRET_KEY` ainda **não** usada (só quando proteger API de IA).
+- **Auth (Clerk) — status jul/2026:** front E2E (login.html + hub chip + SSO callback + captcha + erros pt-BR). Dashboard: e-mail+senha; **username off**; Google SSO on; Apple off no UI. Confirmar no Clerk: Allowed origins/redirects = `localhost` + `https://be-aside.vercel.app`. `CLERK_SECRET_KEY` ainda **não** usada (só quando proteger API de IA).
 - **Futuro (produto):** assinatura + cota de IA; gate por **plano**, não por login sozinho. Secret key só na Vercel se validar sessão no server.
 
 ---

@@ -257,7 +257,16 @@ html[data-theme="light"] .btn-primary{color:#fff;box-shadow:0 10px 28px rgba(13,
 .setup-banner.show{display:block}
 .setup-banner strong{color:var(--text);font-weight:500}
 
-#clerk-captcha{margin:8px 0 4px;min-height:0}
+#clerk-captcha{
+  margin:10px 0 6px;min-height:0;
+  display:flex;justify-content:center;
+}
+#clerk-captcha:not(:empty){
+  min-height:68px;margin:12px 0 8px;
+  padding:8px;border-radius:10px;
+  border:1px solid var(--border);background:rgba(255,255,255,.02);
+}
+html[data-theme="light"] #clerk-captcha:not(:empty){background:rgba(15,23,42,.02)}
 .panel-verify{display:none}
 .panel-verify.show{display:block}
 .panel-main.hide{display:none}
@@ -351,8 +360,8 @@ html[data-theme="light"] .btn-primary{color:#fff;box-shadow:0 10px 28px rgba(13,
           <span></span>
           <a id="forgot" role="button" tabindex="0">Esqueci a senha</a>
         </div>
-        <!-- Clerk bot protection (sign-up) -->
-        <div id="clerk-captcha"></div>
+        <!-- Clerk bot protection (sign-up) — deve existir antes de signUp.create() -->
+        <div id="clerk-captcha" data-cl-theme="auto" data-cl-size="flexible" data-cl-language="pt-BR"></div>
         <button type="submit" class="btn-primary" id="btn-submit">Entrar</button>
         <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
       </form>
@@ -436,6 +445,7 @@ function applyTheme(theme){
   document.documentElement.setAttribute('data-theme',t);
   try{localStorage.setItem(THEME_KEY,t);}catch(e){}
   syncThemeButtons(t);
+  if(typeof syncCaptchaTheme==='function') syncCaptchaTheme();
 }
 function toggleTheme(){
   var next=getTheme()==='light'?'dark':'light';
@@ -492,9 +502,18 @@ function setMode(next){
   setStatus('form-status','','');
 }
 
-function goAfterAuth(){
-  var dest=(BeAsideAuth.getConfig().AFTER_SIGN_IN)||'index.html';
-  location.href=dest;
+function goAfterAuth(kind){
+  var dest = (window.BeAsideAuth && BeAsideAuth.afterAuthUrl)
+    ? BeAsideAuth.afterAuthUrl(kind || 'sign-in')
+    : ((BeAsideAuth.getConfig().AFTER_SIGN_IN)||'index.html');
+  location.replace(dest);
+}
+
+function syncCaptchaTheme(){
+  var el=document.getElementById('clerk-captcha');
+  if(!el) return;
+  var t=getTheme();
+  el.setAttribute('data-cl-theme', t==='light'?'light':'dark');
 }
 
 function setBusy(busy){
@@ -547,24 +566,31 @@ document.getElementById('login-form').addEventListener('submit',async function(e
     return;
   }
   setBusy(true);
-  setStatus('form-status',mode==='sign-up'?'Criando conta…':'Entrando…','');
+  syncCaptchaTheme();
+  setStatus(
+    'form-status',
+    mode==='sign-up'
+      ?'Criando conta… (complete o captcha se aparecer)'
+      :'Entrando…',
+    ''
+  );
   try{
     var result;
     if(mode==='sign-up'){
       result=await BeAsideAuth.signUpWithPassword(email,pass);
-      if(result.status==='complete'){setStatus('form-status','Conta criada.','ok');goAfterAuth();return;}
+      if(result.status==='complete'){setStatus('form-status','Conta criada.','ok');goAfterAuth('sign-up');return;}
       if(result.status==='needs_email_verification'){
         verifyKind='email_signup';
         document.getElementById('login-title').textContent='Confirme o e-mail';
         document.getElementById('login-lead').textContent='Enviamos um código para '+email+'. Digite-o abaixo.';
         showPanel('verify');
-        setStatus('verify-status','Código enviado.','ok');
+        setStatus('verify-status','Código enviado. Verifique a caixa de entrada e o spam.','ok');
         setBusy(false);
         return;
       }
     }else{
       result=await BeAsideAuth.signInWithPassword(email,pass);
-      if(result.status==='complete'){setStatus('form-status','Login ok.','ok');goAfterAuth();return;}
+      if(result.status==='complete'){setStatus('form-status','Login ok.','ok');goAfterAuth('sign-in');return;}
       if(result.status==='needs_second_factor'){
         verifyKind='second_factor';
         document.getElementById('login-title').textContent='Verificação';
@@ -594,7 +620,7 @@ document.getElementById('verify-form').addEventListener('submit',async function(
       : await BeAsideAuth.verifyEmailCode(code);
     if(result.status==='complete'){
       setStatus('verify-status','Confirmado.','ok');
-      goAfterAuth();
+      goAfterAuth(verifyKind==='email_signup'?'sign-up':'sign-in');
       return;
     }
     setStatus('verify-status',result.message||'Código inválido.','err');
@@ -657,7 +683,7 @@ document.getElementById('reset-form').addEventListener('submit',async function(e
       var result=await BeAsideAuth.completePasswordReset(code,np);
       if(result.status==='complete'){
         setStatus('reset-status','Senha atualizada.','ok');
-        goAfterAuth();
+        goAfterAuth('sign-in');
         return;
       }
       setStatus('reset-status',result.message||'Falha ao redefinir.','err');
@@ -672,6 +698,7 @@ document.getElementById('reset-form').addEventListener('submit',async function(e
 (async function boot(){
   setBusy(true);
   setStatus('form-status','Carregando…','');
+  syncCaptchaTheme();
   try{
     await BeAsideAuth.init();
     var cfg=BeAsideAuth.getConfig()||{};
@@ -681,15 +708,15 @@ document.getElementById('reset-form').addEventListener('submit',async function(e
     if(googleBtn && cfg.OAUTH_GOOGLE===false) googleBtn.hidden=true;
     if(BeAsideAuth.isSignedIn()){
       setStatus('form-status','Você já está logado. Indo para o hub…','ok');
-      setTimeout(goAfterAuth,400);
+      setTimeout(function(){ goAfterAuth('sign-in'); },400);
       return;
     }
     setStatus('form-status','','');
     setBusy(false);
   }catch(err){
     setBusy(false);
-    var missing=BeAsideAuth.getLoadError()==='missing_key'||
-      !(BeAsideAuth.getConfig().PUBLISHABLE_KEY);
+    var le=BeAsideAuth.getLoadError();
+    var missing=le==='missing_key'||le==='invalid_key'||!BeAsideAuth.isConfigured();
     if(missing){
       document.getElementById('setup-banner').classList.add('show');
       setStatus('form-status','Configure a Publishable Key do Clerk para testar.','err');

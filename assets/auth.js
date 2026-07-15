@@ -9,6 +9,30 @@
   var clerk = null;
   var readyPromise = null;
   var loadError = null;
+  var DEFAULT_OP_TIMEOUT_MS = 28000;
+
+  var PT_MESSAGES = {
+    form_identifier_not_found: 'Não encontramos uma conta com este e-mail.',
+    form_password_incorrect: 'Senha incorreta.',
+    form_password_pwned:
+      'Esta senha apareceu em vazamentos públicos. Escolha outra senha.',
+    form_password_length_too_short: 'Senha muito curta.',
+    form_password_not_strong_enough:
+      'Senha fraca demais. Use uma combinação mais forte (letras, números, símbolos).',
+    form_identifier_exists: 'Já existe uma conta com este e-mail. Tente entrar.',
+    form_code_incorrect: 'Código inválido.',
+    form_param_format_invalid: 'Formato inválido. Confira e-mail e senha.',
+    form_param_nil: 'Preencha todos os campos obrigatórios.',
+    captcha_invalid: 'Falha na verificação anti-bot. Recarregue e tente de novo.',
+    captcha_unavailable:
+      'Não foi possível carregar o captcha. Desative bloqueadores ou recarregue a página.',
+    too_many_requests: 'Muitas tentativas. Aguarde um momento e tente de novo.',
+    session_exists: 'Você já está logado.',
+    not_allowed_access:
+      'Origem não autorizada no Clerk. Adicione este domínio em Allowed origins / Redirect URLs.',
+    strategy_for_user_invalid: 'Este método de login não está disponível para a conta.',
+    form_conditional_param_value_disallowed: 'Valor não permitido para este campo.',
+  };
 
   function fapiFromKey(pk) {
     try {
@@ -35,10 +59,35 @@
         resolve();
       };
       s.onerror = function () {
-        reject(new Error('Falha ao carregar ' + src));
+        reject(new Error('Falha ao carregar o SDK do Clerk.'));
       };
       document.head.appendChild(s);
     });
+  }
+
+  function withTimeout(promise, ms, label) {
+    var msSafe = ms || DEFAULT_OP_TIMEOUT_MS;
+    var timer;
+    var timeout = new Promise(function (_, reject) {
+      timer = setTimeout(function () {
+        reject(
+          new Error(
+            (label || 'Operação') +
+              ' demorou demais. Se um captcha aparecer, complete-o; senão, recarregue a página.'
+          )
+        );
+      }, msSafe);
+    });
+    return Promise.race([promise, timeout]).then(
+      function (v) {
+        clearTimeout(timer);
+        return v;
+      },
+      function (e) {
+        clearTimeout(timer);
+        throw e;
+      }
+    );
   }
 
   async function resolvePublishableKey() {
@@ -59,16 +108,37 @@
 
   function clerkErrorMessage(err) {
     if (!err) return 'Erro desconhecido.';
+
+    if (typeof err === 'string') {
+      if (err === 'missing_key') {
+        return 'Publishable Key do Clerk não configurada.';
+      }
+      if (err === 'invalid_key') {
+        return 'Publishable Key do Clerk inválida.';
+      }
+    }
+
     var errs = err.errors;
     if (errs && errs.length) {
       return errs
         .map(function (e) {
-          return e.longMessage || e.message || e.code;
+          var code = e.code || '';
+          if (PT_MESSAGES[code]) return PT_MESSAGES[code];
+          // captcha / bot
+          if (/captcha/i.test(code) || /captcha/i.test(e.message || '')) {
+            return PT_MESSAGES.captcha_invalid;
+          }
+          return e.longMessage || e.message || code;
         })
         .filter(Boolean)
         .join(' ');
     }
-    return err.message || String(err);
+
+    var msg = err.message || String(err);
+    if (/origin|allowed|redirect/i.test(msg)) {
+      return PT_MESSAGES.not_allowed_access;
+    }
+    return msg;
   }
 
   async function init() {
@@ -110,18 +180,32 @@
       } else {
         clerk = global.Clerk;
       }
-      await clerk.load();
+
+      if (!clerk.loaded) {
+        await withTimeout(
+          clerk.load({
+            // Mantém sessão em cookies do browser (padrão)
+            standardBrowser: true,
+          }),
+          20000,
+          'Inicialização do Clerk'
+        );
+      }
+      loadError = null;
       return clerk;
     })().catch(function (e) {
-      loadError = e;
+      loadError = e && e.message === 'Publishable Key inválida.' ? 'invalid_key' : e;
       console.error('[beaside-auth]', e);
+      // permite retry se falhou
+      readyPromise = null;
       throw e;
     });
     return readyPromise;
   }
 
   function isConfigured() {
-    return !!(cfg.PUBLISHABLE_KEY || !loadError);
+    var key = (cfg.PUBLISHABLE_KEY || '').trim();
+    return !!(key && key.indexOf('pk_') === 0);
   }
 
   function isSignedIn() {
@@ -160,16 +244,45 @@
     }
   }
 
+  function afterAuthUrl(kind) {
+    var path =
+      kind === 'sign-up'
+        ? cfg.AFTER_SIGN_UP || cfg.AFTER_SIGN_IN || 'index.html'
+        : cfg.AFTER_SIGN_IN || 'index.html';
+    return absoluteUrl(path);
+  }
+
   async function setActiveSession(sessionId) {
     await clerk.setActive({ session: sessionId });
   }
 
+  function needsEmailVerification(attempt) {
+    if (!attempt) return false;
+    if (attempt.status === 'missing_requirements') return true;
+    var ver = attempt.unverifiedFields || [];
+    if (ver.indexOf('email_address') !== -1) return true;
+    try {
+      var st =
+        attempt.verifications &&
+        attempt.verifications.emailAddress &&
+        attempt.verifications.emailAddress.status;
+      if (st && st !== 'verified') return true;
+    } catch (e) {
+      /* ignore */
+    }
+    return false;
+  }
+
   async function signInWithPassword(email, password) {
     await init();
-    var attempt = await clerk.client.signIn.create({
-      identifier: email,
-      password: password,
-    });
+    var attempt = await withTimeout(
+      clerk.client.signIn.create({
+        identifier: email,
+        password: password,
+      }),
+      DEFAULT_OP_TIMEOUT_MS,
+      'Login'
+    );
 
     if (attempt.status === 'complete') {
       await setActiveSession(attempt.createdSessionId);
@@ -190,6 +303,13 @@
       return { status: attempt.status, message: 'Segundo fator não suportado nesta UI ainda.' };
     }
 
+    if (attempt.status === 'needs_first_factor') {
+      return {
+        status: attempt.status,
+        message: 'Complete o fator de autenticação pendente (e-mail ou senha).',
+      };
+    }
+
     return {
       status: attempt.status || 'unknown',
       message: 'Login incompleto. Status: ' + (attempt.status || '?'),
@@ -198,10 +318,14 @@
 
   async function verifySecondFactor(code) {
     await init();
-    var attempt = await clerk.client.signIn.attemptSecondFactor({
-      strategy: 'email_code',
-      code: code,
-    });
+    var attempt = await withTimeout(
+      clerk.client.signIn.attemptSecondFactor({
+        strategy: 'email_code',
+        code: code,
+      }),
+      DEFAULT_OP_TIMEOUT_MS,
+      'Verificação'
+    );
     if (attempt.status === 'complete') {
       await setActiveSession(attempt.createdSessionId);
       return { status: 'complete' };
@@ -214,18 +338,29 @@
 
   async function signUpWithPassword(email, password) {
     await init();
-    var attempt = await clerk.client.signUp.create({
-      emailAddress: email,
-      password: password,
-    });
+
+    // Garante placeholder de captcha (Bot sign-up protection / Smart CAPTCHA)
+    if (typeof document !== 'undefined' && !document.getElementById('clerk-captcha')) {
+      console.warn(
+        '[beaside-auth] #clerk-captcha ausente — captcha pode falhar no cadastro.'
+      );
+    }
+
+    var attempt = await withTimeout(
+      clerk.client.signUp.create({
+        emailAddress: email,
+        password: password,
+      }),
+      DEFAULT_OP_TIMEOUT_MS,
+      'Cadastro'
+    );
 
     if (attempt.status === 'complete') {
       await setActiveSession(attempt.createdSessionId);
       return { status: 'complete' };
     }
 
-    // Verificação de e-mail (padrão Clerk)
-    if (attempt.status === 'missing_requirements') {
+    if (needsEmailVerification(attempt)) {
       try {
         await clerk.client.signUp.prepareEmailAddressVerification({
           strategy: 'email_code',
@@ -244,9 +379,13 @@
 
   async function verifyEmailCode(code) {
     await init();
-    var attempt = await clerk.client.signUp.attemptEmailAddressVerification({
-      code: code,
-    });
+    var attempt = await withTimeout(
+      clerk.client.signUp.attemptEmailAddressVerification({
+        code: code,
+      }),
+      DEFAULT_OP_TIMEOUT_MS,
+      'Verificação de e-mail'
+    );
     if (attempt.status === 'complete') {
       await setActiveSession(attempt.createdSessionId);
       return { status: 'complete' };
@@ -261,7 +400,7 @@
     await init();
     var strategy = provider === 'apple' ? 'oauth_apple' : 'oauth_google';
     var redirectUrl = absoluteUrl(cfg.SSO_CALLBACK || 'sso-callback.html');
-    var complete = absoluteUrl(cfg.AFTER_SIGN_IN || 'index.html');
+    var complete = afterAuthUrl('sign-in');
 
     await clerk.client.signIn.authenticateWithRedirect({
       strategy: strategy,
@@ -273,35 +412,46 @@
   async function handleOAuthCallback() {
     await init();
     if (typeof clerk.handleRedirectCallback === 'function') {
-      await clerk.handleRedirectCallback({
-        signInFallbackRedirectUrl: absoluteUrl(cfg.AFTER_SIGN_IN || 'index.html'),
-        signUpFallbackRedirectUrl: absoluteUrl(cfg.AFTER_SIGN_UP || 'index.html'),
-      });
+      await withTimeout(
+        clerk.handleRedirectCallback({
+          signInFallbackRedirectUrl: afterAuthUrl('sign-in'),
+          signUpFallbackRedirectUrl: afterAuthUrl('sign-up'),
+        }),
+        20000,
+        'Callback OAuth'
+      );
     }
   }
 
   async function startPasswordReset(email) {
     await init();
-    await clerk.client.signIn.create({
-      strategy: 'reset_password_email_code',
-      identifier: email,
-    });
+    await withTimeout(
+      clerk.client.signIn.create({
+        strategy: 'reset_password_email_code',
+        identifier: email,
+      }),
+      DEFAULT_OP_TIMEOUT_MS,
+      'Recuperação de senha'
+    );
     return { status: 'needs_reset_code' };
   }
 
   async function completePasswordReset(code, newPassword) {
     await init();
-    var attempt = await clerk.client.signIn.attemptFirstFactor({
-      strategy: 'reset_password_email_code',
-      code: code,
-      password: newPassword,
-    });
+    var attempt = await withTimeout(
+      clerk.client.signIn.attemptFirstFactor({
+        strategy: 'reset_password_email_code',
+        code: code,
+        password: newPassword,
+      }),
+      DEFAULT_OP_TIMEOUT_MS,
+      'Redefinição de senha'
+    );
     if (attempt.status === 'complete') {
       await setActiveSession(attempt.createdSessionId);
       return { status: 'complete' };
     }
     if (attempt.status === 'needs_new_password') {
-      // algumas versões pedem step separado
       try {
         var again = await clerk.client.signIn.resetPassword({
           password: newPassword,
@@ -322,7 +472,7 @@
 
   async function signOut() {
     await init();
-    await clerk.signOut({ redirectUrl: absoluteUrl('index.html') });
+    await clerk.signOut({ redirectUrl: absoluteUrl(cfg.AFTER_SIGN_OUT || 'index.html') });
   }
 
   /**
@@ -334,7 +484,6 @@
     var parent = slot.parentElement;
     if (!parent) return;
 
-    // remove chips anteriores
     parent.querySelectorAll('[data-auth-chip]').forEach(function (n) {
       n.remove();
     });
@@ -377,6 +526,25 @@
     }
   }
 
+  /**
+   * Liga o slot do hub e re-pinta em mudanças de sessão.
+   */
+  function bindHubAuth(slot) {
+    if (!slot) return Promise.resolve();
+    return init()
+      .then(function () {
+        paintHubAuth(slot);
+        if (clerk && typeof clerk.addListener === 'function') {
+          clerk.addListener(function () {
+            paintHubAuth(slot);
+          });
+        }
+      })
+      .catch(function () {
+        /* sem key / offline — mantém Entrar */
+      });
+  }
+
   function escapeHtml(s) {
     return String(s)
       .replace(/&/g, '&amp;')
@@ -405,7 +573,9 @@
     completePasswordReset: completePasswordReset,
     signOut: signOut,
     paintHubAuth: paintHubAuth,
+    bindHubAuth: bindHubAuth,
     clerkErrorMessage: clerkErrorMessage,
+    afterAuthUrl: afterAuthUrl,
     getClerk: function () {
       return clerk;
     },
