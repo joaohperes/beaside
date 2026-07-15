@@ -40,12 +40,11 @@ body{
   font-feature-settings:'cv11','ss01','ss03';
   letter-spacing:-.011em;
 }
-/* ambient light: fundo com leve gradiente (paralelo ao “depth” do dark) */
+/* ambient light — espelha o dark: glow no topo + grid com fade radial (não full-bleed) */
 html[data-theme="light"] body{
   background:
-    radial-gradient(ellipse 90% 55% at 50% -5%, rgba(13,154,114,.14) 0%, transparent 55%),
-    radial-gradient(ellipse 70% 45% at 80% 100%, rgba(99,140,200,.08) 0%, transparent 50%),
-    linear-gradient(180deg, #f3f6f9 0%, #e8edf3 48%, #eef2f6 100%);
+    radial-gradient(ellipse 80% 50% at 50% -8%, rgba(13,154,114,.11) 0%, transparent 52%),
+    #eef1f5;
 }
 
 .scene{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
@@ -61,48 +60,28 @@ html[data-theme="light"] body{
 }
 html[data-theme="light"] .scene-grid{
   background-image:
-    linear-gradient(rgba(15,23,42,.07) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(15,23,42,.07) 1px,transparent 1px);
-  /* máscara mais aberta + opacidade maior = grid legível como no dark */
-  mask-image:radial-gradient(ellipse 85% 70% at 50% 35%,#000 15%,transparent 72%);
-  -webkit-mask-image:radial-gradient(ellipse 85% 70% at 50% 35%,#000 15%,transparent 72%);
-  opacity:.9;
+    linear-gradient(rgba(15,23,42,.055) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(15,23,42,.055) 1px,transparent 1px);
+  /* mesma lógica do dark: foco no centro, fade nas bordas */
+  mask-image:radial-gradient(ellipse 72% 58% at 50% 38%,#000 12%,transparent 72%);
+  -webkit-mask-image:radial-gradient(ellipse 72% 58% at 50% 38%,#000 12%,transparent 72%);
+  opacity:.75;
 }
 .glow{
   position:absolute;width:520px;height:420px;border-radius:50%;
   background:var(--teal);filter:blur(120px);opacity:.12;
   top:-140px;left:50%;transform:translateX(-50%);
 }
-/* light: glow teal mais presente + blob secundário frio (depth) */
+/* light: glow sutil no topo (como dark), sem lavar a página de menta */
 html[data-theme="light"] .glow{
-  width:580px;height:480px;
-  top:-160px;
-  filter:blur(100px);
-  opacity:.22;
-  background:radial-gradient(circle, rgba(13,154,114,.95) 0%, rgba(13,154,114,.35) 55%, transparent 70%);
+  width:520px;height:420px;
+  top:-140px;
+  filter:blur(110px);
+  opacity:.16;
+  background:var(--teal);
 }
-.glow-soft{
-  display:none;
-  position:absolute;width:420px;height:360px;border-radius:50%;
-  pointer-events:none;
-}
-html[data-theme="light"] .glow-soft{
-  display:block;
-  bottom:-80px;right:-60px;
-  background:radial-gradient(circle, rgba(100,140,200,.35) 0%, transparent 70%);
-  filter:blur(90px);
-  opacity:.55;
-}
+.glow-soft{display:none}
 .glow-mid{display:none}
-html[data-theme="light"] .glow-mid{
-  display:block;
-  position:absolute;
-  width:380px;height:300px;border-radius:50%;
-  top:42%;left:50%;transform:translate(-50%,-50%);
-  background:radial-gradient(circle, rgba(13,154,114,.12) 0%, transparent 68%);
-  filter:blur(70px);
-  opacity:.8;
-}
 
 .login-shell{
   position:relative;z-index:1;
@@ -169,24 +148,23 @@ html[data-theme="light"] .btn-theme .theme-icon-moon{opacity:1;transform:none}
   padding:28px 26px 24px;
   opacity:0;animation:rise .75s var(--ease) .1s forwards;
 }
+/* light: card vidro (como dark semi-transparente) — grid aparece por dentro e por fora */
 html[data-theme="light"] .login-card{
-  background:linear-gradient(165deg, rgba(255,255,255,.97), rgba(250,252,253,.94));
-  border-color:rgba(15,23,42,.08);
+  background:linear-gradient(165deg, rgba(255,255,255,.72), rgba(255,255,255,.58));
+  border-color:rgba(15,23,42,.1);
   box-shadow:
-    0 1px 0 rgba(255,255,255,.9) inset,
-    0 20px 56px rgba(15,23,42,.1),
-    0 0 0 1px rgba(13,154,114,.04),
-    0 12px 40px rgba(13,154,114,.07);
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px);
+    0 1px 0 rgba(255,255,255,.75) inset,
+    0 24px 64px rgba(15,23,42,.1),
+    0 8px 28px rgba(13,154,114,.06);
+  backdrop-filter:blur(18px) saturate(1.15);
+  -webkit-backdrop-filter:blur(18px) saturate(1.15);
 }
 .login-card::before{
   content:'';display:block;height:1px;margin:-28px -26px 22px;
   background:linear-gradient(90deg,transparent,rgba(29,184,138,.4),transparent);
 }
 html[data-theme="light"] .login-card::before{
-  background:linear-gradient(90deg,transparent,rgba(13,154,114,.45),transparent);
-  opacity:.9;
+  background:linear-gradient(90deg,transparent,rgba(13,154,114,.4),transparent);
 }
 
 .login-kicker{
@@ -218,7 +196,7 @@ html[data-theme="light"] .login-title{color:#0f1419}
 #btn-apple[hidden]{
   display:none !important;
 }
-html[data-theme="light"] .btn-social{background:#fff}
+html[data-theme="light"] .btn-social{background:rgba(255,255,255,.82)}
 .btn-social:hover{border-color:var(--border2);background:rgba(255,255,255,.05)}
 html[data-theme="light"] .btn-social:hover{background:var(--bg3)}
 .btn-social:active{transform:scale(.99)}
@@ -248,7 +226,7 @@ html[data-theme="light"] .btn-social:hover{background:var(--bg3)}
   outline:none;transition:border-color .15s,box-shadow .15s,background .15s;
 }
 html[data-theme="light"] .field input{
-  background:#fff;
+  background:rgba(255,255,255,.88);
   border-color:rgba(15,23,42,.12);
   box-shadow:0 1px 0 rgba(15,23,42,.03);
 }
@@ -352,7 +330,7 @@ body.is-signup .divider{margin:2px 0 14px}
 }
 .pw-hint.is-open .pw-hint-panel{display:block}
 html[data-theme="light"] .pw-hint-panel{
-  background:rgba(15,23,42,.025);
+  background:rgba(255,255,255,.45);
   border-color:rgba(15,23,42,.1);
 }
 .pw-hint-static{
@@ -837,7 +815,7 @@ function clearAllFieldStates(){
 function nameError(raw, label){
   var v=String(raw||'').trim();
   if(!v) return label+' é obrigatório.';
-  if(v.length<2) return label+' precisa ter pelo menos 2 letras.';
+  if(v.length<3) return label+' precisa ter pelo menos 3 letras.';
   if(!NAME_OK.test(v)) return label+' inválido — use só letras (sem números).';
   if(/\d/.test(v)) return label+' não pode conter números.';
   return '';
@@ -846,8 +824,7 @@ function nameError(raw, label){
 function emailError(raw){
   var v=String(raw||'').trim();
   if(!v) return 'E-mail é obrigatório.';
-  if(v.indexOf('@')===-1) return 'E-mail inválido — falta o @.';
-  if(!EMAIL_OK.test(v)) return 'E-mail inválido. Ex.: nome@hospital.com';
+  if(!EMAIL_OK.test(v)) return 'E-mail inválido.';
   return '';
 }
 
