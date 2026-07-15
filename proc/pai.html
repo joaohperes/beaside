@@ -17,6 +17,93 @@
   :root{--proc:#3b82f6}
   .svg-legend{display:grid;grid-template-columns:1fr 1fr;gap:6px 24px;margin-top:10px;padding:10px 4px}
   .svg-legend > div{display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--text2)}
+
+  /* ── PAI charts: dark default, light tokens ── */
+  .pai-chart-bg{fill:#12121e}
+  .pai-grid-stroke{stroke:#1a1a2e}
+  .pai-axis{stroke:#2a2a3a}
+  .pai-axis-label{fill:#3a3a50}
+  .pai-sub-ok{fill:#6ee7b7}
+  .pai-sub-over{fill:#fcd34d}
+  .pai-sub-under{fill:#fca5a5}
+  .pai-band-exp{fill:rgba(30,184,138,.04)}
+  .pai-band-insp{fill:rgba(59,130,246,.06)}
+  .pai-annot-fill{fill:rgba(59,130,246,.18)}
+  .pai-annot-txt{fill:#93c5fd}
+  .pai-annot-fill-amb{fill:rgba(245,158,11,.18)}
+  .pai-annot-txt-amb{fill:#fbbf24}
+
+  html[data-theme="light"] .pai-chart-bg{fill:#f1f4f8}
+  html[data-theme="light"] .pai-grid-stroke{stroke:#dce1e9}
+  html[data-theme="light"] .pai-axis{stroke:#c5ccd6}
+  html[data-theme="light"] .pai-axis-label{fill:#7a8494}
+  html[data-theme="light"] .pai-sub-ok{fill:#0d9a72}
+  html[data-theme="light"] .pai-sub-over{fill:#b45309}
+  html[data-theme="light"] .pai-sub-under{fill:#b91c1c}
+  html[data-theme="light"] .pai-band-exp{fill:rgba(13,154,114,.06)}
+  html[data-theme="light"] .pai-band-insp{fill:rgba(59,130,246,.07)}
+  html[data-theme="light"] .pai-annot-fill{fill:rgba(59,130,246,.12)}
+  html[data-theme="light"] .pai-annot-txt{fill:#2563eb}
+  html[data-theme="light"] .pai-annot-fill-amb{fill:rgba(245,158,11,.14)}
+  html[data-theme="light"] .pai-annot-txt-amb{fill:#b45309}
+  html[data-theme="light"] .svg-wrap .pai-chart-bg{/* herda */}
+
+  /* cards over/under alinhados às cores das curvas */
+  .damp-cards{margin-top:16px;gap:16px}
+  .damp-card{
+    padding:18px 20px 16px;
+    border-radius:14px;
+    font-size:13.5px;
+    line-height:1.55;
+  }
+  .damp-card-title{
+    display:block;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:-.01em;
+    margin:0 0 12px;
+  }
+  .damp-card p{
+    margin:0 0 10px;
+  }
+  .damp-card p:last-child{margin-bottom:0}
+  .damp-card strong{font-weight:600}
+
+  .damp-card--over{
+    background:rgba(245,158,11,.1);
+    border:1px solid rgba(245,158,11,.32);
+    color:#e8c48a;
+  }
+  .damp-card--over .damp-card-title,
+  .damp-card--over strong{color:#fbbf24}
+
+  .damp-card--under{
+    background:rgba(248,113,113,.1);
+    border:1px solid rgba(248,113,113,.32);
+    color:#f0b0b0;
+  }
+  .damp-card--under .damp-card-title,
+  .damp-card--under strong{color:#fca5a5}
+
+  html[data-theme="light"] .damp-card--over{
+    background:rgba(245,158,11,.09);
+    border-color:rgba(180,100,0,.22);
+    color:#6b4a12;
+  }
+  html[data-theme="light"] .damp-card--over .damp-card-title,
+  html[data-theme="light"] .damp-card--over strong{color:#b45309}
+
+  html[data-theme="light"] .damp-card--under{
+    background:rgba(239,68,68,.07);
+    border-color:rgba(185,28,28,.2);
+    color:#7f1d1d;
+  }
+  html[data-theme="light"] .damp-card--under .damp-card-title,
+  html[data-theme="light"] .damp-card--under strong{color:#b91c1c}
+
+  @media(max-width:640px){
+    .damp-cards{grid-template-columns:1fr}
+  }
 </style>
 </head>
 <body data-module="proc" data-page="pai">
@@ -44,25 +131,25 @@
     <svg viewBox="0 0 700 240" width="100%" style="display:block;max-width:700px;margin:0 auto" aria-label="Curva de pressão arterial com componentes anotados">
       <defs>
         <pattern id="grid" width="60" height="50" patternUnits="userSpaceOnUse">
-          <path d="M 60 0 L 0 0 0 50" fill="none" stroke="#1a1a2e" stroke-width="0.8"/>
+          <path class="pai-grid-stroke" d="M 60 0 L 0 0 0 50" fill="none" stroke-width="0.8"/>
         </pattern>
       </defs>
-      <rect width="700" height="240" fill="#12121e" rx="6"/>
+      <rect class="pai-chart-bg" width="700" height="240" rx="6"/>
       <rect width="700" height="240" fill="url(#grid)" rx="6"/>
 
-      <line x1="52" y1="18" x2="52" y2="210" stroke="#2a2a3a" stroke-width="1"/>
-      <line x1="52" y1="210" x2="688" y2="210" stroke="#2a2a3a" stroke-width="1"/>
+      <line class="pai-axis" x1="52" y1="18" x2="52" y2="210" stroke-width="1"/>
+      <line class="pai-axis" x1="52" y1="210" x2="688" y2="210" stroke-width="1"/>
 
-      <text x="44" y="213" fill="#3a3a50" font-size="9" font-family="monospace" text-anchor="end">0</text>
-      <text x="44" y="169" fill="#3a3a50" font-size="9" font-family="monospace" text-anchor="end">40</text>
-      <text x="44" y="125" fill="#3a3a50" font-size="9" font-family="monospace" text-anchor="end">80</text>
-      <text x="44" y="82"  fill="#3a3a50" font-size="9" font-family="monospace" text-anchor="end">120</text>
-      <text x="44" y="38"  fill="#3a3a50" font-size="9" font-family="monospace" text-anchor="end">160</text>
-      <text x="14" y="130" fill="#3a3a50" font-size="9" font-family="monospace" transform="rotate(-90,14,130)" text-anchor="middle">mmHg</text>
+      <text class="pai-axis-label" x="44" y="213" font-size="9" font-family="monospace" text-anchor="end">0</text>
+      <text class="pai-axis-label" x="44" y="169" font-size="9" font-family="monospace" text-anchor="end">40</text>
+      <text class="pai-axis-label" x="44" y="125" font-size="9" font-family="monospace" text-anchor="end">80</text>
+      <text class="pai-axis-label" x="44" y="82"  font-size="9" font-family="monospace" text-anchor="end">120</text>
+      <text class="pai-axis-label" x="44" y="38"  font-size="9" font-family="monospace" text-anchor="end">160</text>
+      <text class="pai-axis-label" x="14" y="130" font-size="9" font-family="monospace" transform="rotate(-90,14,130)" text-anchor="middle">mmHg</text>
 
-      <line x1="52" y1="166" x2="688" y2="166" stroke="#1a1a2e" stroke-width="1" stroke-dasharray="4,5"/>
-      <line x1="52" y1="123" x2="688" y2="123" stroke="#1a1a2e" stroke-width="1" stroke-dasharray="4,5"/>
-      <line x1="52" y1="79"  x2="688" y2="79"  stroke="#1a1a2e" stroke-width="1" stroke-dasharray="4,5"/>
+      <line class="pai-grid-stroke" x1="52" y1="166" x2="688" y2="166" stroke-width="1" stroke-dasharray="4,5"/>
+      <line class="pai-grid-stroke" x1="52" y1="123" x2="688" y2="123" stroke-width="1" stroke-dasharray="4,5"/>
+      <line class="pai-grid-stroke" x1="52" y1="79"  x2="688" y2="79"  stroke-width="1" stroke-dasharray="4,5"/>
 
       <line x1="52" y1="115" x2="658" y2="115" stroke="#1db88a" stroke-width="0.9" stroke-dasharray="6,5" opacity="0.5"/>
       <text x="661" y="118" fill="#1db88a" font-size="9" font-family="monospace" opacity="0.8">PAM</text>
@@ -107,28 +194,28 @@
       " fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.25"/>
 
       <line x1="110" y1="102" x2="90" y2="51" stroke="#3b82f6" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.45"/>
-      <rect x="81"  y="33" width="18" height="18" rx="4" fill="rgba(59,130,246,0.18)" stroke="none"/>
-      <text x="90"  y="42" fill="#93c5fd" font-size="11" font-family="monospace" text-anchor="middle" dominant-baseline="middle" font-weight="500">1</text>
+      <rect class="pai-annot-fill" x="81"  y="33" width="18" height="18" rx="4" stroke="none"/>
+      <text class="pai-annot-txt" x="90"  y="42" font-size="11" font-family="monospace" text-anchor="middle" dominant-baseline="middle" font-weight="500">1</text>
 
       <line x1="140" y1="69" x2="170" y2="40" stroke="#3b82f6" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.45"/>
-      <rect x="161" y="22" width="18" height="18" rx="4" fill="rgba(59,130,246,0.18)" stroke="none"/>
-      <text x="170" y="31" fill="#93c5fd" font-size="11" font-family="monospace" text-anchor="middle" dominant-baseline="middle" font-weight="500">2</text>
+      <rect class="pai-annot-fill" x="161" y="22" width="18" height="18" rx="4" stroke="none"/>
+      <text class="pai-annot-txt" x="170" y="31" font-size="11" font-family="monospace" text-anchor="middle" dominant-baseline="middle" font-weight="500">2</text>
 
       <line x1="162" y1="97" x2="210" y2="51" stroke="#3b82f6" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.45"/>
-      <rect x="201" y="33" width="18" height="18" rx="4" fill="rgba(59,130,246,0.18)" stroke="none"/>
-      <text x="210" y="42" fill="#93c5fd" font-size="11" font-family="monospace" text-anchor="middle" dominant-baseline="middle" font-weight="500">3</text>
+      <rect class="pai-annot-fill" x="201" y="33" width="18" height="18" rx="4" stroke="none"/>
+      <text class="pai-annot-txt" x="210" y="42" font-size="11" font-family="monospace" text-anchor="middle" dominant-baseline="middle" font-weight="500">3</text>
 
       <line x1="178" y1="109" x2="256" y2="51" stroke="#f59e0b" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.5"/>
-      <rect x="247" y="33" width="18" height="18" rx="4" fill="rgba(245,158,11,0.18)" stroke="none"/>
-      <text x="256" y="42" fill="#fbbf24" font-size="11" font-family="monospace" text-anchor="middle" dominant-baseline="middle" font-weight="500">4</text>
+      <rect class="pai-annot-fill-amb" x="247" y="33" width="18" height="18" rx="4" stroke="none"/>
+      <text class="pai-annot-txt-amb" x="256" y="42" font-size="11" font-family="monospace" text-anchor="middle" dominant-baseline="middle" font-weight="500">4</text>
 
       <line x1="205" y1="121" x2="305" y2="51" stroke="#3b82f6" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.45"/>
-      <rect x="296" y="33" width="18" height="18" rx="4" fill="rgba(59,130,246,0.18)" stroke="none"/>
-      <text x="305" y="42" fill="#93c5fd" font-size="11" font-family="monospace" text-anchor="middle" dominant-baseline="middle" font-weight="500">5</text>
+      <rect class="pai-annot-fill" x="296" y="33" width="18" height="18" rx="4" stroke="none"/>
+      <text class="pai-annot-txt" x="305" y="42" font-size="11" font-family="monospace" text-anchor="middle" dominant-baseline="middle" font-weight="500">5</text>
 
       <line x1="255" y1="133" x2="355" y2="151" stroke="#3b82f6" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.45"/>
-      <rect x="346" y="151" width="18" height="18" rx="4" fill="rgba(59,130,246,0.18)" stroke="none"/>
-      <text x="355" y="160" fill="#93c5fd" font-size="11" font-family="monospace" text-anchor="middle" dominant-baseline="middle" font-weight="500">6</text>
+      <rect class="pai-annot-fill" x="346" y="151" width="18" height="18" rx="4" stroke="none"/>
+      <text class="pai-annot-txt" x="355" y="160" font-size="11" font-family="monospace" text-anchor="middle" dominant-baseline="middle" font-weight="500">6</text>
     </svg>
   </div>
 
