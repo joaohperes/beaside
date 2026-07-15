@@ -141,23 +141,20 @@ html[data-theme="light"] .btn-theme .theme-icon-moon{opacity:1;transform:none}
 @keyframes theme-fade-out{from{opacity:1}to{opacity:0}}
 @keyframes theme-fade-in{from{opacity:0}to{opacity:1}}
 
+/* Card opaco: grid só no fundo da página, não por dentro do formulário */
 .login-card{
   border:1px solid var(--border);border-radius:20px;
-  background:linear-gradient(165deg,rgba(255,255,255,.04),rgba(255,255,255,.012));
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.04),var(--shadow);
+  background:linear-gradient(165deg,#12171d,#0c0f13);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05),var(--shadow);
   padding:28px 26px 24px;
   opacity:0;animation:rise .75s var(--ease) .1s forwards;
 }
-/*
- * light: card semi-transparente SEM blur forte.
- * backdrop-filter:blur dissolve as linhas do grid (no dark o fill é ~4% e o grid passa nítido).
- */
 html[data-theme="light"] .login-card{
-  background:linear-gradient(165deg, rgba(255,255,255,.42), rgba(255,255,255,.28));
-  border-color:rgba(15,23,42,.12);
+  background:linear-gradient(165deg,#ffffff,#f7f8fa);
+  border-color:rgba(15,23,42,.1);
   box-shadow:
-    0 1px 0 rgba(255,255,255,.55) inset,
-    0 24px 64px rgba(15,23,42,.08),
+    0 1px 0 #fff inset,
+    0 24px 64px rgba(15,23,42,.1),
     0 8px 28px rgba(13,154,114,.05);
   backdrop-filter:none;
   -webkit-backdrop-filter:none;
@@ -199,7 +196,7 @@ html[data-theme="light"] .login-title{color:#0f1419}
 #btn-apple[hidden]{
   display:none !important;
 }
-html[data-theme="light"] .btn-social{background:rgba(255,255,255,.82)}
+html[data-theme="light"] .btn-social{background:rgba(255,255,255,.9)}
 .btn-social:hover{border-color:var(--border2);background:rgba(255,255,255,.05)}
 html[data-theme="light"] .btn-social:hover{background:var(--bg3)}
 .btn-social:active{transform:scale(.99)}
@@ -333,7 +330,7 @@ body.is-signup .divider{margin:2px 0 14px}
 }
 .pw-hint.is-open .pw-hint-panel{display:block}
 html[data-theme="light"] .pw-hint-panel{
-  background:rgba(255,255,255,.45);
+  background:rgba(255,255,255,.55);
   border-color:rgba(15,23,42,.1);
 }
 .pw-hint-static{
