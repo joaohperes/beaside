@@ -256,12 +256,7 @@ body{
 }
 .btn-ghost:hover{border-color:var(--border2);color:var(--text);background:rgba(255,255,255,.04)}
 
-/* ── value strip (premium tiles + brilho no perímetro) ── */
-@property --value-angle{
-  syntax:'<angle>';
-  inherits:false;
-  initial-value:0deg;
-}
+/* ── value strip: 1 brilho por vez no perímetro (GPU transform) ── */
 .values{
   display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
   margin-bottom:56px;
@@ -269,60 +264,53 @@ body{
   opacity:0;animation:rise .8s var(--ease) .18s forwards;
 }
 .value{
+  --value-r:16px;
   position:relative;isolation:isolate;overflow:hidden;
-  background:linear-gradient(165deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
   border:1px solid var(--border);
-  border-radius:16px;
+  border-radius:var(--value-r);
   padding:24px 22px 22px;
+  background:transparent;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
   transition:border-color .3s,box-shadow .35s,transform .3s var(--ease);
+  contain:layout style;
 }
-/* brilho só na borda, correndo o perímetro */
+/* disco conic: só aparece na fresta de 1px (borda). 1 card ativo por vez. */
 .value::before{
   content:'';
-  position:absolute;inset:0;
-  border-radius:inherit;
-  padding:1px;
+  position:absolute;left:50%;top:50%;
+  width:220%;height:220%;
+  margin:-110% 0 0 -110%;
   background:conic-gradient(
-    from var(--value-angle),
-    transparent 0%,
-    transparent 72%,
-    rgba(29,184,138,.05) 78%,
-    rgba(29,184,138,.55) 88%,
-    rgba(255,255,255,.55) 91%,
-    rgba(29,184,138,.55) 94%,
-    transparent 100%
+    from 0deg,
+    transparent 0 86%,
+    rgba(29,184,138,.12) 90%,
+    rgba(29,184,138,.75) 93%,
+    rgba(255,255,255,.55) 95%,
+    transparent 98% 100%
   );
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite:xor;
-  mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  mask-composite:exclude;
-  animation:value-border-run 4.5s linear infinite;
-  pointer-events:none;z-index:2;
+  animation:value-perimeter 9s linear infinite;
+  opacity:0;
+  pointer-events:none;z-index:0;
 }
-.value:nth-child(2)::before{animation-delay:-1.5s}
-.value:nth-child(3)::before{animation-delay:-3s}
-/* glow de canto bem sutil (sem faixa diagonal) */
+/* fill por cima do disco → só sobra o anel de 1px */
 .value::after{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 70% 55% at 0% 0%,rgba(29,184,138,.07),transparent 55%);
-  opacity:.65;pointer-events:none;z-index:0;
-  transition:opacity .3s;
+  content:'';
+  position:absolute;inset:1px;
+  border-radius:calc(var(--value-r) - 1px);
+  background:linear-gradient(165deg,rgba(18,22,28,.97),rgba(12,15,19,.99));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+  pointer-events:none;z-index:0;
 }
+.value:nth-child(1)::before{animation-delay:0s}
+.value:nth-child(2)::before{animation-delay:3s}
+.value:nth-child(3)::before{animation-delay:6s}
 .value:hover{
   border-color:rgba(29,184,138,.28);
   transform:translateY(-2px);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.05),
-    0 16px 40px rgba(0,0,0,.25),
-    0 0 24px rgba(29,184,138,.05);
+    0 14px 36px rgba(0,0,0,.22);
 }
-.value:hover::after{opacity:1}
-.value:hover::before{animation-duration:3s}
 .value-k,
 .value-t,
 .value-d{position:relative;z-index:1}
@@ -342,8 +330,11 @@ body{
   font-size:13.5px;color:var(--text2);line-height:1.7;font-weight:300;
   max-width:34ch;
 }
-@keyframes value-border-run{
-  to{--value-angle:360deg}
+/* 0–33% deste card brilha 1 volta; resto do ciclo some (próximo card assume) */
+@keyframes value-perimeter{
+  0%{transform:rotate(0deg);opacity:1}
+  30%{transform:rotate(360deg);opacity:1}
+  33%,100%{transform:rotate(360deg);opacity:0}
 }
 
 /* ── section head ── */
@@ -504,9 +495,7 @@ body{
   .topbar,.hero,.values,.section-head,.bento .card,.authors,.footer{animation:none;opacity:1}
   .trace svg,.logo-icon rect{animation:none}
   .card:hover,.btn-primary:hover,.value:hover{transform:none}
-  .value::before{animation:none;opacity:.35}
-  /* sem animação: mantém um ponto de brilho estático na borda */
-  .value::before{--value-angle:210deg}
+  .value::before{animation:none;opacity:0}
 }
 
 /* ── responsive ── */
@@ -648,38 +637,27 @@ html[data-theme="light"] .hero h1{color:#0f1419}
 html[data-theme="light"] .hero-lead{color:var(--text2)}
 html[data-theme="light"] .values{background:transparent}
 html[data-theme="light"] .value{
-  background:linear-gradient(165deg,#fff,#f7f8fa);
   border-color:var(--border);
-  box-shadow:
-    0 1px 2px rgba(15,23,42,.04),
-    0 8px 24px rgba(13,154,114,.06),
-    inset 0 1px 0 #fff;
+  box-shadow:0 1px 2px rgba(15,23,42,.04);
 }
 html[data-theme="light"] .value::before{
   background:conic-gradient(
-    from var(--value-angle),
-    transparent 0%,
-    transparent 72%,
-    rgba(13,154,114,.08) 78%,
-    rgba(13,154,114,.65) 88%,
-    rgba(255,255,255,.9) 91%,
-    rgba(13,154,114,.65) 94%,
-    transparent 100%
+    from 0deg,
+    transparent 0 86%,
+    rgba(13,154,114,.15) 90%,
+    rgba(13,154,114,.7) 93%,
+    rgba(255,255,255,.85) 95%,
+    transparent 98% 100%
   );
 }
 html[data-theme="light"] .value::after{
-  background:radial-gradient(ellipse 70% 55% at 0% 0%,rgba(13,154,114,.08),transparent 55%);
-  opacity:.8;
+  background:linear-gradient(165deg,#fff,#f7f8fa);
+  box-shadow:inset 0 1px 0 #fff;
 }
 html[data-theme="light"] .value:hover{
   border-color:rgba(13,154,114,.28);
-  box-shadow:
-    0 1px 2px rgba(15,23,42,.04),
-    0 14px 32px rgba(13,154,114,.1),
-    0 0 20px rgba(13,154,114,.08),
-    inset 0 1px 0 #fff;
+  box-shadow:0 10px 28px rgba(15,23,42,.07);
 }
-html[data-theme="light"] .value:hover::after{opacity:1}
 html[data-theme="light"] .value-t{color:#0f1419}
 html[data-theme="light"] .value-d{color:var(--text2)}
 html[data-theme="light"] .section-head h2{color:var(--text2)}
