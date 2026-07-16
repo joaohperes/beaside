@@ -60,7 +60,7 @@ body{
   opacity:.7;
 }
 .glow{
-  position:absolute;border-radius:50%;filter:blur(120px);
+  position:absolute;border-radius:50%;filter:none;
 }
 .glow-main{
   width:640px;height:420px;background:var(--teal);
@@ -71,12 +71,11 @@ body{
   position:absolute;left:0;right:0;top:42%;
   height:80px;opacity:.07;
 }
-.trace svg{width:200%;height:100%;animation:trace-scroll 28s linear infinite}
+.trace svg{width:100%;height:100%}
 .trace path{
   fill:none;stroke:var(--teal);stroke-width:1.2;
   stroke-linecap:round;stroke-linejoin:round;
 }
-@keyframes trace-scroll{to{transform:translateX(-50%)}}
 
 /* ── shell ── */
 .hub{
@@ -93,13 +92,10 @@ body{
   z-index:100; /* acima do hero — senão o menu do chip não recebe clique */
   display:flex;align-items:center;justify-content:space-between;
   gap:16px;margin-bottom:72px;
-  opacity:0;animation:rise .8s var(--ease) .04s forwards;
+  opacity:1;
 }
 .logo{display:flex;align-items:center;gap:11px;text-decoration:none}
 .logo-icon{opacity:.95}
-.logo-icon rect:first-child{animation:bar-pulse 3s ease-in-out infinite}
-.logo-icon rect:last-child{animation:bar-pulse 3s ease-in-out infinite .7s}
-@keyframes bar-pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .logo-wordmark{
   font-family:var(--mono);font-size:14px;font-weight:500;
   letter-spacing:.16em;color:#fff;
@@ -204,7 +200,7 @@ body{
 /* ── hero ── */
 .hero{
   margin-bottom:56px;
-  opacity:0;animation:rise .85s var(--ease) .1s forwards;
+  opacity:1;
 }
 .hero-row{
   display:block;
@@ -256,64 +252,21 @@ body{
 }
 .btn-ghost:hover{border-color:var(--border2);color:var(--text);background:rgba(255,255,255,.04)}
 
-/* ── value strip: 1 brilho por vez no perímetro (GPU transform) ── */
+/* ── value strip (estático — diagnóstico de performance) ── */
 .values{
   display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
   margin-bottom:56px;
   border:none;background:transparent;border-radius:0;overflow:visible;
-  opacity:0;animation:rise .8s var(--ease) .18s forwards;
+  opacity:1;
 }
 .value{
-  --value-r:16px;
-  position:relative;isolation:isolate;overflow:hidden;
+  position:relative;
   border:1px solid var(--border);
-  border-radius:var(--value-r);
+  border-radius:16px;
   padding:24px 22px 22px;
-  background:transparent;
+  background:linear-gradient(165deg,rgba(255,255,255,.035),rgba(255,255,255,.01));
   box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
-  transition:border-color .3s,box-shadow .35s,transform .3s var(--ease);
-  contain:layout style;
 }
-/* disco conic: só aparece na fresta de 1px (borda). 1 card ativo por vez. */
-.value::before{
-  content:'';
-  position:absolute;left:50%;top:50%;
-  width:220%;height:220%;
-  margin:-110% 0 0 -110%;
-  background:conic-gradient(
-    from 0deg,
-    transparent 0 86%,
-    rgba(29,184,138,.12) 90%,
-    rgba(29,184,138,.75) 93%,
-    rgba(255,255,255,.55) 95%,
-    transparent 98% 100%
-  );
-  animation:value-perimeter 9s linear infinite;
-  opacity:0;
-  pointer-events:none;z-index:0;
-}
-/* fill por cima do disco → só sobra o anel de 1px */
-.value::after{
-  content:'';
-  position:absolute;inset:1px;
-  border-radius:calc(var(--value-r) - 1px);
-  background:linear-gradient(165deg,rgba(18,22,28,.97),rgba(12,15,19,.99));
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
-  pointer-events:none;z-index:0;
-}
-.value:nth-child(1)::before{animation-delay:0s}
-.value:nth-child(2)::before{animation-delay:3s}
-.value:nth-child(3)::before{animation-delay:6s}
-.value:hover{
-  border-color:rgba(29,184,138,.28);
-  transform:translateY(-2px);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.05),
-    0 14px 36px rgba(0,0,0,.22);
-}
-.value-k,
-.value-t,
-.value-d{position:relative;z-index:1}
 .value-k{
   display:inline-flex;align-items:center;gap:8px;
   font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
@@ -330,18 +283,12 @@ body{
   font-size:13.5px;color:var(--text2);line-height:1.7;font-weight:300;
   max-width:34ch;
 }
-/* 0–33% deste card brilha 1 volta; resto do ciclo some (próximo card assume) */
-@keyframes value-perimeter{
-  0%{transform:rotate(0deg);opacity:1}
-  30%{transform:rotate(360deg);opacity:1}
-  33%,100%{transform:rotate(360deg);opacity:0}
-}
 
 /* ── section head ── */
 .section-head{
   display:flex;align-items:baseline;justify-content:space-between;gap:16px;
   margin-bottom:18px;
-  opacity:0;animation:rise .75s var(--ease) .24s forwards;
+  opacity:1;
 }
 .section-head h2{
   font-size:13px;font-weight:500;letter-spacing:-.01em;color:var(--text2);
@@ -357,17 +304,13 @@ body{
   gap:14px;
   margin-bottom:64px;
 }
-.bento .card:nth-child(1){opacity:0;animation:rise .75s var(--ease) .28s forwards}
-.bento .card:nth-child(2){opacity:0;animation:rise .75s var(--ease) .34s forwards}
-.bento .card:nth-child(3){opacity:0;animation:rise .75s var(--ease) .4s forwards}
-.bento .card:nth-child(4){opacity:0;animation:rise .75s var(--ease) .46s forwards}
+.bento .card{opacity:1}
 
 .card{
   position:relative;border-radius:18px;
   text-decoration:none;overflow:hidden;
   background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
   border:1px solid var(--border);
-  transition:transform .35s var(--ease),border-color .3s,box-shadow .35s;
   display:flex;flex-direction:column;
   min-height:240px;
   padding:26px 26px 22px;
@@ -376,27 +319,20 @@ body{
 .card::before{
   content:'';position:absolute;inset:0;
   background:radial-gradient(ellipse 90% 70% at 100% 0%,var(--c-glow,rgba(29,184,138,.1)) 0%,transparent 55%);
-  opacity:.55;transition:opacity .35s;pointer-events:none;z-index:0;
+  opacity:.55;pointer-events:none;z-index:0;
 }
 .card:hover{
-  transform:translateY(-3px);
   border-color:var(--c-border,rgba(29,184,138,.35));
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,.03),
-    0 28px 64px rgba(0,0,0,.4),
-    0 0 40px var(--c-shadow,rgba(29,184,138,.06));
 }
-.card:hover::before{opacity:1}
 .card > *{position:relative;z-index:1}
 
 .card-rail{
   position:absolute;left:0;top:24px;bottom:24px;width:2px;
   border-radius:0 2px 2px 0;
   background:var(--c-accent,var(--teal));
-  opacity:.45;transition:opacity .25s,top .25s,bottom .25s;
-  z-index:2;
+  opacity:.45;z-index:2;
 }
-.card:hover .card-rail{opacity:1;top:16px;bottom:16px}
+.card:hover .card-rail{opacity:1}
 
 .card-top{
   display:flex;align-items:flex-start;
@@ -410,10 +346,7 @@ body{
   color:var(--c-accent,var(--teal));
   transition:border-color .25s,background .25s;
 }
-.card:hover .card-icon{
-  border-color:var(--c-border,rgba(29,184,138,.3));
-  background:var(--c-glow,rgba(29,184,138,.08));
-}
+
 .card-badge{
   display:inline-flex;align-items:center;gap:7px;
   font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
@@ -439,17 +372,14 @@ body{
   border:1px solid var(--border);
   color:var(--text3);
 }
-.card:hover .card-tag{color:var(--text2);border-color:var(--border2)}
 .card-cta{
   display:flex;align-items:center;gap:8px;
   font-family:var(--mono);font-size:11px;letter-spacing:.04em;
   color:var(--c-accent,var(--teal));
-  opacity:.75;transition:opacity .2s,gap .25s var(--ease);
+  opacity:.85;
   margin-top:auto;font-weight:500;
 }
-.card:hover .card-cta{opacity:1;gap:11px}
-.card-cta-arrow{transition:transform .25s var(--ease)}
-.card:hover .card-cta-arrow{transform:translateX(3px)}
+.card-cta-arrow{display:inline-block}
 
 .card.featured{min-height:280px;padding:30px 30px 24px}
 .card.featured .card-title{font-size:28px}
@@ -459,7 +389,7 @@ body{
 .authors{
   border-top:1px solid var(--border);
   padding-top:36px;margin-bottom:40px;
-  opacity:0;animation:rise .75s var(--ease) .5s forwards;
+  opacity:1;
 }
 .authors-label{
   font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
@@ -475,7 +405,7 @@ body{
   margin-top:auto;padding-top:28px;border-top:1px solid var(--border);
   display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
   gap:16px;
-  opacity:0;animation:rise .75s var(--ease) .55s forwards;
+  opacity:1;
 }
 .footer-left{
   font-size:12px;color:var(--text3);line-height:1.7;max-width:52ch;font-weight:300;
@@ -486,17 +416,7 @@ body{
   letter-spacing:.04em;
 }
 
-/* ── motion ── */
-@keyframes rise{
-  from{opacity:0;transform:translateY(12px)}
-  to{opacity:1;transform:none}
-}
-@media (prefers-reduced-motion:reduce){
-  .topbar,.hero,.values,.section-head,.bento .card,.authors,.footer{animation:none;opacity:1}
-  .trace svg,.logo-icon rect{animation:none}
-  .card:hover,.btn-primary:hover,.value:hover{transform:none}
-  .value::before{animation:none;opacity:0}
-}
+/* motion desligado (teste de performance — reativar depois se OK) */
 
 /* ── responsive ── */
 @media(max-width:900px){
@@ -568,11 +488,11 @@ html:not([data-theme="light"]) .btn-theme .theme-icon-sun{opacity:1;transform:ro
 html:not([data-theme="light"]) .btn-theme .theme-icon-moon{opacity:0;transform:rotate(-90deg) scale(.5);pointer-events:none}
 html[data-theme="light"] .btn-theme .theme-icon-sun{opacity:0;transform:rotate(90deg) scale(.5);pointer-events:none}
 html[data-theme="light"] .btn-theme .theme-icon-moon{opacity:1;transform:rotate(0) scale(1)}
-.btn-theme.is-toggling{animation:theme-btn-pulse .42s cubic-bezier(.34,1.2,.64,1)}
+.btn-theme.is-toggling{animation:none}
 @keyframes theme-btn-pulse{
   0%{transform:scale(1)} 35%{transform:scale(.88)} 70%{transform:scale(1.06)} 100%{transform:scale(1)}
 }
-::view-transition-old(root),::view-transition-new(root){animation-duration:.32s;animation-timing-function:ease}
+::view-transition-old(root),::view-transition-new(root){animation:none!important}
 ::view-transition-old(root){animation-name:theme-fade-out}
 ::view-transition-new(root){animation-name:theme-fade-in}
 @keyframes theme-fade-out{from{opacity:1}to{opacity:0}}
@@ -637,26 +557,9 @@ html[data-theme="light"] .hero h1{color:#0f1419}
 html[data-theme="light"] .hero-lead{color:var(--text2)}
 html[data-theme="light"] .values{background:transparent}
 html[data-theme="light"] .value{
+  background:linear-gradient(165deg,#fff,#f7f8fa);
   border-color:var(--border);
   box-shadow:0 1px 2px rgba(15,23,42,.04);
-}
-html[data-theme="light"] .value::before{
-  background:conic-gradient(
-    from 0deg,
-    transparent 0 86%,
-    rgba(13,154,114,.15) 90%,
-    rgba(13,154,114,.7) 93%,
-    rgba(255,255,255,.85) 95%,
-    transparent 98% 100%
-  );
-}
-html[data-theme="light"] .value::after{
-  background:linear-gradient(165deg,#fff,#f7f8fa);
-  box-shadow:inset 0 1px 0 #fff;
-}
-html[data-theme="light"] .value:hover{
-  border-color:rgba(13,154,114,.28);
-  box-shadow:0 10px 28px rgba(15,23,42,.07);
 }
 html[data-theme="light"] .value-t{color:#0f1419}
 html[data-theme="light"] .value-d{color:var(--text2)}
