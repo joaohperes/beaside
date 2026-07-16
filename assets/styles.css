@@ -12,8 +12,12 @@
   --mono:'JetBrains Mono',ui-monospace,monospace;
   --sans:'Inter',system-ui,-apple-system,sans-serif;
   --ease:cubic-bezier(.22,.8,.24,1);
-  /* accent — cor primária do módulo ativo */
+  /* accent — cor primária do módulo ativo (default = brand teal) */
   --accent:#1db88a;--accent-d:#0f6e56;--accent-rgb:29,184,138;
+}
+/* VM: ciano (separado do teal de marca) */
+body[data-module="vm"]{
+  --accent:#0ea5b7;--accent-d:#0e7490;--accent-rgb:14,165,183;
 }
 body[data-module="hemo"]{
   --accent:#e05555;--accent-d:#a03030;--accent-rgb:224,85,85;
@@ -466,7 +470,7 @@ td:first-child .pill{
   padding:6px 8px;font-family:var(--mono);font-size:12px;color:var(--text);
   flex:0 0 56px;width:56px;min-width:56px;text-align:center;box-sizing:border-box;
 }
-.peep-cell.hi{background:rgba(29,184,138,.12);border-color:var(--teal-d);color:var(--teal)}
+.peep-cell.hi{background:rgba(var(--accent-rgb),.12);border-color:var(--accent-d);color:var(--accent)}
 .calc-box{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:24px;margin:20px 0}
 .calc-box h3{margin-top:0;color:var(--text)}
 .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
@@ -483,7 +487,7 @@ td:first-child .pill{
 .scenario-list{display:flex;flex-direction:column;gap:5px;margin:16px 0}
 .scenario-item{display:grid;grid-template-columns:200px 1fr 1fr;border:1px solid var(--border);border-radius:6px;overflow:hidden;font-size:13px}
 .scenario-item .s-ctx{padding:10px 14px;background:var(--bg4);color:var(--text2);font-size:12.5px;display:flex;align-items:center}
-.scenario-item .s-first{padding:10px 14px;background:rgba(29,184,138,.07);border-left:1px solid var(--border);border-right:1px solid var(--border)}
+.scenario-item .s-first{padding:10px 14px;background:rgba(var(--accent-rgb),.07);border-left:1px solid var(--border);border-right:1px solid var(--border)}
 .scenario-item .s-first strong{color:var(--accent);font-family:var(--mono);font-size:12px}
 .scenario-item .s-note{padding:10px 14px;color:var(--text2);font-size:12px;display:flex;align-items:center}
 .step-list{display:flex;flex-direction:column;gap:4px;margin:16px 0}
@@ -1912,7 +1916,7 @@ html[data-theme="light"]{
   --accent-rgb:13,154,114;
 }
 html[data-theme="light"] body[data-module="vm"]{
-  --accent:#0d9a72;--accent-d:#0a7a5a;--accent-rgb:13,154,114;
+  --accent:#0e8fa0;--accent-d:#0e7490;--accent-rgb:14,143,160;
 }
 html[data-theme="light"] body[data-module="hemo"]{
   --accent:#d63d3d;--accent-d:#a82f2f;--accent-rgb:214,61,61;

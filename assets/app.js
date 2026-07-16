@@ -78,7 +78,7 @@ const MODULES = {
     label: 'VM Guide',
     subtitle: 'Ventilação Mecânica',
     root: 'vm/',
-    color: '#1db88a',
+    color: '#0ea5b7',
   },
   hemo: {
     id: 'hemo',

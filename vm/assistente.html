@@ -16,10 +16,10 @@
 <style>
   .as-label{display:block;font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--text3);margin-bottom:8px}
   .as-input,.as-textarea{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:var(--sans);font-size:14px;padding:11px 14px;line-height:1.6}
-  .as-input:focus,.as-textarea:focus{outline:none;border-color:var(--teal)}
+  .as-input:focus,.as-textarea:focus{outline:none;border-color:var(--accent)}
   .as-textarea{resize:vertical;min-height:54px}
-  .as-btn{font-family:var(--mono);font-size:12px;color:var(--teal);background:var(--teal-bg);border:1px solid var(--teal-d);padding:9px 18px;border-radius:6px;cursor:pointer;transition:all .15s;white-space:nowrap}
-  .as-btn:hover:not(:disabled){background:rgba(29,184,138,.18);border-color:var(--teal)}
+  .as-btn{font-family:var(--mono);font-size:12px;color:var(--accent);background:rgba(var(--accent-rgb),.1);border:1px solid var(--accent-d);padding:9px 18px;border-radius:6px;cursor:pointer;transition:all .15s;white-space:nowrap}
+  .as-btn:hover:not(:disabled){background:rgba(var(--accent-rgb),.18);border-color:var(--accent)}
   .as-btn:disabled{opacity:.5;cursor:not-allowed}
   .as-btn-ghost{color:var(--text2);background:var(--bg3);border-color:var(--border)}
   .as-btn-ghost:hover:not(:disabled){background:var(--bg4);border-color:var(--border2)}
@@ -42,12 +42,12 @@
   .case-layout.collapsed .case-col{opacity:0;pointer-events:none;border-right:none}
   .case-list-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--border)}
   .case-list-head span{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--text3)}
-  .case-new{font-family:var(--mono);font-size:11px;color:var(--teal);background:none;border:1px solid var(--teal-d);border-radius:5px;padding:4px 11px;cursor:pointer}
-  .case-new:hover{background:var(--teal-bg)}
+  .case-new{font-family:var(--mono);font-size:11px;color:var(--accent);background:none;border:1px solid var(--accent-d);border-radius:5px;padding:4px 11px;cursor:pointer}
+  .case-new:hover{background:rgba(var(--accent-rgb),.1)}
   .case-items{overflow-y:auto;flex:1}
   .case-item{display:flex;align-items:center;gap:6px;padding:11px 16px;cursor:pointer;border-bottom:1px solid var(--border);transition:background .12s}
   .case-item:hover{background:var(--bg3)}
-  .case-item.active{background:rgba(29,184,138,.08);box-shadow:inset 2px 0 0 var(--teal)}
+  .case-item.active{background:rgba(var(--accent-rgb),.08);box-shadow:inset 2px 0 0 var(--accent)}
   .case-item .ci-name{flex:1;font-size:13px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .case-item .ci-when{font-family:var(--mono);font-size:9px;color:var(--text3)}
   .case-del{opacity:0;color:var(--text3);background:none;border:none;cursor:pointer;font-size:15px;line-height:1;padding:2px 4px}
@@ -61,7 +61,7 @@
   .chat-toggle:hover{border-color:var(--border2);color:var(--text);background:var(--bg3)}
   .chat-title{font-size:16px;font-weight:600;color:#e8ecf2}
   .chat-rename{font-family:var(--mono);font-size:10px;color:var(--text3);background:none;border:none;cursor:pointer;text-decoration:underline}
-  .chat-rename:hover{color:var(--teal)}
+  .chat-rename:hover{color:var(--accent)}
   .msgs{flex:1;display:flex;flex-direction:column;gap:16px;padding:20px;overflow-y:auto}
   .msg{max-width:90%}
   .msg.user{align-self:flex-end;max-width:75%}
@@ -71,7 +71,7 @@
   .bubble{border-radius:10px;padding:12px 15px;font-size:14px;line-height:1.7}
   .msg.user .bubble{background:var(--bg4);border:1px solid var(--border2);white-space:pre-wrap}
   .msg.assistant .bubble{background:var(--bg2);border:1px solid var(--border)}
-  .bubble h2{font-size:14px;font-weight:600;color:var(--teal);margin:16px 0 7px;font-family:var(--sans)}
+  .bubble h2{font-size:14px;font-weight:600;color:var(--accent);margin:16px 0 7px;font-family:var(--sans)}
   .bubble h2:first-child{margin-top:4px}
   .bubble h3{font-size:13.5px;margin:14px 0 6px}
   .bubble p{margin:7px 0}
@@ -92,7 +92,7 @@
   .composer .as-textarea{flex:1}
   .chat-status{font-family:var(--mono);font-size:12px;color:var(--text2);padding:0 20px}
   .chat-status.err{color:var(--red)}
-  .spinner{display:inline-block;width:13px;height:13px;border:2px solid var(--border2);border-top-color:var(--teal);border-radius:50%;animation:spin .7s linear infinite;vertical-align:-2px;margin-right:6px}
+  .spinner{display:inline-block;width:13px;height:13px;border:2px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;vertical-align:-2px;margin-right:6px}
   @keyframes spin{to{transform:rotate(360deg)}}
 
   /* modal dark (substitui prompt/confirm nativos) */
@@ -102,7 +102,7 @@
   .modal-title{font-size:15px;font-weight:600;color:#e8ecf2;margin-bottom:6px}
   .modal-msg{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:16px}
   .modal input{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:var(--sans);font-size:14px;padding:11px 14px;margin-bottom:18px}
-  .modal input:focus{outline:none;border-color:var(--teal)}
+  .modal input:focus{outline:none;border-color:var(--accent)}
   .modal-actions{display:flex;justify-content:flex-end;gap:10px}
 
   @media(max-width:760px){
