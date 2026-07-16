@@ -257,7 +257,7 @@ body{
 }
 .btn-ghost:hover{border-color:var(--border2);color:var(--text);background:rgba(255,255,255,.04)}
 
-/* panel — glass equilibrado: um eixo vertical, sem card dentro de card */
+/* panel — glass citação (alternativa A) */
 .hero-panel{
   border:1px solid var(--border);
   border-radius:20px;
@@ -271,39 +271,17 @@ body{
   content:'';position:absolute;top:0;left:12%;right:12%;height:1px;
   background:linear-gradient(90deg,transparent,rgba(29,184,138,.45),transparent);
 }
+.hero-panel.panel-quote{
+  display:flex;flex-direction:column;justify-content:center;
+  min-height:220px;padding:28px 26px 22px;
+}
 .panel-lead{
-  font-size:15px;font-weight:500;color:#e8ecf2;
-  letter-spacing:-.02em;line-height:1.45;margin:0 0 16px;
-  padding:0 0 16px;
-  border-bottom:1px solid var(--border);
-}
-.panel-traits{
-  list-style:none;margin:0;padding:0;
-  display:flex;flex-direction:column;gap:0;
-  border:none;border-radius:0;background:transparent;overflow:visible;
-}
-.panel-traits li{
-  display:grid;
-  /* coluna fixa: labels alinhados (USO / ACESSO / TOM / IA) */
-  grid-template-columns:5.25rem minmax(0,1fr);
-  gap:8px 14px;
-  align-items:start;
-  padding:12px 0;
-  border-bottom:1px solid rgba(255,255,255,.06);
-}
-.panel-traits li:last-child{border-bottom:none;padding-bottom:2px}
-.panel-traits .pt-k{
-  font-family:var(--mono);font-size:9px;font-weight:500;
-  letter-spacing:.1em;text-transform:uppercase;color:var(--teal);
-  white-space:nowrap;
-  padding-top:3px; /* alinha com 1ª linha do valor */
-}
-.panel-traits .pt-v{
-  font-size:13px;color:var(--text2);line-height:1.55;font-weight:300;
-  min-width:0;
+  font-size:clamp(18px,2.1vw,22px);font-weight:500;color:#e8ecf2;
+  letter-spacing:-.025em;line-height:1.35;margin:0;
+  padding:0;border:none;max-width:18ch;
 }
 .panel-foot{
-  margin-top:14px;padding-top:14px;border-top:1px solid var(--border);
+  margin-top:auto;padding-top:22px;border-top:1px solid var(--border);
   font-family:var(--mono);font-size:10px;color:var(--text3);
   display:flex;justify-content:space-between;align-items:center;gap:8px;letter-spacing:.04em;
 }
@@ -409,9 +387,11 @@ body{
   border-color:var(--c-border,rgba(29,184,138,.3));
   background:var(--c-glow,rgba(29,184,138,.08));
 }
-.card-idx{
-  font-family:var(--mono);font-size:11px;letter-spacing:.1em;
-  color:var(--text3);
+/* canto do card: foco clínico (não número de ordem) */
+.card-meta{
+  font-family:var(--mono);font-size:10px;letter-spacing:.06em;
+  color:var(--text3);text-align:right;line-height:1.35;
+  max-width:9.5em;padding-top:2px;
 }
 .card-badge{
   display:inline-flex;align-items:center;gap:7px;
@@ -454,14 +434,16 @@ body{
 .card.featured .card-title{font-size:28px}
 .card.featured .card-sub{font-size:14px;max-width:42ch}
 
+/* marca d'água: sigla do módulo (não 01/02…) */
 .card-mark{
-  position:absolute;right:-4px;bottom:-16px;
-  font-family:var(--mono);font-size:112px;font-weight:600;
-  letter-spacing:-.06em;line-height:1;
+  position:absolute;right:8px;bottom:-8px;
+  font-family:var(--mono);font-size:72px;font-weight:600;
+  letter-spacing:-.04em;line-height:1;text-transform:uppercase;
   color:var(--c-accent,var(--teal));
-  opacity:.035;pointer-events:none;z-index:0;
+  opacity:.05;pointer-events:none;z-index:0;
   user-select:none;
 }
+.card.featured .card-mark{font-size:80px;right:10px;bottom:-10px}
 
 /* ── authors ── */
 .authors{
@@ -648,11 +630,7 @@ html[data-theme="light"] .hero-panel{
   background:linear-gradient(165deg,#fff,#f7f8fa);
   box-shadow:0 16px 48px rgba(15,23,42,.08),inset 0 1px 0 #fff;
 }
-html[data-theme="light"] .panel-lead{
-  color:#0f1419;border-bottom-color:var(--border);
-}
-html[data-theme="light"] .panel-traits li{border-bottom-color:var(--border)}
-html[data-theme="light"] .panel-traits .pt-v{color:var(--text2)}
+html[data-theme="light"] .panel-lead{color:#0f1419}
 html[data-theme="light"] .values{background:var(--border)}
 html[data-theme="light"] .value{background:#fff}
 html[data-theme="light"] .value-t{color:#0f1419}
@@ -772,26 +750,8 @@ html[data-theme="light"] .footer-left strong{color:var(--text2)}
         </div>
       </div>
 
-      <aside class="hero-panel" aria-label="O que é o be·aside">
+      <aside class="hero-panel panel-quote" aria-label="Proposta">
         <p class="panel-lead">Consulta entre um paciente e o próximo.</p>
-        <ul class="panel-traits">
-          <li>
-            <span class="pt-k">Uso</span>
-            <span class="pt-v">Tabelas e condutas em segundos, sem paper no meio do caminho</span>
-          </li>
-          <li>
-            <span class="pt-k">Acesso</span>
-            <span class="pt-v">Módulos livres para ler. Conta só se quiser (não tranca o conteúdo)</span>
-          </li>
-          <li>
-            <span class="pt-k">Tom</span>
-            <span class="pt-v">pt-BR de plantão, curado para UTI e PS</span>
-          </li>
-          <li>
-            <span class="pt-k">IA</span>
-            <span class="pt-v">Assistente nos guias quando o raciocínio precisa de um empurrão</span>
-          </li>
-        </ul>
         <div class="panel-foot panel-foot-quiet">
           <span>Atualizado</span>
           <time datetime="2026-07">jul/26</time>
@@ -802,17 +762,17 @@ html[data-theme="light"] .footer-left strong{color:var(--text2)}
 
   <section class="values" aria-label="Proposta de valor">
     <div class="value">
-      <div class="value-k">01 · Densidade</div>
+      <div class="value-k">Densidade</div>
       <div class="value-t">Feito para o plantão</div>
-      <div class="value-d">Tabelas, algoritmos e sínteses — sem paper de 40 páginas no meio do caminho.</div>
+      <div class="value-d">Tabelas, algoritmos e sínteses, sem paper de 40 páginas no meio do caminho.</div>
     </div>
     <div class="value">
-      <div class="value-k">02 · Raciocínio</div>
-      <div class="value-t">Fisiologia → conduta</div>
+      <div class="value-k">Raciocínio</div>
+      <div class="value-t">Do mecanismo à conduta</div>
       <div class="value-d">Cada módulo parte do mecanismo e chega na decisão de beira-leito.</div>
     </div>
     <div class="value">
-      <div class="value-k">03 · Curadoria</div>
+      <div class="value-k">Curadoria</div>
       <div class="value-t">Sem ruído</div>
       <div class="value-d">O essencial com referência. O que você precisa lembrar às 3h da manhã.</div>
     </div>
@@ -829,7 +789,7 @@ html[data-theme="light"] .footer-left strong{color:var(--text2)}
        href="vm/"
        style="--c-accent:#1db88a;--c-border:rgba(29,184,138,.4);--c-glow:rgba(29,184,138,.12);--c-shadow:rgba(29,184,138,.1)">
       <span class="card-rail" aria-hidden="true"></span>
-      <span class="card-mark" aria-hidden="true">01</span>
+      <span class="card-mark" aria-hidden="true">VM</span>
       <div class="card-top">
         <div class="card-icon" aria-hidden="true">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -838,7 +798,7 @@ html[data-theme="light"] .footer-left strong{color:var(--text2)}
             <path d="M4 16h5.5a2.5 2.5 0 1 1 -2.34 3.24"/>
           </svg>
         </div>
-        <span class="card-idx">01</span>
+        <span class="card-meta">SDRA · desmame</span>
       </div>
       <div class="card-badge"><span class="card-dot"></span>VM Guide</div>
       <div class="card-title">Ventilação<br>Mecânica</div>
@@ -856,7 +816,7 @@ html[data-theme="light"] .footer-left strong{color:var(--text2)}
        href="hemo/"
        style="--c-accent:#e05555;--c-border:rgba(224,85,85,.4);--c-glow:rgba(224,85,85,.12);--c-shadow:rgba(224,85,85,.1)">
       <span class="card-rail" aria-hidden="true"></span>
-      <span class="card-mark" aria-hidden="true">02</span>
+      <span class="card-mark" aria-hidden="true">Hemo</span>
       <div class="card-top">
         <div class="card-icon" aria-hidden="true">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -864,7 +824,7 @@ html[data-theme="light"] .footer-left strong{color:var(--text2)}
             <path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/>
           </svg>
         </div>
-        <span class="card-idx">02</span>
+        <span class="card-meta">Choque · POCUS</span>
       </div>
       <div class="card-badge"><span class="card-dot"></span>Hemo Guide</div>
       <div class="card-title">Hemodinâmica<br>&amp; Choque</div>
@@ -882,7 +842,7 @@ html[data-theme="light"] .footer-left strong{color:var(--text2)}
        href="neuro/"
        style="--c-accent:#9b6ff7;--c-border:rgba(155,111,247,.4);--c-glow:rgba(155,111,247,.12);--c-shadow:rgba(155,111,247,.1)">
       <span class="card-rail" aria-hidden="true"></span>
-      <span class="card-mark" aria-hidden="true">03</span>
+      <span class="card-mark" aria-hidden="true">Neuro</span>
       <div class="card-top">
         <div class="card-icon" aria-hidden="true">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -890,7 +850,7 @@ html[data-theme="light"] .footer-left strong{color:var(--text2)}
             <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-1.66Z"/>
           </svg>
         </div>
-        <span class="card-idx">03</span>
+        <span class="card-meta">PIC · PPC</span>
       </div>
       <div class="card-badge"><span class="card-dot"></span>Neuro Guide</div>
       <div class="card-title">Paciente<br>Neurocrítico</div>
@@ -908,7 +868,7 @@ html[data-theme="light"] .footer-left strong{color:var(--text2)}
        href="proc/"
        style="--c-accent:#3b82f6;--c-border:rgba(59,130,246,.4);--c-glow:rgba(59,130,246,.12);--c-shadow:rgba(59,130,246,.1)">
       <span class="card-rail" aria-hidden="true"></span>
-      <span class="card-mark" aria-hidden="true">04</span>
+      <span class="card-mark" aria-hidden="true">Proc</span>
       <div class="card-top">
         <div class="card-icon" aria-hidden="true">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -920,7 +880,7 @@ html[data-theme="light"] .footer-left strong{color:var(--text2)}
             <path d="m14 4 6 6"/>
           </svg>
         </div>
-        <span class="card-idx">04</span>
+        <span class="card-meta">Acesso · via aérea</span>
       </div>
       <div class="card-badge"><span class="card-dot"></span>Procedimentos</div>
       <div class="card-title">Procedimentos<br>de UTI</div>
