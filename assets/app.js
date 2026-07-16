@@ -395,154 +395,273 @@ function initSearchKeys(){
 }
 
 // ============================================================
-// CALCULADORAS VM (rodam só se elementos existirem na página)
+// CALCULADORAS VM / HEMO (rodam só se elementos existirem)
 // ============================================================
+function getCalcResultEl(key){
+  return document.getElementById(key+'-result')
+    || document.getElementById('result-'+key)
+    || document.getElementById('calc-result')
+    || document.getElementById('calc-res-'+key);
+}
+function setCalcTone(key,tone){
+  const res=getCalcResultEl(key);
+  if(!res)return;
+  if(tone)res.setAttribute('data-tone',tone);
+  else res.removeAttribute('data-tone');
+}
+function setCalcReady(key,ready,tone){
+  const res=getCalcResultEl(key);
+  if(!res)return;
+  res.classList.toggle('is-ready',!!ready);
+  res.classList.toggle('is-idle',!ready);
+  res.style.display='';
+  if(ready)setCalcTone(key,tone||'neutral');
+  else setCalcTone(key,null);
+}
+function showCalcResult(key,hasResult){
+  setCalcReady(key,hasResult);
+  return !!getCalcResultEl(key);
+}
 function calcPBW(){
-  const h=parseFloat(document.getElementById('altura').value);
+  const hEl=document.getElementById('altura');
+  if(!hEl)return;
+  const h=parseFloat(hEl.value);
   const s=document.getElementById('sexo').value;
-  if(!h||h<100||h>220){document.getElementById('calc-result').style.display='none';return}
+  if(!h||h<100||h>220){
+    document.getElementById('pbw-val').textContent='—';
+    document.getElementById('vc6-val').textContent='—';
+    document.getElementById('vc5-val').textContent='—';
+    document.getElementById('vc4-val').textContent='—';
+    setCalcReady('calc',false);
+    const res=document.getElementById('calc-result');
+    if(res){res.classList.add('is-idle');res.classList.remove('is-ready');res.removeAttribute('data-tone')}
+    return;
+  }
   const pbw=s==='m'?50+0.91*(h-152.4):45.5+0.91*(h-152.4);
   document.getElementById('pbw-val').textContent=pbw.toFixed(1);
   document.getElementById('vc6-val').textContent=Math.round(pbw*6);
   document.getElementById('vc5-val').textContent=Math.round(pbw*5);
   document.getElementById('vc4-val').textContent=Math.round(pbw*4);
-  document.getElementById('calc-result').style.display='block';
+  const res=document.getElementById('calc-result');
+  if(res){res.classList.add('is-ready');res.classList.remove('is-idle');res.setAttribute('data-tone','neutral')}
 }
 function calcDP(){
+  if(!document.getElementById('pplat'))return;
   const p=parseFloat(document.getElementById('pplat').value);
   const e=parseFloat(document.getElementById('peep-dp').value);
-  if(isNaN(p)||isNaN(e)){document.getElementById('dp-result').style.display='none';return}
-  const dp=p-e;
   const el=document.getElementById('dp-val');
   const st=document.getElementById('dp-status');
+  if(isNaN(p)||isNaN(e)){
+    el.textContent='—';el.style.color='';
+    st.textContent='DP = Pplat − PEEP';
+    setCalcReady('dp',false);return;
+  }
+  const dp=p-e;
   el.textContent=dp.toFixed(1);
-  if(dp<15){el.style.color='var(--teal)';st.textContent='Dentro da meta (< 15 cmH₂O)'}
-  else if(dp<20){el.style.color='var(--amber)';st.textContent='Limítrofe — considerar ajuste de VC ou PEEP'}
-  else{el.style.color='var(--red)';st.textContent='ACIMA DO ALVO — risco de VILI. Reduzir VC ou aumentar PEEP.'}
-  document.getElementById('dp-result').style.display='block';
+  el.style.color='';
+  let tone='ok';
+  if(dp<15){st.textContent='Dentro da meta (< 15 cmH₂O)';tone='ok'}
+  else if(dp<20){st.textContent='Limítrofe — considerar ajuste de VC ou PEEP';tone='warn'}
+  else{st.textContent='Acima do alvo — risco de VILI';tone='bad'}
+  setCalcReady('dp',true,tone);
 }
 function calcVM(){
+  if(!document.getElementById('vc-vm'))return;
   const vc=parseFloat(document.getElementById('vc-vm').value);
   const fr=parseFloat(document.getElementById('fr-vm').value);
-  if(isNaN(vc)||isNaN(fr)||vc<=0||fr<=0){document.getElementById('vm-result').style.display='none';return}
-  const vm=(vc/1000)*fr;
   const el=document.getElementById('vm-val');
   const st=document.getElementById('vm-status');
+  if(isNaN(vc)||isNaN(fr)||vc<=0||fr<=0){
+    el.textContent='—';el.style.color='';
+    st.textContent='VM = VC × FR';
+    setCalcReady('vm',false);return;
+  }
+  const vm=(vc/1000)*fr;
   el.textContent=vm.toFixed(1);
-  if(vm<4){el.style.color='var(--red)';st.textContent='Baixa — risco de hipercapnia e hipoventilação'}
-  else if(vm<=8){el.style.color='var(--teal)';st.textContent='Normal (4–8 L/min)'}
-  else if(vm<=12){el.style.color='var(--amber)';st.textContent='Elevada — avaliar alcalose ou drive alto'}
-  else{el.style.color='var(--red)';st.textContent='Muito elevada — revisar parâmetros'}
-  document.getElementById('vm-result').style.display='block';
+  el.style.color='';
+  let tone='ok';
+  if(vm<4){st.textContent='Baixa — risco de hipercapnia';tone='bad'}
+  else if(vm<=8){st.textContent='Normal (4–8 L/min)';tone='ok'}
+  else if(vm<=12){st.textContent='Elevada — avaliar alcalose ou drive alto';tone='warn'}
+  else{st.textContent='Muito elevada — revisar parâmetros';tone='bad'}
+  setCalcReady('vm',true,tone);
 }
 function calcPF(){
+  if(!document.getElementById('pao2'))return;
   const pao2=parseFloat(document.getElementById('pao2').value);
   const fio2=parseFloat(document.getElementById('fio2').value);
-  if(isNaN(pao2)||isNaN(fio2)||fio2<=0||fio2>1){document.getElementById('pf-result').style.display='none';return}
-  const pf=pao2/fio2;
   const el=document.getElementById('pf-val');
   const st=document.getElementById('pf-status');
+  if(isNaN(pao2)||isNaN(fio2)||fio2<=0||fio2>1){
+    el.textContent='—';el.style.color='';
+    st.textContent='PaO₂/FiO₂';
+    setCalcReady('pf',false);return;
+  }
+  const pf=pao2/fio2;
   el.textContent=Math.round(pf);
-  if(pf>300){el.style.color='var(--teal)';st.textContent='Normal (sem SDRA)'}
-  else if(pf>200){el.style.color='var(--amber)';st.textContent='SDRA leve (200–300) — Berlin 2012'}
-  else if(pf>100){el.style.color='var(--red)';st.textContent='SDRA moderada (100–200) — Berlin 2012'}
-  else{el.style.color='var(--red)';st.textContent='SDRA grave (< 100) — Berlin 2012'}
-  document.getElementById('pf-result').style.display='block';
+  el.style.color='';
+  let tone='ok';
+  if(pf>300){st.textContent='Normal (sem SDRA)';tone='ok'}
+  else if(pf>200){st.textContent='SDRA leve (200–300)';tone='warn'}
+  else if(pf>100){st.textContent='SDRA moderada (100–200)';tone='bad'}
+  else{st.textContent='SDRA grave (< 100)';tone='bad'}
+  setCalcReady('pf',true,tone);
 }
 function calcIRRS(){
+  if(!document.getElementById('fr-irrs'))return;
   const fr=parseFloat(document.getElementById('fr-irrs').value);
   const vc=parseFloat(document.getElementById('vc-irrs').value);
-  if(isNaN(fr)||isNaN(vc)||vc<=0){document.getElementById('irrs-result').style.display='none';return}
-  const irrs=fr/(vc/1000);
   const el=document.getElementById('irrs-val');
   const st=document.getElementById('irrs-status');
+  if(isNaN(fr)||isNaN(vc)||vc<=0){
+    el.textContent='—';el.style.color='';
+    st.textContent='FR / VC';
+    setCalcReady('irrs',false);return;
+  }
+  const irrs=fr/(vc/1000);
   el.textContent=Math.round(irrs);
-  if(irrs<80){el.style.color='var(--teal)';st.textContent='Alta probabilidade de extubação bem-sucedida'}
-  else if(irrs<105){el.style.color='var(--amber)';st.textContent='Limítrofe — SBT bem-sucedido, extubação com cuidado'}
-  else{el.style.color='var(--red)';st.textContent='SBT com falha — não extubar'}
-  document.getElementById('irrs-result').style.display='block';
+  el.style.color='';
+  let tone='ok';
+  if(irrs<80){st.textContent='Alta probabilidade de extubação bem-sucedida';tone='ok'}
+  else if(irrs<105){st.textContent='Limítrofe — SBT ok, extubar com cuidado';tone='warn'}
+  else{st.textContent='SBT com falha — não extubar';tone='bad'}
+  setCalcReady('irrs',true,tone);
 }
 
 // ============================================================
 // CALCULADORAS HEMO
 // ============================================================
-function showCalcResult(id,show){
-  const el=document.getElementById('calc-res-'+id);
-  if(el)el.style.display=show?'block':'none';
-}
+
 function calcDelta(){
-  const v=parseFloat(document.getElementById('pco2v').value);
+  const vEl=document.getElementById('pco2v');
+  if(!vEl)return;
+  const v=parseFloat(vEl.value);
   const a=parseFloat(document.getElementById('pco2a').value);
-  if(isNaN(v)||isNaN(a)){showCalcResult('delta',false);return;}
+  const val=document.getElementById('val-delta');
+  const interp=document.getElementById('interp-delta');
+  if(isNaN(v)||isNaN(a)){
+    val.textContent='—';val.style.color='';
+    interp.textContent='Δ pCO₂ = pCO₂v − pCO₂a';
+    setCalcReady('delta',false);return;
+  }
   const d=v-a;
-  document.getElementById('val-delta').textContent=d.toFixed(1)+' mmHg';
-  let t,c;
-  if(d<6){t='Normal (&lt; 6 mmHg) — fluxo tecidual adequado';c='var(--teal)';}
-  else if(d<10){t='Elevado (6–10 mmHg) — possível baixo fluxo tecidual';c='var(--amber)';}
-  else{t='Muito elevado (&gt; 10 mmHg) — baixo débito / hipoperfusão significativa';c='var(--red)';}
-  document.getElementById('val-delta').style.color=c;
-  document.getElementById('interp-delta').innerHTML=t;
-  showCalcResult('delta',true);
+  val.textContent=d.toFixed(1);
+  val.style.color='';
+  let t,tone;
+  if(d<6){t='Normal (< 6) — fluxo tecidual adequado';tone='ok'}
+  else if(d<10){t='Elevado (6–10) — possível baixo fluxo';tone='warn'}
+  else{t='Muito elevado (> 10) — hipoperfusão';tone='bad'}
+  interp.textContent=t;
+  setCalcReady('delta',true,tone);
 }
 function calcVCI(){
+  if(!document.getElementById('vcimax'))return;
   const mx=parseFloat(document.getElementById('vcimax').value);
   const mn=parseFloat(document.getElementById('vcimin').value);
-  if(isNaN(mx)||isNaN(mn)||mx<=0){showCalcResult('vci',false);return;}
+  const val=document.getElementById('val-vci');
+  const interp=document.getElementById('interp-vci');
+  if(isNaN(mx)||isNaN(mn)||mx<=0){
+    val.textContent='—';val.style.color='';
+    interp.textContent='cIVC (ventilação espontânea)';
+    setCalcReady('vci',false);return;
+  }
   const c=(mx-mn)/mx*100;
-  document.getElementById('val-vci').textContent=c.toFixed(1)+'% (cIVC)';
-  let t,col;
-  if(c>50){t='&gt; 50% — Muito provavelmente responsivo a volume';col='var(--teal)';}
-  else if(c>=20){t='20–50% — Zona cinzenta — realizar PLR ou fluid challenge';col='var(--amber)';}
-  else{t='&lt; 20% — Provavelmente não responsivo';col='var(--red)';}
-  let d='';
-  if(mx<1.5)d=' · VCI &lt; 1,5 cm — hipovolemia provável';
-  else if(mx>2.1)d=' · VCI &gt; 2,1 cm — congestão / pressão de VD elevada';
-  document.getElementById('val-vci').style.color=col;
-  document.getElementById('interp-vci').innerHTML=t+d;
-  showCalcResult('vci',true);
+  val.textContent=c.toFixed(1);
+  val.style.color='';
+  let t,tone;
+  if(c>50){t='> 50% — provavelmente responsivo a volume';tone='ok'}
+  else if(c>=20){t='20–50% — zona cinzenta (PLR / challenge)';tone='warn'}
+  else{t='< 20% — provavelmente não responsivo';tone='bad'}
+  if(mx<1.5)t+=' · VCI < 1,5 cm';
+  else if(mx>2.1)t+=' · VCI > 2,1 cm';
+  interp.textContent=t;
+  setCalcReady('vci',true,tone);
 }
 function calcDVCI(){
+  if(!document.getElementById('dvcimx'))return;
   const mx=parseFloat(document.getElementById('dvcimx').value);
   const mn=parseFloat(document.getElementById('dvcimn').value);
-  if(isNaN(mx)||isNaN(mn)||mn<=0){showCalcResult('dvci',false);return;}
+  const val=document.getElementById('val-dvci');
+  const interp=document.getElementById('interp-dvci');
+  if(isNaN(mx)||isNaN(mn)||mn<=0){
+    val.textContent='—';val.style.color='';
+    interp.textContent='dIVC (ventilação mecânica)';
+    setCalcReady('dvci',false);return;
+  }
   const d=(mx-mn)/mn*100;
-  document.getElementById('val-dvci').textContent=d.toFixed(1)+'% (dIVC)';
-  let t,c;
-  if(d>18){t='&gt; 18% — Responsivo a volume em ventilação mecânica';c='var(--teal)';}
-  else{t='≤ 18% — Não responsivo — não administrar volume adicional';c='var(--red)';}
-  document.getElementById('val-dvci').style.color=c;
-  document.getElementById('interp-dvci').innerHTML=t;
-  showCalcResult('dvci',true);
+  val.textContent=d.toFixed(1);
+  val.style.color='';
+  let t,tone;
+  if(d>18){t='> 18% — responsivo a volume em VM';tone='ok'}
+  else{t='≤ 18% — não responsivo';tone='bad'}
+  interp.textContent=t;
+  setCalcReady('dvci',true,tone);
 }
 function calcWinter(){
+  if(!document.getElementById('hco3'))return;
   const h=parseFloat(document.getElementById('hco3').value);
   const p=parseFloat(document.getElementById('pco2w').value);
-  if(isNaN(h)||isNaN(p)){showCalcResult('winter',false);return;}
+  const val=document.getElementById('val-winter');
+  const interp=document.getElementById('interp-winter');
+  if(isNaN(h)||isNaN(p)){
+    val.textContent='—';val.style.color='';
+    interp.textContent='pCO₂ esperado = 1,5 × HCO₃ + 8 ± 2';
+    setCalcReady('winter',false);return;
+  }
   const exp=1.5*h+8;
   const lo=(exp-2).toFixed(1),hi=(exp+2).toFixed(1);
-  document.getElementById('val-winter').textContent='Esperado: '+lo+'–'+hi+' mmHg';
-  let t,c;
-  if(p>=(exp-2)&&p<=(exp+2)){t='pCO₂ medido ('+p+') dentro do esperado — compensação <strong>adequada</strong>.';c='var(--teal)';}
-  else if(p<(exp-2)){t='pCO₂ medido ('+p+') <strong>abaixo</strong> — alcalose respiratória associada (misto).';c='var(--amber)';}
-  else{t='pCO₂ medido ('+p+') <strong>acima</strong> — acidose respiratória associada (misto).';c='var(--coral)';}
-  document.getElementById('val-winter').style.color=c;
-  document.getElementById('interp-winter').innerHTML=t;
-  showCalcResult('winter',true);
+  val.textContent=lo+'–'+hi;
+  val.style.color='';
+  let t,tone;
+  if(p>=(exp-2)&&p<=(exp+2)){t='Medido '+p+' — compensação adequada';tone='ok'}
+  else if(p<(exp-2)){t='Medido '+p+' — abaixo (alcalose resp. associada)';tone='warn'}
+  else{t='Medido '+p+' — acima (acidose resp. associada)';tone='bad'}
+  interp.textContent=t;
+  setCalcReady('winter',true,tone);
 }
 function calcVPP(){
+  if(!document.getElementById('ppmax'))return;
   const mx=parseFloat(document.getElementById('ppmax').value);
   const mn=parseFloat(document.getElementById('ppmin').value);
-  if(isNaN(mx)||isNaN(mn)||(mx+mn)<=0){showCalcResult('vpp',false);return;}
+  const val=document.getElementById('val-vpp');
+  const interp=document.getElementById('interp-vpp');
+  if(isNaN(mx)||isNaN(mn)||(mx+mn)<=0){
+    val.textContent='—';val.style.color='';
+    interp.textContent='VPP (paciente intubado)';
+    setCalcReady('vpp',false);return;
+  }
   const v=(mx-mn)/((mx+mn)/2)*100;
-  document.getElementById('val-vpp').textContent=v.toFixed(1)+'% (VPP)';
-  let t,c;
-  if(v>13){t='&gt; 13% — Responsivo a volume';c='var(--red)';}
-  else if(v>=9){t='9–13% — Zona cinzenta — PLR com VTI antes de decidir';c='var(--amber)';}
-  else{t='&lt; 9% — Não responsivo a volume';c='var(--teal)';}
-  document.getElementById('val-vpp').style.color=c;
-  document.getElementById('interp-vpp').innerHTML=t;
-  showCalcResult('vpp',true);
+  val.textContent=v.toFixed(1);
+  val.style.color='';
+  let t,tone;
+  if(v>13){t='> 13% — responsivo a volume';tone='ok'}
+  else if(v>=9){t='9–13% — zona cinzenta (PLR + VTI)';tone='warn'}
+  else{t='< 9% — não responsivo a volume';tone='bad'}
+  interp.textContent=t;
+  setCalcReady('vpp',true,tone);
 }
+
+// Nav jump: highlight ativo ao rolar
+(function initCalcNav(){
+  const nav=document.querySelector('.calc-nav');
+  if(!nav)return;
+  const links=[...nav.querySelectorAll('a.calc-jump[href^="#"]')];
+  if(!links.length)return;
+  const map=links.map(a=>{
+    const id=a.getAttribute('href').slice(1);
+    return {a,el:document.getElementById(id)};
+  }).filter(x=>x.el);
+  function sync(){
+    const y=window.scrollY+100;
+    let cur=map[0];
+    for(const item of map){
+      if(item.el.offsetTop<=y)cur=item;
+    }
+    links.forEach(l=>l.classList.toggle('is-active',l===cur.a));
+  }
+  window.addEventListener('scroll',sync,{passive:true});
+  sync();
+})();
 
 // ============================================================
 // QUIZ VM (só inicia se existir #quiz-container)

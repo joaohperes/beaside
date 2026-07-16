@@ -30,21 +30,160 @@
   </div>
 
   <div class="sec-h"><span class="sec-num">01</span><h2>Perfil farmacológico comparado</h2></div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>Propriedade</th><th>Etomidato</th><th>Cetamina</th><th>Propofol</th><th>Midazolam</th></tr></thead>
+
+  <div class="table-wrap table-compact"><table>
+    <thead><tr><th>Agente</th><th>Dose RSI</th><th>Dose no choque</th><th>Onset</th><th>Duração</th></tr></thead>
     <tbody>
-      <tr><td><strong>Dose RSI padrão</strong></td><td class="td-mono">0,3 mg/kg IV</td><td class="td-mono">1–2 mg/kg IV</td><td class="td-mono">1,5–3 mg/kg IV</td><td class="td-mono">0,2–0,3 mg/kg IV</td></tr>
-      <tr><td><strong>Dose no choque</strong></td><td class="td-ok td-mono">0,15 mg/kg IV</td><td class="td-ok td-mono">1 mg/kg IV</td><td class="td-bad">Evitar — risco de colapso</td><td class="td-warn td-mono">0,1–0,15 mg/kg (2ª linha)</td></tr>
-      <tr><td><strong>Onset</strong></td><td>15–45 s</td><td>45–60 s</td><td>15–45 s</td><td class="td-bad">30–60 s (lento)</td></tr>
-      <tr><td><strong>Duração</strong></td><td>3–12 min</td><td>10–20 min</td><td>5–10 min</td><td>15–30 min</td></tr>
-      <tr><td><strong>Hemodinâmica</strong></td><td class="td-ok">NEUTRO — melhor da classe para instáveis</td><td class="td-warn">↑ PA e ↑ FC (↑ output simpático)</td><td class="td-bad">↓ PA (~10 mmHg típico; mais em instáveis)</td><td class="td-bad">↓ PA dose-dependente</td></tr>
-      <tr><td><strong>Broncoespasmo</strong></td><td class="td-warn">Leve ↑ resistência — cautela em asma</td><td class="td-ok">Broncodilatador (↑ catecolaminas)</td><td class="td-ok">Broncodilatador</td><td>Neutro</td></tr>
-      <tr><td><strong>PIC / SNC</strong></td><td class="td-ok">Neutro para PIC. Preserva PPC.</td><td class="td-warn">Evidência de elevação de PIC é fraca. Revisão de 11 estudos: sem evidência de prejuízo neurológico. Razoável no TCE + hipotensão.*</td><td class="td-ok">↓ PIC (se hemodin. estável)</td><td class="td-bad">↓ PA pode ↓ PPC. Onset lento.</td></tr>
-      <tr><td><strong>Anticonvulsivante</strong></td><td>Não. Mioclonia pós-etomidato ≠ convulsão.</td><td class="td-bad">Não — efeito estimulante. Evitar em status.</td><td class="td-ok">Sim — preferência em status epiléptico.</td><td class="td-ok">Sim — anticonvulsivante, onset mais lento</td></tr>
-      <tr><td><strong>Caveat principal</strong></td><td class="td-warn">Supressão adrenal reversível 12–24h (1 dose em sepse = aceitável)**</td><td>Evitar se PAM >120 mmHg ou sinais de herniação</td><td class="td-bad">↓ MAP em 43% dos críticos (INTUBE study). PRIS em infusão prolongada.</td><td class="td-bad">Subdosado frequentemente. Taquifilaxia.</td></tr>
+      <tr>
+        <td><strong>Etomidato</strong></td>
+        <td class="td-mono">0,3 mg/kg IV</td>
+        <td class="td-mono">0,15 mg/kg IV</td>
+        <td class="td-mono">15–45 s</td>
+        <td class="td-mono">3–12 min</td>
+      </tr>
+      <tr>
+        <td><strong>Cetamina</strong></td>
+        <td class="td-mono">1–2 mg/kg IV</td>
+        <td class="td-mono">1 mg/kg IV</td>
+        <td class="td-mono">45–60 s</td>
+        <td class="td-mono">10–20 min</td>
+      </tr>
+      <tr>
+        <td><strong>Propofol</strong></td>
+        <td class="td-mono">1,5–3 mg/kg IV</td>
+        <td class="td-bad">Evitar — colapso</td>
+        <td class="td-mono">15–45 s</td>
+        <td class="td-mono">5–10 min</td>
+      </tr>
+      <tr>
+        <td><strong>Midazolam</strong></td>
+        <td class="td-mono">0,2–0,3 mg/kg IV</td>
+        <td class="td-mono">0,1–0,15 mg/kg <span class="pill-qual">(2ª linha)</span></td>
+        <td class="td-mono">30–60 s <span class="pill-qual">(lento)</span></td>
+        <td class="td-mono">15–30 min</td>
+      </tr>
     </tbody>
   </table></div>
-  <p class="prose" style="font-size:12.5px;color:var(--text3)">* UpToDate: "A systematic review of 11 studies found no evidence to justify restrictions on ketamine use for RSI in the setting of elevated ICP." Evitar cetamina se hipertensão arterial grave (PAM >120) ou sinais de herniação. <br>** UpToDate: etomidato em dose única "is an acceptable induction agent for patients with severe sepsis." Hidrocortisona 100 mg IV apenas se choque refratório a fluido E vasopressor.</p>
+
+  <div class="pharm-compare" aria-label="Perfil qualitativo por indutor">
+    <article class="pharm-card">
+      <header class="pharm-card-h">
+        <h3 class="pharm-card-name">Etomidato</h3>
+        <p class="pharm-card-lead">Melhor da classe no instável</p>
+      </header>
+      <div class="pharm-rows">
+        <div class="pharm-row">
+          <div class="pharm-k">Hemodinâmica</div>
+          <div class="pharm-v">NEUTRO — melhor da classe para instáveis</div>
+        </div>
+        <div class="pharm-row">
+          <div class="pharm-k">Broncoespasmo</div>
+          <div class="pharm-v">Leve ↑ resistência — cautela em asma</div>
+        </div>
+        <div class="pharm-row">
+          <div class="pharm-k">PIC / SNC</div>
+          <div class="pharm-v">Neutro para PIC. Preserva PPC.</div>
+        </div>
+        <div class="pharm-row">
+          <div class="pharm-k">Anticonvulsivante</div>
+          <div class="pharm-v">Não. Mioclonia pós-etomidato ≠ convulsão.</div>
+        </div>
+        <div class="pharm-row">
+          <div class="pharm-k">Caveat</div>
+          <div class="pharm-v">Supressão adrenal reversível 12–24h (1 dose em sepse = aceitável)**</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="pharm-card">
+      <header class="pharm-card-h">
+        <h3 class="pharm-card-name">Cetamina</h3>
+        <p class="pharm-card-lead">Preferida no broncoespasmo</p>
+      </header>
+      <div class="pharm-rows">
+        <div class="pharm-row">
+          <div class="pharm-k">Hemodinâmica</div>
+          <div class="pharm-v">↑ PA e ↑ FC (↑ output simpático)</div>
+        </div>
+        <div class="pharm-row">
+          <div class="pharm-k">Broncoespasmo</div>
+          <div class="pharm-v">Broncodilatador (↑ catecolaminas)</div>
+        </div>
+        <div class="pharm-row">
+          <div class="pharm-k">PIC / SNC</div>
+          <div class="pharm-v">Evidência de elevação de PIC é fraca. Revisão de 11 estudos: sem evidência de prejuízo neurológico. Razoável no TCE + hipotensão.*</div>
+        </div>
+        <div class="pharm-row">
+          <div class="pharm-k">Anticonvulsivante</div>
+          <div class="pharm-v">Não — efeito estimulante. Evitar em status.</div>
+        </div>
+        <div class="pharm-row">
+          <div class="pharm-k">Caveat</div>
+          <div class="pharm-v">Evitar se PAM &gt;120 mmHg ou sinais de herniação</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="pharm-card">
+      <header class="pharm-card-h">
+        <h3 class="pharm-card-name">Propofol</h3>
+        <p class="pharm-card-lead">Preferido no status epiléptico</p>
+      </header>
+      <div class="pharm-rows">
+        <div class="pharm-row">
+          <div class="pharm-k">Hemodinâmica</div>
+          <div class="pharm-v">↓ PA (~10 mmHg típico; mais em instáveis)</div>
+        </div>
+        <div class="pharm-row">
+          <div class="pharm-k">Broncoespasmo</div>
+          <div class="pharm-v">Broncodilatador</div>
+        </div>
+        <div class="pharm-row">
+          <div class="pharm-k">PIC / SNC</div>
+          <div class="pharm-v">↓ PIC (se hemodin. estável)</div>
+        </div>
+        <div class="pharm-row">
+          <div class="pharm-k">Anticonvulsivante</div>
+          <div class="pharm-v">Sim — preferência em status epiléptico.</div>
+        </div>
+        <div class="pharm-row">
+          <div class="pharm-k">Caveat</div>
+          <div class="pharm-v">↓ MAP em 43% dos críticos (INTUBE study). PRIS em infusão prolongada.</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="pharm-card">
+      <header class="pharm-card-h">
+        <h3 class="pharm-card-name">Midazolam</h3>
+        <p class="pharm-card-lead">2ª linha — onset lento</p>
+      </header>
+      <div class="pharm-rows">
+        <div class="pharm-row">
+          <div class="pharm-k">Hemodinâmica</div>
+          <div class="pharm-v">↓ PA dose-dependente</div>
+        </div>
+        <div class="pharm-row">
+          <div class="pharm-k">Broncoespasmo</div>
+          <div class="pharm-v">Neutro</div>
+        </div>
+        <div class="pharm-row">
+          <div class="pharm-k">PIC / SNC</div>
+          <div class="pharm-v">↓ PA pode ↓ PPC. Onset lento.</div>
+        </div>
+        <div class="pharm-row">
+          <div class="pharm-k">Anticonvulsivante</div>
+          <div class="pharm-v">Sim — anticonvulsivante, onset mais lento</div>
+        </div>
+        <div class="pharm-row">
+          <div class="pharm-k">Caveat</div>
+          <div class="pharm-v">Subdosado frequentemente. Taquifilaxia.</div>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <p class="prose pharm-notes">* UpToDate: "A systematic review of 11 studies found no evidence to justify restrictions on ketamine use for RSI in the setting of elevated ICP." Evitar cetamina se hipertensão arterial grave (PAM &gt;120) ou sinais de herniação.<br>** UpToDate: etomidato em dose única "is an acceptable induction agent for patients with severe sepsis." Hidrocortisona 100 mg IV apenas se choque refratório a fluido E vasopressor.</p>
   <div class="sec-h"><span class="sec-num">02</span><h2>Algoritmo de escolha por cenário</h2></div>
   <div class="scenario-list">
     <div class="scenario-item"><div class="s-ctx">Geral / estável</div><div class="s-first"><strong>Etomidato 0,3 mg/kg</strong></div><div class="s-note">Alternativa: Propofol 1,5–2 mg/kg se hemodin. estável. Padrão na maioria dos serviços de urgência.</div></div>

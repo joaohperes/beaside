@@ -174,6 +174,17 @@ h3{font-size:15px;font-weight:500;color:#e8ecf2;margin:28px 0 12px}
   outline:2px solid rgba(var(--accent-rgb),.45);
   outline-offset:2px;
 }
+/* calc-nav: class explícita nos links — anula estilo de conteúdo */
+.section .calc-nav a.calc-jump,
+.section .calc-nav a.calc-jump:hover,
+.section .calc-nav a.calc-jump:focus-visible{
+  color:var(--text2);
+  font-weight:500;
+  border-bottom:none!important;
+  background:transparent;
+  outline:none;
+  border-radius:8px;
+}
 /* CTA compacto em boxes — sempre abaixo do texto, nunca colado no parágrafo */
 a.link-cta{
   display:flex;align-items:center;gap:6px;
@@ -252,11 +263,18 @@ thead th,th{
 tbody td{
   padding:14px 18px;border-bottom:1px solid var(--border);
   color:var(--text);vertical-align:middle;line-height:1.55;
-  word-break:break-word;
+  word-break:normal;
+  overflow-wrap:break-word;
 }
 tbody tr:last-child td{border-bottom:none}
 tbody tr:hover td{background:rgba(255,255,255,.02)}
 td strong{color:#e8ecf2;font-weight:500}
+/* 1ª coluna com rótulo (strong): não esmagar no meio da palavra */
+td:first-child:has(> strong){
+  min-width:7.5em;
+  white-space:nowrap;
+  word-break:normal;
+}
 /* 1ª coluna com label semântico: respiro em relação à célula seguinte */
 td:first-child:has(.pill){
   min-width:9.5em;
@@ -471,25 +489,611 @@ td:first-child .pill{
   flex:0 0 56px;width:56px;min-width:56px;text-align:center;box-sizing:border-box;
 }
 .peep-cell.hi{background:rgba(var(--accent-rgb),.12);border-color:var(--accent-d);color:var(--accent)}
-.calc-box{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:24px;margin:20px 0}
-.calc-box h3{margin-top:0;color:var(--text)}
-.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
-.calc-field label{display:block;font-size:11.5px;color:var(--text2);margin-bottom:6px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em}
-.calc-field input,.calc-field select{width:100%;background:var(--bg4);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:6px;font-family:var(--mono);font-size:13px;outline:none;transition:border-color .15s}
-.calc-field input:focus,.calc-field select:focus{border-color:var(--accent)}
-.calc-field select option{background:var(--bg4)}
-.calc-result{background:rgba(var(--accent-rgb),.08);border:1px solid var(--accent-d);border-radius:8px;padding:16px 20px;margin-top:12px}
-.res-label{font-size:11px;color:var(--accent);font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
-.res-values{display:flex;gap:24px;flex-wrap:wrap}
-.res-item .res-val{font-family:var(--mono);font-size:22px;font-weight:500;color:var(--accent)}
-.res-item .res-unit{font-size:12px;color:var(--text2)}
-.res-item small{display:block;font-size:11px;color:var(--text3);margin-top:2px}
+/* ═══════════════════════════════════════════════════════════
+   Calculadoras — instrument panel (nível hub / fora da curva)
+   ═══════════════════════════════════════════════════════════ */
+.calc-stack{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  margin:6px 0 40px;
+  counter-reset:calc-panel;
+}
+.calc-stack > .calc-box,
+.calc-stack > .calc-panel,
+.calc-stack > .card.calc-panel{
+  scroll-margin-top:80px;
+  margin:0;
+  counter-increment:calc-panel;
+}
+
+/* ── Jump nav: segmented control quieto ── */
+.calc-nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin:2px 0 22px;
+  padding:5px;
+  border-radius:12px;
+  background:rgba(255,255,255,.025);
+  border:1px solid var(--border);
+}
+.calc-nav a.calc-jump{
+  display:inline-flex;
+  align-items:center;
+  padding:8px 13px;
+  border-radius:8px;
+  color:var(--text2)!important;
+  font-size:12.5px;
+  font-weight:500;
+  letter-spacing:-.015em;
+  text-decoration:none!important;
+  border:none!important;
+  border-bottom:none!important;
+  background:transparent;
+  transition:color .15s var(--ease),background .15s var(--ease),box-shadow .15s;
+}
+.calc-nav a.calc-jump:hover{
+  color:var(--text)!important;
+  background:rgba(255,255,255,.05);
+}
+.calc-nav a.calc-jump.is-active{
+  color:var(--text)!important;
+  background:rgba(var(--accent-rgb),.12);
+  box-shadow:inset 0 0 0 1px rgba(var(--accent-rgb),.28);
+}
+.calc-nav a.calc-jump + a.calc-jump::before{display:none}
+
+/* ── Card = instrumento ── */
+.calc-box,
+.calc-panel,
+.card.calc-panel{
+  position:relative;
+  background:
+    radial-gradient(120% 80% at 0% 0%,rgba(var(--accent-rgb),.07),transparent 42%),
+    linear-gradient(165deg,rgba(255,255,255,.035) 0%,rgba(255,255,255,.01) 48%,transparent 100%),
+    var(--bg2);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:0;
+  overflow:hidden;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.04) inset,
+    0 12px 40px rgba(0,0,0,.18);
+  transition:border-color .25s var(--ease),box-shadow .3s var(--ease);
+}
+.calc-box:hover,
+.calc-panel:hover,
+.card.calc-panel:hover{
+  border-color:rgba(255,255,255,.1);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.05) inset,
+    0 18px 48px rgba(0,0,0,.26);
+}
+/* hairline superior (mesmo idioma do lp-card) */
+.calc-box::before,
+.calc-panel::before,
+.card.calc-panel::before{
+  content:''!important;
+  display:block!important;
+  position:absolute;
+  top:0;left:10%;right:10%;
+  height:1px;
+  width:auto;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.14),rgba(var(--accent-rgb),.35),rgba(255,255,255,.14),transparent);
+  pointer-events:none;
+  opacity:1;
+}
+.calc-panel-body{
+  display:flex;
+  flex-direction:column;
+  padding:22px 24px 20px;
+  gap:0;
+}
+
+/* ── Header com índice ── */
+.calc-panel-h{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:8px 16px;
+  padding:0;
+  margin:0 0 6px;
+}
+.calc-panel-title,
+.calc-box h3,
+.calc-panel .card-title{
+  margin:0;
+  font-size:17px;
+  font-weight:600;
+  letter-spacing:-.025em;
+  color:var(--text);
+  line-height:1.3;
+  flex:1 1 auto;
+  min-width:0;
+  display:flex;
+  align-items:baseline;
+  gap:12px;
+}
+.calc-panel-title::before,
+.calc-box h3::before{
+  content:counter(calc-panel,decimal-leading-zero);
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.06em;
+  color:var(--accent);
+  opacity:.85;
+  flex-shrink:0;
+}
+.calc-panel .card-title::before,
+.card.calc-panel .card-title::before{
+  content:counter(calc-panel,decimal-leading-zero)!important;
+  display:inline-block!important;
+  width:auto!important;height:auto!important;
+  border-radius:0!important;
+  background:transparent!important;
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.06em;
+  color:var(--accent);
+  opacity:.85;
+  margin:0;
+}
+.calc-panel-src,
+.calc-box h3 .src{
+  font-family:var(--mono);
+  font-size:10px;
+  font-weight:400;
+  color:var(--text3);
+  letter-spacing:.04em;
+  text-transform:none;
+  white-space:nowrap;
+  padding-top:4px;
+}
+
+/* ── Fórmula: chip mono ── */
+.calc-formula,
+.calc-panel .formula,
+.card.calc-panel .formula{
+  display:inline-block;
+  align-self:flex-start;
+  margin:8px 0 0;
+  padding:7px 12px;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,.06);
+  background:rgba(0,0,0,.22);
+  color:var(--text2);
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:400;
+  letter-spacing:.01em;
+  line-height:1.5;
+  text-align:left;
+  white-space:normal;
+  max-width:100%;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.calc-panel .formula + .formula,
+.card.calc-panel .formula + .formula{margin-top:6px}
+.calc-panel .formula.purple,
+.calc-panel .formula.amber,
+.calc-panel .formula.red,
+.calc-panel .formula.teal,
+.card.calc-panel .formula.purple,
+.card.calc-panel .formula.amber,
+.card.calc-panel .formula.red{
+  color:var(--text2);
+}
+.calc-panel .formula .op,
+.card.calc-panel .formula .op{color:var(--text3);margin:0 .28em}
+.calc-panel .formula .num,
+.card.calc-panel .formula .num{color:var(--text)}
+.calc-panel .formula .frac > span:first-child,
+.card.calc-panel .formula .frac > span:first-child{
+  border-bottom-color:var(--text3);
+}
+.calc-hint,
+.calc-panel-hint{
+  margin:10px 0 0;
+  font-size:12.5px;
+  line-height:1.55;
+  color:var(--text3);
+  max-width:52em;
+}
+
+/* ── Campos: grid limpo, inputs elevados ── */
+.calc-grid,
+.calc-fields{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px 16px;
+  margin:18px 0 0;
+  padding:0;
+  border:none;
+  border-radius:0;
+  background:transparent;
+}
+.calc-fields.cols-1{grid-template-columns:1fr}
+.calc-field{min-width:0}
+.calc-field label,
+.calc-field .calc-label,
+.calc-label{
+  display:block;
+  font-size:12px;
+  font-weight:500;
+  color:var(--text2);
+  margin-bottom:8px;
+  font-family:var(--sans);
+  text-transform:none;
+  letter-spacing:-.01em;
+}
+.calc-field input,
+.calc-field select,
+.calc-input{
+  width:100%;
+  box-sizing:border-box;
+  height:48px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  color:var(--text);
+  padding:0 14px;
+  border-radius:12px;
+  font-family:var(--mono);
+  font-size:16px;
+  font-weight:500;
+  letter-spacing:-.02em;
+  outline:none;
+  box-shadow:0 1px 0 rgba(255,255,255,.03) inset;
+  transition:border-color .15s var(--ease),box-shadow .15s var(--ease),background .15s;
+  -moz-appearance:textfield;
+}
+.calc-field input::-webkit-outer-spin-button,
+.calc-field input::-webkit-inner-spin-button,
+.calc-input::-webkit-outer-spin-button,
+.calc-input::-webkit-inner-spin-button{
+  -webkit-appearance:none;margin:0;
+}
+.calc-field input::placeholder,
+.calc-input::placeholder{
+  color:var(--text3);
+  font-weight:400;
+  opacity:.55;
+}
+.calc-field input:hover,
+.calc-field select:hover,
+.calc-input:hover{
+  border-color:rgba(255,255,255,.14);
+  background:rgba(255,255,255,.055);
+}
+.calc-field input:focus,
+.calc-field select:focus,
+.calc-input:focus{
+  border-color:rgba(var(--accent-rgb),.55);
+  box-shadow:
+    0 0 0 3px rgba(var(--accent-rgb),.16),
+    0 1px 0 rgba(255,255,255,.04) inset;
+  background:rgba(255,255,255,.06);
+}
+.calc-field select option,
+.calc-input option{background:var(--bg3);color:var(--text)}
+
+/* ── Resultado: métricas em tiles ── */
+.calc-result{
+  margin:20px 0 0;
+  padding:0;
+  border:none;
+  border-radius:0;
+  background:transparent;
+  min-height:0;
+}
+.calc-result.empty{display:none!important}
+.res-label,
+.calc-result-label{
+  display:none; /* tiles se bastam */
+}
+.res-values{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(124px,1fr));
+  gap:10px;
+}
+/* single-metric (1 item ou hemo hero) ocupa largura elegante */
+.res-values:has(.res-item:only-child){
+  grid-template-columns:1fr;
+}
+.res-item{
+  min-width:0;
+  position:relative;
+  padding:16px 16px 14px;
+  border-radius:14px;
+  background:rgba(0,0,0,.22);
+  border:1px solid rgba(255,255,255,.06);
+  box-shadow:0 1px 0 rgba(255,255,255,.03) inset;
+  transition:border-color .2s,background .2s;
+}
+.calc-result.is-ready .res-item{
+  background:rgba(var(--accent-rgb),.06);
+  border-color:rgba(var(--accent-rgb),.16);
+}
+.res-item .res-val,
+.calc-result-value{
+  display:block;
+  font-family:var(--mono);
+  font-size:clamp(28px,3.2vw,34px);
+  font-weight:600;
+  color:var(--text);
+  letter-spacing:-.04em;
+  line-height:1.05;
+  font-variant-numeric:tabular-nums;
+  transition:color .2s;
+}
+.calc-result.is-idle .res-val,
+.calc-result.is-idle .calc-result-value{
+  color:var(--text3);
+  font-weight:500;
+}
+/* tones clínicos no número */
+.calc-result[data-tone="ok"] .res-val,
+.calc-result[data-tone="ok"] .calc-result-value{color:var(--teal)!important}
+.calc-result[data-tone="warn"] .res-val,
+.calc-result[data-tone="warn"] .calc-result-value{color:var(--amber)!important}
+.calc-result[data-tone="bad"] .res-val,
+.calc-result[data-tone="bad"] .calc-result-value{color:var(--red)!important}
+.calc-result[data-tone="neutral"] .res-val,
+.calc-result[data-tone="neutral"] .calc-result-value{color:var(--text)!important}
+
+.res-item .res-unit{
+  display:block;
+  margin:6px 0 0;
+  font-family:var(--mono);
+  font-size:11.5px;
+  font-weight:500;
+  color:var(--text3);
+  letter-spacing:.02em;
+}
+.res-item small,
+.res-meta,
+.calc-result-interp,
+.res-status{
+  display:block;
+  font-size:12.5px;
+  color:var(--text2);
+  margin-top:10px;
+  line-height:1.45;
+  font-weight:400;
+  max-width:40em;
+}
+.res-meta{
+  margin-top:8px;
+  font-size:12px;
+  color:var(--text3);
+}
+/* meta de multi-métrica nunca vira pill */
+.calc-result.is-ready .res-meta{
+  display:block;
+  margin-top:8px;
+  padding:0;
+  border:none;
+  background:transparent;
+  border-radius:0;
+  color:var(--text3);
+  font-weight:400;
+}
+/* status pill quando ready */
+.calc-result.is-ready .res-status,
+.calc-result.is-ready .res-item small,
+.calc-result.is-ready .calc-result-interp{
+  display:inline-flex;
+  align-items:center;
+  margin-top:12px;
+  padding:5px 10px;
+  border-radius:999px;
+  font-size:11.5px;
+  font-weight:500;
+  line-height:1.3;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.07);
+  color:var(--text2);
+}
+.calc-result.is-ready[data-tone="ok"] .res-status,
+.calc-result.is-ready[data-tone="ok"] .res-item small,
+.calc-result.is-ready[data-tone="ok"] .calc-result-interp{
+  color:var(--teal);
+  background:rgba(29,184,138,.1);
+  border-color:rgba(29,184,138,.22);
+}
+.calc-result.is-ready[data-tone="warn"] .res-status,
+.calc-result.is-ready[data-tone="warn"] .res-item small,
+.calc-result.is-ready[data-tone="warn"] .calc-result-interp{
+  color:var(--amber);
+  background:rgba(240,160,48,.1);
+  border-color:rgba(240,160,48,.22);
+}
+.calc-result.is-ready[data-tone="bad"] .res-status,
+.calc-result.is-ready[data-tone="bad"] .res-item small,
+.calc-result.is-ready[data-tone="bad"] .calc-result-interp{
+  color:#f08080;
+  background:rgba(224,85,85,.1);
+  border-color:rgba(224,85,85,.22);
+}
+
+/* hemo: valor solto → envolver visualmente como tile */
+.calc-result > .calc-result-value{
+  display:block;
+  padding:16px 16px 4px;
+  border-radius:14px 14px 0 0;
+  background:rgba(0,0,0,.22);
+  border:1px solid rgba(255,255,255,.06);
+  border-bottom:none;
+  box-shadow:0 1px 0 rgba(255,255,255,.03) inset;
+}
+.calc-result > .calc-result-interp{
+  margin:0;
+  padding:8px 16px 14px;
+  border-radius:0 0 14px 14px;
+  background:rgba(0,0,0,.22);
+  border:1px solid rgba(255,255,255,.06);
+  border-top:none;
+}
+.calc-result.is-ready > .calc-result-value,
+.calc-result.is-ready > .calc-result-interp{
+  background:rgba(var(--accent-rgb),.06);
+  border-color:rgba(var(--accent-rgb),.16);
+}
+.calc-result.is-ready > .calc-result-interp{
+  display:inline-flex;
+  margin:0 0 0 16px;
+  transform:translateY(-6px);
+}
+
+/* DO₂ blocks → tiles */
+.calc-result-block{
+  margin-top:0;
+  padding:16px;
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:14px;
+  background:rgba(0,0,0,.22);
+  box-shadow:0 1px 0 rgba(255,255,255,.03) inset;
+}
+.calc-result-block + .calc-result-block{margin-top:10px}
+.calc-result.is-ready .calc-result-block{
+  background:rgba(var(--accent-rgb),.06);
+  border-color:rgba(var(--accent-rgb),.16);
+}
+.calc-result-block .calc-result-label{
+  display:block;
+  font-size:10px;
+  color:var(--text3);
+  font-family:var(--mono);
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  margin-bottom:8px;
+  font-weight:500;
+}
+.calc-result-block .calc-result-value{
+  font-size:clamp(24px,2.8vw,30px);
+}
+.calc-result-block .calc-result-interp{
+  margin-top:10px;
+}
+
+@media(max-width:680px){
+  .calc-panel-body{padding:18px 16px 16px}
+  .calc-grid,
+  .calc-fields{grid-template-columns:1fr;gap:12px;margin-top:16px}
+  .res-item .res-val,
+  .calc-result-value{font-size:26px}
+  .calc-nav{gap:4px;padding:4px}
+  .calc-nav a.calc-jump{padding:7px 10px;font-size:12px}
+  .calc-panel-title{font-size:15.5px}
+}
 .scenario-list{display:flex;flex-direction:column;gap:5px;margin:16px 0}
 .scenario-item{display:grid;grid-template-columns:200px 1fr 1fr;border:1px solid var(--border);border-radius:6px;overflow:hidden;font-size:13px}
 .scenario-item .s-ctx{padding:10px 14px;background:var(--bg4);color:var(--text2);font-size:12.5px;display:flex;align-items:center}
 .scenario-item .s-first{padding:10px 14px;background:rgba(var(--accent-rgb),.07);border-left:1px solid var(--border);border-right:1px solid var(--border)}
 .scenario-item .s-first strong{color:var(--accent);font-family:var(--mono);font-size:12px}
 .scenario-item .s-note{padding:10px 14px;color:var(--text2);font-size:12px;display:flex;align-items:center}
+
+/* ── Perfil farmacológico (cards por agente) ── */
+.table-wrap.table-compact table{font-size:13px}
+.table-wrap.table-compact tbody td{padding:12px 16px;vertical-align:middle}
+.table-wrap.table-compact + .pharm-compare{margin-top:18px}
+.pharm-compare{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+  margin:16px 0 8px;
+  align-items:stretch;
+}
+.pharm-card{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:16px 16px 10px;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+}
+.pharm-card-h{
+  margin:0 0 4px;
+  padding:0 0 12px;
+  border-bottom:1px solid var(--border);
+}
+.pharm-card-name{
+  margin:0 0 4px;
+  font-size:15.5px;
+  font-weight:600;
+  letter-spacing:-.015em;
+  color:var(--text);
+  line-height:1.25;
+}
+.pharm-card-lead{
+  margin:0;
+  font-size:12.5px;
+  font-weight:500;
+  line-height:1.4;
+  color:var(--text2);
+}
+.pharm-compare.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+/* label empilhado acima do valor — sem coluna estreita que colide */
+.pharm-rows{
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+.pharm-row{
+  padding:11px 0;
+  border-bottom:1px solid var(--border);
+  min-width:0;
+}
+.pharm-row:last-child{border-bottom:none}
+.pharm-k{
+  display:block;
+  margin:0 0 4px;
+  font-size:10.5px;
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--text3);
+  line-height:1.35;
+}
+.pharm-v{
+  display:block;
+  margin:0;
+  font-size:13px;
+  line-height:1.5;
+  color:var(--text);
+  font-weight:400;
+  overflow-wrap:break-word;
+  word-break:normal;
+}
+/* cor semântica só quando crítica — default é neutro */
+.pharm-v.td-ok,
+.pharm-v.td-warn,
+.pharm-v.td-bad{font-weight:500}
+.pharm-v.td-ok{color:var(--accent)}
+.pharm-v.td-warn{color:var(--amber)}
+.pharm-v.td-bad{color:var(--red)}
+.pharm-notes{
+  font-size:12.5px;
+  color:var(--text3);
+  line-height:1.55;
+  margin:10px 0 0;
+}
+@media(max-width:1100px){
+  .pharm-compare.cols-3{grid-template-columns:1fr;gap:12px}
+}
+@media(max-width:900px){
+  .pharm-compare{grid-template-columns:1fr;gap:12px}
+}
+@media(max-width:480px){
+  .pharm-card{padding:14px 14px 8px}
+  .pharm-card-name{font-size:15px}
+}
 .step-list{display:flex;flex-direction:column;gap:4px;margin:16px 0}
 .step-item{display:grid;grid-template-columns:140px 1fr;border:1px solid var(--border);border-radius:6px;overflow:hidden}
 .step-item .s-label{padding:12px 14px;font-size:12px;font-weight:500;display:flex;flex-direction:column;justify-content:center;gap:2px}
@@ -1133,12 +1737,6 @@ td:first-child:has(.pill-qual){white-space:nowrap}
 .card.collapsible .card-body{display:none;padding:0 16px 16px}
 .card.collapsible.open .card-body{display:block}
 .card.collapsible .card-body > *:first-child{margin-top:4px}
-/* Calc results hemo style */
-.calc-result.empty{background:var(--bg3);border-color:var(--border);text-align:center}
-.calc-result.empty .calc-result-empty-msg{color:var(--text2);font-size:12px;font-family:var(--mono)}
-.calc-result-block{margin-top:14px;padding-top:14px;border-top:1px solid rgba(29,184,138,.15)}
-.calc-result-block:first-of-type{margin-top:0;padding-top:0;border-top:none}
-.calc-result-label{font-family:var(--mono);font-size:10px;color:var(--text2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
 /* Cases (pratica) */
 .case-step{margin-top:14px;padding-top:12px;border-top:1px dashed var(--border)}
 .case-step:first-child{margin-top:0;padding-top:0;border-top:none}
@@ -1707,6 +2305,8 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
 .ind-grid + .sec-h,
 .two-col + .sec-h,
 .table-wrap + .sec-h,
+.pharm-compare + .sec-h,
+.pharm-notes + .sec-h,
 .warn-box + .sec-h,
 .ok-box + .sec-h,
 .tip-box + .sec-h,
@@ -1992,9 +2592,13 @@ html[data-theme="light"] .formula-card,
 html[data-theme="light"] .mat-grid,
 html[data-theme="light"] .search-modal,
 html[data-theme="light"] .quad,
-html[data-theme="light"] .fx-step{
+html[data-theme="light"] .fx-step,
+html[data-theme="light"] .pharm-card{
   background:#fff;
   box-shadow:0 1px 2px rgba(15,23,42,.04);
+}
+html[data-theme="light"] .pharm-card-name{
+  color:#0f1419;
 }
 html[data-theme="light"] .ind-item{
   background:linear-gradient(180deg,#fff,#fafbfc);
@@ -2111,9 +2715,89 @@ html[data-theme="light"] .dv-card{background:#fff}
 html[data-theme="light"] .pp-card{background:#fff;border-color:var(--border)}
 html[data-theme="light"] .quiz-case{background:var(--bg3);color:var(--text)}
 html[data-theme="light"] .quiz-opt{background:#fff;border-color:var(--border);color:var(--text)}
+html[data-theme="light"] .calc-box,
+html[data-theme="light"] .calc-panel,
+html[data-theme="light"] .card.calc-panel{
+  background:
+    radial-gradient(120% 80% at 0% 0%,rgba(var(--accent-rgb),.05),transparent 42%),
+    linear-gradient(165deg,#fff 0%,#f7f8fa 100%);
+  border-color:var(--border);
+  box-shadow:0 1px 2px rgba(15,23,42,.04),0 12px 32px rgba(15,23,42,.04);
+}
+html[data-theme="light"] .calc-box:hover,
+html[data-theme="light"] .calc-panel:hover,
+html[data-theme="light"] .card.calc-panel:hover{
+  border-color:rgba(15,23,42,.12);
+  box-shadow:0 1px 2px rgba(15,23,42,.04),0 18px 40px rgba(15,23,42,.08);
+}
+html[data-theme="light"] .calc-box::before,
+html[data-theme="light"] .calc-panel::before,
+html[data-theme="light"] .card.calc-panel::before{
+  background:linear-gradient(90deg,transparent,rgba(15,23,42,.08),rgba(var(--accent-rgb),.3),rgba(15,23,42,.08),transparent);
+}
+html[data-theme="light"] .calc-nav{
+  background:rgba(15,23,42,.03);
+  border-color:var(--border);
+}
+html[data-theme="light"] .calc-nav a.calc-jump:hover{
+  background:rgba(15,23,42,.05);
+  color:#0f1419!important;
+}
+html[data-theme="light"] .calc-nav a.calc-jump.is-active{
+  color:#0f1419!important;
+  background:rgba(var(--accent-rgb),.1);
+}
+html[data-theme="light"] .calc-formula,
+html[data-theme="light"] .calc-panel .formula,
+html[data-theme="light"] .card.calc-panel .formula{
+  background:rgba(15,23,42,.03);
+  border-color:rgba(15,23,42,.08);
+  color:var(--text2);
+}
 html[data-theme="light"] .calc-field input,
-html[data-theme="light"] .calc-field select{
-  background:#fff;border-color:var(--border);color:var(--text);
+html[data-theme="light"] .calc-field select,
+html[data-theme="light"] .calc-input{
+  background:#fff;
+  border-color:rgba(15,23,42,.1);
+  color:var(--text);
+  box-shadow:0 1px 2px rgba(15,23,42,.03);
+}
+html[data-theme="light"] .calc-field input:hover,
+html[data-theme="light"] .calc-field select:hover,
+html[data-theme="light"] .calc-input:hover{
+  border-color:rgba(15,23,42,.16);
+  background:#fff;
+}
+html[data-theme="light"] .calc-field input:focus,
+html[data-theme="light"] .calc-field select:focus,
+html[data-theme="light"] .calc-input:focus{
+  background:#fff;
+}
+html[data-theme="light"] .res-item,
+html[data-theme="light"] .calc-result-block,
+html[data-theme="light"] .calc-result > .calc-result-value,
+html[data-theme="light"] .calc-result > .calc-result-interp{
+  background:rgba(15,23,42,.03);
+  border-color:rgba(15,23,42,.08);
+  box-shadow:none;
+}
+html[data-theme="light"] .calc-result.is-ready .res-item,
+html[data-theme="light"] .calc-result.is-ready .calc-result-block,
+html[data-theme="light"] .calc-result.is-ready > .calc-result-value,
+html[data-theme="light"] .calc-result.is-ready > .calc-result-interp{
+  background:rgba(var(--accent-rgb),.06);
+  border-color:rgba(var(--accent-rgb),.18);
+}
+html[data-theme="light"] .res-item .res-val,
+html[data-theme="light"] .calc-result-value,
+html[data-theme="light"] .calc-result[data-tone="neutral"] .res-val,
+html[data-theme="light"] .calc-result[data-tone="neutral"] .calc-result-value{
+  color:#0f1419;
+}
+html[data-theme="light"] .calc-panel-title,
+html[data-theme="light"] .calc-box h3,
+html[data-theme="light"] .calc-panel .card-title{
+  color:#0f1419;
 }
 html[data-theme="light"] .nav-back{
   color:var(--text2);

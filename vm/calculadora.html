@@ -19,84 +19,123 @@
 <section class="section" id="calculadora">
   <header class="page-head">
     <div class="hero-eyebrow">Ventilação Mecânica · Ferramentas</div>
-      <h1 class="section-title">Calculadoras <a class="share-link" href="#calculadora" onclick="copyLink(event,'#calculadora')"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></a></h1>
-      <p class="section-subtitle">PBW / VC · Driving Pressure · Ventilação-minuto · P/F ratio</p>
+    <h1 class="section-title">Calculadoras <a class="share-link" href="#calculadora" onclick="copyLink(event,'#calculadora')"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></a></h1>
+    <p class="section-subtitle">PBW / VC · Driving Pressure · Ventilação-minuto · P/F ratio · IRRS</p>
   </header>
 
-  <div class="calc-box">
-    <h3>Peso Corpóreo Predito e Volume Corrente <span class="src">[UpToDate — ARDS ventilator management; FCCS Cap. 5]</span></h3>
-    <p class="prose" style="font-size:13px;margin-bottom:12px">Masc: PBW = 50 + 0,91 × (altura cm − 152,4) &nbsp;|&nbsp; Fem: PBW = 45,5 + 0,91 × (altura cm − 152,4)</p>
-    <div class="calc-grid">
-      <div class="calc-field"><label>Altura (cm)</label><input type="number" id="altura" placeholder="ex: 175" oninput="calcPBW()"></div>
-      <div class="calc-field"><label>Sexo</label><select id="sexo" onchange="calcPBW()"><option value="m">Masculino</option><option value="f">Feminino</option></select></div>
-    </div>
-    <div class="calc-result" id="calc-result" style="display:none">
-      <div class="res-label">Resultados</div>
-      <div class="res-values">
-        <div class="res-item"><div class="res-val" id="pbw-val">—</div><div class="res-unit">kg PBW</div><small>Peso predito</small></div>
-        <div class="res-item"><div class="res-val" id="vc6-val">—</div><div class="res-unit">mL</div><small>VC 6 mL/kg (padrão)</small></div>
-        <div class="res-item"><div class="res-val" id="vc5-val">—</div><div class="res-unit">mL</div><small>VC 5 mL/kg</small></div>
-        <div class="res-item"><div class="res-val" id="vc4-val">—</div><div class="res-unit">mL</div><small>VC 4 mL/kg (SDRA grave)</small></div>
+  <nav class="calc-nav" aria-label="Ir para calculadora">
+    <a class="calc-jump" href="#calc-pbw">PBW / VC</a>
+    <a class="calc-jump" href="#calc-dp">Driving pressure</a>
+    <a class="calc-jump" href="#calc-vm">Ventilação-minuto</a>
+    <a class="calc-jump" href="#calc-pf">P/F</a>
+    <a class="calc-jump" href="#calc-irrs">IRRS</a>
+  </nav>
+
+  <div class="calc-stack">
+    <div class="calc-box" id="calc-pbw">
+      <div class="calc-panel-body">
+        <header class="calc-panel-h">
+          <h3 class="calc-panel-title">Peso Corpóreo Predito e Volume Corrente</h3>
+          <span class="calc-panel-src">UpToDate · FCCS</span>
+        </header>
+        <div class="calc-formula">Masc: PBW = 50 + 0,91 × (altura − 152,4) &nbsp;·&nbsp; Fem: PBW = 45,5 + 0,91 × (altura − 152,4)</div>
+        <div class="calc-grid">
+          <div class="calc-field"><label for="altura">Altura (cm)</label><input type="number" id="altura" placeholder="ex: 175" oninput="calcPBW()"></div>
+          <div class="calc-field"><label for="sexo">Sexo</label><select id="sexo" onchange="calcPBW()"><option value="m">Masculino</option><option value="f">Feminino</option></select></div>
+        </div>
+        <div class="calc-result is-idle" id="calc-result">
+          <div class="res-label">Resultados</div>
+          <div class="res-values">
+            <div class="res-item"><div class="res-val" id="pbw-val">—</div><div class="res-unit">kg PBW</div><span class="res-meta">Peso predito</span></div>
+            <div class="res-item"><div class="res-val" id="vc6-val">—</div><div class="res-unit">mL</div><span class="res-meta">VC 6 mL/kg (padrão)</span></div>
+            <div class="res-item"><div class="res-val" id="vc5-val">—</div><div class="res-unit">mL</div><span class="res-meta">VC 5 mL/kg</span></div>
+            <div class="res-item"><div class="res-val" id="vc4-val">—</div><div class="res-unit">mL</div><span class="res-meta">VC 4 mL/kg (SDRA grave)</span></div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="calc-box">
-    <h3>Driving Pressure <span class="src">[UpToDate — ARDS ventilator management]</span></h3>
-    <p class="prose" style="font-size:13px;margin-bottom:12px">DP = Pplat − PEEP &nbsp;|&nbsp; Meta: &lt;15 cmH₂O. Medir Pplat com pausa inspiratória ≥ 0,5 s sem esforço do paciente.</p>
-    <div class="calc-grid">
-      <div class="calc-field"><label>Pressão de Platô (cmH₂O)</label><input type="number" id="pplat" placeholder="ex: 26" oninput="calcDP()"></div>
-      <div class="calc-field"><label>PEEP (cmH₂O)</label><input type="number" id="peep-dp" placeholder="ex: 8" oninput="calcDP()"></div>
-    </div>
-    <div class="calc-result" id="dp-result" style="display:none">
-      <div class="res-label">Driving Pressure</div>
-      <div class="res-values">
-        <div class="res-item"><div class="res-val" id="dp-val">—</div><div class="res-unit">cmH₂O</div><small id="dp-status">DP = Pplat − PEEP</small></div>
+    <div class="calc-box" id="calc-dp">
+      <div class="calc-panel-body">
+        <header class="calc-panel-h">
+          <h3 class="calc-panel-title">Driving Pressure</h3>
+          <span class="calc-panel-src">UpToDate</span>
+        </header>
+        <div class="calc-formula">DP = Pplat − PEEP &nbsp;·&nbsp; Meta: &lt; 15 cmH₂O</div>
+        <p class="calc-hint">Medir Pplat com pausa inspiratória ≥ 0,5 s, sem esforço do paciente.</p>
+        <div class="calc-grid">
+          <div class="calc-field"><label for="pplat">Pressão de platô (cmH₂O)</label><input type="number" id="pplat" placeholder="ex: 26" oninput="calcDP()"></div>
+          <div class="calc-field"><label for="peep-dp">PEEP (cmH₂O)</label><input type="number" id="peep-dp" placeholder="ex: 8" oninput="calcDP()"></div>
+        </div>
+        <div class="calc-result is-idle" id="dp-result">
+          <div class="res-label">Driving pressure</div>
+          <div class="res-values">
+            <div class="res-item"><div class="res-val" id="dp-val">—</div><div class="res-unit">cmH₂O</div><span class="res-status" id="dp-status">DP = Pplat − PEEP</span></div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="calc-box">
-    <h3>Ventilação-Minuto <span class="src">[UpToDate — Overview IMV ICU]</span></h3>
-    <p class="prose" style="font-size:13px;margin-bottom:12px">VM = VC (L) × FR &nbsp;|&nbsp; Normal: 4–8 L/min. Meta em SDRA: titular para pH, não para PaCO₂ específica.</p>
-    <div class="calc-grid">
-      <div class="calc-field"><label>Volume Corrente (mL)</label><input type="number" id="vc-vm" placeholder="ex: 450" oninput="calcVM()"></div>
-      <div class="calc-field"><label>Frequência Respiratória (irpm)</label><input type="number" id="fr-vm" placeholder="ex: 16" oninput="calcVM()"></div>
-    </div>
-    <div class="calc-result" id="vm-result" style="display:none">
-      <div class="res-label">Ventilação-Minuto</div>
-      <div class="res-values">
-        <div class="res-item"><div class="res-val" id="vm-val">—</div><div class="res-unit">L/min</div><small id="vm-status">VM = VC × FR</small></div>
+    <div class="calc-box" id="calc-vm">
+      <div class="calc-panel-body">
+        <header class="calc-panel-h">
+          <h3 class="calc-panel-title">Ventilação-minuto</h3>
+          <span class="calc-panel-src">UpToDate</span>
+        </header>
+        <div class="calc-formula">VM = VC (L) × FR &nbsp;·&nbsp; Normal: 4–8 L/min</div>
+        <p class="calc-hint">Meta em SDRA: titular para pH, não para PaCO₂ específica.</p>
+        <div class="calc-grid">
+          <div class="calc-field"><label for="vc-vm">Volume corrente (mL)</label><input type="number" id="vc-vm" placeholder="ex: 450" oninput="calcVM()"></div>
+          <div class="calc-field"><label for="fr-vm">Frequência respiratória (irpm)</label><input type="number" id="fr-vm" placeholder="ex: 16" oninput="calcVM()"></div>
+        </div>
+        <div class="calc-result is-idle" id="vm-result">
+          <div class="res-label">Ventilação-minuto</div>
+          <div class="res-values">
+            <div class="res-item"><div class="res-val" id="vm-val">—</div><div class="res-unit">L/min</div><span class="res-status" id="vm-status">VM = VC × FR</span></div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="calc-box">
-    <h3>Índice P/F (PaO₂/FiO₂) — Classificação Berlin de SDRA <span class="src">[UpToDate — ARDS diagnosis; Berlin Definition 2012]</span></h3>
-    <p class="prose" style="font-size:13px;margin-bottom:12px">P/F = PaO₂ (mmHg) / FiO₂ (decimal) &nbsp;|&nbsp; Calculado com PEEP ≥ 5 cmH₂O para diagnóstico de SDRA. Ex: PaO₂ 70 mmHg com FiO₂ 0,6 = P/F 117 (SDRA moderada).</p>
-    <div class="calc-grid">
-      <div class="calc-field"><label>PaO₂ (mmHg)</label><input type="number" id="pao2" placeholder="ex: 70" oninput="calcPF()"></div>
-      <div class="calc-field"><label>FiO₂ (decimal, ex: 0.6)</label><input type="number" id="fio2" placeholder="ex: 0.6" step="0.01" min="0.21" max="1.0" oninput="calcPF()"></div>
-    </div>
-    <div class="calc-result" id="pf-result" style="display:none">
-      <div class="res-label">Índice P/F</div>
-      <div class="res-values">
-        <div class="res-item"><div class="res-val" id="pf-val">—</div><div class="res-unit">mmHg</div><small id="pf-status">PaO₂/FiO₂</small></div>
+    <div class="calc-box" id="calc-pf">
+      <div class="calc-panel-body">
+        <header class="calc-panel-h">
+          <h3 class="calc-panel-title">Índice P/F (PaO₂/FiO₂)</h3>
+          <span class="calc-panel-src">Berlin 2012</span>
+        </header>
+        <div class="calc-formula">P/F = PaO₂ (mmHg) / FiO₂ (decimal) &nbsp;·&nbsp; PEEP ≥ 5 cmH₂O para diagnóstico</div>
+        <p class="calc-hint">Ex.: PaO₂ 70 mmHg com FiO₂ 0,6 → P/F 117 (SDRA moderada).</p>
+        <div class="calc-grid">
+          <div class="calc-field"><label for="pao2">PaO₂ (mmHg)</label><input type="number" id="pao2" placeholder="ex: 70" oninput="calcPF()"></div>
+          <div class="calc-field"><label for="fio2">FiO₂ (decimal, ex: 0.6)</label><input type="number" id="fio2" placeholder="ex: 0.6" step="0.01" min="0.21" max="1.0" oninput="calcPF()"></div>
+        </div>
+        <div class="calc-result is-idle" id="pf-result">
+          <div class="res-label">Índice P/F</div>
+          <div class="res-values">
+            <div class="res-item"><div class="res-val" id="pf-val">—</div><div class="res-unit">mmHg</div><span class="res-status" id="pf-status">PaO₂/FiO₂</span></div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="calc-box">
-    <h3>IRRS — Índice de Respiração Rápida e Superficial <span class="src">[Yang KL, Tobin MJ. NEJM 1991]</span></h3>
-    <p class="prose" style="font-size:13px;margin-bottom:12px">IRRS = FR (irpm) / VC (L) &nbsp;|&nbsp; Calcular no 1º minuto do SBT em T-piece. IRRS &lt;105 = sucesso do SBT. IRRS &lt;80 = alta probabilidade de extubação bem-sucedida.</p>
-    <div class="calc-grid">
-      <div class="calc-field"><label>FR espontânea (irpm)</label><input type="number" id="fr-irrs" placeholder="ex: 22" oninput="calcIRRS()"></div>
-      <div class="calc-field"><label>VC espontâneo (mL)</label><input type="number" id="vc-irrs" placeholder="ex: 380" oninput="calcIRRS()"></div>
-    </div>
-    <div class="calc-result" id="irrs-result" style="display:none">
-      <div class="res-label">IRRS (f/VT)</div>
-      <div class="res-values">
-        <div class="res-item"><div class="res-val" id="irrs-val">—</div><div class="res-unit">irpm/L</div><small id="irrs-status">FR / VC</small></div>
+    <div class="calc-box" id="calc-irrs">
+      <div class="calc-panel-body">
+        <header class="calc-panel-h">
+          <h3 class="calc-panel-title">IRRS — Índice de Respiração Rápida e Superficial</h3>
+          <span class="calc-panel-src">Yang & Tobin · NEJM</span>
+        </header>
+        <div class="calc-formula">IRRS = FR (irpm) / VC (L) &nbsp;·&nbsp; &lt;105 sucesso SBT · &lt;80 alta probabilidade de extubação</div>
+        <p class="calc-hint">Calcular no 1º minuto do SBT em T-piece.</p>
+        <div class="calc-grid">
+          <div class="calc-field"><label for="fr-irrs">FR espontânea (irpm)</label><input type="number" id="fr-irrs" placeholder="ex: 22" oninput="calcIRRS()"></div>
+          <div class="calc-field"><label for="vc-irrs">VC espontâneo (mL)</label><input type="number" id="vc-irrs" placeholder="ex: 380" oninput="calcIRRS()"></div>
+        </div>
+        <div class="calc-result is-idle" id="irrs-result">
+          <div class="res-label">IRRS (f/VT)</div>
+          <div class="res-values">
+            <div class="res-item"><div class="res-val" id="irrs-val">—</div><div class="res-unit">irpm/L</div><span class="res-status" id="irrs-status">FR / VC</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
