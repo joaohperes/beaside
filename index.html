@@ -71,12 +71,12 @@ body{
   position:absolute;left:0;right:0;top:42%;
   height:80px;opacity:.07;
 }
-/* ECG estático (sem scroll infinito — performance) */
-.trace svg{width:200%;height:100%;transform:translateX(-12%)}
+.trace svg{width:200%;height:100%;animation:trace-scroll 28s linear infinite}
 .trace path{
   fill:none;stroke:var(--teal);stroke-width:1.2;
   stroke-linecap:round;stroke-linejoin:round;
 }
+@keyframes trace-scroll{to{transform:translateX(-50%)}}
 
 /* ── shell ── */
 .hub{
@@ -93,10 +93,13 @@ body{
   z-index:100; /* acima do hero — senão o menu do chip não recebe clique */
   display:flex;align-items:center;justify-content:space-between;
   gap:16px;margin-bottom:72px;
-  opacity:1;
+  opacity:0;animation:rise .8s var(--ease) .04s forwards;
 }
 .logo{display:flex;align-items:center;gap:11px;text-decoration:none}
 .logo-icon{opacity:.95}
+.logo-icon rect:first-child{animation:bar-pulse 3s ease-in-out infinite}
+.logo-icon rect:last-child{animation:bar-pulse 3s ease-in-out infinite .7s}
+@keyframes bar-pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .logo-wordmark{
   font-family:var(--mono);font-size:14px;font-weight:500;
   letter-spacing:.16em;color:#fff;
@@ -201,7 +204,7 @@ body{
 /* ── hero ── */
 .hero{
   margin-bottom:56px;
-  opacity:1;
+  opacity:0;animation:rise .85s var(--ease) .1s forwards;
 }
 .hero-row{
   display:block;
@@ -253,32 +256,53 @@ body{
 }
 .btn-ghost:hover{border-color:var(--border2);color:var(--text);background:rgba(255,255,255,.04)}
 
-/* ── value strip (tiles premium, sem animação contínua) ── */
+/* ── value strip: tiles + 1 brilho no perímetro por vez ── */
 .values{
   display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
   margin-bottom:56px;
   border:none;background:transparent;border-radius:0;overflow:visible;
-  opacity:1;
+  opacity:0;animation:rise .8s var(--ease) .18s forwards;
 }
 .value{
+  --value-r:16px;
   position:relative;isolation:isolate;overflow:hidden;
   border:1px solid var(--border);
-  border-radius:16px;
+  border-radius:var(--value-r);
   padding:24px 22px 22px;
-  background:linear-gradient(165deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
+  background:transparent;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
   transition:border-color .25s,box-shadow .25s,transform .25s var(--ease);
+  contain:layout style;
 }
+/* disco conic → anel de 1px; só 1 card brilha por vez */
 .value::before{
-  content:'';position:absolute;top:0;left:16%;right:16%;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(29,184,138,.45),transparent);
-  pointer-events:none;
+  content:'';
+  position:absolute;left:50%;top:50%;
+  width:220%;height:220%;
+  margin:-110% 0 0 -110%;
+  background:conic-gradient(
+    from 0deg,
+    transparent 0 86%,
+    rgba(29,184,138,.12) 90%,
+    rgba(29,184,138,.75) 93%,
+    rgba(255,255,255,.55) 95%,
+    transparent 98% 100%
+  );
+  animation:value-perimeter 9s linear infinite;
+  opacity:0;
+  pointer-events:none;z-index:0;
 }
 .value::after{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 70% 55% at 0% 0%,rgba(29,184,138,.07),transparent 55%);
-  opacity:.7;pointer-events:none;z-index:0;
+  content:'';
+  position:absolute;inset:1px;
+  border-radius:calc(var(--value-r) - 1px);
+  background:linear-gradient(165deg,rgba(18,22,28,.97),rgba(12,15,19,.99));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+  pointer-events:none;z-index:0;
 }
+.value:nth-child(1)::before{animation-delay:0s}
+.value:nth-child(2)::before{animation-delay:3s}
+.value:nth-child(3)::before{animation-delay:6s}
 .value:hover{
   border-color:rgba(29,184,138,.28);
   transform:translateY(-2px);
@@ -303,12 +327,17 @@ body{
   font-size:13.5px;color:var(--text2);line-height:1.7;font-weight:300;
   max-width:34ch;
 }
+@keyframes value-perimeter{
+  0%{transform:rotate(0deg);opacity:1}
+  30%{transform:rotate(360deg);opacity:1}
+  33%,100%{transform:rotate(360deg);opacity:0}
+}
 
 /* ── section head ── */
 .section-head{
   display:flex;align-items:baseline;justify-content:space-between;gap:16px;
   margin-bottom:18px;
-  opacity:1;
+  opacity:0;animation:rise .75s var(--ease) .24s forwards;
 }
 .section-head h2{
   font-size:13px;font-weight:500;letter-spacing:-.01em;color:var(--text2);
@@ -324,7 +353,10 @@ body{
   gap:14px;
   margin-bottom:64px;
 }
-.bento .card{opacity:1}
+.bento .card:nth-child(1){opacity:0;animation:rise .75s var(--ease) .28s forwards}
+.bento .card:nth-child(2){opacity:0;animation:rise .75s var(--ease) .34s forwards}
+.bento .card:nth-child(3){opacity:0;animation:rise .75s var(--ease) .4s forwards}
+.bento .card:nth-child(4){opacity:0;animation:rise .75s var(--ease) .46s forwards}
 
 .card{
   position:relative;border-radius:18px;
@@ -420,7 +452,7 @@ body{
 .authors{
   border-top:1px solid var(--border);
   padding-top:36px;margin-bottom:40px;
-  opacity:1;
+  opacity:0;animation:rise .75s var(--ease) .5s forwards;
 }
 .authors-label{
   font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
@@ -522,7 +554,7 @@ html:not([data-theme="light"]) .btn-theme .theme-icon-sun{opacity:1;transform:ro
 html:not([data-theme="light"]) .btn-theme .theme-icon-moon{opacity:0;transform:rotate(-90deg) scale(.5);pointer-events:none}
 html[data-theme="light"] .btn-theme .theme-icon-sun{opacity:0;transform:rotate(90deg) scale(.5);pointer-events:none}
 html[data-theme="light"] .btn-theme .theme-icon-moon{opacity:1;transform:rotate(0) scale(1)}
-.btn-theme.is-toggling{animation:none}
+.btn-theme.is-toggling{animation:theme-btn-pulse .42s cubic-bezier(.34,1.2,.64,1)}
 @keyframes theme-btn-pulse{
   0%{transform:scale(1)} 35%{transform:scale(.88)} 70%{transform:scale(1.06)} 100%{transform:scale(1)}
 }
