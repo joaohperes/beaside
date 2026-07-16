@@ -257,13 +257,13 @@ body{
 }
 .btn-ghost:hover{border-color:var(--border2);color:var(--text);background:rgba(255,255,255,.04)}
 
-/* panel */
+/* panel — glass equilibrado: um eixo vertical, sem card dentro de card */
 .hero-panel{
   border:1px solid var(--border);
   border-radius:20px;
   background:linear-gradient(165deg,rgba(255,255,255,.04),rgba(255,255,255,.015));
   box-shadow:inset 0 1px 0 rgba(255,255,255,.04), var(--shadow);
-  padding:20px 18px 16px;
+  padding:22px 22px 18px;
   position:relative;overflow:hidden;
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
 }
@@ -271,35 +271,39 @@ body{
   content:'';position:absolute;top:0;left:12%;right:12%;height:1px;
   background:linear-gradient(90deg,transparent,rgba(29,184,138,.45),transparent);
 }
-/* selo de proposta (não dashboard de stats repetidos) */
 .panel-lead{
-  font-size:14.5px;font-weight:500;color:#e8ecf2;
-  letter-spacing:-.02em;line-height:1.4;margin:0 0 14px;
+  font-size:15px;font-weight:500;color:#e8ecf2;
+  letter-spacing:-.02em;line-height:1.45;margin:0 0 16px;
+  padding:0 0 16px;
+  border-bottom:1px solid var(--border);
 }
 .panel-traits{
   list-style:none;margin:0;padding:0;
   display:flex;flex-direction:column;gap:0;
-  border:1px solid rgba(255,255,255,.06);
-  border-radius:12px;overflow:hidden;
-  background:rgba(0,0,0,.18);
+  border:none;border-radius:0;background:transparent;overflow:visible;
 }
 .panel-traits li{
-  display:grid;grid-template-columns:auto 1fr;gap:10px 12px;
-  align-items:baseline;
-  padding:11px 13px;
-  border-bottom:1px solid rgba(255,255,255,.05);
+  display:grid;
+  /* coluna fixa: labels alinhados (USO / ACESSO / TOM / IA) */
+  grid-template-columns:5.25rem minmax(0,1fr);
+  gap:8px 14px;
+  align-items:start;
+  padding:12px 0;
+  border-bottom:1px solid rgba(255,255,255,.06);
 }
-.panel-traits li:last-child{border-bottom:none}
+.panel-traits li:last-child{border-bottom:none;padding-bottom:2px}
 .panel-traits .pt-k{
   font-family:var(--mono);font-size:9px;font-weight:500;
   letter-spacing:.1em;text-transform:uppercase;color:var(--teal);
   white-space:nowrap;
+  padding-top:3px; /* alinha com 1ª linha do valor */
 }
 .panel-traits .pt-v{
-  font-size:13px;color:var(--text2);line-height:1.45;font-weight:300;
+  font-size:13px;color:var(--text2);line-height:1.55;font-weight:300;
+  min-width:0;
 }
 .panel-foot{
-  margin-top:14px;padding-top:12px;border-top:1px solid var(--border);
+  margin-top:14px;padding-top:14px;border-top:1px solid var(--border);
   font-family:var(--mono);font-size:10px;color:var(--text3);
   display:flex;justify-content:space-between;align-items:center;gap:8px;letter-spacing:.04em;
 }
@@ -644,9 +648,8 @@ html[data-theme="light"] .hero-panel{
   background:linear-gradient(165deg,#fff,#f7f8fa);
   box-shadow:0 16px 48px rgba(15,23,42,.08),inset 0 1px 0 #fff;
 }
-html[data-theme="light"] .panel-lead{color:#0f1419}
-html[data-theme="light"] .panel-traits{
-  background:rgba(15,23,42,.03);border-color:var(--border);
+html[data-theme="light"] .panel-lead{
+  color:#0f1419;border-bottom-color:var(--border);
 }
 html[data-theme="light"] .panel-traits li{border-bottom-color:var(--border)}
 html[data-theme="light"] .panel-traits .pt-v{color:var(--text2)}
