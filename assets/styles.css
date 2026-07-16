@@ -232,10 +232,10 @@ a.link-cta:focus-visible{
 .callout.red{border-color:var(--red);background:rgba(226,75,74,.08);color:#f0a0a0}
 .callout.purple{border-color:var(--purple);background:rgba(124,111,247,.08);color:#c0b8fe}
 .callout.blue{border-color:var(--blue);background:rgba(59,158,255,.08);color:#a0ccff}
-.card-grid{display:grid;gap:14px;margin:16px 0 4px}
+.card-grid{display:grid;gap:14px;margin:16px 0 4px;align-items:stretch}
 .card-grid.col2{grid-template-columns:1fr 1fr}
 .card-grid.col3{grid-template-columns:1fr 1fr 1fr}
-.concept-card{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:16px;transition:border-color .2s}
+.concept-card{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:16px;transition:border-color .2s;box-sizing:border-box}
 .concept-card:hover{border-color:var(--border2)}
 .concept-card .label{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px}
 .concept-card .value{font-size:14px;font-weight:500;color:#e8ecf2;margin-bottom:6px}
@@ -1958,13 +1958,14 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
 .sec-lead strong{color:var(--text);font-weight:500}
 @media(max-width:680px){.sec-h h2{white-space:normal}}
 /* grid de itens term+detail (indicações, complicações, etc) */
-.ind-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0 8px}
+.ind-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0 8px;align-items:stretch}
 .ind-grid.cols-3{grid-template-columns:1fr 1fr 1fr}
 @media(max-width:680px){.ind-grid,.ind-grid.cols-3{grid-template-columns:1fr}}
 .ind-item{
   background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.01));
   border:1px solid var(--border);border-radius:12px;padding:16px 18px;
   transition:border-color .15s,box-shadow .2s;
+  box-sizing:border-box;
 }
 .ind-item:hover{border-color:var(--border2);box-shadow:0 8px 24px rgba(0,0,0,.18)}
 .ind-item .ind-t{display:block;font-size:13.5px;font-weight:500;color:#fff;margin-bottom:6px;letter-spacing:-.01em}
@@ -2035,7 +2036,7 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
 .ok-box > ul:not(.scale-legend):not(.pitfall-list),
 .tip-box > ul:not(.scale-legend):not(.pitfall-list){
   list-style:none;
-  margin:12px 0 0;padding:0;
+  margin:10px 0 0;padding:0;
   border:none;background:transparent;border-radius:0;overflow:visible;
 }
 .info-box .pill-list > li,
@@ -2047,10 +2048,20 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
 .ok-box > ul:not(.scale-legend):not(.pitfall-list) > li,
 .tip-box > ul:not(.scale-legend):not(.pitfall-list) > li{
   position:relative;
-  padding:7px 0 7px 18px;
+  padding:6px 0 6px 18px;
   border-bottom:none;
-  font-size:13px;line-height:1.55;
+  font-size:13px;line-height:1.6;
   color:inherit;
+}
+.info-box .pill-list > li:last-child,
+.warn-box .pill-list > li:last-child,
+.ok-box .pill-list > li:last-child,
+.tip-box .pill-list > li:last-child,
+.info-box > ul:not(.scale-legend):not(.pitfall-list) > li:last-child,
+.warn-box > ul:not(.scale-legend):not(.pitfall-list) > li:last-child,
+.ok-box > ul:not(.scale-legend):not(.pitfall-list) > li:last-child,
+.tip-box > ul:not(.scale-legend):not(.pitfall-list) > li:last-child{
+  padding-bottom:0;
 }
 .info-box .pill-list > li::before,
 .warn-box .pill-list > li::before,
@@ -2063,7 +2074,7 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
   content:'';
   position:absolute;left:0;top:12px;
   width:6px;height:6px;border-radius:50%;
-  border:1.5px solid var(--accent);opacity:.75;
+  border:1.5px solid currentColor;opacity:.55;
   box-sizing:border-box;
 }
 /* nota de anatomia / conceito-chave */
@@ -2092,10 +2103,25 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
 .tl .tl-n{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--accent);background:rgba(var(--accent-rgb),.12);border-radius:5px;width:23px;height:23px;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1}
 .tl .tl-b{font-size:13px;color:var(--text2);line-height:1.8;padding-top:2px}
 .tl .tl-b strong{color:var(--text);font-weight:600}
+/* listas dentro de passos .tl (checklist, cuff leak, etc.) */
+.tl .tl-b > ul{
+  list-style:none;margin:8px 0 0;padding:0;
+}
+.tl .tl-b > ul > li{
+  position:relative;padding:5px 0 5px 18px;
+  font-size:13px;line-height:1.6;color:inherit;
+}
+.tl .tl-b > ul > li:last-child{padding-bottom:0}
+.tl .tl-b > ul > li::before{
+  content:'';position:absolute;left:0;top:11px;
+  width:6px;height:6px;border-radius:50%;
+  border:1.5px solid currentColor;opacity:.5;
+  box-sizing:border-box;
+}
 /* complicações */
-.compl-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.compl-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;align-items:stretch}
 @media(max-width:680px){.compl-grid{grid-template-columns:1fr}}
-.compl-item{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:16px 19px}
+.compl-item{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:16px 19px;box-sizing:border-box}
 .compl-item .c-name{font-family:var(--mono);font-size:11px;font-weight:500;color:#e8ecf2;display:block;margin-bottom:5px;letter-spacing:.02em}
 .compl-item .c-desc{font-size:12px;color:var(--text2);line-height:1.55}
 .compl-item .c-desc strong{color:var(--text);font-weight:500}
@@ -2108,24 +2134,58 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
 .pitfall-list li::before{content:'✕';font-family:var(--mono);font-size:11px;color:var(--red);flex-shrink:0;margin-top:2px}
 .pitfall-list strong{color:#f5c6c6;font-weight:500}
 /* boxes informativos (compartilhados entre páginas proc) */
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0 4px}
-@media(max-width:680px){.two-col{grid-template-columns:1fr}}
+/*
+ * Pares/trios lado a lado — flex (não grid).
+ * Motivo: height:100% em grid-item bloqueia align-self:stretch no Safari
+ * quando a linha é auto-sized; o card mais curto ficava “manco”.
+ * flex + align-items:stretch garante altura igual de forma confiável.
+ */
+.two-col,
+.three-col{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  margin:16px 0 4px;
+  align-items:stretch;
+}
+.three-col{gap:12px}
+.two-col > *,
+.three-col > *{
+  flex:1 1 0;
+  min-width:0;
+  margin:0 !important;
+  box-sizing:border-box;
+  align-self:stretch;
+}
+@media(max-width:680px){
+  .two-col > *{flex:1 1 100%}
+}
+@media(max-width:700px){
+  .three-col > *{flex:1 1 100%}
+}
 .info-box,.warn-box,.ok-box,.tip-box{
   margin:24px 0;padding:18px 20px;font-size:13.5px;line-height:1.85;border-radius:12px;
 }
-.two-col > .info-box,
-.two-col > .warn-box,
-.two-col > .ok-box,
-.two-col > .tip-box{margin:0}
 .info-box > strong:first-child,
 .warn-box > strong:first-child,
 .ok-box > strong:first-child,
 .tip-box > strong:first-child{
   display:block;margin-bottom:6px;font-size:13.5px;letter-spacing:-.01em;line-height:1.45;
 }
-.info-box ul,.warn-box ul,.ok-box ul,.tip-box ul,
+/* fallback para ul/ol aninhados (não direct child) — bullets nativos leves */
+.info-box ul:not(:is(.pill-list, .scale-legend, .pitfall-list)),
+.warn-box ul:not(:is(.pill-list, .scale-legend, .pitfall-list)),
+.ok-box ul:not(:is(.pill-list, .scale-legend, .pitfall-list)),
+.tip-box ul:not(:is(.pill-list, .scale-legend, .pitfall-list)),
 .info-box ol,.warn-box ol,.ok-box ol,.tip-box ol{
   margin:6px 0 0;padding:0 0 0 1.15em;line-height:1.85;
+}
+/* direct-child checklist (acima) prevalece — zera padding do fallback */
+.info-box > ul:not(.scale-legend):not(.pitfall-list),
+.warn-box > ul:not(.scale-legend):not(.pitfall-list),
+.ok-box > ul:not(.scale-legend):not(.pitfall-list),
+.tip-box > ul:not(.scale-legend):not(.pitfall-list){
+  padding-left:0;
 }
 .info-box li,.warn-box li,.ok-box li,.tip-box li{margin:0 0 .4em}
 .info-box li:last-child,.warn-box li:last-child,
