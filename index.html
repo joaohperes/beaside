@@ -412,13 +412,17 @@ body{
 }
 
 .card-badge{
-  display:inline-flex;align-items:center;gap:7px;
+  display:inline-flex;align-items:center;
   font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
   color:var(--c-accent,var(--teal));margin-bottom:12px;font-weight:500;
 }
-.card-dot{
-  width:5px;height:5px;border-radius:50%;
-  background:var(--c-accent,var(--teal));flex-shrink:0;
+a.card-hit{
+  display:flex;flex-direction:column;flex:1 1 auto;
+  text-decoration:none;color:inherit;min-height:0;
+}
+.card-foot{
+  display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;
+  margin-top:auto;padding-top:2px;
 }
 .card-title{
   font-size:24px;font-weight:600;color:#fff;
@@ -438,15 +442,24 @@ body{
 }
 .card:hover .card-tag{color:var(--text2);border-color:var(--border2)}
 .card-cta{
-  display:flex;align-items:center;gap:8px;
+  display:inline-flex;align-items:center;gap:6px;
   font-family:var(--mono);font-size:11px;letter-spacing:.04em;
   color:var(--c-accent,var(--teal));
-  opacity:.8;transition:opacity .2s,gap .2s;
-  margin-top:auto;font-weight:500;
+  text-decoration:none;
+  opacity:.85;transition:opacity .2s,gap .2s,color .2s;
+  font-weight:500;
 }
-.card:hover .card-cta{opacity:1;gap:10px}
+.card-cta:hover{opacity:1;gap:9px}
+.card-cta-ai{
+  color:var(--text3);
+  opacity:.75;
+}
+.card-cta-ai:hover{
+  color:var(--c-accent,var(--teal));
+  opacity:1;
+}
 .card-cta-arrow{display:inline-block;transition:transform .2s}
-.card:hover .card-cta-arrow{transform:translateX(2px)}
+.card-cta:hover .card-cta-arrow{transform:translateX(2px)}
 
 .card.featured{min-height:280px;padding:30px 30px 24px}
 .card.featured .card-title{font-size:28px}
@@ -702,6 +715,8 @@ html[data-theme="light"] .card-tag{
   background:rgba(15,23,42,.03);border-color:var(--border);color:var(--text3);
 }
 html[data-theme="light"] .card:hover .card-tag{color:var(--text2);border-color:var(--border2)}
+html[data-theme="light"] .card-cta-ai{color:var(--text3)}
+html[data-theme="light"] .card-cta-ai:hover{color:var(--c-accent,var(--teal))}
 html[data-theme="light"] .card-icon{
   background:rgba(15,23,42,.03);border-color:var(--border);
 }
@@ -822,113 +837,120 @@ html[data-theme="light"] .footer-left strong{color:var(--text2)}
     </div>
   </section>
 
-  <div class="section-head" id="modulos">
-    <h2>Escolha o módulo</h2>
-    <span class="section-note">4 guias · navegação independente</span>
-  </div>
+  <div class="bento" id="modulos">
 
-  <div class="bento">
-
-    <a class="card featured"
-       href="vm/"
+    <div class="card featured"
        style="--c-accent:#1db88a;--c-border:rgba(29,184,138,.4);--c-glow:rgba(29,184,138,.12);--c-shadow:rgba(29,184,138,.1)">
       <span class="card-rail" aria-hidden="true"></span>
-      <div class="card-top">
-        <div class="card-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 8h8.5a2.5 2.5 0 1 0 -2.34 -3.24"/>
-            <path d="M3 12h15.5a2.5 2.5 0 1 1 -2.34 3.24"/>
-            <path d="M4 16h5.5a2.5 2.5 0 1 1 -2.34 3.24"/>
-          </svg>
+      <a class="card-hit" href="vm/" aria-label="Ventilação Mecânica">
+        <div class="card-top">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 8h8.5a2.5 2.5 0 1 0 -2.34 -3.24"/>
+              <path d="M3 12h15.5a2.5 2.5 0 1 1 -2.34 3.24"/>
+              <path d="M4 16h5.5a2.5 2.5 0 1 1 -2.34 3.24"/>
+            </svg>
+          </div>
         </div>
+        <div class="card-badge">VM Guide</div>
+        <div class="card-title">Ventilação<br>Mecânica</div>
+        <div class="card-sub">Modos, parâmetros, SDRA, desmame, dissincronia e assistente de conduta com IA.</div>
+        <div class="card-tags">
+          <span class="card-tag">SDRA · Prona</span>
+          <span class="card-tag">DPOC &amp; Asma</span>
+          <span class="card-tag">Desmame</span>
+        </div>
+      </a>
+      <div class="card-foot">
+        <a class="card-cta" href="vm/">Abrir guia <span class="card-cta-arrow" aria-hidden="true">→</span></a>
+        <a class="card-cta card-cta-ai" href="vm/assistente.html">Assistente IA</a>
       </div>
-      <div class="card-badge"><span class="card-dot"></span>VM Guide</div>
-      <div class="card-title">Ventilação<br>Mecânica</div>
-      <div class="card-sub">Modos, parâmetros, SDRA, desmame, dissincronia e assistente de conduta com IA.</div>
-      <div class="card-tags">
-        <span class="card-tag">SDRA · Prona</span>
-        <span class="card-tag">DPOC &amp; Asma</span>
-        <span class="card-tag">Desmame</span>
-        <span class="card-tag">Assistente IA</span>
-      </div>
-      <div class="card-cta">Abrir guia <span class="card-cta-arrow">→</span></div>
-    </a>
+    </div>
 
-    <a class="card"
-       href="hemo/"
+    <div class="card"
        style="--c-accent:#e05555;--c-border:rgba(224,85,85,.4);--c-glow:rgba(224,85,85,.12);--c-shadow:rgba(224,85,85,.1)">
       <span class="card-rail" aria-hidden="true"></span>
-      <div class="card-top">
-        <div class="card-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/>
-            <path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/>
-          </svg>
+      <a class="card-hit" href="hemo/" aria-label="Hemodinâmica e Choque">
+        <div class="card-top">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/>
+              <path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/>
+            </svg>
+          </div>
         </div>
+        <div class="card-badge">Hemo Guide</div>
+        <div class="card-title">Hemodinâmica<br>&amp; Choque</div>
+        <div class="card-sub">Gasometria pareada, POCUS VCI, quadrantes SvcO₂ × Δ pCO₂, vasopressores e casos simulados.</div>
+        <div class="card-tags">
+          <span class="card-tag">SvcO₂ · Δ pCO₂</span>
+          <span class="card-tag">POCUS VCI</span>
+          <span class="card-tag">Vasopressores</span>
+        </div>
+      </a>
+      <div class="card-foot">
+        <a class="card-cta" href="hemo/">Abrir guia <span class="card-cta-arrow" aria-hidden="true">→</span></a>
+        <a class="card-cta card-cta-ai" href="hemo/assistente.html">Assistente IA</a>
       </div>
-      <div class="card-badge"><span class="card-dot"></span>Hemo Guide</div>
-      <div class="card-title">Hemodinâmica<br>&amp; Choque</div>
-      <div class="card-sub">Gasometria pareada, POCUS VCI, quadrantes SvcO₂ × Δ pCO₂, vasopressores e casos simulados.</div>
-      <div class="card-tags">
-        <span class="card-tag">SvcO₂ · Δ pCO₂</span>
-        <span class="card-tag">POCUS VCI</span>
-        <span class="card-tag">Vasopressores</span>
-        <span class="card-tag">Assistente IA</span>
-      </div>
-      <div class="card-cta">Abrir guia <span class="card-cta-arrow">→</span></div>
-    </a>
+    </div>
 
-    <a class="card"
-       href="neuro/"
+    <div class="card"
        style="--c-accent:#9b6ff7;--c-border:rgba(155,111,247,.4);--c-glow:rgba(155,111,247,.12);--c-shadow:rgba(155,111,247,.1)">
       <span class="card-rail" aria-hidden="true"></span>
-      <div class="card-top">
-        <div class="card-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-1.66Z"/>
-            <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-1.66Z"/>
-          </svg>
+      <a class="card-hit" href="neuro/" aria-label="Manejo Neurocrítico">
+        <div class="card-top">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-1.66Z"/>
+              <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-1.66Z"/>
+            </svg>
+          </div>
         </div>
+        <div class="card-badge">Neuro Guide</div>
+        <div class="card-title">Manejo<br>Neurocrítico</div>
+        <div class="card-sub">PIC, PPC, TCE, sedoanalgesia e manejo ventilatório, com módulos em expansão.</div>
+        <div class="card-tags">
+          <span class="card-tag">PIC · PPC</span>
+          <span class="card-tag">TCE</span>
+          <span class="card-tag">Sedoanalgesia</span>
+        </div>
+      </a>
+      <div class="card-foot">
+        <a class="card-cta" href="neuro/">Abrir guia <span class="card-cta-arrow" aria-hidden="true">→</span></a>
+        <a class="card-cta card-cta-ai" href="neuro/assistente.html">Assistente IA</a>
       </div>
-      <div class="card-badge"><span class="card-dot"></span>Neuro Guide</div>
-      <div class="card-title">Paciente<br>Neurocrítico</div>
-      <div class="card-sub">PIC, PPC, TCE, sedoanalgesia e manejo ventilatório, com módulos em expansão.</div>
-      <div class="card-tags">
-        <span class="card-tag">PIC · PPC</span>
-        <span class="card-tag">TCE</span>
-        <span class="card-tag">Sedoanalgesia</span>
-        <span class="card-tag">Assistente IA</span>
-      </div>
-      <div class="card-cta">Abrir guia <span class="card-cta-arrow">→</span></div>
-    </a>
+    </div>
 
-    <a class="card"
-       href="proc/"
+    <div class="card"
        style="--c-accent:#3b82f6;--c-border:rgba(59,130,246,.4);--c-glow:rgba(59,130,246,.12);--c-shadow:rgba(59,130,246,.1)">
       <span class="card-rail" aria-hidden="true"></span>
-      <div class="card-top">
-        <div class="card-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="m18 2 4 4"/>
-            <path d="m17 7 3-3"/>
-            <path d="M19 9 8.7 19.3a2.1 2.1 0 0 1-3-3L16 6"/>
-            <path d="m11 13 4 4"/>
-            <path d="m5 19-3 3"/>
-            <path d="m14 4 6 6"/>
-          </svg>
+      <a class="card-hit" href="proc/" aria-label="Procedimentos de UTI e PS">
+        <div class="card-top">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m18 2 4 4"/>
+              <path d="m17 7 3-3"/>
+              <path d="M19 9 8.7 19.3a2.1 2.1 0 0 1-3-3L16 6"/>
+              <path d="m11 13 4 4"/>
+              <path d="m5 19-3 3"/>
+              <path d="m14 4 6 6"/>
+            </svg>
+          </div>
         </div>
+        <div class="card-badge">Procedimentos</div>
+        <div class="card-title">Procedimentos<br>UTI · PS</div>
+        <div class="card-sub">Acessos, via aérea e traqueostomia: dúvidas reais de plantão com racional e referência.</div>
+        <div class="card-tags">
+          <span class="card-tag">CVC · Shilley</span>
+          <span class="card-tag">Traqueostomia</span>
+          <span class="card-tag">PAI</span>
+          <span class="card-tag">IOT · RSI</span>
+        </div>
+      </a>
+      <div class="card-foot">
+        <a class="card-cta" href="proc/">Abrir guia <span class="card-cta-arrow" aria-hidden="true">→</span></a>
       </div>
-      <div class="card-badge"><span class="card-dot"></span>Procedimentos</div>
-      <div class="card-title">Procedimentos<br>de UTI</div>
-      <div class="card-sub">Acessos, via aérea e traqueostomia: dúvidas reais de plantão com racional e referência.</div>
-      <div class="card-tags">
-        <span class="card-tag">CVC · Shilley</span>
-        <span class="card-tag">Traqueostomia</span>
-        <span class="card-tag">Nora periférica</span>
-        <span class="card-tag">IOT · RSI</span>
-      </div>
-      <div class="card-cta">Abrir guia <span class="card-cta-arrow">→</span></div>
-    </a>
+    </div>
 
   </div>
 
