@@ -256,7 +256,7 @@ body{
 }
 .btn-ghost:hover{border-color:var(--border2);color:var(--text);background:rgba(255,255,255,.04)}
 
-/* ── value strip (premium tiles) ── */
+/* ── value strip (premium tiles + shimmer) ── */
 .values{
   display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
   margin-bottom:56px;
@@ -272,15 +272,34 @@ body{
   box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
   transition:border-color .3s,box-shadow .35s,transform .3s var(--ease);
 }
+/* faixa de brilho que percorre o card */
 .value::before{
-  content:'';position:absolute;top:0;left:16%;right:16%;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(29,184,138,.5),transparent);
-  opacity:.85;pointer-events:none;
+  content:'';
+  position:absolute;top:-20%;left:0;
+  width:45%;height:140%;
+  background:linear-gradient(
+    105deg,
+    transparent 0%,
+    transparent 35%,
+    rgba(255,255,255,.04) 45%,
+    rgba(29,184,138,.18) 50%,
+    rgba(255,255,255,.1) 55%,
+    transparent 65%,
+    transparent 100%
+  );
+  transform:translateX(-130%) skewX(-12deg);
+  animation:value-shimmer 5.5s ease-in-out infinite;
+  pointer-events:none;z-index:2;
 }
+.value:nth-child(2)::before{animation-delay:1.6s}
+.value:nth-child(3)::before{animation-delay:3.2s}
+/* glow de canto + linha superior estática */
 .value::after{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 80% 60% at 0% 0%,rgba(29,184,138,.08),transparent 55%);
-  opacity:.55;pointer-events:none;z-index:0;
+  background:
+    linear-gradient(90deg,transparent 12%,rgba(29,184,138,.45) 50%,transparent 88%) top / 100% 1px no-repeat,
+    radial-gradient(ellipse 85% 65% at 0% 0%,rgba(29,184,138,.1),transparent 55%);
+  opacity:.7;pointer-events:none;z-index:0;
   transition:opacity .3s;
 }
 .value:hover{
@@ -292,6 +311,7 @@ body{
     0 0 32px rgba(29,184,138,.06);
 }
 .value:hover::after{opacity:1}
+.value:hover::before{animation-duration:3.2s}
 .value-k,
 .value-t,
 .value-d{position:relative;z-index:1}
@@ -310,6 +330,12 @@ body{
 .value-d{
   font-size:13.5px;color:var(--text2);line-height:1.7;font-weight:300;
   max-width:34ch;
+}
+@keyframes value-shimmer{
+  0%,12%{transform:translateX(-130%) skewX(-12deg);opacity:0}
+  18%{opacity:1}
+  48%{transform:translateX(280%) skewX(-12deg);opacity:1}
+  55%,100%{transform:translateX(280%) skewX(-12deg);opacity:0}
 }
 
 /* ── section head ── */
@@ -469,7 +495,8 @@ body{
 @media (prefers-reduced-motion:reduce){
   .topbar,.hero,.values,.section-head,.bento .card,.authors,.footer{animation:none;opacity:1}
   .trace svg,.logo-icon rect{animation:none}
-  .card:hover,.btn-primary:hover{transform:none}
+  .card:hover,.btn-primary:hover,.value:hover{transform:none}
+  .value::before{animation:none;opacity:0}
 }
 
 /* ── responsive ── */
@@ -611,17 +638,42 @@ html[data-theme="light"] .hero h1{color:#0f1419}
 html[data-theme="light"] .hero-lead{color:var(--text2)}
 html[data-theme="light"] .values{background:transparent}
 html[data-theme="light"] .value{
-  background:linear-gradient(165deg,#fff,#f7f8fa);
-  border-color:var(--border);
-  box-shadow:0 1px 2px rgba(15,23,42,.04),inset 0 1px 0 #fff;
+  background:linear-gradient(165deg,#fff,#f4faf7);
+  border-color:rgba(13,154,114,.14);
+  box-shadow:
+    0 1px 2px rgba(15,23,42,.04),
+    0 0 0 1px rgba(13,154,114,.04),
+    0 12px 36px rgba(13,154,114,.1),
+    inset 0 1px 0 #fff;
+}
+html[data-theme="light"] .value::before{
+  background:linear-gradient(
+    105deg,
+    transparent 0%,
+    transparent 35%,
+    rgba(13,154,114,.06) 44%,
+    rgba(255,255,255,.75) 50%,
+    rgba(13,154,114,.14) 56%,
+    transparent 65%,
+    transparent 100%
+  );
 }
 html[data-theme="light"] .value::after{
-  background:radial-gradient(ellipse 80% 60% at 0% 0%,rgba(13,154,114,.07),transparent 55%);
+  background:
+    linear-gradient(90deg,transparent 10%,rgba(13,154,114,.55) 50%,transparent 90%) top / 100% 1px no-repeat,
+    radial-gradient(ellipse 90% 70% at 8% 0%,rgba(13,154,114,.18),transparent 58%);
+  opacity:.95;
 }
 html[data-theme="light"] .value:hover{
-  border-color:rgba(13,154,114,.28);
-  box-shadow:0 16px 40px rgba(15,23,42,.08),inset 0 1px 0 #fff;
+  border-color:rgba(13,154,114,.38);
+  box-shadow:
+    0 1px 2px rgba(15,23,42,.04),
+    0 0 0 1px rgba(13,154,114,.08),
+    0 20px 48px rgba(13,154,114,.18),
+    0 0 40px rgba(13,154,114,.14),
+    inset 0 1px 0 #fff;
 }
+html[data-theme="light"] .value:hover::after{opacity:1}
 html[data-theme="light"] .value-t{color:#0f1419}
 html[data-theme="light"] .value-d{color:var(--text2)}
 html[data-theme="light"] .section-head h2{color:var(--text2)}
