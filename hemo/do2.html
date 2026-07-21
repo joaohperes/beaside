@@ -27,42 +27,124 @@
   </div>
 
   <div class="sec-h"><span class="sec-num">01</span><h2>Hierarquia das fórmulas</h2></div>
-  <div class="formula">DO<sub>2</sub><span class="op">=</span>DC<span class="op">×</span>CaO<sub>2</sub><span class="op">×</span><span class="num">10</span></div>
-  <div class="formula">CaO<sub>2</sub><span class="op">=</span>(Hb<span class="op">×</span><span class="num">1,34</span><span class="op">×</span>SaO<sub>2</sub>)<span class="op">+</span>(pO<sub>2</sub><span class="op">×</span><span class="num">0,003</span>)</div>
-  <p class="sec-lead">O DO₂ é a quantidade total de O₂ entregue aos tecidos por minuto (mL/min). O CaO₂ é o conteúdo de O₂ no sangue arterial (mL O₂/dL). O fator 10 converte dL para L.</p>
+  <p class="sec-lead">O <strong>DO₂</strong> é a quantidade total de O₂ entregue aos tecidos por minuto. O <strong>CaO₂</strong> é o conteúdo de O₂ no sangue arterial. O fator 10 converte dL → L.</p>
+  <div class="two-col">
+    <div class="formula-card">
+      <div class="scale-k" style="color:var(--accent)">Oferta global</div>
+      <div class="formula compact">DO<sub>2</sub><span class="op">=</span>DC<span class="op">×</span>CaO<sub>2</sub><span class="op">×</span><span class="num">10</span></div>
+      <p class="scale-note">mL O₂/min · normal 950–1150</p>
+    </div>
+    <div class="formula-card">
+      <div class="scale-k" style="color:var(--coral)">Conteúdo arterial</div>
+      <div class="formula compact formula-coral">CaO<sub>2</sub><span class="op">=</span>(Hb<span class="op">×</span><span class="num">1,34</span><span class="op">×</span>SaO<sub>2</sub>)<span class="op">+</span>(pO<sub>2</sub><span class="op">×</span><span class="num">0,003</span>)</div>
+      <p class="scale-note">mL O₂/dL · normal 18–20</p>
+    </div>
+  </div>
   <div class="table-wrap"><table>
     <thead><tr><th>Parâmetro</th><th>Normal</th><th>Unidade</th></tr></thead>
     <tbody>
-      <tr><td>DO₂</td><td>950–1150</td><td>mL O₂/min</td></tr>
-      <tr><td>CaO₂</td><td>18–20</td><td>mL O₂/dL</td></tr>
-      <tr><td>DC (repouso)</td><td>4–8</td><td>L/min</td></tr>
+      <tr><td>DO₂</td><td class="td-mono">950–1150</td><td>mL O₂/min</td></tr>
+      <tr><td>CaO₂</td><td class="td-mono">18–20</td><td>mL O₂/dL</td></tr>
+      <tr><td>DC (repouso)</td><td class="td-mono">4–8</td><td>L/min</td></tr>
     </tbody>
   </table></div>
 
   <div class="sec-h"><span class="sec-num">02</span><h2>Componentes do CaO₂</h2></div>
   <div class="ind-grid">
-    <div class="ind-item"><span class="ind-t">Componente ligado à Hb</span><span class="ind-d"><strong>Hb × 1,34 × SaO₂.</strong> Responsável por ~98% do transporte de O₂. 1 g de Hb carrega 1,34 mL de O₂ quando saturada.</span></div>
-    <div class="ind-item"><span class="ind-t">Componente dissolvido</span><span class="ind-d"><strong>pO₂ × 0,003.</strong> Responsável por ~2% do transporte. Só ganha relevância em câmara hiperbárica ou com Hb muito baixa.</span></div>
+    <div class="ind-item">
+      <span class="ind-t">Componente ligado à Hb</span>
+      <span class="ind-d"><strong>Hb × 1,34 × SaO₂</strong> — ~98% do transporte. 1 g de Hb carrega 1,34 mL de O₂ quando saturada.</span>
+    </div>
+    <div class="ind-item">
+      <span class="ind-t">Componente dissolvido</span>
+      <span class="ind-d"><strong>pO₂ × 0,003</strong> — ~2% do transporte. Só ganha relevância em câmara hiperbárica ou com Hb muito baixa.</span>
+    </div>
   </div>
-  <div class="warn-box"><strong>Implicação clínica fundamental:</strong> a hemoglobina domina o transporte de O₂. Uma Hb de 7 g/dL com SaO₂ 100% entrega menos O₂ que uma Hb de 12 g/dL com SaO₂ 95%. Por isso anemia grave agrava qualquer tipo de choque.</div>
+  <div class="warn-box">
+    <strong>Implicação clínica fundamental</strong>
+    A hemoglobina domina o transporte de O₂.
+    <ul>
+      <li>Hb 7 g/dL + SaO₂ 100% entrega <em>menos</em> O₂ que Hb 12 g/dL + SaO₂ 95%</li>
+      <li>Anemia grave agrava qualquer tipo de choque</li>
+      <li>Corrigir SaO₂ sem corrigir Hb deixa o DO₂ incompleto</li>
+    </ul>
+  </div>
 
   <div class="sec-h"><span class="sec-num">03</span><h2>Estimar o DC à beira do leito</h2></div>
   <ol class="tl">
-    <li><span class="tl-n">1</span><span class="tl-b"><strong>VTI pelo POCUS (preferencial).</strong> DC = VTI subvalvar aórtico × área do VSVE × FC. O VSVE é calculado como π × (diâmetro/2)². Método não invasivo com boa correlação com termodiluição.</span></li>
-    <li><span class="tl-n">2</span><span class="tl-b"><strong>Fick reverso.</strong> DC = VO₂ / (CaO₂ − CvO₂). Estimativa de VO₂ = 125 × SC (ou 3,5 mL/kg/min). Útil quando não há ecocardiografia disponível.</span></li>
-    <li><span class="tl-n">3</span><span class="tl-b"><strong>Índice cardíaco (IC).</strong> IC = DC / SC. Normal: 2,5–4,0 L/min/m². IC &lt; 2,2 L/min/m² define baixo débito hemodinâmico.</span></li>
+    <li>
+      <span class="tl-n">1</span>
+      <div class="tl-b">
+        <strong>VTI pelo POCUS (preferencial)</strong>
+        <ul>
+          <li>DC = VTI subvalvar aórtico × área do VSVE × FC</li>
+          <li>VSVE = π × (diâmetro/2)²</li>
+          <li>Não invasivo, boa correlação com termodiluição</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <span class="tl-n">2</span>
+      <div class="tl-b">
+        <strong>Fick reverso</strong>
+        <ul>
+          <li>DC = VO₂ / (CaO₂ − CvO₂)</li>
+          <li>VO₂ estimado ≈ 125 × SC (ou 3,5 mL/kg/min)</li>
+          <li>Útil quando não há ecocardiografia disponível</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <span class="tl-n">3</span>
+      <div class="tl-b">
+        <strong>Índice cardíaco (IC)</strong>
+        <ul>
+          <li>IC = DC / SC</li>
+          <li>Normal: 2,5–4,0 L/min/m²</li>
+          <li>IC &lt; 2,2 L/min/m² = baixo débito hemodinâmico</li>
+        </ul>
+      </div>
+    </li>
   </ol>
 
-  <div class="sec-h"><span class="sec-num">04</span><h2>O triângulo da oferta — onde intervir</h2></div>
+  <div class="sec-h"><span class="sec-num">04</span><h2>Onde intervir</h2></div>
+  <p class="sec-lead">DO₂ = DC × CaO₂ × 10. CaO₂ ≈ Hb × 1,34 × SaO₂. Ajuste o componente que está falhando.</p>
   <div class="table-wrap"><table>
-    <thead><tr><th>Componente do DO₂</th><th>Intervenção</th><th>Meta</th></tr></thead>
+    <thead><tr><th>Componente</th><th>Intervenção</th><th>Meta</th></tr></thead>
     <tbody>
-      <tr><td>Hb baixa</td><td>Transfusão de hemácias</td><td>Hb ≥ 7–8 g/dL em sepse / ≥ 8–10 em cardiopata</td></tr>
-      <tr><td>SaO₂ baixa</td><td>O₂ suplementar, VNI, IOT</td><td>SaO₂ ≥ 94%</td></tr>
-      <tr><td>DC baixo</td><td>Volume, inotrópico, vasopressor</td><td>IC ≥ 2,2 L/min/m² · PAM ≥ 65 mmHg</td></tr>
+      <tr>
+        <td><span class="pill pill-red">Hb baixa</span></td>
+        <td>Transfusão de hemácias</td>
+        <td class="td-mono">≥ 7–8 g/dL sepse · ≥ 8–10 cardiopata</td>
+      </tr>
+      <tr>
+        <td><span class="pill pill-blue">SaO₂ baixa</span></td>
+        <td>O₂ suplementar, VNI, IOT</td>
+        <td class="td-mono">SaO₂ ≥ 94%</td>
+      </tr>
+      <tr>
+        <td><span class="pill pill-green">DC baixo</span></td>
+        <td>Volume, inotrópico, vasopressor</td>
+        <td class="td-mono">IC ≥ 2,2 · PAM ≥ 65 mmHg</td>
+      </tr>
     </tbody>
   </table></div>
-  <div class="anatomy-note">O DO₂ conecta tudo: a SvcO₂ baixa sinaliza que o DO₂ está inadequado para a demanda. O Δ pCO₂ elevado confirma que o fluxo está insuficiente. O POCUS de VCI orienta qual componente do DC está falhando.</div>
+  <div class="tip-box">
+    <strong>Dissolvido (pO₂ × 0,003)</strong>
+    <ul>
+      <li>~2% do transporte — desprezível na beira do leito</li>
+      <li>Só ganha peso em câmara hiperbárica ou Hb muito baixa</li>
+    </ul>
+  </div>
+  <div class="anatomy-note">
+    <strong>Leitura cruzada com o resto do módulo</strong>
+    <ul>
+      <li><strong>SvcO₂ baixa</strong> — DO₂ inadequado para a demanda</li>
+      <li><strong>Δ pCO₂ elevado</strong> — fluxo tecidual insuficiente</li>
+      <li><strong>POCUS VCI</strong> — qual peça do DC está falhando</li>
+    </ul>
+  </div>
+  <div class="ref">UpToDate — Oxygen delivery and consumption; SSC 2026 monitoring</div>
 </section>
 </main>
 <script src="../assets/app.js"></script>

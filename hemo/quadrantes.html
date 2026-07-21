@@ -10,18 +10,27 @@
 <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="stylesheet" href="../assets/styles.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-.main{max-width:1080px;padding:32px 32px}
-/* ── matriz 2×2 ── */
+/* Matriz 2×2 — usa largura do .main global (sem max-width local) */
+.qmap-panel{
+  margin:8px 0 4px;
+  padding:18px 18px 14px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.01));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.03);
+}
+html[data-theme="light"] .qmap-panel{
+  background:linear-gradient(180deg,#fff,#fafbfc);
+}
 .qmap{
   display:grid;
   grid-template-columns:28px 1fr 1fr;
-  grid-template-rows:auto 1fr 1fr auto;
-  gap:8px 10px;
-  margin:8px 0 4px;
+  grid-template-rows:auto minmax(132px,1fr) minmax(132px,1fr) auto;
+  gap:10px 12px;
+  margin:0;
   align-items:stretch;
+  width:100%;
 }
 .qmap-y{
   grid-column:1;grid-row:2/4;
@@ -32,23 +41,23 @@
 }
 .qmap-x{
   grid-column:2/4;grid-row:4;
-  text-align:center;padding-top:4px;
+  text-align:center;padding-top:6px;
   font-family:var(--mono);font-size:10px;font-weight:500;
   letter-spacing:.14em;text-transform:uppercase;color:var(--text3);
 }
-.qmap-axis-hi,.qmap-axis-lo{
+.qmap-axis-hi{
+  grid-column:2/4;grid-row:1;
   font-family:var(--mono);font-size:9px;color:var(--text3);
   letter-spacing:.04em;text-align:center;padding:0 4px 2px;
 }
-.qmap-axis-hi{grid-column:2/4;grid-row:1}
-.qmap-axis-lo{display:none}
 .q-tile{
   position:relative;
   display:flex;flex-direction:column;justify-content:center;gap:6px;
-  min-height:118px;padding:16px 16px 14px;
+  min-height:0;height:100%;padding:18px 18px 16px;
   border:1px solid var(--border);border-radius:12px;
   background:var(--bg2);
-  cursor:pointer;text-align:left;
+  cursor:pointer;text-align:left;width:100%;
+  font:inherit;color:inherit;
   transition:border-color .18s,box-shadow .18s,background .18s,opacity .18s,transform .18s;
 }
 .q-tile:hover{
@@ -73,13 +82,13 @@
   position:absolute;left:0;top:12px;bottom:12px;width:3px;
   border-radius:0 2px 2px 0;background:var(--q);opacity:.85;
 }
-/* paleta bem separada: Q4 vermelho · Q3 roxo · Q2 âmbar · Q1 teal */
+/* Q4 vermelho · Q3 roxo · Q2 âmbar · Q1 teal (não --accent hemo) */
 .q-tile-q4{--q:#c62828;--q-rgb:198,40,40;grid-column:2;grid-row:2}
 .q-tile-q3{--q:#7c5cbf;--q-rgb:124,92,191;grid-column:3;grid-row:2}
 .q-tile-q2{--q:#c47d10;--q-rgb:196,125,16;grid-column:2;grid-row:3}
 .q-tile-q1{--q:#0d9a72;--q-rgb:13,154,114;grid-column:3;grid-row:3}
 .qmap-hint{
-  grid-column:2/4;margin-top:2px;
+  margin:12px 0 0;
   font-size:12px;color:var(--text3);text-align:center;
 }
 .iq-detail{margin-top:16px;border-radius:12px;border:1px solid var(--border);overflow:hidden;animation:fadeUp .16s ease}
@@ -91,8 +100,23 @@
 .iq-detail-crit{font-family:var(--mono);font-size:10.5px;color:var(--text2);background:var(--bg3);border:1px solid var(--border);padding:4px 10px;border-radius:6px;white-space:nowrap}
 .iq-detail-desc{font-size:13.5px;color:var(--text2);line-height:1.7;margin-bottom:14px}
 .iq-detail-action-label{font-family:var(--mono);font-size:9.5px;text-transform:uppercase;letter-spacing:.12em;color:var(--text3);margin-bottom:7px}
-.iq-detail-action{font-size:13.5px;color:var(--text);line-height:1.65;padding:12px 14px;border-radius:8px;border-left:3px solid}
-/* Q1 = teal (não usar --accent do módulo hemo, que é vermelho) */
+.iq-detail-action{
+  font-size:13.5px;color:var(--text);line-height:1.65;
+  padding:12px 14px;border-radius:8px;border-left:3px solid;
+}
+.iq-detail-action ul{
+  list-style:none;margin:0;padding:0;
+}
+.iq-detail-action li{
+  position:relative;padding:5px 0 5px 16px;
+  font-size:13px;line-height:1.55;color:inherit;
+}
+.iq-detail-action li:last-child{padding-bottom:0}
+.iq-detail-action li::before{
+  content:'';position:absolute;left:0;top:11px;
+  width:5px;height:5px;border-radius:50%;
+  border:1.5px solid currentColor;opacity:.5;
+}
 .iq-detail.d-q1{background:rgba(13,154,114,.05);border-color:rgba(13,154,114,.22)}
 .iq-detail.d-q1 .iq-detail-dot{background:var(--teal)}
 .iq-detail.d-q1 .iq-detail-action{border-color:var(--teal);background:rgba(13,154,114,.07)}
@@ -105,35 +129,41 @@
 .iq-detail.d-q4{background:rgba(198,40,40,.06);border-color:rgba(198,40,40,.26)}
 .iq-detail.d-q4 .iq-detail-dot{background:#c62828}
 .iq-detail.d-q4 .iq-detail-action{border-color:#c62828;background:rgba(198,40,40,.08)}
-.read-axes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
-.read-axis{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+.read-axes{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0}
+.read-axis{
+  background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.01));
+  border:1px solid var(--border);border-radius:12px;padding:16px 18px;
+}
+html[data-theme="light"] .read-axis{background:linear-gradient(180deg,#fff,#fafbfc)}
 .read-axis-k{font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
-.read-axis-d{font-size:13px;color:var(--text2);line-height:1.55}
+.read-axis-d{font-size:13px;color:var(--text2);line-height:1.55;margin:0}
 .read-axis-d strong{color:var(--text);font-weight:600}
 @media(max-width:680px){
-  .qmap{grid-template-columns:22px 1fr;grid-template-rows:auto}
-  .qmap-y{grid-row:2/span 2}
+  .qmap-panel{padding:14px 12px 12px}
+  .qmap{grid-template-columns:22px 1fr;grid-template-rows:auto;gap:8px}
+  .qmap-y{grid-row:2/span 4}
   .q-tile-q4,.q-tile-q3,.q-tile-q2,.q-tile-q1{grid-column:2}
   .q-tile-q4{grid-row:2}.q-tile-q3{grid-row:3}.q-tile-q2{grid-row:4}.q-tile-q1{grid-row:5}
   .qmap-x{grid-column:2;grid-row:6}
   .qmap-axis-hi{grid-column:2;grid-row:1}
-  .qmap-hint{grid-column:2}
-  .q-tile{min-height:96px}
+  .q-tile{min-height:96px;padding:14px}
   .read-axes{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body data-module="hemo" data-page="quadrantes">
 <main class="main">
+<section class="section" id="quadrantes">
   <header class="page-head">
     <div class="hero-eyebrow">Hemodinâmica · Interpretação</div>
-      <h1 class="section-title">Quadrantes SvcO₂ × Δ pCO₂</h1>
-      <p class="section-subtitle">Toque em um quadrante para ver o mecanismo e a conduta</p>
+    <h1 class="section-title">Quadrantes SvcO₂ × Δ pCO₂</h1>
+    <p class="section-subtitle">Toque em um quadrante para ver o mecanismo e a conduta</p>
   </header>
 
-  <div class="card">
-    <div class="card-title purple">Mapa — SvcO₂ × Δ pCO₂</div>
+  <div class="sec-h"><span class="sec-num">01</span><h2>Mapa — SvcO₂ × Δ pCO₂</h2></div>
+  <p class="sec-lead">Cruze os dois eixos: <strong>SvcO₂</strong> (extração) no horizontal e <strong>Δ pCO₂</strong> (fluxo tecidual) no vertical. O quadrante define o mecanismo e a conduta inicial.</p>
 
+  <div class="qmap-panel">
     <div class="qmap" role="group" aria-label="Mapa de quadrantes SvcO₂ por delta pCO₂">
       <div class="qmap-axis-hi">Δ pCO₂ ≥ 6 mmHg</div>
       <div class="qmap-y" aria-hidden="true">Δ pCO₂ ↑</div>
@@ -163,7 +193,7 @@
         <span class="q-tile-crit">SvcO₂ ≥ 70% · Δ pCO₂ &lt; 6</span>
       </button>
 
-      <div class="qmap-x">SvcO₂ → &nbsp;·&nbsp; corte em 70%</div>
+      <div class="qmap-x">SvcO₂ → · corte em 70%</div>
     </div>
     <p class="qmap-hint">Clique em um quadrante para expandir mecanismo e conduta</p>
 
@@ -181,53 +211,85 @@
     </div>
   </div>
 
-  <div class="card">
-    <div class="card-title">Resumo rápido</div>
-    <div class="table-wrap"><table>
-      <thead><tr><th>Quadrante</th><th>SvcO₂</th><th>Δ pCO₂</th><th>Mecanismo</th><th>Conduta inicial</th></tr></thead>
-      <tbody>
-        <tr><td><span class="pill pill-green">Q1 — adequado</span></td><td>≥ 70%</td><td>&lt; 6</td><td>Sem hipoperfusão</td><td>Manter monitoramento; verificar lactato (hiperlactatemia tipo B se ainda alto)</td></tr>
-        <tr><td><span class="pill pill-amber">Q2 — oferta</span></td><td>&lt; 70%</td><td>&lt; 6</td><td>Problema na oferta de O₂</td><td>Tríade: Hb · SaO₂ · DC. Transfundir se Hb &lt; 7–8</td></tr>
-        <tr><td><span class="pill pill-purple">Q3 — falsa segurança</span></td><td>≥ 70%</td><td>≥ 6</td><td>Shunting / citopática / foco</td><td>Não confiar na SvcO₂. Reavaliar foco, eco, lactato</td></tr>
-        <tr><td><span class="pill pill-red">Q4 — baixo débito</span></td><td>&lt; 70%</td><td>≥ 6</td><td>Choque confirmado com baixo DC</td><td>Identificar mecanismo via POCUS; volume, vasopressor ou inotrópico conforme padrão</td></tr>
-      </tbody>
-    </table></div>
-  </div>
+  <div class="sec-h"><span class="sec-num">02</span><h2>Resumo rápido</h2></div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Quadrante</th><th>SvcO₂</th><th>Δ pCO₂</th><th>Mecanismo</th><th>Conduta inicial</th></tr></thead>
+    <tbody>
+      <tr><td><span class="pill pill-green">Q1 — adequado</span></td><td class="td-mono">≥ 70%</td><td class="td-mono">&lt; 6</td><td>Sem hipoperfusão</td><td>Manter monitoramento; verificar lactato (tipo B se ainda alto)</td></tr>
+      <tr><td><span class="pill pill-amber">Q2 — oferta</span></td><td class="td-mono">&lt; 70%</td><td class="td-mono">&lt; 6</td><td>Problema na oferta de O₂</td><td>Tríade: Hb · SaO₂ · DC. Transfundir se Hb &lt; 7–8</td></tr>
+      <tr><td><span class="pill pill-purple">Q3 — falsa segurança</span></td><td class="td-mono">≥ 70%</td><td class="td-mono">≥ 6</td><td>Shunting / citopática / foco</td><td>Não confiar na SvcO₂. Reavaliar foco, eco, lactato</td></tr>
+      <tr><td><span class="pill pill-red">Q4 — baixo débito</span></td><td class="td-mono">&lt; 70%</td><td class="td-mono">≥ 6</td><td>Choque com baixo DC</td><td>POCUS → volume, vasopressor ou inotrópico conforme padrão</td></tr>
+    </tbody>
+  </table></div>
 
-  <div class="card">
-    <div class="card-title">Como ler o mapa</div>
-    <div class="read-axes">
-      <div class="read-axis">
-        <div class="read-axis-k" style="color:var(--accent)">Eixo X — SvcO₂</div>
-        <p class="read-axis-d">Mede a extração de O₂ pelos tecidos. <strong>Baixa (&lt; 70%)</strong> = tecidos sugando mais O₂ — oferta insuficiente para a demanda. Vai para a esquerda no mapa.</p>
-      </div>
-      <div class="read-axis">
-        <div class="read-axis-k" style="color:var(--purple)">Eixo Y — Δ pCO₂</div>
-        <p class="read-axis-d">Mede a adequação do fluxo tecidual. <strong>Alto (≥ 6 mmHg)</strong> = CO₂ acumulando — fluxo insuficiente para carreá-lo. Vai para cima no mapa.</p>
-      </div>
+  <div class="sec-h"><span class="sec-num">03</span><h2>Como ler o mapa</h2></div>
+  <div class="read-axes">
+    <div class="read-axis">
+      <div class="read-axis-k" style="color:var(--teal)">Eixo X — SvcO₂</div>
+      <p class="read-axis-d">Mede a extração de O₂ pelos tecidos. <strong>Baixa (&lt; 70%)</strong> = tecidos sugando mais O₂ — oferta insuficiente para a demanda. Vai para a esquerda no mapa.</p>
     </div>
-    <div class="alert-box info" style="margin-top:12px">
-      <div class="icon">i</div>
-      <div class="content"><strong>Por que Q3 é o mais perigoso?</strong> Na sepse hiperdinâmica e na hipóxia citopática, a SvcO₂ pode ser normal ou elevada mesmo com hipoperfusão tecidual real. O paciente parece "ressuscitado" mas o Δ pCO₂ ≥ 6 desmascara que o fluxo tecidual ainda está inadequado.</div>
+    <div class="read-axis">
+      <div class="read-axis-k" style="color:#7c5cbf">Eixo Y — Δ pCO₂</div>
+      <p class="read-axis-d">Mede a adequação do fluxo tecidual. <strong>Alto (≥ 6 mmHg)</strong> = CO₂ acumulando — fluxo insuficiente para carreá-lo. Vai para cima no mapa.</p>
     </div>
   </div>
-
+  <div class="warn-box">
+    <strong>Por que Q3 é o mais perigoso?</strong>
+    <ul>
+      <li>SvcO₂ “normal” engana na sepse hiperdinâmica e na hipóxia citopática</li>
+      <li>O paciente parece ressuscitado, mas o fluxo tecidual ainda é inadequado</li>
+      <li><strong>Δ pCO₂ ≥ 6</strong> desmascara a hipoperfusão que a SvcO₂ esconde</li>
+    </ul>
+  </div>
+  <div class="ref">UpToDate — Mixed and central venous oxygen saturation; SSC 2026 monitoring</div>
+</section>
 </main>
 <script src="../assets/app.js"></script>
 <script>
 const data = {
-  q1:{cls:'d-q1',dot:'#0d9a72',name:'Q1 — Ressuscitação adequada',crit:'SvcO₂ ≥ 70% · Δ pCO₂ < 6',
+  q1:{
+    cls:'d-q1',dot:'#0d9a72',name:'Q1 — Ressuscitação adequada',crit:'SvcO₂ ≥ 70% · Δ pCO₂ < 6',
     desc:'Oferta de O₂ preservada e fluxo tecidual adequado. Os dois parâmetros excluem hipoperfusão global significativa. Se lactato ainda elevado, considerar hiperlactatemia tipo B (clearance prejudicado, hipermetabolismo).',
-    action:'Manter monitoramento clínico. Repetir lactato em 2 h. Verificar PAM, diurese e enchimento capilar. Se lactato persistentemente alto sem hipoperfusão — investigar causa tipo B.'},
-  q2:{cls:'d-q2',dot:'#c47d10',name:'Q2 — Problema na oferta de O₂',crit:'SvcO₂ < 70% · Δ pCO₂ < 6',
-    desc:'Tecidos extraindo mais O₂ que o normal, mas o fluxo sanguíneo tecidual está mantido (Δ pCO₂ ok). O problema está na oferta: queda da Hb, queda da SaO₂ ou queda do débito cardíaco — não no fluxo em si.',
-    action:'Investigar tríade da oferta: Hemoglobina (transfundir se Hb < 7–8 g/dL) · SaO₂ (otimizar FiO₂, revisar VM) · Débito cardíaco (eco — inotrópico se FE reduzida).'},
-  q3:{cls:'d-q3',dot:'#7c5cbf',name:'Q3 — Falsa segurança',crit:'SvcO₂ ≥ 70% · Δ pCO₂ ≥ 6',
-    desc:'Cenário mais traiçoeiro. SvcO₂ "normal" engana: pode haver shunting arteriovenoso (sepse hiperdinâmica), hipóxia citopática (mitocôndria não consome O₂) ou foco infeccioso não controlado. O Δ pCO₂ ≥ 6 revela que o fluxo tecidual está inadequado.',
-    action:'Não se tranquilizar com a SvcO₂. Reavaliar lactato seriado, eco cardíaco (função VE, DC). Controlar foco infeccioso. Otimizar vasopressor; considerar dobutamina se baixo DC confirmado. Repetir gasometria venosa em 1–2 h.'},
-  q4:{cls:'d-q4',dot:'#c62828',name:'Q4 — Baixo débito / Choque confirmado',crit:'SvcO₂ < 70% · Δ pCO₂ ≥ 6',
-    desc:'Ambos alterados: oferta inadequada E fluxo tecidual insuficiente. Maior urgência clínica — é o padrão clássico de choque com baixo débito. A combinação implica que os tecidos estão ao mesmo tempo privados de O₂ e acumulando CO₂.',
-    action:'Identificar mecanismo via POCUS (RUSH): hipovolemia → testar fluido-responsividade (PLR + VTI) · disfunção VE → inotrópico (dobutamina) · vasoplegia → vasopressor (noradrenalina) · obstrutivo → tratar causa (tamponamento, TEP). Reavaliação a cada 30–60 min.'}
+    actions:[
+      'Manter monitoramento clínico',
+      'Repetir lactato em 2 h',
+      'Verificar PAM, diurese e enchimento capilar',
+      'Lactato alto sem hipoperfusão → investigar causa tipo B'
+    ]
+  },
+  q2:{
+    cls:'d-q2',dot:'#c47d10',name:'Q2 — Problema na oferta de O₂',crit:'SvcO₂ < 70% · Δ pCO₂ < 6',
+    desc:'Tecidos extraindo mais O₂ que o normal, mas o fluxo sanguíneo tecidual está mantido (Δ pCO₂ ok). O problema está na oferta: queda da Hb, da SaO₂ ou do débito cardíaco — não no fluxo em si.',
+    actions:[
+      'Hb: transfusão se Hb < 7–8 g/dL',
+      'SaO₂: otimizar FiO₂, revisar VM',
+      'DC: eco — inotrópico se FE reduzida',
+      'Reavaliar SvcO₂ após cada intervenção'
+    ]
+  },
+  q3:{
+    cls:'d-q3',dot:'#7c5cbf',name:'Q3 — Falsa segurança',crit:'SvcO₂ ≥ 70% · Δ pCO₂ ≥ 6',
+    desc:'Cenário mais traiçoeiro. SvcO₂ "normal" engana: shunting arteriovenoso (sepse hiperdinâmica), hipóxia citopática ou foco infeccioso não controlado. O Δ pCO₂ ≥ 6 revela fluxo tecidual inadequado.',
+    actions:[
+      'Não se tranquilizar com a SvcO₂',
+      'Lactato seriado + eco (função VE, DC)',
+      'Controlar foco infeccioso',
+      'Otimizar vasopressor; dobutamina se baixo DC',
+      'Repetir gasometria venosa em 1–2 h'
+    ]
+  },
+  q4:{
+    cls:'d-q4',dot:'#c62828',name:'Q4 — Baixo débito / Choque confirmado',crit:'SvcO₂ < 70% · Δ pCO₂ ≥ 6',
+    desc:'Ambos alterados: oferta inadequada e fluxo tecidual insuficiente. Maior urgência — padrão clássico de choque com baixo débito. Tecidos privados de O₂ e acumulando CO₂.',
+    actions:[
+      'POCUS (RUSH) para definir o mecanismo',
+      'Hipovolemia → PLR + VTI antes de volume',
+      'Disfunção VE → inotrópico (dobutamina)',
+      'Vasoplegia → noradrenalina',
+      'Obstrutivo → tratar causa (tamponamento, TEP)',
+      'Reavaliação a cada 30–60 min'
+    ]
+  }
 };
 const areas=document.querySelectorAll('.q-area');
 function selectQ(q){
@@ -242,7 +304,8 @@ function selectQ(q){
   document.getElementById('detName').textContent=d.name;
   document.getElementById('detCrit').textContent=d.crit;
   document.getElementById('detDesc').textContent=d.desc;
-  document.getElementById('detAction').textContent=d.action;
+  document.getElementById('detAction').innerHTML=
+    '<ul>'+d.actions.map(a=>'<li>'+a+'</li>').join('')+'</ul>';
   p.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 areas.forEach(el=>el.addEventListener('click',()=>selectQ(el.dataset.q)));
