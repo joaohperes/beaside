@@ -1,0 +1,19 @@
+{
+  "headers": [
+    {
+      "source": "/hub-uti/(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    },
+    {
+      "source": "/hub-uti",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    }
+  ],
+  "rewrites": [
+    { "source": "/hub-uti", "destination": "/hub-uti/index.html" }
+  ]
+}
