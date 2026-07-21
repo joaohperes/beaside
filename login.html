@@ -1053,13 +1053,15 @@ function goAfterAuth(kind){
     ? BeAsideAuth.afterAuthUrl(kind || 'sign-in')
     : ((BeAsideAuth.getConfig().AFTER_SIGN_IN)||'index.html');
   try{
-    var next=new URLSearchParams(location.search).get('next');
-    if(next && next.charAt(0)==='/' && next.indexOf('//')===-1){
-      dest=next;
-    }
+    if(window.BeAsideAuth && BeAsideAuth.clearNextPath) BeAsideAuth.clearNextPath();
   }catch(e){}
   location.replace(dest);
 }
+
+// Persiste ?next=/hub-uti/ (e similares) antes do OAuth apagar a query
+try{
+  if(window.BeAsideAuth && BeAsideAuth.captureNextFromUrl) BeAsideAuth.captureNextFromUrl();
+}catch(e){}
 
 function syncCaptchaTheme(){
   var el=document.getElementById('clerk-captcha');

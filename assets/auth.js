@@ -257,7 +257,54 @@
     }
   }
 
+  /** Destino pós-login (ex.: /hub-uti/) — sobrevive ao round-trip do Google OAuth. */
+  var AUTH_NEXT_KEY = 'beaside-auth-next';
+
+  function isSafeNextPath(path) {
+    if (!path || typeof path !== 'string') return false;
+    // só path relativo na mesma origem (bloqueia //evil.com)
+    if (path.charAt(0) !== '/') return false;
+    if (path.indexOf('//') !== -1) return false;
+    if (path.indexOf('\\') !== -1) return false;
+    return true;
+  }
+
+  function captureNextFromUrl() {
+    try {
+      var next = new URLSearchParams(global.location.search).get('next');
+      if (isSafeNextPath(next)) {
+        global.sessionStorage.setItem(AUTH_NEXT_KEY, next);
+        return next;
+      }
+    } catch (e) {
+      /* private mode */
+    }
+    return null;
+  }
+
+  function peekNextPath() {
+    try {
+      var fromUrl = new URLSearchParams(global.location.search).get('next');
+      if (isSafeNextPath(fromUrl)) return fromUrl;
+      var stored = global.sessionStorage.getItem(AUTH_NEXT_KEY);
+      if (isSafeNextPath(stored)) return stored;
+    } catch (e) {
+      /* ignore */
+    }
+    return null;
+  }
+
+  function clearNextPath() {
+    try {
+      global.sessionStorage.removeItem(AUTH_NEXT_KEY);
+    } catch (e) {
+      /* ignore */
+    }
+  }
+
   function afterAuthUrl(kind) {
+    var next = peekNextPath();
+    if (next) return absoluteUrl(next);
     var path =
       kind === 'sign-up'
         ? cfg.AFTER_SIGN_UP || cfg.AFTER_SIGN_IN || 'index.html'
@@ -417,8 +464,20 @@
 
   async function oauth(provider) {
     await init();
+    // garante next do ?next= (ex. /hub-uti/) antes de sair para o Google
+    captureNextFromUrl();
     var strategy = provider === 'apple' ? 'oauth_apple' : 'oauth_google';
     var redirectUrl = absoluteUrl(cfg.SSO_CALLBACK || 'sso-callback.html');
+    // repassa next no callback para o sso-callback.html também ter na URL
+    try {
+      var n = peekNextPath();
+      if (n) {
+        redirectUrl +=
+          (redirectUrl.indexOf('?') === -1 ? '?' : '&') + 'next=' + encodeURIComponent(n);
+      }
+    } catch (e) {
+      /* ignore */
+    }
     var complete = afterAuthUrl('sign-in');
 
     await clerk.client.signIn.authenticateWithRedirect({
@@ -430,11 +489,16 @@
 
   async function handleOAuthCallback() {
     await init();
+    captureNextFromUrl();
     if (typeof clerk.handleRedirectCallback === 'function') {
+      var destIn = afterAuthUrl('sign-in');
+      var destUp = afterAuthUrl('sign-up');
       await withTimeout(
         clerk.handleRedirectCallback({
-          signInFallbackRedirectUrl: afterAuthUrl('sign-in'),
-          signUpFallbackRedirectUrl: afterAuthUrl('sign-up'),
+          signInFallbackRedirectUrl: destIn,
+          signUpFallbackRedirectUrl: destUp,
+          signInForceRedirectUrl: destIn,
+          signUpForceRedirectUrl: destUp,
         }),
         20000,
         'Callback OAuth'
@@ -766,6 +830,9 @@
 
   global.BeAsideAuth = {
     init: init,
+    captureNextFromUrl: captureNextFromUrl,
+    peekNextPath: peekNextPath,
+    clearNextPath: clearNextPath,
     isConfigured: isConfigured,
     isSignedIn: isSignedIn,
     getUser: getUser,

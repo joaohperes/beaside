@@ -53,20 +53,25 @@ a{color:var(--teal)}
   var spin=document.getElementById('spin');
   try{
     await BeAsideAuth.init();
+    if(BeAsideAuth.captureNextFromUrl) BeAsideAuth.captureNextFromUrl();
     await BeAsideAuth.handleOAuthCallback();
     // Se handleRedirectCallback já redirecionou, não chega aqui
-    if(BeAsideAuth.isSignedIn()){
-      msg.textContent='Tudo certo. Indo para o hub…';
+    function goDest(){
       var dest = BeAsideAuth.afterAuthUrl
         ? BeAsideAuth.afterAuthUrl('sign-in')
         : (BeAsideAuth.getConfig().AFTER_SIGN_IN||'index.html');
+      if(BeAsideAuth.clearNextPath) BeAsideAuth.clearNextPath();
       location.replace(dest);
+    }
+    if(BeAsideAuth.isSignedIn()){
+      msg.textContent='Tudo certo. Redirecionando…';
+      goDest();
       return;
     }
     // Aguarda um instante: cookie de sessão às vezes assenta após o callback
     await new Promise(function(r){ setTimeout(r, 400); });
     if(BeAsideAuth.isSignedIn()){
-      location.replace(BeAsideAuth.afterAuthUrl('sign-in'));
+      goDest();
       return;
     }
     spin.style.display='none';
