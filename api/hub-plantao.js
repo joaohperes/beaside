@@ -1,18 +1,25 @@
 /**
- * Plantão Hub UTI — GET/PUT por usuário autenticado (Clerk).
+ * Plantão Hub UTI — GET/PUT/DELETE por usuário autenticado (Clerk).
  *
  * Env:
- *   CLERK_SECRET_KEY          — obrigatória (valida JWT)
- *   KV_REST_API_URL + TOKEN   — preferencial (Vercel KV / Upstash), multi-device
- *   Se KV ausente: grava em Clerk privateMetadata.hubPlantao (limite ~6 KB)
+ *   CLERK_SECRET_KEY          — obrigatória
+ *   KV_REST_API_URL + TOKEN   — opcional (Vercel KV); senão Clerk privateMetadata (~6KB)
  *
- * Headers: Authorization: Bearer <clerk session JWT>
+ * Headers: Authorization: Bearer <session JWT do Clerk>
  */
-import { verifyToken } from '@clerk/backend'
-import { createClerkClient } from '@clerk/backend'
+import { createClerkClient, verifyToken } from '@clerk/backend'
 
 const KEY_PREFIX = 'hub:plantao:'
-const META_MAX = 6000 // margem sob o limite de metadata do Clerk
+const META_MAX = 6000
+
+const AUTHORIZED_PARTIES = [
+  'https://be-aside.vercel.app',
+  'https://be-aside-joaohperes-projects.vercel.app',
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  'http://localhost:3000',
+  'http://127.0.0.1:3000',
+]
 
 function cors(res) {
   res.setHeader('Access-Control-Allow-Origin', '*')
@@ -25,6 +32,33 @@ function bearer(req) {
   const h = req.headers.authorization || req.headers.Authorization || ''
   const m = String(h).match(/^Bearer\s+(.+)$/i)
   return m ? m[1].trim() : ''
+}
+
+/** Vercel às vezes entrega body já parseado; às vezes string; às vezes stream. */
+async function readJsonBody(req) {
+  if (req.body != null && typeof req.body === 'object' && !Buffer.isBuffer(req.body)) {
+    return req.body
+  }
+  if (typeof req.body === 'string' && req.body.trim()) {
+    try {
+      return JSON.parse(req.body)
+    } catch {
+      return null
+    }
+  }
+  // raw stream
+  const chunks = []
+  for await (const chunk of req) {
+    chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk)
+  }
+  if (!chunks.length) return null
+  const raw = Buffer.concat(chunks).toString('utf8')
+  if (!raw.trim()) return null
+  try {
+    return JSON.parse(raw)
+  } catch {
+    return null
+  }
 }
 
 async function userIdFromRequest(req) {
@@ -42,11 +76,17 @@ async function userIdFromRequest(req) {
     err.code = 'no_token'
     throw err
   }
+
   try {
-    const payload = await verifyToken(token, { secretKey })
+    // withLegacyReturn: lança se inválido, devolve JwtPayload se ok
+    const payload = await verifyToken(token, {
+      secretKey,
+      authorizedParties: AUTHORIZED_PARTIES,
+      clockSkewInMs: 15_000,
+    })
     const sub = payload?.sub
     if (!sub) {
-      const err = new Error('Sessão inválida')
+      const err = new Error('Token sem user id (sub)')
       err.status = 401
       err.code = 'bad_token'
       throw err
@@ -54,7 +94,22 @@ async function userIdFromRequest(req) {
     return String(sub)
   } catch (e) {
     if (e.status) throw e
-    const err = new Error('Sessão expirada ou inválida. Entre de novo.')
+    // retry sem authorizedParties (alguns tokens de sessão não trazem azp)
+    try {
+      const payload = await verifyToken(token, {
+        secretKey,
+        clockSkewInMs: 15_000,
+      })
+      if (payload?.sub) return String(payload.sub)
+    } catch (e2) {
+      const detail = e2?.message || e?.message || 'token inválido'
+      const err = new Error(`Sessão inválida: ${detail}`)
+      err.status = 401
+      err.code = 'bad_token'
+      err.detail = detail
+      throw err
+    }
+    const err = new Error('Sessão inválida')
     err.status = 401
     err.code = 'bad_token'
     throw err
@@ -97,9 +152,7 @@ async function storeGet(userId) {
     }
   }
 
-  // Fallback: Clerk privateMetadata
-  const secretKey = process.env.CLERK_SECRET_KEY
-  const clerk = createClerkClient({ secretKey })
+  const clerk = createClerkClient({ secretKey: process.env.CLERK_SECRET_KEY })
   const user = await clerk.users.getUser(userId)
   const data = user.privateMetadata?.hubPlantao
   return data && typeof data === 'object' ? data : null
@@ -107,7 +160,6 @@ async function storeGet(userId) {
 
 async function storePut(userId, payload) {
   if (hasKv()) {
-    // Upstash SET key value — REST: POST /set/key  body = value as JSON string
     await kvCommand(['set', `${KEY_PREFIX}${userId}`], payload)
     return { backend: 'kv' }
   }
@@ -115,15 +167,14 @@ async function storePut(userId, payload) {
   const json = JSON.stringify(payload)
   if (json.length > META_MAX) {
     const err = new Error(
-      'Plantão grande demais para o armazenamento básico. Configure Vercel KV (KV_REST_API_*) para sync completo.',
+      'Plantão grande demais sem Vercel KV. Crie um KV no projeto e faça redeploy.',
     )
     err.status = 413
     err.code = 'too_large_no_kv'
     throw err
   }
 
-  const secretKey = process.env.CLERK_SECRET_KEY
-  const clerk = createClerkClient({ secretKey })
+  const clerk = createClerkClient({ secretKey: process.env.CLERK_SECRET_KEY })
   await clerk.users.updateUserMetadata(userId, {
     privateMetadata: { hubPlantao: payload },
   })
@@ -135,8 +186,7 @@ async function storeDelete(userId) {
     await kvCommand(['del', `${KEY_PREFIX}${userId}`])
     return { backend: 'kv' }
   }
-  const secretKey = process.env.CLERK_SECRET_KEY
-  const clerk = createClerkClient({ secretKey })
+  const clerk = createClerkClient({ secretKey: process.env.CLERK_SECRET_KEY })
   await clerk.users.updateUserMetadata(userId, {
     privateMetadata: { hubPlantao: null },
   })
@@ -174,14 +224,21 @@ export default async function handler(req, res) {
         ok: true,
         plantao: data,
         backend: hasKv() ? 'kv' : 'clerk_metadata',
+        userId,
       })
       return
     }
 
     if (req.method === 'PUT') {
-      const plantao = sanitizePlantao(req.body)
+      const body = await readJsonBody(req)
+      const plantao = sanitizePlantao(body)
       if (!plantao) {
-        res.status(400).json({ ok: false, error: 'Plantão inválido' })
+        res.status(400).json({
+          ok: false,
+          error: 'Plantão inválido (body vazio ou sem patients)',
+          code: 'bad_body',
+          gotType: body == null ? 'null' : typeof body,
+        })
         return
       }
       const meta = await storePut(userId, plantao)
@@ -197,11 +254,13 @@ export default async function handler(req, res) {
 
     res.status(405).json({ ok: false, error: 'Method not allowed' })
   } catch (e) {
+    console.error('[hub-plantao]', e?.code || e?.reason || '', e?.message || e)
     const status = e.status || 500
     res.status(status).json({
       ok: false,
       error: e.message || 'Erro no servidor',
       code: e.code || 'error',
+      detail: e.detail || e.reason || undefined,
     })
   }
 }
