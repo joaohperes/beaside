@@ -193,12 +193,18 @@ async function storeDelete(userId) {
   return { backend: 'clerk_metadata' }
 }
 
+/**
+ * Plantão válido inclui lista vazia (landing / encerrado).
+ * Rejeita só body ausente ou sem campo patients em array.
+ */
 function sanitizePlantao(body) {
   if (!body || typeof body !== 'object') return null
-  if (!Array.isArray(body.patients) || !body.patients.length) return null
-  const patients = body.patients.slice(0, 10)
-  let activeId = body.activeId
-  if (!patients.some((p) => p && p.id === activeId)) {
+  if (!Array.isArray(body.patients)) return null
+  const patients = body.patients.filter((p) => p && typeof p === 'object').slice(0, 10)
+  let activeId = body.activeId ?? null
+  if (!patients.length) {
+    activeId = null
+  } else if (!patients.some((p) => p.id === activeId)) {
     activeId = patients[0]?.id || null
   }
   return {
