@@ -1,15 +1,23 @@
 # be·aside — guia para o Claude / agentes
 
-Guia médico de UTI/emergência (pt-BR), consultado à beira do leito. Site **estático**
-multi-módulo hospedado na Vercel (`https://be-aside.vercel.app`), com assistente de IA
-opcional em Vercel Functions.
+Duas frentes no **mesmo** deploy Vercel (`https://be-aside.vercel.app`), com stacks **diferentes**:
 
-**Repo:** `github.com/joaohperes/beaside` · branch principal `main`  
-**Produto (visão):** assinatura futura (~R$ 79,90 conteúdo / ~R$ 119–129 com IA); free = hub + teaser; domínio próprio ainda não definido (manter Vercel + domínio depois).
+| Frente | O quê | Stack | Path prod |
+|--------|--------|--------|-----------|
+| **Guia be·aside** | Conteúdo clínico UTI/PS à beira do leito | HTML estático puro | `/`, `/vm/`, `/hemo/`, … |
+| **Hub UTI** | Ferramenta de plantão multi-leito (labs, SSVV+BH, invasões, drogas, evolução) | SPA React (Vite) | `/hub-uti/` |
+
+**Repo de deploy:** `github.com/joaohperes/beaside` · branch `main`  
+**Fonte do Hub UTI (dev/build):** pasta irmã `~/hub-uti` (ou path local equivalente) — o build é **publicado** em `beaside/hub-uti/` (artefatos, não editar o bundle à mão).  
+**Produto guia (visão):** assinatura futura (~R$ 79,90 conteúdo / ~R$ 119–129 com IA); free = hub + teaser; domínio próprio ainda não definido.
+
+**Decisão de escopo (explícita):** Hub UTI **não** é módulo do guia estático nem “feature escondida” do `app.js`. É um **segundo produto** no monorepo de deploy, ainda **sem link** no hub principal (URL direta / bookmark; `noindex`). Evolui com ritmo próprio; mudanças de plantão **não** devem vazar regras do design system do guia e vice-versa, salvo tokens/auth compartilhados (Clerk).
 
 ---
 
-## Arquitetura
+## Arquitetura (duas stacks)
+
+### 1) Guia be·aside — HTML estático
 
 - **HTML estático puro.** Sem framework, sem build step, sem bundler. Cada página é um
   `.html` que carrega `assets/styles.css` e (nos módulos) `assets/app.js`.
@@ -18,14 +26,24 @@ opcional em Vercel Functions.
   de `MODULES` e `MODULE_PAGES`. **Página nova → registrar em `MODULE_PAGES`.**
 - Cada `<body>`: `data-module="vm" data-page="sdra"` (accent + nav ativo).
 - **`assets/styles.css`** — stylesheet global (tokens, shell, design system, light theme).
-- **`assets/theme-boot.js`** — no `<head>` de **todas** as páginas; aplica tema salvo antes
+- **`assets/theme-boot.js`** — no `<head>` de **todas** as páginas do guia; aplica tema salvo antes
   do paint (`localStorage` key `beaside-theme`).
 - **Hub** (`index.html`) tem CSS e JS de tema próprios (não usa `app.js` no shell).
-- **Login (Clerk, real):** `login.html` + `assets/auth.js` + `sso-callback.html` + `conta.html`. E-mail/senha (+ verificação de código + captcha), Google OAuth; Apple off no UI (`OAUTH_APPLE: false`). Hub: **Entrar** ou chip (1º nome) → menu (nome completo, e-mail, Minha conta, Sair). **Módulos abertos sem login** (gate futuro = plano/assinatura, não login sozinho).
+- **Login (Clerk, real):** `login.html` + `assets/auth.js` + `sso-callback.html` + `conta.html`. E-mail/senha (+ verificação de código + captcha), Google OAuth; Apple off no UI (`OAUTH_APPLE: false`). Hub: **Entrar** ou chip (1º nome) → menu (nome completo, e-mail, Minha conta, Sair). **Módulos do guia abertos sem login** (gate futuro = plano/assinatura, não login sozinho).
 - **Auth config:** `assets/auth-config.js` (`PUBLISHABLE_KEY` pk_* — pública) e env Vercel `CLERK_PUBLISHABLE_KEY` + `api/clerk-config.js`. **Não** commitar `sk_*`. App dev: `arriving-seasnail-55`.
 - **Sessão no hub (sem FOUC):** hint `localStorage['beaside-auth-hint']` + boot síncrono no topbar do `index.html` (chip otimista); `auth.js` confirma com Clerk.
 
-### Arquivos-chave de assets
+### 2) Hub UTI — SPA React (segundo produto)
+
+- **URL:** `https://be-aside.vercel.app/hub-uti/` · headers `X-Robots-Tag: noindex, nofollow` (`vercel.json`).
+- **Código-fonte:** repo/pasta **irmã** `hub-uti` (Vite + React 19 + Tailwind v4). **Não** é HTML estático; **não** usa `assets/app.js` / design system do guia.
+- **Build → deploy:** no fonte `npm run publish:beaside` (build + copia `dist/` → `beaside/hub-uti/`). Em seguida commit/push no **beaside** e deploy Vercel.
+- **Função:** plantão multi-paciente (≤10 leitos): import labs (texto/PDF), SSVV+BH, invasões, drogas, evolução em formato de **prontuário/plantão** (seções `#…` copiáveis). Persistência `localStorage`; sync opcional com conta via `api/hub-plantao.js` (JWT Clerk + KV ou metadata).
+- **Auth:** mesma conta Clerk do be·aside (`login.html?next=/hub-uti/`); sem login = só local no aparelho.
+- **Docs do produto:** no fonte — `hub-uti/README.md`, `ARCHITECTURE.md`, `SURVEY.md`.
+- **Agentes:** ao tocar Hub UTI, editar o **fonte** em `~/hub-uti` (ou path configurado), **nunca** minificar/editar `beaside/hub-uti/assets/*` à mão. Ao tocar o guia, não assumir React/Vite.
+
+### Arquivos-chave de assets (guia)
 
 | Arquivo | Função |
 |---------|--------|
@@ -34,9 +52,11 @@ opcional em Vercel Functions.
 | `assets/theme-boot.js` | Anti-FOUC do tema |
 | `assets/auth.js` / `auth-config.js` | Cliente Clerk (vanilla) |
 | `login.html` / `sso-callback.html` | UI login + callback OAuth |
-| `api/sugerir*.js` | Assistentes (senha compartilhada ainda) |
+| `api/sugerir*.js` | Assistentes do guia (senha compartilhada ainda) |
 | `api/clerk-config.js` | Expõe só a publishable key |
 | `api/knowledge.js` | Gerado — `npm run extract-knowledge` |
+| `api/hub-plantao.js` | Sync do plantão Hub UTI (Clerk JWT; KV opcional) |
+| `hub-uti/` | **Bundle publicado** do segundo produto (não é fonte) |
 
 ---
 
@@ -161,25 +181,53 @@ Exemplos: `Ventilação Mecânica · SDRA`, `Hemodinâmica · POCUS`, `Neurocrí
 | **proc** | ✅ | Maduro |
 | **neuro** | ✅ shell/markup | ⏳ Stubs: `avc-i`, `avc-h`, `enc`, `calc-neuro`; `pearls` sem cards. Parceiro preenche. |
 
-**Removido:** modo Plantão (botão header + `plantao-mode` CSS/JS) — defasado e não alinhado ao shell novo. Conteúdo clínico com a palavra “plantão” permanece.
+### Modo Plantão (guia) vs Hub UTI
+
+| | **Modo Plantão (removido)** | **Hub UTI (ativo)** |
+|--|-----------------------------|---------------------|
+| Onde | Shell do guia (`plantao-mode` CSS/JS no header) | SPA `/hub-uti/` |
+| Papel | Atalho visual/defasado no conteúdo estático | **Sucessor intencional** — ferramenta real de plantão multi-leito |
+| Status | **Removido** (não reintroduzir) | Em evolução ativa; bundle em `beaside/hub-uti/` |
+
+- Conteúdo clínico do guia que usa a palavra “plantão” (ex. pearls “dúvidas de plantão”) **permanece** — não é o modo CSS removido.
+- Se alguém achar que “falta o modo plantão” no guia: **não** recriar CSS antigo; o caminho é o **Hub UTI**.
 
 ---
 
-## Assistente de IA (`api/`)
+## Hub UTI — escopo e regras rápidas
+
+- **Produto:** apoio ao plantão (import laudo/SSVV, painel de leitos, copiar evolução no padrão de prontuário). **Não** é prontuário oficial nem “EvClinic”.
+- **Identidade do paciente:** leito (+ nome/iniciais conforme UI atual); regra de leito em `patientImport.js` (nunca auto-ocupar vaga errada; conflitos explícitos).
+- **PHI:** minimizar; ferramenta de plantão, não EHR.
+- **API:** `api/hub-plantao.js` — GET/PUT/DELETE do estado do plantão por usuário Clerk. Env: `CLERK_SECRET_KEY` (sync); opcional `KV_REST_API_URL` + `KV_REST_API_TOKEN`.
+- **Publicar:** no fonte Hub UTI → `npm run publish:beaside` → commit no beaside (pasta `hub-uti/` + API se mudou) → push → deploy.
+- Detalhe de arquitetura, parsers e testes: docs **no fonte** (`ARCHITECTURE.md`).
+
+---
+
+## Assistente de IA e APIs (`api/`)
+
+### Guia (IA clínica)
 
 - `api/sugerir.js` (VM), `sugerir-hemo.js`, `sugerir-neuro.js`.
 - Gate atual: senha `VMGUIDE_SENHA` (compartilhada) + `ANTHROPIC_API_KEY`.
-- Knowledge: regenerar com `npm run extract-knowledge` após mudanças clínicas relevantes.
-- **Auth (Clerk) — status jul/2026:** front E2E (login.html + hub chip com menu + `conta.html` + SSO + captcha + erros pt-BR). Dashboard: e-mail+senha; **username off**; Google SSO on; Apple off no UI. Origins/redirects: `localhost` + `https://be-aside.vercel.app`. `CLERK_SECRET_KEY` ainda **não** usada (só quando proteger API de IA).
-- **Futuro (produto):** assinatura + cota de IA; gate por **plano**, não por login sozinho. Secret key só na Vercel se validar sessão no server.
+- Knowledge: regenerar com `npm run extract-knowledge` após mudanças clínicas relevantes no **guia**.
+- **Futuro (produto guia):** assinatura + cota de IA; gate por **plano**, não por login sozinho.
+
+### Auth / Hub UTI
+
+- **Auth (Clerk) — status jul/2026:** front E2E no guia (login + hub chip + `conta.html` + SSO + captcha + erros pt-BR). Dashboard: e-mail+senha; **username off**; Google SSO on; Apple off no UI. Origins/redirects: `localhost` + `https://be-aside.vercel.app`.
+- `CLERK_SECRET_KEY` na Vercel: **já usada** por `api/hub-plantao.js` (sync do plantão). Para a IA do guia, secret no server só se validar sessão/quota no futuro.
+- **Não** misturar: assistentes `sugerir*` = conteúdo do guia; `hub-plantao` = estado do plantão SPA.
 
 ---
 
 ## Deploy & git
 
 - **Prod:** `npx vercel --prod --yes` (projeto `be-aside`, team `joaohperes-projects`).
-- Fluxo prático recente: commit → push `main` → prod (usuário costuma pedir “deploy prod” após OK visual).
-- Commits pt-BR: `tipo(escopo): descrição`.
+- Fluxo prático: commit → push `main` → prod (usuário costuma pedir “deploy prod” após OK visual).
+- **Hub UTI:** alterações de UI/lógica no fonte `hub-uti` → `npm run publish:beaside` → incluir `beaside/hub-uti/**` no commit do beaside.
+- Commits pt-BR: `tipo(escopo): descrição` (escopos úteis: `guia`, `hub-uti`, `auth`, `api`).
 - **Não** commitar secrets; env só na Vercel.
 
 ---
@@ -243,24 +291,34 @@ Exemplos: `Ventilação Mecânica · SDRA`, `Hemodinâmica · POCUS`, `Neurocrí
 
 #### Ainda pendente (próximas frentes)
 
-- Gate por **plano** / paywall; cota de IA; `CLERK_SECRET_KEY` no server.
+- Gate por **plano** / paywall; cota de IA no guia.
 - Clerk **production** (`pk_live_`) quando for produto fechado.
 - Neuro: preencher stubs.
 - Domínio próprio.
+- Hub UTI: link opcional no hub principal (hoje URL direta + noindex); endurecer produto/PHI conforme uso real.
+
+### Sessão jul/2026 — Hub UTI documentado no monorepo
+
+1. Hub UTI reconhecido como **segundo produto** (SPA) ao lado do guia HTML.
+2. Modo Plantão CSS do guia = **removido de propósito**; sucessor = `/hub-uti/`.
+3. Agentes: não assumir “tudo é HTML estático”; ver seção Arquitetura acima.
 
 ---
 
 ## O que **não** fazer
 
-- Não reintroduzir modo Plantão CSS.
-- Não voltar IBM Plex como UI principal.
-- Não voltar pills-cápsula como padrão de status.
+- Não reintroduzir modo Plantão CSS do **guia** (sucessor = Hub UTI em `/hub-uti/`).
+- Não editar o **bundle** `beaside/hub-uti/assets/*` à mão — publicar a partir do fonte Vite.
+- Não aplicar o design system HTML do guia ao SPA (e vice-versa) sem pedido.
+- Não tratar Hub UTI como página estática de módulo (`MODULE_PAGES` / `data-module`).
+- Não voltar IBM Plex como UI principal do **guia**.
+- Não voltar pills-cápsula como padrão de status no **guia**.
 - Não usar SVG escuro fixo para quadrantes.
 - Não usar `--accent` do hemo (vermelho) para “sucesso”/Q1.
 - Não inventar anti-cópia como “segurança de venda”.
 - Não editar `api/knowledge.js` à mão.
 - Não commitar `CLERK_SECRET_KEY` / `sk_*`.
-- Não trancar módulos só com “estar logado” (gate = plano, quando existir).
+- Não trancar módulos do guia só com “estar logado” (gate = plano, quando existir).
 - Não deixar `.pill-list` sem estilo (usar checklist DS ou `ind-grid` / `mat-grid`).
 - Não reintroduzir flash de “Entrar” no hub (manter hint + boot síncrono).
 - Não deixar card de login semi-transparente com grid “por dentro” (preferência: card opaco).
