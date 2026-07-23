@@ -55,11 +55,14 @@ Janelas terapêuticas:
 - Cirurgia: HIP cerebelar > 3 cm com compressão de tronco ou hidrocefalia → drenagem urgente. HIP supratentorial: indicação limitada (STICH 1 e 2 negativos, exceto lobar superficial).
 
 ### Hemorragia Subaracnóidea (HSA)
-- Confirmação: TC sem contraste (sensibilidade > 95% nas primeiras 6h) ou PL (xantocromia).
-- Escores: Hunt & Hess (gravidade clínica), Fisher modificado (risco de vasoespasmo).
-- Vasoespasmo: pico 5–14 dias. Prevenção: nimodipino 60 mg VO de 4/4 h por 21 dias (classe I). Monitorizar DTC.
-- Risco de ressangramento: máximo nas primeiras 24h. Transferência urgente para neurocirurgia/neurorradiologia.
-- Hiponatremia: CSWS (depleção de volume) vs SIADH — diferenciar pelo estado volêmico. CSWS: repor sódio E volume. SIADH: restringir água.
+- Prioridade: transferência para centro experiente e oclusão completa do aneurisma por clipagem/embolização, preferencialmente em até 24 h.
+- Confirmação: TC sem contraste; completar investigação conforme tempo de início se TC negativa. Angio-TC para fonte; DSA se negativa/inconclusiva com padrão suspeito.
+- Escores: WFNS ou Hunt & Hess (gravidade clínica) e Fisher modificado (carga hemorrágica/risco de DCI).
+- Antes da oclusão: monitorização frequente e anti-hipertensivo IV de curta ação para evitar hipertensão grave, hipotensão e variabilidade. AHA/ASA 2023 não define alvo universal; individualizar com neurocirurgia e preservar PPC.
+- Nimodipino: 60 mg VO/SNG de 4/4 h por 21 dias, iniciado precocemente. Nunca IV. Reduz DCI e melhora desfecho, embora não reverta de forma confiável o vasoespasmo angiográfico.
+- DCI: janela D3–D14, pico ~D7. Exame seriado; DTC/CTA/CTP/EEG conforme exame e recursos. Se DCI sintomática com aneurisma protegido: euvolemia + elevação titulada da PA pela resposta clínica; resgate endovascular se refratária. Não fazer hipertensão/hipervolemia profiláticas.
+- Hidrocefalia sintomática: derivação urgente de LCR, geralmente DVE. Crise nova: tratar por cerca de 7 dias; profilaxia anticonvulsivante não é rotina, apenas alto risco. Evitar fenitoína.
+- Hiponatremia: diferenciar natriurese cerebral/hipovolemia de SIADH pelo estado volêmico, mas NÃO restringir água na HSA. Manter euvolemia, repor sódio/volume e usar salina hipertônica se sintomática conforme protocolo.
 
 ## Status Epiléptico (SE)
 Definição: crise > 5 min ou 2 crises sem recuperação.
@@ -81,7 +84,7 @@ Protocolo de 1ª/2ª/3ª linha:
 ## Metas Gerais no Neurocrítico
 - PAM: suficiente para PPC ≥ 60–70 mmHg. Vasopressor (Nora) se necessário.
 - Glicemia: 140–180 mg/dL (hipoglicemia é tão danosa quanto hiperglicemia).
-- Sódio: 135–145 mEq/L geral; 145–155 em HIC grave (hiperosmolaridade profilática).
+- Sódio: evitar hipo/hipernatremia. Na HIC, preferir osmoterapia em bólus guiada por sintomas/PIC; não perseguir 145–155 como hiperosmolaridade profilática sem indicação individualizada.
 - Temperatura: normotermia ativa (36–37°C). Febre deteriora desfecho neurológico.
 - Profilaxia TVP: heparina SC após 24–48h de estabilidade hemorrágica. CPI precoce.
 
