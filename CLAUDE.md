@@ -328,7 +328,7 @@ Exemplos: `Ventilação Mecânica · SDRA`, `Hemodinâmica · POCUS`, `Neurocrí
 8. Imagem/PDF agora têm prévia, confirmação e deduplicação; parser conservador; limites de 15 MB e 50 páginas.
 9. Confirmações/alertas nativos foram substituídos por dialog acessível; tabs, foco, cópia e barra responsiva receberam correções.
 10. A aba passou a se chamar **Sinais vitais + Balanço hídrico**; o snapshot aparece já no **Detectar**, antes de gravar, e sinais/BH usam cards no mesmo padrão visual do snapshot de Labs. Manter unidades com capitalização convencional (`mmHg`, `mg/dL`, `mL`, `°C`) e o card de pressão como `PAs x PAd`.
-11. Pastes multipaciente de Labs e Sinais/BH detectam `Paciente`/nome e `Leito` em cada bloco, mostram o destino previsto e gravam todos na lateral com uma confirmação. **Colagens sucessivas formam um lote** (não substituem o paciente anterior) e o modo multi mantém um card vazio para o próximo paciente até gravar/descartar. Preservar a confirmação e o bloqueio de nomes divergentes no mesmo leito; não voltar a exigir preenchimento manual quando o leito já estiver explícito no texto.
+11. Labs e Sinais/BH usam fluxo explícito para vários leitos: o usuário seleciona **Vários leitos**, cria quantos cards precisar com `+ Paciente` e cola **exatamente um paciente por card**. Um texto com vários pacientes nunca deve trocar de modo nem montar/expandir cards automaticamente; a UI pede que o conteúdo seja separado. Cada card detecta `Paciente`/nome e `Leito`, mostra o destino previsto e todos são gravados na lateral com uma confirmação. Preservar a confirmação e o bloqueio de nomes divergentes no mesmo leito.
 12. A lateral agrupa automaticamente pacientes nas unidades HRO: UTI 1 (`6601–6610`), UTI 2 (`6611–6620`), UTI 3 (`6621–6630`) e UTI 4 (`6631–6640`). Os quatro grupos iniciam expandidos, são recolhíveis individualmente, ordenam por leito e reabrem quando o paciente ativo pertence à unidade.
 13. As máscaras `6601`, `66-01` e equivalentes são a mesma chave de leito apenas dentro da faixa HRO. O formato abreviado do G-HOSP usa o **segundo número**: `1-4` → `6604`, `1-11` → `6611`; a migração vale também para plantões já salvos. Outros identificadores continuam estritos. Pacientes sem unidade conhecida ficam em `Outros / sem unidade`. Capacidade local e sanitização da API = **40 pacientes**; plantões grandes exigem o backend KV já previsto, pois o fallback de metadata do Clerk continua limitado.
 
@@ -338,7 +338,7 @@ Exemplos: `Ventilação Mecânica · SDRA`, `Hemodinâmica · POCUS`, `Neurocrí
 15. Headers Vercel adicionam CSP, anti-frame, `nosniff`, referrer/permissions policy; Hub continua `noindex`.
 16. Tabs e PDF usam lazy loading; JS inicial caiu de ~729 KB/~219,5 KB gzip para ~243,6 KB/~76,2 KB gzip no build auditado.
 17. Publicação do bundle virou atômica via `scripts/publish-beaside.js`; CI foi adicionado nos dois repositórios.
-18. Validação atual: **114 testes/24 suítes** no fonte, **2 testes** da API, lint sem warnings, build Vite concluído e `dist/` idêntico a `beaside/hub-uti/`.
+18. Validação atual: **112 testes/24 suítes** no fonte, **2 testes** da API, lint sem warnings, build Vite concluído e `dist/` idêntico a `beaside/hub-uti/`.
 
 ### Sessão 23/jul/2026 — conteúdo HSA no módulo Neuro
 
