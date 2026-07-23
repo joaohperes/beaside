@@ -198,8 +198,14 @@ Exemplos: `Ventilação Mecânica · SDRA`, `Hemodinâmica · POCUS`, `Neurocrí
 
 - **Produto:** apoio ao plantão (import laudo/SSVV, painel de leitos, copiar evolução no padrão de prontuário). **Não** é prontuário oficial nem “EvClinic”.
 - **Identidade do paciente:** leito (+ nome/iniciais conforme UI atual); regra de leito em `patientImport.js` (nunca auto-ocupar vaga errada; conflitos explícitos).
+- **Integridade clínica:** texto automático de evolução só pode usar fatos efetivamente registrados; achados ausentes permanecem como campos `[confirmar …]`. Não reintroduzir preenchimento automático de exame físico “normal” nem setas genéricas de laboratório.
+- **Episódio assistencial:** cada ocupação tem `episodeId`/`occupiedAt`. Nome conflitante exige confirmação e, quando forçado, inicia reocupação limpa — nunca mesclar silenciosamente dados de pacientes diferentes.
+- **Concorrência/sync:** estado usa revisões e tombstones; salvamento local é imediato, flush no `pagehide`, expiração local em 12 h e resolução de conflito pelo servidor. Ao limpar, excluir a nuvem antes do estado local.
 - **PHI:** minimizar; ferramenta de plantão, não EHR.
-- **API:** `api/hub-plantao.js` — GET/PUT/DELETE do estado do plantão por usuário Clerk. Env: `CLERK_SECRET_KEY` (sync); opcional `KV_REST_API_URL` + `KV_REST_API_TOKEN`.
+- **Privacidade local:** identificação breve por padrão, alternância de máscara e bloqueio por inatividade em 15 min. Não remover esses controles sem decisão explícita.
+- **Importações:** imagem/PDF passam por prévia e confirmação; deduplicar conteúdo; PDF limitado a 15 MB/50 páginas. Importação individual de laboratório deve bloquear incompatibilidade de paciente.
+- **API:** `api/hub-plantao.js` — GET/PUT/DELETE do estado do plantão por usuário Clerk, com revisão/tombstones, sanitização, limite de 256 KB, rate limit e CORS restrito. Env: `CLERK_SECRET_KEY` (sync); opcional `KV_REST_API_URL` + `KV_REST_API_TOKEN` e `HUB_ALLOWED_ORIGINS`.
+- **UI/performance:** tabs são lazy e apenas a ativa é montada; PDF é import dinâmico. Preservar navegação por teclado, foco de dialogs e fallback visível para falha de cópia.
 - **Publicar:** no fonte Hub UTI → `npm run publish:beaside` → commit no beaside (pasta `hub-uti/` + API se mudou) → push → deploy.
 - Detalhe de arquitetura, parsers e testes: docs **no fonte** (`ARCHITECTURE.md`).
 
@@ -302,6 +308,39 @@ Exemplos: `Ventilação Mecânica · SDRA`, `Hemodinâmica · POCUS`, `Neurocrí
 1. Hub UTI reconhecido como **segundo produto** (SPA) ao lado do guia HTML.
 2. Modo Plantão CSS do guia = **removido de propósito**; sucessor = `/hub-uti/`.
 3. Agentes: não assumir “tudo é HTML estático”; ver seção Arquitetura acima.
+
+### Sessão 23/jul/2026 — varredura e endurecimento do Hub UTI
+
+**Não reverter sem revisar os invariantes clínicos e de privacidade acima.**
+
+#### Segurança clínica e identidade
+
+1. Evolução automática deixou de inventar achados normais; templates usam `[confirmar …]` e a documentação completa não preenche campos clínicos ausentes.
+2. Setas genéricas de laboratório foram removidas do texto copiável para evitar interpretação clínica automática sem referência contextual.
+3. Pacientes receberam `episodeId`/`occupiedAt`; conflito de nome não mescla dados e reocupação confirmada inicia episódio limpo.
+4. Importação individual de laboratório bloqueia paciente incompatível; datas usam validação de calendário real.
+5. Balanço hídrico manual inválido é rejeitado; o total oficial informado é preservado e discrepâncias ficam explícitas.
+
+#### Persistência, privacidade e importação
+
+6. Sync ganhou revisões, tombstones e resolução de concorrência; save local imediato, flush no `pagehide`, TTL de 12 h e limpeza nuvem→local.
+7. Identificação breve/máscara, aviso de privacidade e lock por 15 min reduzem exposição de PHI no plantão.
+8. Imagem/PDF agora têm prévia, confirmação e deduplicação; parser conservador; limites de 15 MB e 50 páginas.
+9. Confirmações/alertas nativos foram substituídos por dialog acessível; tabs, foco, cópia e barra responsiva receberam correções.
+
+#### API, entrega e manutenção
+
+10. `api/hub-plantao.js` passou a restringir CORS/origens autorizadas, sanitizar payload, limitar 256 KB, aplicar rate limit e preservar revisões/tombstones sem vazar `userId`/detalhes internos.
+11. Headers Vercel adicionam CSP, anti-frame, `nosniff`, referrer/permissions policy; Hub continua `noindex`.
+12. Tabs e PDF usam lazy loading; JS inicial caiu de ~729 KB/~219,5 KB gzip para ~243,6 KB/~76,2 KB gzip no build auditado.
+13. Publicação do bundle virou atômica via `scripts/publish-beaside.js`; CI foi adicionado nos dois repositórios.
+14. Validação da sessão: **96 testes/22 suítes** no fonte, **2 testes** da API, lint sem warnings, `npm audit` zerado e `dist/` idêntico a `beaside/hub-uti/`.
+
+#### Clerk Production — standby
+
+15. O Hub rejeita `pk_test_` fora de localhost e não possui fallback hardcoded; SDK Clerk está fixado em `6.25.6`.
+16. Migração para `pk_live_`/`sk_live_` está **em standby**: Clerk Production exige domínio próprio com controle de DNS e `*.vercel.app` não serve. Até existir domínio próprio, não trocar prefixos manualmente nem criar credenciais fictícias.
+17. Ao retomar: conectar domínio próprio ao Vercel, criar/ativar a instância Production no Clerk, configurar DNS/certificados/OAuth, atualizar as duas envs a partir da mesma instância e redeployar.
 
 ---
 

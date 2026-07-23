@@ -1,0 +1,1 @@
+function e(e){return e.map(e=>e==null?``:String(e).trim()).filter(e=>e&&e!==`—`).join(` | `)}export{e as t};

@@ -1,0 +1,35 @@
+name: Hub API CI
+
+on:
+  pull_request:
+    paths:
+      - "api/hub-plantao.js"
+      - "api/hub-plantao.test.js"
+      - "package.json"
+      - "package-lock.json"
+      - "vercel.json"
+  push:
+    branches: [main]
+    paths:
+      - "api/hub-plantao.js"
+      - "api/hub-plantao.test.js"
+      - "package.json"
+      - "package-lock.json"
+      - "vercel.json"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run test:api
+      - run: node -e "JSON.parse(require('node:fs').readFileSync('vercel.json', 'utf8'))"

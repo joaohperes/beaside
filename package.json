@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "extract-knowledge": "node scripts/extract-knowledge.js"
+    "extract-knowledge": "node scripts/extract-knowledge.js",
+    "test:api": "node --test api/*.test.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.70.0",
