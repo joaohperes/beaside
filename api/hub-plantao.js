@@ -11,7 +11,7 @@ import { createClerkClient, verifyToken } from '@clerk/backend'
 
 const KEY_PREFIX = 'hub:plantao:'
 const META_MAX = 6000
-const MAX_BODY_BYTES = 256 * 1024
+const MAX_BODY_BYTES = 1024 * 1024
 const RATE_WINDOW_MS = 60_000
 const RATE_MAX = 90
 const rateBuckets = new Map()
@@ -70,7 +70,7 @@ function bearer(req) {
 async function readJsonBody(req) {
   if (req.body != null && typeof req.body === 'object' && !Buffer.isBuffer(req.body)) {
     if (Buffer.byteLength(JSON.stringify(req.body), 'utf8') > MAX_BODY_BYTES) {
-      const err = new Error('Plantão excede o limite de 256 KB')
+      const err = new Error('Plantão excede o limite de 1 MB')
       err.status = 413
       err.code = 'payload_too_large'
       throw err
@@ -79,7 +79,7 @@ async function readJsonBody(req) {
   }
   if (typeof req.body === 'string' && req.body.trim()) {
     if (Buffer.byteLength(req.body, 'utf8') > MAX_BODY_BYTES) {
-      const err = new Error('Plantão excede o limite de 256 KB')
+      const err = new Error('Plantão excede o limite de 1 MB')
       err.status = 413
       err.code = 'payload_too_large'
       throw err
@@ -97,7 +97,7 @@ async function readJsonBody(req) {
     const buf = typeof chunk === 'string' ? Buffer.from(chunk) : chunk
     bytes += buf.length
     if (bytes > MAX_BODY_BYTES) {
-      const err = new Error('Plantão excede o limite de 256 KB')
+      const err = new Error('Plantão excede o limite de 1 MB')
       err.status = 413
       err.code = 'payload_too_large'
       throw err
@@ -290,7 +290,7 @@ function sanitizePatient(raw) {
 function sanitizePlantao(body) {
   if (!body || typeof body !== 'object') return null
   if (!Array.isArray(body.patients)) return null
-  const patients = body.patients.slice(0, 10).map(sanitizePatient).filter(Boolean)
+  const patients = body.patients.slice(0, 40).map(sanitizePatient).filter(Boolean)
   let activeId = body.activeId ?? null
   if (!patients.length) {
     activeId = null
