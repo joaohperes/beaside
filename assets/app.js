@@ -101,6 +101,13 @@ const MODULES = {
     root: 'proc/',
     color: '#3b82f6',
   },
+  institucional: {
+    id: 'institucional',
+    label: 'Institucional',
+    subtitle: 'Sobre, equipe e políticas',
+    root: 'institucional/',
+    color: '#1db88a',
+  },
 };
 
 // ── Índice de páginas por módulo ─────────────────────────────
@@ -176,6 +183,12 @@ const MODULE_PAGES = {
     {id:'swan',          file:'swan.html',          cat:'Monitorização invasiva',  label:'Swan-Ganz',               title:'Cateter de Artéria Pulmonar (Swan-Ganz)',subtitle:'Inserção, curvas por câmara, parâmetros e perfis de choque'},
     {id:'ritmo',         file:'ritmo.html',         cat:'Emergência cardíaca',     label:'Cardioversão & marca-passo',title:'Cardioversão, Desfibrilação & Marca-passo',subtitle:'Choque sincronizado, desfibrilação e marca-passo transcutâneo/transvenoso'},
     {id:'pearls',        file:'pearls.html',        cat:'Pearls & Pitfalls',       label:'Dúvidas de plantão',      title:'Dúvidas de Plantão',                    subtitle:'As perguntas que ninguém responde no guia clássico'},
+  ],
+  institucional: [
+    {id:'sobre',          file:'sobre.html',          cat:'Institucional', label:'Sobre',              title:'Sobre o be·aside',                subtitle:'Do mecanismo à conduta de beira-leito'},
+    {id:'equipe',         file:'equipe.html',         cat:'Institucional', label:'Equipe',             title:'Quem Escreve e Revisa o be·aside', subtitle:'Autoria e credenciais de cada área'},
+    {id:'metodologia',    file:'metodologia.html',    cat:'Institucional', label:'Metodologia',        title:'Metodologia Editorial',           subtitle:'Como pesquisamos, escrevemos e revisamos'},
+    {id:'seguranca-ia',   file:'seguranca-ia.html',   cat:'Institucional', label:'Segurança da IA',    title:'Segurança e Uso dos Assistentes de IA', subtitle:'O que os assistentes fazem, não fazem e como tratam dados'},
   ],
 };
 
