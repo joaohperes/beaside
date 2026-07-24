@@ -361,6 +361,7 @@ body{
 .bento .card:nth-child(2){opacity:0;animation:rise .75s var(--ease) .34s forwards}
 .bento .card:nth-child(3){opacity:0;animation:rise .75s var(--ease) .4s forwards}
 .bento .card:nth-child(4){opacity:0;animation:rise .75s var(--ease) .46s forwards}
+.bento .card:nth-child(5){opacity:0;animation:rise .75s var(--ease) .52s forwards}
 
 .card{
   position:relative;border-radius:18px;
@@ -531,6 +532,8 @@ a.card-hit{
 .hero-demo-live::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--c-accent,var(--teal));box-shadow:0 0 0 3px var(--c-glow,var(--teal-soft));transition:background .3s,box-shadow .3s}
 .hero-demo-body{padding:20px 18px 6px;transition:opacity .22s ease}
 .hero-demo-body.is-fading{opacity:0}
+.hero-demo-thread{display:flex;flex-direction:column;gap:18px}
+.hero-demo-turn{display:flex;flex-direction:column}
 .hero-demo-q{
   margin-left:auto;max-width:90%;
   background:#141a22;color:#fff;border-radius:14px 14px 3px 14px;
@@ -917,19 +920,9 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
           <span class="hero-demo-live">Exemplo</span>
         </div>
         <div class="hero-demo-body" id="heroDemoBody">
-          <div class="hero-demo-q" id="heroDemoQ" aria-live="polite"></div>
-          <div class="hero-demo-a">
-            <span class="hero-demo-avatar" id="heroDemoAvatar" aria-hidden="true">IA</span>
-            <div class="hero-demo-answer">
-              <div class="hero-demo-answer-body">
-                <div class="hero-demo-typing" id="heroDemoTyping" aria-hidden="true"><span></span><span></span><span></span></div>
-                <p class="hero-demo-direct" id="heroDemoA"></p>
-              </div>
-              <div class="hero-demo-sources" id="heroDemoSources"></div>
-            </div>
-          </div>
+          <div class="hero-demo-thread" id="heroDemoThread" aria-live="polite"></div>
         </div>
-        <div class="hero-demo-dots" id="heroDemoDots" role="tablist" aria-label="Outros exemplos"></div>
+        <div class="hero-demo-dots" id="heroDemoDots" role="tablist" aria-label="Outras sessões de exemplo"></div>
       </div>
     </div>
   </section>
@@ -970,18 +963,26 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
         a:'Depende do tempo desde a traqueostomia: <strong>menos de 7–10 dias</strong> (trajeto imaturo) é emergência de via aérea — priorizar via aérea oral em vez de recanular às cegas.',
         s:[['O Shiley saiu','artigos/shiley-saiu-decanulacao-acidental.html'],['Via aérea difícil','proc/vad.html'],['Guia Procedimentos','proc/']]}
     ];
+    // Sessões: cada sessão agrupa 1+ perguntas que "acontecem" em sequência na mesma
+    // janela de chat, como uma conversa real, antes de trocar de assunto. As duas
+    // primeiras (Perguntas de Plantão) vêm primeiro de propósito — são o carro-chefe
+    // de conteúdo/SEO do site.
+    var SESSIONS=[[0,1],[2,3],[4,5],[6,7]];
+
     var root=document.getElementById('heroDemo');
     if(!root) return;
-    var qEl=document.getElementById('heroDemoQ');
-    var aEl=document.getElementById('heroDemoA');
-    var typingEl=document.getElementById('heroDemoTyping');
-    var srcEl=document.getElementById('heroDemoSources');
+    var bodyEl=document.getElementById('heroDemoBody');
+    var threadEl=document.getElementById('heroDemoThread');
     var dotsEl=document.getElementById('heroDemoDots');
-    var idx=0,token=0;
+    var sIdx=0,token=0;
     var state={paused:false};
     var reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+
+    function sourcesHtml(s){
+      return s.map(function(p){return '<a class="hero-demo-source" href="'+esc(p[1])+'">'+esc(p[0])+'</a>'}).join('');
+    }
 
     function sleep(ms,myToken){
       return new Promise(function(resolve,reject){
@@ -997,6 +998,7 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
       });
     }
 
+    // Digita a pergunta caractere a caractere (cursor piscando via CSS).
     function typeText(el,text,myToken,speed){
       el.textContent='';
       el.classList.add('is-visible','is-typing');
@@ -1013,66 +1015,131 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
       });
     }
 
+    // Quebra o HTML da resposta (só usa <strong>) em tokens de palavra/espaço,
+    // preservando quais tokens ficam em negrito, para poder "transmitir" a
+    // resposta em streaming (como uma IA gerando texto) sem quebrar as tags.
+    function tokenizeAnswer(html){
+      var tokens=[];
+      var re=/<strong>([\s\S]*?)<\/strong>|([^<]+)/g;
+      var m;
+      while((m=re.exec(html))){
+        var strong=m[1]!==undefined;
+        var chunk=strong?m[1]:m[2];
+        chunk.split(/(\s+)/).forEach(function(part){
+          if(part) tokens.push({t:part,strong:strong});
+        });
+      }
+      return tokens;
+    }
+
+    // Revela a resposta progressivamente, token a token, simulando streaming de IA.
+    function streamAnswer(el,html,myToken){
+      var tokens=tokenizeAnswer(html);
+      el.innerHTML='';
+      el.classList.add('is-visible');
+      var buffer='';
+      var i=0;
+      return new Promise(function(resolve,reject){
+        (function tick(){
+          if(myToken!==token) return reject('aborted');
+          if(state.paused){setTimeout(tick,90);return;}
+          var tk=tokens[i];
+          buffer+= tk.strong ? ('<strong>'+esc(tk.t)+'</strong>') : esc(tk.t);
+          el.innerHTML=buffer;
+          i++;
+          if(i>=tokens.length){resolve();return;}
+          setTimeout(tick,/^\s+$/.test(tk.t)?8:42);
+        })();
+      });
+    }
+
     function renderDots(){
       dotsEl.innerHTML='';
-      ITEMS.forEach(function(_,i){
+      SESSIONS.forEach(function(_,i){
         var b=document.createElement('button');
-        b.type='button';b.className='hero-demo-dot'+(i===idx?' is-active':'');
-        b.setAttribute('aria-label','Exemplo '+(i+1)+' de '+ITEMS.length);
-        b.addEventListener('click',function(){jumpTo(i)});
+        b.type='button';b.className='hero-demo-dot'+(i===sIdx?' is-active':'');
+        b.setAttribute('aria-label','Sessão '+(i+1)+' de '+SESSIONS.length);
+        b.addEventListener('click',function(){jumpToSession(i)});
         dotsEl.appendChild(b);
       });
     }
 
-    function resetVisual(){
-      qEl.textContent='';qEl.classList.remove('is-visible','is-typing');
-      aEl.innerHTML='';aEl.classList.remove('is-visible');
-      srcEl.innerHTML='';srcEl.classList.remove('is-visible');
-      typingEl.classList.remove('is-visible');
+    function buildTurn(){
+      var turn=document.createElement('div');
+      turn.className='hero-demo-turn';
+      turn.innerHTML=
+        '<div class="hero-demo-q"></div>'+
+        '<div class="hero-demo-a">'+
+          '<span class="hero-demo-avatar" aria-hidden="true">IA</span>'+
+          '<div class="hero-demo-answer">'+
+            '<div class="hero-demo-answer-body">'+
+              '<div class="hero-demo-typing" aria-hidden="true"><span></span><span></span><span></span></div>'+
+              '<p class="hero-demo-direct"></p>'+
+            '</div>'+
+            '<div class="hero-demo-sources"></div>'+
+          '</div>'+
+        '</div>';
+      return {
+        root:turn,
+        q:turn.querySelector('.hero-demo-q'),
+        typing:turn.querySelector('.hero-demo-typing'),
+        a:turn.querySelector('.hero-demo-direct'),
+        src:turn.querySelector('.hero-demo-sources')
+      };
     }
 
-    function jumpTo(i){
-      idx=(i+ITEMS.length)%ITEMS.length;
+    function jumpToSession(i){
+      sIdx=(i+SESSIONS.length)%SESSIONS.length;
       token++;
-      resetVisual();
+      threadEl.innerHTML='';
+      bodyEl.classList.remove('is-fading');
       renderDots();
-      runSequence(token);
+      runSession(token);
     }
 
-    async function runSequence(myToken){
-      var it=ITEMS[idx];
-      root.style.setProperty('--c-accent',it.accent);
-      root.style.setProperty('--c-glow',it.glow);
+    async function runSession(myToken){
+      var refs=SESSIONS[sIdx];
+      threadEl.innerHTML='';
       try{
         if(reduceMotion){
-          qEl.textContent=it.q;qEl.classList.add('is-visible');
-          aEl.innerHTML=it.a;aEl.classList.add('is-visible');
-          srcEl.innerHTML=it.s.map(function(p){return '<a class="hero-demo-source" href="'+esc(p[1])+'">'+esc(p[0])+'</a>'}).join('');
-          srcEl.classList.add('is-visible');
+          refs.forEach(function(ri){
+            var it=ITEMS[ri];
+            var t=buildTurn();
+            threadEl.appendChild(t.root);
+            root.style.setProperty('--c-accent',it.accent);
+            root.style.setProperty('--c-glow',it.glow);
+            t.q.textContent=it.q;t.q.classList.add('is-visible');
+            t.a.innerHTML=it.a;t.a.classList.add('is-visible');
+            t.src.innerHTML=sourcesHtml(it.s);t.src.classList.add('is-visible');
+          });
           return;
         }
-        await sleep(300,myToken);
-        await typeText(qEl,it.q,myToken,23);
-        await sleep(450,myToken);
-        typingEl.classList.add('is-visible');
-        await sleep(1100,myToken);
-        typingEl.classList.remove('is-visible');
-        aEl.innerHTML=it.a;
-        aEl.classList.add('is-visible');
-        await sleep(180,myToken);
-        srcEl.innerHTML=it.s.map(function(p){return '<a class="hero-demo-source" href="'+esc(p[1])+'">'+esc(p[0])+'</a>'}).join('');
-        srcEl.classList.add('is-visible');
-        await sleep(4000,myToken);
-        var body=document.getElementById('heroDemoBody');
-        body.classList.add('is-fading');
-        await sleep(220,myToken);
-        body.classList.remove('is-fading');
+        for(var k=0;k<refs.length;k++){
+          var it=ITEMS[refs[k]];
+          var t=buildTurn();
+          threadEl.appendChild(t.root);
+          root.style.setProperty('--c-accent',it.accent);
+          root.style.setProperty('--c-glow',it.glow);
+          await sleep(k===0?300:550,myToken);
+          await typeText(t.q,it.q,myToken,23);
+          await sleep(400,myToken);
+          t.typing.classList.add('is-visible');
+          await sleep(950,myToken);
+          t.typing.classList.remove('is-visible');
+          await streamAnswer(t.a,it.a,myToken);
+          await sleep(150,myToken);
+          t.src.innerHTML=sourcesHtml(it.s);
+          t.src.classList.add('is-visible');
+          await sleep(k===refs.length-1?4200:1300,myToken);
+        }
+        bodyEl.classList.add('is-fading');
+        await sleep(240,myToken);
         if(myToken!==token) return;
-        idx=(idx+1)%ITEMS.length;
-        resetVisual();
+        bodyEl.classList.remove('is-fading');
+        sIdx=(sIdx+1)%SESSIONS.length;
         renderDots();
-        runSequence(token);
-      }catch(e){ /* aborted: a new sequence has taken over */ }
+        runSession(token);
+      }catch(e){ /* aborted: uma nova sessão assumiu (clique em outro ponto) */ }
     }
 
     root.addEventListener('mouseenter',function(){state.paused=true});
@@ -1084,7 +1151,7 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
     });
 
     renderDots();
-    runSequence(token);
+    runSession(token);
   })();
   </script>
 
@@ -1133,6 +1200,33 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
       <div class="card-foot">
         <a class="card-cta" href="vm/">Abrir guia <span class="card-cta-arrow" aria-hidden="true">→</span></a>
         <a class="card-cta card-cta-ai" href="vm/assistente.html">Assistente IA</a>
+      </div>
+    </div>
+
+    <div class="card"
+       style="--c-accent:#1db88a;--c-border:rgba(29,184,138,.4);--c-glow:rgba(29,184,138,.12);--c-shadow:rgba(29,184,138,.1)">
+      <span class="card-rail" aria-hidden="true"></span>
+      <a class="card-hit" href="artigos/" aria-label="Artigos — Perguntas de Plantão Respondidas">
+        <div class="card-top">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <path d="M14 2v6h6"/>
+              <path d="M9 13h6M9 17h6M9 9h1"/>
+            </svg>
+          </div>
+        </div>
+        <div class="card-badge">Artigos</div>
+        <div class="card-title">Perguntas de<br>Plantão</div>
+        <div class="card-sub">Dúvidas reais de UTI e PS, respondidas direto — resposta objetiva, mecanismo e conduta prática, com referência.</div>
+        <div class="card-tags">
+          <span class="card-tag">Hemodinâmica</span>
+          <span class="card-tag">VM</span>
+          <span class="card-tag">Neuro · Proc</span>
+        </div>
+      </a>
+      <div class="card-foot">
+        <a class="card-cta" href="artigos/">Ler artigos <span class="card-cta-arrow" aria-hidden="true">→</span></a>
       </div>
     </div>
 
@@ -1218,33 +1312,6 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
       </a>
       <div class="card-foot">
         <a class="card-cta" href="proc/">Abrir guia <span class="card-cta-arrow" aria-hidden="true">→</span></a>
-      </div>
-    </div>
-
-    <div class="card"
-       style="--c-accent:#1db88a;--c-border:rgba(29,184,138,.4);--c-glow:rgba(29,184,138,.12);--c-shadow:rgba(29,184,138,.1)">
-      <span class="card-rail" aria-hidden="true"></span>
-      <a class="card-hit" href="artigos/" aria-label="Artigos — Perguntas de Plantão Respondidas">
-        <div class="card-top">
-          <div class="card-icon" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-              <path d="M14 2v6h6"/>
-              <path d="M9 13h6M9 17h6M9 9h1"/>
-            </svg>
-          </div>
-        </div>
-        <div class="card-badge">Artigos</div>
-        <div class="card-title">Perguntas de<br>Plantão</div>
-        <div class="card-sub">Dúvidas reais de UTI e PS, respondidas direto — resposta objetiva, mecanismo e conduta prática.</div>
-        <div class="card-tags">
-          <span class="card-tag">Hemodinâmica</span>
-          <span class="card-tag">VM</span>
-          <span class="card-tag">Neuro · Proc</span>
-        </div>
-      </a>
-      <div class="card-foot">
-        <a class="card-cta" href="artigos/">Ler artigos <span class="card-cta-arrow" aria-hidden="true">→</span></a>
       </div>
     </div>
 

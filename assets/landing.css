@@ -330,6 +330,8 @@ a.card-hit{display:flex;flex-direction:column;flex:1 1 auto;text-decoration:none
 .hero-demo-live::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--c-accent,var(--teal));box-shadow:0 0 0 3px var(--c-glow,var(--teal-soft));transition:background .3s,box-shadow .3s}
 .hero-demo-body{padding:20px 18px 6px;transition:opacity .22s ease}
 .hero-demo-body.is-fading{opacity:0}
+.hero-demo-thread{display:flex;flex-direction:column;gap:18px}
+.hero-demo-turn{display:flex;flex-direction:column}
 .hero-demo-q{
   margin-left:auto;max-width:90%;
   background:#141a22;color:#fff;border-radius:14px 14px 3px 14px;
