@@ -17,17 +17,19 @@ _Última atualização: 24/07/2026 · branch `content/artigos-clinicos`_
 | Guia Hemodinâmica (`/hemo/`) | ✅ no ar | idem |
 | Guia Neurocrítico (`/neuro/`) | ✅ no ar | em expansão |
 | Guia Procedimentos (`/proc/`) | ✅ no ar | sem assistente IA próprio |
-| **Condutas no Paciente Crítico** (`/artigos/`) | 🟡 8 artigos em rascunho | ex-"Perguntas de Plantão" — renomeada em 24/07. Aguarda revisão clínica para tirar aviso de rascunho |
+| **Central de Conhecimento** (`/artigos/`) | 🟡 8 artigos em rascunho | ex-"Perguntas de Plantão" → "Condutas no Paciente Crítico" → renomeada de novo em 24/07 para refletir escopo mais amplo (artigos gerais, GEO/SEO, posicionamento de mercado). Aguarda revisão clínica para tirar aviso de rascunho |
 | Home — hero com chat simulado | ✅ | 4 sessões × 2 perguntas, streaming, altura fixa |
-| Home — card retangular "Condutas no Paciente Crítico" | ✅ | full-width acima dos módulos, accent teal |
+| Home — card retangular "Central de Conhecimento" | ✅ | full-width acima dos módulos, accent teal |
 | Institucional (Sobre/Equipe/Metodologia/Segurança IA) | ✅ | branch `feat/paginas-institucionais` |
 | Login / Conta | ✅ | |
 | Infra SEO técnica (robots/sitemap/llms.txt) | ❌ não existe | maior pendência técnica — ver §5 |
 | Analytics / Search Console | ❌ não configurado | sem dados de busca real ainda |
 
-**Seção-âncora do site**: `/artigos/` = **Condutas no Paciente Crítico**. É a "cara" do site
-para SEO/GEO. Todo artigo novo entra ali, com card no hub e (quando relevante) exemplo no
-chat do hero da home.
+**Seção-âncora do site**: `/artigos/` = **Central de Conhecimento**. É a "cara" do site para
+SEO/GEO — pensada para artigos gerais sobre paciente crítico que posicionem o be·aside no
+mercado, não só respostas pontuais de plantão. Todo artigo novo entra ali, com card no hub e
+(quando relevante) exemplo no chat do hero da home. O nome da seção mudou, mas o vocabulário
+de busca ("conduta", "perguntas de plantão") continua vivo nos títulos e descrições — ver §3.2.
 
 ---
 
@@ -65,8 +67,9 @@ vasopressina no choque séptico". Essa é a aposta central do be·aside.
 ### 3.2 O padrão de busca do médico brasileiro: "conduta"
 Sanarmed, Estratégia MED e afins rankeiam com o padrão **"X: diagnóstico e conduta"** —
 "conduta" é a palavra que o médico digita ("conduta na sepse", "conduta hipercalemia
-grave"). Por isso a seção virou **Condutas no Paciente Crítico**. Padrões de long-tail a
-explorar em títulos e H2s:
+grave"). A seção se chama **Central de Conhecimento**, mas cada artigo/título individual
+continua usando "conduta" e "perguntas de plantão" — a keyword vive no conteúdo, não
+precisa estar no nome da seção. Padrões de long-tail a explorar em títulos e H2s:
 - "conduta na/em [condição]" · "quando iniciar [droga]" · "dose de [droga] em mL/h"
 - "como ajustar [parâmetro do ventilador]" · "[achado]: o que fazer"
 - perguntas literais ("a pressão caiu depois da PEEP — por quê?")
@@ -174,7 +177,7 @@ existente não é encontrado nem citado.
 
 | Data | Decisão |
 |---|---|
-| 24/07/2026 | Seção `/artigos/` renomeada de "Perguntas de Plantão" para **"Condutas no Paciente Crítico"** (keyword "conduta" + nicho completo). Descrições mantêm "perguntas reais de plantão... respondidas direto" para não perder a long-tail. |
+| 24/07/2026 | Seção `/artigos/` renomeada de "Perguntas de Plantão" para "Condutas no Paciente Crítico" (keyword "conduta"), e depois para **"Central de Conhecimento"** no mesmo dia — o escopo real é artigos gerais sobre paciente crítico com foco em GEO/SEO e posicionamento de mercado, não só Q&A pontual. Nome conecta com a tagline do hero ("Conhecimento à beira do leito"). Descrições/títulos individuais mantêm "conduta" e "perguntas de plantão" para não perder a long-tail de busca. |
 | 24/07/2026 | Card da seção vira **retângulo full-width acima dos módulos** na home (classe `.card.wide`), accent teal de marca, layout horizontal. |
 | 24/07/2026 | Hero da home = chat simulado (streaming, 4 sessões×2 perguntas, altura fixa 300px, plantão/condutas primeiro). |
 | 24/07/2026 | Aposta estratégica: conteúdo **aberto + referenciado + em português** para ocupar o espaço que Whitebook/UpToDate (paywall) não podem ocupar nas citações de IA. |
