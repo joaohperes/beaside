@@ -338,7 +338,8 @@ Exemplos: `Ventilação Mecânica · SDRA`, `Hemodinâmica · POCUS`, `Neurocrí
 15. Headers Vercel adicionam CSP, anti-frame, `nosniff`, referrer/permissions policy; Hub continua `noindex`.
 16. Tabs e PDF usam lazy loading; JS inicial caiu de ~729 KB/~219,5 KB gzip para ~243,6 KB/~76,2 KB gzip no build auditado.
 17. Publicação do bundle virou atômica via `scripts/publish-beaside.js`; CI foi adicionado nos dois repositórios.
-18. Validação atual: **112 testes/24 suítes** no fonte, **2 testes** da API, lint sem warnings, build Vite concluído e `dist/` idêntico a `beaside/hub-uti/`.
+18. Validação atual: **115 testes/24 suítes** no fonte, **2 testes** da API, lint sem warnings, build Vite concluído e `dist/` idêntico a `beaside/hub-uti/`.
+19. A evolução inclui automaticamente Labs em `#LABORATORIAL` e os fatos estruturados de SSVV/BH em `#EVOLUÇÃO CLÍNICA`, sem sobrescrever a narrativa manual. O intervalo do G-HOSP define `12h` ou `24h`; snapshots e texto usam `BH 12h/24h` e `Diurese 12h/24h`. O acumulado permanece disponível na tabela para auditoria, mas não entra no snapshot principal nem no texto evolutivo.
 
 ### Sessão 23/jul/2026 — conteúdo HSA no módulo Neuro
 
