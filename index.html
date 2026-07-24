@@ -535,8 +535,11 @@ a.card-hit{
   margin-left:auto;max-width:90%;
   background:#141a22;color:#fff;border-radius:14px 14px 3px 14px;
   padding:11px 14px;font-size:13px;line-height:1.55;font-weight:400;
-  margin-bottom:14px;
+  margin-bottom:14px;min-height:20px;opacity:0;transition:opacity .2s ease;
 }
+.hero-demo-q.is-visible{opacity:1}
+.hero-demo-q.is-typing::after{content:'';display:inline-block;width:2px;height:12px;margin-left:2px;background:rgba(255,255,255,.75);vertical-align:middle;animation:heroCursorBlink .8s step-end infinite}
+@keyframes heroCursorBlink{0%,100%{opacity:1}50%{opacity:0}}
 .hero-demo-a{display:flex;gap:9px;align-items:flex-start}
 .hero-demo-avatar{
   flex:none;width:23px;height:23px;border-radius:7px;margin-top:1px;
@@ -549,9 +552,22 @@ a.card-hit{
   flex:1;min-width:0;border:1px solid var(--border);border-radius:14px;padding:13px 15px;
   background:rgba(255,255,255,.015);
 }
-.hero-demo-direct{font-size:13px;line-height:1.7;color:var(--text);font-weight:400;min-height:70px}
+.hero-demo-answer-body{min-height:74px;position:relative}
+.hero-demo-typing{display:none;align-items:center;gap:4px;height:20px;padding-top:2px}
+.hero-demo-typing.is-visible{display:flex}
+.hero-demo-typing span{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--c-accent,var(--teal));opacity:.55;
+  animation:heroTypingBounce 1.1s ease-in-out infinite;
+}
+.hero-demo-typing span:nth-child(2){animation-delay:.15s}
+.hero-demo-typing span:nth-child(3){animation-delay:.3s}
+@keyframes heroTypingBounce{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-4px);opacity:1}}
+.hero-demo-direct{font-size:13px;line-height:1.7;color:var(--text);font-weight:400;opacity:0;transform:translateY(4px);transition:opacity .35s ease,transform .35s ease}
+.hero-demo-direct.is-visible{opacity:1;transform:none}
 .hero-demo-direct strong{color:var(--c-accent,var(--teal));font-weight:600;transition:color .3s}
-.hero-demo-sources{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px;padding-top:13px;border-top:1px dashed var(--border)}
+.hero-demo-sources{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px;padding-top:13px;border-top:1px dashed var(--border);opacity:0;transition:opacity .3s ease}
+.hero-demo-sources.is-visible{opacity:1}
 .hero-demo-source{
   font-family:var(--mono);font-size:9.5px;padding:4px 8px;border-radius:6px;
   background:rgba(255,255,255,.02);border:1px solid var(--border);color:var(--text3);
@@ -901,16 +917,15 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
           <span class="hero-demo-live">Exemplo</span>
         </div>
         <div class="hero-demo-body" id="heroDemoBody">
-          <div class="hero-demo-q" id="heroDemoQ">Quando iniciar vasopressina no choque séptico?</div>
+          <div class="hero-demo-q" id="heroDemoQ" aria-live="polite"></div>
           <div class="hero-demo-a">
             <span class="hero-demo-avatar" id="heroDemoAvatar" aria-hidden="true">IA</span>
             <div class="hero-demo-answer">
-              <p class="hero-demo-direct" id="heroDemoA">Quando a <strong>noradrenalina</strong> atinge cerca de <strong>0,25–0,5 mcg/kg/min</strong>, como estratégia de poupar catecolamina — dose fixa inicial de 0,03 U/min, sem titular pelo efeito hemodinâmico.</p>
-              <div class="hero-demo-sources" id="heroDemoSources">
-                <a class="hero-demo-source" href="hemo/drogas.html">Vasopressores</a>
-                <a class="hero-demo-source" href="artigos/sepsis-2026-o-que-mudou.html">SSC 2026</a>
-                <a class="hero-demo-source" href="hemo/assistente.html">Assistente de conduta →</a>
+              <div class="hero-demo-answer-body">
+                <div class="hero-demo-typing" id="heroDemoTyping" aria-hidden="true"><span></span><span></span><span></span></div>
+                <p class="hero-demo-direct" id="heroDemoA"></p>
               </div>
+              <div class="hero-demo-sources" id="heroDemoSources"></div>
             </div>
           </div>
         </div>
@@ -920,8 +935,16 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
   </section>
 
   <script>
-  (function heroDemoRotator(){
+  (function heroDemoChat(){
     var ITEMS=[
+      {accent:'#e05555',glow:'rgba(224,85,85,.16)',
+        q:'O que é choque críptico e como reconhecer na prática?',
+        a:'É a <strong>hipoperfusão tecidual mascarada</strong> — lactato elevado (>2 mmol/L) com pressão arterial ainda normal. POCUS de VCI e teste de elevação passiva de pernas ajudam a decidir se vale expandir volume antes de escalar vasopressor.',
+        s:[['Choque críptico','artigos/perguntas-plantao-hemodinamica.html'],['POCUS VCI','hemo/vci.html'],['Assistente de conduta →','hemo/assistente.html']]},
+      {accent:'#9b6ff7',glow:'rgba(155,111,247,.16)',
+        q:'Quais medidas gerais previnem lesão secundária no paciente neurocrítico?',
+        a:'O pacote básico: <strong>cabeceira elevada a 30°</strong>, PPC-alvo ≥60 mmHg, normoglicemia, normonatremia e normotermia — antes de qualquer medida específica de PIC.',
+        s:[['Medidas gerais','artigos/medidas-gerais-neurocritico.html'],['Guia Neurocrítico','neuro/'],['Assistente de conduta →','neuro/assistente.html']]},
       {accent:'#e05555',glow:'rgba(224,85,85,.16)',
         q:'Quando iniciar vasopressina no choque séptico?',
         a:'Quando a <strong>noradrenalina</strong> atinge cerca de <strong>0,25–0,5 mcg/kg/min</strong>, como estratégia de poupar catecolamina — dose fixa inicial de 0,03 U/min, sem titular pelo efeito hemodinâmico.',
@@ -949,15 +972,46 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
     ];
     var root=document.getElementById('heroDemo');
     if(!root) return;
-    var body=document.getElementById('heroDemoBody');
     var qEl=document.getElementById('heroDemoQ');
     var aEl=document.getElementById('heroDemoA');
+    var typingEl=document.getElementById('heroDemoTyping');
     var srcEl=document.getElementById('heroDemoSources');
     var dotsEl=document.getElementById('heroDemoDots');
-    var idx=0,timer=null;
+    var idx=0,token=0;
+    var state={paused:false};
     var reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+
+    function sleep(ms,myToken){
+      return new Promise(function(resolve,reject){
+        var waited=0;
+        var step=120;
+        (function tick(){
+          if(myToken!==token) return reject('aborted');
+          if(state.paused){setTimeout(tick,step);return;}
+          waited+=step;
+          if(waited>=ms) resolve();
+          else setTimeout(tick,step);
+        })();
+      });
+    }
+
+    function typeText(el,text,myToken,speed){
+      el.textContent='';
+      el.classList.add('is-visible','is-typing');
+      var i=0;
+      return new Promise(function(resolve,reject){
+        (function tick(){
+          if(myToken!==token) return reject('aborted');
+          if(state.paused){setTimeout(tick,90);return;}
+          i++;
+          el.textContent=text.slice(0,i);
+          if(i>=text.length){el.classList.remove('is-typing');resolve();}
+          else setTimeout(tick,speed);
+        })();
+      });
+    }
 
     function renderDots(){
       dotsEl.innerHTML='';
@@ -965,40 +1019,72 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
         var b=document.createElement('button');
         b.type='button';b.className='hero-demo-dot'+(i===idx?' is-active':'');
         b.setAttribute('aria-label','Exemplo '+(i+1)+' de '+ITEMS.length);
-        b.addEventListener('click',function(){show(i,true)});
+        b.addEventListener('click',function(){jumpTo(i)});
         dotsEl.appendChild(b);
       });
     }
-    function show(i,userTriggered){
+
+    function resetVisual(){
+      qEl.textContent='';qEl.classList.remove('is-visible','is-typing');
+      aEl.innerHTML='';aEl.classList.remove('is-visible');
+      srcEl.innerHTML='';srcEl.classList.remove('is-visible');
+      typingEl.classList.remove('is-visible');
+    }
+
+    function jumpTo(i){
       idx=(i+ITEMS.length)%ITEMS.length;
+      token++;
+      resetVisual();
+      renderDots();
+      runSequence(token);
+    }
+
+    async function runSequence(myToken){
       var it=ITEMS[idx];
-      function paint(){
-        root.style.setProperty('--c-accent',it.accent);
-        root.style.setProperty('--c-glow',it.glow);
-        qEl.textContent=it.q;
+      root.style.setProperty('--c-accent',it.accent);
+      root.style.setProperty('--c-glow',it.glow);
+      try{
+        if(reduceMotion){
+          qEl.textContent=it.q;qEl.classList.add('is-visible');
+          aEl.innerHTML=it.a;aEl.classList.add('is-visible');
+          srcEl.innerHTML=it.s.map(function(p){return '<a class="hero-demo-source" href="'+esc(p[1])+'">'+esc(p[0])+'</a>'}).join('');
+          srcEl.classList.add('is-visible');
+          return;
+        }
+        await sleep(300,myToken);
+        await typeText(qEl,it.q,myToken,23);
+        await sleep(450,myToken);
+        typingEl.classList.add('is-visible');
+        await sleep(1100,myToken);
+        typingEl.classList.remove('is-visible');
         aEl.innerHTML=it.a;
+        aEl.classList.add('is-visible');
+        await sleep(180,myToken);
         srcEl.innerHTML=it.s.map(function(p){return '<a class="hero-demo-source" href="'+esc(p[1])+'">'+esc(p[0])+'</a>'}).join('');
-        renderDots();
+        srcEl.classList.add('is-visible');
+        await sleep(4000,myToken);
+        var body=document.getElementById('heroDemoBody');
+        body.classList.add('is-fading');
+        await sleep(220,myToken);
         body.classList.remove('is-fading');
-      }
-      if(reduceMotion){paint();}
-      else{body.classList.add('is-fading');setTimeout(paint,220);}
-      if(userTriggered) restart();
+        if(myToken!==token) return;
+        idx=(idx+1)%ITEMS.length;
+        resetVisual();
+        renderDots();
+        runSequence(token);
+      }catch(e){ /* aborted: a new sequence has taken over */ }
     }
-    function restart(){
-      if(timer) clearInterval(timer);
-      if(reduceMotion) return;
-      timer=setInterval(function(){show(idx+1)},6500);
-    }
-    root.addEventListener('mouseenter',function(){if(timer) clearInterval(timer)});
-    root.addEventListener('mouseleave',restart);
-    root.addEventListener('focusin',function(){if(timer) clearInterval(timer)});
-    root.addEventListener('focusout',restart);
+
+    root.addEventListener('mouseenter',function(){state.paused=true});
+    root.addEventListener('mouseleave',function(){state.paused=false});
+    root.addEventListener('focusin',function(){state.paused=true});
+    root.addEventListener('focusout',function(){state.paused=false});
     document.addEventListener('visibilitychange',function(){
-      if(document.hidden){if(timer) clearInterval(timer);} else {restart();}
+      state.paused=document.hidden;
     });
+
     renderDots();
-    restart();
+    runSequence(token);
   })();
   </script>
 
