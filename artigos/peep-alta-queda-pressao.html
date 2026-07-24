@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script src="../assets/theme-boot.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>PEEP Alta e Queda de Pressão: É a PEEP, é Hipovolemia, ou os Dois? | be·aside</title>
+<meta name="description" content="A pressão caiu depois que você aumentou a PEEP: como diferenciar o efeito hemodinâmico esperado da PEEP, hipovolemia associada e pneumotórax — e o que fazer primeiro, à beira do leito.">
+<link rel="canonical" href="https://be-aside.vercel.app/artigos/peep-alta-queda-pressao.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="be·aside">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="PEEP Alta e Queda de Pressão: É a PEEP, é Hipovolemia, ou os Dois?">
+<meta property="og:description" content="Como diferenciar o efeito hemodinâmico esperado da PEEP, hipovolemia associada e pneumotórax — e o que fazer primeiro, à beira do leito.">
+<meta property="og:url" content="https://be-aside.vercel.app/artigos/peep-alta-queda-pressao.html">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/landing.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Por que a PEEP alta pode derrubar a pressão arterial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O aumento da pressão intratorácica reduz o retorno venoso ao coração direito, caindo a pré-carga. A PEEP também pode reduzir a pós-carga do ventrículo esquerdo, mas em pacientes hipovolêmicos ou já com pré-carga limítrofe o efeito dominante costuma ser a queda do débito cardíaco por menor retorno venoso."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como diferenciar se a queda de pressão é efeito esperado da PEEP, hipovolemia associada, ou pneumotórax?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O POCUS de VCI ajuda a triar rapidamente: VCI colabada e hipercolapsável sugere hipovolemia associada, respondendo a volume. VCI cheia com ventrículo direito dilatado sugere sobrecarga de pressão no VD — pensar em pneumotórax ou cor pulmonale agudo, não em dar mais volume."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O que fazer primeiro quando a pressão cai depois de subir a PEEP: reduzir a PEEP ou dar volume?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende do quadro: se há sinais de hipovolemia (VCI colabada, resposta a bolus), um teste de volume é razoável antes de recuar a PEEP. Se a queda é abrupta com sinais de sobrecarga de VD ou assimetria torácica, investigar pneumotórax é prioridade sobre dar mais fluido."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quais achados de POCUS ajudam a decidir a conduta na hipotensão associada à PEEP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "VCI colabada com grande variação respiratória favorece hipovolemia e resposta a volume. VCI cheia e pouco variável, associada a VD dilatado, favorece sobrecarga de pressão pulmonar aguda — nesse caso dar mais volume tende a piorar, não melhorar, o quadro."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quando vale recuar a estratégia de PEEP alta e quando vale tolerar com suporte vasopressor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Em SDRA grave, onde a PEEP alta protege contra atelectrauma e melhora a oxigenação, muitas vezes vale sustentar a estratégia com suporte vasopressor em vez de recuar de imediato — desde que a queda de pressão seja compatível com o efeito hemodinâmico esperado, não com uma complicação aguda como pneumotórax."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!--
+  RASCUNHO — pendente de revisão clínica do Cesar antes de publicar.
+  Conteúdo estruturado por Claude a partir de conhecimento clínico geral
+  consolidado (fisiologia respiratória/hemodinâmica, protocolos de SDRA),
+  a confirmar contra as fontes primárias do Cesar antes da publicação.
+-->
+
+<div class="scene" aria-hidden="true">
+  <div class="scene-grid"></div>
+  <div class="glow glow-main"></div>
+</div>
+
+<div class="hub article" style="--c-accent:#0ea5b7;--c-glow:rgba(14,165,183,.14)">
+
+  <header class="topbar">
+    <a class="logo" href="../index.html" aria-label="be·aside — início">
+      <svg class="logo-icon" width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="0" y="2" width="6" height="20" rx="3" fill="#1db88a"/>
+        <rect x="10" y="0" width="6" height="15" rx="3" fill="#1db88a" opacity=".55"/>
+      </svg>
+      <span class="logo-wordmark">be·aside</span>
+    </a>
+    <div class="top-meta">
+      <a class="btn-entrar" id="btn-entrar" href="../login.html">Entrar</a>
+      <script>
+      (function(){
+        var slot=document.getElementById('btn-entrar');
+        if(!slot||!slot.parentNode) return;
+        var hint=null;
+        try{hint=JSON.parse(localStorage.getItem('beaside-auth-hint')||'null');}catch(e){}
+        if(!hint||!(hint.shortName||hint.fullName||hint.email)) return;
+        var full=String(hint.fullName||hint.shortName||'').trim();
+        var short=String(hint.shortName||(full.split(/\s+/)[0])||'Conta').trim();
+        var email=String(hint.email||'');
+        var tip=(full&&email)?(full+' · '+email):(email||full||short);
+        function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+        var wrap=document.createElement('div');
+        wrap.setAttribute('data-auth-chip','1');
+        wrap.setAttribute('data-auth-boot','1');
+        wrap.className='auth-chip-wrap is-optimistic is-boot';
+        wrap.innerHTML=
+          '<button type="button" class="auth-chip" tabindex="-1" aria-hidden="true">'+
+          '<span class="auth-chip-dot" aria-hidden="true"></span>'+
+          '<span class="auth-chip-name" title="'+esc(tip)+'">'+esc(short)+'</span>'+
+          '<span class="auth-chip-caret" aria-hidden="true">▾</span>'+
+          '</button>';
+        slot.parentNode.insertBefore(wrap,slot);
+        slot.hidden=true;
+        slot.style.display='none';
+      })();
+      </script>
+      <button class="btn-theme" data-theme-toggle type="button" onclick="toggleTheme()" aria-label="Alternar tema"></button>
+    </div>
+  </header>
+
+  <div class="article-draft">
+    <div class="article-draft-t">⚠ Rascunho — não publicado</div>
+    <div class="article-draft-d">Conteúdo clínico ainda não revisado pelo responsável clínico (Cesar). Não linkar publicamente antes da revisão.</div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-row">
+      <div class="hero-eyebrow">Ventilação Mecânica · Hemodinâmica</div>
+      <h1>PEEP Alta e Queda de Pressão: <span class="grad">PEEP, Hipovolemia, ou os Dois?</span></h1>
+      <p class="hero-lead">A pressão caiu depois que você subiu a PEEP. Antes de decidir entre dar volume ou recuar a PEEP, cinco perguntas que organizam esse raciocínio de plantão.</p>
+    </div>
+  </section>
+
+  <section class="values cols-3" aria-label="Números-chave">
+    <div class="value"><div class="value-k">VCI colabada</div><div class="value-t" style="font-size:16px">Hipovolemia mais provável</div></div>
+    <div class="value"><div class="value-k">VCI cheia + VD dilatado</div><div class="value-t" style="font-size:16px">Pensar pneumotórax/cor pulmonale</div></div>
+    <div class="value"><div class="value-k">PEEP em SDRA grave</div><div class="value-t" style="font-size:16px">Tabela ARDSnet Low PEEP</div></div>
+  </section>
+
+  <div class="article-hr"></div>
+
+  <article class="qa">
+    <span class="qa-num">01</span>
+    <h2 class="qa-q">Por que a PEEP alta pode derrubar a pressão arterial?</h2>
+    <p class="qa-direct">O aumento da pressão intratorácica reduz o retorno venoso ao coração direito — a pré-carga cai.</p>
+    <p class="qa-body">A PEEP também pode reduzir a pós-carga do ventrículo esquerdo, mas em pacientes hipovolêmicos ou já com pré-carga limítrofe, o efeito dominante costuma ser a queda do débito cardíaco por menor retorno venoso — não o efeito de pós-carga.</p>
+  </article>
+
+  <article class="qa">
+    <span class="qa-num">02</span>
+    <h2 class="qa-q">Como diferenciar efeito esperado da PEEP, hipovolemia associada e pneumotórax?</h2>
+    <p class="qa-direct">POCUS de VCI ajuda a triar em segundos: colabada sugere hipovolemia, cheia com VD dilatado sugere sobrecarga de pressão.</p>
+    <p class="qa-body"><strong>VCI colabada e hipercolapsável</strong> — sugere hipovolemia associada, tende a responder a volume. <strong>VCI cheia, pouco variável, com VD dilatado</strong> — sugere sobrecarga de pressão no ventrículo direito. Pensar em pneumotórax ou cor pulmonale agudo, não em dar mais volume.</p>
+    <div class="qa-box">
+      <div class="qa-box-t">Pitfall comum</div>
+      <div class="qa-box-d">Ver hipotensão após subir a PEEP e assumir automaticamente que é hipovolemia — dar volume num paciente com VD já sobrecarregado pode piorar o quadro em vez de melhorar.</div>
+    </div>
+  </article>
+
+  <article class="qa">
+    <span class="qa-num">03</span>
+    <h2 class="qa-q">O que fazer primeiro: reduzir a PEEP ou dar volume?</h2>
+    <p class="qa-direct">Depende do padrão de VCI: sinais de hipovolemia favorecem um teste de volume; sinais de sobrecarga de VD ou assimetria torácica favorecem investigar pneumotórax primeiro.</p>
+    <p class="qa-body">Se há sinais claros de hipovolemia (VCI colabada, resposta a bolus), um teste de volume é razoável antes de recuar a PEEP. Se a queda é abrupta com sinais de sobrecarga de VD ou assimetria torácica ao exame, investigar pneumotórax é prioridade sobre dar mais fluido.</p>
+  </article>
+
+  <article class="qa">
+    <span class="qa-num">04</span>
+    <h2 class="qa-q">Quais achados de POCUS mudam a conduta?</h2>
+    <p class="qa-direct">VCI colabada e variável = provável hipovolemia. VCI cheia e fixa com VD dilatado = provável sobrecarga de pressão pulmonar.</p>
+    <p class="qa-body">No segundo padrão, dar mais volume tende a piorar, não melhorar, o quadro — o raciocínio muda de "otimizar pré-carga" para "aliviar a pós-carga do VD" (drenagem se pneumotórax, suporte vasopressor/inotrópico se cor pulmonale agudo).</p>
+  </article>
+
+  <article class="qa">
+    <span class="qa-num">05</span>
+    <h2 class="qa-q">Quando vale recuar a PEEP e quando vale tolerar com vasopressor?</h2>
+    <p class="qa-direct">Em SDRA grave, a PEEP alta muitas vezes vale ser sustentada com suporte vasopressor, desde que a queda de pressão seja o efeito hemodinâmico esperado — não uma complicação aguda.</p>
+    <p class="qa-body">A PEEP alta protege contra atelectrauma e melhora a oxigenação nesse contexto. Recuar de imediato só porque a pressão caiu pode sacrificar o benefício ventilatório sem necessidade — a decisão certa depende de excluir primeiro pneumotórax e hipovolemia franca.</p>
+  </article>
+
+  <p class="article-refs">Princípios de fisiologia respiratória/hemodinâmica e protocolo ARDSnet — a confirmar contra as fontes primárias do Cesar antes da publicação. Material de apoio clínico — não substitui julgamento médico individualizado nem protocolo institucional.</p>
+
+  <div class="cta-final" style="background:linear-gradient(165deg,rgba(14,165,183,.12),rgba(14,165,183,.02));border-color:rgba(14,165,183,.25)">
+    <div class="cta-final-t">A tabela de PEEP/FiO₂ completa está no guia</div>
+    <div class="cta-final-d">O guia de SDRA do be·aside traz a tabela Low PEEP da ARDSnet e o racional completo de titulação, e o guia de Hemodinâmica cobre POCUS de VCI em detalhe. Tem um caso na cabeça agora? Discuta com o assistente de conduta.</div>
+    <div class="cta-final-actions">
+      <a class="btn-primary" href="../vm/sdra.html">Ver tabela Low PEEP na SDRA <span aria-hidden="true">→</span></a>
+      <a class="btn-ghost" href="../hemo/vci.html">POCUS VCI</a>
+      <a class="btn-ghost" href="../vm/assistente.html">Assistente de conduta (IA)</a>
+    </div>
+  </div>
+
+  <section class="authors" aria-label="Autores">
+    <div class="authors-label">Curadoria</div>
+    <div class="authors-row">
+      <div class="author"><span class="author-name">João H. Peres</span><span class="author-role">Médico · conteúdo e produto</span></div>
+      <div class="author"><span class="author-name">Cesar A. Seidler Junior</span><span class="author-role">Médico · conteúdo clínico</span></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-left"><strong>Material de apoio clínico</strong> — não substitui julgamento médico individualizado nem protocolo institucional.</div>
+    <div class="footer-right"><a href="../index.html">be·aside</a> · <a href="index.html">Mais artigos</a></div>
+  </footer>
+
+</div>
+<script>
+const THEME_KEY='beaside-theme';
+function getTheme(){try{const t=localStorage.getItem(THEME_KEY);if(t==='light'||t==='dark')return t;}catch(e){}return 'dark';}
+const THEME_BTN_HTML=
+  '<span class="theme-icon theme-icon-sun" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></span>'+
+  '<span class="theme-icon theme-icon-moon" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>';
+function prefersReduceMotion(){return !!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);}
+function syncThemeButtons(t){
+  document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){
+    if(!btn.dataset.iconsReady){btn.innerHTML=THEME_BTN_HTML;btn.dataset.iconsReady='1';}
+    var next=t==='light'?'dark':'light';
+    btn.setAttribute('aria-label',next==='light'?'Ativar modo claro':'Ativar modo escuro');
+    btn.setAttribute('title',next==='light'?'Modo claro':'Modo escuro');
+    btn.setAttribute('aria-pressed',t==='light'?'true':'false');
+  });
+}
+function applyTheme(theme){
+  var t=(theme==='light'||theme==='dark')?theme:'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  try{localStorage.setItem(THEME_KEY,t);}catch(e){}
+  syncThemeButtons(t);
+}
+function toggleTheme(){
+  var next=getTheme()==='light'?'dark':'light';
+  document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){
+    btn.classList.remove('is-toggling');void btn.offsetWidth;btn.classList.add('is-toggling');
+    clearTimeout(btn._togTid);btn._togTid=setTimeout(function(){btn.classList.remove('is-toggling');},420);
+  });
+  if(document.startViewTransition&&!prefersReduceMotion()){document.startViewTransition(function(){applyTheme(next);});return;}
+  if(!prefersReduceMotion()){
+    document.documentElement.classList.add('theme-switching');applyTheme(next);
+    clearTimeout(toggleTheme._tid);toggleTheme._tid=setTimeout(function(){document.documentElement.classList.remove('theme-switching');},320);return;
+  }
+  applyTheme(next);
+}
+applyTheme(getTheme());
+</script>
+<script src="../assets/auth-config.js?v=5"></script>
+<script src="../assets/auth.js?v=5"></script>
+<script>
+(function hubAuth(){
+  var slot=document.querySelector('.btn-entrar');
+  if(!slot||!window.BeAsideAuth) return;
+  if(typeof BeAsideAuth.bindHubAuth==='function'){BeAsideAuth.bindHubAuth(slot);}
+  else{BeAsideAuth.init().then(function(){ BeAsideAuth.paintHubAuth(slot); }).catch(function(){});}
+})();
+</script>
+</body>
+</html>
