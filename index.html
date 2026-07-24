@@ -532,7 +532,12 @@ a.card-hit{
 .hero-demo-live::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--c-accent,var(--teal));box-shadow:0 0 0 3px var(--c-glow,var(--teal-soft));transition:background .3s,box-shadow .3s}
 .hero-demo-body{padding:20px 18px 6px;transition:opacity .22s ease}
 .hero-demo-body.is-fading{opacity:0}
-.hero-demo-thread{display:flex;flex-direction:column;gap:18px}
+.hero-demo-viewport{
+  height:300px;overflow:hidden;position:relative;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 26px,#000 100%);
+  mask-image:linear-gradient(180deg,transparent 0,#000 26px,#000 100%);
+}
+.hero-demo-thread{display:flex;flex-direction:column;gap:18px;transition:transform .38s cubic-bezier(.4,0,.2,1)}
 .hero-demo-turn{display:flex;flex-direction:column}
 .hero-demo-q{
   margin-left:auto;max-width:90%;
@@ -920,7 +925,9 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
           <span class="hero-demo-live">Exemplo</span>
         </div>
         <div class="hero-demo-body" id="heroDemoBody">
-          <div class="hero-demo-thread" id="heroDemoThread" aria-live="polite"></div>
+          <div class="hero-demo-viewport" id="heroDemoViewport">
+            <div class="hero-demo-thread" id="heroDemoThread" aria-live="polite"></div>
+          </div>
         </div>
         <div class="hero-demo-dots" id="heroDemoDots" role="tablist" aria-label="Outras sessões de exemplo"></div>
       </div>
@@ -972,6 +979,7 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
     var root=document.getElementById('heroDemo');
     if(!root) return;
     var bodyEl=document.getElementById('heroDemoBody');
+    var viewportEl=document.getElementById('heroDemoViewport');
     var threadEl=document.getElementById('heroDemoThread');
     var dotsEl=document.getElementById('heroDemoDots');
     var sIdx=0,token=0;
@@ -982,6 +990,15 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
 
     function sourcesHtml(s){
       return s.map(function(p){return '<a class="hero-demo-source" href="'+esc(p[1])+'">'+esc(p[0])+'</a>'}).join('');
+    }
+
+    // Mantém o conteúdo mais recente "colado" no fundo da janela fixa do chat:
+    // conforme a conversa cresce (nova pergunta, resposta em streaming), a
+    // thread desliza pra cima e o que já foi conversado some por cima (com
+    // fade via mask-image), sem esticar o card e empurrar o resto da página.
+    function pinBottom(){
+      var offset=Math.max(0,threadEl.scrollHeight-viewportEl.clientHeight);
+      threadEl.style.transform=offset?('translateY(-'+offset+'px)'):'';
     }
 
     function sleep(ms,myToken){
@@ -1009,6 +1026,7 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
           if(state.paused){setTimeout(tick,90);return;}
           i++;
           el.textContent=text.slice(0,i);
+          pinBottom();
           if(i>=text.length){el.classList.remove('is-typing');resolve();}
           else setTimeout(tick,speed);
         })();
@@ -1046,6 +1064,7 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
           var tk=tokens[i];
           buffer+= tk.strong ? ('<strong>'+esc(tk.t)+'</strong>') : esc(tk.t);
           el.innerHTML=buffer;
+          pinBottom();
           i++;
           if(i>=tokens.length){resolve();return;}
           setTimeout(tick,/^\s+$/.test(tk.t)?8:42);
@@ -1092,6 +1111,7 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
       sIdx=(i+SESSIONS.length)%SESSIONS.length;
       token++;
       threadEl.innerHTML='';
+      threadEl.style.transform='';
       bodyEl.classList.remove('is-fading');
       renderDots();
       runSession(token);
@@ -1100,6 +1120,7 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
     async function runSession(myToken){
       var refs=SESSIONS[sIdx];
       threadEl.innerHTML='';
+      threadEl.style.transform='';
       try{
         if(reduceMotion){
           refs.forEach(function(ri){
@@ -1112,24 +1133,28 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
             t.a.innerHTML=it.a;t.a.classList.add('is-visible');
             t.src.innerHTML=sourcesHtml(it.s);t.src.classList.add('is-visible');
           });
+          pinBottom();
           return;
         }
         for(var k=0;k<refs.length;k++){
           var it=ITEMS[refs[k]];
           var t=buildTurn();
           threadEl.appendChild(t.root);
+          pinBottom();
           root.style.setProperty('--c-accent',it.accent);
           root.style.setProperty('--c-glow',it.glow);
           await sleep(k===0?300:550,myToken);
           await typeText(t.q,it.q,myToken,23);
           await sleep(400,myToken);
           t.typing.classList.add('is-visible');
+          pinBottom();
           await sleep(950,myToken);
           t.typing.classList.remove('is-visible');
           await streamAnswer(t.a,it.a,myToken);
           await sleep(150,myToken);
           t.src.innerHTML=sourcesHtml(it.s);
           t.src.classList.add('is-visible');
+          pinBottom();
           await sleep(k===refs.length-1?4200:1300,myToken);
         }
         bodyEl.classList.add('is-fading');
