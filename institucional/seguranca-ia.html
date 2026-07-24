@@ -23,29 +23,59 @@
       <p class="section-subtitle">O que os assistentes fazem, não fazem e como tratam dados</p>
   </header>
 
+  <div class="hero-meta cols-3">
+    <div class="hm-item"><span class="hm-k">Módulos com IA</span><span class="hm-v">VM · Hemo · Neuro</span></div>
+    <div class="hm-item"><span class="hm-k">Decisão final</span><span class="hm-v">Sempre do médico assistente</span></div>
+    <div class="hm-item"><span class="hm-k">Dados do paciente</span><span class="hm-v">Nunca inserir identificação</span></div>
+  </div>
+
   <p class="sec-lead">Os assistentes de conduta do be·aside (Ventilação Mecânica, Hemodinâmica e Neurocrítico) são ferramentas de apoio ao raciocínio clínico. Esta página existe para deixar claro, em um só lugar, o que eles fazem, o que não fazem, e como os dados de um caso são tratados.</p>
 
   <div class="warn-box">
     <strong>Resumo direto:</strong> os assistentes ajudam a organizar um caso, levantar hipóteses e relacionar o cenário às referências do be·aside. Eles não emitem decisão definitiva, não substituem o julgamento clínico do médico responsável e não substituem o protocolo da sua instituição.
   </div>
 
-  <div class="sec-h"><span class="sec-num">01</span><h2>O que os assistentes fazem</h2></div>
-  <p class="sec-lead">Ajudam a estruturar um caso clínico em uma conversa contínua, organizando os dados informados, apontando hipóteses e mecanismos prováveis, identificando informações que ainda faltam para fechar o raciocínio, e relacionando o cenário aos guias e referências do be·aside.</p>
+  <div class="sec-h"><span class="sec-num">01</span><h2>O que os assistentes fazem e não fazem</h2></div>
+  <div class="two-col">
+    <div class="info-box">
+      <strong>Fazem</strong>
+      <ul>
+        <li>Estruturam um caso clínico em conversa contínua, organizando os dados informados</li>
+        <li>Apontam hipóteses e mecanismos prováveis</li>
+        <li>Identificam informações que ainda faltam para fechar o raciocínio</li>
+        <li>Relacionam o cenário aos guias e referências do be·aside</li>
+      </ul>
+    </div>
+    <div class="warn-box">
+      <strong>Não fazem</strong>
+      <ul>
+        <li>Não emitem prescrição nem decisão definitiva de conduta</li>
+        <li>Não substituem o protocolo institucional do seu serviço quando ele existir e for aplicável</li>
+        <li>Não devem ser a única base para uma decisão clínica de alto risco</li>
+      </ul>
+    </div>
+  </div>
+  <p class="sec-lead">Quando faltam dados relevantes do caso, a resposta esperada é apontar essa limitação, não preencher a lacuna com suposição apresentada como certeza.</p>
 
-  <div class="sec-h"><span class="sec-num">02</span><h2>O que os assistentes não fazem</h2></div>
-  <p class="sec-lead">Não emitem prescrição nem decisão definitiva de conduta. Não substituem o protocolo institucional do seu serviço quando ele existir e for aplicável. Não devem ser a única base para uma decisão clínica de alto risco. Quando faltam dados relevantes do caso, a resposta esperada é apontar essa limitação, não preencher a lacuna com suposição apresentada como certeza.</p>
-
-  <div class="sec-h"><span class="sec-num">03</span><h2>Dados do caso e privacidade</h2></div>
+  <div class="sec-h"><span class="sec-num">02</span><h2>Dados do caso e privacidade</h2></div>
   <p class="sec-lead"><strong>Não insira nome, número de prontuário, data de nascimento ou qualquer outro identificador do paciente</strong> na conversa com o assistente — descreva o caso pelos dados clínicos relevantes (parâmetros, exames, evolução), nunca pela identidade da pessoa.</p>
   <div class="anatomy-note">[CONFIRMAR NO CÓDIGO ANTES DE PUBLICAR — descrever aqui exatamente onde e por quanto tempo os dados de um caso trafegam (armazenamento local, o que é enviado à API de sugestão em <code>api/sugerir*.js</code>, e o que acontece com esse texto no provedor de IA), a partir da implementação real e não de intenção.]</div>
 
-  <div class="sec-h"><span class="sec-num">04</span><h2>Limitações</h2></div>
+  <div class="sec-h"><span class="sec-num">03</span><h2>Limitações</h2></div>
   <p class="sec-lead">Respostas geradas por IA podem conter erros, imprecisões ou omissões — inclusive de forma confiante. Isso é especialmente relevante em medicina crítica, onde uma resposta aparentemente razoável pode estar sutilmente errada. Trate toda resposta do assistente como ponto de partida para checar contra os guias do be·aside e sua própria experiência clínica, nunca como palavra final.</p>
 
-  <div class="sec-h"><span class="sec-num">05</span><h2>Supervisão humana e responsabilidade</h2></div>
+  <div class="pitfall-h">O que não fazer com os assistentes</div>
+  <ul class="pitfall-list">
+    <li>Inserir nome, número de prontuário, data de nascimento ou qualquer identificador do paciente na conversa</li>
+    <li>Tratar a resposta do assistente como decisão clínica final, sem checar contra os guias do be·aside</li>
+    <li>Usar o assistente como única base para uma decisão de alto risco</li>
+    <li>Ignorar o protocolo institucional do seu serviço quando ele existir e for aplicável</li>
+  </ul>
+
+  <div class="sec-h"><span class="sec-num">04</span><h2>Supervisão humana e responsabilidade</h2></div>
   <p class="sec-lead">A decisão clínica e a responsabilidade por ela são sempre do médico assistente do paciente. O assistente de IA do be·aside não assume, e não pode assumir, essa responsabilidade.</p>
 
-  <div class="sec-h"><span class="sec-num">06</span><h2>Como reportar uma resposta insegura</h2></div>
+  <div class="sec-h"><span class="sec-num">05</span><h2>Como reportar uma resposta insegura</h2></div>
   <p class="sec-lead">Se um assistente gerar uma resposta que pareça incorreta, perigosa ou inconsistente com a literatura, reporte para os autores — isso é tratado com prioridade, porque erro em conteúdo de apoio a decisão clínica tem um custo diferente de erro em conteúdo educacional comum.</p>
   <div class="anatomy-note">[PREENCHER — canal oficial de reporte: e-mail dedicado ou botão "reportar resposta" dentro do próprio assistente. Por ora, o único contato público é o e-mail do César na página de equipe.]</div>
 
