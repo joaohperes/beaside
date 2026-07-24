@@ -147,6 +147,7 @@ const MODULE_PAGES = {
     {id:'integracao',   file:'integracao.html',   cat:'Síntese',                  label:'Integração',              title:'Integração Clínica',                    subtitle:'Gasometria pareada + POCUS VCI em conjunto'},
     {id:'fluxograma',   file:'fluxograma.html',   cat:'Síntese',                  label:'Fluxograma',              title:'Fluxograma Integrado',                  subtitle:'Do choque à conduta — padrão, gasometria, POCUS, drogas'},
     {id:'padroes',      file:'padroes.html',      cat:'Síntese',                  label:'Padrões',                 title:'Padrões Hemodinâmicos',                 subtitle:'Tabelas de referência por tipo de choque'},
+    {id:'perguntas-plantao', file:'perguntas-plantao.html', cat:'Perguntas de plantão', label:'Choque e perfusão', title:'Perguntas de Plantão — Choque e Perfusão', subtitle:'Choque críptico, fluido-responsividade e vasopressor em 6 perguntas'},
     {id:'drogas',       file:'drogas.html',       cat:'Terapêutica',              label:'Drogas vasoativas',       title:'Drogas Vasoativas',                     subtitle:'Doses, diluições e escalonamento'},
     {id:'calc-hemo',    file:'calc-hemo.html',    cat:'Ferramentas',              label:'Calculadoras',            title:'Calculadoras Hemodinâmicas',            subtitle:'Δ pCO₂ · VCI · VPP · Winter · DO₂'},
     {id:'pratica',      file:'pratica.html',      cat:'Ferramentas',              label:'Casos práticos',          title:'Prática — Casos Simulados',             subtitle:'4 casos cobrindo os 4 quadrantes'},
@@ -156,6 +157,7 @@ const MODULE_PAGES = {
   ],
   neuro: [
     {id:'fisio',        file:'fisio.html',        cat:'Fundamentos',              label:'Fisiologia neuro',        title:'Fisiologia do Neurocrítico',            subtitle:'Monro-Kellie, PPC, autorregulação cerebral e herniação'},
+    {id:'medidas-gerais', file:'medidas-gerais.html', cat:'Fundamentos',           label:'Medidas gerais',          title:'Medidas Gerais no Paciente Neurocrítico', subtitle:'O pacote de cuidados que previne lesão secundária'},
     {id:'tce',          file:'tce.html',          cat:'Patologias',               label:'Hemodinâmica & PIC',      title:'Hemodinâmica e Manejo Aprofundado da PIC', subtitle:'Metas de PAS/PAM por etiologia e algoritmo em degraus'},
     {id:'avc-i',        file:'avc-i.html',        cat:'Patologias',               label:'AVC isquêmico',           title:'AVC Isquêmico Agudo',                   subtitle:'Janela terapêutica, trombólise e trombectomia'},
     {id:'avc-h',        file:'avc-h.html',        cat:'Patologias',               label:'HSA aneurismática',       title:'Hemorragia Subaracnóidea (HSA)',         subtitle:'Aneurisma roto, escalas, DCI/vasoespasmo e suporte sistêmico'},
