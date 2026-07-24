@@ -232,7 +232,7 @@ a.card-hit{display:flex;flex-direction:column;flex:1 1 auto;text-decoration:none
 .card-cta-arrow{display:inline-block;transition:transform .2s}
 .card-cta:hover .card-cta-arrow{transform:translateX(2px)}
 
-/* card retangular full-width: Condutas no Paciente Crítico (acima dos módulos) */
+/* card retangular full-width: Central de Conhecimento (acima dos módulos) */
 .card.wide{
   grid-column:1/-1;min-height:0;padding:22px 26px 18px;
   background:linear-gradient(120deg,rgba(29,184,138,.06),rgba(255,255,255,.012) 55%);
