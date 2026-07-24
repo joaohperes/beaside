@@ -232,6 +232,24 @@ a.card-hit{display:flex;flex-direction:column;flex:1 1 auto;text-decoration:none
 .card-cta-arrow{display:inline-block;transition:transform .2s}
 .card-cta:hover .card-cta-arrow{transform:translateX(2px)}
 
+/* card retangular full-width: Condutas no Paciente Crítico (acima dos módulos) */
+.card.wide{
+  grid-column:1/-1;min-height:0;padding:22px 26px 18px;
+  background:linear-gradient(120deg,rgba(29,184,138,.06),rgba(255,255,255,.012) 55%);
+}
+.card.wide::before{
+  background:radial-gradient(ellipse 45% 160% at 100% 50%,var(--c-glow,rgba(29,184,138,.12)) 0%,transparent 60%);
+}
+.card.wide a.card-hit{flex-direction:row;align-items:center;gap:8px 20px;flex-wrap:wrap}
+.card.wide .card-top{margin-bottom:0}
+.card.wide .card-icon{width:46px;height:46px;flex:none}
+.card.wide .card-wide-main{flex:1 1 240px;min-width:0}
+.card.wide .card-badge{margin-bottom:5px}
+.card.wide .card-title{font-size:22px;margin-bottom:6px}
+.card.wide .card-sub{margin-bottom:0;max-width:60ch;flex-grow:0}
+.card.wide .card-tags{margin-bottom:0;align-content:center;flex:0 1 auto}
+.card.wide .card-foot{padding-top:12px}
+
 /* ── artigo: pergunta/resposta ── */
 .qa{margin-bottom:44px;opacity:0;animation:rise .7s var(--ease) forwards}
 .qa-num{
@@ -469,6 +487,7 @@ html[data-theme="light"] .value-t{color:#0f1419}
 html[data-theme="light"] .value-d{color:var(--text2)}
 html[data-theme="light"] .section-head h2{color:var(--text2)}
 html[data-theme="light"] .card{background:linear-gradient(180deg,#fff,#fafbfc);box-shadow:0 1px 3px rgba(15,23,42,.05)}
+html[data-theme="light"] .card.wide{background:linear-gradient(120deg,rgba(13,154,114,.06),#fff 55%)}
 html[data-theme="light"] .card:hover{box-shadow:0 20px 48px rgba(15,23,42,.1)}
 html[data-theme="light"] .card-title{color:#0f1419}
 html[data-theme="light"] .card-sub{color:var(--text2)}
