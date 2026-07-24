@@ -519,16 +519,18 @@ a.card-hit{
 .hero-demo-badge{
   display:inline-flex;align-items:center;justify-content:center;
   width:21px;height:21px;border-radius:6px;flex:none;
-  background:var(--teal-soft);color:var(--teal);
+  background:var(--c-glow,var(--teal-soft));color:var(--c-accent,var(--teal));
   font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.02em;
+  transition:background .3s,color .3s;
 }
 .hero-demo-live{
   display:inline-flex;align-items:center;gap:6px;
   font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;
   color:var(--text3);border:1px solid var(--border);border-radius:20px;padding:4px 9px 4px 7px;flex:none;
 }
-.hero-demo-live::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 3px var(--teal-soft)}
-.hero-demo-body{padding:20px 18px 18px}
+.hero-demo-live::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--c-accent,var(--teal));box-shadow:0 0 0 3px var(--c-glow,var(--teal-soft));transition:background .3s,box-shadow .3s}
+.hero-demo-body{padding:20px 18px 6px;transition:opacity .22s ease}
+.hero-demo-body.is-fading{opacity:0}
 .hero-demo-q{
   margin-left:auto;max-width:90%;
   background:#141a22;color:#fff;border-radius:14px 14px 3px 14px;
@@ -538,16 +540,17 @@ a.card-hit{
 .hero-demo-a{display:flex;gap:9px;align-items:flex-start}
 .hero-demo-avatar{
   flex:none;width:23px;height:23px;border-radius:7px;margin-top:1px;
-  background:var(--teal-soft);color:var(--teal);
+  background:var(--c-glow,var(--teal-soft));color:var(--c-accent,var(--teal));
   display:flex;align-items:center;justify-content:center;
   font-family:var(--mono);font-size:9px;font-weight:700;
+  transition:background .3s,color .3s;
 }
 .hero-demo-answer{
   flex:1;min-width:0;border:1px solid var(--border);border-radius:14px;padding:13px 15px;
   background:rgba(255,255,255,.015);
 }
-.hero-demo-direct{font-size:13px;line-height:1.7;color:var(--text);font-weight:400}
-.hero-demo-direct strong{color:var(--teal);font-weight:600}
+.hero-demo-direct{font-size:13px;line-height:1.7;color:var(--text);font-weight:400;min-height:70px}
+.hero-demo-direct strong{color:var(--c-accent,var(--teal));font-weight:600;transition:color .3s}
 .hero-demo-sources{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px;padding-top:13px;border-top:1px dashed var(--border)}
 .hero-demo-source{
   font-family:var(--mono);font-size:9.5px;padding:4px 8px;border-radius:6px;
@@ -555,6 +558,13 @@ a.card-hit{
   text-decoration:none;transition:color .2s,border-color .2s;
 }
 .hero-demo-source:hover{color:var(--text2);border-color:var(--border2)}
+.hero-demo-dots{display:flex;gap:6px;align-items:center;justify-content:center;padding:14px 0 16px}
+.hero-demo-dot{
+  width:6px;height:6px;border-radius:50%;background:var(--border2);border:none;padding:0;
+  cursor:pointer;transition:background .25s,transform .25s;
+}
+.hero-demo-dot:hover{background:var(--text3)}
+.hero-demo-dot.is-active{background:var(--c-accent,var(--teal));transform:scale(1.4)}
 
 /* ── motion ── */
 @keyframes rise{
@@ -876,27 +886,27 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
       <div>
         <div class="hero-eyebrow">Guias clínicos de UTI &amp; Emergência</div>
         <h1>Conhecimento<br><span class="grad">à beira do leito</span></h1>
-        <p class="hero-lead">Fundamentos, condutas e ferramentas para o plantonista. Conteúdo curado, sem ruído, para consultar entre um paciente e o próximo.</p>
+        <p class="hero-lead">Do raciocínio clínico à conduta objetiva — fundamentos e ferramentas curadas para entender o mecanismo e decidir com segurança, sem ruído, entre um paciente e o próximo.</p>
         <div class="hero-actions">
           <a class="btn-primary" href="#modulos">Começar <span aria-hidden="true">→</span></a>
         </div>
       </div>
 
-      <div class="hero-demo" aria-label="Exemplo do assistente de conduta">
+      <div class="hero-demo" id="heroDemo" aria-label="Exemplos do assistente de conduta" style="--c-accent:#e05555;--c-glow:rgba(224,85,85,.16)">
         <div class="hero-demo-head">
           <div class="hero-demo-title">
-            <span class="hero-demo-badge">IA</span>
+            <span class="hero-demo-badge" id="heroDemoBadge">IA</span>
             Assistente de conduta
           </div>
           <span class="hero-demo-live">Exemplo</span>
         </div>
-        <div class="hero-demo-body">
-          <div class="hero-demo-q">Quando iniciar vasopressina no choque séptico?</div>
+        <div class="hero-demo-body" id="heroDemoBody">
+          <div class="hero-demo-q" id="heroDemoQ">Quando iniciar vasopressina no choque séptico?</div>
           <div class="hero-demo-a">
-            <span class="hero-demo-avatar" aria-hidden="true">IA</span>
+            <span class="hero-demo-avatar" id="heroDemoAvatar" aria-hidden="true">IA</span>
             <div class="hero-demo-answer">
-              <p class="hero-demo-direct">Quando a <strong>noradrenalina</strong> atinge cerca de <strong>0,25–0,5 mcg/kg/min</strong>, como estratégia de poupar catecolamina — dose fixa inicial de 0,03 U/min, sem titular pelo efeito hemodinâmico.</p>
-              <div class="hero-demo-sources">
+              <p class="hero-demo-direct" id="heroDemoA">Quando a <strong>noradrenalina</strong> atinge cerca de <strong>0,25–0,5 mcg/kg/min</strong>, como estratégia de poupar catecolamina — dose fixa inicial de 0,03 U/min, sem titular pelo efeito hemodinâmico.</p>
+              <div class="hero-demo-sources" id="heroDemoSources">
                 <a class="hero-demo-source" href="hemo/drogas.html">Vasopressores</a>
                 <a class="hero-demo-source" href="artigos/sepsis-2026-o-que-mudou.html">SSC 2026</a>
                 <a class="hero-demo-source" href="hemo/assistente.html">Assistente de conduta →</a>
@@ -904,9 +914,93 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
             </div>
           </div>
         </div>
+        <div class="hero-demo-dots" id="heroDemoDots" role="tablist" aria-label="Outros exemplos"></div>
       </div>
     </div>
   </section>
+
+  <script>
+  (function heroDemoRotator(){
+    var ITEMS=[
+      {accent:'#e05555',glow:'rgba(224,85,85,.16)',
+        q:'Quando iniciar vasopressina no choque séptico?',
+        a:'Quando a <strong>noradrenalina</strong> atinge cerca de <strong>0,25–0,5 mcg/kg/min</strong>, como estratégia de poupar catecolamina — dose fixa inicial de 0,03 U/min, sem titular pelo efeito hemodinâmico.',
+        s:[['Vasopressores','hemo/drogas.html'],['SSC 2026','artigos/sepsis-2026-o-que-mudou.html'],['Assistente de conduta →','hemo/assistente.html']]},
+      {accent:'#e05555',glow:'rgba(224,85,85,.16)',
+        q:'Qual a dose de dobutamina em mcg/kg/min e em mL/h?',
+        a:'Geralmente <strong>2–20 mcg/kg/min</strong> IV contínuo. Ex.: paciente de 70 kg, diluição 250 mg/250 mL (1.000 mcg/mL) — 5 mcg/kg/min equivalem a <strong>~21 mL/h</strong>.',
+        s:[['Vasopressores','hemo/drogas.html'],['Calculadora Hemo','hemo/calc-hemo.html'],['Assistente de conduta →','hemo/assistente.html']]},
+      {accent:'#0ea5b7',glow:'rgba(14,165,183,.16)',
+        q:'Qual a PEEP inicial na SDRA moderada a grave?',
+        a:'Seguir a tabela <strong>Low/High PEEP da ARDSnet</strong> conforme a FiO₂ — SDRA moderada a grave tende à estratégia de PEEP mais alto, associada a volume corrente baixo (6 mL/kg).',
+        s:[['Tabela PEEP/FiO₂','vm/sdra.html'],['Prona','vm/prona.html'],['Assistente de conduta →','vm/assistente.html']]},
+      {accent:'#0ea5b7',glow:'rgba(14,165,183,.16)',
+        q:'Quando suspeitar de pneumotórax hipertensivo pós-intubação?',
+        a:'Hipotensão súbita + assimetria torácica + hipoxemia logo após intubar ou subir a PEEP — a drenagem não pode esperar confirmação por imagem.',
+        s:[['Hipotensão pós-IOT','artigos/hipotensao-pos-intubacao.html'],['PEEP e queda de pressão','artigos/peep-alta-queda-pressao.html'],['Assistente de conduta →','vm/assistente.html']]},
+      {accent:'#9b6ff7',glow:'rgba(155,111,247,.16)',
+        q:'Quando pedir TC de crânio no paciente sedado que não desperta?',
+        a:'Quando há <strong>déficit focal novo</strong>, assimetria pupilar, ou ausência de melhora após interrupção adequada da sedação — não esperar mais um teste de despertar nesses casos.',
+        s:[['Rebaixamento no ventilado','artigos/rebaixamento-consciencia-paciente-ventilado.html'],['Guia Neurocrítico','neuro/'],['Assistente de conduta →','neuro/assistente.html']]},
+      {accent:'#3b82f6',glow:'rgba(59,130,246,.16)',
+        q:'A cânula de traqueostomia saiu — reintroduzir ou ir para via aérea oral?',
+        a:'Depende do tempo desde a traqueostomia: <strong>menos de 7–10 dias</strong> (trajeto imaturo) é emergência de via aérea — priorizar via aérea oral em vez de recanular às cegas.',
+        s:[['O Shiley saiu','artigos/shiley-saiu-decanulacao-acidental.html'],['Via aérea difícil','proc/vad.html'],['Guia Procedimentos','proc/']]}
+    ];
+    var root=document.getElementById('heroDemo');
+    if(!root) return;
+    var body=document.getElementById('heroDemoBody');
+    var qEl=document.getElementById('heroDemoQ');
+    var aEl=document.getElementById('heroDemoA');
+    var srcEl=document.getElementById('heroDemoSources');
+    var dotsEl=document.getElementById('heroDemoDots');
+    var idx=0,timer=null;
+    var reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+
+    function renderDots(){
+      dotsEl.innerHTML='';
+      ITEMS.forEach(function(_,i){
+        var b=document.createElement('button');
+        b.type='button';b.className='hero-demo-dot'+(i===idx?' is-active':'');
+        b.setAttribute('aria-label','Exemplo '+(i+1)+' de '+ITEMS.length);
+        b.addEventListener('click',function(){show(i,true)});
+        dotsEl.appendChild(b);
+      });
+    }
+    function show(i,userTriggered){
+      idx=(i+ITEMS.length)%ITEMS.length;
+      var it=ITEMS[idx];
+      function paint(){
+        root.style.setProperty('--c-accent',it.accent);
+        root.style.setProperty('--c-glow',it.glow);
+        qEl.textContent=it.q;
+        aEl.innerHTML=it.a;
+        srcEl.innerHTML=it.s.map(function(p){return '<a class="hero-demo-source" href="'+esc(p[1])+'">'+esc(p[0])+'</a>'}).join('');
+        renderDots();
+        body.classList.remove('is-fading');
+      }
+      if(reduceMotion){paint();}
+      else{body.classList.add('is-fading');setTimeout(paint,220);}
+      if(userTriggered) restart();
+    }
+    function restart(){
+      if(timer) clearInterval(timer);
+      if(reduceMotion) return;
+      timer=setInterval(function(){show(idx+1)},6500);
+    }
+    root.addEventListener('mouseenter',function(){if(timer) clearInterval(timer)});
+    root.addEventListener('mouseleave',restart);
+    root.addEventListener('focusin',function(){if(timer) clearInterval(timer)});
+    root.addEventListener('focusout',restart);
+    document.addEventListener('visibilitychange',function(){
+      if(document.hidden){if(timer) clearInterval(timer);} else {restart();}
+    });
+    renderDots();
+    restart();
+  })();
+  </script>
 
   <section class="values" aria-label="Proposta de valor">
     <div class="value">
@@ -1038,6 +1132,33 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
       </a>
       <div class="card-foot">
         <a class="card-cta" href="proc/">Abrir guia <span class="card-cta-arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <div class="card"
+       style="--c-accent:#1db88a;--c-border:rgba(29,184,138,.4);--c-glow:rgba(29,184,138,.12);--c-shadow:rgba(29,184,138,.1)">
+      <span class="card-rail" aria-hidden="true"></span>
+      <a class="card-hit" href="artigos/" aria-label="Artigos — Perguntas de Plantão Respondidas">
+        <div class="card-top">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <path d="M14 2v6h6"/>
+              <path d="M9 13h6M9 17h6M9 9h1"/>
+            </svg>
+          </div>
+        </div>
+        <div class="card-badge">Artigos</div>
+        <div class="card-title">Perguntas de<br>Plantão</div>
+        <div class="card-sub">Dúvidas reais de UTI e PS, respondidas direto — resposta objetiva, mecanismo e conduta prática.</div>
+        <div class="card-tags">
+          <span class="card-tag">Hemodinâmica</span>
+          <span class="card-tag">VM</span>
+          <span class="card-tag">Neuro · Proc</span>
+        </div>
+      </a>
+      <div class="card-foot">
+        <a class="card-cta" href="artigos/">Ler artigos <span class="card-cta-arrow" aria-hidden="true">→</span></a>
       </div>
     </div>
 
