@@ -130,6 +130,28 @@ body{
   background:rgba(29,184,138,.1);
 }
 .btn-entrar:active{transform:scale(.97)}
+/* nav das 3 áreas (Central de Conhecimento · Raciocine · Consulte e Resolva) */
+.mainnav{display:flex;align-items:center;gap:2px}
+.mainnav a{
+  font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.04em;
+  color:var(--text2);text-decoration:none;white-space:nowrap;
+  padding:7px 11px;border-radius:8px;
+  transition:color .15s,background .15s;
+}
+.mainnav a:hover{color:var(--text);background:rgba(255,255,255,.04)}
+@media(max-width:1000px){.mainnav{display:none}}
+/* cabeçalho de cada área na home (mesma linguagem do hero-eyebrow) */
+.area-head{grid-column:1/-1;display:flex;flex-direction:column;gap:7px;margin:2px 0}
+.area-head + .area-head,.card + .area-head,.card.wide + .area-head{margin-top:24px}
+.area-eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--c-accent,var(--teal));font-weight:500;
+}
+.area-eyebrow::before{content:'';width:18px;height:1px;background:var(--c-accent,var(--teal));opacity:.7}
+.area-eyebrow .area-num{opacity:.55;letter-spacing:.1em}
+.area-head h2{font-size:19px;font-weight:600;color:#fff;letter-spacing:-.02em;line-height:1.15}
+.area-head p{font-size:13.5px;color:var(--text2);line-height:1.6;max-width:66ch;font-weight:300}
 /* chip pintado no boot (inline) — some com o paint real do auth.js */
 .auth-chip-wrap.is-boot .auth-chip{cursor:default}
 .auth-chip-wrap.is-optimistic .auth-chip{opacity:.96}
@@ -852,6 +874,8 @@ html[data-theme="light"] .footer{border-top-color:var(--border)}
 html[data-theme="light"] .footer-left,
 html[data-theme="light"] .footer-right{color:var(--text3)}
 html[data-theme="light"] .footer-left strong{color:var(--text2)}
+html[data-theme="light"] .mainnav a:hover{background:rgba(15,23,42,.04)}
+html[data-theme="light"] .area-head h2{color:#0f1419}
 html[data-theme="light"] .hero-demo{background:linear-gradient(180deg,#fff,#fafbfc);box-shadow:0 20px 56px rgba(15,23,42,.1)}
 html[data-theme="light"] .hero-demo-head{background:rgba(15,23,42,.02)}
 html[data-theme="light"] .hero-demo-answer{background:#fff;border-color:var(--border)}
@@ -890,6 +914,11 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
       </svg>
       <span class="logo-wordmark">be·aside</span>
     </a>
+    <nav class="mainnav" aria-label="Áreas do be·aside">
+      <a href="artigos/">Central de Conhecimento</a>
+      <a href="#raciocine">Raciocine</a>
+      <a href="#consulte">Consulte e Resolva</a>
+    </nav>
     <div class="top-meta">
       <a class="btn-entrar" id="btn-entrar" href="login.html">Entrar</a>
       <script>
@@ -1221,6 +1250,12 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
 
   <div class="bento" id="modulos">
 
+    <div class="area-head" id="central" style="--c-accent:#1db88a">
+      <div class="area-eyebrow"><span class="area-num">01</span> Central de Conhecimento</div>
+      <h2>Respostas rápidas para a dúvida de plantão</h2>
+      <p>Perguntas reais de UTI e emergência, respondidas direto — a porta de entrada por busca no Google e nas IAs.</p>
+    </div>
+
     <div class="card wide"
        style="--c-accent:#1db88a;--c-border:rgba(29,184,138,.4);--c-glow:rgba(29,184,138,.12);--c-shadow:rgba(29,184,138,.1)">
       <span class="card-rail" aria-hidden="true"></span>
@@ -1249,6 +1284,12 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
       <div class="card-foot">
         <a class="card-cta" href="artigos/">Explorar conteúdos <span class="card-cta-arrow" aria-hidden="true">→</span></a>
       </div>
+    </div>
+
+    <div class="area-head" id="raciocine" style="--c-accent:#1db88a">
+      <div class="area-eyebrow"><span class="area-num">02</span> Raciocine</div>
+      <h2>Do mecanismo à decisão — módulos de raciocínio</h2>
+      <p>O núcleo educacional do be·aside: ventilação, hemodinâmica, neurocrítico e procedimentos organizados para entender o porquê e chegar à conduta.</p>
     </div>
 
     <div class="card featured"
@@ -1361,6 +1402,42 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
       </a>
       <div class="card-foot">
         <a class="card-cta" href="proc/">Abrir guia <span class="card-cta-arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <div class="area-head" id="consulte" style="--c-accent:#1db88a">
+      <div class="area-eyebrow"><span class="area-num">03</span> Consulte e Resolva</div>
+      <h2>Discuta o caso com a IA do be·aside</h2>
+      <p>O assistente de conduta raciocina sobre o conteúdo validado do próprio site — cole o caso, os parâmetros ou a dúvida e receba uma sugestão estruturada, com as fontes internas.</p>
+    </div>
+
+    <div class="card wide"
+       style="--c-accent:#1db88a;--c-border:rgba(29,184,138,.4);--c-glow:rgba(29,184,138,.12);--c-shadow:rgba(29,184,138,.1)">
+      <span class="card-rail" aria-hidden="true"></span>
+      <a class="card-hit" href="hemo/assistente.html" aria-label="Consulte e Resolva — assistente de conduta com IA">
+        <div class="card-top">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9.4 3.5 11 7.3l3.8 1.6-3.8 1.6L9.4 14.3 7.8 10.5 4 8.9l3.8-1.6z"/>
+              <path d="M17.5 13.2l.9 2.2 2.2.9-2.2.9-.9 2.2-.9-2.2-2.2-.9 2.2-.9z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="card-wide-main">
+          <div class="card-badge">Assistente IA</div>
+          <div class="card-title">Consulte e Resolva</div>
+          <div class="card-sub">Cole a anamnese, os parâmetros do ventilador ou o padrão hemodinâmico e discuta a conduta — a IA usa o be·aside como base, com as fontes internas.</div>
+        </div>
+        <div class="card-tags">
+          <span class="card-tag">Casos clínicos</span>
+          <span class="card-tag">Ajuste de VM</span>
+          <span class="card-tag">Hemodinâmica</span>
+        </div>
+      </a>
+      <div class="card-foot">
+        <a class="card-cta" href="vm/assistente.html">Ventilação →</a>
+        <a class="card-cta" href="hemo/assistente.html">Hemodinâmica →</a>
+        <a class="card-cta" href="neuro/assistente.html">Neurocrítico →</a>
       </div>
     </div>
 

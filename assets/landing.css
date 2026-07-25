@@ -250,6 +250,31 @@ a.card-hit{display:flex;flex-direction:column;flex:1 1 auto;text-decoration:none
 .card.wide .card-tags{margin-bottom:0;align-content:center;flex:0 1 auto}
 .card.wide .card-foot{padding-top:12px}
 
+/* nav das 3 áreas (Central de Conhecimento · Raciocine · Consulte e Resolva) */
+.mainnav{display:flex;align-items:center;gap:2px}
+.mainnav a{
+  font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.04em;
+  color:var(--text2);text-decoration:none;white-space:nowrap;
+  padding:7px 11px;border-radius:8px;
+  transition:color .15s,background .15s;
+}
+.mainnav a:hover{color:var(--text);background:rgba(255,255,255,.04)}
+@media(max-width:1000px){.mainnav{display:none}}
+html[data-theme="light"] .mainnav a:hover{background:rgba(15,23,42,.04)}
+/* cabeçalho de cada área (mesma linguagem do hero-eyebrow) */
+.area-head{grid-column:1/-1;display:flex;flex-direction:column;gap:7px;margin:2px 0}
+.area-head + .area-head,.card + .area-head,.card.wide + .area-head{margin-top:24px}
+.area-eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--c-accent,var(--teal));font-weight:500;
+}
+.area-eyebrow::before{content:'';width:18px;height:1px;background:var(--c-accent,var(--teal));opacity:.7}
+.area-eyebrow .area-num{opacity:.55;letter-spacing:.1em}
+.area-head h2{font-size:19px;font-weight:600;color:#fff;letter-spacing:-.02em;line-height:1.15}
+.area-head p{font-size:13.5px;color:var(--text2);line-height:1.6;max-width:66ch;font-weight:300}
+html[data-theme="light"] .area-head h2{color:#0f1419}
+
 /* ── artigo: pergunta/resposta ── */
 .qa{margin-bottom:44px;opacity:0;animation:rise .7s var(--ease) forwards}
 .qa-num{

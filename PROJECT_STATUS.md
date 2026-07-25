@@ -430,10 +430,22 @@ privacidade, contato, planos/assinatura, FAQ, atualizações da plataforma. Sche
 | Fase | Status | Data |
 |---|---|---|
 | Fase 1 — Auditoria e preservação | ✅ concluída | 24/07 |
-| Fase 0 — SEO/GEO técnico | ⏳ proposta (aguardando ok para começar) | — |
-| Fase 2 — Fundação da arquitetura (3 áreas) | ⏳ aguardando aprovação | — |
+| Fase 2 — Fundação da arquitetura (3 áreas) | 🟡 home feita; estender às demais superfícies | 25/07 |
+| Fase 0 — SEO/GEO técnico | ⏳ próxima | — |
+
+**Fase 2 — o que já foi feito (home):** arquitetura de 3 áreas aprovada pelo Cesar. Na home:
+(a) **nav de topo** com as 3 áreas (Central de Conhecimento · Raciocine · Consulte e Resolva),
+no estilo mono do site, some no mobile (≤1000px); (b) o bento foi enquadrado em **3 áreas
+numeradas** com cabeçalhos `.area-head` (01 Central de Conhecimento → card wide; 02 Raciocine →
+os 4 cards VM/Hemo/Neuro/Proc; 03 Consulte e Resolva → card novo do assistente IA linkando os 3
+assistentes por módulo). Layout e tema **preservados** — só cabeçalhos de área + nav + 1 card
+novo. CSS `.mainnav`/`.area-head` nos dois lugares (index.html inline + landing.css). Testado
+dark/light/mobile, sem erros. **Follow-up da Fase 2:** estender a nav das 3 áreas às páginas de
+guia (shell em `assets/app.js`) e ao hub `/artigos/`, para a navegação ser consistente no site
+todo (hoje só a home tem a nav).
 
 ## 13. Próxima etapa
-Aprovação do Cesar sobre (a) a arquitetura de 3 áreas do §3 e (b) começar pela **Fase 0 (SEO/GEO
-técnico)** — aditiva e sem risco — como primeiro item lançado no branch hoje. Depois, Fase 2
-(navegação) mediante aprovação do mapa de páginas.
+**Fase 0 — SEO/GEO técnico** (aditiva, sem risco): `robots.txt` (libera GPTBot/ClaudeBot/
+PerplexityBot/Google-Extended), `sitemap.xml` (todas as páginas), `llms.txt` (resumo + links das
+3 áreas), conferir canonical/OG. Depois: estender a nav das 3 áreas às demais superfícies
+(follow-up da Fase 2) e seguir para a Fase 4 (produção de artigos, Lote A do §9).
