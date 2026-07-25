@@ -65,14 +65,30 @@
   .chat-rename{font-family:var(--mono);font-size:10px;color:var(--text3);background:none;border:none;cursor:pointer;text-decoration:underline}
   .chat-rename:hover{color:var(--accent)}
   .msgs{flex:1;display:flex;flex-direction:column;gap:16px;padding:20px;overflow-y:auto}
-  .msg{max-width:90%}
+  .msg{max-width:90%;animation:msgIn .22s ease}
+  @keyframes msgIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
   .msg.user{align-self:flex-end;max-width:75%}
   .msg.assistant{align-self:flex-start;width:100%}
-  .msg-role{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);margin-bottom:5px}
-  .msg.user .msg-role{text-align:right}
-  .bubble{border-radius:10px;padding:12px 15px;font-size:14px;line-height:1.7}
+  .msg-role{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);margin-bottom:6px}
+  .msg.user .msg-role{justify-content:flex-end}
+  .msg-avatar{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border-radius:50%;font-size:8.5px;font-weight:600;letter-spacing:0;flex-shrink:0}
+  .msg-avatar-user{background:var(--bg4);border:1px solid var(--border2);color:var(--text2)}
+  .msg-avatar-ai{background:rgba(var(--accent-rgb),.16);border:1px solid rgba(var(--accent-rgb),.4);color:var(--accent)}
+  .msg-time{color:var(--text3);opacity:.7;font-size:8.5px}
+  .msg-time::before{content:'·';margin-right:6px}
+  .bubble{position:relative;border-radius:10px;padding:12px 15px;font-size:14px;line-height:1.7}
   .msg.user .bubble{background:var(--bg4);border:1px solid var(--border2);white-space:pre-wrap}
   .msg.assistant .bubble{background:var(--bg2);border:1px solid var(--border)}
+  .bubble-copy{position:absolute;top:8px;right:8px;opacity:0;transition:opacity .12s;font-family:var(--mono);font-size:10px;color:var(--text3);background:var(--bg3);border:1px solid var(--border);border-radius:5px;padding:3px 8px;cursor:pointer}
+  .msg.assistant:hover .bubble-copy{opacity:1}
+  .bubble-copy:hover{color:var(--accent);border-color:var(--accent-d)}
+  .stream-cursor{display:inline-block;width:6px;height:13px;background:var(--accent);margin-left:2px;vertical-align:-2px;animation:cursorBlink .8s step-end infinite}
+  @keyframes cursorBlink{0%,50%{opacity:1}51%,100%{opacity:0}}
+  .bubble-typing{display:inline-flex;gap:5px;padding:14px 16px}
+  .typing-dot{width:6px;height:6px;border-radius:50%;background:var(--text3);animation:typingBounce 1.2s infinite ease-in-out}
+  .typing-dot:nth-child(2){animation-delay:.15s}
+  .typing-dot:nth-child(3){animation-delay:.3s}
+  @keyframes typingBounce{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-5px);opacity:1}}
   .bubble h2{font-size:14px;font-weight:600;color:var(--accent);margin:16px 0 7px;font-family:var(--sans)}
   .bubble h2:first-child{margin-top:4px}
   .bubble h3{font-size:13.5px;margin:14px 0 6px}
@@ -332,14 +348,9 @@ function renderChat(){
   }
   let msgsHtml='';
   if(!c.messages.length){
-    msgsHtml='<div class="chat-empty">Apresente o paciente: parâmetros atuais, quadro clínico, gasometria…<br>O Claude vai sugerir conduta e você continua a discussão por aqui.</div>';
+    msgsHtml='<div class="chat-empty">Apresente o paciente: parâmetros atuais, quadro clínico, gasometria…<br>O assistente cruza VM, hemodinâmica, neurocrítico e procedimentos, e você continua a discussão por aqui.</div>';
   }else{
-    msgsHtml=c.messages.map(m=>
-      '<div class="msg '+m.role+'">'+
-        '<div class="msg-role">'+(m.role==='user'?'Plantonista':'Claude')+'</div>'+
-        '<div class="bubble">'+(m.role==='user'?esc(m.content):mdToHtml(m.content))+'</div>'+
-      '</div>'
-    ).join('');
+    msgsHtml=c.messages.map((m,idx)=>renderMsg(m,idx)).join('');
   }
   const firstTurn=c.messages.length===0;
   chat.innerHTML=
@@ -362,6 +373,62 @@ function renderChat(){
 }
 function scrollMsgs(){const m=document.getElementById('msgs');if(m)m.scrollTop=m.scrollHeight;window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});}
 
+// ----- Renderização de mensagem individual (avatar, horário, ação de copiar) -----
+function fmtTime(ts){if(!ts)return '';const d=new Date(ts);return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');}
+function renderMsg(m,idx){
+  const isUser=m.role==='user';
+  const avatar=isUser?'<span class="msg-avatar msg-avatar-user">Dr</span>':'<span class="msg-avatar msg-avatar-ai">IA</span>';
+  const roleLabel=isUser?'Plantonista':'Assistente';
+  const timeHtml=m.ts?'<span class="msg-time">'+fmtTime(m.ts)+'</span>':'';
+  const roleRow=isUser
+    ? ('<div class="msg-role">'+timeHtml+'<span>'+roleLabel+'</span>'+avatar+'</div>')
+    : ('<div class="msg-role">'+avatar+'<span>'+roleLabel+'</span>'+timeHtml+'</div>');
+  const copyBtn=isUser?'':'<button class="bubble-copy" onclick="copiarMsg(this,'+idx+')" type="button">copiar</button>';
+  const bodyHtml=isUser?esc(m.content):mdToHtml(m.content);
+  return '<div class="msg '+m.role+'" data-idx="'+idx+'">'+roleRow+
+    '<div class="bubble" id="bubble-'+idx+'">'+copyBtn+bodyHtml+'</div></div>';
+}
+function copiarMsg(btn,idx){
+  const c=getCaso(casoAtivo);if(!c||!c.messages[idx])return;
+  const texto=c.messages[idx].content;
+  const done=()=>{const old=btn.textContent;btn.textContent='copiado!';setTimeout(()=>{btn.textContent=old;},1400);};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(texto).then(done).catch(done);}
+  else{const inp=document.createElement('textarea');inp.value=texto;document.body.appendChild(inp);inp.select();document.execCommand('copy');document.body.removeChild(inp);done();}
+}
+
+// ----- Indicador "digitando…" -----
+function showTypingIndicator(){
+  const msgs=document.getElementById('msgs');if(!msgs)return;
+  const empty=msgs.querySelector('.chat-empty');if(empty)empty.remove();
+  const div=document.createElement('div');
+  div.className='msg assistant';div.id='typing-indicator';
+  div.innerHTML='<div class="msg-role"><span class="msg-avatar msg-avatar-ai">IA</span><span>Assistente</span></div>'+
+    '<div class="bubble bubble-typing"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div>';
+  msgs.appendChild(div);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+function removeTypingIndicator(){const el=document.getElementById('typing-indicator');if(el)el.remove();}
+
+// ----- Efeito de digitação na resposta (streaming simulado sobre a resposta já recebida) -----
+let streamToken=0;
+async function streamAssistantBubble(bubbleEl,fullMd){
+  const myToken=++streamToken;
+  const parts=String(fullMd).split(/(\s+)/); // preserva espaços
+  const STEP=3;
+  let acc='';
+  const msgs=document.getElementById('msgs');
+  for(let i=0;i<parts.length;i+=STEP){
+    if(myToken!==streamToken||!document.body.contains(bubbleEl))return; // interrompido (usuário trocou de caso, etc.)
+    acc+=parts.slice(i,i+STEP).join('');
+    bubbleEl.innerHTML=mdToHtml(acc)+'<span class="stream-cursor"></span>';
+    if(msgs)msgs.scrollTop=msgs.scrollHeight;
+    await new Promise(r=>setTimeout(r,24));
+  }
+  if(myToken!==streamToken||!document.body.contains(bubbleEl))return;
+  bubbleEl.innerHTML=mdToHtml(fullMd); // render final exato + botão copiar via re-render completo
+  render();
+}
+
 // ----- Envio -----
 function enviar(){
   const c=getCaso(casoAtivo);if(!c)return;
@@ -375,13 +442,14 @@ function enviar(){
   if(!senha){status.className='chat-status err';status.textContent='Sessão expirou — recarregue e informe a senha.';return;}
 
   // adiciona turno do usuário e re-renderiza otimisticamente
-  c.messages.push({role:'user',content:texto});
+  c.messages.push({role:'user',content:texto,ts:Date.now()});
   c.updatedAt=Date.now();saveCasos();
   renderChat();
   const status2=document.getElementById('chat-status');
   const btn2=document.getElementById('composer-send');
   btn2.disabled=true;
-  status2.innerHTML='<span class="spinner"></span>Consultando o assistente…';
+  status2.textContent='';
+  showTypingIndicator();
 
   fetch('/api/sugerir-uni',{
     method:'POST',
@@ -392,10 +460,30 @@ function enviar(){
     if(!r.ok)throw new Error(data.error||('Erro '+r.status));
     return data;
   }).then(data=>{
-    c.messages.push({role:'assistant',content:data.sugestao||'(resposta vazia)'});
+    removeTypingIndicator();
+    const conteudo=data.sugestao||'(resposta vazia)';
+    const novoIdx=c.messages.length;
+    c.messages.push({role:'assistant',content:conteudo,ts:Date.now()});
     c.updatedAt=Date.now();saveCasos();
-    render();
+    // insere a bolha vazia e revela a resposta com efeito de digitação
+    const msgs=document.getElementById('msgs');
+    if(msgs){
+      const div=document.createElement('div');
+      div.className='msg assistant';div.dataset.idx=novoIdx;
+      div.innerHTML='<div class="msg-role"><span class="msg-avatar msg-avatar-ai">IA</span><span>Assistente</span><span class="msg-time">'+fmtTime(Date.now())+'</span></div>'+
+        '<div class="bubble" id="bubble-'+novoIdx+'"></div>';
+      msgs.appendChild(div);
+      msgs.scrollTop=msgs.scrollHeight;
+      const bubbleEl=document.getElementById('bubble-'+novoIdx);
+      streamAssistantBubble(bubbleEl,conteudo);
+    }else{
+      render();
+    }
+    renderList();
+    const b=document.getElementById('composer-send');if(b)b.disabled=false;
+    const ta2=document.getElementById('composer-input');if(ta2)ta2.focus();
   }).catch(err=>{
+    removeTypingIndicator();
     // mantém a mensagem do usuário pra ele poder reenviar; mostra o erro
     const s=document.getElementById('chat-status');
     if(s){s.className='chat-status err';s.textContent=err.message||'Falha na requisição.';}

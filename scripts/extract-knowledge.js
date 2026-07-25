@@ -1,6 +1,18 @@
 #!/usr/bin/env node
-// Extrai o texto médico dos HTMLs e gera api/knowledge.js
-// Execute: node scripts/extract-knowledge.js
+// Extrai o texto médico/clínico dos HTMLs do site e gera api/knowledge.js
+// Cobre TODOS os módulos de conteúdo: VM, Hemo, Neuro, Procedimentos e Artigos
+// (Central de Conhecimento) — a mesma base que alimenta o Assistente de Conduta
+// unificado (api/sugerir-uni.js).
+//
+// Execute: node scripts/extract-knowledge.js  (ou: npm run extract-knowledge)
+//
+// Como manter atualizado:
+//   Ao publicar uma página nova de conteúdo clínico, adicione o arquivo na lista
+//   do módulo correspondente em PAGES_BY_MODULE abaixo e rode este script de novo.
+//   O título é extraído automaticamente do <h1>/<title> da própria página — não
+//   precisa duplicar o texto do título aqui, só o caminho do arquivo.
+//   Páginas puramente interativas (calculadoras, quiz) ficam de fora de propósito:
+//   têm pouco texto estático e adicionam ruído/tokens sem ganho real de conteúdo.
 
 import { readFileSync, writeFileSync } from 'fs';
 import { join, dirname } from 'path';
@@ -9,29 +21,67 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
 
-const PAGES = [
-  { file: 'vm/fisiologia.html',    title: 'Fisiologia da Ventilação Mecânica' },
-  { file: 'vm/modos.html',         title: 'Modos Ventilatórios' },
-  { file: 'vm/parametros.html',    title: 'Parâmetros Ventilatórios Iniciais' },
-  { file: 'vm/sdra.html',          title: 'SDRA — Ventilação Protetora (LTVV)' },
-  { file: 'vm/desmame.html',       title: 'Desmame e Extubação' },
-  { file: 'vm/dissincronia.html',  title: 'Dissincronia Paciente-Ventilador' },
-  { file: 'vm/dpoc-asma.html',     title: 'DPOC e Asma em VM' },
-  { file: 'vm/hipercapnia.html',   title: 'Hipercapnia e Manejo de CO₂' },
-  { file: 'vm/indutores.html',     title: 'Indução e Intubação em Sequência Rápida (ISR)' },
-  { file: 'vm/sedoanalgesia.html', title: 'Sedoanalgesia em VM' },
-  { file: 'vm/bnm.html',           title: 'Bloqueio Neuromuscular (BNM)' },
-  { file: 'vm/prona.html',         title: 'Posição Prona' },
-  { file: 'vm/tce.html',           title: 'VM no TCE e Hipertensão Intracraniana' },
-  { file: 'vm/vni.html',           title: 'VNI e Oxigenioterapia de Alto Fluxo' },
-  { file: 'vm/capnografia.html',   title: 'Capnografia e EtCO₂' },
-  { file: 'vm/complicacoes.html',  title: 'Complicações da VM' },
-  { file: 'vm/tabelas.html',       title: 'Tabelas de Referência Rápida' },
-];
+// ── Páginas por módulo ──────────────────────────────────────────────────
+// (title omitido = extraído automaticamente do <h1 class="section-title"> ou <title>)
+const PAGES_BY_MODULE = {
+  vm: [
+    'fisiologia.html', 'modos.html', 'parametros.html', 'indutores.html',
+    'sedoanalgesia.html', 'sdra.html', 'prona.html', 'dpoc-asma.html',
+    'hipercapnia.html', 'tce.html', 'complicacoes.html', 'capnografia.html',
+    'dissincronia.html', 'bnm.html', 'desmame.html', 'vni.html',
+    'tabelas.html', 'pearls.html',
+  ],
+  hemo: [
+    'fisio.html', 'do2.html', 'rush.html', 'vci.html', 'ecg.html',
+    'scvo2.html', 'dpco2.html', 'quadrantes.html', 'integracao.html',
+    'fluxograma.html', 'padroes.html', 'drogas.html', 'pratica.html',
+    'siglas.html', 'pearls.html',
+  ],
+  neuro: [
+    'fisio.html', 'tce.html', 'avc-i.html', 'avc-h.html', 'enc.html',
+    'vm.html', 'metabolico.html', 'pos-op.html', 'sedoanalgesia.html',
+    'pearls.html',
+  ],
+  proc: [
+    'cvc.html', 'linha-arterial.html', 'io.html', 'iot.html', 'vad.html',
+    'traqueo.html', 'toracocentese.html', 'dreno.html', 'paracentese.html',
+    'pl.html', 'pai.html', 'swan.html', 'ritmo.html', 'pearls.html',
+  ],
+  artigos: [
+    'dissincronia-paciente-ventilador.html', 'hipotensao-pos-intubacao.html',
+    'medidas-gerais-neurocritico.html', 'peep-alta-queda-pressao.html',
+    'perguntas-plantao-hemodinamica.html',
+    'rebaixamento-consciencia-paciente-ventilado.html',
+    'sepsis-2026-o-que-mudou.html', 'shiley-saiu-decanulacao-acidental.html',
+  ],
+};
+
+// Nome de export por módulo (usado em api/knowledge.js e no system prompt do assistente)
+const EXPORT_NAME = {
+  vm: 'KNOWLEDGE_VM',
+  hemo: 'KNOWLEDGE_HEMO',
+  neuro: 'KNOWLEDGE_NEURO',
+  proc: 'KNOWLEDGE_PROC',
+  artigos: 'KNOWLEDGE_ARTIGOS',
+};
 
 function extractMainContent(html) {
   const m = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i);
   return m ? m[1] : html;
+}
+
+function extractTitle(html, fallback) {
+  const h1 = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+  if (h1) {
+    const t = h1[1].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+    if (t) return t;
+  }
+  const title = html.match(/<title>([\s\S]*?)<\/title>/i);
+  if (title) {
+    const t = title[1].replace(/\s*[—-]\s*be·aside\s*$/i, '').trim();
+    if (t) return t;
+  }
+  return fallback;
 }
 
 function stripHtml(html) {
@@ -61,26 +111,41 @@ function stripHtml(html) {
     .trim();
 }
 
-const sections = [];
-for (const { file, title } of PAGES) {
-  try {
-    const html = readFileSync(join(root, file), 'utf8');
-    const main = extractMainContent(html);
-    const text = stripHtml(main);
-    sections.push(`# ${title}\n\n${text}`);
-    console.log(`  ✓ ${file} — ${text.length} chars`);
-  } catch (e) {
-    console.warn(`  ✗ ${file}: ${e.message}`);
-  }
-}
+let output = `// Auto-gerado por scripts/extract-knowledge.js — não editar manualmente.
+// Para atualizar: node scripts/extract-knowledge.js (ou: npm run extract-knowledge)
+//
+// Um export por módulo (KNOWLEDGE_VM, KNOWLEDGE_HEMO, KNOWLEDGE_NEURO, KNOWLEDGE_PROC,
+// KNOWLEDGE_ARTIGOS) — consumidos pelo Assistente de Conduta unificado (api/sugerir-uni.js).
 
-const knowledge = sections.join('\n\n---\n\n');
-
-const output = `// Auto-gerado por scripts/extract-knowledge.js — não editar manualmente.
-// Para atualizar: node scripts/extract-knowledge.js
-
-export const KNOWLEDGE_BASE = ${JSON.stringify(knowledge)};
 `;
 
+let totalChars = 0;
+let totalPages = 0;
+
+for (const [mod, files] of Object.entries(PAGES_BY_MODULE)) {
+  const sections = [];
+  for (const file of files) {
+    const relPath = join(mod, file);
+    try {
+      const html = readFileSync(join(root, relPath), 'utf8');
+      const main = extractMainContent(html);
+      const title = extractTitle(html, file.replace(/\.html$/, ''));
+      const text = stripHtml(main);
+      sections.push(`# ${title}\n\n${text}`);
+      totalPages++;
+      console.log(`  ✓ ${relPath} — "${title}" — ${text.length} chars`);
+    } catch (e) {
+      console.warn(`  ✗ ${relPath}: ${e.message}`);
+    }
+  }
+  const knowledge = sections.join('\n\n---\n\n');
+  totalChars += knowledge.length;
+  output += `export const ${EXPORT_NAME[mod]} = ${JSON.stringify(knowledge)};\n\n`;
+}
+
+// Alias de compatibilidade — mantém api/sugerir.js (endpoint antigo de VM) funcionando
+// sem alteração, já que ele importa { KNOWLEDGE_BASE }.
+output += `// Compatibilidade com api/sugerir.js (endpoint antigo, mantido no repo)\nexport const KNOWLEDGE_BASE = KNOWLEDGE_VM;\n`;
+
 writeFileSync(join(root, 'api', 'knowledge.js'), output);
-console.log(`\nKnowledge base: ${knowledge.length} chars | ${Math.round(knowledge.length / 4)} tokens estimados | ${sections.length} seções`);
+console.log(`\nKnowledge base: ${totalPages} páginas | ${totalChars} chars | ~${Math.round(totalChars / 4)} tokens estimados | ${Object.keys(PAGES_BY_MODULE).length} módulos`);
