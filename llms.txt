@@ -19,3 +19,6 @@ be·aside reúne guias clínicos, algoritmos, calculadoras, casos práticos e um
 - [Equipe e credenciais](https://be-aside.vercel.app/institucional/equipe.html): autoria e revisão do conteúdo.
 - [Metodologia editorial](https://be-aside.vercel.app/institucional/metodologia.html): fontes, processo de escrita e revisão.
 - [Segurança e uso da IA](https://be-aside.vercel.app/institucional/seguranca-ia.html): o que os assistentes fazem, não fazem, e como tratam dados.
+- [Perguntas frequentes (FAQ)](https://be-aside.vercel.app/institucional/faq.html): o que é o be·aside, para quem é, confiabilidade do conteúdo e uso do assistente de IA.
+- [Aviso médico](https://be-aside.vercel.app/institucional/aviso-medico.html): caráter educacional do conteúdo e responsabilidade pela decisão clínica.
+- [Termos de uso](https://be-aside.vercel.app/institucional/termos.html) e [Política de privacidade](https://be-aside.vercel.app/institucional/privacidade.html).

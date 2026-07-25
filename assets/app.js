@@ -192,10 +192,14 @@ const MODULE_PAGES = {
     {id:'assistente',   file:'index.html',   cat:'Assistente IA',   label:'Assistente de conduta',   title:'Assistente de Conduta (IA)',   subtitle:'VM, hemodinâmica e neurocrítico em um só chat'},
   ],
   institucional: [
-    {id:'sobre',          file:'sobre.html',          cat:'Institucional', label:'Sobre',              title:'Sobre o be·aside',                subtitle:'Do mecanismo à conduta de beira-leito'},
-    {id:'equipe',         file:'equipe.html',         cat:'Institucional', label:'Equipe',             title:'Quem Escreve e Revisa o be·aside', subtitle:'Autoria e credenciais de cada área'},
+    {id:'sobre',          file:'sobre.html',          cat:'Institucional', label:'A be·aside',         title:'Sobre o be·aside',                subtitle:'Feito para pensar o paciente crítico — do mecanismo à decisão'},
+    {id:'equipe',         file:'equipe.html',         cat:'Institucional', label:'Quem somos',         title:'Quem Escreve e Revisa o be·aside', subtitle:'Autoria e credenciais de cada área'},
     {id:'metodologia',    file:'metodologia.html',    cat:'Institucional', label:'Metodologia',        title:'Metodologia Editorial',           subtitle:'Como pesquisamos, escrevemos e revisamos'},
     {id:'seguranca-ia',   file:'seguranca-ia.html',   cat:'Institucional', label:'Segurança da IA',    title:'Segurança e Uso dos Assistentes de IA', subtitle:'O que os assistentes fazem, não fazem e como tratam dados'},
+    {id:'faq',            file:'faq.html',            cat:'Institucional', label:'FAQ',                title:'Perguntas Frequentes',            subtitle:'O que é o be·aside, como o conteúdo é produzido e como usar a plataforma'},
+    {id:'aviso-medico',   file:'aviso-medico.html',   cat:'Políticas',     label:'Aviso médico',       title:'Aviso Médico',                    subtitle:'Leia antes de usar qualquer conteúdo do be·aside na prática'},
+    {id:'termos',         file:'termos.html',         cat:'Políticas',     label:'Termos de Uso',      title:'Termos de Uso',                   subtitle:'Condições para uso da plataforma be·aside'},
+    {id:'privacidade',    file:'privacidade.html',    cat:'Políticas',     label:'Privacidade',        title:'Política de Privacidade',         subtitle:'Como o be·aside trata dados pessoais (LGPD)'},
   ],
 };
 
@@ -318,8 +322,12 @@ function buildShell(){
     '<div class="gfooter-right">'+
       '<a href="'+root+'institucional/sobre.html">A be·aside</a> · '+
       '<a href="'+root+'institucional/equipe.html">Quem somos</a> · '+
+      '<a href="'+root+'institucional/faq.html">FAQ</a> · '+
       '<a href="'+root+'institucional/metodologia.html">Metodologia</a> · '+
-      '<a href="'+root+'institucional/seguranca-ia.html">Segurança da IA</a>'+
+      '<a href="'+root+'institucional/seguranca-ia.html">Segurança da IA</a> · '+
+      '<a href="'+root+'institucional/aviso-medico.html">Aviso médico</a> · '+
+      '<a href="'+root+'institucional/termos.html">Termos</a> · '+
+      '<a href="'+root+'institucional/privacidade.html">Privacidade</a>'+
     '</div>';
   b.appendChild(gfooter);
 }
