@@ -310,6 +310,18 @@ function buildShell(){
   b.insertBefore(overlay,b.firstChild);
   b.insertBefore(progress,b.firstChild);
   b.insertBefore(header,b.firstChild);
+
+  const gfooter=document.createElement('footer');
+  gfooter.className='gfooter';
+  gfooter.innerHTML=
+    '<div class="gfooter-left"><strong>Material de apoio clínico</strong> — não substitui julgamento médico individualizado nem protocolo institucional.</div>'+
+    '<div class="gfooter-right">'+
+      '<a href="'+root+'institucional/sobre.html">A be·aside</a> · '+
+      '<a href="'+root+'institucional/equipe.html">Quem somos</a> · '+
+      '<a href="'+root+'institucional/metodologia.html">Metodologia</a> · '+
+      '<a href="'+root+'institucional/seguranca-ia.html">Segurança da IA</a>'+
+    '</div>';
+  b.appendChild(gfooter);
 }
 
 // ── Sidebar colapsável ───────────────────────────────────────
