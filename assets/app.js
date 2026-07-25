@@ -101,6 +101,13 @@ const MODULES = {
     root: 'proc/',
     color: '#3b82f6',
   },
+  consulte: {
+    id: 'consulte',
+    label: 'Consulte e Resolva',
+    subtitle: 'Assistente de conduta (IA)',
+    root: 'consulte/',
+    color: '#1db88a',
+  },
   institucional: {
     id: 'institucional',
     label: 'Institucional',
@@ -133,7 +140,6 @@ const MODULE_PAGES = {
     {id:'tabelas',      file:'tabelas.html',      cat:'Referência',               label:'Tabelas rápidas',         title:'Tabelas Rápidas',                       subtitle:'Consulta de plantão — situação vs estratégia'},
     {id:'pearls',       file:'pearls.html',       cat:'Pearls & Pitfalls',        label:'Cards clínicos',          title:'Pearls & Pitfalls',                     subtitle:'Cenários de plantão: acerto, erro comum e o porquê do mecanismo'},
     {id:'quiz',         file:'quiz.html',         cat:'Pearls & Pitfalls',        label:'Caso clínico / Quiz',     title:'Caso Clínico Interativo',               subtitle:'Quiz de múltipla escolha'},
-    {id:'assistente',   file:'assistente.html',   cat:'Assistente IA',            label:'Assistente de conduta',   title:'Assistente de Conduta (IA)',            subtitle:'Cole a anamnese e receba sugestão de conduta ventilatória'},
   ],
   hemo: [
     {id:'fisio',        file:'fisio.html',        cat:'Fundamentos',              label:'Fisiologia',              title:'Base Fisiológica',                      subtitle:'DO₂, VO₂, Fick, Frank-Starling e choque críptico'},
@@ -152,7 +158,6 @@ const MODULE_PAGES = {
     {id:'pratica',      file:'pratica.html',      cat:'Ferramentas',              label:'Casos práticos',          title:'Prática — Casos Simulados',             subtitle:'4 casos cobrindo os 4 quadrantes'},
     {id:'siglas',       file:'siglas.html',       cat:'Ferramentas',              label:'Siglas',                  title:'Glossário de Siglas',                   subtitle:'Referência rápida de siglas hemodinâmicas'},
     {id:'pearls',       file:'pearls.html',       cat:'Pearls & Pitfalls',        label:'Cards clínicos',          title:'Pearls & Pitfalls',                     subtitle:'Cenários de plantão: acerto, erro comum e o porquê do mecanismo'},
-    {id:'assistente',   file:'assistente.html',   cat:'Assistente IA',            label:'Assistente de conduta',   title:'Assistente de Conduta (IA)',            subtitle:'Discuta o caso hemodinâmico e receba sugestão de conduta'},
   ],
   neuro: [
     {id:'fisio',        file:'fisio.html',        cat:'Fundamentos',              label:'Fisiologia neuro',        title:'Fisiologia do Neurocrítico',            subtitle:'Monro-Kellie, PPC, autorregulação cerebral e herniação'},
@@ -166,7 +171,6 @@ const MODULE_PAGES = {
     {id:'sedoanalgesia',file:'sedoanalgesia.html',cat:'Farmacologia',             label:'Sedoanalgesia neuro',     title:'Sedoanalgesia, RASS e Bloqueio Neuromuscular', subtitle:'Drogas, diluições e metas de RASS por cenário'},
     {id:'calc-neuro',   file:'calc-neuro.html',   cat:'Ferramentas',              label:'Calculadoras',            title:'Calculadoras Neurológicas',             subtitle:'PPC · Osmolaridade · GCS · NIHSS · Hunt & Hess · Fisher'},
     {id:'pearls',       file:'pearls.html',       cat:'Pearls & Pitfalls',        label:'Cards clínicos',          title:'Pearls & Pitfalls',                     subtitle:'Cenários de plantão: acerto, erro comum e o porquê do mecanismo'},
-    {id:'assistente',   file:'assistente.html',   cat:'Assistente IA',            label:'Assistente de conduta',   title:'Assistente de Conduta (IA)',            subtitle:'Discuta o caso neurológico e receba sugestão de conduta'},
   ],
   proc: [
     {id:'cvc',           file:'cvc.html',           cat:'Acesso vascular',         label:'CVC',                     title:'Cateter Venoso Central',                subtitle:'Seldinger, escolha de sítio, profundidade e complicações'},
@@ -183,6 +187,9 @@ const MODULE_PAGES = {
     {id:'swan',          file:'swan.html',          cat:'Monitorização invasiva',  label:'Swan-Ganz',               title:'Cateter de Artéria Pulmonar (Swan-Ganz)',subtitle:'Inserção, curvas por câmara, parâmetros e perfis de choque'},
     {id:'ritmo',         file:'ritmo.html',         cat:'Emergência cardíaca',     label:'Cardioversão & marca-passo',title:'Cardioversão, Desfibrilação & Marca-passo',subtitle:'Choque sincronizado, desfibrilação e marca-passo transcutâneo/transvenoso'},
     {id:'pearls',        file:'pearls.html',        cat:'Pearls & Pitfalls',       label:'Dúvidas de plantão',      title:'Dúvidas de Plantão',                    subtitle:'As perguntas que ninguém responde no guia clássico'},
+  ],
+  consulte: [
+    {id:'assistente',   file:'index.html',   cat:'Assistente IA',   label:'Assistente de conduta',   title:'Assistente de Conduta (IA)',   subtitle:'VM, hemodinâmica e neurocrítico em um só chat'},
   ],
   institucional: [
     {id:'sobre',          file:'sobre.html',          cat:'Institucional', label:'Sobre',              title:'Sobre o be·aside',                subtitle:'Do mecanismo à conduta de beira-leito'},
