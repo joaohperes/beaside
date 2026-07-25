@@ -340,7 +340,7 @@ function buildShell(){
     '</div>'+
     '<div class="gfooter-base">'+
       '<div class="gfooter-left"><strong>Material de apoio clínico</strong> — não substitui julgamento médico individualizado nem protocolo institucional.</div>'+
-      '<div class="gfooter-right">© 2026 be·aside · <a href="mailto:cesar.junior@unochapeco.edu.br">Contato</a></div>'+
+      '<div class="gfooter-right">© 2026 be·aside · <a href="mailto:cesar.junior@unochapeco.edu.br">Contato</a> · <a href="https://www.instagram.com/caseidlercj/" rel="me noopener" target="_blank">@caseidlercj</a> · <a href="https://www.instagram.com/joaohperes/" rel="me noopener" target="_blank">@joaohperes</a></div>'+
     '</div>';
   b.appendChild(gfooter);
 }
