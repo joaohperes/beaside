@@ -168,6 +168,17 @@ body{
 }
 .mainnav a:hover{color:var(--text);background:rgba(255,255,255,.04)}
 @media(max-width:1000px){.mainnav{display:none}}
+/* ── header: burger mobile + painel ── */
+.nav-burger{display:none;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:pointer;transition:color .15s,border-color .15s}
+.nav-burger:hover{color:var(--text);border-color:var(--border2)}
+@media(max-width:1000px){.nav-burger{display:inline-flex}}
+.mobilenav{display:none;padding:6px 20px 14px;border-bottom:1px solid var(--border)}
+.mobilenav.open{display:flex;flex-direction:column;gap:2px}
+.mobilenav a{font-family:var(--mono);font-size:12px;color:var(--text2);text-decoration:none;padding:10px 10px;border-radius:8px}
+.mobilenav a:hover{color:var(--text);background:rgba(255,255,255,.04)}
+@media(min-width:1001px){.mobilenav{display:none!important}}
+html[data-theme="light"] .mobilenav a:hover{background:rgba(15,23,42,.04)}
+
 /* cabeçalho de cada área na home (mesma linguagem do hero-eyebrow) */
 .area-head{grid-column:1/-1;display:flex;flex-direction:column;gap:7px;margin:2px 0}
 .area-head + .area-head,.card + .area-head,.card.wide + .area-head{margin-top:24px}
@@ -567,6 +578,19 @@ a.card-hit{
 }
 .footer-right a{color:var(--text3);text-decoration:none;border-bottom:1px solid var(--border2)}
 .footer-right a:hover{color:var(--text2);border-color:var(--text3)}
+/* ── rodapé profissional (colunas) ── */
+.footer.footer-pro{display:block}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px;padding-bottom:26px}
+.footer-brand .logo{display:inline-flex;align-items:center;gap:9px;text-decoration:none}
+.footer-tag{margin-top:12px;font-size:12.5px;color:var(--text3);line-height:1.6;font-weight:300;max-width:300px}
+.footer-k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-bottom:12px}
+.footer-col{display:flex;flex-direction:column;gap:8px}
+.footer-col a{font-size:12.5px;color:var(--text2);text-decoration:none;width:fit-content;border-bottom:1px solid transparent;transition:color .15s,border-color .15s}
+.footer-col a:hover{color:var(--text);border-color:var(--border2)}
+.footer-base{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-top:20px;border-top:1px solid var(--border)}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:520px){.footer-grid{grid-template-columns:1fr}}
+
 
 /* ── hero demo: prévia do assistente de IA ── */
 .hero-row.has-demo{
@@ -946,8 +970,12 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
       <a href="artigos/">Central de Conhecimento</a>
       <a href="#raciocine">Raciocine</a>
       <a href="#consulte">Consulte e Resolva</a>
+      <a href="institucional/sobre.html">A be·aside</a>
     </nav>
     <div class="top-meta">
+      <button class="nav-burger" type="button" aria-label="Abrir menu" aria-expanded="false" onclick="toggleMobileNav()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
       <a class="btn-entrar" id="btn-entrar" href="login.html">Entrar</a>
       <script>
       /* Boot síncrono: evita buraco no topbar e flash de Entrar se já logou neste browser */
@@ -982,6 +1010,21 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
       <button class="btn-theme" data-theme-toggle type="button" onclick="toggleTheme()" aria-label="Alternar tema"></button>
     </div>
   </header>
+  <div class="mobilenav" id="mobilenav">
+    <a href="artigos/" onclick="toggleMobileNav()">Central de Conhecimento</a>
+    <a href="#raciocine" onclick="toggleMobileNav()">Raciocine</a>
+    <a href="#consulte" onclick="toggleMobileNav()">Consulte e Resolva</a>
+    <a href="institucional/sobre.html">A be·aside</a>
+    <a href="institucional/faq.html">FAQ</a>
+  </div>
+  <script>
+  function toggleMobileNav(){
+    var m=document.getElementById('mobilenav');if(!m)return;
+    var open=m.classList.toggle('open');
+    var b=document.querySelector('.nav-burger');
+    if(b)b.setAttribute('aria-expanded',open?'true':'false');
+  }
+  </script>
 
   <section class="hero">
     <div class="hero-row has-demo">
@@ -1484,11 +1527,44 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="footer-left">
-      <strong>Material de apoio clínico</strong> — não substitui julgamento médico individualizado nem protocolo institucional.
+  <footer class="footer footer-pro">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="index.html" aria-label="be·aside — início">
+          <svg class="logo-icon" width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="0" y="2" width="6" height="20" rx="3" fill="#1db88a"/>
+        <rect x="10" y="0" width="6" height="15" rx="3" fill="#1db88a" opacity=".55"/>
+      </svg>
+          <span class="logo-wordmark">be·aside</span>
+        </a>
+        <p class="footer-tag">Raciocínio clínico à beira do leito — do mecanismo à decisão, para quem cuida de paciente crítico.</p>
+      </div>
+      <nav class="footer-col" aria-label="Plataforma">
+        <div class="footer-k">Plataforma</div>
+        <a href="artigos/">Central de Conhecimento</a>
+        <a href="index.html#raciocine">Raciocine</a>
+        <a href="index.html#consulte">Consulte e Resolva</a>
+        <a href="login.html">Entrar</a>
+      </nav>
+      <nav class="footer-col" aria-label="Institucional">
+        <div class="footer-k">Institucional</div>
+        <a href="institucional/sobre.html">A be·aside</a>
+        <a href="institucional/equipe.html">Quem somos</a>
+        <a href="institucional/metodologia.html">Metodologia</a>
+        <a href="institucional/faq.html">FAQ</a>
+      </nav>
+      <nav class="footer-col" aria-label="Confiança e legal">
+        <div class="footer-k">Confiança &amp; Legal</div>
+        <a href="institucional/seguranca-ia.html">Segurança da IA</a>
+        <a href="institucional/aviso-medico.html">Aviso médico</a>
+        <a href="institucional/termos.html">Termos de Uso</a>
+        <a href="institucional/privacidade.html">Privacidade</a>
+      </nav>
     </div>
-    <div class="footer-right"><a href="artigos/">Central de Conhecimento</a> · <a href="institucional/sobre.html">A be·aside</a> · <a href="institucional/equipe.html">Quem somos</a> · <a href="institucional/faq.html">FAQ</a> · <a href="institucional/metodologia.html">Metodologia</a> · <a href="institucional/seguranca-ia.html">Segurança da IA</a> · <a href="institucional/aviso-medico.html">Aviso médico</a> · <a href="institucional/termos.html">Termos</a> · <a href="institucional/privacidade.html">Privacidade</a> · Atualizado jul/2026</div>
+    <div class="footer-base">
+      <div class="footer-left"><strong>Material de apoio clínico</strong> — não substitui julgamento médico individualizado nem protocolo institucional.</div>
+      <div class="footer-right">© 2026 be·aside · <a href="mailto:cesar.junior@unochapeco.edu.br">Contato</a> · Atualizado jul/2026</div>
+    </div>
   </footer>
 
 </div>

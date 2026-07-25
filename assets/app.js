@@ -318,16 +318,29 @@ function buildShell(){
   const gfooter=document.createElement('footer');
   gfooter.className='gfooter';
   gfooter.innerHTML=
-    '<div class="gfooter-left"><strong>Material de apoio clínico</strong> — não substitui julgamento médico individualizado nem protocolo institucional.</div>'+
-    '<div class="gfooter-right">'+
-      '<a href="'+root+'institucional/sobre.html">A be·aside</a> · '+
-      '<a href="'+root+'institucional/equipe.html">Quem somos</a> · '+
-      '<a href="'+root+'institucional/faq.html">FAQ</a> · '+
-      '<a href="'+root+'institucional/metodologia.html">Metodologia</a> · '+
-      '<a href="'+root+'institucional/seguranca-ia.html">Segurança da IA</a> · '+
-      '<a href="'+root+'institucional/aviso-medico.html">Aviso médico</a> · '+
-      '<a href="'+root+'institucional/termos.html">Termos</a> · '+
-      '<a href="'+root+'institucional/privacidade.html">Privacidade</a>'+
+    '<div class="gfooter-grid">'+
+      '<div class="gfooter-brand">'+
+        '<span class="gfooter-logo">be·aside</span>'+
+        '<p>Raciocínio clínico à beira do leito — do mecanismo à decisão, para quem cuida de paciente crítico.</p>'+
+      '</div>'+
+      '<nav class="gfooter-col" aria-label="Institucional">'+
+        '<span class="gfooter-k">Institucional</span>'+
+        '<a href="'+root+'institucional/sobre.html">A be·aside</a>'+
+        '<a href="'+root+'institucional/equipe.html">Quem somos</a>'+
+        '<a href="'+root+'institucional/metodologia.html">Metodologia</a>'+
+        '<a href="'+root+'institucional/faq.html">FAQ</a>'+
+      '</nav>'+
+      '<nav class="gfooter-col" aria-label="Confiança e legal">'+
+        '<span class="gfooter-k">Confiança &amp; Legal</span>'+
+        '<a href="'+root+'institucional/seguranca-ia.html">Segurança da IA</a>'+
+        '<a href="'+root+'institucional/aviso-medico.html">Aviso médico</a>'+
+        '<a href="'+root+'institucional/termos.html">Termos de Uso</a>'+
+        '<a href="'+root+'institucional/privacidade.html">Privacidade</a>'+
+      '</nav>'+
+    '</div>'+
+    '<div class="gfooter-base">'+
+      '<div class="gfooter-left"><strong>Material de apoio clínico</strong> — não substitui julgamento médico individualizado nem protocolo institucional.</div>'+
+      '<div class="gfooter-right">© 2026 be·aside · <a href="mailto:cesar.junior@unochapeco.edu.br">Contato</a></div>'+
     '</div>';
   b.appendChild(gfooter);
 }
