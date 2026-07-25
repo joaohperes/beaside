@@ -1,0 +1,551 @@
+# be·aside — Banco de Perguntas de Plantão (backlog de conteúdo)
+
+> Banco de perguntas fornecido pelo Cesar no briefing "GEO SEO.pdf" (extraído de um chat real de
+> médicos). É o **backlog da Central de Conhecimento** — cada pergunta é candidata a um artigo no
+> template padrão (ver `PROJECT_STATUS.md` §4). **Não criar todos de uma vez**: publicar em lotes
+> pequenos, priorizando maior utilidade clínica + maior busca + maior conexão com o Raciocine.
+>
+> Legenda de status: ⬜ a fazer · 🟡 rascunho existe · ✅ publicado/revisado.
+> Priorização e lotes: ver `PROJECT_STATUS.md` §9. Este arquivo preserva o banco completo, íntegro.
+
+---
+
+## Doses, diluições e prescrições
+- ⬜ Como preparar e diluir noradrenalina?
+- ⬜ Como calcular a dose de noradrenalina em mcg/kg/min?
+- ⬜ Como converter a dose de noradrenalina de mL/h para mcg/kg/min?
+- ⬜ Qual é a dose inicial da noradrenalina?
+- ⬜ Existe dose máxima de noradrenalina?
+- ⬜ Quando devo aumentar a concentração da noradrenalina?
+- ⬜ Quando iniciar vasopressina no choque séptico?
+- ⬜ Qual é a dose da vasopressina no choque séptico?
+- ⬜ Como preparar e diluir vasopressina?
+- ⬜ Como converter a vasopressina para mL/h?
+- ⬜ A vasopressina deve ser titulada ou mantida em dose fixa?
+- ⬜ Quando iniciar dobutamina?
+- ⬜ Como preparar e diluir dobutamina?
+- ⬜ Como calcular a dose de dobutamina em mcg/kg/min?
+- ⬜ Qual é a dose inicial e máxima da dobutamina?
+- ⬜ Quando utilizar adrenalina em infusão contínua?
+- ⬜ Como preparar adrenalina em bomba de infusão?
+- ⬜ Qual é a dose de adrenalina para bradicardia?
+- ⬜ Qual é a dose de adrenalina no choque?
+- ⬜ Como preparar fentanil em infusão contínua?
+- ⬜ Qual é a dose de fentanil para analgesia e sedação?
+- ⬜ Como preparar midazolam em infusão contínua?
+- ⬜ Qual é a dose de midazolam para sedação?
+- ⬜ Como preparar propofol em bomba de infusão?
+- ⬜ Qual é a dose de propofol para sedação?
+- ⬜ Qual é a dose de cetamina para indução na intubação?
+- ⬜ Qual é a dose de cetamina para analgesia e sedação?
+- ⬜ Qual é a dose de etomidato para intubação?
+- ⬜ Qual é a dose de rocurônio para intubação?
+- ⬜ Qual é a dose de succinilcolina para intubação?
+- ⬜ Como calcular a dose de sedativos e bloqueadores neuromusculares pelo peso?
+- ⬜ Qual é a dose de ataque do levetiracetam?
+- ⬜ Qual é a dose de manutenção do levetiracetam?
+- ⬜ Como ajustar levetiracetam na insuficiência renal?
+- ⬜ Qual é a dose do manitol na hipertensão intracraniana?
+- ⬜ Como prescrever manitol?
+- ⬜ Qual é a dose da solução salina hipertônica?
+- ⬜ Como preparar solução salina hipertônica a 3%?
+- ⬜ Quando utilizar bicarbonato de sódio?
+- ⬜ Como calcular a reposição de bicarbonato?
+- ⬜ Como preparar bicarbonato de sódio em infusão?
+- ⬜ Como repor potássio por via oral?
+- ⬜ Como repor potássio por via intravenosa?
+- ⬜ Qual é a velocidade máxima de reposição de potássio?
+- ⬜ Quando a reposição de potássio precisa ser feita em acesso central?
+- ⬜ Como repor magnésio por via intravenosa?
+- ⬜ Qual é a velocidade segura de reposição de magnésio?
+- ⬜ Como preparar insulina regular em bomba na cetoacidose diabética?
+- ⬜ Como preparar insulina regular em bomba no estado hiperosmolar?
+- ⬜ Como realizar a transição da insulina intravenosa para subcutânea?
+- ⬜ Como prescrever enoxaparina para profilaxia de tromboembolismo venoso?
+- ⬜ Como ajustar enoxaparina pela função renal?
+- ⬜ Como prescrever enoxaparina em dose terapêutica?
+- ⬜ Como prescrever heparina não fracionada em bomba?
+- ⬜ Como ajustar heparina pelo TTPa ou anti-Xa?
+- ⬜ Como iniciar rivaroxabana no tromboembolismo venoso?
+- ⬜ Como ajustar anticoagulantes pela função renal?
+- ⬜ Qual é a dose da terlipressina na hemorragia digestiva alta?
+- ⬜ Como preparar e administrar terlipressina?
+- ⬜ Qual é a dose do aciclovir na encefalite herpética?
+- ⬜ Como ajustar aciclovir pela função renal?
+- ⬜ Como prevenir nefrotoxicidade pelo aciclovir?
+- ⬜ Qual é a dose da tiamina intravenosa?
+- ⬜ Quando administrar tiamina antes de glicose?
+- ⬜ Como repor vitamina B12?
+- ⬜ Como prescrever vitamina B12 intramuscular ou oral?
+
+## Ventilação mecânica
+- ⬜ Como ajustar a ventilação mecânica após a gasometria?
+- ⬜ Como ajustar a ventilação mecânica diante de acidose respiratória?
+- ⬜ Como ajustar a ventilação mecânica diante de alcalose respiratória?
+- ⬜ Como corrigir hipercapnia no paciente ventilado?
+- ⬜ Como corrigir hipoxemia no paciente ventilado?
+- ⬜ Como escolher o modo ventilatório inicial?
+- ⬜ Quais parâmetros iniciais devo utilizar na ventilação mecânica?
+- ⬜ Como calcular o peso predito?
+- ⬜ Qual volume corrente devo utilizar?
+- ⬜ Quando utilizar volume corrente de 4, 6 ou 8 mL/kg de peso predito?
+- ⬜ Como medir a pressão de platô?
+- ⬜ Qual é a meta de pressão de platô?
+- ⬜ Como calcular a driving pressure?
+- ⬜ Qual é a meta de driving pressure?
+- ⬜ Como escolher e ajustar a PEEP?
+- ⬜ Como utilizar a tabela PEEP/FiO₂ na SDRA?
+- ⬜ Quando considerar PEEP alta?
+- ⬜ Como ajustar a FiO₂?
+- ⬜ Qual é a meta de saturação no paciente crítico?
+- ⬜ O que é hipercapnia permissiva?
+- ⬜ Qual limite de pH é aceitável na hipercapnia permissiva?
+- ⬜ Como reconhecer auto-PEEP?
+- ⬜ Como tratar auto-PEEP?
+- ⬜ Como interpretar a curva de pressão do ventilador?
+- ⬜ Como interpretar a curva de fluxo do ventilador?
+- ⬜ Como interpretar a curva de volume do ventilador?
+- ⬜ Como reconhecer duplo disparo?
+- ⬜ Como tratar duplo disparo?
+- ⬜ Como reconhecer esforço ineficaz?
+- ⬜ Como tratar esforço ineficaz?
+- ⬜ Como reconhecer ciclagem precoce?
+- ⬜ Como reconhecer ciclagem tardia?
+- ⬜ Como reconhecer assincronia de fluxo?
+- ⬜ Como diferenciar assincronia de disparo, fluxo e ciclagem?
+- ⬜ Como ajustar o rise time?
+- ⬜ Como ajustar o fluxo inspiratório?
+- ⬜ Como ajustar o tempo inspiratório?
+- ⬜ Como ajustar a sensibilidade do ventilador?
+- ⬜ Como interpretar complacência estática e dinâmica?
+- ⬜ Como calcular resistência das vias aéreas?
+- ⬜ Como diferenciar broncoespasmo de baixa complacência?
+- ⬜ Como ventilar um paciente com asma grave?
+- ⬜ Como ventilar um paciente com DPOC exacerbado?
+- ⬜ Como ventilar um paciente com SDRA?
+- ⬜ Como ventilar um paciente com obesidade?
+- ⬜ Como ventilar um paciente com hipertensão intracraniana?
+- ⬜ Quando realizar bloqueio neuromuscular na SDRA?
+- ⬜ Quando indicar posição prona?
+- ⬜ Quais são os critérios para posição prona?
+- ⬜ Quando interromper a posição prona?
+- ⬜ Como iniciar o desmame da ventilação mecânica?
+- ⬜ Quais são os critérios para teste de respiração espontânea?
+- ⬜ Como realizar o teste de respiração espontânea?
+- ⬜ Como interpretar o índice de Tobin?
+- ⬜ Quais são os critérios de falha do teste de respiração espontânea?
+- ⬜ Quando extubar?
+- ⬜ Como avaliar risco de falha de extubação?
+- ⬜ Quando realizar teste de cuff leak?
+- ⬜ Quando utilizar VNI após a extubação?
+- ⬜ Quando utilizar cânula nasal de alto fluxo após a extubação?
+- ⬜ Quando indicar VNI?
+- ⬜ Quais são as contraindicações da VNI?
+- ⬜ Quando considerar falha da VNI?
+- ⬜ Quanto tempo devo aguardar resposta à VNI?
+- ⬜ Quando intubar um paciente que está em VNI?
+- ⬜ Como escolher entre VNI, cânula nasal de alto fluxo e intubação?
+- ⬜ Como ajustar VNI na insuficiência respiratória hipercápnica?
+- ⬜ Como ajustar VNI no edema agudo de pulmão?
+
+## Choque, hemodinâmica e sepse
+- ⬜ Como abordar inicialmente um paciente em choque?
+- ⬜ Como diferenciar choque distributivo, cardiogênico, hipovolêmico e obstrutivo?
+- ⬜ Quando iniciar noradrenalina?
+- ⬜ É necessário completar volume antes de iniciar noradrenalina?
+- ⬜ Noradrenalina pode ser iniciada em acesso periférico?
+- ⬜ Quando é necessário acesso venoso central para vasopressores?
+- ⬜ Qual é a meta inicial de pressão arterial média no choque?
+- ⬜ Quando individualizar a meta de pressão arterial média?
+- ⬜ Quando iniciar vasopressina?
+- ⬜ Quando iniciar dobutamina?
+- ⬜ Quando utilizar adrenalina como vasopressor?
+- ⬜ Quando considerar hidrocortisona no choque séptico?
+- ⬜ Qual é a dose da hidrocortisona no choque séptico?
+- ⬜ Como reconhecer choque refratário?
+- ⬜ O que fazer diante de choque refratário?
+- ⬜ Como avaliar perfusão periférica?
+- ⬜ Como interpretar o tempo de enchimento capilar?
+- ⬜ Como interpretar o lactato?
+- ⬜ Lactato elevado sempre significa hipoperfusão?
+- ⬜ Quando repetir o lactato?
+- ⬜ Qual redução do lactato é esperada?
+- ⬜ Como interpretar saturação venosa central?
+- ⬜ Como interpretar o gap venoarterial de CO₂?
+- ⬜ Como calcular oferta de oxigênio?
+- ⬜ Como calcular consumo de oxigênio?
+- ⬜ Como avaliar responsividade a fluidos?
+- ⬜ Como realizar elevação passiva das pernas?
+- ⬜ Como interpretar variação da pressão de pulso?
+- ⬜ Como interpretar variação do volume sistólico?
+- ⬜ Como utilizar o VTI para avaliar resposta a volume?
+- ⬜ Como medir VTI no ecocardiograma?
+- ⬜ Qual variação do VTI sugere responsividade a fluidos?
+- ⬜ Quando realizar expansão volêmica?
+- ⬜ Qual cristaloide utilizar na sepse?
+- ⬜ Quanto volume administrar inicialmente na sepse?
+- ⬜ Como evitar excesso de volume no choque?
+- ⬜ Quando iniciar deresuscitação?
+- ⬜ Como utilizar ultrassom à beira do leito no choque?
+- ⬜ Como avaliar o ventrículo esquerdo no choque?
+- ⬜ Como avaliar o ventrículo direito no choque?
+- ⬜ Como interpretar a veia cava inferior?
+- ⬜ Veia cava inferior dilatada significa hipervolemia?
+- ⬜ Como reconhecer choque cardiogênico?
+- ⬜ Como manejar choque cardiogênico?
+- ⬜ Quando utilizar inotrópico no choque cardiogênico?
+- ⬜ Quando considerar vasodilatador no choque cardiogênico?
+- ⬜ Como reconhecer choque obstrutivo?
+- ⬜ Como diferenciar tamponamento, TEP e pneumotórax hipertensivo?
+- ⬜ Como reconhecer vasoplegia?
+- ⬜ Como manejar vasoplegia pós-cirurgia cardíaca?
+- ⬜ Quando considerar azul de metileno?
+- ⬜ Como conduzir o pacote inicial da sepse?
+- ⬜ Quando colher culturas na sepse?
+- ⬜ Quanto tempo posso aguardar para iniciar antibiótico?
+- ⬜ Como escolher o antibiótico inicial na sepse?
+- ⬜ Quando descalonar antibiótico na sepse?
+- ⬜ Quando realizar controle do foco?
+- ⬜ Como reavaliar o paciente séptico após as primeiras intervenções?
+
+## Condutas rápidas na sala vermelha
+- ⬜ Quando indicar intubação orotraqueal?
+- ⬜ Quais são os sinais de falência respiratória iminente?
+- ⬜ Quando intubar por rebaixamento do nível de consciência?
+- ⬜ Como preparar uma sequência rápida de intubação?
+- ⬜ Quais medicamentos utilizar na intubação?
+- ⬜ Como escolher o indutor para intubação no paciente em choque?
+- ⬜ Como prevenir hipotensão após a intubação?
+- 🟡 O que fazer diante de hipotensão pós-intubação? *(rascunho existe)*
+- ⬜ Quando indicar trombólise no TEP?
+- ⬜ Como estratificar o risco do TEP?
+- ⬜ Quando indicar trombólise no AVC isquêmico?
+- ⬜ Quando indicar trombectomia no AVC isquêmico?
+- ⬜ Quando drenar um derrame pleural?
+- ⬜ Quando realizar toracocentese diagnóstica?
+- ⬜ Quando realizar toracocentese terapêutica?
+- ⬜ Quando inserir dreno de tórax?
+- ⬜ Como reconhecer pneumotórax hipertensivo?
+- ⬜ Quando realizar descompressão torácica imediata?
+- ⬜ Quando anticoagular fibrilação atrial?
+- ⬜ Como escolher o anticoagulante na fibrilação atrial?
+- ⬜ Quando reiniciar anticoagulante após procedimento?
+- ⬜ Quando suspender anticoagulante antes de procedimento?
+- ⬜ Quais são os critérios de internação em UTI?
+- ⬜ Quando solicitar transferência para UTI?
+- ⬜ Como priorizar condutas no paciente instável?
+- ⬜ Como organizar a abordagem ABCDE do paciente grave?
+- ⬜ Quando indicar cardioversão elétrica?
+- ⬜ Como sedar para cardioversão elétrica?
+- ⬜ Quando indicar marca-passo transcutâneo?
+- ⬜ Como tratar bradicardia sintomática?
+- ⬜ Como tratar taquicardia de QRS largo?
+- ⬜ Como abordar uma parada cardiorrespiratória?
+- ⬜ Como manejar o paciente após retorno da circulação espontânea?
+
+## Cardiologia aguda
+- ⬜ Como controlar a frequência cardíaca na fibrilação atrial?
+- ⬜ Qual medicamento escolher para controle de frequência na fibrilação atrial?
+- ⬜ Quando utilizar betabloqueador, diltiazem, digoxina ou amiodarona na fibrilação atrial?
+- ⬜ Como controlar fibrilação atrial no paciente com insuficiência cardíaca?
+- ⬜ Quando realizar cardioversão na fibrilação atrial?
+- ⬜ Como anticoagular antes e depois da cardioversão?
+- ⬜ Qual é a dose máxima do carvedilol?
+- ⬜ Como titular carvedilol na insuficiência cardíaca?
+- ⬜ Qual betabloqueador escolher na insuficiência cardíaca?
+- ⬜ Quando suspender betabloqueador na insuficiência cardíaca aguda?
+- ⬜ O que é MINOCA?
+- ⬜ Como investigar MINOCA?
+- ⬜ Como tratar bradicardia causada por digoxina?
+- ⬜ Como reconhecer intoxicação por digoxina?
+- ⬜ Quando utilizar anticorpo antidigoxina?
+- ⬜ O que significa insuficiência cardíaca perfil C?
+- ⬜ Como manejar insuficiência cardíaca perfil B, C e L?
+- ⬜ Como reconhecer choque cardiogênico?
+- ⬜ Como manejar edema agudo de pulmão?
+- ⬜ Quando utilizar nitrato?
+- ⬜ Quais são as contraindicações dos nitratos?
+- ⬜ Quando utilizar nitroprussiato?
+- ⬜ Como preparar e titular nitroprussiato?
+- ⬜ Quando utilizar nitroglicerina em bomba?
+- ⬜ Como anticoagular paciente com prótese valvar biológica?
+- ⬜ Como anticoagular paciente com prótese valvar mecânica?
+- ⬜ Quando iniciar tratamento para insuficiência cardíaca durante a internação?
+- ⬜ Quando iniciar espironolactona?
+- ⬜ Quando iniciar dapagliflozina?
+- ⬜ Como manejar síndrome coronariana aguda?
+- ⬜ Quando indicar cateterismo urgente?
+- ⬜ Como interpretar elevação de troponina no paciente crítico?
+- ⬜ Como diferenciar IAM tipo 1 e IAM tipo 2?
+- ⬜ Como manejar arritmias após parada cardiorrespiratória?
+- ⬜ O que é ritmo idioventricular acelerado?
+- ⬜ Como diferenciar extrassístole ventricular, bigeminismo e ritmo idioventricular?
+
+## Neurocrítico
+- ⬜ Como avaliar inicialmente um paciente neurocrítico?
+- ⬜ Como utilizar a escala de coma de Glasgow?
+- ⬜ Como interpretar alterações pupilares?
+- ⬜ Quando suspeitar de hipertensão intracraniana?
+- ⬜ Quais são os sinais de herniação cerebral?
+- ⬜ Como tratar hipertensão intracraniana?
+- ⬜ Quando utilizar manitol?
+- ⬜ Quando utilizar solução salina hipertônica?
+- ⬜ Como escolher entre manitol e solução salina hipertônica?
+- ⬜ Qual é a meta de sódio na hipertensão intracraniana?
+- ⬜ Como monitorar osmolaridade durante terapia hiperosmolar?
+- ⬜ Como calcular pressão de perfusão cerebral?
+- ⬜ Qual é a meta de pressão de perfusão cerebral?
+- ⬜ Como definir a pressão arterial alvo no AVC isquêmico?
+- ⬜ Como definir a pressão arterial alvo no AVC hemorrágico?
+- ⬜ Como controlar pressão arterial na hemorragia subaracnoide?
+- ⬜ Como controlar pressão arterial após trombólise?
+- ⬜ Como controlar pressão arterial após trombectomia?
+- ⬜ Como conduzir hemorragia intracerebral?
+- ⬜ Quando reverter anticoagulação na hemorragia intracraniana?
+- ⬜ Quando indicar avaliação neurocirúrgica no AVC hemorrágico?
+- ⬜ Quando operar hemorragia intracerebral?
+- ⬜ Como conduzir hemorragia subaracnoide?
+- ⬜ Qual é a dose da nimodipina?
+- ⬜ Como manejar hipotensão causada por nimodipina?
+- ⬜ Como rastrear vasoespasmo após HSA?
+- ⬜ Como interpretar Doppler transcraniano?
+- ⬜ Como manejar vasoespasmo cerebral?
+- ⬜ Como cuidar da drenagem ventricular externa?
+- ⬜ Como definir a altura da DVE?
+- ⬜ Quando clampear uma DVE?
+- ⬜ Como prevenir complicações da DVE?
+- ⬜ Como sedar o paciente neurocrítico?
+- ⬜ Como realizar pausa de sedação no neurocrítico?
+- ⬜ Quando utilizar profilaxia anticonvulsivante?
+- ⬜ Como tratar crise convulsiva no neurocrítico?
+- ⬜ Como tratar estado de mal epiléptico?
+- ⬜ Quando solicitar EEG?
+- ⬜ Como manejar o pós-operatório neurocirúrgico?
+- ⬜ Quando iniciar profilaxia para tromboembolismo no neurocrítico?
+- ⬜ Quando reiniciar anticoagulação após hemorragia intracraniana?
+- ⬜ Como realizar neuroprognóstico após parada cardíaca?
+- ⬜ Quando solicitar tomografia de controle?
+- ⬜ Como interpretar achados básicos de tomografia de crânio no paciente grave?
+
+## Infectologia e antibióticos
+- ⬜ Como escolher antibiótico empírico no paciente grave?
+- ⬜ Como escolher antibiótico conforme o provável foco?
+- ⬜ Quando cobrir bactérias gram-positivas resistentes?
+- ⬜ Quando cobrir Pseudomonas?
+- ⬜ Quando cobrir anaeróbios?
+- ⬜ Quando cobrir enterobactérias produtoras de carbapenemase?
+- ⬜ Como escolher antibiótico na pneumonia comunitária grave?
+- ⬜ Como tratar pneumonia hospitalar?
+- ⬜ Como tratar pneumonia associada à ventilação mecânica?
+- ⬜ Como tratar pneumonia aspirativa?
+- ⬜ Pneumonia aspirativa sempre precisa de cobertura para anaeróbios?
+- ⬜ Como tratar celulite?
+- ⬜ Quando cobrir MRSA na celulite?
+- ⬜ Como tratar osteomielite?
+- ⬜ Quanto tempo tratar osteomielite?
+- ⬜ Como tratar bacteremia por Staphylococcus aureus?
+- ⬜ Quanto tempo tratar bacteremia por MRSA?
+- ⬜ Quando solicitar ecocardiograma na bacteremia por Staphylococcus aureus?
+- ⬜ Quando retirar um cateter na bacteremia?
+- ⬜ Como tratar sepse de foco urinário?
+- ⬜ Como tratar sepse de foco abdominal?
+- ⬜ Como tratar meningite bacteriana?
+- ⬜ Como tratar encefalite herpética?
+- ⬜ Quando iniciar aciclovir empiricamente?
+- ⬜ Qual é a dose da piperacilina-tazobactam?
+- ⬜ Como ajustar piperacilina-tazobactam pela função renal?
+- ⬜ Como realizar infusão estendida de piperacilina-tazobactam?
+- ⬜ Qual é a dose do meropenem?
+- ⬜ Quando utilizar infusão prolongada de meropenem?
+- ⬜ Como ajustar meropenem pela função renal?
+- ⬜ Qual é a dose da ceftriaxona?
+- ⬜ Quando utilizar ceftriaxona 2 g de 12/12 horas?
+- ⬜ Qual é a dose da cefepima?
+- ⬜ Como ajustar cefepima pela função renal?
+- ⬜ Como reconhecer neurotoxicidade por cefepima?
+- ⬜ Qual é a dose da vancomicina?
+- ⬜ Como realizar dose de ataque da vancomicina?
+- ⬜ Como monitorar vancomicina por AUC?
+- ⬜ Qual é a dose da clindamicina?
+- ⬜ Quando utilizar clindamicina para supressão de toxinas?
+- ⬜ Quando utilizar ceftazidima-avibactam?
+- ⬜ Como tratar infecção por KPC?
+- ⬜ Como tratar Acinetobacter multirresistente?
+- ⬜ Quando utilizar polimixina B?
+- ⬜ Como calcular a dose da polimixina B?
+- ⬜ Quando utilizar aminoglicosídeos?
+- ⬜ Como ajustar amicacina pela função renal?
+- ⬜ Quando iniciar antifúngico?
+- ⬜ Quando utilizar fluconazol profilático?
+- ⬜ Quando utilizar voriconazol?
+- ⬜ Quando utilizar anfotericina B?
+- ⬜ Quanto tempo manter antibiótico?
+- ⬜ Como descalonar antibiótico?
+- ⬜ Como interpretar procalcitonina?
+- ⬜ Quando repetir culturas?
+- ⬜ Como diferenciar colonização de infecção?
+- ⬜ Como interpretar cultura de aspirado traqueal?
+- ⬜ Como manejar febre no paciente neutropênico?
+
+## Distúrbios metabólicos e hidroeletrolíticos
+- ⬜ Como diagnosticar cetoacidose diabética?
+- ⬜ Como tratar cetoacidose diabética?
+- ⬜ Como calcular o ânion gap?
+- ⬜ Como saber se o ânion gap fechou?
+- ⬜ Quando iniciar insulina na cetoacidose diabética?
+- ⬜ Quando adicionar glicose durante o tratamento da cetoacidose?
+- ⬜ Como repor potássio na cetoacidose diabética?
+- ⬜ Quando realizar transição para insulina subcutânea?
+- ⬜ Como diagnosticar estado hiperosmolar hiperglicêmico?
+- ⬜ Como tratar estado hiperosmolar?
+- ⬜ Como calcular osmolaridade efetiva?
+- ⬜ Como calcular sódio corrigido pela glicemia?
+- ⬜ Como tratar hipercalemia?
+- ⬜ Quais medidas estabilizam a membrana na hipercalemia?
+- ⬜ Qual é a dose do gluconato de cálcio na hipercalemia?
+- ⬜ Como utilizar insulina e glicose na hipercalemia?
+- ⬜ Quando indicar diálise na hipercalemia?
+- ⬜ Como tratar hipocalemia?
+- ⬜ Como investigar hipocalemia refratária?
+- ⬜ Como tratar hipomagnesemia?
+- ⬜ Como tratar hipocalcemia?
+- ⬜ Como calcular cálcio corrigido pela albumina?
+- ⬜ Quando utilizar cálcio ionizado?
+- ⬜ Como tratar hiponatremia sintomática?
+- ⬜ Como preparar e administrar salina hipertônica na hiponatremia?
+- ⬜ Qual é a velocidade máxima de correção do sódio?
+- ⬜ Como evitar síndrome de desmielinização osmótica?
+- ⬜ Como tratar correção excessiva da hiponatremia?
+- ⬜ Como diferenciar hiponatremia hipovolêmica, euvolêmica e hipervolêmica?
+- ⬜ Como tratar hipernatremia?
+- ⬜ Como calcular o déficit de água livre?
+- ⬜ Qual velocidade de correção da hipernatremia?
+- ⬜ Quando utilizar bicarbonato na acidose metabólica?
+- ⬜ Como interpretar rapidamente uma gasometria?
+- ⬜ Como identificar distúrbios ácido-base mistos?
+- ⬜ Como calcular a compensação respiratória na acidose metabólica?
+- ⬜ Como calcular o delta gap?
+- ⬜ Como interpretar lactato elevado?
+- ⬜ Como tratar hipofosfatemia?
+- ⬜ Quando repor fósforo?
+- ⬜ Como tratar síndrome de realimentação?
+- ⬜ Como manejar lise tumoral?
+- ⬜ Como realizar profilaxia da síndrome de lise tumoral?
+- ⬜ Quando utilizar alopurinol ou rasburicase?
+
+## Interpretação rápida de exames
+- ⬜ Como interpretar uma gasometria arterial passo a passo?
+- ⬜ Como diferenciar acidose metabólica e respiratória?
+- ⬜ Como identificar distúrbio ácido-base misto?
+- ⬜ Como interpretar o ânion gap?
+- ⬜ Como interpretar o delta gap?
+- ⬜ Como interpretar PaO₂/FiO₂?
+- ⬜ Como interpretar o gradiente alvéolo-arterial?
+- ⬜ Como interpretar lactato?
+- ⬜ Como interpretar troponina no paciente crítico?
+- ⬜ Como interpretar BNP e NT-proBNP?
+- ⬜ Como interpretar um ECG com taquicardia de QRS largo?
+- ⬜ Como diferenciar taquicardia ventricular de supraventricular com aberrância?
+- ⬜ Como interpretar bloqueio de ramo direito?
+- ⬜ Como interpretar bloqueio de ramo esquerdo?
+- ⬜ Como reconhecer isquemia no ECG?
+- ⬜ Como interpretar alterações secundárias da repolarização?
+- ⬜ Como reconhecer fibrilação atrial?
+- ⬜ Como reconhecer flutter atrial?
+- ⬜ Como reconhecer bigeminismo ventricular?
+- ⬜ Como interpretar radiografia de tórax no paciente intubado?
+- ⬜ Como confirmar posição do tubo orotraqueal?
+- ⬜ Como confirmar posição do cateter venoso central?
+- ⬜ Como reconhecer pneumotórax na radiografia?
+- ⬜ Como reconhecer edema pulmonar?
+- ⬜ Como reconhecer derrame pleural?
+- ⬜ Como interpretar tomografia de crânio no AVC?
+- ⬜ Como reconhecer hemorragia intracraniana?
+- ⬜ Como reconhecer sinais de hipertensão intracraniana na tomografia?
+- ⬜ Como interpretar tomografia de abdome no paciente séptico?
+- ⬜ Como realizar POCUS no choque?
+- ⬜ Como utilizar o protocolo RUSH?
+- ⬜ Como interpretar função ventricular esquerda no POCUS?
+- ⬜ Como avaliar função ventricular direita?
+- ⬜ Como avaliar derrame pericárdico?
+- ⬜ Como avaliar congestão venosa?
+- ⬜ Como utilizar o VExUS?
+- ⬜ Como interpretar exames laboratoriais completos no paciente crítico?
+- ⬜ O que esse exame muda na conduta?
+
+## Anticoagulação e tromboembolismo
+- ⬜ Quando anticoagular fibrilação atrial?
+- ⬜ Como calcular CHA₂DS₂-VASc?
+- ⬜ Como calcular HAS-BLED?
+- ⬜ Como escolher entre anticoagulante direto e varfarina?
+- ⬜ Quando utilizar heparina não fracionada?
+- ⬜ Quando utilizar enoxaparina?
+- ⬜ Como anticoagular paciente com insuficiência renal?
+- ⬜ Como anticoagular paciente com obesidade?
+- ⬜ Como anticoagular paciente com câncer?
+- ⬜ Como tratar trombose venosa profunda?
+- ⬜ Como tratar embolia pulmonar?
+- ⬜ Quanto tempo manter anticoagulação após TEP?
+- ⬜ Quando realizar trombólise no TEP?
+- ⬜ Como manejar TEP de risco intermediário-alto?
+- ⬜ Quando considerar embolectomia ou terapia por cateter?
+- ⬜ Como reverter varfarina?
+- ⬜ Como reverter dabigatrana?
+- ⬜ Como reverter rivaroxabana ou apixabana?
+- ⬜ Quando suspender anticoagulação antes de cirurgia?
+- ⬜ Quando reiniciar anticoagulação após cirurgia?
+- ⬜ Quando reiniciar anticoagulação após sangramento?
+- ⬜ Quando iniciar profilaxia de tromboembolismo venoso?
+- ⬜ Quando a profilaxia farmacológica está contraindicada?
+- ⬜ Como utilizar profilaxia mecânica?
+- ⬜ Quando anticoagular paciente com prótese valvar?
+- ⬜ Como manejar anticoagulação no neurocrítico?
+
+## Procedimentos
+- ⬜ Quais são as indicações de intubação orotraqueal?
+- ⬜ Como preparar o paciente para intubação?
+- ⬜ Como escolher os medicamentos da sequência rápida?
+- ⬜ Como confirmar a posição do tubo orotraqueal?
+- ⬜ Quando indicar acesso venoso central?
+- ⬜ Qual sítio escolher para acesso venoso central?
+- ⬜ Como prevenir complicações do acesso venoso central?
+- ⬜ Quando indicar cateter arterial?
+- ⬜ Como nivelar e zerar o transdutor arterial?
+- ⬜ Quando indicar cateter para hemodiálise?
+- ⬜ Quando indicar punção lombar?
+- ⬜ Quais são as contraindicações da punção lombar?
+- ⬜ Quando solicitar tomografia antes da punção lombar?
+- ⬜ Quando realizar toracocentese?
+- ⬜ Como interpretar os critérios de Light?
+- ⬜ Quando drenar derrame parapneumônico?
+- ⬜ Quando indicar dreno de tórax?
+- ⬜ Como manejar pneumotórax?
+- ⬜ Quando realizar paracentese?
+- ⬜ Como diagnosticar peritonite bacteriana espontânea?
+- ⬜ Quando administrar albumina após paracentese?
+- ⬜ Quando indicar cardioversão elétrica?
+- ⬜ Quando indicar marca-passo transcutâneo?
+- ⬜ Quando solicitar broncoscopia?
+- ⬜ Quando realizar traqueostomia?
+- ⬜ Quando retirar um cateter venoso central?
+- ⬜ Quais são os cuidados após procedimentos invasivos?
+
+## Protocolos e abordagens rápidas ("Como conduzir…")
+- ⬜ Choque séptico nas primeiras horas · Choque cardiogênico · Choque obstrutivo
+- ⬜ Hemorragia digestiva alta · Embolia pulmonar
+- ⬜ Cetoacidose diabética · Estado hiperosmolar · Hipercalemia · Hiponatremia sintomática
+- ⬜ Insuficiência cardíaca aguda · Edema agudo de pulmão · Exacerbação de DPOC · Asma grave
+- ⬜ Pneumonia grave · Sepse neutropênica
+- ⬜ AVC isquêmico · AVC hemorrágico · Hemorragia subaracnoide · Estado de mal epiléptico ·
+  Hipertensão intracraniana
+- ⬜ Intoxicação por betabloqueador / bloqueador de canal de cálcio / digoxina
+- ⬜ Síndrome de lise tumoral · Anafilaxia · Sangramento em paciente anticoagulado · Pós-parada (PCR)
+
+## Perguntas de prescrição ("Como prescrever…" / "Como montar prescrição inicial de…")
+- ⬜ Noradrenalina · Vasopressina · Dobutamina · Adrenalina em bomba
+- ⬜ Fentanil / Midazolam / Propofol / Dexmedetomidina / Cetamina em infusão · Rocurônio em infusão
+- ⬜ Insulina em bomba · Reposição de potássio / magnésio · Salina hipertônica · Manitol · Bicarbonato
+- ⬜ Heparina não fracionada · Enoxaparina · Antibióticos em infusão prolongada
+- ⬜ Profilaxia de TEV · Profilaxia de úlcera de estresse · Analgesia e sedação no intubado ·
+  Medidas para delirium · Nutrição enteral inicial · Prevenção de lesão por pressão
+- ⬜ Prescrição inicial de: UTI · Choque séptico · Cetoacidose diabética · Hipercalemia · AVC hemorrágico

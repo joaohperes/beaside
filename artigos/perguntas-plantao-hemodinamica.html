@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script src="../assets/theme-boot.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Choque Críptico, Fluido-Responsividade e Vasopressor — 6 Perguntas de Plantão | be·aside</title>
+<meta name="description" content="Choque críptico, fluido-responsividade e escalonamento de vasopressor: 6 perguntas de hemodinâmica que voltam toda semana no plantão de UTI, respondidas com gasometria pareada e POCUS.">
+<link rel="canonical" href="https://be-aside.vercel.app/artigos/perguntas-plantao-hemodinamica.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="be·aside">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Choque Críptico, Fluido-Responsividade e Vasopressor — 6 Perguntas de Plantão">
+<meta property="og:description" content="Choque críptico, fluido-responsividade e escalonamento de vasopressor: 6 perguntas de hemodinâmica que voltam toda semana no plantão de UTI.">
+<meta property="og:url" content="https://be-aside.vercel.app/artigos/perguntas-plantao-hemodinamica.html">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/landing.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "PA normal, lactato normal, SvcO2 alta — ainda pode estar em choque?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim — chama-se choque críptico. A macro-hemodinâmica no monitor parece perfeita, mas a rede capilar que nutre os órgãos está com o fluxo estagnado por shunts arteriovenosos microcirculatórios, o que eleva falsamente a SvcO2 e alarga o Gap de CO2 acima de 6 mmHg."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Já em noradrenalina e vasopressina, com PA boa — isso significa que o paciente saiu do choque?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Não necessariamente. A PAM normalizada pode ser só resposta farmacológica ao vasopressor, mascarando hipoperfusão renal e esplâncnica em curso — vale checar Gap de CO2 e diurese antes de concluir que o paciente estabilizou."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como decidir, à beira do leito, se o paciente é fluido-responsivo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use a VCI para triagem rápida da pré-carga e o VTI com manobra de PLR (ou bolus) para confirmar se o débito cardíaco realmente sobe mais de 10-15% — são ferramentas complementares, não intercambiáveis."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Prova de volume, dobutamina ou desmame de vasopressor — como sequenciar no choque com Gap de CO2 alto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Primeiro avalie fluido-responsividade e fluido-tolerância; se não for fluido-responsivo e o Gap de CO2 persistir alto com oligúria, considere dobutamina em baixa dose; só depois de melhorar o fluxo, inicie o desmame de vasopressor mantendo a PAM-alvo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Vale fazer teste de estresse com furosemida ou transfundir por rotina no choque?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O teste de furosemida não é indicado em paciente ainda dependente de doses altas de vasopressor. A transfusão não deve ser guiada só pela hemoglobina isolada quando a SvcO2 já está normal ou alta — avalie em conjunto com os demais marcadores de perfusão."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Qual o alvo de PAM no choque, e por que não simplesmente aumentar o vasopressor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mantenha a PAM-alvo, geralmente 65 mmHg, individualizada por protocolo institucional. Subir a dose além da meta tende a intensificar a vasoconstrição e agravar a estase microcirculatória, podendo melhorar o número no monitor enquanto piora a perfusão real dos órgãos."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!--
+  RASCUNHO — pendente de revisão clínica do Cesar antes de publicar.
+  Conteúdo estruturado por Claude a partir do notebook NotebookLM "Monitorização
+  Hemodinâmica" do Cesar (fonte: PDF "Monitorização Hemodinâmica Paciente Grave" de
+  Elias Knobel + sínteses internas do notebook). Casos clínicos reais e identificáveis
+  de pacientes que apareciam no histórico do notebook foram deliberadamente excluídos —
+  nenhum dado de paciente real está neste artigo. Movido de hemo/perguntas-plantao.html
+  para /artigos/ em 24/07/2026: página de SEO/GEO independente dos módulos do Guia.
+-->
+
+<div class="scene" aria-hidden="true">
+  <div class="scene-grid"></div>
+  <div class="glow glow-main"></div>
+</div>
+
+<div class="hub article" style="--c-accent:#e05555;--c-glow:rgba(224,85,85,.14)">
+
+  <header class="topbar">
+    <a class="logo" href="../index.html" aria-label="be·aside — início">
+      <svg class="logo-icon" width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="0" y="2" width="6" height="20" rx="3" fill="#1db88a"/>
+        <rect x="10" y="0" width="6" height="15" rx="3" fill="#1db88a" opacity=".55"/>
+      </svg>
+      <span class="logo-wordmark">be·aside</span>
+    </a>
+    <div class="top-meta">
+      <a class="btn-entrar" id="btn-entrar" href="../login.html">Entrar</a>
+      <script>
+      (function(){
+        var slot=document.getElementById('btn-entrar');
+        if(!slot||!slot.parentNode) return;
+        var hint=null;
+        try{hint=JSON.parse(localStorage.getItem('beaside-auth-hint')||'null');}catch(e){}
+        if(!hint||!(hint.shortName||hint.fullName||hint.email)) return;
+        var full=String(hint.fullName||hint.shortName||'').trim();
+        var short=String(hint.shortName||(full.split(/\s+/)[0])||'Conta').trim();
+        var email=String(hint.email||'');
+        var tip=(full&&email)?(full+' · '+email):(email||full||short);
+        function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+        var wrap=document.createElement('div');
+        wrap.setAttribute('data-auth-chip','1');
+        wrap.setAttribute('data-auth-boot','1');
+        wrap.className='auth-chip-wrap is-optimistic is-boot';
+        wrap.innerHTML=
+          '<button type="button" class="auth-chip" tabindex="-1" aria-hidden="true">'+
+          '<span class="auth-chip-dot" aria-hidden="true"></span>'+
+          '<span class="auth-chip-name" title="'+esc(tip)+'">'+esc(short)+'</span>'+
+          '<span class="auth-chip-caret" aria-hidden="true">▾</span>'+
+          '</button>';
+        slot.parentNode.insertBefore(wrap,slot);
+        slot.hidden=true;
+        slot.style.display='none';
+      })();
+      </script>
+      <button class="btn-theme" data-theme-toggle type="button" onclick="toggleTheme()" aria-label="Alternar tema"></button>
+    </div>
+  </header>
+
+  <div class="article-draft">
+    <div class="article-draft-t">⚠ Rascunho — não publicado</div>
+    <div class="article-draft-d">Conteúdo clínico ainda não revisado pelo responsável clínico (Cesar). Não linkar publicamente antes da revisão.</div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-row">
+      <div class="hero-eyebrow">Hemodinâmica · Perguntas de plantão</div>
+      <h1>Choque Críptico, Fluido-Responsividade <span class="grad">e Vasopressor</span></h1>
+      <p class="hero-lead">Seis perguntas que voltam toda semana na UTI — resposta direta, o mecanismo por trás, e a conduta prática à beira do leito.</p>
+    </div>
+  </section>
+
+  <section class="values cols-4" aria-label="Números-chave">
+    <div class="value"><div class="value-k">Gap de CO₂ alargado</div><div class="value-t">&gt; 6 mmHg</div></div>
+    <div class="value"><div class="value-k">Lactato elevado</div><div class="value-t">&gt; 2 mmol/L</div></div>
+    <div class="value"><div class="value-k">Fluido-responsivo</div><div class="value-t">VTI ↑ &gt; 10–15%</div></div>
+    <div class="value"><div class="value-k">PAM-alvo geral</div><div class="value-t">≥ 65 mmHg</div></div>
+  </section>
+
+  <div class="article-hr"></div>
+
+  <article class="qa">
+    <span class="qa-num">01</span>
+    <h2 class="qa-q">PA normal, lactato normal, SvcO₂ alta — ainda pode estar em choque?</h2>
+    <p class="qa-direct">Sim. Chama-se <strong>choque críptico</strong> (estase na microcirculação): a macro-hemodinâmica no monitor parece perfeita, mas a rede capilar que nutre os órgãos está com o fluxo estagnado.</p>
+    <p class="qa-body">Em vez de percorrer a rede capilar nutritiva, parte do sangue passa por <strong>shunts arteriovenosos microcirculatórios</strong> — um atalho entre o lado arterial e o venoso. Esse sangue volta rico em oxigênio (elevando a SvcO₂ e maquiando o monitor), enquanto a verdadeira rede capilar permanece estrangulada e o CO₂ produzido pelas células se acumula localmente, alargando o Gap de CO₂ acima de 6 mmHg.</p>
+    <div class="qa-box">
+      <div class="qa-box-t">Tríade do choque críptico</div>
+      <div class="qa-box-d">Lactato ainda normal (a disóxia sistêmica não se instalou) + SvcO₂ normal ou alta (falsamente tranquilizadora) + Gap de CO₂ &gt; 6 mmHg — o único sinal que denuncia a estagnação do fluxo regional.</div>
+    </div>
+  </article>
+
+  <article class="qa">
+    <span class="qa-num">02</span>
+    <h2 class="qa-q">Já em noradrenalina e vasopressina, com PA boa — isso significa que saiu do choque?</h2>
+    <p class="qa-direct">Não necessariamente. A PAM no monitor pode ser só uma resposta farmacológica à droga vasoativa, não um sinal confiável de que o fluxo tecidual está adequado.</p>
+    <p class="qa-body">A vasoconstrição intensa segura a pressão nos grandes vasos, mas pode estrangular territórios como o esplâncnico e o renal — muitas vezes o primeiro sinal é a oligúria.</p>
+    <div class="qa-box">
+      <div class="qa-box-t">Pitfall comum</div>
+      <div class="qa-box-d">Ver PA e FC normalizadas e concluir que "o paciente estabilizou" sem checar o Gap de CO₂ ou a diurese. Em doses altas de vasopressor, isso pode mascarar hipoperfusão renal e esplâncnica em curso.</div>
+    </div>
+  </article>
+
+  <article class="qa">
+    <span class="qa-num">03</span>
+    <h2 class="qa-q">Como decidir, à beira do leito, se o paciente é fluido-responsivo?</h2>
+    <p class="qa-direct">Use a VCI para triar rapidamente e o VTI com manobra de PLR (ou bolus) para confirmar — são ferramentas complementares, não intercambiáveis.</p>
+    <p class="qa-body"><strong>VCI</strong> — triagem rápida da pré-carga direita, prediz espaço para volume, mas é só uma "promessa": não confirma que o débito cardíaco vai subir. <strong>VTI + PLR</strong> — confirmação funcional, mede se o débito cardíaco realmente sobe (&gt; 10–15%), exige POCUS e posição adequada. <strong>VPP</strong> — alternativa no monitor multiparamétrico sem ultrassom, mas só válida com paciente sedado, adaptado e sem arritmia.</p>
+  </article>
+
+  <article class="qa">
+    <span class="qa-num">04</span>
+    <h2 class="qa-q">Prova de volume, dobutamina ou desmame de vasopressor — como sequenciar?</h2>
+    <p class="qa-direct">Primeiro confirme fluido-responsividade e fluido-tolerância; só depois considere inotrópico; o desmame de vasopressor vem por último, com o fluxo já melhorado.</p>
+    <p class="qa-body">
+      <strong>1.</strong> Avalie fluido-responsividade (VCI → VTI+PLR/VPP). Se positivo, uma alíquota de 250–500 mL de cristaloide pode ganhar fluxo suficiente para reduzir a noradrenalina.<br><br>
+      <strong>2.</strong> Sempre cheque fluido-tolerância antes — ultrassom pulmonar buscando linhas B, principalmente se o balanço hídrico já estiver bem positivo.<br><br>
+      <strong>3.</strong> Se não for fluido-responsivo e o Gap de CO₂ continuar &gt; 6 mmHg com oligúria, considere dobutamina em baixa dose — o objetivo é aumentar o fluxo microvascular, mesmo com SvcO₂ já alta.<br><br>
+      <strong>4.</strong> Só depois que o fluxo melhorar, inicie o desmame progressivo de noradrenalina e vasopressina, mantendo a PAM-alvo (geralmente 65 mmHg).
+    </p>
+  </article>
+
+  <article class="qa">
+    <span class="qa-num">05</span>
+    <h2 class="qa-q">Vale teste de estresse com furosemida ou transfundir de rotina?</h2>
+    <p class="qa-direct"><strong>FST:</strong> não em paciente ainda dependente de doses altas de vasopressor. <strong>Transfusão:</strong> a hemoglobina isolada não deve ser o gatilho quando a SvcO₂ já está normal/alta.</p>
+    <p class="qa-body">O teste de estresse com furosemida é ferramenta para prever progressão de lesão renal aguda em pacientes hemodinamicamente <em>estáveis</em> — não em choque com vasopressor em alta dose. Para transfusão, avalie a hemoglobina em conjunto com os outros marcadores de perfusão, não isoladamente.</p>
+  </article>
+
+  <article class="qa">
+    <span class="qa-num">06</span>
+    <h2 class="qa-q">Qual o alvo de PAM, e por que não simplesmente subir o vasopressor?</h2>
+    <p class="qa-direct">Mantenha a PAM-alvo — geralmente 65 mmHg, individualizado por protocolo institucional — em vez de escalar a dose além da meta.</p>
+    <p class="qa-body">Subir a dose de vasopressor além da meta tende a intensificar a vasoconstrição, agravando a estase microcirculatória — pode "melhorar" o número no monitor enquanto piora a perfusão real dos órgãos.</p>
+  </article>
+
+  <div class="qa-box" style="margin-bottom:40px;">
+    <div class="qa-box-t">Pitfalls</div>
+    <div class="qa-box-d">
+      <strong>VCI ≠ VTI+PLR.</strong> A VCI prediz, o VTI+PLR confirma — tratar os dois como equivalentes leva a decisão de volume errada.<br><br>
+      <strong>Azul de metileno + ISRS.</strong> Contraindicação relevante (risco de síndrome serotoninérgica) — checar sempre a lista de medicações antes de considerar essa opção de resgate.
+    </div>
+  </div>
+
+  <p class="article-refs">Fonte primária: Monitorização Hemodinâmica do Paciente Grave (Elias Knobel). Sínteses do notebook NotebookLM "Monitorização Hemodinâmica" do Cesar — a confirmar contra as fontes primárias do UpToDate antes da publicação. Material de apoio clínico — não substitui julgamento médico individualizado nem protocolo institucional.</p>
+
+  <div class="cta-final">
+    <div class="cta-final-t">Isso é só um recorte do raciocínio completo</div>
+    <div class="cta-final-d">O guia de Hemodinâmica &amp; Choque do be·aside aprofunda a fisiologia, os marcadores de perfusão, POCUS e os 4 quadrantes que organizam a conduta por padrão hemodinâmico — o mesmo raciocínio que resolve essas 6 perguntas, aplicado a qualquer caso de plantão. Tem um caso na cabeça agora? Discuta com o assistente de conduta.</div>
+    <div class="cta-final-actions">
+      <a class="btn-primary" href="../hemo/fisio.html">Abrir o guia de Hemodinâmica <span aria-hidden="true">→</span></a>
+      <a class="btn-ghost" href="../consulte/">Assistente de conduta (IA)</a>
+      <a class="btn-ghost" href="../login.html">Criar conta</a>
+    </div>
+  </div>
+
+  <section class="authors" aria-label="Autores">
+    <div class="authors-label">Curadoria</div>
+    <div class="authors-row">
+      <div class="author"><span class="author-name">Dr. João H. Peres</span><span class="author-role">Cofundador · Médico</span></div>
+      <div class="author"><span class="author-name">Dr. Cesar A. Seidler Jr.</span><span class="author-role">Cofundador · Médico</span></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-left"><strong>Material de apoio clínico</strong> — não substitui julgamento médico individualizado nem protocolo institucional.</div>
+    <div class="footer-right"><a href="../index.html">be·aside</a> · <a href="index.html">Mais conteúdos</a></div>
+  </footer>
+
+</div>
+<script>
+const THEME_KEY='beaside-theme';
+function getTheme(){try{const t=localStorage.getItem(THEME_KEY);if(t==='light'||t==='dark')return t;}catch(e){}return 'dark';}
+const THEME_BTN_HTML=
+  '<span class="theme-icon theme-icon-sun" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></span>'+
+  '<span class="theme-icon theme-icon-moon" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>';
+function prefersReduceMotion(){return !!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);}
+function syncThemeButtons(t){
+  document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){
+    if(!btn.dataset.iconsReady){btn.innerHTML=THEME_BTN_HTML;btn.dataset.iconsReady='1';}
+    var next=t==='light'?'dark':'light';
+    btn.setAttribute('aria-label',next==='light'?'Ativar modo claro':'Ativar modo escuro');
+    btn.setAttribute('title',next==='light'?'Modo claro':'Modo escuro');
+    btn.setAttribute('aria-pressed',t==='light'?'true':'false');
+  });
+}
+function applyTheme(theme){
+  var t=(theme==='light'||theme==='dark')?theme:'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  try{localStorage.setItem(THEME_KEY,t);}catch(e){}
+  syncThemeButtons(t);
+}
+function toggleTheme(){
+  var next=getTheme()==='light'?'dark':'light';
+  document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){
+    btn.classList.remove('is-toggling');void btn.offsetWidth;btn.classList.add('is-toggling');
+    clearTimeout(btn._togTid);btn._togTid=setTimeout(function(){btn.classList.remove('is-toggling');},420);
+  });
+  if(document.startViewTransition&&!prefersReduceMotion()){document.startViewTransition(function(){applyTheme(next);});return;}
+  if(!prefersReduceMotion()){
+    document.documentElement.classList.add('theme-switching');applyTheme(next);
+    clearTimeout(toggleTheme._tid);toggleTheme._tid=setTimeout(function(){document.documentElement.classList.remove('theme-switching');},320);return;
+  }
+  applyTheme(next);
+}
+applyTheme(getTheme());
+</script>
+<script src="../assets/auth-config.js?v=5"></script>
+<script src="../assets/auth.js?v=5"></script>
+<script>
+(function hubAuth(){
+  var slot=document.querySelector('.btn-entrar');
+  if(!slot||!window.BeAsideAuth) return;
+  if(typeof BeAsideAuth.bindHubAuth==='function'){BeAsideAuth.bindHubAuth(slot);}
+  else{BeAsideAuth.init().then(function(){ BeAsideAuth.paintHubAuth(slot); }).catch(function(){});}
+})();
+</script>
+</body>
+</html>

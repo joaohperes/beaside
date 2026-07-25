@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script src="../assets/theme-boot.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Dissincronia Paciente-Ventilador: Como Diferenciar as Causas | be·aside</title>
+<meta name="description" content="O paciente está 'brigando com o ventilador': como reconhecer os principais tipos de dissincronia (disparo, ciclagem, fluxo) e diferenciar causa de via aérea, de sedação e do próprio ajuste da máquina.">
+<link rel="canonical" href="https://be-aside.vercel.app/artigos/dissincronia-paciente-ventilador.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="be·aside">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Dissincronia Paciente-Ventilador: Como Diferenciar as Causas">
+<meta property="og:description" content="Como reconhecer os principais tipos de dissincronia e diferenciar causa de via aérea, de sedação e do próprio ajuste da máquina.">
+<meta property="og:url" content="https://be-aside.vercel.app/artigos/dissincronia-paciente-ventilador.html">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/landing.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Quais são os principais tipos de dissincronia paciente-ventilador?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Os três grupos mais úteis à beira do leito são: dissincronia de disparo (esforço do paciente não reconhecido pelo ventilador — auto-PEEP é a causa clássica — ou disparo duplo/auto-disparo), dissincronia de fluxo (fluxo insuficiente para a demanda inspiratória do paciente, gerando esforço visível na curva de pressão) e dissincronia de ciclagem (o ventilador encerra o ciclo antes ou depois do fim do esforço inspiratório do paciente)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como diferenciar dissincronia por problema de via aérea de dissincronia por ajuste do ventilador?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Primeiro descarte causas de via aérea e do circuito: obstrução do tubo, secreção, broncoespasmo, extubação parcial, vazamento no cuff ou no circuito. Se a ausculta, a curva de fluxo e a mecânica ventilatória (resistência/complacência) estiverem normais e a dissincronia persistir, o problema tende a ser de ajuste — sensibilidade de disparo, fluxo inspiratório ou critério de ciclagem inadequados para aquele paciente."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quando a dissincronia é sinal de sedação insuficiente e quando é problema do ventilador?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dissincronia associada a taquipneia, uso de musculatura acessória, agitação e assincronia visível em vários ciclos sugere desconforto respiratório real — que pode ser dor, ansiedade ou sedação insuficiente, mas também pode ser um ajuste de ventilador que não acompanha a demanda do paciente. Antes de simplesmente aprofundar a sedação, vale testar um ajuste de fluxo ou de sensibilidade, porque sedar mais um paciente com fome de ar por ajuste inadequado só mascara o problema."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como a auto-PEEP causa dissincronia de disparo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Quando há auto-PEEP (ar retido no fim da expiração, comum em DPOC/asma com tempo expiratório curto), o paciente precisa gerar um esforço inspiratório extra só para vencer essa pressão residual antes que o ventilador reconheça o esforço como disparo. O resultado é esforço sem resposta da máquina — o paciente 'puxa' e o ventilador não entrega. Reduzir a frequência respiratória, aumentar o tempo expiratório ou ajustar a PEEP extrínseca ajudam a resolver."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O que muda entre dissincronia em modo volume-controlado e em modo pressão-controlado?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No volume-controlado, o fluxo é fixo e não se adapta à demanda do paciente — se o paciente quer mais fluxo do que está programado, ele 'briga' contra um fluxo insuficiente, o que aparece como concavidade na curva de pressão. No pressão-controlado (ou modos com fluxo desacelerado/variável), o fluxo se adapta automaticamente à demanda, o que costuma reduzir a dissincronia de fluxo — mas pode trazer outros problemas de ciclagem se o critério de término do ciclo não acompanhar o padrão respiratório do paciente."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!--
+  RASCUNHO — pendente de revisão clínica do Cesar antes de publicar.
+  Conteúdo estruturado por Claude a partir de conhecimento clínico geral
+  consolidado (fisiologia respiratória, mecânica ventilatória),
+  a confirmar contra as fontes primárias do Cesar antes da publicação.
+-->
+
+<div class="scene" aria-hidden="true">
+  <div class="scene-grid"></div>
+  <div class="glow glow-main"></div>
+</div>
+
+<div class="hub article" style="--c-accent:#0ea5b7;--c-glow:rgba(14,165,183,.14)">
+
+  <header class="topbar">
+    <a class="logo" href="../index.html" aria-label="be·aside — início">
+      <svg class="logo-icon" width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="0" y="2" width="6" height="20" rx="3" fill="#1db88a"/>
+        <rect x="10" y="0" width="6" height="15" rx="3" fill="#1db88a" opacity=".55"/>
+      </svg>
+      <span class="logo-wordmark">be·aside</span>
+    </a>
+    <div class="top-meta">
+      <a class="btn-entrar" id="btn-entrar" href="../login.html">Entrar</a>
+      <script>
+      (function(){
+        var slot=document.getElementById('btn-entrar');
+        if(!slot||!slot.parentNode) return;
+        var hint=null;
+        try{hint=JSON.parse(localStorage.getItem('beaside-auth-hint')||'null');}catch(e){}
+        if(!hint||!(hint.shortName||hint.fullName||hint.email)) return;
+        var full=String(hint.fullName||hint.shortName||'').trim();
+        var short=String(hint.shortName||(full.split(/\s+/)[0])||'Conta').trim();
+        var email=String(hint.email||'');
+        var tip=(full&&email)?(full+' · '+email):(email||full||short);
+        function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+        var wrap=document.createElement('div');
+        wrap.setAttribute('data-auth-chip','1');
+        wrap.setAttribute('data-auth-boot','1');
+        wrap.className='auth-chip-wrap is-optimistic is-boot';
+        wrap.innerHTML=
+          '<button type="button" class="auth-chip" tabindex="-1" aria-hidden="true">'+
+          '<span class="auth-chip-dot" aria-hidden="true"></span>'+
+          '<span class="auth-chip-name" title="'+esc(tip)+'">'+esc(short)+'</span>'+
+          '<span class="auth-chip-caret" aria-hidden="true">▾</span>'+
+          '</button>';
+        slot.parentNode.insertBefore(wrap,slot);
+        slot.hidden=true;
+        slot.style.display='none';
+      })();
+      </script>
+      <button class="btn-theme" data-theme-toggle type="button" onclick="toggleTheme()" aria-label="Alternar tema"></button>
+    </div>
+  </header>
+
+  <div class="article-draft">
+    <div class="article-draft-t">⚠ Rascunho — não publicado</div>
+    <div class="article-draft-d">Conteúdo clínico ainda não revisado pelo responsável clínico (Cesar). Não linkar publicamente antes da revisão.</div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-row">
+      <div class="hero-eyebrow">Ventilação Mecânica</div>
+      <h1>Dissincronia Paciente-Ventilador: <span class="grad">Como Diferenciar as Causas</span></h1>
+      <p class="hero-lead">O paciente está "brigando com o ventilador". Antes de aprofundar a sedação, cinco perguntas que ajudam a distinguir problema de via aérea, de ajuste da máquina e de necessidade real de sedação.</p>
+    </div>
+  </section>
+
+  <section class="values cols-3" aria-label="Números-chave">
+    <div class="value"><div class="value-k">3 grupos</div><div class="value-t" style="font-size:16px">Disparo · Fluxo · Ciclagem</div></div>
+    <div class="value"><div class="value-k">1º passo</div><div class="value-t" style="font-size:16px">Descartar via aérea/circuito</div></div>
+    <div class="value"><div class="value-k">Auto-PEEP</div><div class="value-t" style="font-size:16px">Causa clássica de disparo perdido</div></div>
+  </section>
+
+  <div class="article-hr"></div>
+
+  <article class="qa">
+    <span class="qa-num">01</span>
+    <h2 class="qa-q">Quais são os principais tipos de dissincronia?</h2>
+    <p class="qa-direct">Três grupos organizam o raciocínio: dissincronia de disparo, de fluxo e de ciclagem.</p>
+    <p class="qa-body"><strong>Disparo</strong> — esforço do paciente não reconhecido (auto-PEEP é a causa clássica) ou disparo duplo/auto-disparo. <strong>Fluxo</strong> — fluxo insuficiente para a demanda inspiratória, gerando esforço visível na curva de pressão. <strong>Ciclagem</strong> — o ventilador encerra o ciclo antes ou depois do fim do esforço inspiratório do paciente.</p>
+  </article>
+
+  <article class="qa">
+    <span class="qa-num">02</span>
+    <h2 class="qa-q">Como diferenciar problema de via aérea de problema de ajuste do ventilador?</h2>
+    <p class="qa-direct">Descarte primeiro via aérea e circuito: obstrução, secreção, broncoespasmo, extubação parcial, vazamento.</p>
+    <p class="qa-body">Se a ausculta, a curva de fluxo e a mecânica ventilatória (resistência/complacência) estiverem normais e a dissincronia persistir, o problema tende a ser de ajuste — sensibilidade de disparo, fluxo inspiratório ou critério de ciclagem inadequados para aquele paciente.</p>
+    <div class="qa-box">
+      <div class="qa-box-t">Pitfall comum</div>
+      <div class="qa-box-d">Aumentar sedação como primeira resposta a qualquer dissincronia, sem antes checar se é um problema mecânico simples de resolver — tubo dobrado, água no circuito, sensibilidade de disparo mal ajustada.</div>
+    </div>
+  </article>
+
+  <article class="qa">
+    <span class="qa-num">03</span>
+    <h2 class="qa-q">Dissincronia é sempre sinal de sedação insuficiente?</h2>
+    <p class="qa-direct">Não necessariamente — pode ser desconforto real (dor, ansiedade, sedação insuficiente) ou um ajuste que não acompanha a demanda do paciente.</p>
+    <p class="qa-body">Antes de simplesmente aprofundar a sedação, vale testar um ajuste de fluxo ou de sensibilidade: sedar mais um paciente com fome de ar por ajuste inadequado só mascara o problema, sem resolvê-lo — e aumenta o risco de efeitos da sedação (hipotensão, delirium, tempo de ventilação prolongado).</p>
+  </article>
+
+  <article class="qa">
+    <span class="qa-num">04</span>
+    <h2 class="qa-q">Como a auto-PEEP causa dissincronia de disparo?</h2>
+    <p class="qa-direct">O paciente precisa vencer a pressão residual da auto-PEEP antes que o ventilador reconheça o esforço — o resultado é esforço sem resposta da máquina.</p>
+    <p class="qa-body">Comum em DPOC/asma com tempo expiratório curto (ar retido no fim da expiração). Reduzir a frequência respiratória, aumentar o tempo expiratório ou ajustar a PEEP extrínseca ajudam a resolver — não adiantar apenas sedar mais.</p>
+  </article>
+
+  <article class="qa">
+    <span class="qa-num">05</span>
+    <h2 class="qa-q">O que muda entre volume-controlado e pressão-controlado na dissincronia?</h2>
+    <p class="qa-direct">No volume-controlado o fluxo é fixo e não se adapta à demanda; no pressão-controlado o fluxo se adapta automaticamente.</p>
+    <p class="qa-body">No volume-controlado, se o paciente quer mais fluxo do que o programado, ele "briga" contra um fluxo insuficiente — aparece como concavidade na curva de pressão. No pressão-controlado (ou fluxo desacelerado/variável) isso costuma melhorar, mas pode trazer problemas de ciclagem se o critério de término do ciclo não acompanhar o padrão respiratório do paciente.</p>
+  </article>
+
+  <p class="article-refs">Princípios de fisiologia respiratória e mecânica ventilatória — a confirmar contra as fontes primárias do Cesar antes da publicação. Material de apoio clínico — não substitui julgamento médico individualizado nem protocolo institucional.</p>
+
+  <div class="cta-final" style="background:linear-gradient(165deg,rgba(14,165,183,.12),rgba(14,165,183,.02));border-color:rgba(14,165,183,.25)">
+    <div class="cta-final-t">O algoritmo completo de dissincronia está no guia</div>
+    <div class="cta-final-d">O guia de Ventilação Mecânica do be·aside traz o algoritmo completo de dissincronia por tipo de curva, os modos ventilatórios em detalhe e o racional de sedoanalgesia. Tem um caso na cabeça agora? Discuta com o assistente de conduta.</div>
+    <div class="cta-final-actions">
+      <a class="btn-primary" href="../vm/dissincronia.html">Ver algoritmo de dissincronia <span aria-hidden="true">→</span></a>
+      <a class="btn-ghost" href="../vm/modos.html">Modos ventilatórios</a>
+      <a class="btn-ghost" href="../consulte/">Assistente de conduta (IA)</a>
+    </div>
+  </div>
+
+  <section class="authors" aria-label="Autores">
+    <div class="authors-label">Curadoria</div>
+    <div class="authors-row">
+      <div class="author"><span class="author-name">Dr. João H. Peres</span><span class="author-role">Cofundador · Médico</span></div>
+      <div class="author"><span class="author-name">Dr. Cesar A. Seidler Jr.</span><span class="author-role">Cofundador · Médico</span></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-left"><strong>Material de apoio clínico</strong> — não substitui julgamento médico individualizado nem protocolo institucional.</div>
+    <div class="footer-right"><a href="../index.html">be·aside</a> · <a href="index.html">Mais conteúdos</a></div>
+  </footer>
+
+</div>
+<script>
+const THEME_KEY='beaside-theme';
+function getTheme(){try{const t=localStorage.getItem(THEME_KEY);if(t==='light'||t==='dark')return t;}catch(e){}return 'dark';}
+const THEME_BTN_HTML=
+  '<span class="theme-icon theme-icon-sun" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></span>'+
+  '<span class="theme-icon theme-icon-moon" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>';
+function prefersReduceMotion(){return !!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);}
+function syncThemeButtons(t){
+  document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){
+    if(!btn.dataset.iconsReady){btn.innerHTML=THEME_BTN_HTML;btn.dataset.iconsReady='1';}
+    var next=t==='light'?'dark':'light';
+    btn.setAttribute('aria-label',next==='light'?'Ativar modo claro':'Ativar modo escuro');
+    btn.setAttribute('title',next==='light'?'Modo claro':'Modo escuro');
+    btn.setAttribute('aria-pressed',t==='light'?'true':'false');
+  });
+}
+function applyTheme(theme){
+  var t=(theme==='light'||theme==='dark')?theme:'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  try{localStorage.setItem(THEME_KEY,t);}catch(e){}
+  syncThemeButtons(t);
+}
+function toggleTheme(){
+  var next=getTheme()==='light'?'dark':'light';
+  document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){
+    btn.classList.remove('is-toggling');void btn.offsetWidth;btn.classList.add('is-toggling');
+    clearTimeout(btn._togTid);btn._togTid=setTimeout(function(){btn.classList.remove('is-toggling');},420);
+  });
+  if(document.startViewTransition&&!prefersReduceMotion()){document.startViewTransition(function(){applyTheme(next);});return;}
+  if(!prefersReduceMotion()){
+    document.documentElement.classList.add('theme-switching');applyTheme(next);
+    clearTimeout(toggleTheme._tid);toggleTheme._tid=setTimeout(function(){document.documentElement.classList.remove('theme-switching');},320);return;
+  }
+  applyTheme(next);
+}
+applyTheme(getTheme());
+</script>
+<script src="../assets/auth-config.js?v=5"></script>
+<script src="../assets/auth.js?v=5"></script>
+<script>
+(function hubAuth(){
+  var slot=document.querySelector('.btn-entrar');
+  if(!slot||!window.BeAsideAuth) return;
+  if(typeof BeAsideAuth.bindHubAuth==='function'){BeAsideAuth.bindHubAuth(slot);}
+  else{BeAsideAuth.init().then(function(){ BeAsideAuth.paintHubAuth(slot); }).catch(function(){});}
+})();
+</script>
+</body>
+</html>

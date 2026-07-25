@@ -101,6 +101,20 @@ const MODULES = {
     root: 'proc/',
     color: '#3b82f6',
   },
+  consulte: {
+    id: 'consulte',
+    label: 'Consulte e Resolva',
+    subtitle: 'Assistente de conduta (IA)',
+    root: 'consulte/',
+    color: '#1db88a',
+  },
+  institucional: {
+    id: 'institucional',
+    label: 'Institucional',
+    subtitle: 'Sobre, equipe e políticas',
+    root: 'institucional/',
+    color: '#1db88a',
+  },
 };
 
 // ── Índice de páginas por módulo ─────────────────────────────
@@ -109,6 +123,8 @@ const MODULE_PAGES = {
     {id:'fisiologia',   file:'fisiologia.html',   cat:'Fundamentos',              label:'Fisiologia da VM',        title:'Fisiologia da VM com Pressão Positiva', subtitle:'Ciclo ventilatório, mecânica pulmonar e efeitos hemodinâmicos'},
     {id:'modos',        file:'modos.html',        cat:'Fundamentos',              label:'Modos de VM',             title:'Modos de Ventilação Mecânica',          subtitle:'AC-VC · AC-PC · SIMV-PSV · PSV'},
     {id:'parametros',   file:'parametros.html',   cat:'Fundamentos',              label:'Parâmetros iniciais',     title:'Parâmetros Iniciais',                   subtitle:'Configuração passo a passo (UpToDate / FCCS)'},
+    {id:'indutores',    file:'indutores.html',    cat:'Farmacologia',             label:'Indutores para RSI',      title:'Indutores para RSI',                    subtitle:'Perfil farmacológico e algoritmo por cenário'},
+    {id:'sedoanalgesia',file:'sedoanalgesia.html',cat:'Farmacologia',             label:'Sedoanalgesia na UTI',    title:'Sedoanalgesia pós-IOT na UTI',          subtitle:'Sedativos, opioides e escalas de monitoramento'},
     {id:'sdra',         file:'sdra.html',         cat:'Patologias',               label:'SDRA',                    title:'SDRA — Ventilação Protetora (LTVV)',    subtitle:'Low Tidal Volume Ventilation'},
     {id:'prona',        file:'prona.html',        cat:'Patologias',               label:'Posição prona',           title:'Posição Prona na SDRA',                 subtitle:'Benefício de mortalidade na SDRA grave (PROSEVA)'},
     {id:'dpoc-asma',    file:'dpoc-asma.html',    cat:'Patologias',               label:'DPOC & Asma',             title:'DPOC & Asma — Hiperinsuflação Dinâmica',subtitle:'Air trapping e obstrução ao fluxo expiratório'},
@@ -120,23 +136,20 @@ const MODULE_PAGES = {
     {id:'bnm',          file:'bnm.html',          cat:'Monitorização & Segurança',label:'Bloqueio neuromuscular',  title:'Bloqueio Neuromuscular na SDRA',        subtitle:'Quando paralisar, qual agente e por quanto tempo'},
     {id:'desmame',      file:'desmame.html',      cat:'Desmame',                  label:'SAT / SBT / Extubação',   title:'Desmame Ventilatório — SAT / SBT / Extubação', subtitle:'Critérios, protocolo e T-piece vs PSV baixo'},
     {id:'vni',          file:'vni.html',          cat:'Desmame',                  label:'VNI & alto fluxo',        title:'VNI & Cânula Nasal de Alto Fluxo',      subtitle:'Quando evitar a IOT — e quando não insistir (ROX)'},
-    {id:'indutores',    file:'indutores.html',    cat:'Farmacologia',             label:'Indutores para RSI',      title:'Indutores para RSI',                    subtitle:'Perfil farmacológico e algoritmo por cenário'},
-    {id:'sedoanalgesia',file:'sedoanalgesia.html',cat:'Farmacologia',             label:'Sedoanalgesia na UTI',    title:'Sedoanalgesia pós-IOT na UTI',          subtitle:'Sedativos, opioides e escalas de monitoramento'},
     {id:'calculadora',  file:'calculadora.html',  cat:'Referência',               label:'Calculadoras',            title:'Calculadoras',                          subtitle:'PBW/VC · Driving Pressure · VM · P/F · IRRS'},
     {id:'tabelas',      file:'tabelas.html',      cat:'Referência',               label:'Tabelas rápidas',         title:'Tabelas Rápidas',                       subtitle:'Consulta de plantão — situação vs estratégia'},
     {id:'pearls',       file:'pearls.html',       cat:'Pearls & Pitfalls',        label:'Cards clínicos',          title:'Pearls & Pitfalls',                     subtitle:'Cenários de plantão: acerto, erro comum e o porquê do mecanismo'},
     {id:'quiz',         file:'quiz.html',         cat:'Pearls & Pitfalls',        label:'Caso clínico / Quiz',     title:'Caso Clínico Interativo',               subtitle:'Quiz de múltipla escolha'},
-    {id:'assistente',   file:'assistente.html',   cat:'Assistente IA',            label:'Assistente de conduta',   title:'Assistente de Conduta (IA)',            subtitle:'Cole a anamnese e receba sugestão de conduta ventilatória'},
   ],
   hemo: [
     {id:'fisio',        file:'fisio.html',        cat:'Fundamentos',              label:'Fisiologia',              title:'Base Fisiológica',                      subtitle:'DO₂, VO₂, Fick, Frank-Starling e choque críptico'},
     {id:'do2',          file:'do2.html',          cat:'Fundamentos',              label:'DO₂ / CaO₂',             title:'Oferta de O₂',                          subtitle:'DO₂, CaO₂, tríade da oferta e intervenções'},
+    {id:'rush',         file:'rush.html',         cat:'POCUS / Imagem',           label:'RUSH',                    title:'Protocolo RUSH',                        subtitle:'Rapid Ultrasound for Shock and Hypotension'},
+    {id:'vci',          file:'vci.html',          cat:'POCUS / Imagem',           label:'POCUS VCI',               title:'POCUS — Veia Cava Inferior',             subtitle:'Técnica, fórmulas e interpretação'},
+    {id:'ecg',          file:'ecg.html',          cat:'POCUS / Imagem',           label:'ECG',                     title:'ECG no Choque',                         subtitle:'Achados que mudam o manejo imediato'},
     {id:'scvo2',        file:'scvo2.html',        cat:'Marcadores de perfusão',   label:'SvcO₂',                  title:'SvcO₂ — Saturação Venosa Central',       subtitle:'Como interpretar e onde coletar'},
     {id:'dpco2',        file:'dpco2.html',        cat:'Marcadores de perfusão',   label:'Δ pCO₂',                 title:'Δ pCO₂ — Gradiente Venoarterial',        subtitle:'O marcador de fluxo que a SvcO₂ não captura'},
     {id:'quadrantes',   file:'quadrantes.html',   cat:'POCUS / Imagem',           label:'Quadrantes',              title:'Os 4 Quadrantes SvcO₂ × Δ pCO₂',        subtitle:'Plano cartesiano para interpretar a hipoperfusão'},
-    {id:'vci',          file:'vci.html',          cat:'POCUS / Imagem',           label:'POCUS VCI',               title:'POCUS — Veia Cava Inferior',             subtitle:'Técnica, fórmulas e interpretação'},
-    {id:'rush',         file:'rush.html',         cat:'POCUS / Imagem',           label:'RUSH',                    title:'Protocolo RUSH',                        subtitle:'Rapid Ultrasound for Shock and Hypotension'},
-    {id:'ecg',          file:'ecg.html',          cat:'POCUS / Imagem',           label:'ECG',                     title:'ECG no Choque',                         subtitle:'Achados que mudam o manejo imediato'},
     {id:'integracao',   file:'integracao.html',   cat:'Síntese',                  label:'Integração',              title:'Integração Clínica',                    subtitle:'Gasometria pareada + POCUS VCI em conjunto'},
     {id:'fluxograma',   file:'fluxograma.html',   cat:'Síntese',                  label:'Fluxograma',              title:'Fluxograma Integrado',                  subtitle:'Do choque à conduta — padrão, gasometria, POCUS, drogas'},
     {id:'padroes',      file:'padroes.html',      cat:'Síntese',                  label:'Padrões',                 title:'Padrões Hemodinâmicos',                 subtitle:'Tabelas de referência por tipo de choque'},
@@ -145,7 +158,6 @@ const MODULE_PAGES = {
     {id:'pratica',      file:'pratica.html',      cat:'Ferramentas',              label:'Casos práticos',          title:'Prática — Casos Simulados',             subtitle:'4 casos cobrindo os 4 quadrantes'},
     {id:'siglas',       file:'siglas.html',       cat:'Ferramentas',              label:'Siglas',                  title:'Glossário de Siglas',                   subtitle:'Referência rápida de siglas hemodinâmicas'},
     {id:'pearls',       file:'pearls.html',       cat:'Pearls & Pitfalls',        label:'Cards clínicos',          title:'Pearls & Pitfalls',                     subtitle:'Cenários de plantão: acerto, erro comum e o porquê do mecanismo'},
-    {id:'assistente',   file:'assistente.html',   cat:'Assistente IA',            label:'Assistente de conduta',   title:'Assistente de Conduta (IA)',            subtitle:'Discuta o caso hemodinâmico e receba sugestão de conduta'},
   ],
   neuro: [
     {id:'fisio',        file:'fisio.html',        cat:'Fundamentos',              label:'Fisiologia neuro',        title:'Fisiologia do Neurocrítico',            subtitle:'Monro-Kellie, PPC, autorregulação cerebral e herniação'},
@@ -159,7 +171,6 @@ const MODULE_PAGES = {
     {id:'sedoanalgesia',file:'sedoanalgesia.html',cat:'Farmacologia',             label:'Sedoanalgesia neuro',     title:'Sedoanalgesia, RASS e Bloqueio Neuromuscular', subtitle:'Drogas, diluições e metas de RASS por cenário'},
     {id:'calc-neuro',   file:'calc-neuro.html',   cat:'Ferramentas',              label:'Calculadoras',            title:'Calculadoras Neurológicas',             subtitle:'PPC · Osmolaridade · GCS · NIHSS · Hunt & Hess · Fisher'},
     {id:'pearls',       file:'pearls.html',       cat:'Pearls & Pitfalls',        label:'Cards clínicos',          title:'Pearls & Pitfalls',                     subtitle:'Cenários de plantão: acerto, erro comum e o porquê do mecanismo'},
-    {id:'assistente',   file:'assistente.html',   cat:'Assistente IA',            label:'Assistente de conduta',   title:'Assistente de Conduta (IA)',            subtitle:'Discuta o caso neurológico e receba sugestão de conduta'},
   ],
   proc: [
     {id:'cvc',           file:'cvc.html',           cat:'Acesso vascular',         label:'CVC',                     title:'Cateter Venoso Central',                subtitle:'Seldinger, escolha de sítio, profundidade e complicações'},
@@ -176,6 +187,15 @@ const MODULE_PAGES = {
     {id:'swan',          file:'swan.html',          cat:'Monitorização invasiva',  label:'Swan-Ganz',               title:'Cateter de Artéria Pulmonar (Swan-Ganz)',subtitle:'Inserção, curvas por câmara, parâmetros e perfis de choque'},
     {id:'ritmo',         file:'ritmo.html',         cat:'Emergência cardíaca',     label:'Cardioversão & marca-passo',title:'Cardioversão, Desfibrilação & Marca-passo',subtitle:'Choque sincronizado, desfibrilação e marca-passo transcutâneo/transvenoso'},
     {id:'pearls',        file:'pearls.html',        cat:'Pearls & Pitfalls',       label:'Dúvidas de plantão',      title:'Dúvidas de Plantão',                    subtitle:'As perguntas que ninguém responde no guia clássico'},
+  ],
+  consulte: [
+    {id:'assistente',   file:'index.html',   cat:'Assistente IA',   label:'Assistente de conduta',   title:'Assistente de Conduta (IA)',   subtitle:'VM, hemodinâmica e neurocrítico em um só chat'},
+  ],
+  institucional: [
+    {id:'sobre',          file:'sobre.html',          cat:'Institucional', label:'Sobre',              title:'Sobre o be·aside',                subtitle:'Do mecanismo à conduta de beira-leito'},
+    {id:'equipe',         file:'equipe.html',         cat:'Institucional', label:'Equipe',             title:'Quem Escreve e Revisa o be·aside', subtitle:'Autoria e credenciais de cada área'},
+    {id:'metodologia',    file:'metodologia.html',    cat:'Institucional', label:'Metodologia',        title:'Metodologia Editorial',           subtitle:'Como pesquisamos, escrevemos e revisamos'},
+    {id:'seguranca-ia',   file:'seguranca-ia.html',   cat:'Institucional', label:'Segurança da IA',    title:'Segurança e Uso dos Assistentes de IA', subtitle:'O que os assistentes fazem, não fazem e como tratam dados'},
   ],
 };
 

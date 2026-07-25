@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script src="../assets/theme-boot.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Central de Conhecimento — Condutas e Perguntas de Plantão em UTI e Emergência | be·aside</title>
+<meta name="description" content="Central de Conhecimento be·aside: artigos e condutas sobre o paciente crítico, com resposta direta, mecanismo e conduta prática — hemodinâmica, ventilação mecânica, neurocrítico e procedimentos, sempre com referência.">
+<link rel="canonical" href="https://be-aside.vercel.app/artigos/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="be·aside">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Central de Conhecimento — be·aside">
+<meta property="og:description" content="Artigos e condutas sobre o paciente crítico: resposta direta, mecanismo e conduta prática, sempre com referência.">
+<meta property="og:url" content="https://be-aside.vercel.app/artigos/">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/landing.css">
+</head>
+<body>
+
+<div class="scene" aria-hidden="true">
+  <div class="scene-grid"></div>
+  <div class="glow glow-main"></div>
+</div>
+
+<div class="hub">
+
+  <header class="topbar">
+    <a class="logo" href="../index.html" aria-label="be·aside — início">
+      <svg class="logo-icon" width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="0" y="2" width="6" height="20" rx="3" fill="#1db88a"/>
+        <rect x="10" y="0" width="6" height="15" rx="3" fill="#1db88a" opacity=".55"/>
+      </svg>
+      <span class="logo-wordmark">be·aside</span>
+    </a>
+    <div class="top-meta">
+      <a class="btn-entrar" id="btn-entrar" href="../login.html">Entrar</a>
+      <script>
+      (function(){
+        var slot=document.getElementById('btn-entrar');
+        if(!slot||!slot.parentNode) return;
+        var hint=null;
+        try{hint=JSON.parse(localStorage.getItem('beaside-auth-hint')||'null');}catch(e){}
+        if(!hint||!(hint.shortName||hint.fullName||hint.email)) return;
+        var full=String(hint.fullName||hint.shortName||'').trim();
+        var short=String(hint.shortName||(full.split(/\s+/)[0])||'Conta').trim();
+        var email=String(hint.email||'');
+        var tip=(full&&email)?(full+' · '+email):(email||full||short);
+        function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+        var wrap=document.createElement('div');
+        wrap.setAttribute('data-auth-chip','1');
+        wrap.setAttribute('data-auth-boot','1');
+        wrap.className='auth-chip-wrap is-optimistic is-boot';
+        wrap.innerHTML=
+          '<button type="button" class="auth-chip" tabindex="-1" aria-hidden="true">'+
+          '<span class="auth-chip-dot" aria-hidden="true"></span>'+
+          '<span class="auth-chip-name" title="'+esc(tip)+'">'+esc(short)+'</span>'+
+          '<span class="auth-chip-caret" aria-hidden="true">▾</span>'+
+          '</button>';
+        slot.parentNode.insertBefore(wrap,slot);
+        slot.hidden=true;
+        slot.style.display='none';
+      })();
+      </script>
+      <button class="btn-theme" data-theme-toggle type="button" onclick="toggleTheme()" aria-label="Alternar tema"></button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-row">
+      <div class="hero-eyebrow">be·aside · UTI &amp; Emergência</div>
+      <h1>Central de <span class="grad">Conhecimento</span></h1>
+      <p class="hero-lead">Condutas e perguntas reais de plantão, respondidas direto — resposta objetiva primeiro, o mecanismo logo depois, e o link para o raciocínio completo quando você tiver dois minutos a mais.</p>
+    </div>
+  </section>
+
+  <div class="section-head">
+    <h2>Todos os conteúdos</h2>
+  </div>
+
+  <div class="bento" id="lista">
+
+    <div class="card"
+       style="--c-accent:#e05555;--c-border:rgba(224,85,85,.4);--c-glow:rgba(224,85,85,.12)">
+      <span class="card-rail" aria-hidden="true"></span>
+      <a class="card-hit" href="perguntas-plantao-hemodinamica.html" aria-label="Choque Críptico, Fluido-Responsividade e Vasopressor">
+        <div class="card-badge">Hemodinâmica</div>
+        <div class="card-title">Choque Críptico, Fluido-Responsividade e Vasopressor</div>
+        <div class="card-sub">Seis perguntas que voltam toda semana na UTI — resposta direta, mecanismo e conduta prática à beira do leito.</div>
+        <div class="card-tags">
+          <span class="card-tag">Choque críptico</span>
+          <span class="card-tag">VCI · VTI · PLR</span>
+          <span class="card-tag">Vasopressor</span>
+        </div>
+      </a>
+      <div class="card-foot">
+        <a class="card-cta" href="perguntas-plantao-hemodinamica.html">Ler artigo <span class="card-cta-arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <div class="card"
+       style="--c-accent:#9b6ff7;--c-border:rgba(155,111,247,.4);--c-glow:rgba(155,111,247,.12)">
+      <span class="card-rail" aria-hidden="true"></span>
+      <a class="card-hit" href="medidas-gerais-neurocritico.html" aria-label="Medidas Gerais no Paciente Neurocrítico">
+        <div class="card-badge">Neurocrítico</div>
+        <div class="card-title">Medidas Gerais no Paciente Neurocrítico</div>
+        <div class="card-sub">O pacote de cuidados que previne lesão secundária — cabeceira, metas hemodinâmicas, glicemia, sódio e temperatura.</div>
+        <div class="card-tags">
+          <span class="card-tag">Lesão secundária</span>
+          <span class="card-tag">PPC</span>
+          <span class="card-tag">Sedoanalgesia</span>
+        </div>
+      </a>
+      <div class="card-foot">
+        <a class="card-cta" href="medidas-gerais-neurocritico.html">Ler artigo <span class="card-cta-arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <div class="card"
+       style="--c-accent:#e05555;--c-border:rgba(224,85,85,.4);--c-glow:rgba(224,85,85,.12)">
+      <span class="card-rail" aria-hidden="true"></span>
+      <a class="card-hit" href="hipotensao-pos-intubacao.html" aria-label="Hipotensão Pós-Intubação">
+        <div class="card-badge">Ventilação Mecânica</div>
+        <div class="card-title">Hipotensão Pós-Intubação: Por Que Acontece e o Que Fazer</div>
+        <div class="card-sub">Por que a pressão cai nos primeiros minutos após intubar e como agir antes que o quadro piore.</div>
+        <div class="card-tags">
+          <span class="card-tag">Push-dose pressor</span>
+          <span class="card-tag">PAM-alvo</span>
+          <span class="card-tag">Pneumotórax</span>
+        </div>
+      </a>
+      <div class="card-foot">
+        <a class="card-cta" href="hipotensao-pos-intubacao.html">Ler artigo <span class="card-cta-arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <div class="card"
+       style="--c-accent:#0ea5b7;--c-border:rgba(14,165,183,.4);--c-glow:rgba(14,165,183,.12)">
+      <span class="card-rail" aria-hidden="true"></span>
+      <a class="card-hit" href="peep-alta-queda-pressao.html" aria-label="PEEP Alta e Queda de Pressão">
+        <div class="card-badge">Ventilação Mecânica</div>
+        <div class="card-title">PEEP Alta e Queda de Pressão: PEEP, Hipovolemia, ou os Dois?</div>
+        <div class="card-sub">Como diferenciar efeito hemodinâmico esperado da PEEP, hipovolemia associada e pneumotórax pelo POCUS de VCI.</div>
+        <div class="card-tags">
+          <span class="card-tag">POCUS VCI</span>
+          <span class="card-tag">SDRA</span>
+          <span class="card-tag">ARDSnet</span>
+        </div>
+      </a>
+      <div class="card-foot">
+        <a class="card-cta" href="peep-alta-queda-pressao.html">Ler artigo <span class="card-cta-arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <div class="card"
+       style="--c-accent:#0ea5b7;--c-border:rgba(14,165,183,.4);--c-glow:rgba(14,165,183,.12)">
+      <span class="card-rail" aria-hidden="true"></span>
+      <a class="card-hit" href="dissincronia-paciente-ventilador.html" aria-label="Dissincronia Paciente-Ventilador">
+        <div class="card-badge">Ventilação Mecânica</div>
+        <div class="card-title">Dissincronia Paciente-Ventilador: Como Diferenciar as Causas</div>
+        <div class="card-sub">Disparo, fluxo ou ciclagem — como distinguir problema de via aérea, ajuste da máquina e necessidade real de sedação.</div>
+        <div class="card-tags">
+          <span class="card-tag">Auto-PEEP</span>
+          <span class="card-tag">Curvas do ventilador</span>
+          <span class="card-tag">Sedação</span>
+        </div>
+      </a>
+      <div class="card-foot">
+        <a class="card-cta" href="dissincronia-paciente-ventilador.html">Ler artigo <span class="card-cta-arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <div class="card"
+       style="--c-accent:#3b82f6;--c-border:rgba(59,130,246,.4);--c-glow:rgba(59,130,246,.12)">
+      <span class="card-rail" aria-hidden="true"></span>
+      <a class="card-hit" href="shiley-saiu-decanulacao-acidental.html" aria-label="O Shiley Saiu: Decanulação Acidental">
+        <div class="card-badge">Procedimentos</div>
+        <div class="card-title">O Shiley Saiu: Conduta na Decanulação Acidental</div>
+        <div class="card-sub">Quando reintroduzir a cânula com segurança e quando partir direto para via aérea oral.</div>
+        <div class="card-tags">
+          <span class="card-tag">Traqueostomia</span>
+          <span class="card-tag">Via aérea difícil</span>
+          <span class="card-tag">EtCO₂</span>
+        </div>
+      </a>
+      <div class="card-foot">
+        <a class="card-cta" href="shiley-saiu-decanulacao-acidental.html">Ler artigo <span class="card-cta-arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <div class="card"
+       style="--c-accent:#9b6ff7;--c-border:rgba(155,111,247,.4);--c-glow:rgba(155,111,247,.12)">
+      <span class="card-rail" aria-hidden="true"></span>
+      <a class="card-hit" href="rebaixamento-consciencia-paciente-ventilado.html" aria-label="Rebaixamento de Consciência no Paciente Ventilado">
+        <div class="card-badge">Neurocrítico</div>
+        <div class="card-title">Rebaixamento de Consciência no Paciente Ventilado</div>
+        <div class="card-sub">É a sedação ou é neurológico? Como decidir entre esperar, testar a interrupção e pedir imagem.</div>
+        <div class="card-tags">
+          <span class="card-tag">SAT</span>
+          <span class="card-tag">Exame neurológico</span>
+          <span class="card-tag">Causas metabólicas</span>
+        </div>
+      </a>
+      <div class="card-foot">
+        <a class="card-cta" href="rebaixamento-consciencia-paciente-ventilado.html">Ler artigo <span class="card-cta-arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <div class="card"
+       style="--c-accent:#e05555;--c-border:rgba(224,85,85,.4);--c-glow:rgba(224,85,85,.12)">
+      <span class="card-rail" aria-hidden="true"></span>
+      <a class="card-hit" href="sepsis-2026-o-que-mudou.html" aria-label="Surviving Sepsis Campaign 2026: O Que Mudou Desde 2021">
+        <div class="card-badge">Hemodinâmica</div>
+        <div class="card-title">Surviving Sepsis Campaign 2026: O Que Mudou Desde 2021</div>
+        <div class="card-sub">46 recomendações novas — meta de PAM por idade, fluidos, lactato seriado e antibioticoterapia, resumidos para o plantão.</div>
+        <div class="card-tags">
+          <span class="card-tag">Choque séptico</span>
+          <span class="card-tag">Diretrizes 2026</span>
+          <span class="card-tag">Antibioticoterapia</span>
+        </div>
+      </a>
+      <div class="card-foot">
+        <a class="card-cta" href="sepsis-2026-o-que-mudou.html">Ler artigo <span class="card-cta-arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cta-final">
+    <div class="cta-final-t">Isso é só a ponta clínica</div>
+    <div class="cta-final-d">Cada artigo aqui é um recorte de um guia completo — Ventilação Mecânica, Hemodinâmica &amp; Choque, Neurocrítico e Procedimentos — com fisiologia, algoritmos, tabelas e assistente de conduta com IA.</div>
+    <div class="cta-final-actions">
+      <a class="btn-primary" href="../index.html#modulos">Conhecer os guias completos <span aria-hidden="true">→</span></a>
+      <a class="btn-ghost" href="../login.html">Criar conta</a>
+    </div>
+  </div>
+
+  <section class="authors" aria-label="Autores">
+    <div class="authors-label">Curadoria</div>
+    <div class="authors-row">
+      <div class="author"><span class="author-name">Dr. João H. Peres</span><span class="author-role">Cofundador · Médico</span></div>
+      <div class="author"><span class="author-name">Dr. Cesar A. Seidler Jr.</span><span class="author-role">Cofundador · Médico</span></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-left"><strong>Material de apoio clínico</strong> — não substitui julgamento médico individualizado nem protocolo institucional.</div>
+    <div class="footer-right"><a href="../index.html">be·aside</a> · Atualizado jul/2026</div>
+  </footer>
+
+</div>
+<script>
+const THEME_KEY='beaside-theme';
+function getTheme(){try{const t=localStorage.getItem(THEME_KEY);if(t==='light'||t==='dark')return t;}catch(e){}return 'dark';}
+const THEME_BTN_HTML=
+  '<span class="theme-icon theme-icon-sun" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></span>'+
+  '<span class="theme-icon theme-icon-moon" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>';
+function prefersReduceMotion(){return !!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);}
+function syncThemeButtons(t){
+  document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){
+    if(!btn.dataset.iconsReady){btn.innerHTML=THEME_BTN_HTML;btn.dataset.iconsReady='1';}
+    var next=t==='light'?'dark':'light';
+    btn.setAttribute('aria-label',next==='light'?'Ativar modo claro':'Ativar modo escuro');
+    btn.setAttribute('title',next==='light'?'Modo claro':'Modo escuro');
+    btn.setAttribute('aria-pressed',t==='light'?'true':'false');
+  });
+}
+function applyTheme(theme){
+  var t=(theme==='light'||theme==='dark')?theme:'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  try{localStorage.setItem(THEME_KEY,t);}catch(e){}
+  syncThemeButtons(t);
+}
+function toggleTheme(){
+  var next=getTheme()==='light'?'dark':'light';
+  document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){
+    btn.classList.remove('is-toggling');void btn.offsetWidth;btn.classList.add('is-toggling');
+    clearTimeout(btn._togTid);btn._togTid=setTimeout(function(){btn.classList.remove('is-toggling');},420);
+  });
+  if(document.startViewTransition&&!prefersReduceMotion()){document.startViewTransition(function(){applyTheme(next);});return;}
+  if(!prefersReduceMotion()){
+    document.documentElement.classList.add('theme-switching');applyTheme(next);
+    clearTimeout(toggleTheme._tid);toggleTheme._tid=setTimeout(function(){document.documentElement.classList.remove('theme-switching');},320);return;
+  }
+  applyTheme(next);
+}
+applyTheme(getTheme());
+</script>
+<script src="../assets/auth-config.js?v=5"></script>
+<script src="../assets/auth.js?v=5"></script>
+<script>
+(function hubAuth(){
+  var slot=document.querySelector('.btn-entrar');
+  if(!slot||!window.BeAsideAuth) return;
+  if(typeof BeAsideAuth.bindHubAuth==='function'){BeAsideAuth.bindHubAuth(slot);}
+  else{BeAsideAuth.init().then(function(){ BeAsideAuth.paintHubAuth(slot); }).catch(function(){});}
+})();
+</script>
+</body>
+</html>
