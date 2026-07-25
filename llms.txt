@@ -1,0 +1,24 @@
+# be·aside
+
+> Plataforma de raciocínio clínico e apoio à decisão para medicina de UTI e emergência. Conecta fisiologia, raciocínio clínico e conduta prática à beira do leito, para médicos que cuidam de pacientes críticos.
+
+be·aside reúne guias clínicos, algoritmos, calculadoras, casos práticos e um assistente de IA para residentes, clínicos, intensivistas e emergencistas. Conteúdo em português, com autoria médica e referências (UpToDate, FCCS e diretrizes atuais). É material de apoio clínico — não substitui julgamento médico individualizado nem protocolo institucional.
+
+## Áreas
+
+- [Central de Conhecimento](https://be-aside.vercel.app/artigos/): artigos que respondem dúvidas reais de plantão (UTI, PS, enfermaria), com resposta direta, mecanismo e conduta prática.
+- [Raciocine — Ventilação Mecânica](https://be-aside.vercel.app/vm/): fisiologia, modos, parâmetros, patologias, desmame.
+- [Raciocine — Hemodinâmica & Choque](https://be-aside.vercel.app/hemo/): fisiologia, avaliação à beira do leito, drogas vasoativas, choque.
+- [Raciocine — Neurocrítico](https://be-aside.vercel.app/neuro/): TCE, AVC, status epiléptico, encefalopatias, pressão de perfusão cerebral.
+- [Raciocine — Procedimentos](https://be-aside.vercel.app/proc/): procedimentos de UTI e dúvidas reais de plantão.
+- [Consulte e Resolva](https://be-aside.vercel.app/consulte/): assistente de IA que discute casos com base no conteúdo validado do site (acesso restrito).
+
+## Institucional
+
+- [Sobre o be·aside](https://be-aside.vercel.app/institucional/sobre.html): o problema, a proposta, para quem é, compromisso editorial.
+- [Equipe e credenciais](https://be-aside.vercel.app/institucional/equipe.html): autoria e revisão do conteúdo.
+- [Metodologia editorial](https://be-aside.vercel.app/institucional/metodologia.html): fontes, processo de escrita e revisão.
+- [Segurança e uso da IA](https://be-aside.vercel.app/institucional/seguranca-ia.html): o que os assistentes fazem, não fazem, e como tratam dados.
+- [Perguntas frequentes (FAQ)](https://be-aside.vercel.app/institucional/faq.html): o que é o be·aside, para quem é, confiabilidade do conteúdo e uso do assistente de IA.
+- [Aviso médico](https://be-aside.vercel.app/institucional/aviso-medico.html): caráter educacional do conteúdo e responsabilidade pela decisão clínica.
+- [Termos de uso](https://be-aside.vercel.app/institucional/termos.html) e [Política de privacidade](https://be-aside.vercel.app/institucional/privacidade.html).

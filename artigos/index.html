@@ -7,6 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Central de Conhecimento — Condutas e Perguntas de Plantão em UTI e Emergência | be·aside</title>
 <meta name="description" content="Central de Conhecimento be·aside: artigos e condutas sobre o paciente crítico, com resposta direta, mecanismo e conduta prática — hemodinâmica, ventilação mecânica, neurocrítico e procedimentos, sempre com referência.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Central de Conhecimento — Condutas e Perguntas de Plantão em UTI e Emergência | be·aside">
+<meta name="twitter:description" content="Central de Conhecimento be·aside: artigos e condutas sobre o paciente crítico, com resposta direta, mecanismo e conduta prática — hemodinâmica, ventilação mecânica,…">
 <link rel="canonical" href="https://be-aside.vercel.app/artigos/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="be·aside">
@@ -39,7 +42,16 @@
       </svg>
       <span class="logo-wordmark">be·aside</span>
     </a>
+    <nav class="mainnav" aria-label="Áreas do be·aside">
+      <a href="../institucional/sobre.html">A be·aside</a>
+      <a href="./">Central de Conhecimento</a>
+      <a href="../index.html#raciocine">Raciocine</a>
+      <a href="../index.html#consulte">Consulte e Resolva</a>
+    </nav>
     <div class="top-meta">
+      <button class="nav-burger" type="button" aria-label="Abrir menu" aria-expanded="false" onclick="toggleMobileNav()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
       <a class="btn-entrar" id="btn-entrar" href="../login.html">Entrar</a>
       <script>
       (function(){
@@ -71,6 +83,21 @@
       <button class="btn-theme" data-theme-toggle type="button" onclick="toggleTheme()" aria-label="Alternar tema"></button>
     </div>
   </header>
+  <div class="mobilenav" id="mobilenav">
+    <a href="../institucional/sobre.html">A be·aside</a>
+    <a href="./" onclick="toggleMobileNav()">Central de Conhecimento</a>
+    <a href="../index.html#raciocine" onclick="toggleMobileNav()">Raciocine</a>
+    <a href="../index.html#consulte" onclick="toggleMobileNav()">Consulte e Resolva</a>
+    <a href="../institucional/faq.html">FAQ</a>
+  </div>
+  <script>
+  function toggleMobileNav(){
+    var m=document.getElementById('mobilenav');if(!m)return;
+    var open=m.classList.toggle('open');
+    var b=document.querySelector('.nav-burger');
+    if(b)b.setAttribute('aria-expanded',open?'true':'false');
+  }
+  </script>
 
   <section class="hero">
     <div class="hero-row">
@@ -249,9 +276,44 @@
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="footer-left"><strong>Material de apoio clínico</strong> — não substitui julgamento médico individualizado nem protocolo institucional.</div>
-    <div class="footer-right"><a href="../index.html">be·aside</a> · Atualizado jul/2026</div>
+  <footer class="footer footer-pro">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="../index.html" aria-label="be·aside — início">
+          <svg class="logo-icon" width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="0" y="2" width="6" height="20" rx="3" fill="#1db88a"/>
+        <rect x="10" y="0" width="6" height="15" rx="3" fill="#1db88a" opacity=".55"/>
+      </svg>
+          <span class="logo-wordmark">be·aside</span>
+        </a>
+        <p class="footer-tag">Raciocínio clínico à beira do leito — do mecanismo à decisão, para quem cuida de paciente crítico.</p>
+      </div>
+      <nav class="footer-col" aria-label="Plataforma">
+        <div class="footer-k">Plataforma</div>
+        <a href="../artigos/">Central de Conhecimento</a>
+        <a href="../index.html#raciocine">Raciocine</a>
+        <a href="../index.html#consulte">Consulte e Resolva</a>
+        <a href="../login.html">Entrar</a>
+      </nav>
+      <nav class="footer-col" aria-label="Institucional">
+        <div class="footer-k">Institucional</div>
+        <a href="../institucional/sobre.html">A be·aside</a>
+        <a href="../institucional/equipe.html">Quem somos</a>
+        <a href="../institucional/metodologia.html">Metodologia</a>
+        <a href="../institucional/faq.html">FAQ</a>
+      </nav>
+      <nav class="footer-col" aria-label="Confiança e legal">
+        <div class="footer-k">Confiança &amp; Legal</div>
+        <a href="../institucional/seguranca-ia.html">Segurança da IA</a>
+        <a href="../institucional/aviso-medico.html">Aviso médico</a>
+        <a href="../institucional/termos.html">Termos de Uso</a>
+        <a href="../institucional/privacidade.html">Privacidade</a>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <div class="footer-left"><strong>Material de apoio clínico</strong> — não substitui julgamento médico individualizado nem protocolo institucional.</div>
+      <div class="footer-right">© 2026 be·aside · <a href="mailto:cesar.junior@unochapeco.edu.br">Contato</a> · <a href="https://www.instagram.com/caseidlercj/" rel="me noopener" target="_blank">@caseidlercj</a> · <a href="https://www.instagram.com/joaohperes/" rel="me noopener" target="_blank">@joaohperes</a> · Atualizado jul/2026</div>
+    </div>
   </footer>
 
 </div>

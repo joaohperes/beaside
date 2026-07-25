@@ -260,6 +260,17 @@ a.card-hit{display:flex;flex-direction:column;flex:1 1 auto;text-decoration:none
 }
 .mainnav a:hover{color:var(--text);background:rgba(255,255,255,.04)}
 @media(max-width:1000px){.mainnav{display:none}}
+/* ── header: burger mobile + painel ── */
+.nav-burger{display:none;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:pointer;transition:color .15s,border-color .15s}
+.nav-burger:hover{color:var(--text);border-color:var(--border2)}
+@media(max-width:1000px){.nav-burger{display:inline-flex}}
+.mobilenav{display:none;padding:6px 20px 14px;border-bottom:1px solid var(--border)}
+.mobilenav.open{display:flex;flex-direction:column;gap:2px}
+.mobilenav a{font-family:var(--mono);font-size:12px;color:var(--text2);text-decoration:none;padding:10px 10px;border-radius:8px}
+.mobilenav a:hover{color:var(--text);background:rgba(255,255,255,.04)}
+@media(min-width:1001px){.mobilenav{display:none!important}}
+html[data-theme="light"] .mobilenav a:hover{background:rgba(15,23,42,.04)}
+
 html[data-theme="light"] .mainnav a:hover{background:rgba(15,23,42,.04)}
 /* cabeçalho de cada área (mesma linguagem do hero-eyebrow) */
 .area-head{grid-column:1/-1;display:flex;flex-direction:column;gap:7px;margin:2px 0}
@@ -340,6 +351,19 @@ html[data-theme="light"] .area-head h2{color:#0f1419}
 .footer-right{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.04em}
 .footer-right a{color:var(--text3);text-decoration:none;border-bottom:1px solid var(--border2)}
 .footer-right a:hover{color:var(--text2);border-color:var(--text3)}
+/* ── rodapé profissional (colunas) ── */
+.footer.footer-pro{display:block}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px;padding-bottom:26px}
+.footer-brand .logo{display:inline-flex;align-items:center;gap:9px;text-decoration:none}
+.footer-tag{margin-top:12px;font-size:12.5px;color:var(--text3);line-height:1.6;font-weight:300;max-width:300px}
+.footer-k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-bottom:12px}
+.footer-col{display:flex;flex-direction:column;gap:8px}
+.footer-col a{font-size:12.5px;color:var(--text2);text-decoration:none;width:fit-content;border-bottom:1px solid transparent;transition:color .15s,border-color .15s}
+.footer-col a:hover{color:var(--text);border-color:var(--border2)}
+.footer-base{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-top:20px;border-top:1px solid var(--border)}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:520px){.footer-grid{grid-template-columns:1fr}}
+
 
 /* ── hero demo: prévia do assistente de IA ── */
 .hero-row.has-demo{
