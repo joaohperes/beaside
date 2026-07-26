@@ -79,6 +79,7 @@ const MODULES = {
   vm: {
     id: 'vm',
     label: 'VM Guide',
+    area: 'raciocine',
     subtitle: 'Ventilação Mecânica',
     root: 'vm/',
     color: '#0ea5b7',
@@ -86,6 +87,7 @@ const MODULES = {
   hemo: {
     id: 'hemo',
     label: 'Hemo Guide',
+    area: 'raciocine',
     subtitle: 'Hemodinâmica & Choque',
     root: 'hemo/',
     color: '#e05555',
@@ -93,6 +95,7 @@ const MODULES = {
   neuro: {
     id: 'neuro',
     label: 'Neuro Guide',
+    area: 'raciocine',
     subtitle: 'Neurocrítico',
     root: 'neuro/',
     color: '#9b6ff7',
@@ -100,6 +103,7 @@ const MODULES = {
   proc: {
     id: 'proc',
     label: 'Procedimentos',
+    area: 'raciocine',
     subtitle: 'Dúvidas de plantão',
     root: 'proc/',
     color: '#3b82f6',
@@ -107,6 +111,7 @@ const MODULES = {
   consulte: {
     id: 'consulte',
     label: 'Consulte e Resolva',
+    area: 'consulte',
     subtitle: 'Assistente de conduta (IA)',
     root: 'consulte/',
     color: '#1db88a',
@@ -114,8 +119,10 @@ const MODULES = {
   institucional: {
     id: 'institucional',
     label: 'Institucional',
+    area: 'institucional',
     subtitle: 'Sobre, equipe e políticas',
     root: 'institucional/',
+    semHub: true,
     color: '#1db88a',
   },
 };
@@ -212,6 +219,11 @@ function currentModule(){return document.body.dataset.module||'';}
 function currentPageId(){return document.body.dataset.page||'';}
 function getPages(){return MODULE_PAGES[currentModule()]||[];}
 function getRootPath(){
+  // Páginas servidas fora da árvore de diretórios (a 404.html, que o Vercel
+  // entrega em qualquer profundidade) declaram <body data-root="/"> e mandam
+  // no caminho. Sem o atributo, nada muda para as páginas normais.
+  const forcado=document.body.dataset.root;
+  if(forcado!==undefined)return forcado;
   const m=MODULES[currentModule()];
   // de dentro do módulo, root é um nível acima
   return m ? '../' : './';
@@ -298,7 +310,11 @@ function buildShell(){
       '</div>'+
       '<div class="sidebar-group open"><div class="sidebar-group-items">';
     Object.values(MODULES).forEach(m=>{
-      html+='<a class="nav-link" href="'+m.root+'">'+m.label+'</a>';
+      // Módulo declarado sem hub próprio (institucional não tem index.html)
+      // aponta para a primeira página, senão o link cairia numa 404.
+      const alvo=m.semHub?(((MODULE_PAGES[m.id]||[])[0]||{}).file||''):'';
+      if(m.semHub&&!alvo)return;
+      html+='<a class="nav-link" href="'+root+m.root+alvo+'">'+m.label+'</a>';
     });
     html+='</div></div>';
     nav.innerHTML=html;

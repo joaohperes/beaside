@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script src="/assets/theme-boot.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Página não encontrada — be·aside</title>
+<meta name="description" content="Este endereço não existe no be·aside. Use a busca ou entre pelos guias clínicos, pelo assistente de conduta ou pela Central de Conhecimento.">
+<meta name="robots" content="noindex, follow">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/styles.css">
+<style>
+  /* .lp-start nasceu como <a>; aqui ele é <button> para abrir a busca ⌘K */
+  button.lp-start{cursor:pointer;line-height:1}
+  .e404-url{
+    font-family:var(--mono);font-size:11px;color:var(--text3);
+    background:rgba(255,255,255,.02);border:1px solid var(--border);
+    border-radius:8px;padding:8px 12px;margin-top:18px;
+    display:inline-block;max-width:100%;overflow-wrap:anywhere;
+  }
+  .e404-url b{color:var(--text2);font-weight:500}
+</style>
+</head>
+<body data-root="/">
+<main class="main">
+
+  <div class="lp-hero">
+    <div class="lp-eyebrow">Erro 404</div>
+    <h1 class="lp-title">Esta página não está aqui</h1>
+    <p class="lp-desc">
+      O endereço não existe, mudou de lugar ou veio com um erro de digitação.
+      Nenhum conteúdo foi perdido — quando uma página do be·aside é substituída,
+      o link antigo passa a levar direto para a nova.
+    </p>
+    <p class="lp-desc" style="margin-top:14px">
+      Se você sabe o tema, a busca resolve mais rápido que o menu: ela cobre
+      todas as páginas dos quatro módulos de uma vez.
+    </p>
+    <button class="lp-start" type="button" onclick="openSearch()">Buscar no site <span class="lp-start-arrow">→</span></button>
+    <div class="e404-url" id="e404url" hidden>endereço tentado: <b></b></div>
+  </div>
+
+  <div class="lp-section-label">Por onde continuar</div>
+  <div class="lp-grid">
+    <a class="lp-card" href="/index.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Raciocine</div><span class="lp-card-idx">01</span></div>
+      <div class="lp-card-title">Guias clínicos</div>
+      <div class="lp-card-sub">Os quatro módulos, do mecanismo à decisão</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
+    <a class="lp-card" href="/consulte/">
+      <div class="lp-card-top"><div class="lp-card-cat">Assistente IA</div><span class="lp-card-idx">02</span></div>
+      <div class="lp-card-title">Consulte e Resolva</div>
+      <div class="lp-card-sub">Descreva o caso e receba a conduta com o racional por trás</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
+    <a class="lp-card" href="/artigos/">
+      <div class="lp-card-top"><div class="lp-card-cat">Conhecimento</div><span class="lp-card-idx">03</span></div>
+      <div class="lp-card-title">Central de Conhecimento</div>
+      <div class="lp-card-sub">Dúvidas de plantão respondidas com fonte e fisiologia</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
+    <a class="lp-card" href="/institucional/faq.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Institucional</div><span class="lp-card-idx">04</span></div>
+      <div class="lp-card-title">Perguntas frequentes</div>
+      <div class="lp-card-sub">Como o conteúdo é feito, revisado e até onde ele vai</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
+  </div>
+
+  <div class="lp-section-label" id="e404-mods-label" hidden>Ir direto para um módulo</div>
+  <div class="lp-grid" id="e404-mods"></div>
+
+</main>
+<script src="/assets/app.js"></script>
+<script>
+// Cards dos módulos montados a partir de MODULES/MODULE_PAGES (gerados de
+// conteudo/manifest.json). Módulo novo no manifesto aparece aqui sozinho.
+(function(){
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  var alvo=document.getElementById('e404-mods');
+  if(!alvo||typeof MODULES==='undefined')return;
+  var mods=Object.keys(MODULES).map(function(k){return MODULES[k];})
+    .filter(function(m){return m.area==='raciocine';});
+  if(!mods.length)return;
+  alvo.innerHTML=mods.map(function(m,i){
+    var n=((typeof MODULE_PAGES!=='undefined'&&MODULE_PAGES[m.id])||[]).length;
+    return '<a class="lp-card" href="/'+m.root+'">'+
+      '<div class="lp-card-top"><div class="lp-card-cat">'+esc(m.label)+'</div>'+
+      '<span class="lp-card-idx">'+('0'+(i+1)).slice(-2)+'</span></div>'+
+      '<div class="lp-card-title">'+esc(m.subtitle)+'</div>'+
+      '<div class="lp-card-sub">'+n+' páginas · referência de beira-leito</div>'+
+      '<div class="lp-card-cta">Abrir <span>→</span></div>'+
+    '</a>';
+  }).join('');
+  document.getElementById('e404-mods-label').hidden=false;
+
+  // Mostra o endereço que falhou — ajuda quem digitou errado a ver o próprio erro.
+  var box=document.getElementById('e404url');
+  var caminho=window.location.pathname+window.location.search;
+  if(box&&caminho&&caminho!=='/'&&caminho!=='/404.html'){
+    box.querySelector('b').textContent=caminho;
+    box.hidden=false;
+  }
+})();
+</script>
+</body>
+</html>
