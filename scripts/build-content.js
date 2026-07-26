@@ -71,8 +71,11 @@ function gerarAppJs() {
     out += `  ${m.id}: {\n`;
     out += `    id: ${jsStr(m.id)},\n`;
     out += `    label: ${jsStr(m.label)},\n`;
+    out += `    area: ${jsStr(m.area)},\n`;
     out += `    subtitle: ${jsStr(m.subtitulo)},\n`;
     out += `    root: ${jsStr(m.root)},\n`;
+    // módulo sem index.html próprio: o shell aponta para a 1ª página em vez do diretório
+    if (m.semHub) out += `    semHub: true,\n`;
     out += `    color: ${jsStr(m.cor)},\n`;
     out += `  },\n`;
   }
@@ -110,15 +113,17 @@ function gerarHubs() {
       if (!p.hub || p.status === 'oculto') continue;
       push(p.hub.grupo, { href: p.arquivo, selo: p.hub.selo, titulo: p.hub.titulo, resumo: p.hub.resumo, estado: p.status === 'em-breve' ? 'em-breve' : undefined });
     }
-    for (const e of m.hubExtras || []) push(e.grupo, e);
+    // cards que não são páginas do módulo (ponte para o assistente, por ex.):
+    // entram na grade e na numeração, mas não contam no painel "Páginas".
+    for (const e of m.hubExtras || []) push(e.grupo, { ...e, extra: true });
 
-    let idx = 0, prontas = 0, out = '\n';
+    let idx = 0, prontas = 0, paginas = 0, out = '\n';
     for (const g of grupos) {
       out += `  <div class="lp-section-label">${esc(g.rotulo)}</div>\n  <div class="lp-grid">\n`;
       for (const c of g.cards) {
         idx++;
         const soon = c.estado === 'em-breve';
-        if (!soon) prontas++;
+        if (!c.extra) { paginas++; if (!soon) prontas++; }
         out += soon
           ? `    <a class="lp-card empty" href="${c.href}" aria-disabled="true" tabindex="-1">\n`
           : `    <a class="lp-card" href="${c.href}">\n`;
@@ -139,7 +144,7 @@ function gerarHubs() {
     const html = readFileSync(abs, 'utf8');
     const novo = html
       .replace(/(<div class="lp-stat"><div class="lp-stat-k">Páginas<\/div><div class="lp-stat-v">)\d+(<\/div><\/div>)/,
-               `$1${idx}$2`)
+               `$1${paginas}$2`)
       .replace(/(<div class="lp-stat"><div class="lp-stat-k">Prontas<\/div><div class="lp-stat-v">)\d+(<\/div><\/div>)/,
                `$1${nn(prontas)}$2`);
     if (novo !== html) {
@@ -317,14 +322,20 @@ function gerarFarmacos() {
 
 // ── 7. relatório de sincronia ──────────────────────────────────────────
 function auditar() {
+  // páginas aposentadas: continuam no repositório, mas são servidas como 301.
+  // Não são "esquecidas" — estão declaradas em manifest.redirecionadas.
+  const aposentadas = new Set((manifest.redirecionadas || []).map((r) => r.de.replace(/^\//, '')));
   for (const m of manifest.modulos) {
     for (const p of m.paginas) {
       if (!existsSync(join(root, m.root, p.arquivo))) avisos.push(`${m.id}/${p.arquivo}: está no manifesto mas o arquivo não existe.`);
       if (RACIOCINE.includes(m.id) && !p.hub && p.status !== 'oculto') avisos.push(`${m.id}/${p.arquivo}: existe e está no menu, mas NÃO tem card no hub do módulo (invisível para quem chega pela home do módulo).`);
     }
+    const temIndice = existsSync(join(root, m.root, 'index.html'));
+    if (m.semHub && temIndice) avisos.push(`${m.id}: está declarado como 'semHub' no manifesto, mas ${m.root}index.html existe. Remova o 'semHub' para o hub voltar a ser linkado.`);
+    if (!m.semHub && !temIndice) avisos.push(`${m.id}: não tem ${m.root}index.html e não está declarado como 'semHub'. Todo link para /${m.root} cai numa 404 — crie o hub ou declare 'semHub: true'.`);
     const noManifesto = new Set(m.paginas.map((p) => p.arquivo));
     for (const f of readdirSync(join(root, m.root))) {
-      if (f.endsWith('.html') && f !== 'index.html' && !noManifesto.has(f)) avisos.push(`${m.id}/${f}: existe no repositório mas NÃO está no manifesto (fora do menu, do hub, do sitemap e da IA).`);
+      if (f.endsWith('.html') && f !== 'index.html' && !noManifesto.has(f) && !aposentadas.has(m.root + f)) avisos.push(`${m.id}/${f}: existe no repositório mas NÃO está no manifesto (fora do menu, do hub, do sitemap e da IA). Se ela foi substituída, declare em 'redirecionadas' no manifesto para virar 301.`);
     }
   }
   for (const a of manifest.artigos) {
@@ -336,12 +347,41 @@ function auditar() {
   }
 }
 
+// ── 8. redirects 301 das páginas aposentadas (vercel.json) ─────────────
+// Aposentar uma página = mover a entrada dela para `redirecionadas` no
+// manifesto. O arquivo continua no repositório (histórico preservado), mas a
+// Vercel passa a responder 301 antes de olhar o disco — link antigo, indexação
+// e o que já foi compartilhado no WhatsApp continuam funcionando.
+function gerarRedirects() {
+  const reds = manifest.redirecionadas || [];
+  const abs = join(root, 'vercel.json');
+  const conf = JSON.parse(readFileSync(abs, 'utf8'));
+
+  for (const r of reds) {
+    const alvo = r.para.replace(/^\//, '');
+    const existeAlvo = alvo.endsWith('/') ? existsSync(join(root, alvo, 'index.html')) : existsSync(join(root, alvo));
+    if (!existeAlvo) avisos.push(`redirecionadas: ${r.de} aponta para ${r.para}, que não existe. Um 301 para o vazio é pior que a página antiga.`);
+    if (r.de === r.para) avisos.push(`redirecionadas: ${r.de} redireciona para si mesmo — laço infinito.`);
+  }
+  const destinos = new Set(reds.map((r) => r.para));
+  for (const r of reds) {
+    if (destinos.has(r.de)) avisos.push(`redirecionadas: ${r.de} é origem e destino ao mesmo tempo — corrente de redirect.`);
+  }
+
+  conf.redirects = reds.map((r) => ({ source: r.de, destination: r.para, permanent: true }));
+  const texto = JSON.stringify(conf, null, 2) + '\n';
+  if (readFileSync(abs, 'utf8') === texto) { iguais.push('vercel.json'); return; }
+  if (!CHECK) writeFileSync(abs, texto);
+  escritos.push('vercel.json');
+}
+
 gerarAppJs();
 gerarHubs();
 gerarArtigos();
 gerarKnowledge();
 gerarLlms();
 gerarFarmacos();
+gerarRedirects();
 auditar();
 
 const nPag = manifest.modulos.reduce((s, m) => s + m.paginas.length, 0);

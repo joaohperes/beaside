@@ -5,6 +5,44 @@
     "url": "https://be-aside.vercel.app",
     "nome": "be·aside"
   },
+  "_redirecionadas": "Páginas antigas que continuam no repositório mas não são mais servidas: o build gera um redirect 301 em vercel.json para cada uma. Para aposentar uma página, mova a entrada dela para cá em vez de apagar o arquivo — assim o link antigo nunca quebra e a auditoria para de reclamar.",
+  "redirecionadas": [
+    {
+      "de": "/proc/acessos.html",
+      "para": "/proc/cvc.html",
+      "motivo": "Página agregada antiga (CVC + linha arterial + intraóssea). O conteúdo foi dividido em cvc.html, linha-arterial.html e io.html, que juntas têm mais conteúdo que ela. Redireciona para a principal do grupo."
+    },
+    {
+      "de": "/proc/vias-aereas.html",
+      "para": "/proc/iot.html",
+      "motivo": "Página agregada antiga (IOT + via aérea difícil + traqueostomia). Dividida em iot.html, vad.html e traqueo.html."
+    },
+    {
+      "de": "/proc/drenagem.html",
+      "para": "/proc/toracocentese.html",
+      "motivo": "Página agregada antiga (toracocentese + dreno + paracentese + punção lombar). Dividida em toracocentese.html, dreno.html, paracentese.html e pl.html."
+    },
+    {
+      "de": "/proc/monitorizacao.html",
+      "para": "/proc/pai.html",
+      "motivo": "Página agregada antiga (PAI + cateter de artéria pulmonar). Dividida em pai.html e swan.html."
+    },
+    {
+      "de": "/vm/assistente.html",
+      "para": "/consulte/",
+      "motivo": "Assistente por módulo, substituído pelo assistente único em /consulte/. Já estava noindex e sem link de lugar nenhum."
+    },
+    {
+      "de": "/hemo/assistente.html",
+      "para": "/consulte/",
+      "motivo": "Assistente por módulo, substituído pelo assistente único em /consulte/."
+    },
+    {
+      "de": "/neuro/assistente.html",
+      "para": "/consulte/",
+      "motivo": "Assistente por módulo, substituído pelo assistente único em /consulte/."
+    }
+  ],
   "modulos": [
     {
       "id": "vm",
@@ -1108,6 +1146,15 @@
             "resumo": "Shilley, traqueostomia, Nora periférica, IO — com referências"
           }
         }
+      ],
+      "hubExtras": [
+        {
+          "href": "../consulte/",
+          "selo": "Assistente IA",
+          "titulo": "Assistente de conduta",
+          "resumo": "Descreva o procedimento ou a intercorrência e receba a sequência sugerida",
+          "grupo": "Monitorização & emergência"
+        }
       ]
     },
     {
@@ -1138,6 +1185,7 @@
       "label": "Institucional",
       "subtitulo": "Sobre, equipe e políticas",
       "root": "institucional/",
+      "semHub": true,
       "cor": "#1db88a",
       "paginas": [
         {
