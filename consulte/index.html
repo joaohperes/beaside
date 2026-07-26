@@ -70,18 +70,29 @@
 
   /* barra compacta: identidade + aviso de segurança sempre à vista */
   .app-bar{flex:0 0 auto;display:flex;align-items:center;gap:14px;padding:9px 18px;border-bottom:1px solid var(--border);background:var(--bg2)}
+  /* Vermelho de TEXTO do aviso. É o mesmo par do .warn-box no styles.css:
+     var(--red) puro serve para borda, ponto e ícone, mas num parágrafo de
+     12px no tema claro (#d63d3d no branco) fica no limite do contraste — e
+     este é justamente o texto que diz que a resposta não substitui
+     julgamento clínico. É o que menos pode ficar difícil de ler. */
+  html{--aviso-txt:#f0b8b8}
+  html[data-theme="light"]{--aviso-txt:#9f2d2d}
+  /* Só para leitor de tela: sem as etiquetas de turno, quem não vê a bolha
+     precisa continuar sabendo quem falou. */
+  .vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+    clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
   .app-bar-id{display:flex;align-items:baseline;gap:10px;min-width:0}
   .app-bar-eyebrow{font-family:var(--mono);font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);flex-shrink:0}
   .app-bar-title{font-size:13.5px;font-weight:600;color:var(--text);margin:0;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .app-bar-disc{display:flex;align-items:center;gap:8px;margin-left:auto;min-width:0;cursor:pointer;
-    font-family:var(--sans);font-size:12px;line-height:1.4;color:var(--red);text-align:left;
+    font-family:var(--sans);font-size:12px;line-height:1.4;color:var(--aviso-txt);text-align:left;
     background:rgba(226,75,74,.09);border:1px solid rgba(226,75,74,.28);border-radius:7px;padding:6px 11px;transition:background .12s}
   .app-bar-disc:hover{background:rgba(226,75,74,.16)}
   .app-bar-disc-txt{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .app-bar-disc-arrow{font-family:var(--mono);font-size:10px;color:var(--red);opacity:.7;transition:transform .15s;flex-shrink:0}
+  .app-bar-disc-arrow{font-family:var(--mono);font-size:10px;color:var(--aviso-txt);opacity:.7;transition:transform .15s;flex-shrink:0}
   .app-bar-disc[aria-expanded="true"] .app-bar-disc-arrow{transform:rotate(180deg)}
   .as-disc-body{flex:0 0 auto;border-left:3px solid var(--red);border-bottom:1px solid var(--border);
-    background:rgba(226,75,74,.07);padding:11px 18px;font-size:12.5px;line-height:1.65;color:var(--red)}
+    background:rgba(226,75,74,.07);padding:11px 18px;font-size:12.5px;line-height:1.65;color:var(--aviso-txt)}
   .as-disc-body[hidden]{display:none}
 
   /* porta de senha: cartão centrado, não um formulário solto no topo */
@@ -157,12 +168,18 @@
      O botão saiu de cima do texto, onde tapava a primeira linha da conduta. */
   .msg-foot{display:flex;align-items:center;gap:8px;margin-top:6px;padding:0 4px;min-height:18px}
   .msg.user .msg-foot{justify-content:flex-end}
-  .msg-time{font-family:var(--mono);font-size:9.5px;color:var(--text3);opacity:.55}
-  .bubble-copy{font-family:var(--mono);font-size:10px;color:var(--text3);background:none;
+  /* --text3 é o tom mais apagado do sistema e serve para etiqueta dentro de
+     um bloco já contrastado. Solto sobre o fundo da conversa, num mono de
+     9,5px, ele fica abaixo do limite de leitura — principalmente no claro. */
+  .msg-time{font-family:var(--mono);font-size:9.5px;color:var(--text2)}
+  /* No celular este botão fica visível o tempo todo: é controle, não etiqueta,
+     e precisa do contraste de --text2 para ser clicável às 3h da manhã. */
+  .bubble-copy{font-family:var(--mono);font-size:10px;color:var(--text2);background:none;
     border:1px solid transparent;border-radius:6px;padding:2px 8px;cursor:pointer;
     opacity:0;transition:opacity .14s,color .14s,background .14s,border-color .14s}
   .msg.assistant:hover .bubble-copy,.bubble-copy:focus-visible{opacity:1}
   .bubble-copy:hover{color:var(--accent);background:rgba(var(--accent-rgb),.08);border-color:var(--accent-d)}
+  .bubble-copy:focus-visible{outline:2px solid rgba(var(--accent-rgb),.45);outline-offset:2px}
   .stream-cursor{display:inline-block;width:6px;height:13px;background:var(--accent);margin-left:2px;vertical-align:-2px;animation:cursorBlink .8s step-end infinite}
   @keyframes cursorBlink{0%,50%{opacity:1}51%,100%{opacity:0}}
   /* Os pontinhos são a única coisa que se move na tela enquanto a IA pensa.
@@ -550,12 +567,14 @@ function renderMsg(m,idx){
   const timeHtml=m.ts?'<span class="msg-time">'+fmtTime(m.ts)+'</span>':'';
   if(m.role==='user'){
     return '<div class="msg user" data-idx="'+idx+'">'+
+      '<span class="vh">Plantonista:</span>'+
       '<div class="bubble" id="bubble-'+idx+'">'+esc(m.content)+'</div>'+
       (timeHtml?'<div class="msg-foot">'+timeHtml+'</div>':'')+
     '</div>';
   }
   return '<div class="msg assistant" data-idx="'+idx+'">'+
     '<span class="msg-avatar" aria-hidden="true">IA</span>'+
+    '<span class="vh">Assistente:</span>'+
     '<div class="msg-col">'+
       '<div class="bubble" id="bubble-'+idx+'">'+mdToHtml(m.content)+'</div>'+
       '<div class="msg-foot">'+timeHtml+
@@ -648,6 +667,7 @@ function enviar(){
       const div=document.createElement('div');
       div.className='msg assistant';div.dataset.idx=novoIdx;
       div.innerHTML='<span class="msg-avatar" aria-hidden="true">IA</span>'+
+        '<span class="vh">Assistente:</span>'+
         '<div class="msg-col"><div class="bubble" id="bubble-'+novoIdx+'"></div>'+
         '<div class="msg-foot"><span class="msg-time">'+fmtTime(Date.now())+'</span></div></div>';
       msgs.appendChild(div);
