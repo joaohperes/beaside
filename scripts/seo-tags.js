@@ -38,6 +38,30 @@ const EM_BREVE = new Set(
     .filter((p) => p.status === 'em-breve')
     .map((p) => m.root + p.arquivo))
 );
+// Artigos ainda em rascunho: o Cesar não validou o conteúdo clínico, então eles
+// mostram o banner "Rascunho — não publicado" para quem lê. Enquanto isso valer,
+// não podem pedir indexação — texto clínico não validado no Google, num site de
+// saúde, é risco antes de ser problema de SEO. É estado temporário: quando o
+// status virar "publicado" no manifesto, a tag sai sozinha (ver mais abaixo).
+const RASCUNHOS = new Set([
+  ...(manifesto.artigos || []).filter((a) => a.status !== 'publicado').map((a) => 'artigos/' + a.arquivo),
+  ...manifesto.modulos.flatMap((m) => m.paginas
+    .filter((p) => p.status !== 'publicado' && p.status !== 'em-breve')
+    .map((p) => m.root + p.arquivo)),
+]);
+
+// Toda página cujo estado o manifesto controla.
+const GERENCIADAS = new Set([
+  ...(manifesto.artigos || []).map((a) => 'artigos/' + a.arquivo),
+  ...manifesto.modulos.flatMap((m) => m.paginas.map((p) => m.root + p.arquivo)),
+]);
+
+// A marca que autoriza a remoção. A tag que ESTE script escreve a carrega; ela
+// significa "esta tag existe por causa do status no manifesto". Sem ela, o script
+// não mexe: consulte/index.html, os assistentes, login, conta e 404 carregam
+// noindex escrito à mão, por decisão, e não podem ser desfeitos por automação.
+const MARCA_STATUS = ' data-beaside="status"';
+
 const UTILITY_NOINDEX = new Set(['login.html', 'sso-callback.html']);
 // Paginas ja corretas ou sem valor de conteudo indexavel — nao mexer.
 // 404.html nao entra no fluxo: a Vercel a serve em QUALQUER caminho inexistente,
@@ -188,10 +212,32 @@ for (const relPath of files) {
   const base = relPath.split('/').pop();
 
   const alreadyNoindexBefore = /name="robots"[^>]*noindex/i.test(html);
-  const isUtility = UTILITY_NOINDEX.has(base) || EM_BREVE.has(rel);
+  const rascunho = RASCUNHOS.has(rel);
+  const porStatus = EM_BREVE.has(rel) || rascunho;
+  const isUtility = UTILITY_NOINDEX.has(base) || porStatus;
 
   if (isUtility && !alreadyNoindexBefore) {
-    html = html.replace(/(<title>[\s\S]*?<\/title>)/i, '$1\n<meta name="robots" content="noindex, nofollow">');
+    // Rascunho leva "follow": o texto não deve ser indexado, mas os links dele
+    // para os módulos continuam valendo como caminho de rastreio. Placeholder e
+    // página utilitária levam "nofollow" — não há nada adiante que interesse.
+    const regra = rascunho ? 'noindex, follow' : 'noindex, nofollow';
+    const marca = porStatus ? MARCA_STATUS : '';
+    html = html.replace(/(<title>[\s\S]*?<\/title>)/i, '$1\n<meta name="robots" content="' + regra + '"' + marca + '>');
+  }
+
+  // Página que já estava noindex por status antes desta marca existir: adota a
+  // marca agora, senão ficaria presa em noindex para sempre quando fosse publicada.
+  if (porStatus && alreadyNoindexBefore && GERENCIADAS.has(rel) && !/data-beaside=["']status["']/i.test(html)) {
+    html = html.replace(/(<meta[^>]+name=["']robots["'][^>]*?)(\s*\/?>)/i, '$1' + MARCA_STATUS + '$2');
+  }
+
+  // O caminho de volta, que é o que faz isto ser reversível de verdade: quando o
+  // Cesar valida um rascunho e troca o status para "publicado" no manifesto, a tag
+  // precisa SAIR sozinha. Sem isto, o artigo revisado entraria no ar carregando um
+  // noindex herdado e ninguém descobriria antes de estranhar o silêncio no Google.
+  // Só sai o que este script pôs — a marca é a autorização.
+  if (!isUtility && GERENCIADAS.has(rel)) {
+    html = html.replace(/\s*<meta[^>]*data-beaside=["']status["'][^>]*>/i, '');
   }
   // página noindex não recebe schema: dados estruturados de página que não vai
   // ser indexada só servem para o Google achar contradição.
