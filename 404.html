@@ -25,6 +25,9 @@
     display:inline-block;max-width:100%;overflow-wrap:anywhere;
   }
   .e404-url b{color:var(--text2);font-weight:500}
+  /* display:inline-block acima vence a regra [hidden]{display:none} do browser —
+     sem esta linha a caixa aparece vazia quando não há endereço para mostrar. */
+  .e404-url[hidden]{display:none}
 </style>
 </head>
 <body data-root="/">
