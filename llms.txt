@@ -22,3 +22,78 @@ be·aside reúne guias clínicos, algoritmos, calculadoras, casos práticos e um
 - [Perguntas frequentes (FAQ)](https://be-aside.vercel.app/institucional/faq.html): o que é o be·aside, para quem é, confiabilidade do conteúdo e uso do assistente de IA.
 - [Aviso médico](https://be-aside.vercel.app/institucional/aviso-medico.html): caráter educacional do conteúdo e responsabilidade pela decisão clínica.
 - [Termos de uso](https://be-aside.vercel.app/institucional/termos.html) e [Política de privacidade](https://be-aside.vercel.app/institucional/privacidade.html).
+
+<!-- gerado por scripts/build-content.js — editar conteudo/manifest.json -->
+<!-- AUTO:conteudo -->
+
+## Conteúdo completo
+
+### VM Guide
+
+- [Fisiologia da VM com Pressão Positiva](https://be-aside.vercel.app/vm/fisiologia.html): Ciclo ventilatório, mecânica pulmonar e efeitos hemodinâmicos
+- [Modos de Ventilação Mecânica](https://be-aside.vercel.app/vm/modos.html): AC-VC · AC-PC · SIMV-PSV · PSV
+- [Parâmetros Iniciais](https://be-aside.vercel.app/vm/parametros.html): Configuração passo a passo (UpToDate / FCCS)
+- [Indutores para RSI](https://be-aside.vercel.app/vm/indutores.html): Perfil farmacológico e algoritmo por cenário
+- [Sedoanalgesia pós-IOT na UTI](https://be-aside.vercel.app/vm/sedoanalgesia.html): Sedativos, opioides e escalas de monitoramento
+- [SDRA — Ventilação Protetora (LTVV)](https://be-aside.vercel.app/vm/sdra.html): Low Tidal Volume Ventilation
+- [Posição Prona na SDRA](https://be-aside.vercel.app/vm/prona.html): Benefício de mortalidade na SDRA grave (PROSEVA)
+- [DPOC & Asma — Hiperinsuflação Dinâmica](https://be-aside.vercel.app/vm/dpoc-asma.html): Air trapping e obstrução ao fluxo expiratório
+- [Hipercapnia Permissiva](https://be-aside.vercel.app/vm/hipercapnia.html): Quando e como aceitar a elevação da PaCO₂
+- [VM no TCE — Estratégia Neuroprotetora](https://be-aside.vercel.app/vm/tce.html): Metas de PPC / PIC · Normoventilação
+- [Complicações da VM](https://be-aside.vercel.app/vm/complicacoes.html): Reconhecimento precoce, fisiopatologia e conduta
+- [Capnografia & EtCO₂](https://be-aside.vercel.app/vm/capnografia.html): Confirmação de IOT, monitorização contínua e uso na PCR
+- [Dissincronia Paciente-Ventilador](https://be-aside.vercel.app/vm/dissincronia.html): Tipos, diagnóstico pelas curvas e conduta
+- [Bloqueio Neuromuscular na SDRA](https://be-aside.vercel.app/vm/bnm.html): Quando paralisar, qual agente e por quanto tempo
+- [Desmame Ventilatório — SAT / SBT / Extubação](https://be-aside.vercel.app/vm/desmame.html): Critérios, protocolo e T-piece vs PSV baixo
+- [VNI & Cânula Nasal de Alto Fluxo](https://be-aside.vercel.app/vm/vni.html): Quando evitar a IOT — e quando não insistir (ROX)
+- [Calculadoras](https://be-aside.vercel.app/vm/calculadora.html): PBW/VC · Driving Pressure · VM · P/F · IRRS
+- [Tabelas Rápidas](https://be-aside.vercel.app/vm/tabelas.html): Consulta de plantão — situação vs estratégia
+- [Pearls & Pitfalls](https://be-aside.vercel.app/vm/pearls.html): Cenários de plantão: acerto, erro comum e o porquê do mecanismo
+
+### Hemo Guide
+
+- [Base Fisiológica](https://be-aside.vercel.app/hemo/fisio.html): DO₂, VO₂, Fick, Frank-Starling e choque críptico
+- [Oferta de O₂](https://be-aside.vercel.app/hemo/do2.html): DO₂, CaO₂, tríade da oferta e intervenções
+- [Protocolo RUSH](https://be-aside.vercel.app/hemo/rush.html): Rapid Ultrasound for Shock and Hypotension
+- [POCUS — Veia Cava Inferior](https://be-aside.vercel.app/hemo/vci.html): Técnica, fórmulas e interpretação
+- [ECG no Choque](https://be-aside.vercel.app/hemo/ecg.html): Achados que mudam o manejo imediato
+- [SvcO₂ — Saturação Venosa Central](https://be-aside.vercel.app/hemo/scvo2.html): Como interpretar e onde coletar
+- [Δ pCO₂ — Gradiente Venoarterial](https://be-aside.vercel.app/hemo/dpco2.html): O marcador de fluxo que a SvcO₂ não captura
+- [Os 4 Quadrantes SvcO₂ × Δ pCO₂](https://be-aside.vercel.app/hemo/quadrantes.html): Plano cartesiano para interpretar a hipoperfusão
+- [Integração Clínica](https://be-aside.vercel.app/hemo/integracao.html): Gasometria pareada + POCUS VCI em conjunto
+- [Fluxograma Integrado](https://be-aside.vercel.app/hemo/fluxograma.html): Do choque à conduta — padrão, gasometria, POCUS, drogas
+- [Padrões Hemodinâmicos](https://be-aside.vercel.app/hemo/padroes.html): Tabelas de referência por tipo de choque
+- [Drogas Vasoativas](https://be-aside.vercel.app/hemo/drogas.html): Doses, diluições e escalonamento
+- [Calculadoras Hemodinâmicas](https://be-aside.vercel.app/hemo/calc-hemo.html): Δ pCO₂ · VCI · VPP · Winter · DO₂
+- [Prática — Casos Simulados](https://be-aside.vercel.app/hemo/pratica.html): 4 casos cobrindo os 4 quadrantes
+- [Glossário de Siglas](https://be-aside.vercel.app/hemo/siglas.html): Referência rápida de siglas hemodinâmicas
+- [Pearls & Pitfalls](https://be-aside.vercel.app/hemo/pearls.html): Cenários de plantão: acerto, erro comum e o porquê do mecanismo
+
+### Neuro Guide
+
+- [Fisiologia do Neurocrítico](https://be-aside.vercel.app/neuro/fisio.html): Monro-Kellie, PPC, autorregulação cerebral e herniação
+- [Hemodinâmica e Manejo Aprofundado da PIC](https://be-aside.vercel.app/neuro/tce.html): Metas de PAS/PAM por etiologia e algoritmo em degraus
+- [Hemorragia Subaracnóidea (HSA)](https://be-aside.vercel.app/neuro/avc-h.html): Aneurisma roto, escalas, DCI/vasoespasmo e suporte sistêmico
+- [Manejo Ventilatório no Neurocrítico](https://be-aside.vercel.app/neuro/vm.html): PEEP, PaCO₂, hiperventilação e desmame
+- [Manejo Metabólico, Hídrico e Infeccioso](https://be-aside.vercel.app/neuro/metabolico.html): Balanço hídrico, glicemia, sódio, febre e multidisciplinar
+- [Pós-Operatório e Drenagem Neurocirúrgica](https://be-aside.vercel.app/neuro/pos-op.html): DVE, herniações atípicas e anticonvulsivantes perioperatórios
+- [Sedoanalgesia, RASS e Bloqueio Neuromuscular](https://be-aside.vercel.app/neuro/sedoanalgesia.html): Drogas, diluições e metas de RASS por cenário
+
+### Procedimentos
+
+- [Cateter Venoso Central](https://be-aside.vercel.app/proc/cvc.html): Seldinger, escolha de sítio, profundidade e complicações
+- [Linha Arterial](https://be-aside.vercel.app/proc/linha-arterial.html): Técnica, zeragem, Allen test e armadilhas do sítio
+- [Acesso Intraósseo (IO)](https://be-aside.vercel.app/proc/io.html): Quando usar, sítios, técnica e drogas compatíveis
+- [IOT — Sequência Rápida (RSI)](https://be-aside.vercel.app/proc/iot.html): Os 7 P: preparo, posição, pré-O₂, pré-trat., indução, passagem, confirmação
+- [Via Aérea Difícil & CICO](https://be-aside.vercel.app/proc/vad.html): LEMON, algoritmo DAS 4 planos e cricotireoidotomia
+- [Traqueostomia & Cuidados](https://be-aside.vercel.app/proc/traqueo.html): Troca de cânula, endocânula e sistema fechado
+- [Toracocentese](https://be-aside.vercel.app/proc/toracocentese.html): Técnica, limite de drenagem e complicações
+- [Dreno Torácico](https://be-aside.vercel.app/proc/dreno.html): Triângulo de segurança BTS, técnica e regras de clampeamento
+- [Paracentese](https://be-aside.vercel.app/proc/paracentese.html): Coagulopatia não contraindica, Z-track, albumina e SAAG
+- [Punção Lombar](https://be-aside.vercel.app/proc/pl.html): Quando fazer TC antes, manômetro, 4 tubos e tabela de LCR
+- [Pressão Arterial Invasiva (PAI)](https://be-aside.vercel.app/proc/pai.html): Anatomia da onda, amortecimento, PPV e armadilhas
+- [Cateter de Artéria Pulmonar (Swan-Ganz)](https://be-aside.vercel.app/proc/swan.html): Inserção, curvas por câmara, parâmetros e perfis de choque
+- [Cardioversão, Desfibrilação & Marca-passo](https://be-aside.vercel.app/proc/ritmo.html): Choque sincronizado, desfibrilação e marca-passo transcutâneo/transvenoso
+- [Dúvidas de Plantão](https://be-aside.vercel.app/proc/pearls.html): As perguntas que ninguém responde no guia clássico
+
+<!-- /AUTO:conteudo -->

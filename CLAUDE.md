@@ -247,15 +247,63 @@ Exemplos: `Ventilação Mecânica · SDRA`, `Hemodinâmica · POCUS`, `Neurocrí
 
 ---
 
-## Checklist ao adicionar página de conteúdo
+## Conteúdo: fonte única de verdade (`conteudo/manifest.json`)
 
-1. HTML com `data-module` / `data-page`, links de assets e **theme-boot.js**.
-2. Registrar em `MODULE_PAGES` em `app.js`.
-3. Usar `.page-head`, design system, `.table-wrap`, labels semânticos (não chips).
-4. Se meta-resumo: `.hero-meta` com `cols-2`/`cols-3` conforme nº de itens.
-5. Landing do módulo: card + contagem se necessário.
-6. Conteúdo clínico relevante → `npm run extract-knowledge`.
-7. Testar mobile (tabelas stack) e toggle dark/light.
+Desde jul/2026 o mapa do conteúdo do guia mora em **um só lugar**: `conteudo/manifest.json`.
+Módulos, páginas, ordem do menu, cards dos hubs e artigos são descritos ali, em português,
+e todo o resto é **gerado** a partir dele por `scripts/build-content.js`.
+
+O que o gerador reescreve automaticamente:
+
+| Arquivo | O que é gerado |
+|---|---|
+| `assets/app.js` | `MODULES` e `MODULE_PAGES` — menu lateral, prev/próximo e busca ⌘K |
+| `vm\|hemo\|neuro\|proc/index.html` | os cards do hub, a numeração `01, 02, 03…` e o painel "Páginas / Prontas" |
+| `artigos/index.html` | os cards da Central de Conhecimento |
+| `scripts/extract-knowledge.js` | `PAGES_BY_MODULE` — o que alimenta o assistente de IA |
+| `llms.txt` | a seção "Conteúdo completo" (mapa do site para robôs de IA) |
+
+`sitemap.xml`, canonical, Open Graph e Twitter Card continuam vindo de `scripts/seo-tags.js`,
+que varre os arquivos do repositório — não precisa de manutenção manual.
+
+Tudo que é gerado está entre marcadores. **Não editar nada entre eles:**
+
+```
+<!-- AUTO:conteudo -->   …   <!-- /AUTO:conteudo -->     (HTML e llms.txt)
+/* AUTO:conteudo */      …   /* /AUTO:conteudo */         (JS)
+```
+
+Comandos:
+
+```bash
+npm run nova-pagina -- --modulo vm --id peep \
+  --titulo "Titulação da PEEP" \
+  --subtitulo "Tabelas PEEP/FiO₂, PEEP decremental e stress index" \
+  --categoria "Fundamentos"       # cria o HTML, registra e regera tudo
+
+npm run build:content             # regera tudo a partir do manifesto
+npm run check:content             # não escreve nada; falha se algo saiu de sincronia
+```
+
+`check:content` também audita: página no manifesto sem arquivo no disco, página no menu
+sem card no hub, e arquivo `.html` que existe no repositório mas está fora do manifesto
+(órfão — fora do menu, do hub e da IA).
+
+### Checklist ao adicionar página de conteúdo
+
+1. `npm run nova-pagina -- …` — cria o HTML já com `data-module` / `data-page`,
+   theme-boot, canonical/OG/Twitter, e registra a página no manifesto.
+2. Escrever o conteúdo clínico substituindo os `[PREENCHER]`, usando o design system
+   (`.page-head`, `.sec-h`, `.table-wrap`, `.ref`, labels semânticos — não chips).
+3. Se meta-resumo: `.hero-meta` com `cols-2`/`cols-3` conforme nº de itens.
+4. Toda afirmação clínica com `<div class="ref">` citando a fonte.
+5. `npm run extract-knowledge` para o assistente aprender a página nova.
+6. Testar mobile (tabelas stack) e toggle dark/light.
+7. `npm run check:content` antes de commitar.
+
+Para editar ordem do menu, título, subtítulo ou texto do card: mexer **no manifesto** e
+rodar `npm run build:content`. Editar `MODULE_PAGES` ou os cards à mão volta atrás na
+próxima execução do gerador.
 
 ---
 
@@ -359,6 +407,7 @@ Exemplos: `Ventilação Mecânica · SDRA`, `Hemodinâmica · POCUS`, `Neurocrí
 
 ## O que **não** fazer
 
+- **Não editar nada entre os marcadores `AUTO:conteudo`** (app.js, hubs, artigos, extract-knowledge, llms.txt) — a fonte é `conteudo/manifest.json` + `npm run build:content`.
 - Não reintroduzir modo Plantão CSS do **guia** (sucessor = Hub UTI em `/hub-uti/`).
 - Não editar o **bundle** `beaside/hub-uti/assets/*` à mão — publicar a partir do fonte Vite.
 - Não aplicar o design system HTML do guia ao SPA (e vice-versa) sem pedido.

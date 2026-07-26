@@ -8,6 +8,11 @@
 <title>Assistente de Conduta (IA) — be·aside</title>
 <meta name="description" content="Assistente de conduta do be·aside: discuta casos de UTI e emergência — ventilação mecânica, hemodinâmica e neurocrítico — em um único chat, com base no conteúdo validado do site.">
 <meta name="robots" content="noindex, nofollow">
+<meta property="og:image" content="https://be-aside.vercel.app/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="be·aside — raciocínio clínico à beira do leito">
+<meta name="twitter:image" content="https://be-aside.vercel.app/assets/og-image.png">
 <link rel="canonical" href="https://be-aside.vercel.app/consulte/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="be·aside">
@@ -26,6 +31,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/styles.css">
 <style>
+  :root{--col:860px}   /* largura útil da conversa; o resto é respiro nas laterais */
   .as-label{display:block;font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--text3);margin-bottom:8px}
   .as-input,.as-textarea{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:var(--sans);font-size:14px;padding:11px 14px;line-height:1.6}
   .as-input:focus,.as-textarea:focus{outline:none;border-color:var(--accent)}
@@ -38,17 +44,68 @@
   .as-status{font-family:var(--mono);font-size:12px;color:var(--text2)}
   .as-status.err{color:var(--red)}
 
-  /* disclaimer compacto recolhível */
-  .as-disc{border-left:3px solid var(--red);background:rgba(226,75,74,.07);border-radius:0 6px 6px 0;margin:16px 0;font-size:13px;line-height:1.6}
-  .as-disc-bar{display:flex;align-items:center;gap:8px;padding:9px 14px;cursor:pointer;color:#f0a0a0}
-  .as-disc-bar strong{font-weight:500;color:#f0a0a0}
-  .as-disc-bar .as-disc-arrow{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--text3);transition:transform .15s}
-  .as-disc.open .as-disc-arrow{transform:rotate(180deg)}
-  .as-disc-body{display:none;padding:0 14px 12px 14px;color:#e8b0b0;line-height:1.65}
-  .as-disc.open .as-disc-body{display:block}
+  /* ══════════════════════════════════════════════════════════════════
+     App de tela cheia.
 
-  /* layout: coluna de casos (recolhível) + conversa full-width */
-  .case-layout{display:grid;grid-template-columns:240px 1fr;gap:0;margin-top:14px;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--bg2);min-height:520px}
+     A /consulte/ não é uma página de conteúdo: é uma ferramenta usada
+     durante o plantão, muitas vezes com uma mão só e o paciente na
+     frente. Por isso ela ocupa a janela inteira, como Claude/ChatGPT —
+     quem rola é a lista de mensagens, nunca a página. Nada de descer
+     por título e subtítulo antes de chegar ao campo de escrever.
+
+     A navegação do site não foi removida: o sidebar dos módulos vira
+     gaveta, aberta pelo botão "Menu" do cabeçalho (o mesmo mecanismo
+     que já existia no mobile). O ⌘K continua funcionando.
+     ══════════════════════════════════════════════════════════════════ */
+  html,body{height:100%;overflow:hidden}
+  .main{
+    margin-left:0;margin-top:var(--header-h);padding:0;max-width:none;width:100%;
+    height:calc(100vh - var(--header-h));height:calc(100dvh - var(--header-h));overflow:hidden;
+  }
+  #assistente{padding:0;margin:0;max-width:none;height:100%;display:flex;flex-direction:column;min-height:0}
+  .sidebar{transform:translateX(-100%);z-index:200}
+  .sidebar.open{transform:translateX(0)}
+  .menu-btn{display:block}
+  #progress{display:none}
+
+  /* barra compacta: identidade + aviso de segurança sempre à vista */
+  .app-bar{flex:0 0 auto;display:flex;align-items:center;gap:14px;padding:9px 18px;border-bottom:1px solid var(--border);background:var(--bg2)}
+  /* Vermelho de TEXTO do aviso. É o mesmo par do .warn-box no styles.css:
+     var(--red) puro serve para borda, ponto e ícone, mas num parágrafo de
+     12px no tema claro (#d63d3d no branco) fica no limite do contraste — e
+     este é justamente o texto que diz que a resposta não substitui
+     julgamento clínico. É o que menos pode ficar difícil de ler. */
+  html{--aviso-txt:#f0b8b8}
+  html[data-theme="light"]{--aviso-txt:#9f2d2d}
+  /* Só para leitor de tela: sem as etiquetas de turno, quem não vê a bolha
+     precisa continuar sabendo quem falou. */
+  .vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+    clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
+  .app-bar-id{display:flex;align-items:baseline;gap:10px;min-width:0}
+  .app-bar-eyebrow{font-family:var(--mono);font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);flex-shrink:0}
+  .app-bar-title{font-size:13.5px;font-weight:600;color:var(--text);margin:0;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .app-bar-disc{display:flex;align-items:center;gap:8px;margin-left:auto;min-width:0;cursor:pointer;
+    font-family:var(--sans);font-size:12px;line-height:1.4;color:var(--aviso-txt);text-align:left;
+    background:rgba(226,75,74,.09);border:1px solid rgba(226,75,74,.28);border-radius:7px;padding:6px 11px;transition:background .12s}
+  .app-bar-disc:hover{background:rgba(226,75,74,.16)}
+  .app-bar-disc-txt{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .app-bar-disc-arrow{font-family:var(--mono);font-size:10px;color:var(--aviso-txt);opacity:.7;transition:transform .15s;flex-shrink:0}
+  .app-bar-disc[aria-expanded="true"] .app-bar-disc-arrow{transform:rotate(180deg)}
+  .as-disc-body{flex:0 0 auto;border-left:3px solid var(--red);border-bottom:1px solid var(--border);
+    background:rgba(226,75,74,.07);padding:11px 18px;font-size:12.5px;line-height:1.65;color:var(--aviso-txt)}
+  .as-disc-body[hidden]{display:none}
+
+  /* porta de senha: cartão centrado, não um formulário solto no topo */
+  #as-senha-box{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:24px}
+  .senha-card{width:min(400px,100%);background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:26px 24px}
+  .senha-title{font-size:16px;font-weight:600;color:var(--text);margin-bottom:6px}
+  .senha-msg{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:18px}
+  .senha-row{display:flex;gap:10px;align-items:center}
+  .senha-row .as-input{flex:1}
+  #as-senha-status{margin-top:8px}
+
+  /* layout: coluna de casos (recolhível) + conversa, ocupando o que sobra */
+  .case-layout{flex:1;min-height:0;position:relative;display:grid;grid-template-columns:252px 1fr;gap:0;margin:0;border:none;border-radius:0;overflow:hidden;background:var(--bg2);transition:grid-template-columns .18s var(--ease)}
   .case-layout.collapsed{grid-template-columns:0 1fr}
   .case-col{border-right:1px solid var(--border);background:var(--bg2);display:flex;flex-direction:column;overflow:hidden;transition:opacity .15s}
   .case-layout.collapsed .case-col{opacity:0;pointer-events:none;border-right:none}
@@ -66,46 +123,85 @@
   .case-item:hover .case-del{opacity:1}
   .case-del:hover{color:var(--red)}
   .case-empty{padding:16px;font-size:12px;color:var(--text3);line-height:1.5}
+  .case-scrim{display:none}
 
-  .chat{display:flex;flex-direction:column;min-height:520px;min-width:0}
-  .chat-head{display:flex;align-items:center;gap:10px;padding:14px 20px;border-bottom:1px solid var(--border)}
+  .chat{display:flex;flex-direction:column;min-height:0;min-width:0;background:var(--bg)}
+  .chat-head{flex:0 0 auto;display:flex;align-items:center;gap:10px;padding:11px 20px;border-bottom:1px solid var(--border);background:var(--bg)}
   .chat-toggle{background:none;border:1px solid var(--border);color:var(--text2);border-radius:6px;width:30px;height:30px;cursor:pointer;font-size:14px;line-height:1;flex-shrink:0;transition:all .12s}
   .chat-toggle:hover{border-color:var(--border2);color:var(--text);background:var(--bg3)}
-  .chat-title{font-size:16px;font-weight:600;color:#e8ecf2}
+  /* O nome do caso não pode empurrar a conversa pra baixo: corta com reticências. */
+  .chat-title{font-size:16px;font-weight:600;color:var(--text);min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .chat-rename{font-family:var(--mono);font-size:10px;color:var(--text3);background:none;border:none;cursor:pointer;text-decoration:underline}
   .chat-rename:hover{color:var(--accent)}
-  .msgs{flex:1;display:flex;flex-direction:column;gap:16px;padding:20px;overflow-y:auto}
-  .msg{max-width:90%;animation:msgIn .22s ease}
-  @keyframes msgIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
-  .msg.user{align-self:flex-end;max-width:75%}
-  .msg.assistant{align-self:flex-start;width:100%}
-  .msg-role{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);margin-bottom:6px}
-  .msg.user .msg-role{justify-content:flex-end}
-  .msg-avatar{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border-radius:50%;font-size:8.5px;font-weight:600;letter-spacing:0;flex-shrink:0}
-  .msg-avatar-user{background:var(--bg4);border:1px solid var(--border2);color:var(--text2)}
-  .msg-avatar-ai{background:rgba(var(--accent-rgb),.16);border:1px solid rgba(var(--accent-rgb),.4);color:var(--accent)}
-  .msg-time{color:var(--text3);opacity:.7;font-size:8.5px}
-  .msg-time::before{content:'·';margin-right:6px}
-  .bubble{position:relative;border-radius:10px;padding:12px 15px;font-size:14px;line-height:1.7}
-  .msg.user .bubble{background:var(--bg4);border:1px solid var(--border2);white-space:pre-wrap}
-  .msg.assistant .bubble{background:var(--bg2);border:1px solid var(--border)}
-  .bubble-copy{position:absolute;top:8px;right:8px;opacity:0;transition:opacity .12s;font-family:var(--mono);font-size:10px;color:var(--text3);background:var(--bg3);border:1px solid var(--border);border-radius:5px;padding:3px 8px;cursor:pointer}
-  .msg.assistant:hover .bubble-copy{opacity:1}
-  .bubble-copy:hover{color:var(--accent);border-color:var(--accent-d)}
+  .msgs{flex:1;min-height:0;display:flex;flex-direction:column;gap:18px;overflow-y:auto;
+    padding:24px max(20px,calc((100% - var(--col))/2)) 28px}
+  /* ══ Bolhas: o mesmo desenho da prévia da home ═════════════════
+     Na home o assistente aparece como uma conversa: pergunta em bolha
+     escura à direita, selo "IA" quadrado à esquerda e a resposta num
+     cartão de canto arredondado. Quem vê aquilo e clica pra cá tem que
+     reconhecer a mesma coisa — só que agora respondendo de verdade.
+     A cor é a verde da marca, não o vermelho do exemplo da home.
+
+     Sumiu a etiqueta "PLANTONISTA / ASSISTENTE" em cima de cada linha:
+     numa conversa de duas pessoas ninguém precisa que digam quem falou,
+     e aquela fileira de maiúscula em mono a cada turno era o que fazia
+     a tela parecer um log de sistema em vez de um chat.
+     ═════════════════════════════════════════════════ */
+  .msg{animation:msgIn .24s var(--ease)}
+  @keyframes msgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .msg.user{align-self:flex-end;max-width:78%;display:flex;flex-direction:column;align-items:flex-end}
+  .msg.assistant{align-self:stretch;display:flex;gap:10px;align-items:flex-start}
+  /* selo do assistente: o mesmo quadrado da home, no accent do site */
+  .msg-avatar{flex:none;width:24px;height:24px;border-radius:8px;margin-top:2px;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(var(--accent-rgb),.14);color:var(--accent);
+    font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.02em}
+  .msg-col{flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start}
+  .bubble{position:relative;font-size:14px;line-height:1.7;max-width:100%}
+  /* a pergunta: bolha cheia, com o canto de baixo cortado do lado de quem fala */
+  .msg.user .bubble{background:var(--bg4);border:1px solid var(--border2);color:var(--text);
+    border-radius:16px 16px 4px 16px;padding:11px 15px;white-space:pre-wrap}
+  /* a resposta: cartão, não bolha — conduta longa com tabela e lista se lê melhor assim */
+  .msg.assistant .bubble{background:var(--bg2);border:1px solid var(--border);
+    border-radius:4px 16px 16px 16px;padding:14px 17px;width:100%}
+  /* rodapé do turno: horário sempre à vista, copiar aparece no hover.
+     O botão saiu de cima do texto, onde tapava a primeira linha da conduta. */
+  .msg-foot{display:flex;align-items:center;gap:8px;margin-top:6px;padding:0 4px;min-height:18px}
+  .msg.user .msg-foot{justify-content:flex-end}
+  /* --text3 é o tom mais apagado do sistema e serve para etiqueta dentro de
+     um bloco já contrastado. Solto sobre o fundo da conversa, num mono de
+     9,5px, ele fica abaixo do limite de leitura — principalmente no claro. */
+  .msg-time{font-family:var(--mono);font-size:9.5px;color:var(--text2)}
+  /* No celular este botão fica visível o tempo todo: é controle, não etiqueta,
+     e precisa do contraste de --text2 para ser clicável às 3h da manhã. */
+  .bubble-copy{font-family:var(--mono);font-size:10px;color:var(--text2);background:none;
+    border:1px solid transparent;border-radius:6px;padding:2px 8px;cursor:pointer;
+    opacity:0;transition:opacity .14s,color .14s,background .14s,border-color .14s}
+  .msg.assistant:hover .bubble-copy,.bubble-copy:focus-visible{opacity:1}
+  .bubble-copy:hover{color:var(--accent);background:rgba(var(--accent-rgb),.08);border-color:var(--accent-d)}
+  .bubble-copy:focus-visible{outline:2px solid rgba(var(--accent-rgb),.45);outline-offset:2px}
   .stream-cursor{display:inline-block;width:6px;height:13px;background:var(--accent);margin-left:2px;vertical-align:-2px;animation:cursorBlink .8s step-end infinite}
   @keyframes cursorBlink{0%,50%{opacity:1}51%,100%{opacity:0}}
-  .bubble-typing{display:inline-flex;gap:5px;padding:14px 16px}
-  .typing-dot{width:6px;height:6px;border-radius:50%;background:var(--text3);animation:typingBounce 1.2s infinite ease-in-out}
+  /* Os pontinhos são a única coisa que se move na tela enquanto a IA pensa.
+     Na cor do accent, como na home — dizem "está vindo", não "travou". */
+  /* A pílula de "digitando" encolhe até os três pontos. Um cartão vazio de
+     860px com três bolinhas no canto parecia resposta quebrada, não espera. */
+  .msg.assistant .bubble.bubble-typing{display:inline-flex;gap:5px;padding:15px 17px;width:auto;align-self:flex-start}
+  .typing-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:.55;animation:typingBounce 1.1s infinite ease-in-out}
   .typing-dot:nth-child(2){animation-delay:.15s}
   .typing-dot:nth-child(3){animation-delay:.3s}
   @keyframes typingBounce{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-5px);opacity:1}}
-  .bubble h2{font-size:14px;font-weight:600;color:var(--accent);margin:16px 0 7px;font-family:var(--sans)}
-  .bubble h2:first-child{margin-top:4px}
-  .bubble h3{font-size:13.5px;margin:14px 0 6px}
+  /* `.msg` na frente por especificidade: sem ele, a regra global de h2 do
+     tema claro ganhava e o título da conduta perdia o verde só no claro. */
+  .msg .bubble h2{font-size:14px;font-weight:600;color:var(--accent);margin:16px 0 7px;font-family:var(--sans)}
+  .msg .bubble h2:first-child{margin-top:4px}
+  .msg .bubble h3{font-size:13.5px;margin:14px 0 6px;color:var(--text)}
   .bubble p{margin:7px 0}
   .bubble ul,.bubble ol{margin:7px 0 7px 20px;padding:0}
   .bubble li{margin:4px 0}
-  .bubble strong{color:#e8ecf2;font-weight:500}
+  /* O negrito da resposta quase sempre é a dose, o alvo ou o parâmetro.
+     Era um hex escuro cravado: no tema claro a dose sumia na página branca. */
+  .bubble strong{color:var(--text);font-weight:600}
   .bubble em{font-style:italic;color:var(--text2)}
   .bubble table{border-collapse:collapse;width:100%;margin:10px 0;font-size:13px}
   .bubble th,.bubble td{border:1px solid var(--border);padding:6px 9px;text-align:left;vertical-align:top}
@@ -114,11 +210,14 @@
   .bubble pre code{font-family:var(--mono);font-size:12.5px;color:var(--text);background:none;border:0;padding:0;white-space:pre}
   .bubble code{font-family:var(--mono);font-size:12.5px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:1px 5px}
   .bubble hr{border:none;border-top:1px solid var(--border);margin:12px 0}
-  .chat-empty{flex:1;display:flex;align-items:center;justify-content:center;color:var(--text3);font-size:13px;text-align:center;line-height:1.6;padding:30px}
+  .chat-empty{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--text3);font-size:13px;text-align:center;line-height:1.7;padding:30px}
+  .chat-empty strong{color:var(--text2)}
 
-  .composer{display:flex;gap:10px;align-items:flex-end;padding:14px 20px;border-top:1px solid var(--border);background:var(--bg2)}
-  .composer .as-textarea{flex:1}
-  .chat-status{font-family:var(--mono);font-size:12px;color:var(--text2);padding:0 20px}
+  .composer{flex:0 0 auto;display:flex;gap:10px;align-items:flex-end;border-top:1px solid var(--border);background:var(--bg);
+    padding:14px max(20px,calc((100% - var(--col))/2)) 18px}
+  .composer .as-textarea{flex:1;min-height:46px;max-height:34vh;resize:none;overflow-y:auto;border-radius:12px;padding:13px 15px}
+  .composer .as-btn{padding:13px 20px}
+  .chat-status{flex:0 0 auto;font-family:var(--mono);font-size:12px;color:var(--text2);padding:0 max(20px,calc((100% - var(--col))/2))}
   .chat-status.err{color:var(--red)}
   .spinner{display:inline-block;width:13px;height:13px;border:2px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;vertical-align:-2px;margin-right:6px}
   @keyframes spin{to{transform:rotate(360deg)}}
@@ -127,45 +226,76 @@
   .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(2px);display:none;align-items:center;justify-content:center;z-index:200}
   .modal-backdrop.show{display:flex}
   .modal{background:var(--bg2);border:1px solid var(--border2);border-radius:12px;padding:22px;width:min(440px,calc(100vw - 40px));box-shadow:0 20px 60px rgba(0,0,0,.5)}
-  .modal-title{font-size:15px;font-weight:600;color:#e8ecf2;margin-bottom:6px}
+  .modal-title{font-size:15px;font-weight:600;color:var(--text);margin-bottom:6px}
   .modal-msg{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:16px}
   .modal input{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:var(--sans);font-size:14px;padding:11px 14px;margin-bottom:18px}
   .modal input:focus{outline:none;border-color:var(--accent)}
   .modal-actions{display:flex;justify-content:flex-end;gap:10px}
 
-  @media(max-width:760px){
-    .case-layout{grid-template-columns:160px 1fr}
-    .case-layout.collapsed{grid-template-columns:0 1fr}
+  @media(max-width:768px){
+    /* No celular não cabem duas colunas. A lista de casos vira gaveta por
+       cima da conversa — a conversa nunca é espremida a 160px. */
+    .main{margin-top:calc(var(--header-h) + env(safe-area-inset-top,0px));
+          height:calc(100dvh - var(--header-h) - env(safe-area-inset-top,0px))}
+    .case-layout,.case-layout.collapsed{grid-template-columns:1fr}
+    .case-col{position:absolute;top:0;bottom:0;left:0;width:min(282px,80vw);z-index:60;
+      background:var(--bg2);box-shadow:0 0 40px rgba(0,0,0,.55);transition:transform .2s var(--ease),opacity .2s}
+    .case-layout.collapsed .case-col{transform:translateX(-100%)}
+    .case-scrim{display:block;position:absolute;inset:0;z-index:55;background:rgba(0,0,0,.55);transition:opacity .2s}
+    .case-layout.collapsed .case-scrim{opacity:0;pointer-events:none}
+    /* Cabeçalho do caso numa linha só. Antes o nome quebrava em duas e
+       comia 40px da conversa — no celular isso é meia mensagem. */
+    .chat-head{padding:9px 12px;gap:8px}
+    .chat-title{font-size:14.5px}
+    .chat-rename{flex-shrink:0}
     .msg.user{max-width:88%}
+    /* Celular não tem hover: se o copiar só aparecesse no hover, no plantão
+       ele simplesmente não existiria. Aqui fica visível o tempo todo. */
+    .bubble-copy{opacity:1}
+    .msg.assistant{gap:8px}
+    .msg-avatar{width:22px;height:22px;border-radius:7px}
+    .app-bar{padding:8px 14px;gap:10px}
+    .app-bar-eyebrow{display:none}
+    .app-bar-disc-txt{display:none}
+    .app-bar-disc{padding:6px 9px}
+    .msgs{padding:18px 14px 22px}
+    .composer{padding:12px 14px 14px}
+    .chat-status{padding:0 14px}
   }
 </style>
 </head>
 <body data-module="consulte" data-page="assistente">
 <main class="main">
 <section class="section" id="assistente">
-  <header class="page-head">
-    <div class="hero-eyebrow">Consulte e Resolva · IA</div>
-      <h1 class="section-title">Assistente de Conduta (IA)</h1>
-      <p class="section-subtitle">Um só chat para o paciente crítico — ventilação mecânica, hemodinâmica e neurocrítico integrados. Discuta cada caso em conversa contínua; o histórico fica salvo neste navegador.</p>
-  </header>
-
-  <div class="as-disc" id="as-disc">
-    <div class="as-disc-bar" onclick="document.getElementById('as-disc').classList.toggle('open')">
-      <strong>⚠ Ferramenta de apoio — não substitui o julgamento clínico.</strong>
-      <span class="as-disc-arrow">▾</span>
+  <div class="app-bar">
+    <div class="app-bar-id">
+      <span class="app-bar-eyebrow">Consulte e Resolva</span>
+      <h1 class="app-bar-title">Assistente de Conduta (IA)</h1>
     </div>
-    <div class="as-disc-body">
-      As respostas são geradas por IA (Claude) e podem conter erros. Toda conduta é de responsabilidade do plantonista. <strong>Não use dados que identifiquem o paciente</strong> (nome real, registro): use apelido/leito e apenas dados clínicos.
-    </div>
+    <button type="button" class="app-bar-disc" id="as-disc-btn" aria-expanded="false" aria-controls="as-disc-body" onclick="toggleDisc()">
+      <span aria-hidden="true">⚠</span>
+      <span class="app-bar-disc-txt">Apoio à decisão — não substitui o julgamento clínico</span>
+      <span class="app-bar-disc-arrow" aria-hidden="true">▾</span>
+    </button>
   </div>
 
-  <div id="as-senha-box" style="margin:18px 0">
-    <label class="as-label" for="as-senha">Senha de acesso</label>
-    <div style="display:flex;gap:10px;align-items:center;max-width:380px">
-      <input type="password" id="as-senha" class="as-input" autocomplete="off" placeholder="••••••••" style="max-width:260px">
-      <button class="as-btn" onclick="salvarSenha()">OK</button>
+  <!-- O aviso abre sozinho na primeira visita deste navegador: quem nunca leu,
+       lê. Depois fica recolhido no chip acima, que nunca some da tela. -->
+  <div class="as-disc-body" id="as-disc-body" hidden>
+    As respostas são geradas por IA (Claude) e podem conter erros. Toda conduta é de responsabilidade do plantonista. <strong>Não use dados que identifiquem o paciente</strong> (nome real, registro): use apelido/leito e apenas dados clínicos.
+  </div>
+
+  <div id="as-senha-box">
+    <div class="senha-card">
+      <div class="senha-title">Acesso restrito</div>
+      <p class="senha-msg">O assistente é de uso interno da equipe. Informe a senha para abrir o chat — ela vale enquanto esta aba estiver aberta.</p>
+      <label class="as-label" for="as-senha">Senha de acesso</label>
+      <div class="senha-row">
+        <input type="password" id="as-senha" class="as-input" autocomplete="off" placeholder="••••••••">
+        <button class="as-btn" onclick="salvarSenha()">Entrar</button>
+      </div>
+      <div class="as-status" id="as-senha-status"></div>
     </div>
-    <div class="as-status" id="as-senha-status" style="margin-top:6px"></div>
   </div>
 
   <div class="case-layout" id="as-app" style="display:none">
@@ -176,6 +306,11 @@
       </div>
       <div class="case-items" id="case-items"></div>
     </aside>
+
+    <!-- Véu do celular: escurece a conversa enquanto a gaveta de casos está
+         aberta e fecha a gaveta ao toque, como qualquer app. No desktop
+         não existe (display:none) porque lá as duas colunas convivem. -->
+    <div class="case-scrim" onclick="toggleCasos()" aria-hidden="true"></div>
 
     <div class="chat" id="chat">
       <!-- preenchido por JS -->
@@ -310,7 +445,11 @@ async function novoCaso(){
   casos.unshift(c);casoAtivo=c.id;saveCasos();render();
   setTimeout(()=>{const t=document.getElementById('composer-input');if(t)t.focus();},50);
 }
-function abrirCaso(id){casoAtivo=id;render();}
+function abrirCaso(id){
+  casoAtivo=id;render();
+  if(ehEstreito())document.getElementById('as-app').classList.add('collapsed');
+  setTimeout(()=>{const t=document.getElementById('composer-input');if(t&&!ehEstreito())t.focus();},50);
+}
 async function apagarCaso(id,e){
   e.stopPropagation();
   const c=getCaso(id);if(!c)return;
@@ -327,6 +466,17 @@ async function renomearCaso(id){
   c.nome=nome;c.updatedAt=Date.now();saveCasos();render();
 }
 function toggleCasos(){document.getElementById('as-app').classList.toggle('collapsed');}
+const LS_DISC='beaside-consulte-aviso-lido';
+function toggleDisc(){
+  const body=document.getElementById('as-disc-body');
+  const btn=document.getElementById('as-disc-btn');
+  const abrir=body.hasAttribute('hidden');
+  if(abrir)body.removeAttribute('hidden');else body.setAttribute('hidden','');
+  btn.setAttribute('aria-expanded',abrir?'true':'false');
+  try{localStorage.setItem(LS_DISC,'1');}catch(e){}
+}
+// Largura de celular: a lista de casos é gaveta, e escolher um caso fecha ela.
+function ehEstreito(){return window.matchMedia('(max-width:768px)').matches;}
 
 // ----- Render -----
 function render(){
@@ -353,7 +503,14 @@ function renderChat(){
         '<button class="chat-toggle" title="Mostrar/ocultar casos" onclick="toggleCasos()">☰</button>'+
         '<span class="chat-title" style="color:var(--text3);font-weight:400">Nenhum caso aberto</span>'+
       '</div>'+
-      '<div class="chat-empty">Selecione um caso ou crie um&nbsp;<strong>+&nbsp;Novo</strong>&nbsp;para começar.</div>';
+      '<div class="chat-empty">'+
+        '<div style="max-width:440px">'+
+          '<strong>Um só chat para o paciente crítico.</strong><br>'+
+          'Ventilação mecânica, hemodinâmica, neurocrítico e procedimentos no mesmo raciocínio. '+
+          'Cada caso é uma conversa contínua, salva neste navegador.'+
+        '</div>'+
+        '<button class="as-btn" style="margin-top:18px" onclick="novoCaso()">+ Novo caso</button>'+
+      '</div>';
     return;
   }
   let msgsHtml='';
@@ -372,31 +529,59 @@ function renderChat(){
     '<div class="msgs" id="msgs">'+msgsHtml+'</div>'+
     '<div class="chat-status" id="chat-status"></div>'+
     '<div class="composer">'+
-      '<textarea class="as-textarea" id="composer-input" rows="2" placeholder="'+
+      '<textarea class="as-textarea" id="composer-input" rows="1" placeholder="'+
         (firstTurn?'Ex: Masc, 70 kg, choque séptico por PNM. PAM 58 com Nora 0,3 μg/kg/min. Lactato 4,2. Também em VM: AC-VC, VC 480, PEEP 10, FiO2 0,7, Pplat 31. Qual a vazão da bomba de Nora e o próximo passo?':'Pergunta de acompanhamento sobre este caso…')+
       '"></textarea>'+
       '<button class="as-btn" id="composer-send" onclick="enviar()">Enviar</button>'+
     '</div>';
   const ta=document.getElementById('composer-input');
-  ta.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key==='Enter'){e.preventDefault();enviar();}});
+  // Enter envia, Shift+Enter quebra linha — como em qualquer chat. No celular
+  // o teclado virtual não manda Enter da mesma forma, então lá vale o botão.
+  ta.addEventListener('keydown',e=>{
+    if(e.key==='Enter'&&(e.metaKey||e.ctrlKey)){e.preventDefault();enviar();return;}
+    if(e.key==='Enter'&&!e.shiftKey&&!ehEstreito()){e.preventDefault();enviar();}
+  });
+  ta.addEventListener('input',()=>autoGrow(ta));
+  autoGrow(ta);
   scrollMsgs();
 }
-function scrollMsgs(){const m=document.getElementById('msgs');if(m)m.scrollTop=m.scrollHeight;window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});}
+// A página não rola mais (o app ocupa a janela). Rolar a janela aqui só
+// causaria um salto estranho — quem rola é a lista de mensagens.
+// Descer até a última mensagem. Vai duas vezes de propósito: no celular a
+// tabela da resposta é reempilhada pelo CSS depois da primeira medida, e a
+// altura muda — sem o segundo quadro o plantonista abre o caso no meio da
+// resposta anterior, não na última coisa que ele perguntou.
+function scrollMsgs(){
+  const ir=()=>{const m=document.getElementById('msgs');if(m)m.scrollTop=m.scrollHeight;};
+  ir();
+  requestAnimationFrame(()=>{ir();requestAnimationFrame(ir);});
+}
 
 // ----- Renderização de mensagem individual (avatar, horário, ação de copiar) -----
 function fmtTime(ts){if(!ts)return '';const d=new Date(ts);return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');}
+// A pergunta é uma bolha solta à direita; a resposta é um cartão com o selo
+// "IA" ao lado. O horário e o "copiar" ficam num rodapé abaixo do turno — o
+// botão dentro da bolha tapava a primeira linha da conduta, que é justamente
+// a que a pessoa lê primeiro.
 function renderMsg(m,idx){
-  const isUser=m.role==='user';
-  const avatar=isUser?'<span class="msg-avatar msg-avatar-user">Dr</span>':'<span class="msg-avatar msg-avatar-ai">IA</span>';
-  const roleLabel=isUser?'Plantonista':'Assistente';
   const timeHtml=m.ts?'<span class="msg-time">'+fmtTime(m.ts)+'</span>':'';
-  const roleRow=isUser
-    ? ('<div class="msg-role">'+timeHtml+'<span>'+roleLabel+'</span>'+avatar+'</div>')
-    : ('<div class="msg-role">'+avatar+'<span>'+roleLabel+'</span>'+timeHtml+'</div>');
-  const copyBtn=isUser?'':'<button class="bubble-copy" onclick="copiarMsg(this,'+idx+')" type="button">copiar</button>';
-  const bodyHtml=isUser?esc(m.content):mdToHtml(m.content);
-  return '<div class="msg '+m.role+'" data-idx="'+idx+'">'+roleRow+
-    '<div class="bubble" id="bubble-'+idx+'">'+copyBtn+bodyHtml+'</div></div>';
+  if(m.role==='user'){
+    return '<div class="msg user" data-idx="'+idx+'">'+
+      '<span class="vh">Plantonista:</span>'+
+      '<div class="bubble" id="bubble-'+idx+'">'+esc(m.content)+'</div>'+
+      (timeHtml?'<div class="msg-foot">'+timeHtml+'</div>':'')+
+    '</div>';
+  }
+  return '<div class="msg assistant" data-idx="'+idx+'">'+
+    '<span class="msg-avatar" aria-hidden="true">IA</span>'+
+    '<span class="vh">Assistente:</span>'+
+    '<div class="msg-col">'+
+      '<div class="bubble" id="bubble-'+idx+'">'+mdToHtml(m.content)+'</div>'+
+      '<div class="msg-foot">'+timeHtml+
+        '<button class="bubble-copy" onclick="copiarMsg(this,'+idx+')" type="button">copiar</button>'+
+      '</div>'+
+    '</div>'+
+  '</div>';
 }
 function copiarMsg(btn,idx){
   const c=getCaso(casoAtivo);if(!c||!c.messages[idx])return;
@@ -412,8 +597,9 @@ function showTypingIndicator(){
   const empty=msgs.querySelector('.chat-empty');if(empty)empty.remove();
   const div=document.createElement('div');
   div.className='msg assistant';div.id='typing-indicator';
-  div.innerHTML='<div class="msg-role"><span class="msg-avatar msg-avatar-ai">IA</span><span>Assistente</span></div>'+
-    '<div class="bubble bubble-typing"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div>';
+  div.innerHTML='<span class="msg-avatar" aria-hidden="true">IA</span>'+
+    '<div class="msg-col"><div class="bubble bubble-typing" role="status" aria-label="Assistente escrevendo">'+
+    '<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div></div>';
   msgs.appendChild(div);
   msgs.scrollTop=msgs.scrollHeight;
 }
@@ -480,8 +666,10 @@ function enviar(){
     if(msgs){
       const div=document.createElement('div');
       div.className='msg assistant';div.dataset.idx=novoIdx;
-      div.innerHTML='<div class="msg-role"><span class="msg-avatar msg-avatar-ai">IA</span><span>Assistente</span><span class="msg-time">'+fmtTime(Date.now())+'</span></div>'+
-        '<div class="bubble" id="bubble-'+novoIdx+'"></div>';
+      div.innerHTML='<span class="msg-avatar" aria-hidden="true">IA</span>'+
+        '<span class="vh">Assistente:</span>'+
+        '<div class="msg-col"><div class="bubble" id="bubble-'+novoIdx+'"></div>'+
+        '<div class="msg-foot"><span class="msg-time">'+fmtTime(Date.now())+'</span></div></div>';
       msgs.appendChild(div);
       msgs.scrollTop=msgs.scrollHeight;
       const bubbleEl=document.getElementById('bubble-'+novoIdx);
@@ -502,6 +690,9 @@ function enviar(){
 }
 
 // ----- utils -----
+// O campo cresce com o texto até o teto do CSS (max-height), como no Claude:
+// caso clínico longo não fica preso em duas linhas.
+function autoGrow(ta){ta.style.height='auto';ta.style.height=ta.scrollHeight+'px';}
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function escAttr(s){return esc(s).replace(/"/g,'&quot;');}
 function mdToHtml(md){
@@ -548,10 +739,20 @@ function mdToHtml(md){
 // ----- boot -----
 loadCasos();
 casoAtivo=casos.length?casos[0].id:null;
+// No celular a gaveta de casos começa fechada — a conversa é o que importa.
+if(ehEstreito())document.getElementById('as-app').classList.add('collapsed');
+// Primeira visita: o aviso de segurança aparece aberto.
+let jaLeu=false;try{jaLeu=!!localStorage.getItem(LS_DISC);}catch(e){}
+if(!jaLeu){
+  document.getElementById('as-disc-body').removeAttribute('hidden');
+  document.getElementById('as-disc-btn').setAttribute('aria-expanded','true');
+}
 if(getSenha()){
   document.getElementById('as-senha-box').style.display='none';
   document.getElementById('as-app').style.display='grid';
   render();
+}else{
+  document.getElementById('as-senha').focus();
 }
 document.getElementById('as-senha').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();salvarSenha();}});
 </script>

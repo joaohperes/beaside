@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://be-aside.vercel.app/artigos/dissincronia-paciente-ventilador.html</loc></url>
-  <url><loc>https://be-aside.vercel.app/artigos/hipotensao-pos-intubacao.html</loc></url>
   <url><loc>https://be-aside.vercel.app/artigos/</loc></url>
-  <url><loc>https://be-aside.vercel.app/artigos/medidas-gerais-neurocritico.html</loc></url>
-  <url><loc>https://be-aside.vercel.app/artigos/peep-alta-queda-pressao.html</loc></url>
-  <url><loc>https://be-aside.vercel.app/artigos/perguntas-plantao-hemodinamica.html</loc></url>
-  <url><loc>https://be-aside.vercel.app/artigos/rebaixamento-consciencia-paciente-ventilado.html</loc></url>
-  <url><loc>https://be-aside.vercel.app/artigos/sepsis-2026-o-que-mudou.html</loc></url>
-  <url><loc>https://be-aside.vercel.app/artigos/shiley-saiu-decanulacao-acidental.html</loc></url>
   <url><loc>https://be-aside.vercel.app/hemo/calc-hemo.html</loc></url>
   <url><loc>https://be-aside.vercel.app/hemo/do2.html</loc></url>
   <url><loc>https://be-aside.vercel.app/hemo/dpco2.html</loc></url>
@@ -36,26 +28,19 @@
   <url><loc>https://be-aside.vercel.app/institucional/sobre.html</loc></url>
   <url><loc>https://be-aside.vercel.app/institucional/termos.html</loc></url>
   <url><loc>https://be-aside.vercel.app/neuro/avc-h.html</loc></url>
-  <url><loc>https://be-aside.vercel.app/neuro/avc-i.html</loc></url>
-  <url><loc>https://be-aside.vercel.app/neuro/calc-neuro.html</loc></url>
-  <url><loc>https://be-aside.vercel.app/neuro/enc.html</loc></url>
   <url><loc>https://be-aside.vercel.app/neuro/fisio.html</loc></url>
   <url><loc>https://be-aside.vercel.app/neuro/</loc></url>
   <url><loc>https://be-aside.vercel.app/neuro/metabolico.html</loc></url>
-  <url><loc>https://be-aside.vercel.app/neuro/pearls.html</loc></url>
   <url><loc>https://be-aside.vercel.app/neuro/pos-op.html</loc></url>
   <url><loc>https://be-aside.vercel.app/neuro/sedoanalgesia.html</loc></url>
   <url><loc>https://be-aside.vercel.app/neuro/tce.html</loc></url>
   <url><loc>https://be-aside.vercel.app/neuro/vm.html</loc></url>
-  <url><loc>https://be-aside.vercel.app/proc/acessos.html</loc></url>
   <url><loc>https://be-aside.vercel.app/proc/cvc.html</loc></url>
-  <url><loc>https://be-aside.vercel.app/proc/drenagem.html</loc></url>
   <url><loc>https://be-aside.vercel.app/proc/dreno.html</loc></url>
   <url><loc>https://be-aside.vercel.app/proc/</loc></url>
   <url><loc>https://be-aside.vercel.app/proc/io.html</loc></url>
   <url><loc>https://be-aside.vercel.app/proc/iot.html</loc></url>
   <url><loc>https://be-aside.vercel.app/proc/linha-arterial.html</loc></url>
-  <url><loc>https://be-aside.vercel.app/proc/monitorizacao.html</loc></url>
   <url><loc>https://be-aside.vercel.app/proc/pai.html</loc></url>
   <url><loc>https://be-aside.vercel.app/proc/paracentese.html</loc></url>
   <url><loc>https://be-aside.vercel.app/proc/pearls.html</loc></url>
@@ -65,7 +50,6 @@
   <url><loc>https://be-aside.vercel.app/proc/toracocentese.html</loc></url>
   <url><loc>https://be-aside.vercel.app/proc/traqueo.html</loc></url>
   <url><loc>https://be-aside.vercel.app/proc/vad.html</loc></url>
-  <url><loc>https://be-aside.vercel.app/proc/vias-aereas.html</loc></url>
   <url><loc>https://be-aside.vercel.app/vm/bnm.html</loc></url>
   <url><loc>https://be-aside.vercel.app/vm/calculadora.html</loc></url>
   <url><loc>https://be-aside.vercel.app/vm/capnografia.html</loc></url>

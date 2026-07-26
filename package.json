@@ -3,8 +3,13 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "dev": "node scripts/dev.mjs",
     "extract-knowledge": "node scripts/extract-knowledge.js",
-    "test:api": "node --test api/*.test.js"
+    "test:api": "node --test api/*.test.js",
+    "build:content": "node scripts/build-content.js",
+    "check:content": "node scripts/build-content.js --check",
+    "nova-pagina": "node scripts/nova-pagina.js",
+    "pre-commit": "node scripts/pre-commit-check.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.70.0",
