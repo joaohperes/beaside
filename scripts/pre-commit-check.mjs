@@ -259,7 +259,72 @@ const manifest = JSON.parse(ler('conteudo/manifest.json'));
   if (!achados.length) ok('Conteúdo inacabado', 'nenhum [PREENCHER] em página publicada');
 }
 
-// ── 8. sujeira e segredo no que vai ser commitado ──────────────────────
+// ── 8. rascunho no ar: o site convidando o Google a ler o que não está pronto ──
+// Uma página com status "rascunho" que ainda assim está no sitemap.xml e sem
+// noindex é o pior dos dois mundos: ela mostra o banner "Rascunho — não
+// publicado" para o leitor E pede para ser indexada. Num domínio novo, sem
+// autoridade acumulada, isso gasta a primeira impressão justo na área que o
+// roadmap elegeu como porta de entrada (a Central de Conhecimento).
+//
+// A régua é a mesma do grupo 7: o HEAD. Exposição herdada vira alerta — é
+// decisão editorial do Cesar, não erro de código. Exposição NOVA bloqueia,
+// porque aí o commit está piorando a situação. Sem isso, um gerador de sitemap
+// que reescreve o arquivo inteiro transformaria toda dívida antiga em bloqueio.
+{
+  const sitemapAgora = existe('sitemap.xml') ? ler('sitemap.xml') : '';
+  const rHead = sh('git show HEAD:sitemap.xml');
+  const sitemapHead = rHead.code === 0 ? rHead.out : '';
+
+  const noSitemap = (txt, rel) => {
+    if (!txt) return false;
+    if (rel.endsWith('/index.html')) return txt.includes('/' + rel.slice(0, -10));
+    return txt.includes('/' + rel);
+  };
+  const semNoindex = (html) =>
+    !/<meta[^>]+name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(html);
+
+  // como esta página está exposta, hoje ou no HEAD
+  const exposicao = (rel, html, smap) => {
+    const e = [];
+    if (semNoindex(html)) e.push('sem noindex');
+    if (noSitemap(smap, rel)) e.push('no sitemap.xml');
+    return e;
+  };
+
+  const rascunhos = [];
+  for (const a of manifest.artigos) if (a.status !== 'publicado') rascunhos.push(['artigos/' + a.arquivo, a.status]);
+  for (const m of manifest.modulos) for (const p of m.paginas) if (p.status !== 'publicado') rascunhos.push([m.root + p.arquivo, p.status]);
+
+  const novas = [], herdadas = [];
+  for (const [rel, status] of rascunhos) {
+    if (!existe(rel)) continue;                         // "em-breve" sem arquivo não é exposição
+    const agora = exposicao(rel, ler(rel), sitemapAgora);
+    if (!agora.length) continue;
+    const h = sh(`git show HEAD:"${rel}"`);
+    const antes = h.code !== 0 ? [] : exposicao(rel, h.out, sitemapHead);
+    const virou = agora.filter((x) => !antes.includes(x));
+    const linha = `${rel} (${status}): ${(virou.length ? virou : agora).join(' + ')}`;
+    (virou.length ? novas : herdadas).push(linha);
+  }
+
+  if (novas.length) {
+    falha('Rascunho ficando indexável NESTE commit', [
+      ...novas,
+      'Ou publique de verdade (status "publicado"), ou ponha <meta name="robots" content="noindex, follow">',
+      'e tire do sitemap.xml enquanto ainda for rascunho.',
+    ]);
+  }
+  if (herdadas.length) {
+    alerta('Rascunho no ar e indexável', [
+      ...herdadas,
+      'Já estava assim no HEAD. Enquanto não for revisado, o buscador e as IAs leem',
+      'uma página que ela mesma se anuncia como não publicada.',
+    ]);
+  }
+  if (!novas.length && !herdadas.length) ok('Rascunho no ar', 'nenhum rascunho indexável');
+}
+
+// ── 9. sujeira e segredo no que vai ser commitado ────────────────────────
 {
   const arquivos = [...ALTERADOS];
   const sujeira = arquivos.filter((f) => /\.fuse_hidden|\.DS_Store|_to_delete|\.env$|\.env\.|tmp_obj_/.test(f));
