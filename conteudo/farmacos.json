@@ -2,6 +2,35 @@
   "_leia_antes": "FONTE ÚNICA DE DOSES E DILUIÇÕES do be·aside. Todo número aqui foi extraído de hemo/drogas.html — conteúdo curado por Cesar e João. NUNCA adicionar uma dose aqui que não exista na página, e nunca alterar aqui sem alterar a página (e vice-versa). Rodar `npm run build:content` regera api/farmacos.js, que é o que a IA lê. As tabelas de mL/h são calculadas em JavaScript, não pela IA — é o que impede erro de conta em dose.",
   "_como_adicionar": "1) escreva o fármaco na página clínica primeiro; 2) copie os valores para cá; 3) rode npm run build:content; 4) confira a tabela de mL/h gerada em api/farmacos.js contra o cálculo da própria página.",
   "_formula": "mL/h = dose × (peso se por_peso) × (60 se por_min) ÷ concentração. Unidade da dose e da concentração precisam ter a mesma base (μg com μg/mL, U com U/mL, mg com mg/mL).",
+  "_conferencias": [
+    {
+      "farmaco": "dobutamina",
+      "diluicao": "Padrão",
+      "dose": 5,
+      "peso": 70,
+      "esperado_mL_h": 21,
+      "texto_na_pagina": "21 mL/h",
+      "observacao": "Cálculo prático que a própria hemo/drogas.html traz."
+    },
+    {
+      "farmaco": "noradrenalina",
+      "diluicao": "Padrão",
+      "dose": 0.1,
+      "peso": 70,
+      "esperado_mL_h": 6.6,
+      "texto_na_pagina": "6,6 mL/h",
+      "observacao": "Cálculo prático que a própria hemo/drogas.html traz."
+    },
+    {
+      "farmaco": "vasopressina",
+      "diluicao": "Padrão",
+      "dose": 0.03,
+      "peso": null,
+      "esperado_mL_h": 9,
+      "texto_na_pagina": "0,03 U/min = 9 mL/h",
+      "observacao": "Dose fixa — independe do peso."
+    }
+  ],
   "_revisao_clinica": {
     "por": "[PREENCHER]",
     "data": "[PREENCHER]",

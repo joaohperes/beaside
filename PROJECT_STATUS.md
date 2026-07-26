@@ -588,3 +588,44 @@ Sem peso informado, a IA dá 60/70/80 kg como referência e **pede o peso** em v
 **Pendência clínica.** O campo `_revisao_clinica` do JSON está `[PREENCHER]`. Nenhum valor foi
 inventado, mas a tabela precisa de conferência formal do Cesar/João contra fonte primária antes de
 ser tratada como referência publicada.
+
+---
+
+## 16. Checagem antes do commit (`npm run pre-commit`)
+
+**O problema.** O projeto tem partes que se referenciam: manifesto → arquivos gerados → base da IA →
+sitemap → camada 0 de fármacos. Mudar uma sem rodar o gerador deixa o site com uma ponta solta que só
+aparece semanas depois — página que sumiu da IA, link quebrado, dose divergindo entre a página e o
+JSON. `scripts/pre-commit-check.mjs` verifica tudo que uma máquina consegue verificar sozinha, e não
+escreve nada no repositório (o que ele precisa gerar para comparar, ele devolve como estava).
+
+```
+npm run pre-commit          # relatório; sai 1 se houver falha
+npm run pre-commit -- --v   # mostra também o detalhe do que passou
+```
+
+**O que ele checa**
+
+| # | Grupo | Bloqueia quando |
+|---|---|---|
+| 1 | Sintaxe JS/JSON | qualquer `.js`/`.mjs` não passa no `node --check`, ou um `.json` não parseia |
+| 2 | Conteúdo em sincronia | `build-content --check` diz que algum arquivo gerado divergiu do manifesto; aviso **novo** do manifesto (os 7 já mapeados viram alerta) |
+| 3 | Base da IA | página abaixo do mínimo de conteúdo; `api/knowledge.js` desatualizado; **página que existia no HEAD sumiu da base** (compara os títulos, não só o tamanho) |
+| 4 | Camada 0 | diluição do JSON que não existe em `hemo/drogas.html`; conta de `_conferencias` que não bate com a fórmula; `KNOWLEDGE_FARMACOS` ausente |
+| 5 | SEO / sitemap | `<loc>` sem arquivo, `<loc>` de página `noindex`, página publicada e indexável fora do sitemap, `em-breve` sem `noindex` |
+| 6 | Links internos | `href`/`src` relativo apontando para arquivo que não existe |
+| 7 | Conteúdo inacabado | `[PREENCHER]` ou `lorem ipsum` visível em página publicada **que este commit tocou** (dívida antiga vira alerta, não trava commit sem relação) |
+| 8 | Higiene e segredos | `.DS_Store`, `.fuse_hidden`, `_to_delete`, `.env`, `tmp_obj_` no que vai ser commitado; `sk-ant-…`, `ANTHROPIC_API_KEY`, `VMGUIDE_SENHA` embutidos |
+
+Cada um desses foi testado quebrando o repositório de propósito e conferindo que o check acusa —
+não só que ele passa quando está tudo certo.
+
+**Alertas permanentes (não bloqueiam).** As 7 pendências conhecidas do manifesto (4 páginas órfãs de
+`proc/` + 3 assistentes), o `_revisao_clinica` ainda `[PREENCHER]` em `conteudo/farmacos.json`, e os
+5 `[PREENCHER]` de `institucional/equipe.html`. São decisões do Cesar, não bugs — ficam visíveis em
+todo commit para não serem esquecidos.
+
+**O que o script NÃO faz.** Ele não julga. Se o número clínico está certo, se a fonte confere, se a
+mudança faz a pessoa entender o que está fazendo em vez de só reproduzir — isso é a skill
+"checar antes de commitar" (`revisao-pre-commit`), que roda este script primeiro e depois lê o diff
+inteiro com esse olho.
