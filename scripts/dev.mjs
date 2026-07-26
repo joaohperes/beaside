@@ -60,6 +60,10 @@ createServer(async (req, res) => {
     res.writeHead(501, { 'Content-Type': 'application/json; charset=utf-8' });
     console.log(`  501  ${caminho}  (função serverless — precisa de \`vercel dev\`)`);
     return res.end(JSON.stringify({
+      // `error` (inglês) porque é a chave que o front do Consulte e Resolva lê
+      // em `data.error`. Sem ela o chat mostrava só "Erro 501" e a explicação
+      // abaixo, que diz exatamente o que fazer, nunca chegava a quem precisava.
+      error: 'As funções de /api/ não rodam no servidor local — o assistente de IA precisa da Vercel. Todo o resto do site (módulos, artigos, calculadoras, navegação) está funcionando aqui.',
       erro: 'Servidor local: as funções de /api/ não rodam aqui.',
       detalhe: 'O conteúdo estático (módulos, artigos, calculadoras, navegação) está completo. '
              + 'Para testar o assistente de IA é preciso `vercel dev` com ANTHROPIC_API_KEY e as chaves do Clerk.',
