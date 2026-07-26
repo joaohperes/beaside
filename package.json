@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "dev": "node scripts/dev.mjs",
     "extract-knowledge": "node scripts/extract-knowledge.js",
     "test:api": "node --test api/*.test.js",
     "build:content": "node scripts/build-content.js",
