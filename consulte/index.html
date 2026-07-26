@@ -72,22 +72,22 @@
   .app-bar{flex:0 0 auto;display:flex;align-items:center;gap:14px;padding:9px 18px;border-bottom:1px solid var(--border);background:var(--bg2)}
   .app-bar-id{display:flex;align-items:baseline;gap:10px;min-width:0}
   .app-bar-eyebrow{font-family:var(--mono);font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);flex-shrink:0}
-  .app-bar-title{font-size:13.5px;font-weight:600;color:#e8ecf2;margin:0;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .app-bar-title{font-size:13.5px;font-weight:600;color:var(--text);margin:0;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .app-bar-disc{display:flex;align-items:center;gap:8px;margin-left:auto;min-width:0;cursor:pointer;
-    font-family:var(--sans);font-size:12px;line-height:1.4;color:#f0a0a0;text-align:left;
+    font-family:var(--sans);font-size:12px;line-height:1.4;color:var(--red);text-align:left;
     background:rgba(226,75,74,.09);border:1px solid rgba(226,75,74,.28);border-radius:7px;padding:6px 11px;transition:background .12s}
   .app-bar-disc:hover{background:rgba(226,75,74,.16)}
   .app-bar-disc-txt{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .app-bar-disc-arrow{font-family:var(--mono);font-size:10px;color:#f0a0a0;opacity:.7;transition:transform .15s;flex-shrink:0}
+  .app-bar-disc-arrow{font-family:var(--mono);font-size:10px;color:var(--red);opacity:.7;transition:transform .15s;flex-shrink:0}
   .app-bar-disc[aria-expanded="true"] .app-bar-disc-arrow{transform:rotate(180deg)}
   .as-disc-body{flex:0 0 auto;border-left:3px solid var(--red);border-bottom:1px solid var(--border);
-    background:rgba(226,75,74,.07);padding:11px 18px;font-size:12.5px;line-height:1.65;color:#e8b0b0}
+    background:rgba(226,75,74,.07);padding:11px 18px;font-size:12.5px;line-height:1.65;color:var(--red)}
   .as-disc-body[hidden]{display:none}
 
   /* porta de senha: cartão centrado, não um formulário solto no topo */
   #as-senha-box{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:24px}
   .senha-card{width:min(400px,100%);background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:26px 24px}
-  .senha-title{font-size:16px;font-weight:600;color:#e8ecf2;margin-bottom:6px}
+  .senha-title{font-size:16px;font-weight:600;color:var(--text);margin-bottom:6px}
   .senha-msg{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:18px}
   .senha-row{display:flex;gap:10px;align-items:center}
   .senha-row .as-input{flex:1}
@@ -118,42 +118,73 @@
   .chat-head{flex:0 0 auto;display:flex;align-items:center;gap:10px;padding:11px 20px;border-bottom:1px solid var(--border);background:var(--bg)}
   .chat-toggle{background:none;border:1px solid var(--border);color:var(--text2);border-radius:6px;width:30px;height:30px;cursor:pointer;font-size:14px;line-height:1;flex-shrink:0;transition:all .12s}
   .chat-toggle:hover{border-color:var(--border2);color:var(--text);background:var(--bg3)}
-  .chat-title{font-size:16px;font-weight:600;color:#e8ecf2}
+  /* O nome do caso não pode empurrar a conversa pra baixo: corta com reticências. */
+  .chat-title{font-size:16px;font-weight:600;color:var(--text);min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .chat-rename{font-family:var(--mono);font-size:10px;color:var(--text3);background:none;border:none;cursor:pointer;text-decoration:underline}
   .chat-rename:hover{color:var(--accent)}
-  .msgs{flex:1;min-height:0;display:flex;flex-direction:column;gap:16px;overflow-y:auto;
+  .msgs{flex:1;min-height:0;display:flex;flex-direction:column;gap:18px;overflow-y:auto;
     padding:24px max(20px,calc((100% - var(--col))/2)) 28px}
-  .msg{max-width:90%;animation:msgIn .22s ease}
-  @keyframes msgIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
-  .msg.user{align-self:flex-end;max-width:75%}
-  .msg.assistant{align-self:flex-start;width:100%}
-  .msg-role{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);margin-bottom:6px}
-  .msg.user .msg-role{justify-content:flex-end}
-  .msg-avatar{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border-radius:50%;font-size:8.5px;font-weight:600;letter-spacing:0;flex-shrink:0}
-  .msg-avatar-user{background:var(--bg4);border:1px solid var(--border2);color:var(--text2)}
-  .msg-avatar-ai{background:rgba(var(--accent-rgb),.16);border:1px solid rgba(var(--accent-rgb),.4);color:var(--accent)}
-  .msg-time{color:var(--text3);opacity:.7;font-size:8.5px}
-  .msg-time::before{content:'·';margin-right:6px}
-  .bubble{position:relative;border-radius:10px;padding:12px 15px;font-size:14px;line-height:1.7}
-  .msg.user .bubble{background:var(--bg4);border:1px solid var(--border2);white-space:pre-wrap}
-  .msg.assistant .bubble{background:var(--bg2);border:1px solid var(--border)}
-  .bubble-copy{position:absolute;top:8px;right:8px;opacity:0;transition:opacity .12s;font-family:var(--mono);font-size:10px;color:var(--text3);background:var(--bg3);border:1px solid var(--border);border-radius:5px;padding:3px 8px;cursor:pointer}
-  .msg.assistant:hover .bubble-copy{opacity:1}
-  .bubble-copy:hover{color:var(--accent);border-color:var(--accent-d)}
+  /* ══ Bolhas: o mesmo desenho da prévia da home ═════════════════
+     Na home o assistente aparece como uma conversa: pergunta em bolha
+     escura à direita, selo "IA" quadrado à esquerda e a resposta num
+     cartão de canto arredondado. Quem vê aquilo e clica pra cá tem que
+     reconhecer a mesma coisa — só que agora respondendo de verdade.
+     A cor é a verde da marca, não o vermelho do exemplo da home.
+
+     Sumiu a etiqueta "PLANTONISTA / ASSISTENTE" em cima de cada linha:
+     numa conversa de duas pessoas ninguém precisa que digam quem falou,
+     e aquela fileira de maiúscula em mono a cada turno era o que fazia
+     a tela parecer um log de sistema em vez de um chat.
+     ═════════════════════════════════════════════════ */
+  .msg{animation:msgIn .24s var(--ease)}
+  @keyframes msgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .msg.user{align-self:flex-end;max-width:78%;display:flex;flex-direction:column;align-items:flex-end}
+  .msg.assistant{align-self:stretch;display:flex;gap:10px;align-items:flex-start}
+  /* selo do assistente: o mesmo quadrado da home, no accent do site */
+  .msg-avatar{flex:none;width:24px;height:24px;border-radius:8px;margin-top:2px;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(var(--accent-rgb),.14);color:var(--accent);
+    font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.02em}
+  .msg-col{flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start}
+  .bubble{position:relative;font-size:14px;line-height:1.7;max-width:100%}
+  /* a pergunta: bolha cheia, com o canto de baixo cortado do lado de quem fala */
+  .msg.user .bubble{background:var(--bg4);border:1px solid var(--border2);color:var(--text);
+    border-radius:16px 16px 4px 16px;padding:11px 15px;white-space:pre-wrap}
+  /* a resposta: cartão, não bolha — conduta longa com tabela e lista se lê melhor assim */
+  .msg.assistant .bubble{background:var(--bg2);border:1px solid var(--border);
+    border-radius:4px 16px 16px 16px;padding:14px 17px;width:100%}
+  /* rodapé do turno: horário sempre à vista, copiar aparece no hover.
+     O botão saiu de cima do texto, onde tapava a primeira linha da conduta. */
+  .msg-foot{display:flex;align-items:center;gap:8px;margin-top:6px;padding:0 4px;min-height:18px}
+  .msg.user .msg-foot{justify-content:flex-end}
+  .msg-time{font-family:var(--mono);font-size:9.5px;color:var(--text3);opacity:.55}
+  .bubble-copy{font-family:var(--mono);font-size:10px;color:var(--text3);background:none;
+    border:1px solid transparent;border-radius:6px;padding:2px 8px;cursor:pointer;
+    opacity:0;transition:opacity .14s,color .14s,background .14s,border-color .14s}
+  .msg.assistant:hover .bubble-copy,.bubble-copy:focus-visible{opacity:1}
+  .bubble-copy:hover{color:var(--accent);background:rgba(var(--accent-rgb),.08);border-color:var(--accent-d)}
   .stream-cursor{display:inline-block;width:6px;height:13px;background:var(--accent);margin-left:2px;vertical-align:-2px;animation:cursorBlink .8s step-end infinite}
   @keyframes cursorBlink{0%,50%{opacity:1}51%,100%{opacity:0}}
-  .bubble-typing{display:inline-flex;gap:5px;padding:14px 16px}
-  .typing-dot{width:6px;height:6px;border-radius:50%;background:var(--text3);animation:typingBounce 1.2s infinite ease-in-out}
+  /* Os pontinhos são a única coisa que se move na tela enquanto a IA pensa.
+     Na cor do accent, como na home — dizem "está vindo", não "travou". */
+  /* A pílula de "digitando" encolhe até os três pontos. Um cartão vazio de
+     860px com três bolinhas no canto parecia resposta quebrada, não espera. */
+  .msg.assistant .bubble.bubble-typing{display:inline-flex;gap:5px;padding:15px 17px;width:auto;align-self:flex-start}
+  .typing-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:.55;animation:typingBounce 1.1s infinite ease-in-out}
   .typing-dot:nth-child(2){animation-delay:.15s}
   .typing-dot:nth-child(3){animation-delay:.3s}
   @keyframes typingBounce{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-5px);opacity:1}}
-  .bubble h2{font-size:14px;font-weight:600;color:var(--accent);margin:16px 0 7px;font-family:var(--sans)}
-  .bubble h2:first-child{margin-top:4px}
-  .bubble h3{font-size:13.5px;margin:14px 0 6px}
+  /* `.msg` na frente por especificidade: sem ele, a regra global de h2 do
+     tema claro ganhava e o título da conduta perdia o verde só no claro. */
+  .msg .bubble h2{font-size:14px;font-weight:600;color:var(--accent);margin:16px 0 7px;font-family:var(--sans)}
+  .msg .bubble h2:first-child{margin-top:4px}
+  .msg .bubble h3{font-size:13.5px;margin:14px 0 6px;color:var(--text)}
   .bubble p{margin:7px 0}
   .bubble ul,.bubble ol{margin:7px 0 7px 20px;padding:0}
   .bubble li{margin:4px 0}
-  .bubble strong{color:#e8ecf2;font-weight:500}
+  /* O negrito da resposta quase sempre é a dose, o alvo ou o parâmetro.
+     Era um hex escuro cravado: no tema claro a dose sumia na página branca. */
+  .bubble strong{color:var(--text);font-weight:600}
   .bubble em{font-style:italic;color:var(--text2)}
   .bubble table{border-collapse:collapse;width:100%;margin:10px 0;font-size:13px}
   .bubble th,.bubble td{border:1px solid var(--border);padding:6px 9px;text-align:left;vertical-align:top}
@@ -178,7 +209,7 @@
   .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(2px);display:none;align-items:center;justify-content:center;z-index:200}
   .modal-backdrop.show{display:flex}
   .modal{background:var(--bg2);border:1px solid var(--border2);border-radius:12px;padding:22px;width:min(440px,calc(100vw - 40px));box-shadow:0 20px 60px rgba(0,0,0,.5)}
-  .modal-title{font-size:15px;font-weight:600;color:#e8ecf2;margin-bottom:6px}
+  .modal-title{font-size:15px;font-weight:600;color:var(--text);margin-bottom:6px}
   .modal-msg{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:16px}
   .modal input{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:var(--sans);font-size:14px;padding:11px 14px;margin-bottom:18px}
   .modal input:focus{outline:none;border-color:var(--accent)}
@@ -195,7 +226,17 @@
     .case-layout.collapsed .case-col{transform:translateX(-100%)}
     .case-scrim{display:block;position:absolute;inset:0;z-index:55;background:rgba(0,0,0,.55);transition:opacity .2s}
     .case-layout.collapsed .case-scrim{opacity:0;pointer-events:none}
+    /* Cabeçalho do caso numa linha só. Antes o nome quebrava em duas e
+       comia 40px da conversa — no celular isso é meia mensagem. */
+    .chat-head{padding:9px 12px;gap:8px}
+    .chat-title{font-size:14.5px}
+    .chat-rename{flex-shrink:0}
     .msg.user{max-width:88%}
+    /* Celular não tem hover: se o copiar só aparecesse no hover, no plantão
+       ele simplesmente não existiria. Aqui fica visível o tempo todo. */
+    .bubble-copy{opacity:1}
+    .msg.assistant{gap:8px}
+    .msg-avatar{width:22px;height:22px;border-radius:7px}
     .app-bar{padding:8px 14px;gap:10px}
     .app-bar-eyebrow{display:none}
     .app-bar-disc-txt{display:none}
@@ -489,22 +530,39 @@ function renderChat(){
 }
 // A página não rola mais (o app ocupa a janela). Rolar a janela aqui só
 // causaria um salto estranho — quem rola é a lista de mensagens.
-function scrollMsgs(){const m=document.getElementById('msgs');if(m)m.scrollTop=m.scrollHeight;}
+// Descer até a última mensagem. Vai duas vezes de propósito: no celular a
+// tabela da resposta é reempilhada pelo CSS depois da primeira medida, e a
+// altura muda — sem o segundo quadro o plantonista abre o caso no meio da
+// resposta anterior, não na última coisa que ele perguntou.
+function scrollMsgs(){
+  const ir=()=>{const m=document.getElementById('msgs');if(m)m.scrollTop=m.scrollHeight;};
+  ir();
+  requestAnimationFrame(()=>{ir();requestAnimationFrame(ir);});
+}
 
 // ----- Renderização de mensagem individual (avatar, horário, ação de copiar) -----
 function fmtTime(ts){if(!ts)return '';const d=new Date(ts);return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');}
+// A pergunta é uma bolha solta à direita; a resposta é um cartão com o selo
+// "IA" ao lado. O horário e o "copiar" ficam num rodapé abaixo do turno — o
+// botão dentro da bolha tapava a primeira linha da conduta, que é justamente
+// a que a pessoa lê primeiro.
 function renderMsg(m,idx){
-  const isUser=m.role==='user';
-  const avatar=isUser?'<span class="msg-avatar msg-avatar-user">Dr</span>':'<span class="msg-avatar msg-avatar-ai">IA</span>';
-  const roleLabel=isUser?'Plantonista':'Assistente';
   const timeHtml=m.ts?'<span class="msg-time">'+fmtTime(m.ts)+'</span>':'';
-  const roleRow=isUser
-    ? ('<div class="msg-role">'+timeHtml+'<span>'+roleLabel+'</span>'+avatar+'</div>')
-    : ('<div class="msg-role">'+avatar+'<span>'+roleLabel+'</span>'+timeHtml+'</div>');
-  const copyBtn=isUser?'':'<button class="bubble-copy" onclick="copiarMsg(this,'+idx+')" type="button">copiar</button>';
-  const bodyHtml=isUser?esc(m.content):mdToHtml(m.content);
-  return '<div class="msg '+m.role+'" data-idx="'+idx+'">'+roleRow+
-    '<div class="bubble" id="bubble-'+idx+'">'+copyBtn+bodyHtml+'</div></div>';
+  if(m.role==='user'){
+    return '<div class="msg user" data-idx="'+idx+'">'+
+      '<div class="bubble" id="bubble-'+idx+'">'+esc(m.content)+'</div>'+
+      (timeHtml?'<div class="msg-foot">'+timeHtml+'</div>':'')+
+    '</div>';
+  }
+  return '<div class="msg assistant" data-idx="'+idx+'">'+
+    '<span class="msg-avatar" aria-hidden="true">IA</span>'+
+    '<div class="msg-col">'+
+      '<div class="bubble" id="bubble-'+idx+'">'+mdToHtml(m.content)+'</div>'+
+      '<div class="msg-foot">'+timeHtml+
+        '<button class="bubble-copy" onclick="copiarMsg(this,'+idx+')" type="button">copiar</button>'+
+      '</div>'+
+    '</div>'+
+  '</div>';
 }
 function copiarMsg(btn,idx){
   const c=getCaso(casoAtivo);if(!c||!c.messages[idx])return;
@@ -520,8 +578,9 @@ function showTypingIndicator(){
   const empty=msgs.querySelector('.chat-empty');if(empty)empty.remove();
   const div=document.createElement('div');
   div.className='msg assistant';div.id='typing-indicator';
-  div.innerHTML='<div class="msg-role"><span class="msg-avatar msg-avatar-ai">IA</span><span>Assistente</span></div>'+
-    '<div class="bubble bubble-typing"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div>';
+  div.innerHTML='<span class="msg-avatar" aria-hidden="true">IA</span>'+
+    '<div class="msg-col"><div class="bubble bubble-typing" role="status" aria-label="Assistente escrevendo">'+
+    '<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div></div>';
   msgs.appendChild(div);
   msgs.scrollTop=msgs.scrollHeight;
 }
@@ -588,8 +647,9 @@ function enviar(){
     if(msgs){
       const div=document.createElement('div');
       div.className='msg assistant';div.dataset.idx=novoIdx;
-      div.innerHTML='<div class="msg-role"><span class="msg-avatar msg-avatar-ai">IA</span><span>Assistente</span><span class="msg-time">'+fmtTime(Date.now())+'</span></div>'+
-        '<div class="bubble" id="bubble-'+novoIdx+'"></div>';
+      div.innerHTML='<span class="msg-avatar" aria-hidden="true">IA</span>'+
+        '<div class="msg-col"><div class="bubble" id="bubble-'+novoIdx+'"></div>'+
+        '<div class="msg-foot"><span class="msg-time">'+fmtTime(Date.now())+'</span></div></div>';
       msgs.appendChild(div);
       msgs.scrollTop=msgs.scrollHeight;
       const bubbleEl=document.getElementById('bubble-'+novoIdx);
