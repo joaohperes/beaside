@@ -214,33 +214,46 @@ const manifest = JSON.parse(ler('conteudo/manifest.json'));
 }
 
 // ── 7. nada inacabado no ar ────────────────────────────────
-// [PREENCHER] em página publicada é sempre problema. Mas só BLOQUEIA o commit
-// quando este commit mexeu no arquivo — dívida antiga vira alerta permanente,
-// para não travar mudança que não tem nada a ver com ela.
+// [PREENCHER] em página publicada é sempre problema. O que BLOQUEIA, porém, é
+// este commit PIORAR a situação — buraco novo, ou mais buracos que antes.
+// "Tocou o arquivo" não serve de régua: um gerador de metadados reescreve as
+// 95 páginas de uma vez e transformaria toda dívida antiga em bloqueio, o que
+// treina a gente a ignorar o alarme. A régua é a contagem no HEAD.
 {
   const achados = [];
   const olhar = (rel, publicado) => {
     if (!publicado || !existe(rel)) return;
     const txt = semTags(ler(rel));
     const n = (txt.match(/\[PREENCHER\]/g) || []).length;
-    if (n) achados.push({ rel, o: `${n}× [PREENCHER] visível` });
-    if (/lorem ipsum/i.test(txt)) achados.push({ rel, o: 'lorem ipsum visível' });
+    if (n) achados.push({ rel, n, re: /\[PREENCHER\]/g, o: `${n}× [PREENCHER] visível` });
+    const li = (txt.match(/lorem ipsum/gi) || []).length;
+    if (li) achados.push({ rel, n: li, re: /lorem ipsum/gi, o: `${li}× lorem ipsum visível` });
   };
   for (const m of manifest.modulos) for (const p of m.paginas) olhar(m.root + p.arquivo, p.status === 'publicado');
   for (const a of manifest.artigos) olhar('artigos/' + a.arquivo, a.status === 'publicado');
 
-  const novos = achados.filter((a) => ALTERADOS.has(a.rel));
-  const antigos = achados.filter((a) => !ALTERADOS.has(a.rel));
-  if (novos.length) {
-    falha('Conteúdo inacabado num arquivo DESTE commit', [
-      ...novos.map((a) => `${a.rel}: ${a.o}`),
+  // quantas vezes o mesmo padrão aparecia na versão commitada. null = arquivo novo.
+  const noHead = (rel, re) => {
+    const r = sh(`git show HEAD:"${rel}"`);
+    if (r.code !== 0) return null;
+    return (semTags(r.out).match(re) || []).length;
+  };
+
+  const piorou = [], herdados = [];
+  for (const a of achados) {
+    const antes = noHead(a.rel, a.re);
+    (antes === null || a.n > antes ? piorou : herdados).push({ ...a, antes });
+  }
+  if (piorou.length) {
+    falha('Conteúdo inacabado ENTRANDO neste commit', [
+      ...piorou.map((a) => `${a.rel}: ${a.o}${a.antes === null ? ' (arquivo novo)' : ` — eram ${a.antes} no HEAD`}`),
       'Ou preencha, ou troque o status para "rascunho" antes de commitar.',
     ]);
   }
-  if (antigos.length) {
-    alerta('Dívida antiga: [PREENCHER] em página publicada', [
-      ...antigos.map((a) => `${a.rel}: ${a.o}`),
-      'Não bloqueia este commit (o arquivo não foi tocado), mas está no ar assim.',
+  if (herdados.length) {
+    alerta('Dívida antiga: conteúdo inacabado em página publicada', [
+      ...herdados.map((a) => `${a.rel}: ${a.o}`),
+      'Já estava assim no HEAD — este commit não piorou. Mas está no ar assim.',
     ]);
   }
   if (!achados.length) ok('Conteúdo inacabado', 'nenhum [PREENCHER] em página publicada');
