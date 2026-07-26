@@ -9,7 +9,7 @@
 // Executar: node scripts/seo-tags.js [--dry-run]
 
 import { readFileSync, writeFileSync, readdirSync, statSync } from 'fs';
-import { join, relative, dirname } from 'path';
+import { join, relative, dirname, sep } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -19,6 +19,17 @@ const SITE_NAME = 'be·aside';
 const DRY_RUN = process.argv.includes('--dry-run');
 
 const SKIP_DIRS = new Set(['node_modules', '.git', 'hub-uti']);
+
+// Páginas ainda em elaboração (status "em-breve" em conteudo/manifest.json) não podem
+// ser indexadas: são placeholders de ~300 caracteres e entram no Google como conteúdo
+// raso, o que derruba a avaliação de qualidade do site inteiro. Saem do sitemap
+// automaticamente porque o sitemap só recebe o que não é noindex.
+const manifesto = JSON.parse(readFileSync(join(root, 'conteudo/manifest.json'), 'utf8'));
+const EM_BREVE = new Set(
+  manifesto.modulos.flatMap((m) => m.paginas
+    .filter((p) => p.status === 'em-breve')
+    .map((p) => m.root + p.arquivo))
+);
 const UTILITY_NOINDEX = new Set(['login.html', 'sso-callback.html']);
 // Paginas ja corretas ou sem valor de conteudo indexavel — nao mexer.
 const SKIP_FILES = new Set(['conta.html', 'sso-callback.html', 'vm/assistente.html', 'hemo/assistente.html', 'neuro/assistente.html']);
@@ -69,7 +80,7 @@ for (const relPath of files) {
   const base = relPath.split('/').pop();
 
   const alreadyNoindexBefore = /name="robots"[^>]*noindex/i.test(html);
-  const isUtility = UTILITY_NOINDEX.has(base);
+  const isUtility = UTILITY_NOINDEX.has(base) || EM_BREVE.has(relPath.split(sep).join('/'));
 
   if (isUtility && !alreadyNoindexBefore) {
     html = html.replace(/(<title>[\s\S]*?<\/title>)/i, '$1\n<meta name="robots" content="noindex, nofollow">');

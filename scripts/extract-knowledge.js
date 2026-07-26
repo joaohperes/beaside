@@ -41,9 +41,8 @@ const PAGES_BY_MODULE = {
     'siglas.html', 'pearls.html',
   ],
   neuro: [
-    'fisio.html', 'tce.html', 'avc-i.html', 'avc-h.html', 'enc.html',
-    'vm.html', 'metabolico.html', 'pos-op.html', 'sedoanalgesia.html',
-    'pearls.html',
+    'fisio.html', 'tce.html', 'avc-h.html', 'vm.html', 'metabolico.html',
+    'pos-op.html', 'sedoanalgesia.html',
   ],
   proc: [
     'cvc.html', 'linha-arterial.html', 'io.html', 'iot.html', 'vad.html',
@@ -70,20 +69,86 @@ const EXPORT_NAME = {
   artigos: 'KNOWLEDGE_ARTIGOS',
 };
 
+// ── Conteúdo clínico embutido em JavaScript ────────────────────────────
+// Algumas páginas (Pearls & Pitfalls, por exemplo) renderizam os cards a partir de
+// um array literal dentro de <script>. Sem isto, a IA enxerga uma página de 130
+// caracteres e não sabe que existem dezenas de cenários clínicos ali dentro.
+const ROTULOS = {
+  categoria: 'Categoria', titulo: 'Caso', cenario: 'Cenário',
+  pearl: 'Conduta certa', pitfall: 'Erro comum', porque: 'Por quê',
+  resposta: 'Resposta', explicacao: 'Explicação', pergunta: 'Pergunta',
+  dica: 'Dica', nota: 'Nota', comentario: 'Comentário'
+};
+
+function fatiarLiteral(src, abre) {
+  // devolve o literal completo a partir de '[' equilibrando colchetes,
+  // ignorando o que está dentro de string ou comentário
+  let i = abre, dep = 0, aspas = null, esc = false;
+  for (; i < src.length; i++) {
+    const c = src[i];
+    if (aspas) {
+      if (esc) { esc = false; continue; }
+      if (c === '\\') { esc = true; continue; }
+      if (c === aspas) aspas = null;
+      continue;
+    }
+    if (c === '"' || c === "'" || c === '`') { aspas = c; continue; }
+    if (c === '/' && src[i + 1] === '/') { i = src.indexOf('\n', i); if (i === -1) break; continue; }
+    if (c === '/' && src[i + 1] === '*') { i = src.indexOf('*/', i); if (i === -1) break; i++; continue; }
+    if (c === '[') dep++;
+    else if (c === ']') { dep--; if (dep === 0) return src.slice(abre, i + 1); }
+  }
+  return null;
+}
+
+function extrairDadosEmJs(html) {
+  const blocos = [...html.matchAll(/<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi)].map((m) => m[1]);
+  const partes = [];
+  for (const js of blocos) {
+    for (const decl of js.matchAll(/(?:const|let|var)\s+([A-Za-z_$][\w$]*)\s*=\s*\[/g)) {
+      const literal = fatiarLiteral(js, decl.index + decl[0].length - 1);
+      if (!literal || literal.length < 200) continue;
+      let dados;
+      try { dados = new Function(`return ${literal}`)(); } catch { continue; }
+      if (!Array.isArray(dados)) continue;
+      const uteis = dados.filter((d) => d && typeof d === 'object' && !Array.isArray(d) &&
+        Object.values(d).some((v) => typeof v === 'string' && v.length >= 40));
+      if (uteis.length < 2) continue;               // config/opções curtas: ignora
+      const linhas = [];
+      for (const item of uteis) {
+        const cab = item.titulo || item.title || item.nome || item.pergunta || '';
+        linhas.push(cab ? `\n## ${cab}` : '');
+        for (const [k, v] of Object.entries(item)) {
+          if (typeof v !== 'string' || !v.trim()) continue;
+          if (['titulo', 'title', 'nome', 'pergunta'].includes(k) && v === cab) continue;
+          linhas.push(`${ROTULOS[k] || k}: ${v.trim()}`);
+        }
+      }
+      partes.push(linhas.join('\n').trim());
+    }
+  }
+  return partes.join('\n\n').trim();
+}
+
 function extractMainContent(html) {
   const m = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i);
   return m ? m[1] : html;
 }
 
+function decodeEntities(s) {
+  return s.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+          .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, ' ');
+}
+
 function extractTitle(html, fallback) {
   const h1 = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
   if (h1) {
-    const t = h1[1].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+    const t = decodeEntities(h1[1].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ')).trim();
     if (t) return t;
   }
   const title = html.match(/<title>([\s\S]*?)<\/title>/i);
   if (title) {
-    const t = title[1].replace(/\s*[—-]\s*be·aside\s*$/i, '').trim();
+    const t = decodeEntities(title[1].replace(/\s*[—-]\s*be·aside\s*$/i, '')).trim();
     if (t) return t;
   }
   return fallback;
@@ -126,6 +191,10 @@ let output = `// Auto-gerado por scripts/extract-knowledge.js — não editar ma
 
 let totalChars = 0;
 let totalPages = 0;
+// Guarda de qualidade: página na base da IA com texto abaixo disto quase certamente
+// é placeholder ou tem o conteúdo preso em JS que este script não conseguiu ler.
+const MIN_CHARS = 900;
+const magras = [];
 
 for (const [mod, files] of Object.entries(PAGES_BY_MODULE)) {
   const sections = [];
@@ -135,10 +204,13 @@ for (const [mod, files] of Object.entries(PAGES_BY_MODULE)) {
       const html = readFileSync(join(root, relPath), 'utf8');
       const main = extractMainContent(html);
       const title = extractTitle(html, file.replace(/\.html$/, ''));
-      const text = stripHtml(main);
+      let text = stripHtml(main);
+      const emJs = extrairDadosEmJs(html);
+      if (emJs && emJs.length > text.length / 2) text = `${text}\n\n${emJs}`.trim();
       sections.push(`# ${title}\n\n${text}`);
       totalPages++;
-      console.log(`  ✓ ${relPath} — "${title}" — ${text.length} chars`);
+      if (text.length < MIN_CHARS) magras.push({ relPath, title, len: text.length });
+      console.log(`  ${text.length < MIN_CHARS ? '⚠' : '✓'} ${relPath} — "${title}" — ${text.length} chars`);
     } catch (e) {
       console.warn(`  ✗ ${relPath}: ${e.message}`);
     }
@@ -153,4 +225,10 @@ for (const [mod, files] of Object.entries(PAGES_BY_MODULE)) {
 output += `// Compatibilidade com api/sugerir.js (endpoint antigo, mantido no repo)\nexport const KNOWLEDGE_BASE = KNOWLEDGE_VM;\n`;
 
 writeFileSync(join(root, 'api', 'knowledge.js'), output);
+if (magras.length) {
+  console.log(`\n⚠️  ${magras.length} página(s) na base da IA com menos de ${MIN_CHARS} caracteres —`);
+  console.log('   a IA vai "conhecer" a página sem ter o que responder sobre ela.');
+  console.log('   Corrija o conteúdo, ou marque ia:false / status:"em-breve" em conteudo/manifest.json:');
+  for (const m of magras) console.log(`     · ${m.relPath} — "${m.title}" — ${m.len} chars`);
+}
 console.log(`\nKnowledge base: ${totalPages} páginas | ${totalChars} chars | ~${Math.round(totalChars / 4)} tokens estimados | ${Object.keys(PAGES_BY_MODULE).length} módulos`);

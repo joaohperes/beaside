@@ -706,14 +706,13 @@
           "titulo": "AVC Isquêmico Agudo",
           "subtitulo": "Janela terapêutica, trombólise e trombectomia",
           "tipo": "guia",
-          "status": "publicado",
-          "ia": true,
+          "status": "em-breve",
+          "ia": false,
           "hub": {
             "grupo": "Patologias",
             "selo": "Patologias",
             "titulo": "AVC isquêmico",
-            "resumo": "Janela terapêutica, trombólise e trombectomia",
-            "estado": "em-breve"
+            "resumo": "Janela terapêutica, trombólise e trombectomia"
           }
         },
         {
@@ -741,14 +740,13 @@
           "titulo": "Encefalopatias & Status Epiléptico",
           "subtitulo": "Delirium, status não convulsivo e encefalopatia hepática",
           "tipo": "guia",
-          "status": "publicado",
-          "ia": true,
+          "status": "em-breve",
+          "ia": false,
           "hub": {
             "grupo": "Patologias",
             "selo": "Patologias",
             "titulo": "Encefalopatias & Status epiléptico",
-            "resumo": "Delirium, status não convulsivo e encefalopatia hepática",
-            "estado": "em-breve"
+            "resumo": "Delirium, status não convulsivo e encefalopatia hepática"
           }
         },
         {
@@ -827,14 +825,13 @@
           "titulo": "Calculadoras Neurológicas",
           "subtitulo": "PPC · Osmolaridade · GCS · NIHSS · Hunt & Hess · Fisher",
           "tipo": "calculadora",
-          "status": "publicado",
+          "status": "em-breve",
           "ia": false,
           "hub": {
             "grupo": "Farmacologia & Ferramentas",
             "selo": "Ferramentas",
             "titulo": "Calculadoras",
-            "resumo": "PPC, osmolaridade, GCS, NIHSS, Hunt & Hess, Fisher",
-            "estado": "em-breve"
+            "resumo": "PPC, osmolaridade, GCS, NIHSS, Hunt & Hess, Fisher"
           }
         },
         {
@@ -845,14 +842,13 @@
           "titulo": "Pearls & Pitfalls",
           "subtitulo": "Cenários de plantão: acerto, erro comum e o porquê do mecanismo",
           "tipo": "pearls",
-          "status": "publicado",
-          "ia": true,
+          "status": "em-breve",
+          "ia": false,
           "hub": {
             "grupo": "Farmacologia & Ferramentas",
             "selo": "Pearls",
             "titulo": "Cards clínicos",
-            "resumo": "Cenários de plantão: o acerto, o erro comum e o mecanismo",
-            "estado": "em-breve"
+            "resumo": "Cenários de plantão: o acerto, o erro comum e o mecanismo"
           }
         }
       ],

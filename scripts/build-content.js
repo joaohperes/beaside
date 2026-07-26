@@ -107,7 +107,7 @@ function gerarHubs() {
     };
     for (const p of m.paginas) {
       if (!p.hub || p.status === 'oculto') continue;
-      push(p.hub.grupo, { href: p.arquivo, selo: p.hub.selo, titulo: p.hub.titulo, resumo: p.hub.resumo, estado: p.hub.estado });
+      push(p.hub.grupo, { href: p.arquivo, selo: p.hub.selo, titulo: p.hub.titulo, resumo: p.hub.resumo, estado: p.status === 'em-breve' ? 'em-breve' : undefined });
     }
     for (const e of m.hubExtras || []) push(e.grupo, e);
 
@@ -177,10 +177,10 @@ function gerarArtigos() {
 function gerarKnowledge() {
   let out = '\nconst PAGES_BY_MODULE = {\n';
   for (const m of mods(RACIOCINE)) {
-    const arqs = m.paginas.filter((p) => p.ia && p.status !== 'oculto').map((p) => `'${p.arquivo}'`);
+    const arqs = m.paginas.filter((p) => p.ia && p.status === 'publicado').map((p) => `'${p.arquivo}'`);
     out += `  ${m.id}: [\n` + quebrar(arqs) + `  ],\n`;
   }
-  const arts = manifest.artigos.filter((a) => a.ia && a.status !== 'oculto').map((a) => `'${a.arquivo}'`);
+  const arts = manifest.artigos.filter((a) => a.ia && a.status !== 'oculto').map((a) => `'${a.arquivo}'`);  // artigos em rascunho seguem na IA de propósito (uso interno)
   out += `  artigos: [\n` + quebrar(arts) + `  ],\n};\n`;
   aplicar('scripts/extract-knowledge.js', out, JS_INI, JS_FIM);
 }
@@ -201,7 +201,7 @@ function gerarLlms() {
   for (const m of mods(RACIOCINE)) {
     out += `\n### ${m.label}\n\n`;
     for (const p of m.paginas) {
-      if (p.status === 'oculto' || p.tipo === 'quiz') continue;
+      if (p.status !== 'publicado' || p.tipo === 'quiz') continue;
       out += `- [${p.titulo}](${base}/${m.root}${p.arquivo}): ${p.subtitulo}\n`;
     }
   }

@@ -73,15 +73,11 @@ be·aside reúne guias clínicos, algoritmos, calculadoras, casos práticos e um
 
 - [Fisiologia do Neurocrítico](https://be-aside.vercel.app/neuro/fisio.html): Monro-Kellie, PPC, autorregulação cerebral e herniação
 - [Hemodinâmica e Manejo Aprofundado da PIC](https://be-aside.vercel.app/neuro/tce.html): Metas de PAS/PAM por etiologia e algoritmo em degraus
-- [AVC Isquêmico Agudo](https://be-aside.vercel.app/neuro/avc-i.html): Janela terapêutica, trombólise e trombectomia
 - [Hemorragia Subaracnóidea (HSA)](https://be-aside.vercel.app/neuro/avc-h.html): Aneurisma roto, escalas, DCI/vasoespasmo e suporte sistêmico
-- [Encefalopatias & Status Epiléptico](https://be-aside.vercel.app/neuro/enc.html): Delirium, status não convulsivo e encefalopatia hepática
 - [Manejo Ventilatório no Neurocrítico](https://be-aside.vercel.app/neuro/vm.html): PEEP, PaCO₂, hiperventilação e desmame
 - [Manejo Metabólico, Hídrico e Infeccioso](https://be-aside.vercel.app/neuro/metabolico.html): Balanço hídrico, glicemia, sódio, febre e multidisciplinar
 - [Pós-Operatório e Drenagem Neurocirúrgica](https://be-aside.vercel.app/neuro/pos-op.html): DVE, herniações atípicas e anticonvulsivantes perioperatórios
 - [Sedoanalgesia, RASS e Bloqueio Neuromuscular](https://be-aside.vercel.app/neuro/sedoanalgesia.html): Drogas, diluições e metas de RASS por cenário
-- [Calculadoras Neurológicas](https://be-aside.vercel.app/neuro/calc-neuro.html): PPC · Osmolaridade · GCS · NIHSS · Hunt & Hess · Fisher
-- [Pearls & Pitfalls](https://be-aside.vercel.app/neuro/pearls.html): Cenários de plantão: acerto, erro comum e o porquê do mecanismo
 
 ### Procedimentos
 
