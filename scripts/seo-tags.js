@@ -6,9 +6,17 @@
 // Também marca páginas utilitárias (login, sso-callback) como noindex, e gera
 // sitemap.xml a partir do resultado final (só entra o que não é noindex).
 //
+// Além disso, a partir de conteudo/manifest.json:
+//   · pula as páginas aposentadas (manifest.redirecionadas) — elas são servidas
+//     como 301, então não podem receber canonical nem entrar no sitemap;
+//   · injeta og:image / twitter:image (cartão social);
+//   · injeta BreadcrumbList (be·aside → módulo → página) e, nas páginas
+//     clínicas, o tipo MedicalWebPage com o público (médico) e a especialidade.
+// Nada disso inventa texto: todo rótulo vem do manifesto ou da própria página.
+//
 // Executar: node scripts/seo-tags.js [--dry-run]
 
-import { readFileSync, writeFileSync, readdirSync, statSync } from 'fs';
+import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from 'fs';
 import { join, relative, dirname, sep } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -32,7 +40,33 @@ const EM_BREVE = new Set(
 );
 const UTILITY_NOINDEX = new Set(['login.html', 'sso-callback.html']);
 // Paginas ja corretas ou sem valor de conteudo indexavel — nao mexer.
-const SKIP_FILES = new Set(['conta.html', 'sso-callback.html', 'vm/assistente.html', 'hemo/assistente.html', 'neuro/assistente.html']);
+// 404.html nao entra no fluxo: a Vercel a serve em QUALQUER caminho inexistente,
+// entao um canonical fixo (ou uma linha no sitemap) mentiria sobre o endereco.
+// Ela carrega os proprios metadados a mao, com robots noindex.
+const SKIP_FILES = new Set(['conta.html', 'sso-callback.html', '404.html']);
+
+// Páginas aposentadas: continuam no repositório, mas o vercel.json as serve como
+// 301 (ver "redirecionadas" no manifesto). Não recebem tag nenhuma e ficam fora
+// do sitemap — sitemap que anuncia URL redirecionada é erro de indexação.
+const APOSENTADAS = new Set((manifesto.redirecionadas || []).map((r) => r.de.replace(/^\//, '')));
+
+// Índice caminho → { modulo, pagina }, para montar breadcrumb e escolher o tipo
+// de schema sem adivinhar nada a partir do nome do arquivo.
+const PAGINAS = new Map();
+const HUBS = new Map();
+for (const m of manifesto.modulos) {
+  HUBS.set(m.root + 'index.html', m);
+  for (const p of m.paginas) PAGINAS.set(m.root + p.arquivo, { mod: m, pag: p });
+}
+const ARTIGOS = new Map(manifesto.artigos.map((a) => ['artigos/' + a.arquivo, a]));
+
+// Especialidade médica (vocabulário MedicalSpecialty do schema.org) por módulo.
+// Só os módulos clínicos entram: institucional e consulte não são MedicalWebPage.
+const ESPECIALIDADE = { vm: 'PulmonaryMedicine', hemo: 'Cardiovascular', neuro: 'Neurologic', proc: 'Emergency' };
+
+// Cartão social. A imagem é 1200×630 e vive em assets/og-image.png.
+const OG_IMAGE = BASE_URL + '/assets/og-image.png';
+const OG_IMAGE_ALT = 'be·aside — raciocínio clínico à beira do leito';
 
 function walk(dir, acc) {
   acc = acc || [];
@@ -68,23 +102,100 @@ function escapeAttr(s) {
   return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
+function jsonld(obj) {
+  return '<script type="application/ld+json">\n'
+    + JSON.stringify(obj, null, 2).replace(/</g, '\\u003c')
+    + '\n</script>';
+}
+
+// Trilha de navegação. Só monta nível que existe de verdade: se o hub do módulo
+// não tiver index.html (caso de institucional/), o nível do meio simplesmente
+// não entra — breadcrumb apontando para 404 é pior que breadcrumb curto.
+function trilha(rel, canonicalUrl) {
+  const itens = [{ name: SITE_NAME, url: BASE_URL + '/' }];
+  const hub = HUBS.get(rel);
+  const daPagina = PAGINAS.get(rel);
+  const artigo = ARTIGOS.get(rel);
+
+  if (hub) {
+    itens.push({ name: hub.label, url: BASE_URL + '/' + hub.root });
+  } else if (daPagina) {
+    if (existsSync(join(root, daPagina.mod.root, 'index.html'))) {
+      itens.push({ name: daPagina.mod.label, url: BASE_URL + '/' + daPagina.mod.root });
+    }
+    itens.push({ name: daPagina.pag.titulo, url: canonicalUrl });
+  } else if (artigo) {
+    itens.push({ name: 'Central de Conhecimento', url: BASE_URL + '/artigos/' });
+    itens.push({ name: artigo.titulo, url: canonicalUrl });
+  } else if (rel === 'artigos/index.html') {
+    itens.push({ name: 'Central de Conhecimento', url: canonicalUrl });
+  } else {
+    return null;
+  }
+  if (itens.length < 2) return null;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: itens.map((it, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: it.name,
+      item: it.url
+    }))
+  };
+}
+
+// MedicalWebPage só nas páginas clínicas (guias dos 4 módulos e artigos).
+// Institucional, login e assistente não são conteúdo médico — marcar como se
+// fossem é declarar autoridade onde não há.
+function paginaMedica(rel, title, description, canonicalUrl) {
+  const daPagina = PAGINAS.get(rel);
+  const hub = HUBS.get(rel);
+  const artigo = ARTIGOS.get(rel);
+  const modId = (daPagina && daPagina.mod.id) || (hub && hub.id) || (artigo && artigo.modulo);
+  const especialidade = ESPECIALIDADE[modId];
+  if (!especialidade) return null;
+
+  // o nome vem do manifesto quando existe: é o título editorial, sem o sufixo
+  // de marca que o <title> carrega para o Google.
+  const nome = (daPagina && daPagina.pag.titulo) || (artigo && artigo.titulo) || (hub && hub.subtitulo) || title;
+
+  const obj = {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalWebPage',
+    name: nome,
+    url: canonicalUrl,
+    inLanguage: 'pt-BR',
+    isPartOf: { '@type': 'WebSite', name: SITE_NAME, url: BASE_URL + '/' },
+    specialty: 'https://schema.org/' + especialidade,
+    audience: { '@type': 'MedicalAudience', audienceType: 'Physician' }
+  };
+  if (description) obj.description = description;
+  return obj;
+}
+
 const files = walk(root).map(f => relative(root, f));
 const report = [];
 const sitemapEntries = [];
 
 for (const relPath of files) {
-  if (SKIP_FILES.has(relPath)) continue;
+  const rel = relPath.split(sep).join('/');
+  if (SKIP_FILES.has(rel) || APOSENTADAS.has(rel)) continue;
   const full = join(root, relPath);
   let html = readFileSync(full, 'utf8');
   const original = html;
   const base = relPath.split('/').pop();
 
   const alreadyNoindexBefore = /name="robots"[^>]*noindex/i.test(html);
-  const isUtility = UTILITY_NOINDEX.has(base) || EM_BREVE.has(relPath.split(sep).join('/'));
+  const isUtility = UTILITY_NOINDEX.has(base) || EM_BREVE.has(rel);
 
   if (isUtility && !alreadyNoindexBefore) {
     html = html.replace(/(<title>[\s\S]*?<\/title>)/i, '$1\n<meta name="robots" content="noindex, nofollow">');
   }
+  // página noindex não recebe schema: dados estruturados de página que não vai
+  // ser indexada só servem para o Google achar contradição.
+  const ficaNoindex = /name="robots"[^>]*noindex/i.test(html);
 
   const title = extractTag(html, /<title>([\s\S]*?)<\/title>/i) || SITE_NAME;
   const urlPath = urlPathFor(relPath);
@@ -99,6 +210,10 @@ for (const relPath of files) {
   const hasOgSite = /property="og:site_name"/i.test(html);
   const hasOgLocale = /property="og:locale"/i.test(html);
   const hasTwitter = /name="twitter:card"/i.test(html);
+  const hasOgImage = /property="og:image"/i.test(html);
+  const hasTwitterImage = /name="twitter:image"/i.test(html);
+  const hasBreadcrumb = /"@type":\s*"BreadcrumbList"/.test(html);
+  const hasMedicalPage = /"@type":\s*"MedicalWebPage"/.test(html);
 
   let description = extractTag(html, /<meta name="description" content="([^"]*)"/i);
   let descSource = description ? 'existente' : null;
@@ -132,6 +247,22 @@ for (const relPath of files) {
     inject.push('<meta name="twitter:card" content="summary_large_image">');
     inject.push('<meta name="twitter:title" content="' + escapeAttr(title) + '">');
     if (description) inject.push('<meta name="twitter:description" content="' + escapeAttr(description) + '">');
+  }
+  if (!hasOgImage) {
+    inject.push('<meta property="og:image" content="' + OG_IMAGE + '">');
+    inject.push('<meta property="og:image:width" content="1200">');
+    inject.push('<meta property="og:image:height" content="630">');
+    inject.push('<meta property="og:image:alt" content="' + escapeAttr(OG_IMAGE_ALT) + '">');
+  }
+  if (!hasTwitterImage) inject.push('<meta name="twitter:image" content="' + OG_IMAGE + '">');
+
+  if (!ficaNoindex && !hasBreadcrumb) {
+    const t = trilha(rel, canonicalUrl);
+    if (t) inject.push(jsonld(t));
+  }
+  if (!ficaNoindex && !hasMedicalPage) {
+    const mp = paginaMedica(rel, title, description, canonicalUrl);
+    if (mp) inject.push(jsonld(mp));
   }
 
   if (inject.length) {
