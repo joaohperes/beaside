@@ -319,7 +319,12 @@ sem resposta, conteúdos a criar, temas com maior potencial de conversão, custo
 6. **Preservação:** não reconstruir do zero, não apagar conteúdo, não remover funcionalidade sem
    aprovação, não alterar URL sem redirect, não modificar auth/pagamento sem auditoria, não expor
    variáveis de ambiente, não duplicar componentes, não implementar mudança destrutiva em massa.
-7. **Ao fim de cada fase, apresentar:** o que mudou, o que foi preservado, arquivos modificados,
+7. **Conteúdo é gerado, não digitado:** módulos, páginas e artigos vivem em
+   `conteudo/manifest.json`. Sidebar (`assets/app.js`), cards dos hubs, `/artigos/`,
+   `scripts/extract-knowledge.js` e `llms.txt` são **gerados** por `npm run build:content` entre os
+   marcadores `AUTO:conteudo`. Editar à mão dentro dos marcadores = perder a edição no próximo
+   build. Página nova: `npm run nova-pagina -- --modulo ... --id ...` (ver CLAUDE.md).
+8. **Ao fim de cada fase, apresentar:** o que mudou, o que foi preservado, arquivos modificados,
    páginas criadas, componentes reutilizados, testes feitos, riscos, o que validar manualmente,
    próxima etapa, status geral — e **atualizar este documento**.
 
@@ -425,13 +430,17 @@ privacidade, contato, planos/assinatura, FAQ, atualizações da plataforma. Sche
 | 24/07 | Assistentes IA + api/ + knowledge.js = **Consulte e Resolva**; estratégia "conteúdo validado primeiro, IA quando integrar". |
 | 24/07 | Home: hero com chat simulado (streaming, altura fixa) + card retangular da Central de Conhecimento. |
 | 24/07 | Este `PROJECT_STATUS.md` vira o documento mestre; `ROADMAP.md` passa a apontar para cá. |
+| 25/07 | Auditoria GEO/SEO/SaaS consolidada em `claude/auditoria-otimizacao-geo-seo-saas.md` (P1/P2/P3). |
+| 26/07 | **Fonte única de conteúdo**: `conteudo/manifest.json` + `scripts/build-content.js`. Escolhida geração de código com marcadores (`AUTO:conteudo`) em vez de fetch de JSON em runtime — mantém o site estático, sem custo de rede nem risco de flash de conteúdo. |
+| 26/07 | Numeração dos cards dos hubs passa a ser **calculada** (todo card consome um número; "em breve" mostra o selo no lugar do índice). Corrige a numeração manual inconsistente do hub Neuro. |
 
 ## 12. Histórico de fases
 | Fase | Status | Data |
 |---|---|---|
 | Fase 1 — Auditoria e preservação | ✅ concluída | 24/07 |
-| Fase 2 — Fundação da arquitetura (3 áreas) | 🟡 home feita; estender às demais superfícies | 25/07 |
-| Fase 0 — SEO/GEO técnico | ⏳ próxima | — |
+| Fase 2 — Fundação da arquitetura (3 áreas) | 🟡 home feita; falta estender a nav às demais superfícies | 25/07 |
+| Fase 0 — SEO/GEO técnico | ✅ concluída (robots.txt, sitemap.xml, llms.txt, canonical/OG/Twitter) | 25/07 |
+| Fase 3 — Organização do Raciocine | 🟡 mapeamento e fonte única ✅; "conteúdos relacionados" pendente | 26/07 |
 
 **Fase 2 — o que já foi feito (home):** arquitetura de 3 áreas aprovada pelo Cesar. Na home:
 (a) **nav de topo** com as 3 áreas (Central de Conhecimento · Raciocine · Consulte e Resolva),
@@ -444,8 +453,74 @@ dark/light/mobile, sem erros. **Follow-up da Fase 2:** estender a nav das 3 áre
 guia (shell em `assets/app.js`) e ao hub `/artigos/`, para a navegação ser consistente no site
 todo (hoje só a home tem a nav).
 
+**Fase 3 — o que já foi feito:** todo o conteúdo do Raciocine foi mapeado em uma **fonte única**
+(`conteudo/manifest.json`: 6 módulos, 70 páginas, 8 artigos) e as 5 superfícies que antes eram
+mantidas à mão passaram a ser **geradas** a partir dela — detalhes no §14. Refactor no-op:
+nenhuma página, link ou texto clínico mudou. **Follow-up da Fase 3:** blocos de "conteúdos
+relacionados" ligando guia ↔ artigo (item 8 da auditoria) e a integração com o banco de Perguntas
+de Plantão.
+
 ## 13. Próxima etapa
-**Fase 0 — SEO/GEO técnico** (aditiva, sem risco): `robots.txt` (libera GPTBot/ClaudeBot/
-PerplexityBot/Google-Extended), `sitemap.xml` (todas as páginas), `llms.txt` (resumo + links das
-3 áreas), conferir canonical/OG. Depois: estender a nav das 3 áreas às demais superfícies
-(follow-up da Fase 2) e seguir para a Fase 4 (produção de artigos, Lote A do §9).
+**P1 da auditoria** (`claude/auditoria-otimizacao-geo-seo-saas.md`), nesta ordem: domínio próprio
+(`beaside.com.br`) → Google Search Console + Bing → `og:image` 1200×630 → tirar os 8 artigos do
+rascunho (revisão clínica do Cesar) → schema BreadcrumbList + MedicalWebPage. Em paralelo, os dois
+follow-ups abertos do §12 (nav das 3 áreas nas demais superfícies; conteúdos relacionados).
+
+**Decisão pendente do Cesar:** 4 páginas do módulo Procedimentos têm conteúdo real, estão no
+`sitemap.xml`, mas **não recebem link de lugar nenhum** do site — `proc/acessos.html` (31,8 KB),
+`proc/drenagem.html` (35,9 KB), `proc/monitorizacao.html` (15,3 KB) e `proc/vias-aereas.html`
+(33,6 KB). Parecem páginas agregadas antigas, substituídas pelas granulares (cvc, linha-arterial,
+io, iot, vad, traqueo…). Três caminhos: **(a)** redirect 301 para a página granular equivalente,
+**(b)** `noindex` e tirar do sitemap, ou **(c)** voltar a linká-las no hub. Nada foi alterado até
+ele decidir.
+
+---
+
+## 14. Fonte única de conteúdo (`conteudo/manifest.json`)
+
+**O problema que isto resolve.** Até 26/07, publicar uma página exigia editar **quatro** lugares à
+mão, que silenciosamente divergiam entre si: `MODULE_PAGES` em `assets/app.js` (sidebar, prev/next,
+⌘K), o card HTML no `index.html` do módulo (com o número `lp-card-idx` digitado à mão),
+`PAGES_BY_MODULE` em `scripts/extract-knowledge.js` (o que a IA enxerga) e o card em
+`artigos/index.html`. Esquecer um deles não quebra nada visivelmente — só faz a página sumir da
+busca, ou da IA, ou numerar errado.
+
+**Como funciona agora.** `conteudo/manifest.json` é a única coisa que se edita (chaves em
+português). `npm run build:content` regenera tudo o que está entre os marcadores:
+
+| Arquivo | Marcador | O que é gerado |
+|---|---|---|
+| `assets/app.js` | `/* AUTO:conteudo */` | `MODULES` + `MODULE_PAGES` (sidebar, prev/next, ⌘K) |
+| `vm/`, `hemo/`, `neuro/`, `proc/` → `index.html` | `<!-- AUTO:conteudo -->` | cards do hub, numeração e as stats Páginas/Prontas |
+| `artigos/index.html` | `<!-- AUTO:conteudo -->` | cards da Central de Conhecimento |
+| `scripts/extract-knowledge.js` | `/* AUTO:conteudo */` | `PAGES_BY_MODULE` (base de conhecimento da IA) |
+| `llms.txt` | `<!-- AUTO:conteudo -->` | seção "Conteúdo completo" |
+| `sitemap.xml` | — | já era automático: `node scripts/seo-tags.js` varre o disco |
+
+Fora dos marcadores, nada é tocado — o resto de cada arquivo continua sendo editado à mão
+normalmente.
+
+**Comandos.**
+
+```bash
+npm run build:content    # regenera tudo a partir do manifest
+npm run check:content    # não escreve nada; só diz o que sairia diferente + auditoria
+npm run nova-pagina -- --modulo vm --id peep --titulo "PEEP e recrutamento" \
+                       --subtitulo "..." --categoria "Ajuste fino"
+```
+
+`nova-pagina` registra a página no manifest, escreve o esqueleto HTML com a estrutura do design
+system (campos `[PREENCHER]`, nunca conteúdo clínico inventado) e roda `build:content` +
+`seo-tags.js`. Uma linha de comando → página no ar, na sidebar, no hub, no sitemap, no llms.txt e
+na IA. Flags úteis: `--em-breve` (card "em breve"), `--sem-ia` (fica fora da base da IA),
+`--so-registrar` (não cria o HTML), `--posicao`, `--menu`, `--selo`, `--grupo`, `--resumo`.
+
+**Regra de ouro.** Editar `MODULE_PAGES`, cards de hub ou `PAGES_BY_MODULE` à mão é trabalho
+perdido: o próximo `build:content` sobrescreve. A fonte é o manifest.
+
+**Verificação feita no refactor (26/07):** comparação `MODULES`/`MODULE_PAGES` antes × depois
+(idênticos), extração de (href, selo, título, resumo) dos 4 hubs + artigos contra o `HEAD`
+(idênticos, salvo 3 cards do VM reordenados para bater com a sidebar), 0 links quebrados,
+idempotência confirmada (2º build não escreve nada). Dois bugs foram pegos **antes** de gravar:
+as flags `ia` de hemo e proc vieram vazias da extração inicial (teria removido 29 páginas da base
+da IA) e os 4 cards "em breve" do Neuro não tinham sido capturados (teriam sumido do hub).

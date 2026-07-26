@@ -1,0 +1,1372 @@
+{
+  "_leia": "Fonte unica de verdade do conteudo do be aside. Editar AQUI e rodar: npm run build:content. Nao editar a mao MODULE_PAGES em assets/app.js, os cards dos hubs, o sitemap, o llms.txt nem a lista do extract-knowledge -- tudo isso e gerado a partir deste arquivo.",
+  "versao": 1,
+  "site": {
+    "url": "https://be-aside.vercel.app",
+    "nome": "be·aside"
+  },
+  "modulos": [
+    {
+      "id": "vm",
+      "area": "raciocine",
+      "label": "VM Guide",
+      "subtitulo": "Ventilação Mecânica",
+      "root": "vm/",
+      "cor": "#0ea5b7",
+      "paginas": [
+        {
+          "id": "fisiologia",
+          "arquivo": "fisiologia.html",
+          "categoria": "Fundamentos",
+          "menu": "Fisiologia da VM",
+          "titulo": "Fisiologia da VM com Pressão Positiva",
+          "subtitulo": "Ciclo ventilatório, mecânica pulmonar e efeitos hemodinâmicos",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Fundamentos",
+            "selo": "Fundamentos",
+            "titulo": "Fisiologia da VM",
+            "resumo": "Ciclo ventilatório, mecânica pulmonar e efeitos hemodinâmicos da pressão positiva"
+          }
+        },
+        {
+          "id": "modos",
+          "arquivo": "modos.html",
+          "categoria": "Fundamentos",
+          "menu": "Modos de VM",
+          "titulo": "Modos de Ventilação Mecânica",
+          "subtitulo": "AC-VC · AC-PC · SIMV-PSV · PSV",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Fundamentos",
+            "selo": "Fundamentos",
+            "titulo": "Modos de VM",
+            "resumo": "AC-VC, AC-PC, SIMV-PSV, PSV — quando usar cada um"
+          }
+        },
+        {
+          "id": "parametros",
+          "arquivo": "parametros.html",
+          "categoria": "Fundamentos",
+          "menu": "Parâmetros iniciais",
+          "titulo": "Parâmetros Iniciais",
+          "subtitulo": "Configuração passo a passo (UpToDate / FCCS)",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Fundamentos",
+            "selo": "Fundamentos",
+            "titulo": "Parâmetros iniciais",
+            "resumo": "Configuração passo a passo para o paciente recém-intubado"
+          }
+        },
+        {
+          "id": "indutores",
+          "arquivo": "indutores.html",
+          "categoria": "Farmacologia",
+          "menu": "Indutores para RSI",
+          "titulo": "Indutores para RSI",
+          "subtitulo": "Perfil farmacológico e algoritmo por cenário",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Indução & Sedação",
+            "selo": "Farmacologia",
+            "titulo": "Indutores para RSI",
+            "resumo": "Ketamina, etomidato, propofol — perfil e algoritmo por cenário"
+          }
+        },
+        {
+          "id": "sedoanalgesia",
+          "arquivo": "sedoanalgesia.html",
+          "categoria": "Farmacologia",
+          "menu": "Sedoanalgesia na UTI",
+          "titulo": "Sedoanalgesia pós-IOT na UTI",
+          "subtitulo": "Sedativos, opioides e escalas de monitoramento",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Indução & Sedação",
+            "selo": "Farmacologia",
+            "titulo": "Sedoanalgesia",
+            "resumo": "RASS-alvo, escalas, protocolos de analgesia-first"
+          }
+        },
+        {
+          "id": "sdra",
+          "arquivo": "sdra.html",
+          "categoria": "Patologias",
+          "menu": "SDRA",
+          "titulo": "SDRA — Ventilação Protetora (LTVV)",
+          "subtitulo": "Low Tidal Volume Ventilation",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Patologias",
+            "selo": "Patologias",
+            "titulo": "SDRA — Ventilação Protetora",
+            "resumo": "Low tidal volume, driving pressure, tabela ARDSnet"
+          }
+        },
+        {
+          "id": "prona",
+          "arquivo": "prona.html",
+          "categoria": "Patologias",
+          "menu": "Posição prona",
+          "titulo": "Posição Prona na SDRA",
+          "subtitulo": "Benefício de mortalidade na SDRA grave (PROSEVA)",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Patologias",
+            "selo": "Patologias",
+            "titulo": "Posição prona",
+            "resumo": "Indicação, técnica e critérios de reversão na SDRA grave"
+          }
+        },
+        {
+          "id": "dpoc-asma",
+          "arquivo": "dpoc-asma.html",
+          "categoria": "Patologias",
+          "menu": "DPOC & Asma",
+          "titulo": "DPOC & Asma — Hiperinsuflação Dinâmica",
+          "subtitulo": "Air trapping e obstrução ao fluxo expiratório",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Patologias",
+            "selo": "Patologias",
+            "titulo": "DPOC & Asma",
+            "resumo": "Hiperinsuflação dinâmica, auto-PEEP e estratégia expiratória"
+          }
+        },
+        {
+          "id": "hipercapnia",
+          "arquivo": "hipercapnia.html",
+          "categoria": "Patologias",
+          "menu": "Hipercapnia permissiva",
+          "titulo": "Hipercapnia Permissiva",
+          "subtitulo": "Quando e como aceitar a elevação da PaCO₂",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Patologias",
+            "selo": "Patologias",
+            "titulo": "Hipercapnia permissiva",
+            "resumo": "Quando e como aceitar a elevação da PaCO₂"
+          }
+        },
+        {
+          "id": "tce",
+          "arquivo": "tce.html",
+          "categoria": "Patologias",
+          "menu": "VM no TCE",
+          "titulo": "VM no TCE — Estratégia Neuroprotetora",
+          "subtitulo": "Metas de PPC / PIC · Normoventilação",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Patologias",
+            "selo": "Patologias",
+            "titulo": "VM no TCE",
+            "resumo": "Normoventilação, metas de PPC/PIC e PEEP no neurológico"
+          }
+        },
+        {
+          "id": "complicacoes",
+          "arquivo": "complicacoes.html",
+          "categoria": "Monitorização & Segurança",
+          "menu": "Complicações da VM",
+          "titulo": "Complicações da VM",
+          "subtitulo": "Reconhecimento precoce, fisiopatologia e conduta",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Monitorização & Desmame",
+            "selo": "Monitorização",
+            "titulo": "Complicações da VM",
+            "resumo": "VILI, barotrauma, PAV e instabilidade hemodinâmica"
+          }
+        },
+        {
+          "id": "capnografia",
+          "arquivo": "capnografia.html",
+          "categoria": "Monitorização & Segurança",
+          "menu": "Capnografia & EtCO₂",
+          "titulo": "Capnografia & EtCO₂",
+          "subtitulo": "Confirmação de IOT, monitorização contínua e uso na PCR",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Monitorização & Desmame",
+            "selo": "Monitorização",
+            "titulo": "Capnografia & EtCO₂",
+            "resumo": "Confirmação de IOT, monitorização contínua e uso na PCR"
+          }
+        },
+        {
+          "id": "dissincronia",
+          "arquivo": "dissincronia.html",
+          "categoria": "Monitorização & Segurança",
+          "menu": "Dissincronia P-V",
+          "titulo": "Dissincronia Paciente-Ventilador",
+          "subtitulo": "Tipos, diagnóstico pelas curvas e conduta",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Monitorização & Desmame",
+            "selo": "Monitorização",
+            "titulo": "Dissincronia P-V",
+            "resumo": "Reconhecer pelos gráficos e corrigir na beira do leito"
+          }
+        },
+        {
+          "id": "bnm",
+          "arquivo": "bnm.html",
+          "categoria": "Monitorização & Segurança",
+          "menu": "Bloqueio neuromuscular",
+          "titulo": "Bloqueio Neuromuscular na SDRA",
+          "subtitulo": "Quando paralisar, qual agente e por quanto tempo",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Monitorização & Desmame",
+            "selo": "Monitorização",
+            "titulo": "Bloqueio neuromuscular",
+            "resumo": "Quando paralisar, qual agente e por quanto tempo"
+          }
+        },
+        {
+          "id": "desmame",
+          "arquivo": "desmame.html",
+          "categoria": "Desmame",
+          "menu": "SAT / SBT / Extubação",
+          "titulo": "Desmame Ventilatório — SAT / SBT / Extubação",
+          "subtitulo": "Critérios, protocolo e T-piece vs PSV baixo",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Monitorização & Desmame",
+            "selo": "Desmame",
+            "titulo": "SAT / SBT / Extubação",
+            "resumo": "Critérios, protocolo e IRRS — quando e como extubar"
+          }
+        },
+        {
+          "id": "vni",
+          "arquivo": "vni.html",
+          "categoria": "Desmame",
+          "menu": "VNI & alto fluxo",
+          "titulo": "VNI & Cânula Nasal de Alto Fluxo",
+          "subtitulo": "Quando evitar a IOT — e quando não insistir (ROX)",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Monitorização & Desmame",
+            "selo": "Desmame",
+            "titulo": "VNI & Alto Fluxo",
+            "resumo": "Quando evitar a IOT — e quando não insistir (índice ROX)"
+          }
+        },
+        {
+          "id": "calculadora",
+          "arquivo": "calculadora.html",
+          "categoria": "Referência",
+          "menu": "Calculadoras",
+          "titulo": "Calculadoras",
+          "subtitulo": "PBW/VC · Driving Pressure · VM · P/F · IRRS",
+          "tipo": "calculadora",
+          "status": "publicado",
+          "ia": false,
+          "hub": {
+            "grupo": "Referência",
+            "selo": "Referência",
+            "titulo": "Calculadoras",
+            "resumo": "PBW, VC ideal, driving pressure, P/F, IRRS"
+          }
+        },
+        {
+          "id": "tabelas",
+          "arquivo": "tabelas.html",
+          "categoria": "Referência",
+          "menu": "Tabelas rápidas",
+          "titulo": "Tabelas Rápidas",
+          "subtitulo": "Consulta de plantão — situação vs estratégia",
+          "tipo": "referencia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Referência",
+            "selo": "Referência",
+            "titulo": "Tabelas rápidas",
+            "resumo": "Consulta de plantão — situação vs estratégia"
+          }
+        },
+        {
+          "id": "pearls",
+          "arquivo": "pearls.html",
+          "categoria": "Pearls & Pitfalls",
+          "menu": "Cards clínicos",
+          "titulo": "Pearls & Pitfalls",
+          "subtitulo": "Cenários de plantão: acerto, erro comum e o porquê do mecanismo",
+          "tipo": "pearls",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Referência",
+            "selo": "Pearls",
+            "titulo": "Cards clínicos",
+            "resumo": "Cenários de plantão: o acerto, o erro comum e o mecanismo"
+          }
+        },
+        {
+          "id": "quiz",
+          "arquivo": "quiz.html",
+          "categoria": "Pearls & Pitfalls",
+          "menu": "Caso clínico / Quiz",
+          "titulo": "Caso Clínico Interativo",
+          "subtitulo": "Quiz de múltipla escolha",
+          "tipo": "quiz",
+          "status": "publicado",
+          "ia": false,
+          "hub": {
+            "grupo": "Referência",
+            "selo": "Pearls",
+            "titulo": "Caso clínico / Quiz",
+            "resumo": "Quiz de múltipla escolha para treinar o raciocínio"
+          }
+        }
+      ],
+      "hubExtras": [
+        {
+          "href": "../consulte/",
+          "selo": "Assistente IA",
+          "titulo": "Assistente de conduta",
+          "resumo": "Cole a anamnese e receba sugestão de conduta ventilatória",
+          "grupo": "Referência"
+        }
+      ]
+    },
+    {
+      "id": "hemo",
+      "area": "raciocine",
+      "label": "Hemo Guide",
+      "subtitulo": "Hemodinâmica & Choque",
+      "root": "hemo/",
+      "cor": "#e05555",
+      "paginas": [
+        {
+          "id": "fisio",
+          "arquivo": "fisio.html",
+          "categoria": "Fundamentos",
+          "menu": "Fisiologia",
+          "titulo": "Base Fisiológica",
+          "subtitulo": "DO₂, VO₂, Fick, Frank-Starling e choque críptico",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Fundamentos",
+            "selo": "Fundamentos",
+            "titulo": "Fisiologia do choque",
+            "resumo": "DO₂, VO₂, Fick, Frank-Starling e choque críptico"
+          }
+        },
+        {
+          "id": "do2",
+          "arquivo": "do2.html",
+          "categoria": "Fundamentos",
+          "menu": "DO₂ / CaO₂",
+          "titulo": "Oferta de O₂",
+          "subtitulo": "DO₂, CaO₂, tríade da oferta e intervenções",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Fundamentos",
+            "selo": "Fundamentos",
+            "titulo": "Oferta de O₂ (DO₂)",
+            "resumo": "Determinantes do transporte e intervenções sobre cada componente"
+          }
+        },
+        {
+          "id": "rush",
+          "arquivo": "rush.html",
+          "categoria": "POCUS / Imagem",
+          "menu": "RUSH",
+          "titulo": "Protocolo RUSH",
+          "subtitulo": "Rapid Ultrasound for Shock and Hypotension",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "POCUS / Imagem",
+            "selo": "POCUS",
+            "titulo": "Protocolo RUSH",
+            "resumo": "Pump, Tank, Pipes — raciocínio rápido no choque indiferenciado"
+          }
+        },
+        {
+          "id": "vci",
+          "arquivo": "vci.html",
+          "categoria": "POCUS / Imagem",
+          "menu": "POCUS VCI",
+          "titulo": "POCUS — Veia Cava Inferior",
+          "subtitulo": "Técnica, fórmulas e interpretação",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "POCUS / Imagem",
+            "selo": "POCUS",
+            "titulo": "POCUS VCI",
+            "resumo": "Técnica, cIVC, dIVC e armadilhas de interpretação"
+          }
+        },
+        {
+          "id": "ecg",
+          "arquivo": "ecg.html",
+          "categoria": "POCUS / Imagem",
+          "menu": "ECG",
+          "titulo": "ECG no Choque",
+          "subtitulo": "Achados que mudam o manejo imediato",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "POCUS / Imagem",
+            "selo": "Imagem",
+            "titulo": "ECG no choque",
+            "resumo": "Achados que mudam o manejo imediato"
+          }
+        },
+        {
+          "id": "scvo2",
+          "arquivo": "scvo2.html",
+          "categoria": "Marcadores de perfusão",
+          "menu": "SvcO₂",
+          "titulo": "SvcO₂ — Saturação Venosa Central",
+          "subtitulo": "Como interpretar e onde coletar",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Marcadores de perfusão",
+            "selo": "Marcadores",
+            "titulo": "SvcO₂",
+            "resumo": "Como interpretar e onde coletar a saturação venosa central"
+          }
+        },
+        {
+          "id": "dpco2",
+          "arquivo": "dpco2.html",
+          "categoria": "Marcadores de perfusão",
+          "menu": "Δ pCO₂",
+          "titulo": "Δ pCO₂ — Gradiente Venoarterial",
+          "subtitulo": "O marcador de fluxo que a SvcO₂ não captura",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Marcadores de perfusão",
+            "selo": "Marcadores",
+            "titulo": "Δ pCO₂",
+            "resumo": "O marcador de fluxo que a SvcO₂ não captura"
+          }
+        },
+        {
+          "id": "quadrantes",
+          "arquivo": "quadrantes.html",
+          "categoria": "POCUS / Imagem",
+          "menu": "Quadrantes",
+          "titulo": "Os 4 Quadrantes SvcO₂ × Δ pCO₂",
+          "subtitulo": "Plano cartesiano para interpretar a hipoperfusão",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Marcadores de perfusão",
+            "selo": "Marcadores",
+            "titulo": "Os 4 quadrantes",
+            "resumo": "Plano cartesiano SvcO₂ × Δ pCO₂ para interpretar a hipoperfusão"
+          }
+        },
+        {
+          "id": "integracao",
+          "arquivo": "integracao.html",
+          "categoria": "Síntese",
+          "menu": "Integração",
+          "titulo": "Integração Clínica",
+          "subtitulo": "Gasometria pareada + POCUS VCI em conjunto",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Síntese & Terapêutica",
+            "selo": "Síntese",
+            "titulo": "Integração clínica",
+            "resumo": "Gasometria pareada + POCUS VCI em conjunto"
+          }
+        },
+        {
+          "id": "fluxograma",
+          "arquivo": "fluxograma.html",
+          "categoria": "Síntese",
+          "menu": "Fluxograma",
+          "titulo": "Fluxograma Integrado",
+          "subtitulo": "Do choque à conduta — padrão, gasometria, POCUS, drogas",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Síntese & Terapêutica",
+            "selo": "Síntese",
+            "titulo": "Fluxograma integrado",
+            "resumo": "Do choque à conduta — padrão, gasometria, POCUS, drogas"
+          }
+        },
+        {
+          "id": "padroes",
+          "arquivo": "padroes.html",
+          "categoria": "Síntese",
+          "menu": "Padrões",
+          "titulo": "Padrões Hemodinâmicos",
+          "subtitulo": "Tabelas de referência por tipo de choque",
+          "tipo": "referencia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Síntese & Terapêutica",
+            "selo": "Síntese",
+            "titulo": "Padrões hemodinâmicos",
+            "resumo": "Tabelas de referência por tipo de choque"
+          }
+        },
+        {
+          "id": "drogas",
+          "arquivo": "drogas.html",
+          "categoria": "Terapêutica",
+          "menu": "Drogas vasoativas",
+          "titulo": "Drogas Vasoativas",
+          "subtitulo": "Doses, diluições e escalonamento",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Síntese & Terapêutica",
+            "selo": "Terapêutica",
+            "titulo": "Drogas vasoativas",
+            "resumo": "Noradrenalina, vasopressina, dobutamina — doses e escalonamento"
+          }
+        },
+        {
+          "id": "calc-hemo",
+          "arquivo": "calc-hemo.html",
+          "categoria": "Ferramentas",
+          "menu": "Calculadoras",
+          "titulo": "Calculadoras Hemodinâmicas",
+          "subtitulo": "Δ pCO₂ · VCI · VPP · Winter · DO₂",
+          "tipo": "calculadora",
+          "status": "publicado",
+          "ia": false,
+          "hub": {
+            "grupo": "Ferramentas",
+            "selo": "Ferramentas",
+            "titulo": "Calculadoras",
+            "resumo": "Δ pCO₂ · VCI · VPP · Winter · DO₂"
+          }
+        },
+        {
+          "id": "pratica",
+          "arquivo": "pratica.html",
+          "categoria": "Ferramentas",
+          "menu": "Casos práticos",
+          "titulo": "Prática — Casos Simulados",
+          "subtitulo": "4 casos cobrindo os 4 quadrantes",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Ferramentas",
+            "selo": "Ferramentas",
+            "titulo": "Casos práticos",
+            "resumo": "4 casos simulados cobrindo os 4 quadrantes"
+          }
+        },
+        {
+          "id": "siglas",
+          "arquivo": "siglas.html",
+          "categoria": "Ferramentas",
+          "menu": "Siglas",
+          "titulo": "Glossário de Siglas",
+          "subtitulo": "Referência rápida de siglas hemodinâmicas",
+          "tipo": "referencia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Ferramentas",
+            "selo": "Ferramentas",
+            "titulo": "Glossário de siglas",
+            "resumo": "Referência rápida de siglas hemodinâmicas"
+          }
+        },
+        {
+          "id": "pearls",
+          "arquivo": "pearls.html",
+          "categoria": "Pearls & Pitfalls",
+          "menu": "Cards clínicos",
+          "titulo": "Pearls & Pitfalls",
+          "subtitulo": "Cenários de plantão: acerto, erro comum e o porquê do mecanismo",
+          "tipo": "pearls",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Ferramentas",
+            "selo": "Pearls",
+            "titulo": "Cards clínicos",
+            "resumo": "Cenários de plantão: o acerto, o erro comum e o mecanismo"
+          }
+        }
+      ],
+      "hubExtras": [
+        {
+          "href": "../consulte/",
+          "selo": "Assistente IA",
+          "titulo": "Assistente de conduta",
+          "resumo": "Discuta o caso hemodinâmico e receba sugestão de conduta",
+          "grupo": "Ferramentas"
+        }
+      ]
+    },
+    {
+      "id": "neuro",
+      "area": "raciocine",
+      "label": "Neuro Guide",
+      "subtitulo": "Neurocrítico",
+      "root": "neuro/",
+      "cor": "#9b6ff7",
+      "paginas": [
+        {
+          "id": "fisio",
+          "arquivo": "fisio.html",
+          "categoria": "Fundamentos",
+          "menu": "Fisiologia neuro",
+          "titulo": "Fisiologia do Neurocrítico",
+          "subtitulo": "Monro-Kellie, PPC, autorregulação cerebral e herniação",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Fundamentos",
+            "selo": "Fundamentos",
+            "titulo": "Fisiologia do neurocrítico",
+            "resumo": "PIC, PPC, autorregulação cerebral e limiar de isquemia"
+          }
+        },
+        {
+          "id": "tce",
+          "arquivo": "tce.html",
+          "categoria": "Patologias",
+          "menu": "Hemodinâmica & PIC",
+          "titulo": "Hemodinâmica e Manejo Aprofundado da PIC",
+          "subtitulo": "Metas de PAS/PAM por etiologia e algoritmo em degraus",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Patologias",
+            "selo": "Patologias",
+            "titulo": "Hemodinâmica e manejo da PIC",
+            "resumo": "Metas de PAS/PAM por etiologia e algoritmo de PIC em degraus"
+          }
+        },
+        {
+          "id": "avc-i",
+          "arquivo": "avc-i.html",
+          "categoria": "Patologias",
+          "menu": "AVC isquêmico",
+          "titulo": "AVC Isquêmico Agudo",
+          "subtitulo": "Janela terapêutica, trombólise e trombectomia",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Patologias",
+            "selo": "Patologias",
+            "titulo": "AVC isquêmico",
+            "resumo": "Janela terapêutica, trombólise e trombectomia",
+            "estado": "em-breve"
+          }
+        },
+        {
+          "id": "avc-h",
+          "arquivo": "avc-h.html",
+          "categoria": "Patologias",
+          "menu": "HSA aneurismática",
+          "titulo": "Hemorragia Subaracnóidea (HSA)",
+          "subtitulo": "Aneurisma roto, escalas, DCI/vasoespasmo e suporte sistêmico",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Patologias",
+            "selo": "Patologias",
+            "titulo": "Hemorragia subaracnóidea",
+            "resumo": "Aneurisma roto, escalas, DCI/vasoespasmo e suporte sistêmico"
+          }
+        },
+        {
+          "id": "enc",
+          "arquivo": "enc.html",
+          "categoria": "Patologias",
+          "menu": "Encefalopatias",
+          "titulo": "Encefalopatias & Status Epiléptico",
+          "subtitulo": "Delirium, status não convulsivo e encefalopatia hepática",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Patologias",
+            "selo": "Patologias",
+            "titulo": "Encefalopatias & Status epiléptico",
+            "resumo": "Delirium, status não convulsivo e encefalopatia hepática",
+            "estado": "em-breve"
+          }
+        },
+        {
+          "id": "vm",
+          "arquivo": "vm.html",
+          "categoria": "Patologias",
+          "menu": "VM no neurocrítico",
+          "titulo": "Manejo Ventilatório no Neurocrítico",
+          "subtitulo": "PEEP, PaCO₂, hiperventilação e desmame",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Patologias",
+            "selo": "Patologias",
+            "titulo": "Manejo ventilatório no neurocrítico",
+            "resumo": "PEEP, PaCO₂, hiperventilação e desmame"
+          }
+        },
+        {
+          "id": "metabolico",
+          "arquivo": "metabolico.html",
+          "categoria": "Patologias",
+          "menu": "Metabólico & hídrico",
+          "titulo": "Manejo Metabólico, Hídrico e Infeccioso",
+          "subtitulo": "Balanço hídrico, glicemia, sódio, febre e multidisciplinar",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Patologias",
+            "selo": "Patologias",
+            "titulo": "Metabólico, hídrico e infeccioso",
+            "resumo": "Balanço hídrico, glicemia, sódio, febre e multidisciplinar"
+          }
+        },
+        {
+          "id": "pos-op",
+          "arquivo": "pos-op.html",
+          "categoria": "Patologias",
+          "menu": "Pós-op & DVE",
+          "titulo": "Pós-Operatório e Drenagem Neurocirúrgica",
+          "subtitulo": "DVE, herniações atípicas e anticonvulsivantes perioperatórios",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Patologias",
+            "selo": "Patologias",
+            "titulo": "Pós-operatório e DVE",
+            "resumo": "Drenagem ventricular, herniações atípicas e anticonvulsivantes"
+          }
+        },
+        {
+          "id": "sedoanalgesia",
+          "arquivo": "sedoanalgesia.html",
+          "categoria": "Farmacologia",
+          "menu": "Sedoanalgesia neuro",
+          "titulo": "Sedoanalgesia, RASS e Bloqueio Neuromuscular",
+          "subtitulo": "Drogas, diluições e metas de RASS por cenário",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Farmacologia & Ferramentas",
+            "selo": "Farmacologia",
+            "titulo": "Sedoanalgesia, RASS e BNM",
+            "resumo": "Drogas, diluições e metas de RASS por cenário"
+          }
+        },
+        {
+          "id": "calc-neuro",
+          "arquivo": "calc-neuro.html",
+          "categoria": "Ferramentas",
+          "menu": "Calculadoras",
+          "titulo": "Calculadoras Neurológicas",
+          "subtitulo": "PPC · Osmolaridade · GCS · NIHSS · Hunt & Hess · Fisher",
+          "tipo": "calculadora",
+          "status": "publicado",
+          "ia": false,
+          "hub": {
+            "grupo": "Farmacologia & Ferramentas",
+            "selo": "Ferramentas",
+            "titulo": "Calculadoras",
+            "resumo": "PPC, osmolaridade, GCS, NIHSS, Hunt & Hess, Fisher",
+            "estado": "em-breve"
+          }
+        },
+        {
+          "id": "pearls",
+          "arquivo": "pearls.html",
+          "categoria": "Pearls & Pitfalls",
+          "menu": "Cards clínicos",
+          "titulo": "Pearls & Pitfalls",
+          "subtitulo": "Cenários de plantão: acerto, erro comum e o porquê do mecanismo",
+          "tipo": "pearls",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Farmacologia & Ferramentas",
+            "selo": "Pearls",
+            "titulo": "Cards clínicos",
+            "resumo": "Cenários de plantão: o acerto, o erro comum e o mecanismo",
+            "estado": "em-breve"
+          }
+        }
+      ],
+      "hubExtras": [
+        {
+          "href": "../consulte/",
+          "selo": "Assistente IA",
+          "titulo": "Assistente de conduta",
+          "resumo": "Discuta o caso neurológico e receba sugestão de conduta",
+          "grupo": "Farmacologia & Ferramentas"
+        }
+      ]
+    },
+    {
+      "id": "proc",
+      "area": "raciocine",
+      "label": "Procedimentos",
+      "subtitulo": "Dúvidas de plantão",
+      "root": "proc/",
+      "cor": "#3b82f6",
+      "paginas": [
+        {
+          "id": "cvc",
+          "arquivo": "cvc.html",
+          "categoria": "Acesso vascular",
+          "menu": "CVC",
+          "titulo": "Cateter Venoso Central",
+          "subtitulo": "Seldinger, escolha de sítio, profundidade e complicações",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Acesso vascular",
+            "selo": "Acesso vascular",
+            "titulo": "Cateter venoso central",
+            "resumo": "Seldinger, escolha de sítio, profundidade e complicações"
+          }
+        },
+        {
+          "id": "linha-arterial",
+          "arquivo": "linha-arterial.html",
+          "categoria": "Acesso vascular",
+          "menu": "Linha arterial",
+          "titulo": "Linha Arterial",
+          "subtitulo": "Técnica, zeragem, Allen test e armadilhas do sítio",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Acesso vascular",
+            "selo": "Acesso vascular",
+            "titulo": "Linha arterial",
+            "resumo": "Técnica, zeragem, Allen test e armadilhas do sítio"
+          }
+        },
+        {
+          "id": "io",
+          "arquivo": "io.html",
+          "categoria": "Acesso vascular",
+          "menu": "Acesso intraósseo",
+          "titulo": "Acesso Intraósseo (IO)",
+          "subtitulo": "Quando usar, sítios, técnica e drogas compatíveis",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Acesso vascular",
+            "selo": "Acesso vascular",
+            "titulo": "Acesso intraósseo",
+            "resumo": "Quando usar, sítios, técnica e drogas compatíveis"
+          }
+        },
+        {
+          "id": "iot",
+          "arquivo": "iot.html",
+          "categoria": "Via aérea",
+          "menu": "IOT / RSI",
+          "titulo": "IOT — Sequência Rápida (RSI)",
+          "subtitulo": "Os 7 P: preparo, posição, pré-O₂, pré-trat., indução, passagem, confirmação",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Via aérea",
+            "selo": "Via aérea",
+            "titulo": "IOT — Sequência rápida (RSI)",
+            "resumo": "Os 7 P: preparo, posição, pré-O₂, pré-trat., indução, passagem, confirmação"
+          }
+        },
+        {
+          "id": "vad",
+          "arquivo": "vad.html",
+          "categoria": "Via aérea",
+          "menu": "Via aérea difícil / CICO",
+          "titulo": "Via Aérea Difícil & CICO",
+          "subtitulo": "LEMON, algoritmo DAS 4 planos e cricotireoidotomia",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Via aérea",
+            "selo": "Via aérea",
+            "titulo": "Via aérea difícil & CICO",
+            "resumo": "LEMON, algoritmo DAS 4 planos e cricotireoidotomia"
+          }
+        },
+        {
+          "id": "traqueo",
+          "arquivo": "traqueo.html",
+          "categoria": "Via aérea",
+          "menu": "Traqueostomia & cuidados",
+          "titulo": "Traqueostomia & Cuidados",
+          "subtitulo": "Troca de cânula, endocânula e sistema fechado",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Via aérea",
+            "selo": "Via aérea",
+            "titulo": "Traqueostomia & cuidados",
+            "resumo": "Troca de cânula, endocânula e sistema fechado"
+          }
+        },
+        {
+          "id": "toracocentese",
+          "arquivo": "toracocentese.html",
+          "categoria": "Drenagem & punções",
+          "menu": "Toracocentese",
+          "titulo": "Toracocentese",
+          "subtitulo": "Técnica, limite de drenagem e complicações",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Drenagem & punções",
+            "selo": "Drenagem",
+            "titulo": "Toracocentese",
+            "resumo": "Técnica, limite de drenagem e complicações"
+          }
+        },
+        {
+          "id": "dreno",
+          "arquivo": "dreno.html",
+          "categoria": "Drenagem & punções",
+          "menu": "Dreno torácico",
+          "titulo": "Dreno Torácico",
+          "subtitulo": "Triângulo de segurança BTS, técnica e regras de clampeamento",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Drenagem & punções",
+            "selo": "Drenagem",
+            "titulo": "Dreno torácico",
+            "resumo": "Triângulo de segurança BTS, técnica e regras de clampeamento"
+          }
+        },
+        {
+          "id": "paracentese",
+          "arquivo": "paracentese.html",
+          "categoria": "Drenagem & punções",
+          "menu": "Paracentese",
+          "titulo": "Paracentese",
+          "subtitulo": "Coagulopatia não contraindica, Z-track, albumina e SAAG",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Drenagem & punções",
+            "selo": "Drenagem",
+            "titulo": "Paracentese",
+            "resumo": "Coagulopatia, Z-track, albumina e SAAG"
+          }
+        },
+        {
+          "id": "pl",
+          "arquivo": "pl.html",
+          "categoria": "Drenagem & punções",
+          "menu": "Punção lombar",
+          "titulo": "Punção Lombar",
+          "subtitulo": "Quando fazer TC antes, manômetro, 4 tubos e tabela de LCR",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Drenagem & punções",
+            "selo": "Drenagem",
+            "titulo": "Punção lombar",
+            "resumo": "Quando fazer TC antes, manômetro, 4 tubos e tabela de LCR"
+          }
+        },
+        {
+          "id": "pai",
+          "arquivo": "pai.html",
+          "categoria": "Monitorização invasiva",
+          "menu": "PAI — onda arterial",
+          "titulo": "Pressão Arterial Invasiva (PAI)",
+          "subtitulo": "Anatomia da onda, amortecimento, PPV e armadilhas",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Monitorização & emergência",
+            "selo": "Monitorização",
+            "titulo": "PAI — onda arterial",
+            "resumo": "Anatomia da onda, amortecimento, PPV e armadilhas"
+          }
+        },
+        {
+          "id": "swan",
+          "arquivo": "swan.html",
+          "categoria": "Monitorização invasiva",
+          "menu": "Swan-Ganz",
+          "titulo": "Cateter de Artéria Pulmonar (Swan-Ganz)",
+          "subtitulo": "Inserção, curvas por câmara, parâmetros e perfis de choque",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Monitorização & emergência",
+            "selo": "Monitorização",
+            "titulo": "Swan-Ganz",
+            "resumo": "Inserção, curvas por câmara, parâmetros e perfis de choque"
+          }
+        },
+        {
+          "id": "ritmo",
+          "arquivo": "ritmo.html",
+          "categoria": "Emergência cardíaca",
+          "menu": "Cardioversão & marca-passo",
+          "titulo": "Cardioversão, Desfibrilação & Marca-passo",
+          "subtitulo": "Choque sincronizado, desfibrilação e marca-passo transcutâneo/transvenoso",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Monitorização & emergência",
+            "selo": "Emergência",
+            "titulo": "Cardioversão & marca-passo",
+            "resumo": "Choque sincronizado, desfibrilação e marca-passo"
+          }
+        },
+        {
+          "id": "pearls",
+          "arquivo": "pearls.html",
+          "categoria": "Pearls & Pitfalls",
+          "menu": "Dúvidas de plantão",
+          "titulo": "Dúvidas de Plantão",
+          "subtitulo": "As perguntas que ninguém responde no guia clássico",
+          "tipo": "pearls",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Monitorização & emergência",
+            "selo": "Pearls",
+            "titulo": "Dúvidas de plantão",
+            "resumo": "Shilley, traqueostomia, Nora periférica, IO — com referências"
+          }
+        }
+      ]
+    },
+    {
+      "id": "consulte",
+      "area": "consulte",
+      "label": "Consulte e Resolva",
+      "subtitulo": "Assistente de conduta (IA)",
+      "root": "consulte/",
+      "cor": "#1db88a",
+      "paginas": [
+        {
+          "id": "assistente",
+          "arquivo": "index.html",
+          "categoria": "Assistente IA",
+          "menu": "Assistente de conduta",
+          "titulo": "Assistente de Conduta (IA)",
+          "subtitulo": "VM, hemodinâmica e neurocrítico em um só chat",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": false,
+          "hub": null
+        }
+      ]
+    },
+    {
+      "id": "institucional",
+      "area": "institucional",
+      "label": "Institucional",
+      "subtitulo": "Sobre, equipe e políticas",
+      "root": "institucional/",
+      "cor": "#1db88a",
+      "paginas": [
+        {
+          "id": "sobre",
+          "arquivo": "sobre.html",
+          "categoria": "Institucional",
+          "menu": "A be·aside",
+          "titulo": "Sobre o be·aside",
+          "subtitulo": "Feito para pensar o paciente crítico — do mecanismo à decisão",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "equipe",
+          "arquivo": "equipe.html",
+          "categoria": "Institucional",
+          "menu": "Quem somos",
+          "titulo": "Quem Escreve e Revisa o be·aside",
+          "subtitulo": "Autoria e credenciais de cada área",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "metodologia",
+          "arquivo": "metodologia.html",
+          "categoria": "Institucional",
+          "menu": "Metodologia",
+          "titulo": "Metodologia Editorial",
+          "subtitulo": "Como pesquisamos, escrevemos e revisamos",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "seguranca-ia",
+          "arquivo": "seguranca-ia.html",
+          "categoria": "Institucional",
+          "menu": "Segurança da IA",
+          "titulo": "Segurança e Uso dos Assistentes de IA",
+          "subtitulo": "O que os assistentes fazem, não fazem e como tratam dados",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "faq",
+          "arquivo": "faq.html",
+          "categoria": "Institucional",
+          "menu": "FAQ",
+          "titulo": "Perguntas Frequentes",
+          "subtitulo": "O que é o be·aside, como o conteúdo é produzido e como usar a plataforma",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "aviso-medico",
+          "arquivo": "aviso-medico.html",
+          "categoria": "Políticas",
+          "menu": "Aviso médico",
+          "titulo": "Aviso Médico",
+          "subtitulo": "Leia antes de usar qualquer conteúdo do be·aside na prática",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "termos",
+          "arquivo": "termos.html",
+          "categoria": "Políticas",
+          "menu": "Termos de Uso",
+          "titulo": "Termos de Uso",
+          "subtitulo": "Condições para uso da plataforma be·aside",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "privacidade",
+          "arquivo": "privacidade.html",
+          "categoria": "Políticas",
+          "menu": "Privacidade",
+          "titulo": "Política de Privacidade",
+          "subtitulo": "Como o be·aside trata dados pessoais (LGPD)",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": false,
+          "hub": null
+        }
+      ]
+    }
+  ],
+  "artigos": [
+    {
+      "id": "perguntas-plantao-hemodinamica",
+      "arquivo": "perguntas-plantao-hemodinamica.html",
+      "modulo": "hemo",
+      "tema": "Hemodinâmica",
+      "titulo": "Choque Críptico, Fluido-Responsividade e Vasopressor",
+      "resumo": "Seis perguntas que voltam toda semana na UTI — resposta direta, mecanismo e conduta prática à beira do leito.",
+      "tags": [
+        "Choque críptico",
+        "VCI · VTI · PLR",
+        "Vasopressor"
+      ],
+      "status": "rascunho",
+      "ia": true
+    },
+    {
+      "id": "medidas-gerais-neurocritico",
+      "arquivo": "medidas-gerais-neurocritico.html",
+      "modulo": "neuro",
+      "tema": "Neurocrítico",
+      "titulo": "Medidas Gerais no Paciente Neurocrítico",
+      "resumo": "O pacote de cuidados que previne lesão secundária — cabeceira, metas hemodinâmicas, glicemia, sódio e temperatura.",
+      "tags": [
+        "Lesão secundária",
+        "PPC",
+        "Sedoanalgesia"
+      ],
+      "status": "rascunho",
+      "ia": true
+    },
+    {
+      "id": "hipotensao-pos-intubacao",
+      "arquivo": "hipotensao-pos-intubacao.html",
+      "modulo": "hemo",
+      "tema": "Ventilação Mecânica",
+      "titulo": "Hipotensão Pós-Intubação: Por Que Acontece e o Que Fazer",
+      "resumo": "Por que a pressão cai nos primeiros minutos após intubar e como agir antes que o quadro piore.",
+      "tags": [
+        "Push-dose pressor",
+        "PAM-alvo",
+        "Pneumotórax"
+      ],
+      "status": "rascunho",
+      "ia": true,
+      "aria": "Hipotensão Pós-Intubação"
+    },
+    {
+      "id": "peep-alta-queda-pressao",
+      "arquivo": "peep-alta-queda-pressao.html",
+      "modulo": "vm",
+      "tema": "Ventilação Mecânica",
+      "titulo": "PEEP Alta e Queda de Pressão: PEEP, Hipovolemia, ou os Dois?",
+      "resumo": "Como diferenciar efeito hemodinâmico esperado da PEEP, hipovolemia associada e pneumotórax pelo POCUS de VCI.",
+      "tags": [
+        "POCUS VCI",
+        "SDRA",
+        "ARDSnet"
+      ],
+      "status": "rascunho",
+      "ia": true,
+      "aria": "PEEP Alta e Queda de Pressão"
+    },
+    {
+      "id": "dissincronia-paciente-ventilador",
+      "arquivo": "dissincronia-paciente-ventilador.html",
+      "modulo": "vm",
+      "tema": "Ventilação Mecânica",
+      "titulo": "Dissincronia Paciente-Ventilador: Como Diferenciar as Causas",
+      "resumo": "Disparo, fluxo ou ciclagem — como distinguir problema de via aérea, ajuste da máquina e necessidade real de sedação.",
+      "tags": [
+        "Auto-PEEP",
+        "Curvas do ventilador",
+        "Sedação"
+      ],
+      "status": "rascunho",
+      "ia": true,
+      "aria": "Dissincronia Paciente-Ventilador"
+    },
+    {
+      "id": "shiley-saiu-decanulacao-acidental",
+      "arquivo": "shiley-saiu-decanulacao-acidental.html",
+      "modulo": "proc",
+      "tema": "Procedimentos",
+      "titulo": "O Shiley Saiu: Conduta na Decanulação Acidental",
+      "resumo": "Quando reintroduzir a cânula com segurança e quando partir direto para via aérea oral.",
+      "tags": [
+        "Traqueostomia",
+        "Via aérea difícil",
+        "EtCO₂"
+      ],
+      "status": "rascunho",
+      "ia": true,
+      "aria": "O Shiley Saiu: Decanulação Acidental"
+    },
+    {
+      "id": "rebaixamento-consciencia-paciente-ventilado",
+      "arquivo": "rebaixamento-consciencia-paciente-ventilado.html",
+      "modulo": "neuro",
+      "tema": "Neurocrítico",
+      "titulo": "Rebaixamento de Consciência no Paciente Ventilado",
+      "resumo": "É a sedação ou é neurológico? Como decidir entre esperar, testar a interrupção e pedir imagem.",
+      "tags": [
+        "SAT",
+        "Exame neurológico",
+        "Causas metabólicas"
+      ],
+      "status": "rascunho",
+      "ia": true
+    },
+    {
+      "id": "sepsis-2026-o-que-mudou",
+      "arquivo": "sepsis-2026-o-que-mudou.html",
+      "modulo": "hemo",
+      "tema": "Hemodinâmica",
+      "titulo": "Surviving Sepsis Campaign 2026: O Que Mudou Desde 2021",
+      "resumo": "46 recomendações novas — meta de PAM por idade, fluidos, lactato seriado e antibioticoterapia, resumidos para o plantão.",
+      "tags": [
+        "Choque séptico",
+        "Diretrizes 2026",
+        "Antibioticoterapia"
+      ],
+      "status": "rascunho",
+      "ia": true
+    }
+  ]
+}

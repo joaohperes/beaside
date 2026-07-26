@@ -8,6 +8,8 @@
 > 1. [`PROJECT_STATUS.md`](./PROJECT_STATUS.md) — mapa mestre e status.
 > 2. [`PERGUNTAS-DE-PLANTAO-BANCO.md`](./PERGUNTAS-DE-PLANTAO-BANCO.md) — backlog de artigos.
 > 3. `CLAUDE.md` — arquitetura técnica do repositório.
+> 3b. `conteudo/manifest.json` — **fonte única do conteúdo** (módulos, páginas, artigos).
+>     Nunca editar sidebar/cards/knowledge à mão: edite o manifest e rode `npm run build:content`.
 > 4. skill `be-aside-visual-identity` — identidade visual (header/logo/cores/rodapé).
 >
 > Se o foco se perder no meio do caminho, **volte para o `PROJECT_STATUS.md`**.
@@ -22,4 +24,5 @@ crítico, em **três áreas**:
 3. **Consulte e Resolva** — assistente de IA (RAG sobre o conteúdo validado do próprio site).
 
 Regra do processo: preservar tudo que existe, avançar em fases, aprovar antes de mudança estrutural,
-lançar cada etapa no branch. Detalhes, auditoria e plano completo: `PROJECT_STATUS.md`.
+lançar cada etapa no branch. Conteúdo novo entra por `npm run nova-pagina` (ver §14 do
+`PROJECT_STATUS.md`), não editando arquivo por arquivo. Detalhes, auditoria e plano completo: `PROJECT_STATUS.md`.

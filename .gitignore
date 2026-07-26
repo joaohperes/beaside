@@ -2,3 +2,6 @@
 node_modules
 .env
 .env*.local
+
+# artefatos do mount (ponte de arquivos) — nunca versionar
+.fuse_hidden*

@@ -4,7 +4,10 @@
   "type": "module",
   "scripts": {
     "extract-knowledge": "node scripts/extract-knowledge.js",
-    "test:api": "node --test api/*.test.js"
+    "test:api": "node --test api/*.test.js",
+    "build:content": "node scripts/build-content.js",
+    "check:content": "node scripts/build-content.js --check",
+    "nova-pagina": "node scripts/nova-pagina.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.70.0",

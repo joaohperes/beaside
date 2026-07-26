@@ -23,6 +23,9 @@ const root = join(__dirname, '..');
 
 // ── Páginas por módulo ──────────────────────────────────────────────────
 // (title omitido = extraído automaticamente do <h1 class="section-title"> ou <title>)
+/* ⚠️  Bloco gerado por scripts/build-content.js a partir de conteudo/manifest.json.
+   Não editar à mão: rode `npm run build:content` depois de mudar o manifesto. */
+/* AUTO:conteudo */
 const PAGES_BY_MODULE = {
   vm: [
     'fisiologia.html', 'modos.html', 'parametros.html', 'indutores.html',
@@ -48,13 +51,15 @@ const PAGES_BY_MODULE = {
     'pl.html', 'pai.html', 'swan.html', 'ritmo.html', 'pearls.html',
   ],
   artigos: [
-    'dissincronia-paciente-ventilador.html', 'hipotensao-pos-intubacao.html',
-    'medidas-gerais-neurocritico.html', 'peep-alta-queda-pressao.html',
-    'perguntas-plantao-hemodinamica.html',
+    'perguntas-plantao-hemodinamica.html', 'medidas-gerais-neurocritico.html',
+    'hipotensao-pos-intubacao.html', 'peep-alta-queda-pressao.html',
+    'dissincronia-paciente-ventilador.html',
+    'shiley-saiu-decanulacao-acidental.html',
     'rebaixamento-consciencia-paciente-ventilado.html',
-    'sepsis-2026-o-que-mudou.html', 'shiley-saiu-decanulacao-acidental.html',
+    'sepsis-2026-o-que-mudou.html',
   ],
 };
+/* /AUTO:conteudo */
 
 // Nome de export por módulo (usado em api/knowledge.js e no system prompt do assistente)
 const EXPORT_NAME = {

@@ -1,0 +1,255 @@
+#!/usr/bin/env node
+/**
+ * build-content.js — o gerador do be·aside.
+ *
+ * Fonte única de verdade: conteudo/manifest.json
+ * A partir dele, este script REGENERA automaticamente:
+ *   1. assets/app.js .............. MODULES + MODULE_PAGES (menu lateral, prev/próximo, busca ⌘K)
+ *   2. <modulo>/index.html ........ os cards do hub de cada módulo (numeração automática)
+ *   3. artigos/index.html ......... os cards da Central de Conhecimento
+ *   4. scripts/extract-knowledge.js  a lista de páginas que alimentam a IA
+ *   5. llms.txt ................... o mapa completo do conteúdo para os robôs de IA
+ *
+ * Uso:
+ *   node scripts/build-content.js          → gera tudo
+ *   node scripts/build-content.js --check  → não escreve nada; só relata o que está fora de sincronia
+ *
+ * Regra: tudo que está entre marcadores AUTO:conteudo é gerado. Não editar à mão —
+ * a próxima execução sobrescreve. Para mudar, edite conteudo/manifest.json.
+ */
+import { readFileSync, writeFileSync, existsSync, readdirSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const root = join(dirname(fileURLToPath(import.meta.url)), '..');
+const CHECK = process.argv.includes('--check');
+const manifest = JSON.parse(readFileSync(join(root, 'conteudo/manifest.json'), 'utf8'));
+
+const escritos = [];
+const iguais = [];
+const avisos = [];
+
+// ── helpers ────────────────────────────────────────────────────────────
+const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const jsStr = (s) => "'" + String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "'";
+const pad = (s, n) => s + ' '.repeat(Math.max(0, n - s.length));
+const nn = (i) => String(i).padStart(2, '0');
+const rgb = (hex) => {
+  const h = hex.replace('#', '');
+  return [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16)).join(',');
+};
+const mods = (ids) => manifest.modulos.filter((m) => ids.includes(m.id));
+const modById = (id) => manifest.modulos.find((m) => m.id === id);
+const RACIOCINE = ['vm', 'hemo', 'neuro', 'proc'];
+
+function aplicar(relPath, gerado, marcadorInicio, marcadorFim) {
+  const abs = join(root, relPath);
+  const original = readFileSync(abs, 'utf8');
+  const i = original.indexOf(marcadorInicio);
+  const j = original.indexOf(marcadorFim);
+  if (i === -1 || j === -1) {
+    avisos.push(`${relPath}: marcadores AUTO:conteudo não encontrados — arquivo ignorado.`);
+    return;
+  }
+  const novo = original.slice(0, i + marcadorInicio.length) + gerado + original.slice(j);
+  if (novo === original) { iguais.push(relPath); return; }
+  if (!CHECK) writeFileSync(abs, novo);
+  escritos.push(relPath);
+}
+
+const HTML_INI = '<!-- AUTO:conteudo -->';
+const HTML_FIM = '<!-- /AUTO:conteudo -->';
+const JS_INI = '/* AUTO:conteudo */';
+const JS_FIM = '/* /AUTO:conteudo */';
+
+// ── 1. assets/app.js — MODULES + MODULE_PAGES ──────────────────────────
+function gerarAppJs() {
+  let out = '\n// ── Módulos disponíveis ──────────────────────────────────────\n';
+  out += 'const MODULES = {\n';
+  for (const m of manifest.modulos) {
+    out += `  ${m.id}: {\n`;
+    out += `    id: ${jsStr(m.id)},\n`;
+    out += `    label: ${jsStr(m.label)},\n`;
+    out += `    subtitle: ${jsStr(m.subtitulo)},\n`;
+    out += `    root: ${jsStr(m.root)},\n`;
+    out += `    color: ${jsStr(m.cor)},\n`;
+    out += `  },\n`;
+  }
+  out += '};\n\n';
+  out += '// ── Índice de páginas por módulo ─────────────────────────────\n';
+  out += 'const MODULE_PAGES = {\n';
+  for (const m of manifest.modulos) {
+    const pubs = m.paginas.filter((p) => p.status !== 'oculto');
+    const w = (k, f) => Math.max(...pubs.map((p) => (f(p) || '').length)) + 1;
+    const wId = w('id', (p) => jsStr(p.id)), wFile = w('f', (p) => jsStr(p.arquivo));
+    const wCat = w('c', (p) => jsStr(p.categoria)), wLab = w('l', (p) => jsStr(p.menu));
+    const wTit = w('t', (p) => jsStr(p.titulo));
+    out += `  ${m.id}: [\n`;
+    for (const p of pubs) {
+      out += `    {id:${pad(jsStr(p.id) + ',', wId + 1)}file:${pad(jsStr(p.arquivo) + ',', wFile + 1)}`;
+      out += `cat:${pad(jsStr(p.categoria) + ',', wCat + 1)}label:${pad(jsStr(p.menu) + ',', wLab + 1)}`;
+      out += `title:${pad(jsStr(p.titulo) + ',', wTit + 1)}subtitle:${jsStr(p.subtitulo)}},\n`;
+    }
+    out += `  ],\n`;
+  }
+  out += '};\n';
+  aplicar('assets/app.js', out, JS_INI, JS_FIM);
+}
+
+// ── 2. hubs dos módulos ────────────────────────────────────────────────
+function gerarHubs() {
+  for (const m of mods(RACIOCINE)) {
+    const grupos = [];
+    const push = (grupo, card) => {
+      let g = grupos.find((x) => x.rotulo === grupo);
+      if (!g) { g = { rotulo: grupo, cards: [] }; grupos.push(g); }
+      g.cards.push(card);
+    };
+    for (const p of m.paginas) {
+      if (!p.hub || p.status === 'oculto') continue;
+      push(p.hub.grupo, { href: p.arquivo, selo: p.hub.selo, titulo: p.hub.titulo, resumo: p.hub.resumo, estado: p.hub.estado });
+    }
+    for (const e of m.hubExtras || []) push(e.grupo, e);
+
+    let idx = 0, prontas = 0, out = '\n';
+    for (const g of grupos) {
+      out += `  <div class="lp-section-label">${esc(g.rotulo)}</div>\n  <div class="lp-grid">\n`;
+      for (const c of g.cards) {
+        idx++;
+        const soon = c.estado === 'em-breve';
+        if (!soon) prontas++;
+        out += soon
+          ? `    <a class="lp-card empty" href="${c.href}" aria-disabled="true" tabindex="-1">\n`
+          : `    <a class="lp-card" href="${c.href}">\n`;
+        out += `      <div class="lp-card-top"><div class="lp-card-cat">${esc(c.selo)}</div>`;
+        out += soon ? `<span class="lp-badge-soon">em breve</span></div>\n`
+                    : `<span class="lp-card-idx">${nn(idx)}</span></div>\n`;
+        out += `      <div class="lp-card-title">${esc(c.titulo)}</div>\n`;
+        out += `      <div class="lp-card-sub">${esc(c.resumo)}</div>\n`;
+        if (!soon) out += `      <div class="lp-card-cta">Abrir <span>→</span></div>\n`;
+        out += `    </a>\n`;
+      }
+      out += `  </div>\n\n`;
+    }
+    aplicar(`${m.id}/index.html`, out, HTML_INI, HTML_FIM);
+
+    // painel "Páginas: N" do topo do hub
+    const abs = join(root, `${m.id}/index.html`);
+    const html = readFileSync(abs, 'utf8');
+    const novo = html
+      .replace(/(<div class="lp-stat"><div class="lp-stat-k">Páginas<\/div><div class="lp-stat-v">)\d+(<\/div><\/div>)/,
+               `$1${idx}$2`)
+      .replace(/(<div class="lp-stat"><div class="lp-stat-k">Prontas<\/div><div class="lp-stat-v">)\d+(<\/div><\/div>)/,
+               `$1${nn(prontas)}$2`);
+    if (novo !== html) {
+      if (!CHECK) writeFileSync(abs, novo);
+      if (!escritos.includes(`${m.id}/index.html`)) escritos.push(`${m.id}/index.html`);
+    }
+  }
+}
+
+// ── 3. hub da Central de Conhecimento ──────────────────────────────────
+function gerarArtigos() {
+  const publicados = manifest.artigos.filter((a) => a.status !== 'oculto');
+  let out = '\n  <div class="bento" id="lista">\n\n';
+  for (const a of publicados) {
+    const cor = a.cor || (modById(a.modulo) || {}).cor || manifest.site.cor || '#1db88a';
+    const r = rgb(cor);
+    const aria = a.aria || a.titulo;
+    out += `    <div class="card"\n       style="--c-accent:${cor};--c-border:rgba(${r},.4);--c-glow:rgba(${r},.12)">\n`;
+    out += `      <span class="card-rail" aria-hidden="true"></span>\n`;
+    out += `      <a class="card-hit" href="${a.arquivo}" aria-label="${esc(aria)}">\n`;
+    out += `        <div class="card-badge">${esc(a.tema)}</div>\n`;
+    out += `        <div class="card-title">${esc(a.titulo)}</div>\n`;
+    out += `        <div class="card-sub">${esc(a.resumo)}</div>\n`;
+    out += `        <div class="card-tags">\n`;
+    for (const t of a.tags || []) out += `          <span class="card-tag">${esc(t)}</span>\n`;
+    out += `        </div>\n      </a>\n`;
+    out += `      <div class="card-foot">\n`;
+    out += `        <a class="card-cta" href="${a.arquivo}">Ler artigo <span class="card-cta-arrow" aria-hidden="true">→</span></a>\n`;
+    out += `      </div>\n    </div>\n\n`;
+  }
+  out += '  </div>\n\n';
+  aplicar('artigos/index.html', out, HTML_INI, HTML_FIM);
+}
+
+// ── 4. lista de páginas que alimentam a IA ─────────────────────────────
+function gerarKnowledge() {
+  let out = '\nconst PAGES_BY_MODULE = {\n';
+  for (const m of mods(RACIOCINE)) {
+    const arqs = m.paginas.filter((p) => p.ia && p.status !== 'oculto').map((p) => `'${p.arquivo}'`);
+    out += `  ${m.id}: [\n` + quebrar(arqs) + `  ],\n`;
+  }
+  const arts = manifest.artigos.filter((a) => a.ia && a.status !== 'oculto').map((a) => `'${a.arquivo}'`);
+  out += `  artigos: [\n` + quebrar(arts) + `  ],\n};\n`;
+  aplicar('scripts/extract-knowledge.js', out, JS_INI, JS_FIM);
+}
+function quebrar(itens) {
+  let linhas = [], atual = '   ';
+  for (const it of itens) {
+    if ((atual + ' ' + it + ',').length > 78) { linhas.push(atual); atual = '   '; }
+    atual += ' ' + it + ',';
+  }
+  if (atual.trim()) linhas.push(atual);
+  return linhas.map((l) => l + '\n').join('');
+}
+
+// ── 5. llms.txt — mapa completo para robôs de IA ───────────────────────
+function gerarLlms() {
+  const base = manifest.site.url;
+  let out = '\n\n## Conteúdo completo\n';
+  for (const m of mods(RACIOCINE)) {
+    out += `\n### ${m.label}\n\n`;
+    for (const p of m.paginas) {
+      if (p.status === 'oculto' || p.tipo === 'quiz') continue;
+      out += `- [${p.titulo}](${base}/${m.root}${p.arquivo}): ${p.subtitulo}\n`;
+    }
+  }
+  const arts = manifest.artigos.filter((a) => a.status === 'publicado');
+  if (arts.length) {
+    out += `\n### Central de Conhecimento\n\n`;
+    for (const a of arts) out += `- [${a.titulo}](${base}/artigos/${a.arquivo}): ${a.resumo}\n`;
+  }
+  out += '\n';
+  aplicar('llms.txt', out, '<!-- AUTO:conteudo -->', '<!-- /AUTO:conteudo -->');
+}
+
+// ── 6. relatório de sincronia ──────────────────────────────────────────
+function auditar() {
+  for (const m of manifest.modulos) {
+    for (const p of m.paginas) {
+      if (!existsSync(join(root, m.root, p.arquivo))) avisos.push(`${m.id}/${p.arquivo}: está no manifesto mas o arquivo não existe.`);
+      if (RACIOCINE.includes(m.id) && !p.hub && p.status !== 'oculto') avisos.push(`${m.id}/${p.arquivo}: existe e está no menu, mas NÃO tem card no hub do módulo (invisível para quem chega pela home do módulo).`);
+    }
+    const noManifesto = new Set(m.paginas.map((p) => p.arquivo));
+    for (const f of readdirSync(join(root, m.root))) {
+      if (f.endsWith('.html') && f !== 'index.html' && !noManifesto.has(f)) avisos.push(`${m.id}/${f}: existe no repositório mas NÃO está no manifesto (fora do menu, do hub, do sitemap e da IA).`);
+    }
+  }
+  for (const a of manifest.artigos) {
+    if (!existsSync(join(root, 'artigos', a.arquivo))) avisos.push(`artigos/${a.arquivo}: está no manifesto mas o arquivo não existe.`);
+  }
+  const noManifesto = new Set(manifest.artigos.map((a) => a.arquivo));
+  for (const f of readdirSync(join(root, 'artigos'))) {
+    if (f.endsWith('.html') && f !== 'index.html' && !noManifesto.has(f)) avisos.push(`artigos/${f}: existe mas NÃO está no manifesto.`);
+  }
+}
+
+gerarAppJs();
+gerarHubs();
+gerarArtigos();
+gerarKnowledge();
+gerarLlms();
+auditar();
+
+const nPag = manifest.modulos.reduce((s, m) => s + m.paginas.length, 0);
+console.log(`\nbe·aside — build de conteúdo${CHECK ? ' (--check, nada foi escrito)' : ''}`);
+console.log(`Manifesto: ${manifest.modulos.length} módulos · ${nPag} páginas · ${manifest.artigos.length} artigos\n`);
+console.log(escritos.length ? `Arquivos ${CHECK ? 'que MUDARIAM' : 'regerados'}:\n` + escritos.map((f) => '  · ' + f).join('\n') : 'Nada a regerar — tudo já está em sincronia.');
+if (iguais.length) console.log(`\nJá em sincronia: ${iguais.join(', ')}`);
+if (avisos.length) {
+  console.log(`\nAvisos (${avisos.length}):`);
+  for (const a of avisos) console.log('  ! ' + a);
+}
+console.log('');
+if (CHECK && (escritos.length || avisos.length)) process.exit(1);
