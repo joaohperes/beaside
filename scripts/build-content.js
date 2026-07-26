@@ -9,6 +9,7 @@
  *   3. artigos/index.html ......... os cards da Central de Conhecimento
  *   4. scripts/extract-knowledge.js  a lista de páginas que alimentam a IA
  *   5. llms.txt ................... o mapa completo do conteúdo para os robôs de IA
+ *   6. api/farmacos.js ........... doses, diluições e vazão de bomba pré-calculada (fonte: conteudo/farmacos.json)
  *
  * Uso:
  *   node scripts/build-content.js          → gera tudo
@@ -214,7 +215,107 @@ function gerarLlms() {
   aplicar('llms.txt', out, '<!-- AUTO:conteudo -->', '<!-- /AUTO:conteudo -->');
 }
 
-// ── 6. relatório de sincronia ──────────────────────────────────────────
+// ── 6. fármacos: doses, diluições e vazão de bomba pré-calculada ───────
+// A IA NUNCA calcula mL/h. As tabelas abaixo são geradas aqui, em JavaScript,
+// a partir de conteudo/farmacos.json (que por sua vez veio de hemo/drogas.html).
+// É isso que impede erro de conta em dose chegar ao plantonista.
+function num(v) {
+  const abs = Math.abs(v);
+  const casas = abs >= 10 ? 1 : abs >= 1 ? 1 : 2;
+  let t = v.toFixed(casas);
+  if (t.includes('.')) t = t.replace(/0+$/, '').replace(/\.$/, '');
+  return t.replace('.', ',');
+}
+
+function vazao(f, dose, peso, conc) {
+  return (dose * (f.por_peso ? peso : 1) * (f.por_min ? 60 : 1)) / conc;
+}
+
+function gerarFarmacos() {
+  const fx = JSON.parse(readFileSync(join(root, 'conteudo/farmacos.json'), 'utf8'));
+  const pesos = fx.pesos_referencia;
+  const L = [];
+
+  L.push('FÁRMACOS EM INFUSÃO — DOSES, DILUIÇÕES E VAZÃO DE BOMBA (be·aside)');
+  L.push('Extraído de hemo/drogas.html. As vazões em mL/h foram CALCULADAS POR SCRIPT, não por modelo de linguagem — use os números literalmente, não recalcule.');
+  L.push('Fórmula para peso fora da tabela: mL/h = dose × peso × 60 ÷ concentração (mesma base de unidade: μg com μg/mL, U com U/mL).');
+  L.push('Diluições padrão VARIAM entre instituições — sempre dizer isso ao apresentar uma vazão.');
+
+  L.push('\n## 1ª escolha por tipo de choque');
+  for (const e of fx.escolha_por_choque) {
+    L.push(`- ${e.choque}: 1ª linha ${e.primeira} | 2ª linha / se refratário: ${e.segunda} | Alvo: ${e.alvo}`);
+  }
+
+  for (const f of fx.farmacos) {
+    L.push(`\n## ${f.nome} — ${f.classe}${f.receptor ? ' · ' + f.receptor : ''}`);
+    if (f.busca && f.busca.length) L.push(`Também chamado de: ${f.busca.join(', ')}.`);
+    if (f.papel) L.push(`Papel: ${f.papel}`);
+    if (f.indicacoes && f.indicacoes.length) L.push(`Quando usar: ${f.indicacoes.join(' · ')}`);
+    L.push(`Dose inicial: ${f.dose_inicial}`);
+    if (f.titulacao) L.push(`Titulação: ${f.titulacao}`);
+    L.push(`Dose máxima: ${f.dose_maxima}`);
+    if (f.duracao) L.push(`Duração: ${f.duracao}`);
+    if (f.faixas) for (const fa of f.faixas) L.push(`Faixa ${fa.faixa} → ${fa.efeito}: ${fa.uso}`);
+    if (f.outras_vias) for (const o of f.outras_vias) L.push(`Outra via — ${o.indicacao}: ${o.dose} (${o.via})`);
+
+    for (const d of f.diluicoes || []) {
+      L.push(`Diluição ${d.rotulo}: ${d.preparo} = ${num(d.concentracao)} ${f.unidade_conc}`);
+      if (!f.pontos || !f.pontos.length) continue;
+      L.push(`Vazão em mL/h — diluição ${d.rotulo} (${num(d.concentracao)} ${f.unidade_conc})${f.por_peso ? '' : ' — dose fixa, independe do peso'}:`);
+      if (f.por_peso) {
+        L.push(`  dose (${f.unidade_dose}) | ` + pesos.map((p) => p + ' kg').join(' | '));
+        for (const pt of f.pontos) {
+          const rot = num(pt.v) + (pt.r ? ` (${pt.r})` : '');
+          L.push(`  ${rot} | ` + pesos.map((p) => num(vazao(f, pt.v, p, d.concentracao))).join(' | '));
+        }
+      } else {
+        for (const pt of f.pontos) {
+          L.push(`  ${num(pt.v)} ${f.unidade_dose}${pt.r ? ` (${pt.r})` : ''} = ${num(vazao(f, pt.v, 0, d.concentracao))} mL/h`);
+        }
+      }
+    }
+    if (!f.diluicoes || !f.diluicoes.length) L.push('Diluição: não padronizada na página do be·aside — não inventar; orientar a conferir bula e protocolo da instituição.');
+    if (f.reavaliar) L.push(`Reavaliar: ${f.reavaliar}`);
+    if (f.desmame) L.push(`Desmame: ${f.desmame}`);
+    if (f.alertas && f.alertas.length) L.push(`Armadilhas: ${f.alertas.join(' · ')}`);
+    L.push(`Fonte: ${f.fonte}`);
+  }
+
+  L.push('\n## Pontos práticos de segurança');
+  for (const s of fx.seguranca) L.push(`- ${s.tema}: ${s.recomendacao}`);
+
+  // ── guarda: o JSON não pode divergir da página clínica ──────────────
+  // Se alguém mudar uma diluição só num dos dois lugares, o build avisa.
+  const pag = readFileSync(join(root, 'hemo/drogas.html'), 'utf8')
+    .replace(/<script[\s\S]*?<\/script>/gi, '')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, ' ')
+    .replace(/\s+/g, ' ');
+  for (const f of fx.farmacos) {
+    for (const d of f.diluicoes || []) {
+      if (!pag.includes(d.preparo)) {
+        avisos.push(`farmacos.json → ${f.nome}: a diluição "${d.preparo}" NÃO existe em hemo/drogas.html. Doses e diluições precisam ser idênticas nos dois lugares — corrija antes de publicar.`);
+      }
+    }
+  }
+
+  const texto = L.join('\n') + '\n';
+  const cab = [
+    '// GERADO por scripts/build-content.js a partir de conteudo/farmacos.json — NÃO EDITAR À MÃO.',
+    '// Para mudar uma dose: altere a página clínica (hemo/drogas.html), depois conteudo/farmacos.json,',
+    '// e rode `npm run build:content`. As vazões em mL/h são calculadas aqui, nunca pelo modelo.',
+    '', 'export const KNOWLEDGE_FARMACOS = ' + JSON.stringify(texto) + ';', ''
+  ].join('\n');
+
+  const abs = join(root, 'api/farmacos.js');
+  const antes = existsSync(abs) ? readFileSync(abs, 'utf8') : '';
+  if (antes === cab) { iguais.push('api/farmacos.js'); return; }
+  if (!CHECK) writeFileSync(abs, cab);
+  escritos.push('api/farmacos.js');
+}
+
+// ── 7. relatório de sincronia ──────────────────────────────────────────
 function auditar() {
   for (const m of manifest.modulos) {
     for (const p of m.paginas) {
@@ -240,6 +341,7 @@ gerarHubs();
 gerarArtigos();
 gerarKnowledge();
 gerarLlms();
+gerarFarmacos();
 auditar();
 
 const nPag = manifest.modulos.reduce((s, m) => s + m.paginas.length, 0);

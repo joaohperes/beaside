@@ -495,7 +495,8 @@ português). `npm run build:content` regenera tudo o que está entre os marcador
 | `artigos/index.html` | `<!-- AUTO:conteudo -->` | cards da Central de Conhecimento |
 | `scripts/extract-knowledge.js` | `/* AUTO:conteudo */` | `PAGES_BY_MODULE` (base de conhecimento da IA) |
 | `llms.txt` | `<!-- AUTO:conteudo -->` | seção "Conteúdo completo" |
-| `sitemap.xml` | — | já era automático: `node scripts/seo-tags.js` varre o disco |
+| `api/farmacos.js` | arquivo inteiro | doses, diluições e vazão de bomba pré-calculada (ver §15) |
+| `sitemap.xml` | — | automático: `node scripts/seo-tags.js` varre o disco e marca `noindex` em tudo que está `em-breve` |
 
 Fora dos marcadores, nada é tocado — o resto de cada arquivo continua sendo editado à mão
 normalmente.
@@ -515,6 +516,22 @@ system (campos `[PREENCHER]`, nunca conteúdo clínico inventado) e roda `build:
 na IA. Flags úteis: `--em-breve` (card "em breve"), `--sem-ia` (fica fora da base da IA),
 `--so-registrar` (não cria o HTML), `--posicao`, `--menu`, `--selo`, `--grupo`, `--resumo`.
 
+**Status é uma flag só.** `status` ∈ `publicado` · `em-breve` · `rascunho` · `oculto`. Não existe
+mais `hub.estado`: o gerador deriva o card "em breve" de `status === 'em-breve'`, o `llms.txt` só
+lista `publicado`, a base da IA só aceita `publicado` (artigos em rascunho seguem na IA de
+propósito, para uso interno) e o `seo-tags.js` põe `noindex` em tudo que está `em-breve`. Um campo,
+cinco consequências — é o que impede uma página meio pronta de vazar para o Google ou para a IA.
+
+**Guarda de conteúdo magro.** `extract-knowledge.js` avisa (`MIN_CHARS = 900`) sempre que uma
+página entra na base da IA com pouco texto, dizendo as duas saídas: escrever o conteúdo, ou marcar
+`ia: false` / `status: "em-breve"` no manifest. Foi o que pegou `neuro/avc-i.html` (287 chars) e
+`neuro/enc.html` (313 chars) dentro da base da IA na auditoria de 26/07.
+
+**Conteúdo dentro de `<script>` também entra na IA.** As páginas de *pearls* guardam o conteúdo
+clínico em `const pearls = [...]`. O extrator faz parsing balanceado dos literais de array em
+`<script>` inline e converte cada objeto em texto rotulado (Cenário / Conduta certa / Erro comum /
+Por quê). Recuperou ~60k caracteres que a IA nunca tinha visto.
+
 **Regra de ouro.** Editar `MODULE_PAGES`, cards de hub ou `PAGES_BY_MODULE` à mão é trabalho
 perdido: o próximo `build:content` sobrescreve. A fonte é o manifest.
 
@@ -524,3 +541,50 @@ perdido: o próximo `build:content` sobrescreve. A fonte é o manifest.
 idempotência confirmada (2º build não escreve nada). Dois bugs foram pegos **antes** de gravar:
 as flags `ia` de hemo e proc vieram vazias da extração inicial (teria removido 29 páginas da base
 da IA) e os 4 cards "em breve" do Neuro não tinham sido capturados (teriam sumido do hub).
+
+---
+
+## 15. Camada 0 — doses e diluições (`conteudo/farmacos.json`)
+
+**O problema que isto resolve.** A pergunta de plantão não é "me explique o choque cardiogênico",
+é *"quando usa dobutamina e qual a dose?"*. A resposta útil abre com o número — diluição,
+concentração, dose mínima e máxima **já convertidas em mL/h para o peso do paciente** — e só depois
+explica o raciocínio. Havia dois obstáculos: o número estava só em prosa dentro de
+`hemo/drogas.html`, e converter dose em vazão é **aritmética**, a coisa que um modelo de linguagem
+faz pior e onde errar é mais caro.
+
+**Como funciona.** `conteudo/farmacos.json` é a fonte única de doses (11 fármacos em infusão,
+todos extraídos de `hemo/drogas.html` — nenhum valor foi criado pela IA). O `build:content` gera
+`api/farmacos.js`, exportando `KNOWLEDGE_FARMACOS`: para cada fármaco, papel, indicações, dose
+inicial, titulação, dose máxima, diluição com concentração, armadilhas — e uma **tabela de mL/h
+calculada em JavaScript** para 50/60/70/80/90/100 kg em cada ponto relevante da faixa de dose.
+
+```
+mL/h = dose × (peso, se por kg) × (60, se por minuto) ÷ concentração
+```
+
+A IA **lê** essa tabela; não a calcula. Isso tira a aritmética de dose do modelo, que é o ponto
+inteiro da camada. Conferência contra as contas que a própria página já trazia: dobutamina
+5 μg/kg/min · 70 kg · 1000 μg/mL = **21 mL/h** ✅ · noradrenalina 0,1 μg/kg/min · 70 kg ·
+64 μg/mL = **6,6 mL/h** ✅ · vasopressina 0,03 U/min · 0,2 U/mL = **9 mL/h** ✅.
+
+**Guarda de divergência.** O build compara cada string de diluição do JSON com o texto de
+`hemo/drogas.html`. Se alguém mudar a diluição só de um lado, `npm run check:content` falha
+dizendo qual fármaco divergiu. Página e tabela não podem contar histórias diferentes.
+
+**Como adicionar um fármaco.** (1) escreva na página clínica primeiro — a página é a fonte;
+(2) copie os valores para `conteudo/farmacos.json`; (3) `npm run build:content`; (4) confira a
+tabela gerada contra o cálculo da própria página. Fármaco sem diluição padronizada entra com
+`diluicoes: []` — o gerador escreve "não padronizada, conferir bula e protocolo" e a IA é instruída
+a nunca inventar.
+
+**Arquitetura da resposta (`api/sugerir-uni.js`).** O assistente passou a reconhecer dois tipos de
+mensagem. **Pergunta direta** (droga, dose, parâmetro, conceito) → `Resposta objetiva` (o número,
+sem preâmbulo) → `Por que funciona assim` (o raciocínio encadeado sobre o que foi perguntado) →
+`Quando NÃO / armadilhas` → `Fonte`. **Caso clínico** (paciente apresentado) → mantém o formato
+antigo, que já abria por `Conduta imediata`. Em ambos: objetivo primeiro, raciocínio logo abaixo.
+Sem peso informado, a IA dá 60/70/80 kg como referência e **pede o peso** em vez de estimar.
+
+**Pendência clínica.** O campo `_revisao_clinica` do JSON está `[PREENCHER]`. Nenhum valor foi
+inventado, mas a tabela precisa de conferência formal do Cesar/João contra fonte primária antes de
+ser tratada como referência publicada.

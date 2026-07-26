@@ -24,5 +24,5 @@ crítico, em **três áreas**:
 3. **Consulte e Resolva** — assistente de IA (RAG sobre o conteúdo validado do próprio site).
 
 Regra do processo: preservar tudo que existe, avançar em fases, aprovar antes de mudança estrutural,
-lançar cada etapa no branch. Conteúdo novo entra por `npm run nova-pagina` (ver §14 do
+lançar cada etapa no branch. Doses e diluições entram por `conteudo/farmacos.json` (ver §15 do `PROJECT_STATUS.md`) — nunca direto no prompt da IA. Conteúdo novo entra por `npm run nova-pagina` (ver §14 do
 `PROJECT_STATUS.md`), não editando arquivo por arquivo. Detalhes, auditoria e plano completo: `PROJECT_STATUS.md`.
