@@ -8,7 +8,7 @@
  *   2. <modulo>/index.html ........ os cards do hub de cada módulo (numeração automática)
  *   3. artigos/index.html ......... os cards da Central de Conhecimento
  *   4. scripts/extract-knowledge.js  a lista de páginas que alimentam a IA
- *   5. llms.txt ................... o mapa completo do conteúdo para os robôs de IA
+ *   5. llms.txt ................... a lista de áreas e o mapa completo do conteúdo para os robôs de IA
  *   6. api/farmacos.js ........... doses, diluições e vazão de bomba pré-calculada (fonte: conteudo/farmacos.json)
  *
  * Uso:
@@ -41,7 +41,7 @@ const rgb = (hex) => {
 };
 const mods = (ids) => manifest.modulos.filter((m) => ids.includes(m.id));
 const modById = (id) => manifest.modulos.find((m) => m.id === id);
-const RACIOCINE = ['vm', 'hemo', 'neuro', 'proc'];
+const RACIOCINE = ['vm', 'hemo', 'neuro', 'proc', 'peri'];
 
 function aplicar(relPath, gerado, marcadorInicio, marcadorFim) {
   const abs = join(root, relPath);
@@ -183,7 +183,13 @@ function gerarArtigos() {
 function gerarKnowledge() {
   let out = '\nconst PAGES_BY_MODULE = {\n';
   for (const m of mods(RACIOCINE)) {
-    const arqs = m.paginas.filter((p) => p.ia && p.status === 'publicado').map((p) => `'${p.arquivo}'`);
+    // Rascunho entra na IA de propósito, igual aos artigos: "rascunho" aqui quer dizer
+    // fora do Google e fora do llms.txt — não fora do site. A página já está no ar, no
+    // hub e na busca; deixar o assistente cego para ela faz ele responder pior sobre um
+    // conteúdo que o leitor tem na tela ao lado. em-breve e oculto continuam fora.
+    const arqs = m.paginas
+      .filter((p) => p.ia && (p.status === 'publicado' || p.status === 'rascunho'))
+      .map((p) => `'${p.arquivo}'`);
     out += `  ${m.id}: [\n` + quebrar(arqs) + `  ],\n`;
   }
   const arts = manifest.artigos.filter((a) => a.ia && a.status !== 'oculto').map((a) => `'${a.arquivo}'`);  // artigos em rascunho seguem na IA de propósito (uso interno)
@@ -201,13 +207,36 @@ function quebrar(itens) {
 }
 
 // ── 5. llms.txt — mapa completo para robôs de IA ───────────────────────
+// A lista de áreas do llms.txt era escrita à mão e por isso atrasava: um módulo
+// novo entrava no site, no sitemap e na sidebar, e continuava invisível para os
+// robôs de IA até alguém lembrar de editar este arquivo. Agora sai do manifesto,
+// como todo o resto. Módulo sem hub (institucional) não aparece: não há página
+// única para apontar.
+function gerarLlmsAreas() {
+  const base = manifest.site.url;
+  let out = '\n';
+  for (const m of mods(RACIOCINE)) {
+    if (m.semHub) continue;
+    // Módulo em rascunho não entra na lista que os robôs de IA leem primeiro,
+    // pelo mesmo motivo que não entra no sitemap: o conteúdo ainda não passou
+    // pela revisão clínica do Cesar.
+    if (m.status && m.status !== 'publicado') continue;
+    if (!m.llms) { avisos.push(`llms.txt: módulo "${m.id}" não tem o campo "llms" no manifesto — ficou fora da lista de áreas.`); continue; }
+    out += `- [Raciocine — ${m.llms.nome}](${base}/${m.root}): ${m.llms.desc}\n`;
+  }
+  aplicar('llms.txt', out, '<!-- AUTO:areas -->', '<!-- /AUTO:areas -->');
+}
+
 function gerarLlms() {
   const base = manifest.site.url;
   let out = '\n\n## Conteúdo completo\n';
   for (const m of mods(RACIOCINE)) {
+    // Módulo inteiro em rascunho não vira seção vazia: um título sem nada embaixo
+    // faz o robô achar que o conteúdo sumiu, não que ainda não saiu.
+    const pubs = m.paginas.filter((p) => p.status === 'publicado' && p.tipo !== 'quiz');
+    if (!pubs.length) continue;
     out += `\n### ${m.label}\n\n`;
-    for (const p of m.paginas) {
-      if (p.status !== 'publicado' || p.tipo === 'quiz') continue;
+    for (const p of pubs) {
       out += `- [${p.titulo}](${base}/${m.root}${p.arquivo}): ${p.subtitulo}\n`;
     }
   }
@@ -379,6 +408,7 @@ gerarAppJs();
 gerarHubs();
 gerarArtigos();
 gerarKnowledge();
+gerarLlmsAreas();
 gerarLlms();
 gerarFarmacos();
 gerarRedirects();

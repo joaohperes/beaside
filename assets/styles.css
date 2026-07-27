@@ -28,6 +28,11 @@ body[data-module="neuro"]{
 body[data-module="proc"]{
   --accent:#3b82f6;--accent-d:#1d56c4;--accent-rgb:59,130,246;
 }
+/* Perioperatório: magenta — o tom mais distante dos cinco já em uso e sem
+   carga semântica clínica (vermelho, âmbar e verde são reservados). */
+body[data-module="peri"]{
+  --accent:#d9569b;--accent-d:#a83a76;--accent-rgb:217,86,155;
+}
 body[data-module="hemo"] .quad.ok{border-color:rgba(var(--accent-rgb),.25)}
 body[data-module="hemo"] .quad.ok .quad-header{color:var(--accent)}
 body[data-module="hemo"] .alert-box.info{background:rgba(var(--accent-rgb),.06);border-color:rgba(var(--accent-rgb),.2)}
@@ -1664,7 +1669,10 @@ td:first-child:has(.pill-qual){white-space:nowrap}
 .alert-box.warn{background:rgba(240,160,48,.08);border:1px solid rgba(240,160,48,.2)}
 .alert-box.danger{background:rgba(226,75,74,.08);border:1px solid rgba(226,75,74,.2)}
 .alert-box .icon{font-size:12px;flex-shrink:0;margin-top:2px;font-weight:700;font-family:var(--mono);color:var(--text2);width:16px;text-align:center}
-.alert-box .content{flex:1}.alert-box .content strong{display:block;margin-bottom:3px}
+.alert-box .content{flex:1}
+/* só o primeiro <strong> é título do box (vira bloco). <strong> no meio da frase
+   é ênfase e continua inline — antes quebrava a linha e deixava a pontuação órfã. */
+.alert-box .content > strong:first-child{display:block;margin-bottom:3px}
 /* Quad plane */
 .quad-plane{position:relative;display:grid;grid-template-columns:56px 1fr 1fr;grid-template-rows:auto 1fr 1fr 30px;gap:0;margin:14px 0 4px}
 .quad-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
@@ -2586,6 +2594,9 @@ html[data-theme="light"] body[data-module="neuro"]{
 }
 html[data-theme="light"] body[data-module="proc"]{
   --accent:#2563eb;--accent-d:#1d4ed8;--accent-rgb:37,99,235;
+}
+html[data-theme="light"] body[data-module="peri"]{
+  --accent:#c23b83;--accent-d:#9c2d68;--accent-rgb:194,59,131;
 }
 
 /* shell */

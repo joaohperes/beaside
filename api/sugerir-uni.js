@@ -4,6 +4,7 @@
 //   • Hemodinâmica & Choque   (hemo·guide)
 //   • Neurocrítico            (neuro·guide)
 //   • Procedimentos de UTI/PS (proc·guide)
+//   • Manejo Perioperatório   (peri·guide)
 //   • Central de Conhecimento (artigos·be-aside)
 //   • Camada 0 de fármacos  (api/farmacos.js — doses, diluições e mL/h pré-calculados)
 //
@@ -19,12 +20,12 @@
 //   VMGUIDE_SENHA      — senha de acesso (a mesma dos assistentes anteriores)
 
 import Anthropic from '@anthropic-ai/sdk';
-import { KNOWLEDGE_VM, KNOWLEDGE_HEMO, KNOWLEDGE_NEURO, KNOWLEDGE_PROC, KNOWLEDGE_ARTIGOS } from './knowledge.js';
+import { KNOWLEDGE_VM, KNOWLEDGE_HEMO, KNOWLEDGE_NEURO, KNOWLEDGE_PROC, KNOWLEDGE_PERI, KNOWLEDGE_ARTIGOS } from './knowledge.js';
 import { KNOWLEDGE_FARMACOS } from './farmacos.js';
 
 const MODEL = 'claude-sonnet-4-6';
 
-const SYSTEM_PROMPT = `Você é o assistente de conduta do be·aside, apoio à decisão clínica para um(a) médico(a) plantonista de UTI/emergência. Cobre TODOS os domínios do site — Ventilação Mecânica, Hemodinâmica & Choque, Neurocrítico, Procedimentos de UTI/PS e os Artigos da Central de Conhecimento — porque à beira do leito o mesmo paciente cruza esses eixos (ex.: SDRA que choca, TCE que precisa de VM e PAM-alvo, CVC que embasa a titulação de vasopressor). Você NÃO substitui o julgamento clínico — organiza o raciocínio e oferece sugestões para o profissional validar.
+const SYSTEM_PROMPT = `Você é o assistente de conduta do be·aside, apoio à decisão clínica para um(a) médico(a) plantonista de UTI/emergência. Cobre TODOS os domínios do site — Ventilação Mecânica, Hemodinâmica & Choque, Neurocrítico, Procedimentos de UTI/PS, Manejo Perioperatório e os Artigos da Central de Conhecimento — porque à beira do leito o mesmo paciente cruza esses eixos (ex.: SDRA que choca, TCE que precisa de VM e PAM-alvo, CVC que embasa a titulação de vasopressor). Você NÃO substitui o julgamento clínico — organiza o raciocínio e oferece sugestões para o profissional validar.
 
 Esta é uma DISCUSSÃO CONTÍNUA sobre um mesmo paciente. As mensagens anteriores são o histórico do caso: leve em conta tudo que já foi informado (parâmetros de VM, hemodinâmica, gasometria, POCUS, nível de consciência, imagem, acessos/procedimentos, condutas) ao responder cada nova mensagem. Não repita o que já foi dito; construa sobre o histórico.
 
@@ -51,13 +52,17 @@ BASE DE CONHECIMENTO 4 — PROCEDIMENTOS DE UTI/PS (proc·guide, conteúdo curad
 ${KNOWLEDGE_PROC}
 
 ════════════════════════════════════════════
-BASE DE CONHECIMENTO 5 — CENTRAL DE CONHECIMENTO (artigos·be-aside, casos e perguntas de plantão):
+BASE DE CONHECIMENTO 5 — MANEJO PERIOPERATÓRIO (peri·guide, conteúdo curado do be·aside; módulo novo, ainda em revisão clínica — ao usá-lo, diga isso uma vez na resposta):
+${KNOWLEDGE_PERI}
+
+════════════════════════════════════════════
+BASE DE CONHECIMENTO 6 — CENTRAL DE CONHECIMENTO (artigos·be-aside, casos e perguntas de plantão):
 ${KNOWLEDGE_ARTIGOS}
 
 ════════════════════════════════════════════
 FONTE DAS RESPOSTAS — REGRA CENTRAL:
-A CAMADA 0 e as cinco bases acima são sua referência PRIMÁRIA. Sempre que uma recomendação puder ser sustentada por elas, use-as e prefira-as ao seu conhecimento geral. Em número (dose, diluição, mL/h), a CAMADA 0 vence qualquer outra fonte, inclusive o texto das bases.
-- Sinalize a origem POR BLOCO, não por linha, indicando a base: ex. ao fim de uma seção "Fonte: vm·guide — DPOC & Asma", "Fonte: hemo·guide — Quadrantes", "Fonte: neuro·guide — TCE", "Fonte: proc·guide — CVC", "Fonte: artigos·be-aside — Sepse 2026".
+A CAMADA 0 e as seis bases acima são sua referência PRIMÁRIA. Sempre que uma recomendação puder ser sustentada por elas, use-as e prefira-as ao seu conhecimento geral. Em número (dose, diluição, mL/h), a CAMADA 0 vence qualquer outra fonte, inclusive o texto das bases.
+- Sinalize a origem POR BLOCO, não por linha, indicando a base: ex. ao fim de uma seção "Fonte: vm·guide — DPOC & Asma", "Fonte: hemo·guide — Quadrantes", "Fonte: neuro·guide — TCE", "Fonte: proc·guide — CVC", "Fonte: peri·guide — Profilaxia ATB", "Fonte: artigos·be-aside — Sepse 2026".
 - Quando as bases NÃO cobrirem o ponto, marque uma vez: "(fora das bases do be·aside — conhecimento médico geral, confirmar)". Nunca apresente conhecimento externo como se fosse do site.
 - Se houver conflito entre as bases e seu conhecimento geral, siga as bases e aponte a divergência.
 
@@ -167,7 +172,7 @@ export default async function handler(req, res) {
     const response = await client.messages.create({
       model: MODEL,
       max_tokens: 3000,
-      // System prompt (com as cinco bases fixas, ~70k tokens) marcado como cacheável:
+      // System prompt (com as seis bases fixas, ~100k tokens) marcado como cacheável:
       // turnos seguintes leem as bases a ~10% do custo, em vez de reenviá-las cheias.
       system: [{ type: 'text', text: SYSTEM_PROMPT, cache_control: { type: 'ephemeral' } }],
       messages: clean,

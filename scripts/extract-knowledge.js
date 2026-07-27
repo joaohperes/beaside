@@ -49,6 +49,9 @@ const PAGES_BY_MODULE = {
     'traqueo.html', 'toracocentese.html', 'dreno.html', 'paracentese.html',
     'pl.html', 'pai.html', 'swan.html', 'ritmo.html', 'pearls.html',
   ],
+  peri: [
+    'pre-op.html', 'atb.html', 'manejo.html', 'pocus.html',
+  ],
   artigos: [
     'perguntas-plantao-hemodinamica.html', 'medidas-gerais-neurocritico.html',
     'hipotensao-pos-intubacao.html', 'peep-alta-queda-pressao.html',
@@ -66,8 +69,25 @@ const EXPORT_NAME = {
   hemo: 'KNOWLEDGE_HEMO',
   neuro: 'KNOWLEDGE_NEURO',
   proc: 'KNOWLEDGE_PROC',
+  peri: 'KNOWLEDGE_PERI',
   artigos: 'KNOWLEDGE_ARTIGOS',
 };
+
+// PAGES_BY_MODULE é gerado a partir do manifesto; EXPORT_NAME é escrito à mão.
+// Módulo novo entrando no manifesto sem a linha correspondente aqui gerava
+// `export const undefined = ""` — que é JavaScript VÁLIDO, então nem a checagem
+// de sintaxe pegava: a base do módulo simplesmente não existia e ninguém via.
+// Agora o build para e diz o que falta.
+function exportName(mod) {
+  const nome = EXPORT_NAME[mod];
+  if (!nome) {
+    console.error(`\n✗ Módulo "${mod}" está em PAGES_BY_MODULE mas não tem nome de export em EXPORT_NAME.`);
+    console.error(`  Adicione  ${mod}: 'KNOWLEDGE_${mod.toUpperCase()}',  em scripts/extract-knowledge.js e rode de novo.`);
+    console.error('  Lembre também de importar o export novo em api/sugerir-uni.js quando o módulo sair do rascunho.');
+    process.exit(1);
+  }
+  return nome;
+}
 
 // ── Conteúdo clínico embutido em JavaScript ────────────────────────────
 // Algumas páginas (Pearls & Pitfalls, por exemplo) renderizam os cards a partir de
@@ -185,7 +205,10 @@ let output = `// Auto-gerado por scripts/extract-knowledge.js — não editar ma
 // Para atualizar: node scripts/extract-knowledge.js (ou: npm run extract-knowledge)
 //
 // Um export por módulo (KNOWLEDGE_VM, KNOWLEDGE_HEMO, KNOWLEDGE_NEURO, KNOWLEDGE_PROC,
-// KNOWLEDGE_ARTIGOS) — consumidos pelo Assistente de Conduta unificado (api/sugerir-uni.js).
+// KNOWLEDGE_PERI, KNOWLEDGE_ARTIGOS) — consumidos pelo Assistente de Conduta
+// unificado (api/sugerir-uni.js). Entram aqui as páginas com ia:true e status
+// publicado ou rascunho; em-breve e oculto ficam de fora. Export vazio = módulo
+// sem nenhuma página nessas condições.
 
 `;
 
@@ -217,7 +240,7 @@ for (const [mod, files] of Object.entries(PAGES_BY_MODULE)) {
   }
   const knowledge = sections.join('\n\n---\n\n');
   totalChars += knowledge.length;
-  output += `export const ${EXPORT_NAME[mod]} = ${JSON.stringify(knowledge)};\n\n`;
+  output += `export const ${exportName(mod)} = ${JSON.stringify(knowledge)};\n\n`;
 }
 
 // Alias de compatibilidade — mantém api/sugerir.js (endpoint antigo de VM) funcionando
