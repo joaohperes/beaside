@@ -1176,7 +1176,7 @@
     {
       "id": "peri",
       "area": "raciocine",
-      "status": "rascunho",
+      "status": "publicado",
       "label": "Perioperatório",
       "subtitulo": "Paciente cirúrgico",
       "root": "peri/",
@@ -1203,7 +1203,7 @@
           "titulo": "Avaliação e Preparo Pré-Operatório",
           "subtitulo": "ASA, capacidade funcional, fragilidade e o que realmente adia uma cirurgia",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": true,
           "hub": {
             "grupo": "Antes da sala",
@@ -1220,7 +1220,7 @@
           "titulo": "Profilaxia Antibiótica Cirúrgica",
           "subtitulo": "Timing, dose por peso, repique e a hora de suspender",
           "tipo": "referencia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": true,
           "hub": {
             "grupo": "Antes da sala",
@@ -1237,7 +1237,7 @@
           "titulo": "Manejo Perioperatório do Paciente Crítico",
           "subtitulo": "Coração, cérebro, glicemia e hemostasia nas primeiras horas depois da sala",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": true,
           "hub": {
             "grupo": "Depois da sala",
@@ -1254,7 +1254,7 @@
           "titulo": "POCUS no Pós-Operatório",
           "subtitulo": "FOCUS e RUSH para dar nome à hipotensão e à hipoxemia da primeira noite",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": true,
           "hub": {
             "grupo": "Depois da sala",
