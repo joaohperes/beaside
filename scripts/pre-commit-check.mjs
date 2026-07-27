@@ -118,7 +118,14 @@ const manifest = JSON.parse(ler('conteudo/manifest.json'));
   if (head.code !== 0) {
     alerta('Base da IA: sem comparação', ['não consegui ler api/knowledge.js do HEAD para comparar.']);
   } else {
-    const BASES = ['KNOWLEDGE_VM', 'KNOWLEDGE_HEMO', 'KNOWLEDGE_NEURO', 'KNOWLEDGE_PROC', 'KNOWLEDGE_ARTIGOS'];
+    // A lista sai do próprio arquivo, não de uma constante escrita à mão — módulo
+    // novo entra na conferência sozinho. Só exports com literal de string contam:
+    // o alias KNOWLEDGE_BASE aponta para outro export e fica de fora.
+    // A régua é o HEAD: o que existia lá tem que continuar existindo. Base que só
+    // existe agora é módulo novo — não há com o que comparar, e isso não é perda.
+    const nomes = (s) => [...s.matchAll(/export const (KNOWLEDGE_\w+) = "/g)].map((m) => m[1]);
+    const BASES = nomes(head.out);
+    const NOVAS = nomes(atual).filter((k) => !BASES.includes(k));
     const literal = (s, k) => {
       const m = s.match(new RegExp(`export const ${k} = ("(?:[^"\\\\]|\\\\.)*")`));
       return m ? m[1] : null;
@@ -129,8 +136,7 @@ const manifest = JSON.parse(ler('conteudo/manifest.json'));
     const perdas = [];
     for (const k of BASES) {
       const a = literal(atual, k), b = literal(head.out, k);
-      if (!b) { perdas.push(`${k}: existia como texto no HEAD e agora não — export renomeado ou removido?`); continue; }
-      if (!a) { perdas.push(`${k}: sumiu da base gerada.`); continue; }
+      if (!a) { perdas.push(`${k}: existia no HEAD e sumiu da base gerada — export renomeado ou removido?`); continue; }
       const ta = titulos(a), tb = titulos(b);
       const sumiram = [...tb].filter((t) => !ta.has(t));
       if (sumiram.length) perdas.push(`${k}: ${sumiram.length} página(s) sumiram da base — ${sumiram.slice(0, 4).join(' · ')}${sumiram.length > 4 ? ' …' : ''}`);
@@ -138,7 +144,8 @@ const manifest = JSON.parse(ler('conteudo/manifest.json'));
     }
     perdas.length
       ? falha('Conteúdo sumiu da base da IA', [...perdas, 'Se foi de propósito, tudo bem — mas confirme antes de commitar.'])
-      : ok('Base da IA não encolheu', `${BASES.length} bases com as mesmas páginas do HEAD`);
+      : ok('Base da IA não encolheu', `${BASES.length} base(s) com as mesmas páginas do HEAD`
+          + (NOVAS.length ? ` · ${NOVAS.length} base(s) nova(s): ${NOVAS.join(', ')}` : ''));
   }
 }
 
@@ -192,6 +199,30 @@ const manifest = JSON.parse(ler('conteudo/manifest.json'));
     }
     if (p.status === 'em-breve' && existe(rel) && !noindex.has(rel)) erros.push(`status em-breve sem noindex: ${rel} — rode \`node scripts/seo-tags.js\``);
   }
+  // Hub indexável cujas páginas são todas noindex: o Google entra numa landing
+  // page cujo conteúdo inteiro está murado. Isso é "thin content", e em site de
+  // conteúdo médico a avaliação de qualidade recai sobre o domínio inteiro, não
+  // só sobre aquela URL. As duas saídas coerentes são publicar o módulo junto
+  // com o hub, ou segurar o hub até a revisão clínica sair.
+  const hubsMurados = [];
+  for (const m of manifest.modulos) {
+    if (m.semHub || !m.paginas || !m.paginas.length) continue;
+    const hub = m.root + 'index.html';
+    if (!existe(hub) || noindex.has(hub)) continue;
+    if (!urls.some((u) => u.endsWith('/' + m.root) || u.endsWith('/' + hub))) continue;
+    const indexaveis = m.paginas.filter((p) => existe(m.root + p.arquivo) && !noindex.has(m.root + p.arquivo));
+    if (!indexaveis.length) {
+      hubsMurados.push(`${m.root} está no sitemap e indexável, mas nenhuma das ${m.paginas.length} páginas do módulo é — o Google indexaria um índice sem conteúdo por trás.`);
+    }
+  }
+  if (hubsMurados.length) {
+    alerta('Hub indexável sem conteúdo indexável', [
+      ...hubsMurados,
+      'Decisão do Cesar: publicar o módulo (status "publicado" no manifesto, depois `npm run build:content` e `node scripts/seo-tags.js`)',
+      'ou segurar o hub junto (noindex + fora do sitemap) até a revisão clínica sair.',
+    ]);
+  }
+
   erros.length ? falha('SEO / sitemap', erros) : ok('SEO / sitemap', `${urls.length} URLs, todas com arquivo e sem contradizer noindex`);
 }
 
