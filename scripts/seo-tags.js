@@ -48,12 +48,22 @@ const RASCUNHOS = new Set([
   ...manifesto.modulos.flatMap((m) => m.paginas
     .filter((p) => p.status !== 'publicado' && p.status !== 'em-breve')
     .map((p) => m.root + p.arquivo)),
+  // O hub do módulo não é uma "página" do manifesto, então até aqui ele não
+  // herdava status nenhum. Deu no que deu: um módulo inteiro em rascunho ficava
+  // com as quatro páginas noindex e o índice delas indexado — o Google entrando
+  // numa landing page cujo conteúdo está todo murado. Agora o campo "status" no
+  // próprio módulo manda no hub, e trocá-lo para "publicado" solta hub e páginas
+  // de uma vez, sem ninguém precisar lembrar do índice.
+  ...manifesto.modulos
+    .filter((m) => !m.semHub && m.status && m.status !== 'publicado')
+    .map((m) => m.root + 'index.html'),
 ]);
 
 // Toda página cujo estado o manifesto controla.
 const GERENCIADAS = new Set([
   ...(manifesto.artigos || []).map((a) => 'artigos/' + a.arquivo),
   ...manifesto.modulos.flatMap((m) => m.paginas.map((p) => m.root + p.arquivo)),
+  ...manifesto.modulos.filter((m) => !m.semHub && m.status).map((m) => m.root + 'index.html'),
 ]);
 
 // A marca que autoriza a remoção. A tag que ESTE script escreve a carrega; ela
@@ -86,7 +96,7 @@ const ARTIGOS = new Map(manifesto.artigos.map((a) => ['artigos/' + a.arquivo, a]
 
 // Especialidade médica (vocabulário MedicalSpecialty do schema.org) por módulo.
 // Só os módulos clínicos entram: institucional e consulte não são MedicalWebPage.
-const ESPECIALIDADE = { vm: 'PulmonaryMedicine', hemo: 'Cardiovascular', neuro: 'Neurologic', proc: 'Emergency' };
+const ESPECIALIDADE = { vm: 'PulmonaryMedicine', hemo: 'Cardiovascular', neuro: 'Neurologic', proc: 'Emergency', peri: 'Surgical' };
 
 // Cartão social. A imagem é 1200×630 e vive em assets/og-image.png.
 const OG_IMAGE = BASE_URL + '/assets/og-image.png';

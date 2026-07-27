@@ -108,6 +108,14 @@ const MODULES = {
     root: 'proc/',
     color: '#3b82f6',
   },
+  peri: {
+    id: 'peri',
+    label: 'Perioperatório',
+    area: 'raciocine',
+    subtitle: 'Paciente cirúrgico',
+    root: 'peri/',
+    color: '#d9569b',
+  },
   consulte: {
     id: 'consulte',
     label: 'Consulte e Resolva',
@@ -197,6 +205,12 @@ const MODULE_PAGES = {
     {id:'swan',           file:'swan.html',           cat:'Monitorização invasiva', label:'Swan-Ganz',                  title:'Cateter de Artéria Pulmonar (Swan-Ganz)',   subtitle:'Inserção, curvas por câmara, parâmetros e perfis de choque'},
     {id:'ritmo',          file:'ritmo.html',          cat:'Emergência cardíaca',    label:'Cardioversão & marca-passo', title:'Cardioversão, Desfibrilação & Marca-passo', subtitle:'Choque sincronizado, desfibrilação e marca-passo transcutâneo/transvenoso'},
     {id:'pearls',         file:'pearls.html',         cat:'Pearls & Pitfalls',      label:'Dúvidas de plantão',         title:'Dúvidas de Plantão',                        subtitle:'As perguntas que ninguém responde no guia clássico'},
+  ],
+  peri: [
+    {id:'pre-op', file:'pre-op.html', cat:'Antes da sala',  label:'Avaliação pré-op',      title:'Avaliação e Preparo Pré-Operatório',        subtitle:'ASA, capacidade funcional, fragilidade e o que realmente adia uma cirurgia'},
+    {id:'atb',    file:'atb.html',    cat:'Antes da sala',  label:'Profilaxia ATB',        title:'Profilaxia Antibiótica Cirúrgica',          subtitle:'Timing, dose por peso, repique e a hora de suspender'},
+    {id:'manejo', file:'manejo.html', cat:'Depois da sala', label:'Manejo perioperatório', title:'Manejo Perioperatório do Paciente Crítico', subtitle:'Coração, cérebro, glicemia e hemostasia nas primeiras horas depois da sala'},
+    {id:'pocus',  file:'pocus.html',  cat:'Depois da sala', label:'POCUS pós-op',          title:'POCUS no Pós-Operatório',                   subtitle:'FOCUS e RUSH para dar nome à hipotensão e à hipoxemia da primeira noite'},
   ],
   consulte: [
     {id:'assistente', file:'index.html', cat:'Assistente IA', label:'Assistente de conduta', title:'Assistente de Conduta (IA)', subtitle:'VM, hemodinâmica e neurocrítico em um só chat'},

@@ -7,10 +7,12 @@ be·aside reúne guias clínicos, algoritmos, calculadoras, casos práticos e um
 ## Áreas
 
 - [Central de Conhecimento](https://be-aside.vercel.app/artigos/): artigos que respondem dúvidas reais de plantão (UTI, PS, enfermaria), com resposta direta, mecanismo e conduta prática.
+<!-- AUTO:areas -->
 - [Raciocine — Ventilação Mecânica](https://be-aside.vercel.app/vm/): fisiologia, modos, parâmetros, patologias, desmame.
 - [Raciocine — Hemodinâmica & Choque](https://be-aside.vercel.app/hemo/): fisiologia, avaliação à beira do leito, drogas vasoativas, choque.
 - [Raciocine — Neurocrítico](https://be-aside.vercel.app/neuro/): TCE, AVC, status epiléptico, encefalopatias, pressão de perfusão cerebral.
 - [Raciocine — Procedimentos](https://be-aside.vercel.app/proc/): procedimentos de UTI e dúvidas reais de plantão.
+<!-- /AUTO:areas -->
 - [Consulte e Resolva](https://be-aside.vercel.app/consulte/): assistente de IA que discute casos com base no conteúdo validado do site (acesso restrito).
 
 ## Institucional

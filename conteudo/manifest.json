@@ -51,6 +51,10 @@
       "subtitulo": "Ventilação Mecânica",
       "root": "vm/",
       "cor": "#0ea5b7",
+      "llms": {
+        "nome": "Ventilação Mecânica",
+        "desc": "fisiologia, modos, parâmetros, patologias, desmame."
+      },
       "paginas": [
         {
           "id": "fisiologia",
@@ -410,6 +414,10 @@
       "subtitulo": "Hemodinâmica & Choque",
       "root": "hemo/",
       "cor": "#e05555",
+      "llms": {
+        "nome": "Hemodinâmica & Choque",
+        "desc": "fisiologia, avaliação à beira do leito, drogas vasoativas, choque."
+      },
       "paginas": [
         {
           "id": "fisio",
@@ -701,6 +709,10 @@
       "subtitulo": "Neurocrítico",
       "root": "neuro/",
       "cor": "#9b6ff7",
+      "llms": {
+        "nome": "Neurocrítico",
+        "desc": "TCE, AVC, status epiléptico, encefalopatias, pressão de perfusão cerebral."
+      },
       "paginas": [
         {
           "id": "fisio",
@@ -907,6 +919,10 @@
       "subtitulo": "Dúvidas de plantão",
       "root": "proc/",
       "cor": "#3b82f6",
+      "llms": {
+        "nome": "Procedimentos",
+        "desc": "procedimentos de UTI e dúvidas reais de plantão."
+      },
       "paginas": [
         {
           "id": "cvc",
@@ -1154,6 +1170,98 @@
           "titulo": "Assistente de conduta",
           "resumo": "Descreva o procedimento ou a intercorrência e receba a sequência sugerida",
           "grupo": "Monitorização & emergência"
+        }
+      ]
+    },
+    {
+      "id": "peri",
+      "area": "raciocine",
+      "status": "rascunho",
+      "label": "Perioperatório",
+      "subtitulo": "Paciente cirúrgico",
+      "root": "peri/",
+      "cor": "#d9569b",
+      "llms": {
+        "nome": "Perioperatório",
+        "desc": "risco pré-operatório, profilaxia antibiótica, manejo pós-operatório e POCUS à beira do leito."
+      },
+      "hubExtras": [
+        {
+          "href": "../consulte/",
+          "selo": "Assistente IA",
+          "titulo": "Assistente de conduta",
+          "resumo": "Descreva o caso cirúrgico e receba a conduta estruturada, com as fontes internas",
+          "grupo": "Depois da sala"
+        }
+      ],
+      "paginas": [
+        {
+          "id": "pre-op",
+          "arquivo": "pre-op.html",
+          "categoria": "Antes da sala",
+          "menu": "Avaliação pré-op",
+          "titulo": "Avaliação e Preparo Pré-Operatório",
+          "subtitulo": "ASA, capacidade funcional, fragilidade e o que realmente adia uma cirurgia",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Antes da sala",
+            "selo": "Pré-operatório",
+            "titulo": "Avaliação pré-op",
+            "resumo": "ASA, teste da escada, fragilidade e o que de fato justifica adiar"
+          }
+        },
+        {
+          "id": "atb",
+          "arquivo": "atb.html",
+          "categoria": "Antes da sala",
+          "menu": "Profilaxia ATB",
+          "titulo": "Profilaxia Antibiótica Cirúrgica",
+          "subtitulo": "Timing, dose por peso, repique e a hora de suspender",
+          "tipo": "referencia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Antes da sala",
+            "selo": "Infecção",
+            "titulo": "Profilaxia ATB",
+            "resumo": "Os 4 princípios e o guia por sistema cirúrgico"
+          }
+        },
+        {
+          "id": "manejo",
+          "arquivo": "manejo.html",
+          "categoria": "Depois da sala",
+          "menu": "Manejo perioperatório",
+          "titulo": "Manejo Perioperatório do Paciente Crítico",
+          "subtitulo": "Coração, cérebro, glicemia e hemostasia nas primeiras horas depois da sala",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Depois da sala",
+            "selo": "Pós-operatório",
+            "titulo": "Manejo perioperatório",
+            "resumo": "Hipotensão que inverte pela FE, AVC perioperatório, glicemia, anticoagulação e TEV"
+          }
+        },
+        {
+          "id": "pocus",
+          "arquivo": "pocus.html",
+          "categoria": "Depois da sala",
+          "menu": "POCUS pós-op",
+          "titulo": "POCUS no Pós-Operatório",
+          "subtitulo": "FOCUS e RUSH para dar nome à hipotensão e à hipoxemia da primeira noite",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Depois da sala",
+            "selo": "Beira-leito",
+            "titulo": "POCUS pós-op",
+            "resumo": "Bomba, tanque e canos: os quatro perfis de choque, pulmão, bexiga e via aérea"
+          }
         }
       ]
     },
