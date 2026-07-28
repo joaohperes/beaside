@@ -31,7 +31,7 @@ Duas frentes no **mesmo** deploy Vercel (`https://be-aside.vercel.app`), com sta
 - **Hub** (`index.html`) tem CSS e JS de tema próprios (não usa `app.js` no shell).
 - **Login (Clerk, real):** `login.html` + `assets/auth.js` + `sso-callback.html` + `conta.html`. E-mail/senha (+ verificação de código + captcha), Google OAuth; Apple off no UI (`OAUTH_APPLE: false`). Hub: **Entrar** ou chip (1º nome) → menu (nome completo, e-mail, Minha conta, Sair). **Módulos do guia abertos sem login** (gate futuro = plano/assinatura, não login sozinho).
 - **Auth config:** `assets/auth-config.js` (`PUBLISHABLE_KEY` pk_* — pública) e env Vercel `CLERK_PUBLISHABLE_KEY` + `api/clerk-config.js`. **Não** commitar `sk_*`. App dev: `arriving-seasnail-55`.
-- **Sessão no hub (sem FOUC):** hint `localStorage['beaside-auth-hint']` + boot síncrono no topbar do `index.html` (chip otimista); `auth.js` confirma com Clerk.
+- **Sessão no hub (sem FOUC):** hint `localStorage['beaside-auth-hint']` + boot síncrono na `.navbar` do `index.html` (chip otimista); `auth.js` confirma com Clerk.
 
 ### 2) Hub UTI — SPA React (segundo produto)
 
@@ -483,12 +483,66 @@ próxima execução do gerador.
 20. Migração para `pk_live_`/`sk_live_` está **em standby**: Clerk Production exige domínio próprio com controle de DNS e `*.vercel.app` não serve. Até existir domínio próprio, não trocar prefixos manualmente nem criar credenciais fictícias.
 21. Ao retomar: conectar domínio próprio ao Vercel, criar/ativar a instância Production no Clerk, configurar DNS/certificados/OAuth, atualizar as duas envs a partir da mesma instância e redeployar.
 
+### Sessão 28/jul/2026 — barra de navegação fixa e demo do assistente
+
+**Publicado (`a05092a`).** Não reverter sem ler os invariantes de estrutura abaixo.
+
+1. **A `.topbar` virou `.navbar`, filha direta do `<body>`.** Dentro do `.hub` nenhuma
+   solução com `position:sticky` se sustentava: o container é `flex column` com contexto
+   de empilhamento próprio, e a barra tinha `animation:rise`, cujo `transform` preenchido
+   (mesmo `none`) cria containing block — o que também quebra `position:fixed` de
+   descendentes. **Invariante:** a barra precisa ficar fora do `.hub`, sem ancestral com
+   `overflow`, `transform`, `opacity` ou `flex`. Movê-la de volta para dentro reintroduz
+   os sintomas (barra rolando embora, deslocamento lateral, faixa transparente).
+2. **O fundo da barra é constante** (62 %, `blur(14px)`), sem alternar com o scroll.
+   Alternar transparente↔opaco era o que falhava na rolagem rápida: o `backdrop-filter`
+   não recompõe a tempo e a faixa pisca sem acabamento. **Não reintroduzir classe de
+   estado tipo `is-scrolled`** — sem estado para trocar, não há o que quebrar.
+3. **Nada de elemento auxiliar de fundo.** Uma tentativa anterior usou um `.topbar-bg`
+   separado; como o `.hub` cria contexto de empilhamento, ele ou cobria o conteúdo da
+   barra (clicável e invisível) ou ficava atrás dele (barra transparente). O `background`
+   é da própria `.navbar`.
+4. **Nav em Inter 13 px**, não mono: em mono, "Central de Conhecimento" esparrama pela
+   largura fixa por caractere. O item institucional recua por **peso e corpo**, nunca por
+   cor — `--text3` dá 2,8:1 nos dois temas, contra o mínimo de 4,5:1.
+5. **Texto da nav em `#4a5263` no tema claro.** Com a barra translúcida, o que passa por
+   baixo altera o contraste: o verde do hero derrubava `--text2` para 4,1:1. Ao mexer na
+   opacidade da barra, **remedir** — a cor do texto acompanha.
+6. **Sublinhado da seção lida** (`#central`, `#raciocine`, `#consulte`). O script fica no
+   **fim do `<body>`**: antes das seções, `getElementById` devolve `null` e nada liga.
+   "Central de Conhecimento" participa mesmo apontando para `/artigos/` — o sublinhado diz
+   onde o leitor está, não para onde o link leva. `.area-head` tem `scroll-margin-top`,
+   senão o clique na nav para com o cabeçalho atrás da barra.
+7. **Aplicada em 11 páginas:** home, hub de artigos, 8 artigos, `login.html`, `conta.html`.
+   O CSS mora em `assets/landing.css`, que as 9 primeiras já compartilhavam; login e conta
+   não o carregam e têm a regra local (com comentário apontando para a fonte). **Módulos
+   ficam de fora** — shell próprio em `assets/styles.css`, com sidebar e busca ⌘K.
+8. **Demo do assistente (hero da home):** a bolha da pergunta tinha `#141a22`/`#fff`
+   cravados, sem variante clara — virava bloco preto no card branco. Agora usa tokens da
+   paleta com borda (a separação contra o card branco é de só 1,23:1). A máscara de fade
+   do viewport atravessava a bolha parada no topo; o respiro vem do `padding-top` da
+   thread (= altura do fade), **não** de encurtar o degradê, que ainda precisa valer para
+   o que sobe no scroll.
+9. **A resposta da demo nasce oculta** e entra junto com os três pontinhos; o `min-height`
+   caiu de 74 px para 20 px. Antes, um retângulo vazio esperava na altura final enquanto o
+   usuário "digitava" — o layout entregava que a resposta já estava pronta. `reduceMotion`
+   tratado à parte, senão o bloco ficaria invisível para sempre.
+10. **Home:** o link "Assistente IA" saiu dos cards de VM, hemo e neuro. Era fóssil de
+    quando cada módulo tinha o seu — proc e peri nunca ganharam, então a home sugeria que
+    dois módulos não tinham IA. Os cinco apontavam para o mesmo `/consulte/`.
+
 ---
 
 ## O que **não** fazer
 
 - **Não editar nada entre os marcadores `AUTO:conteudo`** (app.js, hubs, artigos, extract-knowledge, llms.txt) — a fonte é `conteudo/manifest.json` + `npm run build:content`.
 - Não reintroduzir modo Plantão CSS do **guia** (sucessor = Hub UTI em `/hub-uti/`).
+- **Não mover a `.navbar` para dentro do `.hub`** nem dar a ela `animation`/`opacity`/
+  `transform` — é o que quebra o posicionamento fixo (ver sessão 28/jul).
+- Não fazer o fundo da `.navbar` alternar com o scroll (o `backdrop-filter` falha na
+  rolagem rápida) nem recriar elemento auxiliar de fundo separado.
+- Não clarear o texto da nav para “recuar” hierarquia: reprova no contraste. Usar peso
+  e corpo.
 - Não editar o **bundle** `beaside/hub-uti/assets/*` à mão — publicar a partir do fonte Vite.
 - Não aplicar o design system HTML do guia ao SPA (e vice-versa) sem pedido.
 - Não tratar Hub UTI como página estática de módulo (`MODULE_PAGES` / `data-module`).
