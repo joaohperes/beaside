@@ -68,12 +68,28 @@ body{
 }
 .hub.article{max-width:760px}
 
-/* ── top bar (idêntico ao de index.html) ── */
-.topbar{
-  position:relative;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  gap:16px;margin-bottom:72px;
-  opacity:0;animation:rise .8s var(--ease) .04s forwards;
+/* ── barra fixa (idêntica à de index.html) ──────────────────────────────────
+   Filha direta do <body>, fora do .hub: nenhum ancestral com overflow,
+   transform, opacity ou flex — foi o que inviabilizou soluções com sticky
+   dentro do container. Fundo constante, sem alternar com o scroll: era a
+   troca de estado que falhava na rolagem rápida, quando o backdrop-filter
+   não recompunha a tempo. */
+.navbar{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(6,8,11,.62);
+  -webkit-backdrop-filter:saturate(1.6) blur(14px);backdrop-filter:saturate(1.6) blur(14px);
+  border-bottom:1px solid var(--border);
+}
+html[data-theme="light"] .navbar{background:rgba(244,245,247,.62)}
+.navbar-inner{
+  max-width:1120px;margin:0 auto;padding:14px 32px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+/* a barra saiu do fluxo: o conteúdo precisa começar abaixo dela */
+.hub{padding-top:96px!important}
+@media(max-width:720px){
+  .navbar-inner{padding:12px max(16px,env(safe-area-inset-right,0px)) 12px max(16px,env(safe-area-inset-left,0px))}
+  .hub{padding-top:78px!important}
 }
 .logo{display:flex;align-items:center;gap:11px;text-decoration:none}
 .logo-icon{opacity:.95}
@@ -251,14 +267,32 @@ a.card-hit{display:flex;flex-direction:column;flex:1 1 auto;text-decoration:none
 .card.wide .card-foot{padding-top:12px}
 
 /* nav das 3 áreas (Central de Conhecimento · Raciocine · Consulte e Resolva) */
-.mainnav{display:flex;align-items:center;gap:2px}
+/* Sans, não mono: em mono "Central de Conhecimento" esparrama pela largura fixa
+   por caractere e a nav ocupa muito mais do que precisa. */
+.mainnav{display:flex;align-items:center;gap:3px}
 .mainnav a{
-  font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.04em;
+  position:relative;
+  font-family:var(--sans);font-size:13px;font-weight:450;letter-spacing:-.006em;
   color:var(--text2);text-decoration:none;white-space:nowrap;
   padding:7px 11px;border-radius:8px;
-  transition:color .15s,background .15s;
+  transition:color .18s,background .18s;
 }
-.mainnav a:hover{color:var(--text);background:rgba(255,255,255,.04)}
+.mainnav a:hover{color:var(--text);background:rgba(255,255,255,.045)}
+/* Institucional recua por peso e corpo, não por cor: clarear reprovaria no
+   contraste (--text3 dá 2.8:1 nos dois temas, contra o mínimo de 4.5:1). */
+.mainnav a.is-secondary{font-weight:400;font-size:12.5px}
+.mainnav .nav-sep{width:1px;height:13px;background:var(--border2);margin:0 7px;flex:none}
+/* seção ativa (só na home, onde há âncoras internas) */
+.mainnav a.is-active{color:var(--text)}
+.mainnav a.is-active::after{
+  content:'';position:absolute;left:11px;right:11px;bottom:3px;height:1.5px;
+  border-radius:2px;background:var(--teal);
+}
+/* Com a barra translúcida, o que passa por baixo altera o contraste da nav: o
+   verde do hero derrubava --text2 para 4.1:1 (mínimo é 4.5:1). */
+html[data-theme="light"] .mainnav a{color:#4a5263}
+html[data-theme="light"] .mainnav a:hover,
+html[data-theme="light"] .mainnav a.is-active{color:var(--text)}
 @media(max-width:1000px){.mainnav{display:none}}
 /* ── header: burger mobile + painel ── */
 .nav-burger{display:none;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:pointer;transition:color .15s,border-color .15s}
