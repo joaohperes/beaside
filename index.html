@@ -627,14 +627,19 @@ a.card-hit{
   color:var(--text3);border:1px solid var(--border);border-radius:20px;padding:4px 9px 4px 7px;flex:none;
 }
 .hero-demo-live::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--c-accent,var(--teal));box-shadow:0 0 0 3px var(--c-glow,var(--teal-soft));transition:background .3s,box-shadow .3s}
-.hero-demo-body{padding:20px 18px 6px;transition:opacity .22s ease}
+/* topo curto de propósito: o respiro de verdade vem do padding-top da thread,
+   que tira a bolha de dentro do fade da máscara (ver .hero-demo-thread). */
+.hero-demo-body{padding:0 18px 6px;transition:opacity .22s ease}
 .hero-demo-body.is-fading{opacity:0}
 .hero-demo-viewport{
   height:300px;overflow:hidden;position:relative;
   -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 26px,#000 100%);
   mask-image:linear-gradient(180deg,transparent 0,#000 26px,#000 100%);
 }
-.hero-demo-thread{display:flex;flex-direction:column;gap:18px;transition:transform .38s cubic-bezier(.4,0,.2,1)}
+/* padding-top = altura do fade da máscara: a primeira bolha começa abaixo da
+   zona do degradê, em vez de ser atravessada por ele. A máscara segue valendo
+   para o que sobe durante o scroll — é só o repouso que deixa de pegar fade. */
+.hero-demo-thread{display:flex;flex-direction:column;gap:18px;padding-top:26px;transition:transform .38s cubic-bezier(.4,0,.2,1)}
 .hero-demo-turn{display:flex;flex-direction:column}
 .hero-demo-q{
   margin-left:auto;max-width:90%;
@@ -645,7 +650,11 @@ a.card-hit{
 .hero-demo-q.is-visible{opacity:1}
 .hero-demo-q.is-typing::after{content:'';display:inline-block;width:2px;height:12px;margin-left:2px;background:rgba(255,255,255,.75);vertical-align:middle;animation:heroCursorBlink .8s step-end infinite}
 @keyframes heroCursorBlink{0%,100%{opacity:1}50%{opacity:0}}
-.hero-demo-a{display:flex;gap:9px;align-items:flex-start}
+/* O bloco da resposta nasce oculto: enquanto o usuário "digita" a pergunta não
+   deve haver um retângulo vazio esperando — isso denuncia que o layout já sabe
+   a resposta. Entra junto com os três pontinhos, via .is-visible. */
+.hero-demo-a{display:flex;gap:9px;align-items:flex-start;opacity:0;transform:translateY(6px);transition:opacity .3s ease,transform .3s ease}
+.hero-demo-a.is-visible{opacity:1;transform:none}
 .hero-demo-avatar{
   flex:none;width:23px;height:23px;border-radius:7px;margin-top:1px;
   background:var(--c-glow,var(--teal-soft));color:var(--c-accent,var(--teal));
@@ -657,7 +666,10 @@ a.card-hit{
   flex:1;min-width:0;border:1px solid var(--border);border-radius:14px;padding:13px 15px;
   background:rgba(255,255,255,.015);
 }
-.hero-demo-answer-body{min-height:74px;position:relative}
+/* min-height só o bastante para os três pontinhos: com 74px o bloco já nascia
+   na altura da resposta inteira, entregando que o texto estava pronto. Agora
+   ele cresce conforme o streaming chega. */
+.hero-demo-answer-body{min-height:20px;position:relative}
 .hero-demo-typing{display:none;align-items:center;gap:4px;height:20px;padding-top:2px}
 .hero-demo-typing.is-visible{display:flex}
 .hero-demo-typing span{
@@ -936,6 +948,11 @@ html[data-theme="light"] .area-head h2{color:#0f1419}
 html[data-theme="light"] .hero-demo{background:linear-gradient(180deg,#fff,#fafbfc);box-shadow:0 20px 56px rgba(15,23,42,.1)}
 html[data-theme="light"] .hero-demo-head{background:rgba(15,23,42,.02)}
 html[data-theme="light"] .hero-demo-answer{background:#fff;border-color:var(--border)}
+/* A bolha da pergunta nasceu com #141a22 fixo, pensado para o fundo escuro: no
+   tema claro virava um bloco preto no meio do card branco. Aqui ela vira uma
+   superfície clara da própria paleta, mantendo o contraste de fala do usuário. */
+html[data-theme="light"] .hero-demo-q{background:var(--bg4);color:var(--text);border:1px solid var(--border)}
+html[data-theme="light"] .hero-demo-q.is-typing::after{background:rgba(26,32,48,.75)}
 html[data-theme="light"] .hero-demo-direct{color:#1a2030}
 html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-color:var(--border);color:var(--text3)}
 </style>
@@ -1227,6 +1244,7 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
       return {
         root:turn,
         q:turn.querySelector('.hero-demo-q'),
+        block:turn.querySelector('.hero-demo-a'),
         typing:turn.querySelector('.hero-demo-typing'),
         a:turn.querySelector('.hero-demo-direct'),
         src:turn.querySelector('.hero-demo-sources')
@@ -1256,6 +1274,7 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
             root.style.setProperty('--c-accent',it.accent);
             root.style.setProperty('--c-glow',it.glow);
             t.q.textContent=it.q;t.q.classList.add('is-visible');
+            t.block.classList.add('is-visible');
             t.a.innerHTML=it.a;t.a.classList.add('is-visible');
             t.src.innerHTML=sourcesHtml(it.s);t.src.classList.add('is-visible');
           });
@@ -1272,6 +1291,9 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
           await sleep(k===0?300:550,myToken);
           await typeText(t.q,it.q,myToken,23);
           await sleep(400,myToken);
+          // A resposta só existe visualmente a partir daqui: bloco e pontinhos
+          // entram juntos, como se a IA tivesse acabado de receber a pergunta.
+          t.block.classList.add('is-visible');
           t.typing.classList.add('is-visible');
           pinBottom();
           await sleep(950,myToken);
@@ -1383,7 +1405,7 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
         </div>
         <div class="card-badge">VM Guide</div>
         <div class="card-title">Ventilação<br>Mecânica</div>
-        <div class="card-sub">Modos, parâmetros, SDRA, desmame, dissincronia e assistente de conduta com IA.</div>
+        <div class="card-sub">Modos, parâmetros, SDRA, desmame e dissincronia — do ajuste inicial ao desmame.</div>
         <div class="card-tags">
           <span class="card-tag">SDRA · Prona</span>
           <span class="card-tag">DPOC &amp; Asma</span>
@@ -1392,7 +1414,6 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
       </a>
       <div class="card-foot">
         <a class="card-cta" href="vm/">Abrir guia <span class="card-cta-arrow" aria-hidden="true">→</span></a>
-        <a class="card-cta card-cta-ai" href="consulte/">Assistente IA</a>
       </div>
     </div>
 
@@ -1419,7 +1440,6 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
       </a>
       <div class="card-foot">
         <a class="card-cta" href="hemo/">Abrir guia <span class="card-cta-arrow" aria-hidden="true">→</span></a>
-        <a class="card-cta card-cta-ai" href="consulte/">Assistente IA</a>
       </div>
     </div>
 
@@ -1446,7 +1466,6 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
       </a>
       <div class="card-foot">
         <a class="card-cta" href="neuro/">Abrir guia <span class="card-cta-arrow" aria-hidden="true">→</span></a>
-        <a class="card-cta card-cta-ai" href="consulte/">Assistente IA</a>
       </div>
     </div>
 
