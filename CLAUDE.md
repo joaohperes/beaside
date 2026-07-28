@@ -5,7 +5,7 @@ Duas frentes no **mesmo** deploy Vercel (`https://be-aside.vercel.app`), com sta
 | Frente | O quê | Stack | Path prod |
 |--------|--------|--------|-----------|
 | **Guia be·aside** | Conteúdo clínico UTI/PS à beira do leito | HTML estático puro | `/`, `/vm/`, `/hemo/`, … |
-| **Hub UTI** | Ferramenta de plantão multi-leito (labs, SSVV+BH, invasões, drogas, evolução) | SPA React (Vite) | `/hub-uti/` |
+| **Hub UTI** | Workspace clínico multi-leito (labs, SSVV+BH, invasões, drogas, infeccioso, evolução) | SPA React (Vite) | `/hub-uti/` |
 
 **Repo de deploy:** `github.com/joaohperes/beaside` · branch `main`  
 **Fonte do Hub UTI (dev/build):** pasta irmã `~/hub-uti` (ou path local equivalente) — o build é **publicado** em `beaside/hub-uti/` (artefatos, não editar o bundle à mão).  
@@ -196,12 +196,15 @@ Exemplos: `Ventilação Mecânica · SDRA`, `Hemodinâmica · POCUS`, `Neurocrí
 
 ## Hub UTI — escopo e regras rápidas
 
-- **Produto:** apoio ao plantão (import laudo/SSVV, painel de leitos, copiar evolução no padrão de prontuário). **Não** é prontuário oficial nem “EvClinic”.
+- **Produto:** workspace clínico de UTI, inicialmente centrado no plantão, agora orientado a uma
+  alternativa própria e aprimorada ao fluxo do EvClinic. Não copiar a interface de terceiros e
+  não chamar a infraestrutura atual de prontuário oficial.
 - **Identidade do paciente:** leito (+ nome/iniciais conforme UI atual); regra de leito em `patientImport.js` (nunca auto-ocupar vaga errada; conflitos explícitos).
 - **Integridade clínica:** texto automático de evolução só pode usar fatos efetivamente registrados; achados ausentes permanecem como campos `[confirmar …]`. Não reintroduzir preenchimento automático de exame físico “normal” nem setas genéricas de laboratório.
 - **Episódio assistencial:** cada ocupação tem `episodeId`/`occupiedAt`. Nome conflitante exige confirmação e, quando forçado, inicia reocupação limpa — nunca mesclar silenciosamente dados de pacientes diferentes.
 - **Concorrência/sync:** estado usa revisões e tombstones; salvamento local é imediato, flush no `pagehide`, expiração local em 12 h e resolução de conflito pelo servidor. Ao limpar, excluir a nuvem antes do estado local.
-- **PHI:** minimizar; ferramenta de plantão, não EHR.
+- **PHI:** minimizar no núcleo atual. Qualquer retenção longitudinal exige RBAC por organização,
+  auditoria imutável, retenção/backup/exportação e governança LGPD antes de ser tratada como EHR.
 - **Privacidade local:** identificação breve por padrão, alternância de máscara e bloqueio por inatividade em 15 min. Não remover esses controles sem decisão explícita.
 - **Importações:** imagem/PDF passam por prévia e confirmação; deduplicar conteúdo; PDF limitado a 15 MB/50 páginas. Importação individual de laboratório deve bloquear incompatibilidade de paciente.
 - **API:** `api/hub-plantao.js` — GET/PUT/DELETE do estado do plantão por usuário Clerk, com revisão/tombstones, sanitização, limite de 1 MB, rate limit e CORS restrito. Env: `CLERK_SECRET_KEY` (sync); opcional `KV_REST_API_URL` + `KV_REST_API_TOKEN` e `HUB_ALLOWED_ORIGINS`.
@@ -386,8 +389,85 @@ próxima execução do gerador.
 15. Headers Vercel adicionam CSP, anti-frame, `nosniff`, referrer/permissions policy; Hub continua `noindex`.
 16. Tabs e PDF usam lazy loading; JS inicial caiu de ~729 KB/~219,5 KB gzip para ~243,6 KB/~76,2 KB gzip no build auditado.
 17. Publicação do bundle virou atômica via `scripts/publish-beaside.js`; CI foi adicionado nos dois repositórios.
-18. Validação atual: **115 testes/24 suítes** no fonte, **2 testes** da API, lint sem warnings, build Vite concluído e `dist/` idêntico a `beaside/hub-uti/`.
+18. Validação atual: **136 testes/31 suítes** no fonte, **2 testes** da API, lint sem warnings, build Vite concluído e `dist/` idêntico a `beaside/hub-uti/`.
 19. A evolução inclui automaticamente Labs em `#LABORATORIAL` e os fatos estruturados de SSVV/BH em `#EVOLUÇÃO CLÍNICA`, sem sobrescrever a narrativa manual. O intervalo do G-HOSP define `12h` ou `24h`; snapshots e texto usam `BH 12h/24h` e `Diurese 12h/24h`. O acumulado permanece disponível na tabela para auditoria, mas não entra no snapshot principal nem no texto evolutivo.
+20. Tratamento infeccioso em vigência virou dado estruturado por episódio na aba **Antimicrobianos**:
+    fármaco, dose, via, intervalo, início, foco/indicação, agente/cultura e observação/ajuste. A
+    data de início calcula `D1`, `D2` etc. de forma inclusiva; presets nunca sugerem dose. O
+    conteúdo é preservado no sync e entra automaticamente em `#TRATAMENTO INFECCIOSO`.
+21. Direção de produto alterada: construir um workspace longitudinal próprio e mais integrado que
+    o fluxo atual do EvClinic, sem clonagem de interface. O estado presente continua sendo núcleo
+    de plantão (TTL 12 h) e não pode ser promovido a prontuário oficial antes de RBAC institucional,
+    auditoria imutável, retenção/backup/exportação e governança LGPD.
+22. O shell clínico foi redesenhado para não reproduzir a hierarquia crua do EvClinic: contexto
+    `Hospital / Serviço / Unidade` ocupa a faixa superior inteira; identificação do paciente vem
+    abaixo como ficha contínua; o painel de leitos tem 228 px e recolhe para 48 px; ações globais
+    ficam no menu do painel, sem botões permanentes no rodapé. A ação do episódio se chama
+    **Remover paciente** (não “Alta”) e deixa explícito que não registra alta clínica. A largura
+    útil das abas vai até 1480 px. Evolução usa seções leves com contorno próprio; entidades
+    repetíveis (invasões, drogas, antimicrobianos e imagem) usam linhas clínicas de largura total, com
+    identificação à esquerda e campos em até quatro colunas — não mosaicos de cards.
+23. **Culturas** ganhou aba estruturada própria: material, data da coleta, status, resultado/agente,
+    sensibilidade e observação, além de notas livres compatíveis com plantões anteriores. A antiga
+    aba “Infeccioso” agora se chama **Antimicrobianos**. Culturas e tratamento em vigência entram
+    automaticamente na evolução, lado a lado, sem inferir colonização, infecção ou sensibilidade.
+24. Na tela de evolução, a hashtag de cada seção aparece somente no texto copiável; o card exibe
+    um único título e move explicações auxiliares para tooltips acessíveis. A grade usa pares
+    clínicos em duas colunas e encerra com Conduta em largura total. Os modelos do HRO têm duas
+    famílias: texto-base pronto para edição (`......`) e roteiro guiado (`[placeholders]`) para
+    paciente sedado/VM e sem sedação. Ambos usam unidades padronizadas e não fixam achados normais,
+    doses, RASS, pupilas ou suporte.
+25. A faixa `Hospital / Serviço / Unidade` passou a começar no mesmo eixo horizontal do conteúdo
+    clínico, respeitando a largura expandida ou recolhida da lateral. A área correspondente ao menu
+    se chama **Painel · Contexto do plantão**.
+26. Invasões, Drogas, Culturas e Antimicrobianos usam uma lista clínica compacta: cada item resume
+    nome, taxa/data e texto evolutivo na mesma linha; somente o item selecionado expande o editor em
+    quatro colunas. As prévias copiáveis dessas abas viraram faixas compactas, e explicações de uso
+    ficam em tooltips no próprio título, sem ícone de interrogação/informação.
+27. Pacientes podem ser arrastados na lateral e soltos sobre outra UTI. O destino é o primeiro leito
+    livre daquela unidade; a operação não sobrescreve ocupação, bloqueia unidade cheia e mantém todos
+    os dados do episódio. A ficha do paciente pode ser recolhida/expandida pela seta central. O upload
+    de PDF usa superfície compacta, borda sólida e sem caixa tracejada; o texto redundante de destino
+    do importador de SSVV/BH foi removido.
+
+### Sessão 27–28/jul/2026 — BH gráfico, painel de leitos e seleção múltipla
+
+**Publicado no beaside.** Não reverter sem revisar os invariantes abaixo.
+
+1. **Numeração de leitos** migrada para `unidade-leito` (`1-01` … `4-10`) — é o formato que o
+   G-HOSP/HRO passou a usar. `canonicalizeHroBedValue` converte e `storage.js` migra plantões
+   salvos ao carregar, sem passo extra. **Invariante:** nos formatos com traço o SEGUNDO número
+   é o leito GLOBAL 1–40 (`01-32` = 32º leito = UTI 4), não a posição na unidade; o primeiro
+   número não é a unidade. Ler diferente aloca paciente na UTI errada.
+2. **Gráfico de balanço hídrico** (`BhChart.jsx`) em SVG puro — sem lib, o bundle inicial é
+   invariante de performance. Acumulado é a leitura principal (área + número-herói); o BH de
+   cada período fica numa faixa de apoio com escala própria — nunca dois eixos no mesmo plot.
+   Cores **azul (acúmulo) × âmbar (déficit)**, validadas em OKLab/CVD contra as duas superfícies
+   (ΔE 23.8 dark / 24.2 light). **Não usar verde/vermelho:** sugere bom/ruim, e isso é falso —
+   balanço positivo é esperado em ressuscitação, negativo pode ser hipovolemia. Sem faixa de
+   alerta e sem interpretar: a leitura é do médico.
+3. **Fechamentos de 12 h deixaram de se sobrescrever.** A chave do BH passou a ser data +
+   horário de início (`bhEntryKey`); `findBhEntryIndex` atualiza registros antigos sem horário
+   no lugar, em vez de duplicar. Lançamento manual ganhou seletor de turno (D/N) e assume o
+   período que o leito já usa. Antes, um plantão de 12 h perdia metade dos fechamentos.
+4. **Mover pacientes** virou modo seleção: caixas sempre visíveis, mover e remover em lote, e
+   arrastar um item marcado leva a seleção inteira. `moveManyToUnit` no contexto é **atômico** —
+   calcular vagas fora do `setState` dava a mesma vaga para todos. O leito vazio do destino é
+   **permutado** com o de origem (não descartado), senão a unidade de origem encolhe e parece
+   que os pacientes sumiram. Unidade cheia bloqueia e mantém a seleção para tentar outra.
+5. A contagem por unidade mostra **ocupados**, não leitos criados (`3/10` = cabem mais 7).
+   "Montar leitos" pergunta unidades × leitos.
+6. **Culturas** e **Antimicrobianos** entram no sync: `api/hub-plantao.js` sanitiza os dois
+   campos com limite próprio (40 tratamentos / 80 culturas), com teste de contrato.
+7. Ficha do paciente fundida com Hospital/Serviço/Unidade (colapsam juntas) e validação de
+   idade (0–130), peso (0,5–500 kg), data futura e admissão UTI ≥ hospitalar. Os contadores
+   DH/D só aparecem com data válida.
+8. Import de SSVV/BH **detecta sozinho** ao colar e ao digitar (debounce) — o botão "Detectar"
+   saiu do modo paciente único. O modo "Vários leitos" mantém o seu, porque lá a revisão card a
+   card é o ponto do fluxo.
+9. Avisos viraram **toast** em portal (fora do fluxo da lateral, some em 4,5 s, com fechar).
+   Cards clínicos abrem vários ao mesmo tempo. Invasões têm limite plausível por tipo
+   (1 SVD/TOT/TQT/PAI/SNE/Diálise, 2 CVC/PICC/drenos, 4 AVP).
 
 ### Sessão 23/jul/2026 — conteúdo HSA no módulo Neuro
 

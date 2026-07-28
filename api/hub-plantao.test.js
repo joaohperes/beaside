@@ -11,6 +11,14 @@ describe('hub-plantao API contract', () => {
         leito: String(index + 1),
         nome: 'A'.repeat(500),
         examesImg: Array.from({ length: 60 }, () => ({ laudo: 'x'.repeat(5000) })),
+        tratamentoInfeccioso: Array.from({ length: 50 }, () => ({
+          nome: 'Meropenem',
+          obs: 'x'.repeat(800),
+        })),
+        culturas: Array.from({ length: 90 }, () => ({
+          material: 'Hemocultura',
+          resultado: 'x'.repeat(1500),
+        })),
       })),
       activeId: 'p-0',
       plantao: { hospital: 'HRO', servico: 'UTI', unidade: 'U2' },
@@ -20,6 +28,10 @@ describe('hub-plantao API contract', () => {
     assert.equal(out.patients[0].nome.length, 160)
     assert.equal(out.patients[0].examesImg.length, 40)
     assert.equal(out.patients[0].examesImg[0].laudo.length, 2500)
+    assert.equal(out.patients[0].tratamentoInfeccioso.length, 40)
+    assert.equal(out.patients[0].tratamentoInfeccioso[0].obs.length, 500)
+    assert.equal(out.patients[0].culturas.length, 80)
+    assert.equal(out.patients[0].culturas[0].resultado.length, 1000)
     assert.deepEqual(out.plantao, { hospital: 'HRO', servico: 'UTI', unidade: 'U2' })
   })
 

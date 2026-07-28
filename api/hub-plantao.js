@@ -272,6 +272,10 @@ function sanitizePatient(raw) {
     bh: cleanList(raw.bh, 90, (x) => cleanRecord(x, 20, 100)),
     invasoes: cleanList(raw.invasoes, 40, (x) => cleanRecord(x, 20, 500)),
     drogas: cleanList(raw.drogas, 40, (x) => cleanRecord(x, 24, 500)),
+    tratamentoInfeccioso: cleanList(raw.tratamentoInfeccioso, 40, (x) =>
+      cleanRecord(x, 20, 500),
+    ),
+    culturas: cleanList(raw.culturas, 80, (x) => cleanRecord(x, 20, 1000)),
     examesImg: cleanList(raw.examesImg, 40, (x) => cleanRecord(x, 16, 2500)),
     evo: {
       problemas: cleanString(raw.evo?.problemas, 12_000),
