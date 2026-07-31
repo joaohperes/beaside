@@ -469,6 +469,125 @@ próxima execução do gerador.
    Cards clínicos abrem vários ao mesmo tempo. Invasões têm limite plausível por tipo
    (1 SVD/TOT/TQT/PAI/SNE/Diálise, 2 CVC/PICC/drenos, 4 AVP).
 
+### Sessão 30–31/jul/2026 — Hub UTI: shell v4, calculadoras, relatório e alta
+
+**Publicado no beaside.** Detalhe técnico e invariantes no fonte (`ARCHITECTURE.md`).
+
+#### Shell v4 — o que mudou e por quê
+
+1. Revisão de interface (skill `better-interface`) mediu **~312px de crômio
+   permanente** antes da primeira linha clínica. Em laptop de 900px, 35% da tela
+   em moldura, em todas as abas. Depois: **168px** — 144px viraram área clínica.
+2. **A faixa de abas horizontal deixou de existir.** Navegação em coluna, com
+   ícones, recolhível para 52px e com estado próprio (`hub-uti-wsnav-collapsed`),
+   independente do painel de leitos. Motivo: com 8 itens e `scrollbar-width:none`
+   havia scroll horizontal **sem indicação visual** — seções sumiam sem aviso.
+3. **Ficha do paciente em uma linha** (leito, nome, dx, DH/D); os 12 campos abrem
+   sob demanda. Identificação é dado de conferência, não de edição contínua.
+   Pendência (nome repetido, idade inválida) mostra ponto âmbar **com a ficha
+   fechada** — senão o aviso só existe para quem já foi olhar.
+4. **Campos de 27px transparentes → 36px com borda em repouso**, hover e foco.
+   Antes, "isto é editável" só se descobria clicando.
+5. Flag `hubShell(false)` no console volta ao shell antigo (andaime de migração).
+
+#### Invariantes de animação e layout — não reverter
+
+6. **Não animar `grid-template-rows`** (0fr→1fr): é propriedade de layout, o
+   navegador refaz a grade a cada quadro e engasga. A altura vem medida por
+   `useCollapse` (ResizeObserver) e a transição roda entre valores concretos.
+7. **Padding e borda do conteúdo colapsável na camada interna**, nunca no filho
+   direto que anima — altura zerada não zera padding do filho, e os rótulos da
+   grade ficavam à mostra com a ficha fechada.
+8. **`visibility` dentro da transição**, mesma duração da altura. Fora dela
+   alterna no primeiro quadro e o conteúdo some antes de terminar de fechar.
+9. **Curva `cubic-bezier(0.22, 1, 0.36, 1)` a 260ms** — mais longa que 180ms mas
+   percebida como mais rápida (30% do tempo cobre a maior parte do caminho).
+   **Nunca `ease-in` em UI:** atrasa exatamente onde o olho está.
+10. **Não animar troca de seção** (dezenas de vezes por plantão). `:active` com
+    `scale(0.97)` só nos botões de ação.
+11. **`:hover` sempre atrás de `@media (hover: hover) and (pointer: fine)`** — em
+    tablet o hover dispara no toque e fica preso, simulando foco. A UTI usa tablet.
+
+#### Tipografia
+
+12. O CSS tinha **27 tamanhos distintos** (8; 8,5; 9; 9,5; 10; 10,5; 11; 11,5; 12…)
+    e 56 declarações abaixo de 11px. Consolidado em **8 degraus com piso de 11px**
+    (140 declarações reescritas). Exceção documentada: `.evo-info` a 9,5px — é o
+    glifo dentro de um círculo de 16px, a caixa é do ícone.
+13. Rótulo de campo saiu de **9px mono caixa-alta em `--text3` (4.11:1, reprovado)**
+    para 11px caixa normal em `--text2` (6.22 dark / 7.04 light).
+14. **Inputs a 16px em `pointer: coarse`** — abaixo disso o Safari amplia a página
+    inteira ao tocar num campo e não desfaz. `tabular-nums` em valores que mudam.
+
+#### Alta da UTI (novo)
+
+15. Registro estruturado de desfecho, **distinto de "Remover do painel"** (que não
+    afirma nada clínico). Base: campos do G-HOSP/EvClinic, mantidos para
+    comparabilidade. Quatro divergências deliberadas:
+    - **`destino` separado de `tipo`** — transferência para enfermaria e para outro
+      hospital são desfechos opostos na reinternação; o EvClinic junta os dois.
+    - **`readmissao`** — reentrada na mesma internação é indicador de alta precoce;
+      sem marcar na saída não há como reconstruir (o episódio já saiu do painel).
+    - **"Alta a pedido" ≠ "Evasão"** — decisão informada com termo versus saída sem
+      alta. Peso legal diferente.
+    - **Complicações marcáveis** (16 comuns em UTI) além do texto livre: "PAV",
+      "pneumonia associada" e "pneumo assoc VM" digitados viram três categorias.
+16. **Validação:** só barra o que contradiz fato (data futura, alta antes da
+    admissão) ou esvazia a resposta ("sim" sem qual complicação). Campo de
+    indicador vazio gera **aviso** e a alta grava — prender a saída do leito por um
+    select vazio empurra a inventar valor, e aí o indicador fica pior que em branco.
+17. Altas vivem em `state.altas` (plantão, não paciente), sobrevivem em
+    `storage.js` e `api/hub-plantao.js` (limite 80, enum fechado, teste de
+    contrato) e alimentam `desfechosDoTurno()`. **Não** calculam taxa de
+    mortalidade: exige denominador longitudinal que o Hub não guarda.
+
+#### Calculadoras clínicas (novo)
+
+18. **SAPS 3 validado contra o artigo original** (`MorenoMetnitzSapsiii.pdf`,
+    tabelas extraídas com pdfjs por coordenadas — estão rotacionadas). Dois erros
+    achados assim: Glasgow tem **cinco** faixas (fontes secundárias colapsam 3-4
+    com 5 e subestimam coma profundo em 5 pontos), e as **razões de admissão**
+    estavam ausentes (subestimavam 5 pontos no caso testado; duas são negativas,
+    com exclusão mútua entre arritmia −5 e convulsão −4).
+19. **SOFA-1, SOFA-2** (JAMA 2025), CKD-EPI 2021 (expoente −1.209), Cockcroft-Gault
+    e derivadas, com cálculo automático a partir de labs/sinais/invasões quando há
+    dado. **Escore incompleto nunca vira número:** é piso ("≥ N"), nunca arredondado.
+20. Tabelas travadas por teste de regressão contra a fonte — mexer num peso sem
+    atualizar a referência quebra o build.
+
+#### Pauta do Thiago (chefe da UTI) e relatório
+
+21. Evolução como tela inicial; ida e volta entre a evolução e as abas que a
+    alimentam; **alerta de permanência de dispositivo configurável pelo médico**
+    (texto diz "revisar indicação", nunca "trocar" — CDC/HICPAC desaconselha troca
+    rotineira por tempo); setor de origem no cadastro; **troca de leito digitando**.
+22. **Relatório operacional** (censo, dispositivos a revisar, antimicrobianos,
+    culturas, permanência, setor de origem) com export CSV. Relatórios gerenciais
+    longitudinais (mortalidade, IRA vs hemodiálise) seguem **bloqueados** por
+    decisão de LGPD/retenção — dependem de histórico pós-alta.
+23. Edição inline de nome/leito no painel; **prevenção de nome e leito duplicados**
+    com toast central; drag-and-drop solta no leito exato sob o cursor.
+
+#### Copy e acessibilidade
+
+24. Estados vazios pararam de citar nome de classe CSS ("chips", "preset") e
+    passaram a nomear o lugar e o próximo passo. Erros instruem em vez de
+    descrever o defeito ("Informe a idade em anos", não "Idade inválida").
+25. Anéis de foco em `.tooltip-anchor` e `.labs-date-input` — eram focáveis
+    (`tabIndex=0`) e invisíveis ao teclado. Tagline do header removida.
+26. Diálogo de encerrar plantão passou a dizer **o que se perde** ("Não é possível
+    desfazer"), não a ordem da exclusão.
+
+#### Validação
+
+27. **365 testes / 83 suítes** no fonte, **12** na API, lint sem warnings, build ok.
+    JS inicial: ~90,8 kB gzip (era ~76,2 kB) — o crescimento é shell v4 +
+    calculadoras + alta, todos no bundle inicial por serem shell/contexto.
+28. **Não verificado em navegador:** as 140 mudanças de tamanho de fonte foram
+    conferidas por análise e cálculo de contraste, sem browser headless no
+    ambiente. Os dois casos de altura fixa que quebrariam foram detectados e
+    corrigidos.
+
 ### Sessão 23/jul/2026 — conteúdo HSA no módulo Neuro
 
 1. `neuro/avc-h.html` deixou de ser placeholder e passou a conter o manejo completo da **HSA aneurismática**, baseado no documento “Hemorragia Subaracnoide (HSA)” enviado pelo César.
@@ -557,3 +676,8 @@ próxima execução do gerador.
 - Não deixar `.pill-list` sem estilo (usar checklist DS ou `ind-grid` / `mat-grid`).
 - Não reintroduzir flash de “Entrar” no hub (manter hint + boot síncrono).
 - Não deixar card de login semi-transparente com grid “por dentro” (preferência: card opaco).
+- **Hub UTI:** não reintroduzir a faixa de abas horizontal; não animar
+  `grid-template-rows`; não pôr padding/borda no filho direto de contêiner
+  colapsável; não deixar `:hover` sem `@media (hover: hover)`; não descer abaixo
+  de 11px fora da exceção `.evo-info`; não transformar campo de indicador da alta
+  em bloqueio de gravação.
