@@ -267,12 +267,32 @@ function sanitizePatient(raw) {
     idade: text('idade', 30),
     admHosp: text('admHosp', 12),
     admUti: text('admUti', 12),
+    setorOrigem: text('setorOrigem', 120),
+    sexo: ['F', 'M'].includes(raw.sexo) ? raw.sexo : '',
     labs,
     vitals,
     bh: cleanList(raw.bh, 90, (x) => cleanRecord(x, 20, 100)),
     invasoes: cleanList(raw.invasoes, 40, (x) => cleanRecord(x, 20, 500)),
     drogas: cleanList(raw.drogas, 40, (x) => cleanRecord(x, 24, 500)),
+    tratamentoInfeccioso: cleanList(raw.tratamentoInfeccioso, 40, (x) =>
+      cleanRecord(x, 20, 500),
+    ),
+    culturas: cleanList(raw.culturas, 80, (x) => cleanRecord(x, 20, 1000)),
     examesImg: cleanList(raw.examesImg, 40, (x) => cleanRecord(x, 16, 2500)),
+    // SAPS 3 da admissão: respostas curtas + comorbidades marcadas.
+    saps3:
+      raw.saps3 && typeof raw.saps3 === 'object'
+        ? {
+            data: cleanString(raw.saps3.data, 12),
+            respostas: cleanRecord(raw.saps3.respostas, 40, 40),
+            comorbidades: Array.isArray(raw.saps3.comorbidades)
+              ? raw.saps3.comorbidades.slice(0, 12).map((c) => cleanString(c, 40))
+              : [],
+            razoes: Array.isArray(raw.saps3.razoes)
+              ? raw.saps3.razoes.slice(0, 16).map((r) => cleanString(r, 40))
+              : [],
+          }
+        : null,
     evo: {
       problemas: cleanString(raw.evo?.problemas, 12_000),
       examesRelevantes: cleanString(raw.evo?.examesRelevantes, 12_000),
@@ -287,6 +307,46 @@ function sanitizePatient(raw) {
   }
 }
 
+/**
+ * Alta registrada no turno.
+ *
+ * Vive no plantão (não no paciente, que já saiu do painel) para que o
+ * relatório continue somando desfechos depois da reocupação do leito. Enum
+ * fechado: valor fora da lista vira string vazia em vez de propagar lixo.
+ */
+function sanitizeAlta(raw) {
+  if (!raw || typeof raw !== 'object') return null
+  const enumOf = (valor, permitidos) => (permitidos.includes(valor) ? valor : '')
+  return {
+    pacienteId: cleanString(raw.pacienteId, 80),
+    episodeId: cleanString(raw.episodeId, 80),
+    leito: cleanString(raw.leito, 40),
+    nome: cleanString(raw.nome, 160),
+    admUti: cleanString(raw.admUti, 20),
+    data: cleanString(raw.data, 20),
+    tipo: enumOf(raw.tipo, ['melhora', 'transferencia', 'obito', 'a_pedido', 'evasao']),
+    destino: enumOf(raw.destino, [
+      'enfermaria',
+      'semi',
+      'outra_uti',
+      'outro_hospital',
+      'domicilio',
+      'obito',
+    ]),
+    especialidade: cleanString(raw.especialidade, 120),
+    diagnostico: cleanString(raw.diagnostico, 500),
+    ira: enumOf(raw.ira, ['nao', 'sim_sem_dialise', 'sim_com_dialise', 'cronico_dialitico']),
+    complicacoes: enumOf(raw.complicacoes, ['sim', 'nao']),
+    complicacoesList: Array.isArray(raw.complicacoesList)
+      ? raw.complicacoesList.slice(0, 20).map((id) => cleanString(id, 40)).filter(Boolean)
+      : [],
+    quaisComplicacoes: cleanString(raw.quaisComplicacoes, 500),
+    readmissao: enumOf(raw.readmissao, ['sim', 'nao']),
+    obs: cleanString(raw.obs, 500),
+    registradoEm: cleanString(raw.registradoEm, 40),
+  }
+}
+
 function sanitizePlantao(body) {
   if (!body || typeof body !== 'object') return null
   if (!Array.isArray(body.patients)) return null
@@ -297,9 +357,14 @@ function sanitizePlantao(body) {
   } else if (!patients.some((p) => p.id === activeId)) {
     activeId = patients[0]?.id || null
   }
+  /* 80 = duas rotações completas de 40 leitos num mesmo turno. */
+  const altas = Array.isArray(body.altas)
+    ? body.altas.slice(0, 80).map(sanitizeAlta).filter(Boolean)
+    : []
   return {
     patients,
     activeId: activeId == null ? null : cleanString(activeId, 80),
+    altas,
     plantao: {
       hospital: cleanString(body.plantao?.hospital, 160),
       servico: cleanString(body.plantao?.servico, 160),
