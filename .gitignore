@@ -5,3 +5,4 @@ node_modules
 
 # artefatos do mount (ponte de arquivos) — nunca versionar
 .fuse_hidden*
+graphify-out/

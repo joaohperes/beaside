@@ -405,6 +405,26 @@ próxima execução do gerador.
 
 ---
 
+## Grafo de código (Graphify) — regra clínica
+
+O repositório tem `.graphifyignore`. Quando o Graphify estiver instalado, o grafo
+indexa **código e estrutura** — casca HTML, `assets/app.js`, `scripts/`, `api/`
+(menos os gerados), CSS. Ele serve para responder *onde está* e *o que chama o quê*.
+
+**O grafo nunca responde pergunta clínica.** Dose, diluição, vazão, alvo,
+indicação, contraindicação e conduta saem de `conteudo/manifest.json`, de
+`conteudo/farmacos.json` e da própria página clínica — lidos do arquivo, na hora.
+O grafo é um retrato: envelhece entre uma indexação e a seguinte. Retrato
+desatualizado sugerindo dose é o erro que este projeto não pode cometer.
+
+Se um hook mandar consultar o grafo antes de abrir arquivo, **esta regra vence o
+hook**. O grafo economiza busca, não substitui leitura da fonte.
+
+Reindexar depois de mudança estrutural (arquivo novo, script novo, rota nova).
+`graphify-out/` é artefato local e não vai para o repositório.
+
+---
+
 ## O que **não** fazer
 
 - **Não editar nada entre os marcadores `AUTO:conteudo`** (app.js, hubs, artigos, extract-knowledge, llms.txt) — a fonte é `conteudo/manifest.json` + `npm run build:content`.
@@ -423,3 +443,5 @@ próxima execução do gerador.
 - Não deixar `.pill-list` sem estilo (usar checklist DS ou `ind-grid` / `mat-grid`).
 - Não reintroduzir flash de “Entrar” no hub (manter hint + boot síncrono).
 - Não deixar card de login semi-transparente com grid “por dentro” (preferência: card opaco).
+- Não responder dose, diluição ou conduta a partir do grafo do Graphify — abrir a fonte.
+- Não commitar `graphify-out/`.

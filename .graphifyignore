@@ -1,0 +1,53 @@
+# .graphifyignore — o que o Graphify NÃO deve indexar no be·aside
+#
+# Sintaxe igual à do .gitignore. O .gitignore já é respeitado automaticamente;
+# este arquivo é avaliado depois e serve para excluir o que está versionado mas
+# não ajuda o grafo — ou que atrapalha.
+#
+# Regra de ouro deste arquivo: o grafo mapeia CÓDIGO e ESTRUTURA. O conteúdo
+# clínico não entra por aqui — ele tem uma fonte única, conteudo/manifest.json,
+# e é lida direto do arquivo quando importa. Grafo desatualizado sugerindo dose
+# é o tipo de erro que este projeto não pode cometer.
+
+# ─── Dependências e artefatos de build ───────────────────────────────────────
+node_modules/
+.vercel/
+package-lock.json
+
+# ─── Artefatos da ponte de arquivos (mount) ──────────────────────────────────
+.fuse_hidden*
+_to_delete_lixo_git/
+
+# ─── Gerados: entram no grafo como ruído e duplicam o conteúdo clínico ───────
+# api/knowledge.js tem ~397 mil caracteres em 24 linhas — é o texto de todas as
+# páginas clínicas concatenado por scripts/extract-knowledge.js. Indexá-lo
+# duplicaria o site inteiro dentro do grafo e explodiria o custo de extração.
+api/knowledge.js
+# Gerado por scripts/build-content.js a partir de conteudo/farmacos.json.
+api/farmacos.js
+# Gerado por scripts/seo-tags.js.
+sitemap.xml
+
+# ─── Hub UTI: bundle React minificado, ~2,2 MB ───────────────────────────────
+# O código-fonte do Hub vive em outro repositório (~/hub-uti). O que está aqui
+# é artefato publicado, não fonte — indexar minificado não produz nada legível.
+hub-uti/assets/
+
+# ─── Binários e mídia ────────────────────────────────────────────────────────
+*.png
+*.jpg
+*.jpeg
+*.ico
+*.woff
+*.woff2
+
+# ─── Páginas de conteúdo clínico ─────────────────────────────────────────────
+# Descomente os blocos abaixo se o custo de indexação ficar alto. O mapa das
+# páginas já existe em conteudo/manifest.json — o grafo agrega pouco aqui, e
+# cada página clínica é longa.
+# vm/*.html
+# hemo/*.html
+# neuro/*.html
+# proc/*.html
+# peri/*.html
+# artigos/*.html
