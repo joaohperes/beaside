@@ -12,3 +12,6 @@ node_modules
 # fontes bibliográficas (PDFs de UpToDate, guidelines, artigos) — material
 # licenciado, usado só para curadoria local. O deploy é público: nunca versionar.
 *.pdf
+
+# grafo de código (Graphify) — artefato local, regerado a cada indexação
+graphify-out/
