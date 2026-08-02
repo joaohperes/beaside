@@ -144,6 +144,43 @@ não validado.*
 
 ---
 
+## 7. `vti.html` — VTI e débito cardíaco pelo POCUS
+
+Página **nova** (jul/2026). Criada porque o VTI era citado em 10 páginas do módulo
+como desfecho de todo teste funcional — e não era ensinado em nenhuma. Todas as
+fontes abaixo foram lidas no texto-fonte (PDF/PMC), não em síntese.
+
+| Afirmação publicada | Fonte primária |
+|---|---|
+| PLR: cinco regras — partir de semirrecumbente, ajustar a **cama** (não erguer as pernas na mão), medir débito e não pressão de pulso, efeito pode se esgotar em 1 min, retornar à posição inicial e confirmar volta ao basal | Monnet X, Teboul JL. Passive leg raising: five rules, not a drop of fluid! **Crit Care. 2015;19:18** |
+| PLR + ΔVTI: S 86% (IC95% 79–92) · E 92% (IC95% 88–96) · AUC 0,95 — 23 estudos, 1.013 pacientes | Cherpanath TG, Hirsch A, Geerts BF, et al. **Crit Care Med. 2016;44:981-91** |
+| Diâmetro do VSVE: paraesternal longitudinal, quadro **mesossistólico**, borda interna a borda interna, **no ânulo ou ≤ 2 mm** abaixo | Guzzetti E, Capoulade R, Tastet L, et al. **J Am Soc Echocardiogr. 2020;33:953-63** |
+| Medir 5–10 mm abaixo do ânulo subestima VS em até **15,9 ± 17,3 mL**; acurácia para baixo fluxo 86% (ânulo) e 82% (2 mm) vs 69% e 61% (5 e 10 mm) — secção elíptica pelo <em>septal bulge</em> | Guzzetti 2020 (acima), comparação direta com CMR de contraste de fase, n = 106 |
+| Erro no diâmetro entra ao quadrado: 5% → **10%** no VS (63 vs 69 mL); 10% → **21%** (63 vs 76 mL) | Guzzetti 2020 (acima), Figura de bias — números literais do artigo |
+| Gate do Doppler pulsado: posicionar no plano valvar e recuar apicalmente até sumirem os cliques da valva | Guzzetti 2020 (métodos) · técnica ASE referida no próprio artigo |
+| EEO: pausa de **12 s**; ΔVTI **9%** → S 89% (72–98) · E 95% (77–100); AUC 0,96 ± 0,03 | Georges D, de Courson H, Lanchon R, et al. **Crit Care. 2018;22:32** (n = 50, sedados, sem esforço; arritmia crônica excluída; Vt 6–8 mL/kg) |
+| Mini-bolus 100 mL de Ringer em 1 min: ΔVTI **9,1%** → S 91,5% · E 88,9% · AUROC 0,96. EEOT no mesmo estudo: **4,3%** → S 89,4% · E 88,9% | Selvam V, Shende D, Anand RK, Kashyap L, Ray BR. **J Emerg Trauma Shock. 2023;16:109-15** (n = 83; 17 excluídos por esforço inspiratório no EEOT) |
+
+**Notas de curadoria.**
+
+1. O corte do EEO aparece na literatura entre **4,3% e 9%** (Selvam vs Georges).
+   A página publica a faixa `≈ 4–9%`, não um número único — os dois estudos são
+   pequenos e usaram durações de oclusão diferentes (15 s vs 12 s). `vci.html`
+   trazia `EEO 30 s + ΔVTI ≥ 5%`; a duração de 30 s **não** está sustentada por
+   nenhuma das duas fontes. ⚠️ Corrigir em `vci.html` numa próxima passada.
+2. Monnet 2015 **não** publica o corte percentual — quem sustenta o `≥ 10%` é a
+   metanálise de Cherpanath. As duas `.ref` andam juntas por isso.
+3. Guzzetti 2020 é estudo de estenose aórtica. O que se importa dele é a
+   **técnica de medida do VSVE e a propagação do erro**, válidas para qualquer
+   cálculo de VS por Doppler — não conclusões sobre AVA/estenose.
+4. A página é explícita em que o diâmetro **se cancela no ΔVTI**: erro de diâmetro
+   estraga o DC absoluto, não a resposta “o débito subiu?”. Isso evita que o leitor
+   descarte o teste funcional por não confiar na própria régua.
+5. Não publicar como “equivalente à termodiluição”. `do2.html` já diz “boa
+   correlação”, o que é defensável; a página nova não amplia essa afirmação.
+
+---
+
 ## Divergência a publicar como divergência
 
 **Cristaloide balanceado vs. salina** — não escolher lado:

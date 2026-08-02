@@ -168,22 +168,23 @@ const MODULE_PAGES = {
     {id:'quiz',          file:'quiz.html',          cat:'Pearls & Pitfalls',         label:'Caso clínico / Quiz',    title:'Caso Clínico Interativo',                      subtitle:'Quiz de múltipla escolha'},
   ],
   hemo: [
-    {id:'fisio',      file:'fisio.html',      cat:'Fundamentos',            label:'Fisiologia',        title:'Base Fisiológica',                 subtitle:'DO₂, VO₂, Fick, Frank-Starling e choque críptico'},
-    {id:'do2',        file:'do2.html',        cat:'Fundamentos',            label:'DO₂ / CaO₂',        title:'Oferta de O₂',                     subtitle:'DO₂, CaO₂, tríade da oferta e intervenções'},
-    {id:'rush',       file:'rush.html',       cat:'POCUS / Imagem',         label:'RUSH',              title:'Protocolo RUSH',                   subtitle:'Rapid Ultrasound for Shock and Hypotension'},
-    {id:'vci',        file:'vci.html',        cat:'POCUS / Imagem',         label:'POCUS VCI',         title:'POCUS — Veia Cava Inferior',       subtitle:'Técnica, fórmulas e interpretação'},
-    {id:'ecg',        file:'ecg.html',        cat:'POCUS / Imagem',         label:'ECG',               title:'ECG no Choque',                    subtitle:'Achados que mudam o manejo imediato'},
-    {id:'scvo2',      file:'scvo2.html',      cat:'Marcadores de perfusão', label:'SvcO₂',             title:'SvcO₂ — Saturação Venosa Central', subtitle:'Como interpretar e onde coletar'},
-    {id:'dpco2',      file:'dpco2.html',      cat:'Marcadores de perfusão', label:'Δ pCO₂',            title:'Δ pCO₂ — Gradiente Venoarterial',  subtitle:'O marcador de fluxo que a SvcO₂ não captura'},
-    {id:'quadrantes', file:'quadrantes.html', cat:'POCUS / Imagem',         label:'Quadrantes',        title:'Os 4 Quadrantes SvcO₂ × Δ pCO₂',   subtitle:'Plano cartesiano para interpretar a hipoperfusão'},
-    {id:'integracao', file:'integracao.html', cat:'Síntese',                label:'Integração',        title:'Integração Clínica',               subtitle:'Gasometria pareada + POCUS VCI em conjunto'},
-    {id:'fluxograma', file:'fluxograma.html', cat:'Síntese',                label:'Fluxograma',        title:'Fluxograma Integrado',             subtitle:'Do choque à conduta — padrão, gasometria, POCUS, drogas'},
-    {id:'padroes',    file:'padroes.html',    cat:'Síntese',                label:'Padrões',           title:'Padrões Hemodinâmicos',            subtitle:'Tabelas de referência por tipo de choque'},
-    {id:'drogas',     file:'drogas.html',     cat:'Terapêutica',            label:'Drogas vasoativas', title:'Drogas Vasoativas',                subtitle:'Doses, diluições e escalonamento'},
-    {id:'calc-hemo',  file:'calc-hemo.html',  cat:'Ferramentas',            label:'Calculadoras',      title:'Calculadoras Hemodinâmicas',       subtitle:'Δ pCO₂ · VCI · VPP · Winter · DO₂'},
-    {id:'pratica',    file:'pratica.html',    cat:'Ferramentas',            label:'Casos práticos',    title:'Prática — Casos Simulados',        subtitle:'4 casos cobrindo os 4 quadrantes'},
-    {id:'siglas',     file:'siglas.html',     cat:'Ferramentas',            label:'Siglas',            title:'Glossário de Siglas',              subtitle:'Referência rápida de siglas hemodinâmicas'},
-    {id:'pearls',     file:'pearls.html',     cat:'Pearls & Pitfalls',      label:'Cards clínicos',    title:'Pearls & Pitfalls',                subtitle:'Cenários de plantão: acerto, erro comum e o porquê do mecanismo'},
+    {id:'fisio',      file:'fisio.html',      cat:'Fundamentos',            label:'Fisiologia',                       title:'Base Fisiológica',                 subtitle:'DO₂, VO₂, Fick, Frank-Starling e choque críptico'},
+    {id:'do2',        file:'do2.html',        cat:'Fundamentos',            label:'DO₂ / CaO₂',                       title:'Oferta de O₂',                     subtitle:'DO₂, CaO₂, tríade da oferta e intervenções'},
+    {id:'rush',       file:'rush.html',       cat:'POCUS / Imagem',         label:'RUSH',                             title:'Protocolo RUSH',                   subtitle:'Rapid Ultrasound for Shock and Hypotension'},
+    {id:'vci',        file:'vci.html',        cat:'POCUS / Imagem',         label:'POCUS VCI',                        title:'POCUS — Veia Cava Inferior',       subtitle:'Técnica, fórmulas e interpretação'},
+    {id:'ecg',        file:'ecg.html',        cat:'POCUS / Imagem',         label:'ECG',                              title:'ECG no Choque',                    subtitle:'Achados que mudam o manejo imediato'},
+    {id:'scvo2',      file:'scvo2.html',      cat:'Marcadores de perfusão', label:'SvcO₂',                            title:'SvcO₂ — Saturação Venosa Central', subtitle:'Como interpretar e onde coletar'},
+    {id:'dpco2',      file:'dpco2.html',      cat:'Marcadores de perfusão', label:'Δ pCO₂',                           title:'Δ pCO₂ — Gradiente Venoarterial',  subtitle:'O marcador de fluxo que a SvcO₂ não captura'},
+    {id:'quadrantes', file:'quadrantes.html', cat:'POCUS / Imagem',         label:'Quadrantes',                       title:'Os 4 Quadrantes SvcO₂ × Δ pCO₂',   subtitle:'Plano cartesiano para interpretar a hipoperfusão'},
+    {id:'vti',        file:'vti.html',        cat:'POCUS / Imagem',         label:'VTI — Débito Cardíaco pelo POCUS', title:'VTI — Débito Cardíaco pelo POCUS', subtitle:'Como medir o VTI subvalvar aórtico e calcular DC, IC e ΔVTI'},
+    {id:'integracao', file:'integracao.html', cat:'Síntese',                label:'Integração',                       title:'Integração Clínica',               subtitle:'Gasometria pareada + POCUS VCI em conjunto'},
+    {id:'fluxograma', file:'fluxograma.html', cat:'Síntese',                label:'Fluxograma',                       title:'Fluxograma Integrado',             subtitle:'Do choque à conduta — padrão, gasometria, POCUS, drogas'},
+    {id:'padroes',    file:'padroes.html',    cat:'Síntese',                label:'Padrões',                          title:'Padrões Hemodinâmicos',            subtitle:'Tabelas de referência por tipo de choque'},
+    {id:'drogas',     file:'drogas.html',     cat:'Terapêutica',            label:'Drogas vasoativas',                title:'Drogas Vasoativas',                subtitle:'Doses, diluições e escalonamento'},
+    {id:'calc-hemo',  file:'calc-hemo.html',  cat:'Ferramentas',            label:'Calculadoras',                     title:'Calculadoras Hemodinâmicas',       subtitle:'Δ pCO₂ · VCI · VPP · Winter · DO₂'},
+    {id:'pratica',    file:'pratica.html',    cat:'Ferramentas',            label:'Casos práticos',                   title:'Prática — Casos Simulados',        subtitle:'4 casos cobrindo os 4 quadrantes'},
+    {id:'siglas',     file:'siglas.html',     cat:'Ferramentas',            label:'Siglas',                           title:'Glossário de Siglas',              subtitle:'Referência rápida de siglas hemodinâmicas'},
+    {id:'pearls',     file:'pearls.html',     cat:'Pearls & Pitfalls',      label:'Cards clínicos',                   title:'Pearls & Pitfalls',                subtitle:'Cenários de plantão: acerto, erro comum e o porquê do mecanismo'},
   ],
   neuro: [
     {id:'fisio',         file:'fisio.html',         cat:'Fundamentos',       label:'Fisiologia neuro',     title:'Fisiologia do Neurocrítico',                   subtitle:'Monro-Kellie, PPC, autorregulação cerebral e herniação'},
@@ -1074,6 +1075,76 @@ function observeStackableTables(){
 }
 
 // ============================================================
+// AMPLIAR ESQUEMAS (.svg-wrap)
+// ============================================================
+// Esquema anatômico tem detalhe que não cabe na largura do card, sobretudo no
+// celular. Abre uma cópia do SVG num overlay, onde o zoom nativo do navegador
+// (pinch, ⌘+) funciona sem que a gente reimplemente pan/zoom.
+function enhanceSvgZoom(){
+  const wraps=document.querySelectorAll('.svg-wrap');
+  if(!wraps.length)return;
+
+  let backdrop=null,closeBtn=null,lastFocus=null;
+
+  function close(){
+    if(!backdrop)return;
+    backdrop.classList.remove('show');
+    backdrop.innerHTML='';
+    if(closeBtn)closeBtn.remove(),closeBtn=null;
+    document.body.style.overflow='';
+    if(lastFocus)lastFocus.focus();
+  }
+
+  function open(svg,caption){
+    if(!backdrop){
+      backdrop=document.createElement('div');
+      backdrop.className='svg-zoom-backdrop';
+      backdrop.addEventListener('click',e=>{if(e.target===backdrop)close();});
+      document.body.appendChild(backdrop);
+    }
+    const inner=document.createElement('div');
+    inner.className='svg-zoom-inner';
+    const clone=svg.cloneNode(true);
+    clone.removeAttribute('style');
+    inner.appendChild(clone);
+    backdrop.innerHTML='';
+    backdrop.appendChild(inner);
+
+    closeBtn=document.createElement('button');
+    closeBtn.className='svg-zoom-close';
+    closeBtn.type='button';
+    closeBtn.textContent='Fechar ✕';
+    closeBtn.setAttribute('aria-label','Fechar esquema ampliado');
+    closeBtn.addEventListener('click',close);
+    document.body.appendChild(closeBtn);
+
+    backdrop.setAttribute('role','dialog');
+    backdrop.setAttribute('aria-modal','true');
+    backdrop.setAttribute('aria-label',caption||'Esquema ampliado');
+    backdrop.classList.add('show');
+    document.body.style.overflow='hidden';
+    closeBtn.focus();
+  }
+
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape'&&backdrop&&backdrop.classList.contains('show'))close();
+  });
+
+  wraps.forEach(w=>{
+    const svg=w.querySelector('svg');
+    if(!svg||w.querySelector('.svg-zoom-btn'))return;
+    const cap=w.querySelector('.svg-caption');
+    const btn=document.createElement('button');
+    btn.className='svg-zoom-btn';
+    btn.type='button';
+    btn.innerHTML='<svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>Ampliar';
+    btn.setAttribute('aria-label','Ampliar esquema'+(cap?': '+cap.textContent.trim():''));
+    btn.addEventListener('click',()=>{lastFocus=btn;open(svg,cap&&cap.textContent.trim());});
+    w.appendChild(btn);
+  });
+}
+
+// ============================================================
 // BOOT
 // ============================================================
 document.addEventListener('DOMContentLoaded',()=>{
@@ -1081,6 +1152,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   applyTheme(getTheme()); // atualiza ícone do toggle no header
   prepareStackableTables();
   observeStackableTables();
+  enhanceSvgZoom();
   initProgress();
   initSearchKeys();
   buildGlossaryFooter();

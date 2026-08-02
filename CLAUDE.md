@@ -1,6 +1,6 @@
 # be·aside — guia para o Claude / agentes
 
-Duas frentes no **mesmo** deploy Vercel (`https://be-aside.vercel.app`), com stacks **diferentes**:
+Duas frentes no **mesmo** deploy Vercel (`https://beaside.com.br`), com stacks **diferentes**:
 
 | Frente | O quê | Stack | Path prod |
 |--------|--------|--------|-----------|
@@ -9,7 +9,9 @@ Duas frentes no **mesmo** deploy Vercel (`https://be-aside.vercel.app`), com sta
 
 **Repo de deploy:** `github.com/joaohperes/beaside` · branch `main`  
 **Fonte do Hub UTI (dev/build):** pasta irmã `~/hub-uti` (ou path local equivalente) — o build é **publicado** em `beaside/hub-uti/` (artefatos, não editar o bundle à mão).  
-**Produto guia (visão):** assinatura futura (~R$ 79,90 conteúdo / ~R$ 119–129 com IA); free = hub + teaser; domínio próprio ainda não definido.
+**Produto guia (visão):** assinatura futura (~R$ 79,90 conteúdo / ~R$ 119–129 com IA); free = hub + teaser.
+
+**Domínio (ago/2026):** `beaside.com.br` é o **canônico** — registro.br (acesso via pai do César) → nameservers Cloudflare → Vercel. Entradas equivalentes, todas servindo o mesmo deploy: `www.beaside.com.br` e `be-aside.com.br` redirecionam 308 para o apex; `be-aside.vercel.app` continua acessível (previews e fallback). A base do canonical/OG/sitemap mora em `conteudo/manifest.json` (`site.url`) e `scripts/seo-tags.js` (`BASE_URL`) — trocar nos dois e rodar os geradores. **Cloudflare com proxy desligado (nuvem cinza)** em todos os registros: proxy ligado quebra a emissão do certificado do Vercel e empilha dois CDNs.
 
 **Decisão de escopo (explícita):** Hub UTI **não** é módulo do guia estático nem “feature escondida” do `app.js`. É um **segundo produto** no monorepo de deploy, ainda **sem link** no hub principal (URL direta / bookmark; `noindex`). Evolui com ritmo próprio; mudanças de plantão **não** devem vazar regras do design system do guia e vice-versa, salvo tokens/auth compartilhados (Clerk).
 
@@ -72,7 +74,7 @@ está errada: existe um script, um grep ou uma fonte menor que responde melhor.
 
 ### 2) Hub UTI — SPA React (segundo produto)
 
-- **URL:** `https://be-aside.vercel.app/hub-uti/` · headers `X-Robots-Tag: noindex, nofollow` (`vercel.json`).
+- **URL:** `https://beaside.com.br/hub-uti/` · headers `X-Robots-Tag: noindex, nofollow` (`vercel.json`). CORS do sync (`api/hub-plantao.js`) aceita o domínio próprio, o `www` e o `.vercel.app` — origem fora da lista bloqueia o plantão.
 - **Código-fonte:** repo/pasta **irmã** `hub-uti` (Vite + React 19 + Tailwind v4). **Não** é HTML estático; **não** usa `assets/app.js` / design system do guia.
 - **Build → deploy:** no fonte `npm run publish:beaside` (build + copia `dist/` → `beaside/hub-uti/`). Em seguida commit/push no **beaside** e deploy Vercel.
 - **Função:** plantão multi-paciente (≤40 leitos): import labs (texto/PDF), SSVV+BH, invasões, drogas, evolução em formato de **prontuário/plantão** (seções `#…` copiáveis). Persistência `localStorage`; sync opcional com conta via `api/hub-plantao.js` (JWT Clerk + KV ou metadata).
@@ -262,7 +264,7 @@ Exemplos: `Ventilação Mecânica · SDRA`, `Hemodinâmica · POCUS`, `Neurocrí
 
 ### Auth / Hub UTI
 
-- **Auth (Clerk) — status jul/2026:** front E2E no guia (login + hub chip + `conta.html` + SSO + captcha + erros pt-BR). Dashboard: e-mail+senha; **username off**; Google SSO on; Apple off no UI. Origins/redirects: `localhost` + `https://be-aside.vercel.app`.
+- **Auth (Clerk) — status ago/2026:** front E2E no guia (login + hub chip + `conta.html` + SSO + captcha + erros pt-BR). Dashboard: e-mail+senha; **username off**; Google SSO on; Apple off no UI. A instância é **Development** (`arriving-seasnail-55.clerk.accounts.dev`): detecta o host em runtime (`$DEVHOST`) e **não** tem lista de origins para editar — login no domínio próprio funcionou sem configurar nada. Não mexer em Domains/Paths do dashboard dev: a instância Production nasce com config própria, e o Clerk vai descontinuar component paths pelo dashboard.
 - `CLERK_SECRET_KEY` na Vercel: **já usada** por `api/hub-plantao.js` (sync do plantão). Para a IA do guia, secret no server só se validar sessão/quota no futuro.
 - **Não** misturar: assistentes `sugerir*` = conteúdo do guia; `hub-plantao` = estado do plantão SPA.
 
@@ -379,6 +381,38 @@ Reindexar depois de mudança estrutural (arquivo novo, script novo, rota nova).
 
 ---
 
+### Sessão 02/ago/2026 — domínio próprio `beaside.com.br`
+
+**Publicado** (`a9052db`, `8ba0adf`, `6d66ceb`). Verificado em produção.
+
+1. **`beaside.com.br` no ar como canônico.** Cadeia: registro.br (acesso via pai do
+   César) → nameservers Cloudflare (`javier`/`rosalie`) → Vercel. `DNS Setup: Full`,
+   DNSSEC desligado nos dois lados.
+2. **Proxy do Cloudflare desligado (nuvem cinza) em todos os registros.** O painel
+   insiste em recomendar proxy — ignorar. Com o Vercel atrás, proxy ligado quebra a
+   emissão do certificado e empilha dois CDNs, que não somam.
+3. **Entradas equivalentes, um só canônico:** o apex serve o site; `www.beaside.com.br`
+   e `be-aside.com.br` redirecionam 308; `be-aside.vercel.app` continua servindo o
+   mesmo deploy (previews). **Não é redirect do `.vercel.app` para o domínio novo** —
+   os dois são portas para o mesmo lugar, e é o canonical que consolida o SEO.
+4. **A base do domínio mora em dois lugares** — `conteudo/manifest.json` (`site.url`) e
+   `scripts/seo-tags.js` (`BASE_URL`). Trocar nos dois. `seo-tags.js` é **idempotente**:
+   só adiciona tag faltante, não corrige canonical já existente — na migração foi preciso
+   substituir o domínio nas páginas antes de rodar o gerador.
+5. **`robots.txt` não é gerado** — a linha `Sitemap:` é manual.
+6. **CORS do Hub UTI** (`api/hub-plantao.js`) recebeu domínio próprio e `www`. Sem isso o
+   sync do plantão bloqueia na origem assim que alguém abre `/hub-uti/` pelo domínio novo.
+7. **`seo-tags.js` passou a ignorar diretórios ocultos** no walk: worktrees de agente
+   (`.kilo/`) entravam no sitemap com URLs que não existem em produção.
+8. **Clerk não precisou de nada.** A instância é Development: detecta o host em runtime,
+   sem lista de origins. Login funcionou no domínio novo sem configuração. Production
+   (`pk_live_`) segue pendente — ver seção própria.
+9. **Página VTI** (`hemo/vti.html`) publicada junto. **Pendente: corrigir os esquemáticos.**
+10. **Search Console ainda não configurado.** Sem ele não há como verificar se o Google
+    absorveu a troca de canonical.
+
+---
+
 ## O que **não** fazer
 
 - **Não editar nada entre os marcadores `AUTO:conteudo`** (app.js, hubs, artigos, extract-knowledge, llms.txt) — a fonte é `conteudo/manifest.json` + `npm run build:content`.
@@ -390,6 +424,10 @@ Reindexar depois de mudança estrutural (arquivo novo, script novo, rota nova).
 - Não clarear o texto da nav para “recuar” hierarquia: reprova no contraste. Usar peso
   e corpo.
 - Não editar o **bundle** `beaside/hub-uti/assets/*` à mão — publicar a partir do fonte Vite.
+- **Não ligar o proxy do Cloudflare** (nuvem laranja) nos registros do domínio, por mais
+  que o painel recomende: quebra o certificado do Vercel e empilha dois CDNs.
+- Não trocar o domínio só em `seo-tags.js`: `conteudo/manifest.json` (`site.url`) é a
+  outra fonte, e `robots.txt` é manual.
 - Não aplicar o design system HTML do guia ao SPA (e vice-versa) sem pedido.
 - Não tratar Hub UTI como página estática de módulo (`MODULE_PAGES` / `data-module`).
 - Não voltar IBM Plex como UI principal do **guia**.
@@ -408,5 +446,12 @@ Reindexar depois de mudança estrutural (arquivo novo, script novo, rota nova).
   colapsável; não deixar `:hover` sem `@media (hover: hover)`; não descer abaixo
   de 11px fora da exceção `.evo-info`; não transformar campo de indicador da alta
   em bloqueio de gravação.
+- **Gráfico de BH:** não deslocar rótulo do eixo por coluna (as linhas são a
+  mesma grade para todas — foi o que fazia a data encostar no chip vizinho);
+  não inferir turno D/N pela ordem na lista (só janela de 12 h tem turno); não
+  derivar a cápsula do chip de turno do texto com `color-mix` (as duas herdam a
+  mesma luminância e o par some sob daltonismo); não declarar `--bh-pos`/
+  `--bh-neg` dentro de `.bh-chart` (o snapshot fica fora e não resolve `var()`);
+  não trocar o par do balanço por verde/vermelho.
 - Não responder dose, diluição ou conduta a partir do grafo do Graphify — abrir a fonte.
 - Não commitar `graphify-out/`.

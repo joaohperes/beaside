@@ -22,7 +22,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
-const BASE_URL = 'https://be-aside.vercel.app';
+const BASE_URL = 'https://beaside.com.br';
 const SITE_NAME = 'be·aside';
 const DRY_RUN = process.argv.includes('--dry-run');
 
@@ -106,6 +106,10 @@ function walk(dir, acc) {
   acc = acc || [];
   for (const entry of readdirSync(dir)) {
     if (SKIP_DIRS.has(entry)) continue;
+    // Diretórios ocultos nunca são conteúdo publicado: worktrees de agentes
+    // (.kilo), caches de editor (.vscode) etc. Sem isto, um worktree deixado na
+    // raiz entra no sitemap com URLs que não existem em produção.
+    if (entry.startsWith('.')) continue;
     const full = join(dir, entry);
     const st = statSync(full);
     if (st.isDirectory()) walk(full, acc);

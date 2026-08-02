@@ -2,7 +2,7 @@
   "_leia": "Fonte unica de verdade do conteudo do be aside. Editar AQUI e rodar: npm run build:content. Nao editar a mao MODULE_PAGES em assets/app.js, os cards dos hubs, o sitemap, o llms.txt nem a lista do extract-knowledge -- tudo isso e gerado a partir deste arquivo.",
   "versao": 1,
   "site": {
-    "url": "https://be-aside.vercel.app",
+    "url": "https://beaside.com.br",
     "nome": "be·aside"
   },
   "_redirecionadas": "Páginas antigas que continuam no repositório mas não são mais servidas: o build gera um redirect 301 em vercel.json para cada uma. Para aposentar uma página, mova a entrada dela para cá em vez de apagar o arquivo — assim o link antigo nunca quebra e a auditoria para de reclamar.",
@@ -553,6 +553,23 @@
             "selo": "Marcadores",
             "titulo": "Os 4 quadrantes",
             "resumo": "Plano cartesiano SvcO₂ × Δ pCO₂ para interpretar a hipoperfusão"
+          }
+        },
+        {
+          "id": "vti",
+          "arquivo": "vti.html",
+          "categoria": "POCUS / Imagem",
+          "menu": "VTI — Débito Cardíaco pelo POCUS",
+          "titulo": "VTI — Débito Cardíaco pelo POCUS",
+          "subtitulo": "Como medir o VTI subvalvar aórtico e calcular DC, IC e ΔVTI",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "POCUS / Imagem",
+            "selo": "POCUS / Imagem",
+            "titulo": "VTI — Débito Cardíaco pelo POCUS",
+            "resumo": "Como medir o VTI subvalvar aórtico e calcular DC, IC e ΔVTI"
           }
         },
         {

@@ -17,6 +17,8 @@ const RATE_MAX = 90
 const rateBuckets = new Map()
 
 const AUTHORIZED_PARTIES = [
+  'https://beaside.com.br',
+  'https://www.beaside.com.br',
   'https://be-aside.vercel.app',
   'https://be-aside-joaohperes-projects.vercel.app',
   'http://localhost:5173',

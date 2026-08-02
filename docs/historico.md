@@ -59,7 +59,7 @@
 - Gate por **plano** / paywall; cota de IA no guia.
 - Clerk **production** (`pk_live_`) quando for produto fechado.
 - Neuro: preencher stubs.
-- Domínio próprio.
+- ~~Domínio próprio~~ — **feito** (ago/2026, ver topo).
 - Hub UTI: link opcional no hub principal (hoje URL direta + noindex); endurecer produto/PHI conforme uso real.
 
 ### Sessão jul/2026 — Hub UTI documentado no monorepo
@@ -176,6 +176,92 @@
 9. Avisos viraram **toast** em portal (fora do fluxo da lateral, some em 4,5 s, com fechar).
    Cards clínicos abrem vários ao mesmo tempo. Invasões têm limite plausível por tipo
    (1 SVD/TOT/TQT/PAI/SNE/Diálise, 2 CVC/PICC/drenos, 4 AVP).
+
+### Sessão 02/ago/2026 — Hub UTI: eixo do BH, janelas livres e par de cores
+
+**Publicado** (`hub-uti@2c70f35` → beaside `6d1b11f`). Não reverter sem ler os
+invariantes de cor e de grade abaixo.
+
+#### Eixo do gráfico — invariante de grade
+
+1. **As linhas do eixo X são fixas e iguais em todas as colunas**
+   (`ROW_DATE`/`ROW_SUB`/`ROW_DUR` em `BhChart.jsx`). Antes cada coluna
+   calculava a própria altura: quem tinha linha de duração subia a data 15 px e
+   quem não tinha ficava embaixo — a data mais baixa encostava no chip de turno
+   da coluna vizinha. **Não voltar a deslocar rótulo por coluna:** o eixo é uma
+   grade, não cada coluna por si. Pelo mesmo motivo caiu o caso especial da
+   data sozinha (descia 25 px), que era o mesmo defeito em outra forma.
+2. Janela livre mostra **hora na linha do chip e duração abaixo**. `4h · 07:00`
+   numa linha só encosta no vizinho quando a faixa está em `MIN_BAND` (46 px).
+
+#### Turno D/N
+
+3. **`buildLabels` não infere turno pela ordem na lista.** Um lançamento manual
+   de 4 h não é "o turno diurno" por ser o primeiro do dia — rotulá-lo assim
+   afirma uma divisão de plantão que o registro não tem. Sem turno de 12 h, o
+   desempate é a **duração**. É a mesma regra que `turnoDe` já aplicava e que só
+   o gráfico furava.
+4. Como efeito colateral daquele fallback, o `<g>` sem classe de turno herdava o
+   `fill` preto padrão do SVG e desenhava um **quadrado preto** no eixo.
+
+#### Cores — o par do balanço e o do turno trocaram de lugar
+
+5. **Balanço: azul (acúmulo) × tangerina (déficit)** — `#e08a52` dark /
+   `#b8501a` claro. O âmbar anterior estava em **3.98** contra o fundo claro,
+   abaixo do mínimo; a tangerina sobe para 5.00. Segue valendo o invariante
+   original: **não usar verde/vermelho**, porque balanço positivo é esperado em
+   ressuscitação e negativo pode ser hipovolemia — a leitura é do médico.
+6. **Turno: âmbar (dia) × cinza neutro (noite).** A cápsula do tema claro é
+   escurecida (`#f0cf85`) de propósito: com o âmbar direto o par D×N caía para
+   1.19.
+7. **A distinção D×N é por LUMINÂNCIA da cápsula**, nunca por matiz — cinza não
+   tem matiz e o âmbar dessatura na direção dele sob deuteranopia (texto contra
+   texto fica em 1.0–1.5, indistinguível). Medido: 1.38 claro / 1.56 escuro,
+   mantendo 1.33/1.63 sob deuteranopia. **Por isso a cápsula é opaca e definida
+   à mão:** derivá-la do texto com `color-mix` fazia as duas herdarem a mesma
+   luminância e o par ia a 1.06.
+8. A cápsula neutra tem **borda**: a 1.09 contra o fundo claro ela sumiria e só
+   o D pareceria marcado.
+9. `HUES` em `BhChart.jsx` **espelha** `--bh-pos`/`--bh-neg` do CSS porque
+   gradiente SVG não resolve `var()` em `stopColor`. Mudou num lado, muda no
+   outro.
+
+#### Escopo de token — a causa de um bug que resistiu a três tentativas
+
+10. **`--bh-pos`/`--bh-neg` moram no `:root`, não em `.bh-chart`.** Declarados
+    no escopo do componente, o snapshot e o saldo do lançamento manual — que
+    ficam **fora** daquele elemento — não resolviam `var()` e a cor simplesmente
+    não aplicava. Tudo o mais verificava certo (classe no DOM, regra no CSS,
+    ordem da cascata), o que fez o defeito ser confundido com cache duas vezes.
+
+#### Leitura do hover e painel
+
+11. O readout virou três níveis: **quando**, **BH do período** em destaque com a
+    conta que o gerou, e o **acumulado** à parte por ser da outra faixa. Eram
+    quatro grupos de mesmo peso, e nada dizia qual número era o da barra sob o
+    cursor. Ganhos e perdas separados por `−`, que é a subtração que produz o
+    valor ao lado.
+12. `BAND_HEAD` reserva 34 px de cabeçalho no painel: "no período" colava no
+    tick `+2.500` e os dois liam como um bloco só. O título ancora na **borda do
+    painel**, não em `PAD_L` — alinhado à primeira barra ele lia como rótulo
+    daquela barra.
+13. `.clinical-import-panel` sem recuo lateral próprio: alinha com a coluna
+    clínica. O recuo tinha sido introduzido ao corrigir o sangramento do
+    textarea (elementos dentro de fragmento React não são filhos diretos e não
+    recebiam a margem), e desalinhava o bloco inteiro.
+
+#### Tabela
+
+14. Cabeçalho **"Período · início"** e duração+hora numa leitura só
+    (`12h desde 19:00`). Com janelas livres, a hora é o que distingue dois
+    lançamentos do mesmo dia — sem ela, dois `12h` da mesma data ficam
+    indistinguíveis.
+
+#### Validação
+
+15. **371 testes / 84 suítes** no fonte, lint sem warnings, build ok.
+    Não verificado em navegador: **o tema escuro** — as cores foram medidas nos
+    dois temas, mas só o claro foi visto em uso.
 
 ### Sessão 30–31/jul/2026 — Hub UTI: shell v4, calculadoras, relatório e alta
 
@@ -307,8 +393,8 @@
 #### Clerk Production — standby
 
 19. O Hub rejeita `pk_test_` fora de localhost e não possui fallback hardcoded; SDK Clerk está fixado em `6.25.6`.
-20. Migração para `pk_live_`/`sk_live_` está **em standby**: Clerk Production exige domínio próprio com controle de DNS e `*.vercel.app` não serve. Até existir domínio próprio, não trocar prefixos manualmente nem criar credenciais fictícias.
-21. Ao retomar: conectar domínio próprio ao Vercel, criar/ativar a instância Production no Clerk, configurar DNS/certificados/OAuth, atualizar as duas envs a partir da mesma instância e redeployar.
+20. Migração para `pk_live_`/`sk_live_` estava em standby por falta de domínio próprio. **O bloqueio caiu em ago/2026** (`beaside.com.br` com DNS no Cloudflare), mas a migração **não foi feita** — segue pendente, e não é urgente enquanto não houver assinatura.
+21. Ao retomar: criar/ativar a instância Production no Clerk, adicionar os CNAME (`clerk.beaside.com.br` etc.) no Cloudflare **com proxy desligado**, refazer OAuth, atualizar as duas envs a partir da mesma instância e redeployar. **Atenção:** dev e prod são bases de usuário separadas — as contas da instância dev **não migram**.
 
 ### Sessão 28/jul/2026 — barra de navegação fixa e demo do assistente
 

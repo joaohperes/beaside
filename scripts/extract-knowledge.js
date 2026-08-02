@@ -36,9 +36,9 @@ const PAGES_BY_MODULE = {
   ],
   hemo: [
     'fisio.html', 'do2.html', 'rush.html', 'vci.html', 'ecg.html',
-    'scvo2.html', 'dpco2.html', 'quadrantes.html', 'integracao.html',
-    'fluxograma.html', 'padroes.html', 'drogas.html', 'pratica.html',
-    'siglas.html', 'pearls.html',
+    'scvo2.html', 'dpco2.html', 'quadrantes.html', 'vti.html',
+    'integracao.html', 'fluxograma.html', 'padroes.html', 'drogas.html',
+    'pratica.html', 'siglas.html', 'pearls.html',
   ],
   neuro: [
     'fisio.html', 'tce.html', 'avc-h.html', 'vm.html', 'metabolico.html',
