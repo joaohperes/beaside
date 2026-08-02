@@ -1266,6 +1266,268 @@
       ]
     },
     {
+      "id": "infecto",
+      "area": "raciocine",
+      "status": "rascunho",
+      "label": "Antimicrobianos",
+      "subtitulo": "Antibioticoterapia no paciente crítico",
+      "root": "infecto/",
+      "cor": "#5b63e0",
+      "llms": {
+        "nome": "Antimicrobianos",
+        "desc": "escolha empírica do foco ao espectro, PK/PD e dose no paciente crítico, resistência (ESBL, AmpC, CRE), multirresistentes e antibioticoterapia por cenário na UTI (pneumonia, abdome, urinário, partes moles, SNC, corrente sanguínea, candidemia, C. difficile, neutropenia febril)."
+      },
+      "hubExtras": [
+        {
+          "href": "../consulte/",
+          "selo": "Assistente IA",
+          "titulo": "Assistente de conduta",
+          "resumo": "Descreva o caso e receba a conduta estruturada, com as fontes internas",
+          "grupo": "Cenários por foco"
+        }
+      ],
+      "paginas": [
+        {
+          "id": "empirico",
+          "arquivo": "empirico.html",
+          "categoria": "Pensar antes do antibiograma",
+          "menu": "Terapia empírica",
+          "titulo": "Terapia empírica: do foco ao espectro",
+          "subtitulo": "Escolher o antibiótico antes do antibiograma — pelo foco, pelo hospedeiro e pela ecologia local",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Pensar antes do antibiograma",
+            "selo": "Raciocínio",
+            "titulo": "Terapia empírica",
+            "resumo": "Do foco ao espectro: a decisão que se toma antes do laboratório liberar"
+          }
+        },
+        {
+          "id": "pkpd",
+          "arquivo": "pkpd.html",
+          "categoria": "Pensar antes do antibiograma",
+          "menu": "PK/PD e dose",
+          "titulo": "PK/PD e dose no paciente crítico",
+          "subtitulo": "Por que a dose muda na UTI: ataque, hipoalbuminemia, clearance aumentado, infusão prolongada e ajuste renal",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Pensar antes do antibiograma",
+            "selo": "Dose",
+            "titulo": "PK/PD e dose",
+            "resumo": "Por que a dose padrão falha no crítico — e como corrigir"
+          }
+        },
+        {
+          "id": "resistencia",
+          "arquivo": "resistencia.html",
+          "categoria": "Ler a resistência",
+          "menu": "ESBL, AmpC e CRE",
+          "titulo": "Resistência que muda a conduta: ESBL, AmpC e CRE",
+          "subtitulo": "Ler o mecanismo de resistência antes do resultado e escolher a droga que não falha",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Ler a resistência",
+            "selo": "Gram-negativos",
+            "titulo": "ESBL, AmpC e CRE",
+            "resumo": "Ler o mecanismo antes do resultado e escolher a droga certa"
+          }
+        },
+        {
+          "id": "mdr",
+          "arquivo": "mdr.html",
+          "categoria": "Ler a resistência",
+          "menu": "Multirresistentes",
+          "titulo": "Os multirresistentes: Pseudomonas, Acinetobacter e Enterococos",
+          "subtitulo": "Não-fermentadores e enterococos resistentes: quando usar as novas beta-lactamases e o cefiderocol",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Ler a resistência",
+            "selo": "MDR",
+            "titulo": "Multirresistentes",
+            "resumo": "Pseudomonas, Acinetobacter e VRE: as novas combinações e o resgate"
+          }
+        },
+        {
+          "id": "pneumonia",
+          "arquivo": "pneumonia.html",
+          "categoria": "Cenários por foco",
+          "menu": "Pneumonia",
+          "titulo": "Pneumonia na UTI: CAP grave, HAP e PAV",
+          "subtitulo": "Terapia empírica, procalcitonina e o tempo certo de tratamento",
+          "tipo": "guia",
+          "status": "em-breve",
+          "ia": true,
+          "hub": {
+            "grupo": "Cenários por foco",
+            "selo": "Respiratório",
+            "titulo": "Pneumonia na UTI",
+            "resumo": "CAP grave, HAP e PAV: empírico, PCT e duração"
+          }
+        },
+        {
+          "id": "abdome",
+          "arquivo": "abdome.html",
+          "categoria": "Cenários por foco",
+          "menu": "Abdome e vias biliares",
+          "titulo": "Infecção intra-abdominal e das vias biliares",
+          "subtitulo": "Controle de foco, comunitária versus nosocomial, colangite, colecistite e peritonite bacteriana espontânea",
+          "tipo": "guia",
+          "status": "em-breve",
+          "ia": true,
+          "hub": {
+            "grupo": "Cenários por foco",
+            "selo": "Abdome e bile",
+            "titulo": "Abdome e vias biliares",
+            "resumo": "Controle de foco, cIAI, vias biliares e peritonite espontânea"
+          }
+        },
+        {
+          "id": "urinario",
+          "arquivo": "urinario.html",
+          "categoria": "Cenários por foco",
+          "menu": "Urossepse e ITU",
+          "titulo": "Urossepse e ITU complicada",
+          "subtitulo": "Pielonefrite grave, ITU associada a cateter e a fonte urinária de sepse no paciente crítico",
+          "tipo": "guia",
+          "status": "em-breve",
+          "ia": true,
+          "hub": {
+            "grupo": "Cenários por foco",
+            "selo": "Urinário",
+            "titulo": "Urossepse e ITU",
+            "resumo": "Pielonefrite grave, ITU de cateter e urossepse"
+          }
+        },
+        {
+          "id": "partesmoles",
+          "arquivo": "partesmoles.html",
+          "categoria": "Cenários por foco",
+          "menu": "Pele e partes moles",
+          "titulo": "Pele e partes moles graves",
+          "subtitulo": "Fasceíte necrotizante, pé diabético grave e infecção de sítio cirúrgico",
+          "tipo": "guia",
+          "status": "em-breve",
+          "ia": true,
+          "hub": {
+            "grupo": "Cenários por foco",
+            "selo": "Partes moles",
+            "titulo": "Pele e partes moles",
+            "resumo": "Fasceíte necrotizante, pé diabético e sítio cirúrgico"
+          }
+        },
+        {
+          "id": "snc",
+          "arquivo": "snc.html",
+          "categoria": "Cenários por foco",
+          "menu": "Sistema nervoso central",
+          "titulo": "Infecções do sistema nervoso central",
+          "subtitulo": "Meningite bacteriana, encefalite herpética e abscesso cerebral: a escolha do antimicrobiano",
+          "tipo": "guia",
+          "status": "em-breve",
+          "ia": true,
+          "hub": {
+            "grupo": "Cenários por foco",
+            "selo": "SNC",
+            "titulo": "Sistema nervoso central",
+            "resumo": "Meningite, encefalite e abscesso cerebral — o antibiótico certo"
+          }
+        },
+        {
+          "id": "bacteremia",
+          "arquivo": "bacteremia.html",
+          "categoria": "Cenários por foco",
+          "menu": "Bacteremia, cateter e endocardite",
+          "titulo": "Bacteremia, infecção de cateter e endocardite",
+          "subtitulo": "Terapia empírica adequada, CLABSI, hemoculturas de controle, duração e endocardite",
+          "tipo": "guia",
+          "status": "em-breve",
+          "ia": true,
+          "hub": {
+            "grupo": "Cenários por foco",
+            "selo": "Corrente sanguínea",
+            "titulo": "Bacteremia e cateter",
+            "resumo": "Bacteremia, cateter (CLABSI) e endocardite"
+          }
+        },
+        {
+          "id": "candidemia",
+          "arquivo": "candidemia.html",
+          "categoria": "Cenários por foco",
+          "menu": "Candidemia",
+          "titulo": "Candidemia e candidíase invasiva",
+          "subtitulo": "Quando suspeitar, equinocandina como primeira linha, fundo de olho e duração",
+          "tipo": "guia",
+          "status": "em-breve",
+          "ia": true,
+          "hub": {
+            "grupo": "Cenários por foco",
+            "selo": "Fungo",
+            "titulo": "Candidemia",
+            "resumo": "Equinocandina de 1ª linha, fundo de olho e duração"
+          }
+        },
+        {
+          "id": "cdiff",
+          "arquivo": "cdiff.html",
+          "categoria": "Cenários por foco",
+          "menu": "C. difficile",
+          "titulo": "Colite por Clostridioides difficile",
+          "subtitulo": "Diagnóstico, vancomicina oral versus fidaxomicina e o manejo do caso grave",
+          "tipo": "guia",
+          "status": "em-breve",
+          "ia": true,
+          "hub": {
+            "grupo": "Cenários por foco",
+            "selo": "Intestino",
+            "titulo": "C. difficile",
+            "resumo": "Vancomicina oral, fidaxomicina e o caso grave"
+          }
+        },
+        {
+          "id": "neutropenia",
+          "arquivo": "neutropenia.html",
+          "categoria": "Cenários por foco",
+          "menu": "Neutropenia febril",
+          "titulo": "Neutropenia febril",
+          "subtitulo": "Emergência oncológica: cobertura antipseudomonas empírica e quando associar Gram-positivo",
+          "tipo": "guia",
+          "status": "em-breve",
+          "ia": true,
+          "hub": {
+            "grupo": "Cenários por foco",
+            "selo": "Onco-hemato",
+            "titulo": "Neutropenia febril",
+            "resumo": "Cobertura antipseudomonas empírica e quando escalonar"
+          }
+        },
+        {
+          "id": "idoso",
+          "arquivo": "idoso.html",
+          "categoria": "Populações",
+          "menu": "Paciente idoso",
+          "titulo": "Antibioticoterapia no paciente idoso e frágil",
+          "subtitulo": "Apresentação atípica, nefrotoxicidade e interações que mudam a escolha",
+          "tipo": "guia",
+          "status": "em-breve",
+          "ia": true,
+          "hub": {
+            "grupo": "Populações",
+            "selo": "Fragilidade",
+            "titulo": "Paciente idoso",
+            "resumo": "Apresentação atípica, nefrotoxicidade e interações"
+          }
+        }
+      ]
+    },
+    {
       "id": "consulte",
       "area": "consulte",
       "label": "Consulte e Resolva",
