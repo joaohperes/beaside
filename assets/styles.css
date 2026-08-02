@@ -1352,6 +1352,7 @@ td:first-child .pill{
   .tl{gap:0}
   .tl > li{padding:12px 0}
   .mat-item,.pill-list li{padding:11px 12px;line-height:1.5}
+  .mat-item{--mat-pad-t:11px;--mat-lh:1.5;padding-left:34px}
   .ind-item{padding:14px}
   .pitfall-list li{padding:12px 14px}
   /* landing cards: CTA sempre visível no touch (sem hover) */
@@ -1996,16 +1997,23 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
 .mat-item{
   position:relative;
   display:block;
+  /* --mat-pad-t e --mat-lh alimentam o cálculo do ::before; a media query do
+     mobile só sobrescreve estas duas e a bolinha se realinha sozinha. */
+  --mat-pad-t:13px;--mat-lh:1.7;
   font-family:var(--sans);font-size:13px;font-weight:400;
-  color:var(--text2);line-height:1.7;
+  color:var(--text2);line-height:var(--mat-lh);
   background:transparent;border:none;border-radius:0;
   border-bottom:1px solid var(--border);
-  padding:13px 16px 13px 38px;
+  padding:var(--mat-pad-t) 16px var(--mat-pad-t) 38px;
 }
 .mat-item:last-child{border-bottom:none}
 .mat-item::before{
   content:'';
-  position:absolute;left:16px;top:15px;
+  position:absolute;left:16px;
+  /* Centra a bolinha na PRIMEIRA linha de texto: o topo do padding mais meia
+     linha, menos metade da própria bolinha. Com `top` fixo ela ficava 5px acima
+     do centro do texto, e o desalinho piorava em item de mais de uma linha. */
+  top:calc(var(--mat-pad-t) + (1em * var(--mat-lh) / 2) - 4px);
   width:8px;height:8px;border-radius:50%;
   border:1.5px solid var(--accent);opacity:.75;
   box-sizing:border-box;
@@ -2394,8 +2402,44 @@ dl.glossary-card dd{font-size:13px;color:var(--text2)}
 .pitfall-list{margin:0 0 4px}
 .table-wrap{margin:16px 0}
 /* SVG wrapper */
-.svg-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin:20px 0;overflow-x:auto}
+.svg-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin:20px 0;overflow-x:auto;position:relative}
 .svg-caption{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:10px;display:block}
+/* Ampliar esquema: no toque e em tela pequena, detalhe anatômico não cabe na
+   largura do card. O botão é injetado por app.js (enhanceSvgZoom) só onde há
+   .svg-wrap, e abre o mesmo SVG num overlay que aceita pinch/scroll nativo. */
+.svg-zoom-btn{
+  position:absolute;top:12px;right:12px;z-index:2;
+  display:flex;align-items:center;gap:5px;
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--text2);background:var(--bg);border:1px solid var(--border);
+  border-radius:6px;padding:4px 8px;cursor:pointer;transition:all .15s;
+}
+.svg-zoom-btn:hover{color:var(--text);border-color:rgba(var(--accent-rgb),.4)}
+.svg-zoom-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.svg-zoom-backdrop{
+  position:fixed;inset:0;z-index:400;display:none;
+  background:rgba(0,0,0,.82);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  padding:24px;overflow:auto;
+}
+.svg-zoom-backdrop.show{display:flex;align-items:center;justify-content:center}
+.svg-zoom-inner{background:var(--bg2);border:1px solid var(--border2);border-radius:12px;padding:20px;max-width:1400px;width:100%}
+.svg-zoom-inner > svg{width:100%;height:auto;max-width:none}
+@media(max-width:768px){
+  /* No celular o ponto do overlay é ver MAIOR que no card. Sem largura mínima o
+     SVG caberia inteiro na tela (menor que os 520px do card) e o zoom não
+     serviria para nada: aqui ele cresce e o overlay rola nos dois eixos. */
+  .svg-zoom-backdrop{padding:12px;align-items:flex-start}
+  .svg-zoom-inner{padding:12px;width:auto}
+  .svg-zoom-inner > svg{min-width:900px}
+}
+.svg-zoom-close{
+  position:fixed;top:18px;right:22px;z-index:401;
+  font-family:var(--mono);font-size:11px;color:var(--text2);
+  background:var(--bg2);border:1px solid var(--border);border-radius:6px;
+  padding:6px 12px;cursor:pointer;
+}
+.svg-zoom-close:hover{color:var(--text)}
+html[data-theme="light"] .svg-zoom-backdrop{background:rgba(15,23,42,.6)}
 /* step-n legado (usado em legendas de SVG) */
 .step-n{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--accent);background:rgba(var(--accent-rgb),.12);border-radius:4px;padding:1px 7px;flex-shrink:0;margin-top:1px}
 /* dúvidas de plantão */

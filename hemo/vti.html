@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script src="../assets/theme-boot.js"></script>
+
+<meta charset="UTF-8">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VTI — Débito Cardíaco pelo POCUS — be·aside</title>
+<meta name="description" content="Como medir o VTI subvalvar aórtico e calcular DC, IC e ΔVTI">
+<meta property="og:image" content="https://beaside.com.br/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="be·aside — raciocínio clínico à beira do leito">
+<meta name="twitter:image" content="https://beaside.com.br/assets/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "be·aside",
+      "item": "https://beaside.com.br/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Hemo Guide",
+      "item": "https://beaside.com.br/hemo/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "VTI — Débito Cardíaco pelo POCUS",
+      "item": "https://beaside.com.br/hemo/vti.html"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalWebPage",
+  "name": "VTI — Débito Cardíaco pelo POCUS",
+  "url": "https://beaside.com.br/hemo/vti.html",
+  "inLanguage": "pt-BR",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "be·aside",
+    "url": "https://beaside.com.br/"
+  },
+  "specialty": "https://schema.org/Cardiovascular",
+  "audience": {
+    "@type": "MedicalAudience",
+    "audienceType": "Physician"
+  },
+  "description": "Como medir o VTI subvalvar aórtico e calcular DC, IC e ΔVTI"
+}
+</script>
+<link rel="canonical" href="https://beaside.com.br/hemo/vti.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="be·aside">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="VTI — Débito Cardíaco pelo POCUS — be·aside">
+<meta property="og:description" content="Como medir o VTI subvalvar aórtico e calcular DC, IC e ΔVTI">
+<meta property="og:url" content="https://beaside.com.br/hemo/vti.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="VTI — Débito Cardíaco pelo POCUS — be·aside">
+<meta name="twitter:description" content="Como medir o VTI subvalvar aórtico e calcular DC, IC e ΔVTI">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+  /* Esquemas do VTI. Mesmo padrão do proc/pai.html: classes locais com override
+     de tema claro, nunca cor cravada no atributo — SVG escuro fixo fica ilegível
+     no tema claro. Convenção anatômica: no eco a partir do ápice o fluxo aórtico
+     se afasta do transdutor, então a curva do Doppler fica ABAIXO da linha de
+     base. Desenhar acima inverteria o que a pessoa vê na tela do aparelho. */
+  .vti-bg{fill:#0e1319}
+  .vti-panel{fill:rgba(255,255,255,.02)}
+  .vti-axis{stroke:#2a3340}
+  .vti-axis-lbl{fill:#7f8c9e}
+  .vti-grid{stroke:#1a2129}
+  .vti-tissue{fill:#8b95a5;fill-opacity:.5}
+  .vti-tissue-line{stroke:#8b95a5;stroke-opacity:.55;fill:none}
+  .vti-cav{fill:#161d26}
+  /* Miocárdio como massa preenchida (não contorno vazado): é assim que os
+     esquemas de eco representam a parede, e o vazio interno passa a ler
+     como cavidade de verdade. */
+  .vti-myo{fill:#7d8794;fill-opacity:.55;stroke:none}
+  .vti-lumen{fill:#c9738f;fill-opacity:.30;stroke:none}
+  .vti-lumen-line{stroke:#c9738f;stroke-opacity:.55;fill:none}
+  .vti-fan{stroke:#8b95a5;stroke-opacity:.35;fill:none}
+  .vti-flow{fill:#c2a25a;fill-opacity:.55}
+  .vti-flow-line{stroke:#d8b96b;fill:none}
+  .vti-trace{stroke:#f4f7fb;fill:none}
+  .vti-area{fill:#e879a6;fill-opacity:.35;stroke:none}
+  .vti-area-line{stroke:#e879a6;fill:none}
+  .vti-beam{stroke:#5eb0f0;fill:none}
+  .vti-gate{fill:#5eb0f0;fill-opacity:.22;stroke:#5eb0f0}
+  .vti-lbl{fill:#dbe3ee}
+  .vti-lbl-dim{fill:#93a1b3}
+  .vti-lbl-key{fill:#f0a8c4}
+  .vti-lbl-beam{fill:#8ccbff}
+  .vti-ok{stroke:#34d39a;fill:none}
+  .vti-ok-txt{fill:#34d39a}
+  .vti-bad{stroke:#f2777a;fill:none}
+  .vti-bad-txt{fill:#f2777a}
+  .vti-cal{fill:#c2a25a;fill-opacity:.18;stroke:#c2a25a}
+  html[data-theme="light"] .vti-bg{fill:#eef1f6}
+  html[data-theme="light"] .vti-panel{fill:rgba(20,30,45,.025)}
+  html[data-theme="light"] .vti-axis{stroke:#b9c2ce}
+  html[data-theme="light"] .vti-axis-lbl{fill:#525c6b}
+  html[data-theme="light"] .vti-grid{stroke:#dde3ea}
+  html[data-theme="light"] .vti-tissue{fill:#7d8794;fill-opacity:.45}
+  html[data-theme="light"] .vti-tissue-line{stroke:#6b7683;stroke-opacity:.5}
+  html[data-theme="light"] .vti-cav{fill:#dfe5ec}
+  html[data-theme="light"] .vti-myo{fill:#6f7987;fill-opacity:.5}
+  html[data-theme="light"] .vti-lumen{fill:#b8547a;fill-opacity:.24}
+  html[data-theme="light"] .vti-lumen-line{stroke:#a8446a;stroke-opacity:.6}
+  html[data-theme="light"] .vti-fan{stroke:#8b95a5;stroke-opacity:.4}
+  html[data-theme="light"] .vti-flow{fill:#9c7f33;fill-opacity:.4}
+  html[data-theme="light"] .vti-flow-line{stroke:#8a6f28}
+  html[data-theme="light"] .vti-trace{stroke:#1a2230}
+  html[data-theme="light"] .vti-area{fill:#c2447a;fill-opacity:.26}
+  html[data-theme="light"] .vti-area-line{stroke:#c2447a}
+  html[data-theme="light"] .vti-beam{stroke:#1d6fb8}
+  html[data-theme="light"] .vti-gate{fill:#1d6fb8;fill-opacity:.16;stroke:#1d6fb8}
+  html[data-theme="light"] .vti-lbl{fill:#1e2733}
+  html[data-theme="light"] .vti-lbl-dim{fill:#5b6675}
+  html[data-theme="light"] .vti-lbl-key{fill:#a52f66}
+  html[data-theme="light"] .vti-lbl-beam{fill:#14568f}
+  html[data-theme="light"] .vti-ok{stroke:#0f9b6c}
+  html[data-theme="light"] .vti-ok-txt{fill:#0a6f4d}
+  html[data-theme="light"] .vti-bad{stroke:#c93a3d}
+  html[data-theme="light"] .vti-bad-txt{fill:#b8302f}
+  html[data-theme="light"] .vti-cal{fill:#9c7f33;fill-opacity:.14;stroke:#9c7f33}
+</style>
+</head>
+<body data-module="hemo" data-page="vti">
+<main class="main">
+<section class="section" id="vti">
+  <header class="page-head">
+    <div class="hero-eyebrow">Hemodinâmica &amp; Choque · POCUS / Imagem</div>
+      <h1 class="section-title">VTI — Débito Cardíaco pelo POCUS <a class="share-link" href="#vti" onclick="copyLink(event,'#vti')"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></a></h1>
+      <p class="section-subtitle">Como medir o VTI subvalvar aórtico e calcular DC, IC e ΔVTI</p>
+  </header>
+
+  <div class="hero-meta cols-3">
+    <div class="hm-item"><span class="hm-k">Janela do VTI</span><span class="hm-v">Apical 5 câmaras</span></div>
+    <div class="hm-item"><span class="hm-k">Diâmetro do VSVE</span><span class="hm-v">No ânulo (≤ 2 mm)</span></div>
+    <div class="hm-item"><span class="hm-k">ΔVTI no PLR</span><span class="hm-v">≥ 10% responsivo</span></div>
+  </div>
+
+  <div class="anatomy-note"><strong>Conceito:</strong> o VTI (<em>velocity-time integral</em>) é a área sob a curva do Doppler pulsado na via de saída do ventrículo esquerdo. Na prática, é a <strong>distância</strong> em centímetros que a coluna de sangue percorre em uma sístole. Multiplique pela área da via de saída e você tem o volume sistólico; multiplique pela frequência e tem o débito cardíaco. É por isso que o VTI encerra todo teste de responsividade a volume: ele mostra o que o volume fez com o débito, não a chance de fazer.</div>
+
+  <div class="sec-h"><span class="sec-num">01</span><h2>Por que medir o VTI, e não a pressão</h2></div>
+  <p class="sec-lead">Todo teste dinâmico (PLR, mini-bolus, oclusão expiratória) precisa de alguma forma de ler o débito cardíaco. A pressão arterial não serve: ela depende da complacência das artérias e da amplificação da onda de pulso, e as duas mudam durante a própria manobra. Monnet e Teboul colocam isso entre as cinco regras do PLR: o teste é <strong>menos confiável</strong> quando julgado pela pressão de pulso do que pelo débito.</p>
+  <div class="ind-grid">
+    <div class="ind-item"><span class="ind-t">O que o VTI é</span><span class="ind-d">A velocidade do fluxo somada ao longo da sístole, em <strong>cm</strong>. Em inglês aparece como <em>stroke distance</em>, a distância que o sangue avança em cada batimento.<br><em>Não precisa de calibração, cateter ou termodiluição.</em></span></div>
+    <div class="ind-item"><span class="ind-t">Por que ele responde rápido</span><span class="ind-d">Acompanha o volume sistólico batimento a batimento. Como o efeito do PLR pode <strong>acabar em 1 minuto</strong>, só serve um método que mede na hora.<br><em>O eco pega a mudança; medida tardia não.</em></span></div>
+  </div>
+  <div class="ref">Monnet X, Teboul JL. Passive leg raising: five rules, not a drop of fluid! Crit Care. 2015;19:18.</div>
+
+  <div class="svg-wrap">
+    <span class="svg-caption">O VTI é a área sob a curva de um batimento</span>
+    <svg viewBox="0 0 700 260" width="100%" style="display:block;max-width:700px;margin:0 auto" role="img" aria-label="Curva de Doppler pulsado da via de saída do ventrículo esquerdo, abaixo da linha de base, com a área de um batimento preenchida representando o VTI. Ao lado, um retângulo de área equivalente mostra que a área vale uma distância em centímetros.">
+      <rect class="vti-bg" width="700" height="260" rx="6"/>
+
+      <line class="vti-axis" x1="56" y1="56" x2="56" y2="200" stroke-width="1"/>
+      <line class="vti-axis" x1="56" y1="86" x2="430" y2="86" stroke-width="1"/>
+      <text class="vti-axis-lbl" x="46" y="52" font-size="8.5" font-family="monospace" text-anchor="middle">cm/s</text>
+      <text class="vti-axis-lbl" x="50" y="83" font-size="8.5" font-family="monospace" text-anchor="end">0</text>
+      <text class="vti-axis-lbl" x="434" y="83" font-size="8.5" font-family="monospace">tempo</text>
+
+      <!-- três batimentos: fluxo se afasta do transdutor, curva abaixo do zero -->
+      <path class="vti-flow" d="M 78,86 C 88,150 96,178 104,178 C 112,178 120,150 130,86 Z"/>
+      <path class="vti-flow-line" d="M 78,86 C 88,150 96,178 104,178 C 112,178 120,150 130,86" stroke-width="1.6"/>
+      <path class="vti-area" d="M 190,86 C 200,150 208,178 216,178 C 224,178 232,150 242,86 Z"/>
+      <path class="vti-area-line" d="M 190,86 C 200,150 208,178 216,178 C 224,178 232,150 242,86" stroke-width="2.2" stroke-dasharray="5,4"/>
+      <path class="vti-flow" d="M 302,86 C 312,150 320,178 328,178 C 336,178 344,150 354,86 Z"/>
+      <path class="vti-flow-line" d="M 302,86 C 312,150 320,178 328,178 C 336,178 344,150 354,86" stroke-width="1.6"/>
+
+      <text class="vti-lbl-key" x="216" y="205" font-size="11" font-family="monospace" text-anchor="middle" font-weight="600">VTI</text>
+      <text class="vti-lbl-dim" x="216" y="222" font-size="9" text-anchor="middle">um batimento</text>
+
+      <!-- equivalência: a área vira uma distância -->
+      <text class="vti-lbl-dim" x="482" y="138" font-size="17" text-anchor="middle">=</text>
+
+      <rect class="vti-area" x="524" y="86" width="54" height="92"/>
+      <rect class="vti-area-line" x="524" y="86" width="54" height="92" stroke-width="1.6" fill="none"/>
+      <line class="vti-area-line" x1="598" y1="86" x2="598" y2="178" stroke-width="1.2"/>
+      <path class="vti-area-line" d="M 594,90 L 598,86 L 602,90" stroke-width="1.2"/>
+      <path class="vti-area-line" d="M 594,174 L 598,178 L 602,174" stroke-width="1.2"/>
+      <text class="vti-lbl-key" x="608" y="136" font-size="11" font-family="monospace" font-weight="600">18 cm</text>
+      <text class="vti-lbl-dim" x="551" y="199" font-size="9" text-anchor="middle">mesma área,</text>
+      <text class="vti-lbl-dim" x="551" y="212" font-size="9" text-anchor="middle">lida como distância</text>
+
+      <text class="vti-lbl" x="56" y="243" font-size="10">A curva fica <tspan class="vti-lbl-key">abaixo do zero</tspan>: visto do ápice, o sangue se afasta do transdutor.</text>
+    </svg>
+  </div>
+  <div class="ref">Valores de referência: VTI normal 20 ± 3 cm (17–23 cm). Blanco P. Rationale for using the velocity-time integral and the minute distance for assessing the stroke volume and cardiac output in point-of-care settings. Ultrasound J. 2020;12:21.</div>
+
+  <div class="sec-h"><span class="sec-num">02</span><h2>Aquisição do VTI — Doppler pulsado no VSVE</h2>
+  </div>
+  <p class="sec-lead">A medida do VTI é a mesma em qualquer teste funcional. O que muda é a manobra que você faz entre as duas medidas.</p>
+  <ol class="tl">
+    <li><span class="tl-n">1</span><span class="tl-b"><strong>Pegue a janela apical 5 câmaras.</strong> Partindo da apical 4 câmaras, inclina o transdutor um pouco para a frente, na direção do esterno, até a raiz da aorta aparecer no meio da imagem, entre as câmaras. Se essa janela não abrir, a apical 3 câmaras também serve.</span></li>
+    <li><span class="tl-n">2</span><span class="tl-b"><strong>Alinhe o feixe com o fluxo.</strong> O Doppler só lê a velocidade na direção do feixe, então ele precisa ficar o mais paralelo possível ao jato que sai do ventrículo. Todo desalinhamento <strong>puxa a velocidade para baixo</strong>, nunca para cima. Procure o traçado mais alto mexendo na janela, e não corrigindo o ângulo no aparelho.</span></li>
+    <li><span class="tl-n">3</span><span class="tl-b"><strong>Posicione a amostra logo antes da valva.</strong> Deixe a amostra do Doppler pulsado em 3–5 mm e coloque na via de saída, pouco antes da valva aórtica. Para acertar o ponto: comece <em>em cima da valva</em> e recue na direção da ponta do coração até os cliques de abertura e fechamento desaparecerem. Ali o fluxo corre reto e a curva sai limpa.</span></li>
+    <li><span class="tl-n">4</span><span class="tl-b"><strong>Contorne a curva.</strong> Passe o traçado pela borda da curva sistólica, acompanhando a parte mais escura e densa. O aparelho devolve o VTI em cm. Se a curva estiver borrada ou com a borda mal definida, a amostra está fora do fluxo reto: reposicione antes de aceitar o número.</span></li>
+    <li><span class="tl-n">5</span><span class="tl-b"><strong>Tire a média de vários batimentos.</strong> Com ritmo regular, média de 3 ou mais ciclos. Em <strong>fibrilação atrial ou extrassístoles</strong>, o volume sistólico muda a cada batimento, então use 5 ciclos ou mais e compare sempre trechos parecidos. Sem isso, você confunde variação do ritmo com resposta ao volume.</span></li>
+  </ol>
+  <div class="svg-wrap">
+    <span class="svg-caption">A posição da amostra decide a qualidade da curva</span>
+    <svg viewBox="0 0 700 320" width="100%" style="display:block;max-width:700px;margin:0 auto" role="img" aria-label="Esquema da janela apical 5 câmaras com o transdutor no ápice, o feixe alinhado à via de saída do ventrículo esquerdo e a amostra do Doppler posicionada logo antes da valva aórtica. Ao lado, as três posições possíveis da amostra e a curva que cada uma produz.">
+      <rect class="vti-bg" width="700" height="320" rx="6"/>
+
+      <!-- leque do transdutor, ápice no topo (como aparece na tela) -->
+      <path class="vti-fan" d="M 176,34 L 74,286 M 176,34 L 278,286" stroke-width="1" stroke-dasharray="4,5"/>
+      <path class="vti-fan" d="M 74,286 Q 176,306 278,286" stroke-width="1" stroke-dasharray="4,5"/>
+      <rect class="vti-tissue" x="164" y="20" width="24" height="15" rx="3"/>
+      <text class="vti-lbl-dim" x="176" y="14" font-size="8.5" text-anchor="middle">transdutor</text>
+
+      <!-- lúmens: ventrículos no topo (junto do ápice), átrios na base -->
+      <path class="vti-lumen" d="M 158,62 C 134,112 132,168 146,192 C 154,206 168,206 176,192 C 182,148 178,102 172,62 Z"/>
+      <path class="vti-lumen" d="M 196,70 C 216,114 220,164 211,186 C 204,198 196,198 193,186 C 197,148 196,106 194,70 Z"/>
+      <path class="vti-lumen" d="M 124,236 C 122,264 136,278 154,276 C 161,274 162,258 158,236 Z"/>
+      <path class="vti-lumen" d="M 200,236 C 204,258 218,274 229,268 C 240,260 236,246 229,236 Z"/>
+      <path class="vti-lumen" d="M 162,192 L 176,192 L 188,288 L 170,288 Z"/>
+
+      <!-- miocárdio: paredes como massa sólida em volta dos lúmens -->
+      <path class="vti-myo" d="M 152,58 C 126,110 124,172 141,198 L 148,192 C 134,166 136,112 158,62 Z"/>
+      <path class="vti-myo" d="M 176,58 C 184,102 188,150 181,196 L 174,192 C 180,148 176,102 170,58 Z"/>
+      <path class="vti-myo" d="M 200,66 C 222,112 226,166 215,192 L 209,186 C 219,162 215,114 195,70 Z"/>
+      <path class="vti-myo" d="M 118,234 C 116,266 132,284 156,282 L 155,275 C 137,277 123,263 125,236 Z"/>
+      <path class="vti-myo" d="M 232,232 C 244,246 248,264 232,274 L 229,267 C 239,259 235,247 228,237 Z"/>
+      <path class="vti-myo" d="M 158,192 L 164,192 L 176,288 L 169,288 Z"/>
+      <path class="vti-myo" d="M 174,192 L 180,192 L 192,288 L 185,288 Z"/>
+
+      <text class="vti-lbl-dim" x="152" y="140" font-size="10" text-anchor="middle">VE</text>
+      <text class="vti-lbl-dim" x="205" y="140" font-size="9" text-anchor="middle">VD</text>
+      <text class="vti-lbl-dim" x="140" y="264" font-size="9" text-anchor="middle">AE</text>
+      <text class="vti-lbl-dim" x="217" y="258" font-size="9" text-anchor="middle">AD</text>
+      <text class="vti-lbl" x="196" y="302" font-size="9" text-anchor="middle">aorta</text>
+
+      <!-- valva aórtica -->
+      <path class="vti-tissue-line" d="M 164,212 L 172,204 M 179,212 L 173,204" stroke-width="2.2"/>
+      <text class="vti-lbl-dim" x="252" y="212" font-size="8.5">valva aórtica</text>
+      <line class="vti-tissue-line" x1="184" y1="208" x2="248" y2="210" stroke-width=".8" stroke-dasharray="3,3"/>
+
+      <!-- feixe do ápice, alinhado ao eixo da via de saída -->
+      <line class="vti-beam" x1="176" y1="40" x2="180" y2="288" stroke-width="1.4" stroke-dasharray="6,4"/>
+      <text class="vti-lbl-beam" x="30" y="150" font-size="8.5">feixe paralelo</text>
+      <text class="vti-lbl-beam" x="30" y="162" font-size="8.5">ao fluxo</text>
+      <line class="vti-beam" x1="86" y1="152" x2="177" y2="126" stroke-width="1"/>
+
+      <!-- a amostra, logo antes da valva -->
+      <rect class="vti-gate" x="160" y="190" width="24" height="11" rx="2" stroke-width="1.4"/>
+      <text class="vti-lbl-beam" x="252" y="188" font-size="9" font-weight="600">amostra 3–5 mm</text>
+      <line class="vti-beam" x1="186" y1="192" x2="248" y2="186" stroke-width="1"/>
+
+      <!-- painel: as três posições -->
+      <rect class="vti-panel" x="330" y="30" width="348" height="264" rx="6"/>
+      <text class="vti-lbl" x="348" y="52" font-size="10" font-weight="600">O que cada posição devolve</text>
+
+      <!-- 1: dentro da valva -->
+      <text class="vti-bad-txt" x="348" y="82" font-size="9" font-weight="600">Em cima da valva</text>
+      <path class="vti-flow-line" d="M 348,120 C 356,104 360,96 366,96 C 372,96 378,108 384,120" stroke-width="1.4" opacity=".5"/>
+      <path class="vti-bad" d="M 388,96 l 8,-6 M 392,102 l 10,-7 M 396,110 l 9,-6" stroke-width="1.2"/>
+      <text class="vti-bad-txt" x="412" y="104" font-size="8.5">cliques da valva,</text>
+      <text class="vti-bad-txt" x="412" y="115" font-size="8.5">curva com ruído</text>
+
+      <!-- 2: correto -->
+      <text class="vti-ok-txt" x="348" y="150" font-size="9" font-weight="600">Logo antes da valva</text>
+      <path class="vti-area" d="M 348,188 C 356,166 360,158 366,158 C 372,158 378,170 386,188 Z"/>
+      <path class="vti-ok" d="M 348,188 C 356,166 360,158 366,158 C 372,158 378,170 386,188" stroke-width="1.8"/>
+      <text class="vti-ok-txt" x="400" y="172" font-size="8.5">borda nítida — é esta</text>
+      <text class="vti-ok-txt" x="400" y="183" font-size="8.5">que você traça</text>
+
+      <!-- 3: muito recuado -->
+      <text class="vti-bad-txt" x="348" y="218" font-size="9" font-weight="600">Muito dentro do ventrículo</text>
+      <path class="vti-flow" d="M 348,262 C 358,238 364,232 370,236 C 378,240 382,252 390,262 Z" fill-opacity=".18"/>
+      <path class="vti-bad" d="M 348,262 C 358,238 364,232 370,236 C 378,240 382,252 390,262" stroke-width="1.4" stroke-dasharray="3,3"/>
+      <text class="vti-bad-txt" x="404" y="246" font-size="8.5">curva borrada,</text>
+      <text class="vti-bad-txt" x="404" y="257" font-size="8.5">velocidade subestimada</text>
+
+      <text class="vti-lbl-dim" x="348" y="284" font-size="8.5">Recue da valva até os cliques sumirem: é ali que o fluxo corre reto.</text>
+    </svg>
+  </div>
+  <div class="ref">Amostra de 3–5 mm posicionada cerca de 1 cm da valva aórtica; recuar a partir do plano valvar até desaparecerem os cliques. Blanco P. Ultrasound J. 2020;12:21. · Guzzetti E, et al. J Am Soc Echocardiogr. 2020;33:953-63.</div>
+
+  <div class="warn-box"><strong>O que mais estraga a comparação:</strong> no teste funcional só interessa a <strong>diferença</strong> entre as duas medidas. Se o transdutor mudar de lugar, de ângulo ou de profundidade entre a medida de antes e a de depois, o ΔVTI vai refletir a sua mão, não o paciente. Apoiar a mão e manter exatamente o mesmo plano é parte da técnica, não excesso de zelo.</div>
+  <div class="ref">Guzzetti E, Capoulade R, Tastet L, et al. Estimation of Stroke Volume and Aortic Valve Area in Patients with Aortic Stenosis: A Comparison of Echocardiography versus Cardiovascular Magnetic Resonance. J Am Soc Echocardiogr. 2020;33:953-63.</div>
+
+  <div class="sec-h"><span class="sec-num">03</span><h2>ΔVTI — o cálculo dos testes funcionais</h2></div>
+  <p class="sec-lead">O ΔVTI é só a variação percentual entre a medida de antes e a de depois da manobra. O corte muda conforme o teste.</p>
+  <div class="formula-card">
+    <div class="formula compact">ΔVTI<span class="op">=</span><span class="frac"><span>VTI<sub>pós</sub> − VTI<sub>basal</sub></span><span>VTI<sub>basal</sub></span></span><span class="op">×</span><span class="num">100</span></div>
+    <p class="scale-note">Exemplo: VTI basal 16 cm → 18,5 cm após PLR. ΔVTI = (18,5 − 16) / 16 × 100 = <strong>15,6%</strong> → responsivo.</p>
+  </div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Teste</th><th>Manobra</th><th>Corte do ΔVTI</th><th>Desempenho</th></tr></thead>
+    <tbody>
+      <tr><td><span class="pill pill-green">PLR</span></td><td>Cabeceira a 45° → tronco na horizontal e pernas a 45°, mexendo na <strong>cama</strong>; medir dentro de 1 min</td><td class="td-mono">≥ 10%</td><td>S 86% · E 92% <span class="pill-qual">(débito cardíaco)</span></td></tr>
+      <tr><td><span class="pill pill-blue">Mini-bolus</span></td><td>100 mL de cristaloide em 1 min</td><td class="td-mono">≈ 9%</td><td>S 92% · E 89%</td></tr>
+      <tr><td><span class="pill pill-purple">Oclusão expiratória</span></td><td>Pausa do ventilador ao fim da expiração, 12–15 s</td><td class="td-mono">≈ 4–9%</td><td>S 89% · E 95% <span class="pill-qual">(sedado, sem esforço)</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="ref">Cherpanath TG, Hirsch A, Geerts BF, et al. Predicting Fluid Responsiveness by Passive Leg Raising: A Systematic Review and Meta-Analysis of 23 Clinical Trials. Crit Care Med. 2016;44:981-91. · Georges D, de Courson H, Lanchon R, et al. End-expiratory occlusion maneuver to predict fluid responsiveness in the intensive care unit: an echocardiographic study. Crit Care. 2018;22:32. · Selvam V, Shende D, Anand RK, Kashyap L, Ray BR. End-expiratory Occlusion Test and Mini-fluid Challenge Test for Predicting Fluid Responsiveness in Acute Circulatory Failure. J Emerg Trauma Shock. 2023;16:109-15.</div>
+  <div class="anatomy-note"><strong>Os cortes são quase do tamanho do erro do método.</strong> Um ΔVTI de 4 a 10% está na mesma ordem da variação da própria medida. É por isso que se exige média de batimentos, janela idêntica e, nas cinco regras do PLR, <strong>voltar o paciente à posição inicial e conferir que o VTI voltou ao valor de antes</strong>. Sem essa volta, uma oscilação espontânea passa por teste positivo.</div>
+
+  <div class="sec-h"><span class="sec-num">04</span><h2>Do VTI ao débito cardíaco</h2></div>
+  <p class="sec-lead">Para decidir volume, o ΔVTI basta: a área da via de saída não muda no mesmo paciente e se cancela na divisão. O valor de débito em L/min só é necessário quando você quer o número mesmo (DC, IC, DO₂), e aí entra o diâmetro.</p>
+  <div class="two-col">
+    <div class="formula-card">
+      <div class="scale-k">Volume sistólico e débito</div>
+      <div class="formula compact">VS<span class="op">=</span>VTI<span class="op">×</span>A<sub>VSVE</sub></div>
+      <div class="formula compact">A<sub>VSVE</sub><span class="op">=</span><span class="num">π</span><span class="op">×</span>(d/2)²</div>
+      <div class="formula compact">DC<span class="op">=</span>VS<span class="op">×</span>FC</div>
+      <p class="scale-note">VTI e <em>d</em> em cm dão VS em mL e DC em mL/min (divida por 1000 para L/min).</p>
+    </div>
+    <div class="formula-card">
+      <div class="scale-k">Índice cardíaco</div>
+      <div class="formula compact purple">IC<span class="op">=</span><span class="frac"><span>DC</span><span>SC</span></span></div>
+      <ul class="scale-legend">
+        <li><span class="pill pill-green">2,5–4,0</span><span class="scale-lbl">L/min/m², faixa habitual</span></li>
+        <li><span class="pill pill-amber">&lt; 2,2</span><span class="scale-lbl">Baixo débito</span></li>
+      </ul>
+      <p class="scale-note">Ver <a href="do2.html">Oferta de O₂</a> para o caminho até o DO₂.</p>
+    </div>
+  </div>
+  <div class="svg-wrap">
+    <span class="svg-caption">Três medidas viram um débito</span>
+    <svg viewBox="0 0 700 250" width="100%" style="display:block;max-width:700px;margin:0 auto" role="img" aria-label="Do VTI de 18 cm, diâmetro de 2 cm e frequência de 88 bpm, o cálculo passa pela área de 3,14 cm quadrados, chega ao volume sistólico de 57 mL e ao débito cardíaco de 5 litros por minuto.">
+      <rect class="vti-bg" width="700" height="250" rx="6"/>
+
+      <text class="vti-lbl-dim" x="30" y="34" font-size="9">VOCÊ MEDE</text>
+      <text class="vti-lbl-dim" x="392" y="34" font-size="9">O APARELHO NÃO DÁ — VOCÊ CALCULA</text>
+
+      <!-- as três medidas -->
+      <rect class="vti-panel" x="24" y="46" width="150" height="46" rx="5"/>
+      <text class="vti-lbl-key" x="38" y="70" font-size="13" font-family="monospace" font-weight="600">18 cm</text>
+      <text class="vti-lbl-dim" x="38" y="84" font-size="8.5">VTI, no Doppler</text>
+
+      <rect class="vti-panel" x="24" y="102" width="150" height="46" rx="5"/>
+      <text class="vti-lbl" x="38" y="126" font-size="13" font-family="monospace" font-weight="600">2,0 cm</text>
+      <text class="vti-lbl-dim" x="38" y="140" font-size="8.5">diâmetro, no ânulo</text>
+
+      <rect class="vti-panel" x="24" y="158" width="150" height="46" rx="5"/>
+      <text class="vti-lbl" x="38" y="182" font-size="13" font-family="monospace" font-weight="600">88 bpm</text>
+      <text class="vti-lbl-dim" x="38" y="196" font-size="8.5">frequência</text>
+
+      <!-- diâmetro vira área -->
+      <path class="vti-tissue-line" d="M 180,124 L 216,124" stroke-width="1.2"/>
+      <path class="vti-tissue-line" d="M 210,120 L 216,124 L 210,128" stroke-width="1.2"/>
+      <text class="vti-lbl-dim" x="198" y="117" font-size="8" text-anchor="middle">π × (d/2)²</text>
+      <rect class="vti-panel" x="222" y="102" width="120" height="46" rx="5"/>
+      <text class="vti-lbl" x="236" y="126" font-size="13" font-family="monospace" font-weight="600">3,14 cm²</text>
+      <text class="vti-lbl-dim" x="236" y="140" font-size="8.5">área da via de saída</text>
+
+      <!-- VTI × área = volume sistólico -->
+      <path class="vti-area-line" d="M 180,68 C 340,68 348,96 380,110" stroke-width="1.4" fill="none"/>
+      <path class="vti-tissue-line" d="M 348,124 C 366,124 372,118 380,114" stroke-width="1.4" fill="none"/>
+      <path class="vti-area-line" d="M 374,105 L 382,111 L 373,114" stroke-width="1.4"/>
+
+      <rect class="vti-panel" x="388" y="88" width="152" height="52" rx="5"/>
+      <text class="vti-lbl-key" x="404" y="114" font-size="16" font-family="monospace" font-weight="600">57 mL</text>
+      <text class="vti-lbl-dim" x="404" y="130" font-size="8.5">volume sistólico</text>
+      <text class="vti-lbl-dim" x="404" y="80" font-size="8" >18 × 3,14</text>
+
+      <!-- frequência sobe para multiplicar o volume sistólico -->
+      <path class="vti-tissue-line" d="M 178,180 C 300,180 480,176 556,140" stroke-width="1.2" fill="none" stroke-dasharray="4,3"/>
+      <path class="vti-tissue-line" d="M 549,141 L 557,138 L 555,146" stroke-width="1.2"/>
+
+      <path class="vti-area-line" d="M 546,114 L 578,114" stroke-width="1.4"/>
+      <path class="vti-area-line" d="M 572,110 L 578,114 L 572,118" stroke-width="1.4"/>
+      <text class="vti-lbl-dim" x="562" y="107" font-size="8" text-anchor="middle">× FC</text>
+
+      <rect class="vti-cal" x="584" y="88" width="92" height="52" rx="5" stroke-width="1.4"/>
+      <text class="vti-lbl-key" x="630" y="112" font-size="16" font-family="monospace" font-weight="600" text-anchor="middle">5,0</text>
+      <text class="vti-lbl-dim" x="630" y="128" font-size="8.5" text-anchor="middle">L/min · débito</text>
+
+      <text class="vti-lbl-dim" x="24" y="232" font-size="9">O diâmetro entra só nesta conta. Num teste funcional, o ΔVTI dispensa tudo isto.</text>
+    </svg>
+  </div>
+
+  <div class="sec-h"><span class="sec-num">05</span><h2>O diâmetro do VSVE — onde o erro entra ao quadrado</h2></div>
+  <p class="sec-lead">O diâmetro é a maior fonte de erro do débito por eco, porque entra elevado ao quadrado no cálculo da área. Um deslize pequeno na medida vira um erro grande no débito.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Erro no diâmetro</th><th>Erro resultante no volume sistólico</th></tr></thead>
+    <tbody>
+      <tr><td>5% <span class="pill-qual">(20 → 21 mm)</span></td><td class="td-mono td-warn">10% <span class="pill-qual">(63 → 69 mL)</span></td></tr>
+      <tr><td>10% <span class="pill-qual">(20 → 22 mm)</span></td><td class="td-mono td-bad">21% <span class="pill-qual">(63 → 76 mL)</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="svg-wrap">
+    <span class="svg-caption">O nível da medida muda a área ao quadrado</span>
+    <svg viewBox="0 0 700 300" width="100%" style="display:block;max-width:700px;margin:0 auto" role="img" aria-label="Corte paraesternal longitudinal mostrando os três níveis possíveis de medida do diâmetro: no ânulo, correto, e 5 e 10 mm abaixo, que subestimam. Ao lado, a secção transversal mostrando por que abaixo do ânulo a via de saída é oval e não redonda.">
+      <rect class="vti-bg" width="700" height="300" rx="6"/>
+
+      <!-- lúmen: cavidade do VE afunilando na via de saída e seguindo pela aorta -->
+      <path class="vti-lumen" d="M 96,112 C 74,154 86,214 124,236 C 152,226 176,208 196,186 L 196,130 C 172,116 134,108 96,112 Z"/>
+      <path class="vti-lumen" d="M 196,130 L 214,130 C 250,132 288,134 318,136 L 318,180 C 288,182 250,184 214,186 L 196,186 Z"/>
+
+      <!-- miocárdio: septo em cima, parede posterior embaixo, como massa sólida -->
+      <path class="vti-myo" d="M 96,112 C 134,108 172,116 196,130 L 214,130 C 250,132 288,134 318,136 L 318,126 C 288,124 250,122 212,120 L 196,118 C 170,102 132,94 92,100 Z"/>
+      <path class="vti-myo" d="M 124,236 C 152,226 176,208 196,186 L 214,186 C 250,184 288,182 318,180 L 318,190 C 288,192 250,194 212,196 L 196,198 C 174,220 150,238 128,248 Z"/>
+      <path class="vti-myo" d="M 96,112 C 74,154 86,214 124,236 L 128,248 C 82,222 62,154 88,100 Z"/>
+      <text class="vti-lbl-dim" x="122" y="180" font-size="10" text-anchor="middle">VE</text>
+      <text class="vti-lbl-dim" x="130" y="92" font-size="8.5">septo</text>
+      <text class="vti-lbl" x="278" y="162" font-size="10" text-anchor="middle">aorta</text>
+
+      <!-- cúspides articuladas no ânulo, abrindo para a aorta -->
+      <path class="vti-tissue-line" d="M 214,131 L 240,150 M 214,185 L 240,166" stroke-width="2.2"/>
+
+      <!-- nível correto: no ânulo -->
+      <line class="vti-ok" x1="214" y1="130" x2="214" y2="186" stroke-width="3"/>
+      <text class="vti-ok-txt" x="222" y="116" font-size="9" font-weight="600">meça aqui</text>
+      <text class="vti-ok-txt" x="222" y="127" font-size="8.5">no ânulo</text>
+
+      <!-- níveis errados: 5 e 10 mm dentro da via de saída -->
+      <line class="vti-bad" x1="192" y1="132" x2="192" y2="184" stroke-width="1.6" stroke-dasharray="4,3"/>
+      <line class="vti-bad" x1="172" y1="122" x2="172" y2="196" stroke-width="1.6" stroke-dasharray="4,3"/>
+      <text class="vti-bad-txt" x="98" y="276" font-size="8.5">5 e 10 mm abaixo</text>
+      <text class="vti-bad-txt" x="98" y="288" font-size="8.5">subestimam</text>
+      <line class="vti-bad" x1="176" y1="270" x2="190" y2="190" stroke-width=".9"/>
+      <line class="vti-bad" x1="164" y1="270" x2="170" y2="202" stroke-width=".9"/>
+
+      <text class="vti-lbl-dim" x="88" y="62" font-size="8.5">Congelar no meio da sístole, de borda interna a borda interna.</text>
+
+      <!-- painel: por que a forma importa -->
+      <rect class="vti-panel" x="358" y="26" width="320" height="248" rx="6"/>
+      <text class="vti-lbl" x="376" y="48" font-size="10" font-weight="600">Por que o nível muda a área</text>
+
+      <text class="vti-ok-txt" x="452" y="76" font-size="9" font-weight="600" text-anchor="middle">No ânulo: redonda</text>
+      <circle class="vti-cal" cx="452" cy="118" r="28" stroke-width="1.8"/>
+      <line class="vti-ok" x1="424" y1="118" x2="480" y2="118" stroke-width="1.6"/>
+      <text class="vti-ok-txt" x="452" y="162" font-size="8.5" text-anchor="middle">o diâmetro do 2D</text>
+      <text class="vti-ok-txt" x="452" y="173" font-size="8.5" text-anchor="middle">representa a área</text>
+
+      <text class="vti-bad-txt" x="586" y="76" font-size="9" font-weight="600" text-anchor="middle">Abaixo: oval</text>
+      <ellipse class="vti-cal" cx="586" cy="118" rx="30" ry="19" stroke-width="1.8"/>
+      <line class="vti-bad" x1="586" y1="99" x2="586" y2="137" stroke-width="1.6"/>
+      <text class="vti-bad-txt" x="586" y="162" font-size="8.5" text-anchor="middle">o 2D só pega o eixo</text>
+      <text class="vti-bad-txt" x="586" y="173" font-size="8.5" text-anchor="middle">curto: área menor</text>
+
+      <text class="vti-lbl" x="376" y="204" font-size="9">O diâmetro entra ao <tspan class="vti-lbl-key" font-weight="600">quadrado</tspan>:</text>
+      <text class="vti-lbl-dim" x="376" y="222" font-size="9">erro de 5% no diâmetro</text>
+      <text class="vti-lbl-key" x="376" y="238" font-size="9" font-weight="600">→ 10% no volume sistólico</text>
+      <text class="vti-lbl-dim" x="376" y="254" font-size="9">erro de 10%</text>
+      <text class="vti-lbl-key" x="376" y="266" font-size="9" font-weight="600">→ 21%</text>
+    </svg>
+  </div>
+  <div class="ref">Guzzetti E, Capoulade R, Tastet L, et al. Estimation of Stroke Volume and Aortic Valve Area in Patients with Aortic Stenosis: A Comparison of Echocardiography versus Cardiovascular Magnetic Resonance. J Am Soc Echocardiogr. 2020;33:953-63.</div>
+
+  <div class="mat-grid">
+    <div class="mat-item">Janela paraesternal longitudinal, com <em>zoom</em> na raiz da aorta</div>
+    <div class="mat-item">Congelar no meio da sístole, porque a via de saída não tem o mesmo diâmetro do início ao fim</div>
+    <div class="mat-item">Medir de borda interna a borda interna, sem incluir a parede</div>
+    <div class="mat-item">No ânulo, onde as cúspides se articulam, ou no máximo 2 mm abaixo dele</div>
+  </div>
+  <div class="warn-box"><strong>Não meça 5 a 10 mm abaixo do ânulo.</strong> Essa era a recomendação antiga, pela lógica de medir o diâmetro no mesmo ponto onde fica a amostra do Doppler. A comparação direta com ressonância magnética mostrou que ali a via de saída costuma ser <strong>oval, e não redonda</strong>: a medida de frente para trás, tratada como se fosse um círculo, subestima a área. Medindo 5 e 10 mm abaixo, o volume sistólico caiu até <strong>15,9 ± 17,3 mL</strong>, e o acerto em classificar baixo fluxo desabou de 86% (no ânulo) e 82% (2 mm) para 69% e 61%.</div>
+  <div class="ref">Guzzetti E, Capoulade R, Tastet L, et al. Estimation of Stroke Volume and Aortic Valve Area in Patients with Aortic Stenosis: A Comparison of Echocardiography versus Cardiovascular Magnetic Resonance. J Am Soc Echocardiogr. 2020;33:953-63.</div>
+  <div class="anatomy-note"><strong>Boa notícia para o plantão:</strong> como o diâmetro não muda entre as duas medidas do teste, ele se cancela no ΔVTI. Um diâmetro torto estraga o <strong>número</strong> do débito, mas não a resposta à pergunta que interessa, “o débito subiu?”. Na hora de decidir se dá volume ou não, o ΔVTI é mais confiável que o DC calculado.</div>
+
+  <div class="sec-h"><span class="sec-num">06</span><h2>Armadilhas</h2></div>
+  <div class="pitfall-h">Erros que mudam a conduta</div>
+  <ul class="pitfall-list">
+    <li>Fazer PLR sem medir VTI → vira só “levantar a perna”: julgar pela pressão acerta pouco e é o que as cinco regras proíbem</li>
+    <li>Erguer as pernas na mão em vez de mexer na cama → dor e descarga adrenérgica; a taquicardia entrega o teste contaminado</li>
+    <li>Começar com o paciente deitado plano → perde o sangue que vem da barriga quando o tronco desce</li>
+    <li>Medir mais de 1 min depois da manobra → o efeito do PLR já passou, e o teste dá falso negativo</li>
+    <li>Mexer o transdutor entre as duas medidas → o ΔVTI passa a medir a sua mão, não o paciente</li>
+    <li>Aceitar curva borrada ou feixe mal alinhado → puxa a velocidade para baixo e gera mais ruído que o próprio corte do teste</li>
+    <li>Medir um único batimento em fibrilação atrial → só a variação do ritmo já produz ΔVTI de dois dígitos</li>
+    <li>Usar oclusão expiratória em quem respira sozinho → o teste só vale com sedação e sem esforço; nesse caso prefira PLR</li>
+  </ul>
+  <div class="ref">Monnet X, Teboul JL. Passive leg raising: five rules, not a drop of fluid! Crit Care. 2015;19:18.</div>
+
+  <div class="tip-box">
+    <strong>Sequência de plantão</strong>
+    Pegar a apical 5 câmaras · amostra do Doppler recuando até sumirem os cliques · contornar 3 ciclos e anotar o VTI · descer o tronco e subir as pernas pela cama · medir de novo em até 1 min, na mesma janela → ΔVTI de 10% ou mais indica responsivo · voltar à posição inicial e conferir que o VTI voltou. Se quiser o débito em L/min, medir o diâmetro no ânulo, no meio da sístole, de borda interna a borda interna.
+  </div>
+</section>
+</main>
+<script src="../assets/app.js"></script>
+</body>
+</html>

@@ -556,6 +556,23 @@
           }
         },
         {
+          "id": "vti",
+          "arquivo": "vti.html",
+          "categoria": "POCUS / Imagem",
+          "menu": "VTI — Débito Cardíaco pelo POCUS",
+          "titulo": "VTI — Débito Cardíaco pelo POCUS",
+          "subtitulo": "Como medir o VTI subvalvar aórtico e calcular DC, IC e ΔVTI",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "POCUS / Imagem",
+            "selo": "POCUS / Imagem",
+            "titulo": "VTI — Débito Cardíaco pelo POCUS",
+            "resumo": "Como medir o VTI subvalvar aórtico e calcular DC, IC e ΔVTI"
+          }
+        },
+        {
           "id": "integracao",
           "arquivo": "integracao.html",
           "categoria": "Síntese",
