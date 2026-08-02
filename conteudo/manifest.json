@@ -2,7 +2,7 @@
   "_leia": "Fonte unica de verdade do conteudo do be aside. Editar AQUI e rodar: npm run build:content. Nao editar a mao MODULE_PAGES em assets/app.js, os cards dos hubs, o sitemap, o llms.txt nem a lista do extract-knowledge -- tudo isso e gerado a partir deste arquivo.",
   "versao": 1,
   "site": {
-    "url": "https://be-aside.vercel.app",
+    "url": "https://beaside.com.br",
     "nome": "be·aside"
   },
   "_redirecionadas": "Páginas antigas que continuam no repositório mas não são mais servidas: o build gera um redirect 301 em vercel.json para cada uma. Para aposentar uma página, mova a entrada dela para cá em vez de apagar o arquivo — assim o link antigo nunca quebra e a auditoria para de reclamar.",
