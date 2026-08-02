@@ -52,6 +52,9 @@ const PAGES_BY_MODULE = {
   peri: [
     'pre-op.html', 'atb.html', 'manejo.html', 'pocus.html',
   ],
+  infecto: [
+    'empirico.html', 'pkpd.html', 'resistencia.html', 'mdr.html',
+  ],
   artigos: [
     'perguntas-plantao-hemodinamica.html', 'medidas-gerais-neurocritico.html',
     'hipotensao-pos-intubacao.html', 'peep-alta-queda-pressao.html',
@@ -70,6 +73,7 @@ const EXPORT_NAME = {
   neuro: 'KNOWLEDGE_NEURO',
   proc: 'KNOWLEDGE_PROC',
   peri: 'KNOWLEDGE_PERI',
+  infecto: 'KNOWLEDGE_INFECTO',
   artigos: 'KNOWLEDGE_ARTIGOS',
 };
 
@@ -174,8 +178,48 @@ function extractTitle(html, fallback) {
   return fallback;
 }
 
+// Tabela rotulada para a IA.
+//
+// O stripHtml genérico transforma <tr> em quebra de linha e <td> em " | ".
+// Numa tabela curta isso basta: o cabeçalho fica logo acima e a leitura é óbvia.
+// Numa tabela longa de dose, não: a linha da meropenem pode estar a 60 linhas do
+// cabeçalho, e aí o significado de cada coluna ("isso é o ataque ou a manutenção?")
+// depende de o modelo contar pipes corretamente. Coluna trocada em tabela de dose
+// é dose errada na beira do leito.
+//
+// Por isso, toda <table data-ia="rotular"> é convertida linha a linha com o nome da
+// coluna colado no valor. Custa tokens, então é opt-in: marque no HTML só as tabelas
+// em que trocar de coluna muda a conduta (dose, ajuste renal, intervalo).
+function rotularTabelas(html) {
+  return html.replace(/<table\b[^>]*\bdata-ia="rotular"[^>]*>([\s\S]*?)<\/table>/gi, (_, corpo) => {
+    const linhas = corpo.match(/<tr[^>]*>[\s\S]*?<\/tr>/gi) || [];
+    let cabecalho = [];
+    const saida = [];
+
+    for (const linha of linhas) {
+      const celulas = (linha.match(/<(th|td)[^>]*>[\s\S]*?<\/\1>/gi) || []).map(c =>
+        c.replace(/<br\s*\/?>/gi, '; ')
+         .replace(/<[^>]+>/g, '')
+         .replace(/\s+/g, ' ')
+         .trim()
+      );
+      if (!celulas.length) continue;
+
+      if (/<th[^>]*>/i.test(linha) && !cabecalho.length) {
+        cabecalho = celulas;
+        continue;
+      }
+      const rotuladas = celulas
+        .map((v, i) => (v ? (cabecalho[i] ? cabecalho[i] + ': ' : '') + v : ''))
+        .filter(Boolean);
+      if (rotuladas.length) saida.push('• ' + rotuladas.join(' — '));
+    }
+    return '\n' + saida.join('\n') + '\n';
+  });
+}
+
 function stripHtml(html) {
-  return html
+  return rotularTabelas(html)
     .replace(/<script[\s\S]*?<\/script>/gi, '')
     .replace(/<style[\s\S]*?<\/style>/gi, '')
     .replace(/<svg[\s\S]*?<\/svg>/gi, '')
@@ -205,7 +249,7 @@ let output = `// Auto-gerado por scripts/extract-knowledge.js — não editar ma
 // Para atualizar: node scripts/extract-knowledge.js (ou: npm run extract-knowledge)
 //
 // Um export por módulo (KNOWLEDGE_VM, KNOWLEDGE_HEMO, KNOWLEDGE_NEURO, KNOWLEDGE_PROC,
-// KNOWLEDGE_PERI, KNOWLEDGE_ARTIGOS) — consumidos pelo Assistente de Conduta
+// KNOWLEDGE_PERI, KNOWLEDGE_INFECTO, KNOWLEDGE_ARTIGOS) — consumidos pelo Assistente de Conduta
 // unificado (api/sugerir-uni.js). Entram aqui as páginas com ia:true e status
 // publicado ou rascunho; em-breve e oculto ficam de fora. Export vazio = módulo
 // sem nenhuma página nessas condições.

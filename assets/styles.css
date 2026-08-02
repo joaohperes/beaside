@@ -33,6 +33,11 @@ body[data-module="proc"]{
 body[data-module="peri"]{
   --accent:#d9569b;--accent-d:#a83a76;--accent-rgb:217,86,155;
 }
+/* Antimicrobianos: índigo — última faixa livre entre o azul (proc) e o roxo
+   (neuro), sem carga semântica clínica (vermelho, âmbar e verde são reservados). */
+body[data-module="infecto"]{
+  --accent:#5b63e0;--accent-d:#3f45b0;--accent-rgb:91,99,224;
+}
 body[data-module="hemo"] .quad.ok{border-color:rgba(var(--accent-rgb),.25)}
 body[data-module="hemo"] .quad.ok .quad-header{color:var(--accent)}
 body[data-module="hemo"] .alert-box.info{background:rgba(var(--accent-rgb),.06);border-color:rgba(var(--accent-rgb),.2)}
@@ -2641,6 +2646,9 @@ html[data-theme="light"] body[data-module="proc"]{
 }
 html[data-theme="light"] body[data-module="peri"]{
   --accent:#c23b83;--accent-d:#9c2d68;--accent-rgb:194,59,131;
+}
+html[data-theme="light"] body[data-module="infecto"]{
+  --accent:#4a52d0;--accent-d:#383fb0;--accent-rgb:74,82,208;
 }
 
 /* shell */

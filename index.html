@@ -467,6 +467,27 @@ html[data-theme="light"] .mobilenav a:hover{background:rgba(15,23,42,.04)}
 .bento .card:nth-child(4){opacity:0;animation:rise .75s var(--ease) .46s forwards}
 .bento .card:nth-child(5){opacity:0;animation:rise .75s var(--ease) .52s forwards}
 
+/* Raciocine: mostra ~4 módulos e rola para ver o resto — scroll só nesta área.
+   O scroll fica no container externo; o grid interno não tem restrição de altura,
+   então os cards renderizam idênticos ao .bento (sem compressão). */
+.raciocine-scroll{
+  grid-column:1/-1;
+  max-height:600px;
+  overflow-y:auto;
+  padding-right:6px;
+  scrollbar-gutter:stable;
+}
+.raciocine-grid{
+  display:grid;
+  grid-template-columns:1.12fr 1fr;
+  gap:14px;
+}
+.raciocine-scroll + .area-head{margin-top:24px}
+@media(max-width:768px){
+  .raciocine-scroll{max-height:none;overflow:visible;padding-right:0}
+  .raciocine-grid{grid-template-columns:1fr}
+}
+
 .card{
   position:relative;border-radius:18px;
   text-decoration:none;overflow:hidden;
@@ -1433,9 +1454,11 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
     <div class="area-head" id="raciocine" style="--c-accent:#1db88a">
       <div class="area-eyebrow"><span class="area-num">02</span> Raciocine</div>
       <h2>Do mecanismo à decisão — módulos de raciocínio</h2>
-      <p>O núcleo educacional do be·aside: ventilação, hemodinâmica, neurocrítico, procedimentos e perioperatório organizados para entender o porquê e chegar à conduta.</p>
+      <p>O núcleo educacional do be·aside: ventilação, hemodinâmica, neurocrítico, procedimentos, perioperatório e antimicrobianos organizados para entender o porquê e chegar à conduta.</p>
     </div>
 
+    <div class="raciocine-scroll">
+    <div class="raciocine-grid">
     <div class="card featured"
        style="--c-accent:#0ea5b7;--c-border:rgba(14,165,183,.4);--c-glow:rgba(14,165,183,.12);--c-shadow:rgba(14,165,183,.1)">
       <span class="card-rail" aria-hidden="true"></span>
@@ -1572,6 +1595,35 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
       <div class="card-foot">
         <a class="card-cta" href="peri/">Abrir guia <span class="card-cta-arrow" aria-hidden="true">→</span></a>
       </div>
+    </div>
+
+    <div class="card"
+       style="--c-accent:#5b63e0;--c-border:rgba(91,99,224,.4);--c-glow:rgba(91,99,224,.12);--c-shadow:rgba(91,99,224,.1)">
+      <span class="card-rail" aria-hidden="true"></span>
+      <a class="card-hit" href="infecto/" aria-label="Antimicrobianos — antibioticoterapia no paciente crítico">
+        <div class="card-top">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/>
+              <path d="m8.5 8.5 7 7"/>
+            </svg>
+          </div>
+        </div>
+        <div class="card-badge">Antimicrobianos</div>
+        <div class="card-title">Antibioticoterapia<br>na UTI</div>
+        <div class="card-sub">Do foco ao espectro, PK/PD e dose, resistência (ESBL, AmpC, CRE) e a conduta por cenário no paciente crítico.</div>
+        <div class="card-tags">
+          <span class="card-tag">Empírico por foco</span>
+          <span class="card-tag">PK/PD</span>
+          <span class="card-tag">Resistência</span>
+        </div>
+      </a>
+      <div class="card-foot">
+        <a class="card-cta" href="infecto/">Abrir guia <span class="card-cta-arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    </div>
     </div>
 
     <div class="area-head" id="consulte" style="--c-accent:#1db88a">
