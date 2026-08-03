@@ -267,9 +267,22 @@ function sanitizePatient(raw) {
     dx: text('dx', 500),
     peso: text('peso', 30),
     idade: text('idade', 30),
+    dataNascimento: text('dataNascimento', 12),
+    altura: text('altura', 10),
+    alergias: text('alergias', 300),
+    registro: text('registro', 60),
+    convenio: text('convenio', 120),
+    isolamentoAtivo: raw.isolamentoAtivo === true,
+    // Precauções de isolamento: só os ids conhecidos, sem duplicata.
+    isolamento: Array.isArray(raw.isolamento)
+      ? [...new Set(raw.isolamento.map((v) => cleanString(v, 20)))]
+          .filter((v) => ['contato', 'goticulas', 'aerossois'].includes(v))
+          .slice(0, 3)
+      : [],
     admHosp: text('admHosp', 12),
     admUti: text('admUti', 12),
     setorOrigem: text('setorOrigem', 120),
+    motivoAdmissao: text('motivoAdmissao', 300),
     sexo: ['F', 'M'].includes(raw.sexo) ? raw.sexo : '',
     labs,
     vitals,
