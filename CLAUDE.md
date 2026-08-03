@@ -557,6 +557,89 @@ invariantes de cor e de grade abaixo.
     Não verificado em navegador: **o tema escuro** — as cores foram medidas nos
     dois temas, mas só o claro foi visto em uso.
 
+### Sessão 03/ago/2026 — Hub UTI: prévia cortada, alertas, tons de permanência e shell
+
+**Publicado no beaside.** O desenho dos discos de colapso **não está fechado** —
+ver "Em aberto" no fim da seção.
+
+#### A prévia da evolução não estava dessincronizada — estava sendo cortada
+
+1. `.clinical-copy-strip .evo-bar-body` tinha `max-height: 2.8em` com
+   `line-height: 1.4` e `overflow: hidden` — **exatamente duas linhas**. Com 7
+   drogas no leito, a faixa mostrava as duas primeiras e descartava as outras
+   cinco **sem barra, sem reticências, sem qualquer sinal**. Lida ao pé da
+   letra, afirmava que o paciente estava em duas drogas. Agora `overflow-y:
+   auto` com teto de 5 linhas. O botão de copiar sempre levou o texto inteiro;
+   o defeito era só de exibição.
+
+#### Cards de entidade
+
+2. **X de remover alinhado ao dia** (`D4`). O valor veio da medição, não do
+   padding: `.ecard-top` alinha por `baseline`, então a caixa do dia não
+   começa no padding — desce o quanto a sigla em mono precisa. Calcular pelo
+   padding deixava 1,8px de erro.
+3. **TOT: `nº` ANTES do calibre** (`nº 7,5 · 23 cm`). Posposto, o `nº` ocupava
+   o slot de unidade — o mesmo lugar do `mmHg` da PAM — e o número se
+   confundia com a rima labial ao lado. A rima também **saiu dos detalhes**:
+   aparecia duas vezes (`24 cm · 24 cm`), e o mesmo número repetido sugere
+   duas medidas.
+
+#### Alertas de permanência
+
+4. Bloco em **dois andares**: título + ressalva em cima, dispositivos embaixo,
+   separados por `·`. Caiu de ~120px para 79px. **A contagem em círculo saiu**
+   — com os itens à vista, o "4" repetia o que se conta batendo o olho, e o
+   círculo âmbar dava a um lembrete de tempo o peso visual de um alarme.
+   "limite 7" repetido quatro vezes saiu do texto visível e ficou no
+   `aria-label`.
+5. **`--perm` / `--perm-at` / `--perm-linha`: tokens próprios.** `--warm` é
+   **alias de `--destructive`** — o vermelho de excluir — e estava pintando de
+   ação destrutiva um lembrete que diz "não indica troca". Agora tangerina, da
+   mesma família do par do BH. A barra lateral usava `--amber`, que no tema
+   claro está em `oklch(0.55)` porque foi **escurecido para servir de texto**:
+   numa faixa de 3px vira marrom-queimado.
+6. **Nunca separar níveis por `opacity`:** medido, `--perm` a 85% caía para
+   4,12 (claro) e 3,88 (escuro), abaixo de 4,5. Cada nível tem tom próprio.
+   Contraste final: D11 excedido 5,43/4,75, atenção 5,01/5,02.
+
+#### Ficha e shell
+
+7. **DH/D saíram do header** do paciente — os mesmos números estão nos rótulos
+   da ficha, ao lado da data que os produz. O `margin-left: auto` que empurrava
+   as ações para a direita morava no `.pbar-stay` removido; migrou para
+   `.pbar-actions`.
+8. Rótulos por extenso (**Admissão hospitalar / Admissão UTI**) e o grupo
+   "Plantão" virou **"Local"**: os campos dizem ONDE o paciente está, e o mesmo
+   leito atravessa vários plantões sem que nenhum deles mude.
+9. **`.calc-grid` perdeu `align-items: start`** — com ele cada card assumia a
+   própria altura e a fila virava serrilhado (o Cockcroft-Gault, que tem a
+   ressalva do peso, ficava bem mais alto que o CKD-EPI ao lado).
+10. **Toggles de colapso viraram discos sobre a divisória vertical.** O do
+    painel de leitos precisou sair de dentro do `<aside>` (que tem
+    `overflow: hidden` e o cortaria pela metade) e virou irmão dele, ancorado
+    em `.app-body-row`. **Ao medir:** o `top` é relativo a esse pai, que começa
+    54px abaixo do topo da página.
+11. `box-shadow: 0 0 0 4px var(--bg)` nos discos: sem o halo, a divisória
+    encostava no círculo e o conjunto lia como **linha quebrada**, não como
+    controle montado sobre ela.
+12. Posição dos discos é **restrita, não estética**: os vãos entre itens da nav
+    medem **3px** e nenhum comporta um disco de 22px. Qualquer posição no meio
+    da lista sobrepõe alvo clicável.
+
+#### Em aberto (retomar quando o César pedir)
+
+13. **O desenho dos discos não agradou** — funcional e verificado, mas não é o
+    final. Junto com isso: o **espaço vazio acima da nav** (a `.wsnav-head` de
+    53px existe só para alinhar a coluna com a ficha ao lado, e ficou vazia
+    depois que o toggle saiu) e os **três pontos `···`** do menu de leitos.
+14. **O simulador (`DevSimulador`, `simular-plantao.mjs`) fica versionado** por
+    decisão do usuário — remover só quando ele pedir.
+
+#### Validação
+
+15. **457 testes / 98 suítes**, lint sem warnings, smoke nas quatro abas
+    clínicas sem erro de JS, contraste medido nos dois temas.
+
 ### Sessão 30–31/jul/2026 — Hub UTI: shell v4, calculadoras, relatório e alta
 
 **Publicado no beaside.** Detalhe técnico e invariantes no fonte (`ARCHITECTURE.md`).
@@ -832,5 +915,21 @@ Reindexar depois de mudança estrutural (arquivo novo, script novo, rota nova).
   mesma luminância e o par some sob daltonismo); não declarar `--bh-pos`/
   `--bh-neg` dentro de `.bh-chart` (o snapshot fica fora e não resolve `var()`);
   não trocar o par do balanço por verde/vermelho.
+- **Hub UTI, permanência de dispositivo:** não usar `--warm` para o dia acima do
+  limite (é alias de `--destructive`, o vermelho de excluir, e o bloco diz
+  explicitamente "não indica troca") — usar `--perm`/`--perm-at`; não separar
+  atenção de excedido por `opacity` (mistura com o fundo e derruba o contraste
+  abaixo de 4,5); não usar `--amber` do tema claro em faixa decorativa (foi
+  escurecido para servir de texto e vira marrom-queimado).
+- **Hub UTI, faixa de prévia da evolução:** não pôr teto em `overflow: hidden`
+  sem rolagem — cortava silenciosamente 5 de 7 drogas e a faixa passava a
+  afirmar um quadro clínico falso.
+- **Hub UTI, discos de colapso:** não posicioná-los no meio da lista da nav (os
+  vãos têm 3px e qualquer disco sobrepõe alvo clicável); não remover o
+  `box-shadow` na cor do fundo (sem ele a divisória lê como linha quebrada); não
+  devolver o toggle dos leitos para dentro do `<aside>` (tem `overflow: hidden`
+  e o corta pela metade).
+- Não remover o `DevSimulador` / `simular-plantao.mjs` — ficam versionados por
+  decisão do usuário.
 - Não responder dose, diluição ou conduta a partir do grafo do Graphify — abrir a fonte.
 - Não commitar `graphify-out/`.
