@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script src="../assets/theme-boot.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PK/PD e dose no paciente crítico — be·aside</title>
+<meta name="robots" content="noindex, nofollow" data-beaside="status">
+<link rel="canonical" href="https://beaside.com.br/infecto/pkpd.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="be·aside">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="PK/PD e dose no paciente crítico — be·aside">
+<meta property="og:description" content="Por que a dose muda na UTI: ataque, hipoalbuminemia, clearance aumentado, infusão prolongada e ajuste renal">
+<meta property="og:url" content="https://beaside.com.br/infecto/pkpd.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PK/PD e dose no paciente crítico — be·aside">
+<meta name="twitter:description" content="Por que a dose muda na UTI: ataque, hipoalbuminemia, clearance aumentado, infusão prolongada e ajuste renal">
+<meta property="og:image" content="https://beaside.com.br/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="be·aside — raciocínio clínico à beira do leito">
+<meta name="twitter:image" content="https://beaside.com.br/assets/og-image.png">
+<meta name="description" content="Por que a dose muda na UTI: ataque, hipoalbuminemia, clearance aumentado, infusão prolongada e ajuste renal">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body data-module="infecto" data-page="pkpd">
+<main class="main">
+<section class="section" id="pkpd">
+  <header class="page-head">
+    <div class="hero-eyebrow">Antimicrobianos · Pensar antes do antibiograma</div>
+    <h1 class="section-title">PK/PD e dose no paciente crítico <a class="share-link" href="#pkpd" onclick="copyLink(event,'#pkpd')"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></a></h1>
+    <p class="section-subtitle">Ataque, infusão prolongada, ajuste renal e descalonamento — a dose que decide o desfecho depois que a droga já foi escolhida</p>
+  </header>
+
+  <div class="hero-meta cols-3">
+    <div class="hm-item"><span class="hm-k">Ataque</span><span class="hm-v">Sempre cheio</span></div>
+    <div class="hm-item"><span class="hm-k">Manutenção</span><span class="hm-v">Pelo ClCr</span></div>
+    <div class="hm-item"><span class="hm-k">Time-out</span><span class="hm-v">48 a 72 h</span></div>
+  </div>
+
+  <div class="anatomy-note">
+    <strong>Conceito:</strong> escolher a droga certa e prescrevê-la errado dá o mesmo resultado que escolher
+    a droga errada. No paciente crítico a farmacocinética muda de lugar: o extravasamento capilar dilui a
+    droga hidrofílica num volume de distribuição que dobrou, a albumina cai e libera fração livre, e o rim
+    ora hiperfiltra ora para. Por isso a regra da UTI se divide em duas metades que quase nunca andam juntas
+    — <strong>o ataque não se ajusta nunca</strong>, e <strong>a manutenção se ajusta sempre</strong>. Esta
+    página é o que fazer com essas duas metades, droga por droga, e o que fazer com o resultado quando a
+    cultura volta.
+  </div>
+
+  <div class="warn-box">
+    <strong>Antes de prescrever qualquer coisa desta página.</strong>
+    As doses aqui reunidas seguem as diretrizes internacionais de referência para o doente crítico. Elas
+    <strong>não substituem o protocolo do seu serviço</strong>, a padronização da sua farmácia nem a
+    avaliação da infectologia/CCIH. Confirme apresentação, diluição, compatibilidade e dose antes de cada
+    prescrição — e leve ao seu serviço qualquer divergência entre esta página e a tabela institucional, em
+    vez de resolvê-la sozinho no plantão.
+  </div>
+
+  <div class="sec-h"><span class="sec-num">01</span><h2>Três relógios: como a droga mata define como se prescreve</h2></div>
+  <p class="sec-lead">
+    Antes de qualquer tabela, uma pergunta só: esta droga mata por <em>tempo de exposição</em>, por
+    <em>pico</em> ou por <em>área sob a curva</em>? A resposta determina se você mexe na dose, no intervalo
+    ou no tempo de infusão — e as três coisas são diferentes.
+  </p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Padrão de morte bacteriana</th><th>O alvo</th><th>Quem é</th><th>O que se otimiza na prescrição</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span><strong>Tempo-dependente</strong><br><span style="color:var(--text3)">%fT &gt; MIC</span></span></td>
+        <td><span>Manter a concentração livre acima da MIC pela maior fração possível do intervalo</span></td>
+        <td><span>Beta-lactâmicos: carbapenêmicos, cefalosporinas, penicilinas, monobactâmicos</span></td>
+        <td><span><strong>Estender a infusão</strong> e encurtar o intervalo. Aumentar a dose isolada ajuda pouco: o que conta é o tempo acima da MIC, não a altura do pico.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Concentração-dependente</strong><br><span style="color:var(--text3)">C<sub>max</sub>/MIC ≥ 8 a 10</span></span></td>
+        <td><span>Atingir um pico alto o suficiente para esterilizar de uma vez</span></td>
+        <td><span>Aminoglicosídeos (amicacina, gentamicina, tobramicina); polimixinas</span></td>
+        <td><span><strong>Dose cheia e intervalo estendido.</strong> Na disfunção renal se espaça o intervalo — nunca se reduz a miligramagem, porque isso destrói o pico que é o mecanismo da droga.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>AUC-dependente</strong><br><span style="color:var(--text3)">AUC<sub>24</sub>/MIC</span></span></td>
+        <td><span>Exposição total ao longo de 24 horas</span></td>
+        <td><span>Vancomicina (alvo <strong>400 a 600</strong>), fluoroquinolonas (alvo &gt; 125, até 250 no crítico)</span></td>
+        <td><span><strong>Dose diária total</strong>, distribuída conforme a depuração. É a família em que a dosagem sérica muda a conduta.</span></td>
+      </tr>
+    </tbody>
+  </table></div>
+  <div class="tip-box">
+    <strong>Por que a infusão estendida virou padrão no beta-lactâmico.</strong>
+    A mesma dose diária, infundida em 3 ou 4 horas em vez de 30 minutos, passa muito mais tempo acima da MIC
+    — sem consumir mais droga e sem custo adicional. É a intervenção de PK/PD mais barata que existe na UTI,
+    e o ensaio BLING III sustentou a infusão contínua de beta-lactâmico na sepse. Duas ressalvas práticas:
+    a <strong>primeira dose (o ataque) corre rápido</strong>, em 30 minutos, porque o objetivo dela é o
+    tempo até a concentração e não o tempo acima dela; e o <strong>meropenem não vai para infusão contínua
+    de 24 horas na mesma bolsa</strong> por instabilidade térmica em temperatura ambiente — nele o padrão é
+    a infusão estendida de 3 horas.
+  </div>
+
+  <div class="sec-h"><span class="sec-num">02</span><h2>O ataque é sagrado</h2></div>
+  <p class="sec-lead">
+    Se você levar uma única frase desta página para o plantão, leve esta: <strong>a dose de ataque não se
+    ajusta por função renal, por diálise, por anúria nem por idade</strong>. Ela se ajusta por peso, e só.
+  </p>
+  <p class="prose">
+    A dose de ataque não existe para tratar — existe para <em>encher o compartimento</em>. No choque
+    séptico o extravasamento capilar expande o volume de distribuição das drogas hidrofílicas (beta-lactâmicos,
+    aminoglicosídeos, vancomicina, polimixinas), e a mesma miligramagem que produzia nível terapêutico no
+    paciente estável produz um nível diluído no paciente chocado. Reduzir a primeira dose "porque a creatinina
+    está alta" é o erro mais comum e mais caro da admissão: o rim que se quis proteger continua exposto à
+    infecção não tratada, e o paciente perde as horas em que o antibiótico ainda decidia o desfecho.
+  </p>
+  <p class="prose">
+    A função renal entra no cálculo <strong>a partir da dose de manutenção</strong> — e, nas primeiras 24 a
+    48 horas de choque, mesmo a manutenção deve ser mantida plena enquanto o paciente estiver em ressuscitação
+    ativa. O ajuste renal é uma conversa para o segundo dia, não para a primeira hora.
+  </p>
+  <div class="warn-box">
+    <strong>As três formas de subdosar na primeira hora.</strong>
+    <strong>1)</strong> Reduzir o ataque pela creatinina — a creatinina de hoje não descreve o rim de hoje
+    (seção 03). <strong>2)</strong> Reduzir o ataque porque o paciente está em diálise — a diálise depura
+    durante a sessão, não antes dela. <strong>3)</strong> Prescrever o ataque em infusão prolongada — o
+    ataque corre em 30 minutos justamente para chegar rápido ao alvo; quem corre em 3 ou 4 horas é a
+    manutenção.
+  </div>
+
+  <div class="sec-h"><span class="sec-num">03</span><h2>O clearance calculado mente na UTI</h2></div>
+  <p class="sec-lead">
+    Cockcroft-Gault e MDRD foram derivados de pacientes ambulatoriais em estado estável. O doente crítico
+    não está em estado estável — e as duas direções do erro são igualmente perigosas.
+  </p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>O fenômeno</th><th>O que acontece</th><th>Para onde o erro empurra</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span><strong>Atraso da creatinina</strong><br><span style="color:var(--text3)">lesão renal aguda em instalação</span></span></td>
+        <td><span>A creatinina sérica leva <strong>24 a 48 horas</strong> para subir e refletir a queda real da filtração. No paciente que está perdendo função agora, a fórmula devolve um clearance que já não existe.</span></td>
+        <td><span>Superdosagem da manutenção e nefrotoxicidade — sobretudo com aminoglicosídeo, vancomicina e polimixina.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Clearance renal aumentado (ARC)</strong><br><span style="color:var(--text3)">ClCr ≥ 130 mL/min</span></span></td>
+        <td><span>Jovens, trauma, grande queimado e a fase hiperdinâmica inicial da sepse hiperfiltram e depuram a droga hidrofílica em velocidade fora da tabela.</span></td>
+        <td><span>Subdosagem crítica com intervalo padrão — a falha aparece justamente nas primeiras horas do choque.</span></td>
+      </tr>
+    </tbody>
+  </table></div>
+  <p class="prose">
+    A conduta prática não é abandonar a fórmula: é <strong>lê-la junto com a tendência</strong>. Creatinina
+    subindo em rampa, diurese caindo e balanço positivo dizem "a filtração já caiu, ajuste antes que o número
+    conte". Paciente jovem, febril, sem comorbidade renal e com creatinina baixa demais para a idade diz
+    "isto aqui é ARC, e o intervalo padrão vai subdosar". Nas drogas com dosagem sérica disponível, essa
+    discussão termina no laboratório e não na fórmula.
+  </p>
+
+  <div class="sec-h"><span class="sec-num">04</span><h2>Diálise: por que a CRRT pede mais, e não menos</h2></div>
+  <p class="sec-lead">
+    O erro conceitual aqui é tratar "diálise" como uma coisa só. Hemodiálise intermitente e terapia contínua
+    são regimes de depuração opostos, e a dose que serve para uma mata na outra.
+  </p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Método</th><th>Como depura</th><th>O que isso faz com a dose</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span><strong>Hemodiálise intermitente</strong><br><span style="color:var(--text3)">iHD · sessões de 3 a 4 h</span></span></td>
+        <td><span>Depuração maciça durante a sessão e praticamente <strong>nula nas outras 20 horas</strong> do dia.</span></td>
+        <td><span>Doses baixas e espaçadas, e a regra que não se negocia: <strong>administrar sempre após o término da sessão</strong> nos dias de diálise, para não dialisar a própria dose.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Terapia contínua</strong><br><span style="color:var(--text3)">CRRT · 24 h por dia</span></span></td>
+        <td><span>Convecção e difusão contínuas que <strong>imitam uma função renal moderada estável</strong>, com clearance equivalente a algo em torno de 30 a 50 mL/min.</span></td>
+        <td><span>Doses <strong>maiores</strong> e intervalos <strong>menores</strong> do que na insuficiência renal grave sem diálise. O paciente em CRRT não é um anúrico: é um paciente com rim médio funcionando o tempo todo.</span></td>
+      </tr>
+    </tbody>
+  </table></div>
+  <div class="warn-box">
+    <strong>Nunca prescreva meropenem de 24 em 24 horas na CRRT.</strong>
+    Este é o exemplo canônico do erro. Aplicar à CRRT o ajuste de "insuficiência renal grave" leva a
+    níveis subterapêuticos em poucas horas, porque o circuito remove a droga de forma contínua e linear. Na
+    CRRT o meropenem é <strong>1 a 2 g de 12 em 12 horas</strong>, e o cefepime <strong>2 g de 12 em 12
+    horas</strong>. O mesmo raciocínio vale para piperacilina-tazobactam e ampicilina-sulbactam, que na CRRT
+    voltam ao intervalo de 8 em 8 horas.
+  </div>
+
+
+  <div class="sec-h"><span class="sec-num">05</span><h2>A tabela mestra: dose e ajuste renal do que existe na farmácia</h2></div>
+  <p class="sec-lead">
+    Esta é a tabela de plantão. A coluna do ataque só fica vazia quando a droga não tem dose de ataque
+    definida; onde houver número, ele vale integralmente na primeira hora, com qualquer creatinina e em
+    qualquer máquina de diálise. O ajuste começa sempre na dose seguinte.
+  </p>
+  <p class="prose">
+    As manutenções de beta-lactâmico abaixo pressupõem <strong>infusão estendida</strong>: o tempo de infusão
+    está escrito ao lado da dose porque, nesta classe, ele faz parte da prescrição. Sem o tempo correto, a
+    dose certa vira dose errada.
+  </p>
+
+  <div class="section-label">Beta-lactâmicos</div>
+  <div class="table-wrap"><table data-ia="rotular">
+    <thead><tr><th>Droga</th><th>Ataque</th><th>Manutenção padrão</th><th>Ajuste por ClCr (mL/min)</th><th>iHD e CRRT</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span><strong>Meropenem</strong></span></td>
+        <td><span>1 a 2 g IV em 30 min. 2 g se choque, SNC ou MIC limítrofe.</span></td>
+        <td><span>1 a 2 g de 8/8 h, cada dose em 3 h.</span></td>
+        <td><span>ClCr 50 ou mais: 1 a 2 g de 8/8 h. 25 a 49: 1 a 2 g de 12/12 h. 10 a 24: 500 mg a 1 g de 12/12 h. Abaixo de 10: 500 mg a 1 g de 24/24 h.</span></td>
+        <td><span>iHD: 500 mg a 1 g de 24/24 h, sempre após a sessão. CRRT: 1 a 2 g de 12/12 h, nunca de 24/24 h.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Cefepime</strong></span></td>
+        <td><span>2 g IV em 30 min.</span></td>
+        <td><span>2 g de 8/8 h, cada dose em 3 a 4 h.</span></td>
+        <td><span>ClCr 50 ou mais: 2 g de 8/8 h. 30 a 49: 2 g de 12/12 h. 15 a 29: 1 g de 12/12 h. Abaixo de 15: 1 g de 24/24 h.</span></td>
+        <td><span>iHD: 1 g de 24/24 h após a sessão. CRRT: 2 g de 12/12 h.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Piperacilina-tazobactam</strong></span></td>
+        <td><span>4,5 g IV em 30 min.</span></td>
+        <td><span>4,5 g de 8/8 h, cada dose em 4 h.</span></td>
+        <td><span>ClCr acima de 20: 4,5 g de 8/8 h. 20 ou menos: 3,375 g ou 4,5 g de 12/12 h.</span></td>
+        <td><span>iHD: 2,25 a 4,5 g de 12/12 h após a sessão. CRRT: 3,375 g ou 4,5 g de 8/8 h.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Ampicilina-sulbactam em alta dose</strong><br><span style="color:var(--text3)">esquema de CRAB</span></span></td>
+        <td><span>9 g IV em 30 min, o que entrega 3 g de sulbactam.</span></td>
+        <td><span>9 g de 8/8 h, cada dose em 4 h. O alvo é 9 g/dia de sulbactam ativo, o que equivale a 27 g/dia da associação 2:1.</span></td>
+        <td><span>ClCr 30 ou mais: 9 g de 8/8 h. 15 a 29: 6 g de 8/8 h. Abaixo de 15: 6 g de 12/12 h.</span></td>
+        <td><span>iHD: 6 g de 12/12 h após a diálise. CRRT: 9 g de 8/8 h. Alternativa aceita: 27 g/dia em infusão contínua nas 24 h.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Ertapenem</strong></span></td>
+        <td><span>Não é droga de ataque no choque.</span></td>
+        <td><span>1 g de 24/24 h em 30 min.</span></td>
+        <td><span>ClCr acima de 30: 1 g de 24/24 h. 30 ou menos: 500 mg de 24/24 h.</span></td>
+        <td><span>iHD: 500 mg de 24/24 h após a sessão. CRRT: 1 g de 24/24 h.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Imipenem-cilastatina</strong></span></td>
+        <td><span>1 g IV em 30 a 60 min.</span></td>
+        <td><span>500 mg de 6/6 h ou 1 g de 8/8 h.</span></td>
+        <td><span>ClCr acima de 70: 500 mg de 6/6 h ou 1 g de 8/8 h. 41 a 70: 500 a 750 mg de 8/8 h. 21 a 40: 250 a 500 mg de 8/8 h. 20 ou menos: 250 a 500 mg de 12/12 h.</span></td>
+        <td><span>iHD: 250 a 500 mg de 12/12 h após a sessão. CRRT: 500 mg de 6/6 a 8/8 h. Proscrito em infecção do SNC.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Aztreonam</strong></span></td>
+        <td><span>2 g IV em 30 min.</span></td>
+        <td><span>2 g de 8/8 h, cada dose em 2 a 3 h. Meningite com alergia a beta-lactâmico: 2 g de 6/6 h.</span></td>
+        <td><span>ClCr 30 ou mais: 2 g de 8/8 h. 10 a 30: 1 g de 8/8 h. Abaixo de 10: 500 mg de 8/8 h.</span></td>
+        <td><span>iHD: ataque de 2 g e depois 500 mg de 8/8 h após a sessão. CRRT: ataque de 2 g e depois 1 g de 8/8 h ou 1 a 2 g de 12/12 h.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Ceftriaxona</strong></span></td>
+        <td><span>A própria dose plena já é o ataque.</span></td>
+        <td><span>2 g de 24/24 h em 30 min. <strong>Meningite: 2 g de 12/12 h</strong>, ou seja, 4 g/dia.</span></td>
+        <td><span><strong>Nenhum ajuste, em nenhuma faixa de clearance.</strong> A eliminação é renal e biliar.</span></td>
+        <td><span>Nenhum ajuste em iHD nem em CRRT, mesmo no paciente anúrico. A atenção fica na disfunção hepática grave.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Cefazolina</strong></span></td>
+        <td><span>A própria dose plena.</span></td>
+        <td><span>1 a 2 g de 8/8 h.</span></td>
+        <td><span>Função normal: 1 a 2 g de 8/8 h. ClCr 30 a 50: 1 a 2 g de 12/12 h. 11 a 29: 1 g de 12/12 h. 10 ou menos: 1 g de 24/24 h.</span></td>
+        <td><span>iHD: 1 g de 24/24 h após a sessão.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Ampicilina</strong></span></td>
+        <td><span>A própria dose plena.</span></td>
+        <td><span>2 g de 4/4 h em endocardite e na cobertura de <em>Listeria</em>.</span></td>
+        <td><span>ClCr 15 a 29: 2 g de 8/8 a 12/12 h. Abaixo de 15: 2 g de 12/12 a 24/24 h.</span></td>
+        <td><span>iHD: 2 g de 12/12 a 24/24 h após a sessão.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Amoxicilina-clavulanato</strong><br><span style="color:var(--text3)">via oral</span></span></td>
+        <td><span>Não se aplica.</span></td>
+        <td><span>500/125 mg VO de 8/8 h ou 875/125 mg VO de 12/12 h.</span></td>
+        <td><span>ClCr 10 a 29: 500/125 mg de 12/12 h. Abaixo de 10: 500/125 mg de 24/24 h. <strong>Não use o comprimido de 875/125 mg se o ClCr estiver abaixo de 30</strong> — ele não pode ser partido sem quebrar a proporção do clavulanato.</span></td>
+        <td><span>iHD: 500/125 mg de 24/24 h.</span></td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <div class="section-label">Fora da classe beta-lactâmica</div>
+  <div class="table-wrap"><table data-ia="rotular">
+    <thead><tr><th>Droga</th><th>Ataque</th><th>Manutenção padrão</th><th>Ajuste por ClCr (mL/min)</th><th>iHD e CRRT</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span><strong>Vancomicina</strong></span></td>
+        <td><span>20 a 35 mg/kg de peso real, máximo de 3 g no choque séptico. <strong>Nunca reduzido pela função renal.</strong></span></td>
+        <td><span>15 a 20 mg/kg por dose, com o intervalo definido pelo clearance. Detalhe na seção 07.</span></td>
+        <td><span>O ajuste é por <strong>intervalo</strong>: de 12/12 h com função normal, abrindo para 24/24 h, 48/48 h ou 72/72 h conforme a insuficiência avança.</span></td>
+        <td><span>iHD e CRRT: intervalo guiado por nível sérico. Ver as seções 07 e 09.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Amicacina</strong></span></td>
+        <td><span>15 a 20 mg/kg IV em 60 min. Peso real; peso ajustado se a obesidade passar de 120% do peso ideal.</span></td>
+        <td><span>15 mg/kg em dose única diária, em intervalo estendido. Detalhe na seção 08.</span></td>
+        <td><span>ClCr 60 ou mais: de 24/24 h. 40 a 59: de 36/36 h. 20 a 39: de 48/48 h. Abaixo de 20: apenas a dose de ataque.</span></td>
+        <td><span>iHD e anúria: apenas a dose de ataque; nova dose só quando o vale estiver seguro.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Gentamicina e tobramicina</strong></span></td>
+        <td><span>5 a 7 mg/kg IV em 60 min.</span></td>
+        <td><span>Mesma lógica de intervalo estendido da amicacina.</span></td>
+        <td><span>Mesmas faixas da amicacina, ajustando o intervalo e nunca o miligrama.</span></td>
+        <td><span>Mesma regra: ataque cheio, redose guiada pelo vale.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Linezolida</strong></span></td>
+        <td><span>Não se aplica.</span></td>
+        <td><span>600 mg IV ou VO de 12/12 h, infusão em 60 min.</span></td>
+        <td><span><strong>Nenhum ajuste.</strong> A eliminação não é renal.</span></td>
+        <td><span>Nenhum ajuste em iHD nem em CRRT. Acima de 10 a 14 dias: hemograma diário, pelo risco de plaquetopenia grave e neuropatia periférica.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Daptomicina</strong></span></td>
+        <td><span>A própria dose plena.</span></td>
+        <td><span>10 a 12 mg/kg de 24/24 h em bacteremia e endocardite por enterococo resistente à vancomicina. <strong>Nunca em pneumonia</strong> — o surfactante pulmonar a inativa.</span></td>
+        <td><span>ClCr abaixo de 30: 10 a 12 mg/kg de 48/48 h.</span></td>
+        <td><span>iHD: de 48/48 h após a sessão. CRRT: de 48/48 h.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Tigeciclina</strong></span></td>
+        <td><span>200 mg IV.</span></td>
+        <td><span>100 mg de 12/12 h. A dose de bula, de 50 mg de 12/12 h, falha no paciente crítico.</span></td>
+        <td><span><strong>Nenhum ajuste.</strong> A eliminação é biliar e fecal.</span></td>
+        <td><span>Nenhum ajuste. Não atinge nível urinário e não serve como monoterapia em pneumonia nem em bacteremia.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Ciprofloxacina</strong></span></td>
+        <td><span>A própria dose plena.</span></td>
+        <td><span>400 mg IV de 8/8 h, aceitável de 8/8 a 12/12 h, ou 750 mg VO de 12/12 h. Infusão em 60 min.</span></td>
+        <td><span>ClCr 30 a 50: 400 mg IV de 8/8 a 12/12 h, ou 250 a 500 mg VO de 12/12 h. Abaixo de 30: 200 a 400 mg IV de 12/12 a 24/24 h, ou 500 mg VO de 24/24 h.</span></td>
+        <td><span>iHD: 200 a 400 mg IV de 24/24 h após a sessão — é pouco dialisável. CRRT: 200 a 400 mg IV de 8/8 a 12/12 h; reserve 400 mg de 8/8 h para MIC alta. SLED: 400 mg de 12/12 h após a sessão.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Levofloxacina</strong></span></td>
+        <td><span>A primeira dose de 750 mg funciona como ataque.</span></td>
+        <td><span>750 mg IV ou VO de 24/24 h, infusão em 60 min.</span></td>
+        <td><span>ClCr 50 ou mais: 750 mg de 24/24 h. 20 a 49: 750 mg no primeiro dia e depois 500 mg de 48/48 h. Abaixo de 20: o mesmo esquema.</span></td>
+        <td><span>iHD e CRRT: 750 mg no primeiro dia e depois 500 mg de 48/48 h, após a sessão na iHD.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Sulfametoxazol-trimetoprim</strong></span></td>
+        <td><span>Não se aplica.</span></td>
+        <td><span>10 a 15 mg/kg/dia do componente trimetoprim, IV ou VO, divididos de 8/8 h ou de 12/12 h.</span></td>
+        <td><span>ClCr 15 a 30: reduzir a dose diária em 50%. Abaixo de 15: evitar; se for inevitável, reduzir de 50 a 75% em tomada única diária.</span></td>
+        <td><span>iHD: reduzir 75%, após a sessão. CRRT: reduzir 50%.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Fosfomicina</strong></span></td>
+        <td><span>Não se aplica.</span></td>
+        <td><span>IV: 6 a 8 g de 8/8 h. <strong>Cistite não complicada: 3 g VO em dose única</strong>, e não 8 g.</span></td>
+        <td><span>ClCr abaixo de 50: ajustar estritamente ao clearance calculado.</span></td>
+        <td><span>Em diálise, o ajuste também é estrito ao método.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Polimixina B</strong></span></td>
+        <td><span>20.000 a 25.000 UI/kg de peso real, o que equivale a 2,0 a 2,5 mg/kg, em 1 a 2 h.</span></td>
+        <td><span>12.500 a 15.000 UI/kg de 12/12 h, ou seja, 1,25 a 1,5 mg/kg de 12/12 h.</span></td>
+        <td><span><strong>Nenhum ajuste, em nenhuma faixa.</strong> A eliminação é predominantemente não renal.</span></td>
+        <td><span>Nenhum ajuste. Não é removida por diálise, nem em iHD nem em CRRT, nem no anúrico.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Colistimetato</strong><br><span style="color:var(--text3)">polimixina E, CMS</span></span></td>
+        <td><span>9.000.000 UI em 1 a 2 h, equivalentes a 300 mg de colistina base ativa.</span></td>
+        <td><span>4.500.000 a 5.500.000 UI de 12/12 h, o que dá 9 a 11 milhões de UI/dia, ou 300 a 360 mg de base ativa por dia.</span></td>
+        <td><span><strong>Ajuste rígido e recalculado todos os dias</strong> contra o clearance calculado. É o oposto exato da polimixina B.</span></td>
+        <td><span>Ajuste diário também em diálise. É a única polimixina com eficácia urinária.</span></td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <div class="tip-box">
+    <strong>Duas armadilhas de prescrição que costumam aparecer juntas.</strong>
+    <p class="box-body">A primeira: <strong>não associe metronidazol a meropenem nem a
+    piperacilina-tazobactam</strong> — a cobertura anaeróbia já está dentro da própria droga, e a associação
+    só acrescenta toxicidade e custo. A segunda: <strong>vancomicina somada a piperacilina-tazobactam eleva o
+    risco de lesão renal aguda de forma sinérgica</strong>. Quando as duas forem necessárias, vigie a
+    creatinina diariamente e reavalie a dupla no time-out de 48 a 72 h.</p>
+  </div>
+
+  <div class="sec-h"><span class="sec-num">06</span><h2>As que não se ajustam, e o erro que mata</h2></div>
+  <p class="sec-lead">
+    Existe um reflexo quase automático à beira do leito: creatinina alta, então reduza tudo. Em quatro drogas
+    desta lista esse reflexo é um erro, e em uma delas ele é letal.
+  </p>
+  <p class="prose">
+    A lógica vale a pena ser guardada inteira: <strong>só se ajusta o que o rim elimina</strong>. Ceftriaxona
+    tem eliminação renal e biliar, e não precisa de ajuste em nenhuma faixa, nem no anúrico. Tigeciclina sai
+    por via biliar e fecal. Linezolida tem eliminação não renal e atravessa a hemodiálise e a CRRT sem
+    mudança de dose. E polimixina B tem eliminação predominantemente não renal e <strong>não é removida por
+    diálise nenhuma</strong>.
+  </p>
+  <div class="warn-box">
+    <strong>Reduzir polimixina B pela creatinina é subdosar um paciente que já está morrendo.</strong>
+    A polimixina B costuma ser a última droga ativa contra o germe que o paciente tem. Ela não se ajusta em
+    nenhum clearance, não se ajusta na hemodiálise intermitente, não se ajusta na CRRT e não se ajusta no
+    anúrico. O ajuste "preventivo" não protege o rim — ele apenas garante concentração subterapêutica contra
+    um pan-resistente. A nefrotoxicidade da polimixina se maneja com vigilância e com discussão de suporte
+    dialítico, nunca com redução de dose.
+  </div>
+  <div class="info-box">
+    <strong>O par que confunde: polimixina B e polimixina E não são intercambiáveis.</strong>
+    <p class="box-body">A polimixina B já é a molécula ativa e vai direto para o sangue, sem passar pelo rim —
+    por isso não se ajusta, e por isso <strong>não serve para infecção urinária</strong>. O colistimetato é
+    uma pró-droga hidrofílica que precisa ser ativada e excretada por via renal — por isso se ajusta
+    rigidamente todo dia, e por isso <strong>é a única das duas que atinge nível urinário</strong>. Na
+    prática: cistite por enterobactéria resistente a carbapenêmico pede colistimetato; infecção sistêmica
+    pede polimixina B.</p>
+    <a class="link-cta" href="resistencia.html">Ver os mecanismos de resistência que levam até aqui <span aria-hidden="true">&rarr;</span></a>
+  </div>
+
+  <div class="sec-h"><span class="sec-num">07</span><h2>Vancomicina: alvo, ataque, manutenção e quando pedir a vancocinemia</h2></div>
+  <p class="sec-lead">
+    A vancomicina é a droga desta página em que a dose empírica menos se sustenta sozinha. Ela tem eliminação
+    puramente renal, janela terapêutica estreita, e um alvo que não se enxerga pela clínica.
+  </p>
+  <p class="prose">
+    O alvo farmacodinâmico é a <strong>razão AUC24/MIC entre 400 e 600</strong>. Como poucos serviços
+    calculam AUC à beira do leito, a tradução prática que se usa é o <strong>vale entre 15 e 20
+    mcg/mL</strong> para infecção grave. São duas formas de perseguir a mesma coisa: exposição suficiente
+    para matar, sem exposição excessiva para o rim.
+  </p>
+  <p class="prose">
+    O <strong>ataque é de 20 a 35 mg/kg de peso real</strong>, com teto de 3 g no choque séptico, e
+    <strong>ele não se reduz por função renal</strong>. O rim define a velocidade com que a droga sai, não o
+    volume que ela precisa ocupar. Infunda a no máximo <strong>10 a 15 mg por minuto</strong>: acima disso
+    aparece a síndrome do homem vermelho, que é liberação de histamina pela velocidade da infusão, e não
+    alergia.
+  </p>
+  <p class="prose">
+    A <strong>manutenção</strong> parte de 15 a 20 mg/kg por dose, e o clearance define apenas o intervalo:
+    de 12 em 12 horas com função renal normal, abrindo para 24, 48 ou 72 horas conforme a insuficiência
+    avança. A partir da segunda ou da terceira dose, quem manda deixa de ser a fórmula e passa a ser o nível
+    sérico.
+  </p>
+  <div class="tip-box">
+    <strong>Quando pedir e como coletar a vancocinemia.</strong>
+    <p class="box-body">Colha o <strong>vale imediatamente antes da quarta dose</strong>, ou seja, já em
+    regime, e não antes disso — dosar fora do equilíbrio gera um número que não significa nada e leva a
+    ajustes errados. O alvo é de 15 a 20 mcg/mL na infecção grave. Se o serviço dispuser de ferramenta
+    bayesiana, duas coletas permitem estimar a AUC24 diretamente, e isso é superior ao vale isolado. Repita a
+    dosagem a cada 3 a 5 dias no paciente estável, e sempre que a função renal se mover, que o paciente
+    entrar ou sair de diálise, ou que a resposta clínica não acompanhar o esperado.</p>
+  </div>
+  <div class="warn-box">
+    <strong>Três situações que exigem vancocinemia mesmo onde o serviço "não costuma pedir".</strong>
+    Função renal instável, com creatinina subindo ou caindo entre dois dias. Uso concomitante de outro
+    nefrotóxico, com destaque para a associação com piperacilina-tazobactam. E terapia prolongada, acima de 5
+    a 7 dias. Nesses três cenários, o erro de estimativa da fórmula é maior que a margem da droga.
+  </div>
+
+  <div class="sec-h"><span class="sec-num">08</span><h2>Aminoglicosídeos: ataque cheio, intervalo estendido, pico e vale</h2></div>
+  <p class="sec-lead">
+    Aminoglicosídeo é a classe em que a intuição de "diminuir a dose" causa mais dano. A morte bacteriana é
+    concentração-dependente, e quem produz nefrotoxicidade é o tempo de exposição acumulada, não o pico.
+  </p>
+  <p class="prose">
+    Daí a regra que organiza toda a prescrição: <strong>ajusta-se o intervalo, nunca o miligrama</strong>.
+    Reduzir a dose derruba o pico, perde-se o alvo de <strong>Cmax/MIC de 8 a 10</strong>, e a exposição
+    acumulada continua a mesma — o pior dos dois mundos: não mata e ainda intoxica.
+  </p>
+  <p class="prose">
+    O <strong>ataque de amicacina é de 15 a 20 mg/kg em 60 minutos</strong>, por peso real, usando peso
+    ajustado quando o paciente estiver acima de 120% do peso ideal. Gentamicina e tobramicina, 5 a 7 mg/kg.
+    <strong>Esse ataque é integral mesmo no anúrico e mesmo em quem está dialisando</strong> — a diferença
+    entre o rim que funciona e o que não funciona aparece na segunda dose, não na primeira.
+  </p>
+  <div class="table-wrap"><table data-ia="rotular">
+    <thead><tr><th>ClCr (mL/min)</th><th>Intervalo da amicacina</th><th>O que muda na prática</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span><strong>60 ou mais</strong></span></td>
+        <td><span>15 mg/kg de 24/24 h.</span></td>
+        <td><span>Regime padrão de dose única diária.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>40 a 59</strong></span></td>
+        <td><span>15 mg/kg de 36/36 h.</span></td>
+        <td><span>Mesma dose em miligramas, com o horário andando um turno por dia.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>20 a 39</strong></span></td>
+        <td><span>15 mg/kg de 48/48 h.</span></td>
+        <td><span>Dose em dias alternados; confira o horário na prescrição para não dobrar.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Abaixo de 20, iHD ou anúria</strong></span></td>
+        <td><span>Somente a dose de ataque.</span></td>
+        <td><span>Nova dose apenas quando o vale voltar a nível seguro. Sem dosagem sérica, ver a seção 09.</span></td>
+      </tr>
+    </tbody>
+  </table></div>
+  <div class="tip-box">
+    <strong>Como coletar o pico e o vale.</strong>
+    <p class="box-body"><strong>Pico:</strong> 30 minutos após o término da infusão. Alvo de 35 a 60 mcg/mL
+    para a amicacina — é o número que diz se a droga vai matar. <strong>Vale:</strong> 30 minutos antes da
+    próxima dose. Alvo abaixo de 2,5 a 4 mcg/mL, preferencialmente abaixo de 2 — é o número que diz se o rim
+    e a cóclea vão aguentar. Para a gentamicina, o vale precisa ficar <strong>abaixo de 1 mcg/mL</strong>. Se
+    o vale vier acima de 4, segure a dose, estenda o intervalo em 12 a 24 horas e recolha.</p>
+  </div>
+  <div class="warn-box">
+    <strong>Amicacina isolada só trata bexiga.</strong>
+    O rim concentra a droga na urina, e por isso a amicacina em monoterapia é aceitável em cistite e em
+    infecção urinária baixa. <strong>Nunca use aminoglicosídeo sozinho em infecção de corrente sanguínea ou
+    sistêmica</strong>: a penetração tecidual é baixa e a monoterapia falha. Nesses cenários ela entra sempre
+    associada a um beta-lactâmico ativo, como parceira e não como espinha dorsal do esquema.
+  </div>
+
+  <div class="sec-h"><span class="sec-num">09</span><h2>Sem vancocinemia e sem amicacinemia: como conduzir</h2></div>
+  <p class="sec-lead">
+    A maior parte dos serviços brasileiros não dosa amicacina, e uma parte relevante também não dosa
+    vancomicina em tempo útil. Isso não autoriza subdosar, e também não autoriza prescrever no escuro. O que
+    muda é o método.
+  </p>
+  <p class="prose">
+    O primeiro passo é o mesmo nos dois casos: <strong>o ataque não depende de exame nenhum</strong>. Ele se
+    calcula pelo peso, se infunde na primeira hora e não se discute. A ausência de dosagem sérica só afeta a
+    manutenção.
+  </p>
+  <p class="prose">
+    <strong>Sem vancocinemia</strong>, a manutenção vira uma estimativa vigiada. Calcule o intervalo pelo
+    clearance, recalcule o clearance <strong>todo dia</strong> com a creatinina do dia e não com a da
+    admissão, e vigie três coisas em conjunto: creatinina e diurese, resposta clínica, e tempo total de
+    terapia. Havendo qualquer instabilidade renal, prefira o intervalo mais largo e reavalie em 24 horas, em
+    vez de manter um esquema fixo por uma semana. E quando a vancocinemia existir no serviço, mas com
+    resultado demorado, colha assim mesmo antes da quarta dose: um resultado que chega no dia seguinte ainda
+    muda a prescrição do quinto dia.
+  </p>
+  <p class="prose">
+    <strong>Sem amicacinemia</strong>, a decisão mais segura é usar o aminoglicosídeo como <strong>terapia
+    adjuvante curta</strong> — tipicamente de 3 a 5 dias dentro de um esquema combinado, para ampliar a
+    cobertura empírica e a sinergia na fase inicial do choque —, e não como espinha dorsal de um tratamento
+    longo. O ataque cheio na primeira hora entrega o pico de que a droga precisa; a suspensão precoce evita a
+    exposição acumulada que produz a nefrotoxicidade. Se o clearance estiver abaixo de 20 mL/min, ou o
+    paciente for anúrico ou dialítico, e o serviço não dosar nível sérico, <strong>administre apenas a dose
+    de ataque e não repita</strong>: mantenha a cobertura com o beta-lactâmico ou com a polimixina do
+    esquema.
+  </p>
+  <div class="warn-box">
+    <strong>O que não fazer quando falta a dosagem sérica.</strong>
+    Não reduza o miligrama do ataque para "compensar" a ausência do exame — isso perde o alvo sem proteger
+    ninguém. Não mantenha aminoglicosídeo por mais de 5 a 7 dias às cegas. Não repita dose de aminoglicosídeo
+    em anúrico sem nível sérico. E não substitua a dosagem pela creatinina isolada: a creatinina de hoje
+    descreve a filtração de anteontem no paciente crítico.
+  </div>
+
+  <div class="sec-h"><span class="sec-num">10</span><h2>As de reserva: a dose certa desde o primeiro dia</h2></div>
+  <p class="sec-lead">
+    Estas drogas não estão na farmácia do plantão. Elas chegam por solicitação, às vezes dias depois do
+    pedido, e chegam exatamente no momento em que já não há margem para errar a primeira dose. Por isso a
+    dose delas entra aqui.
+  </p>
+  <p class="prose">
+    Enquanto o inibidor dirigido não chega, o paciente é tratado com o que existe — e os esquemas-ponte
+    montados com o estoque real estão descritos na página de resistência. O que esta seção acrescenta é a
+    outra metade: quando a droga finalmente chegar, ela precisa ser prescrita na dose plena e com o tempo de
+    infusão correto desde a primeira ampola.
+  </p>
+  <div class="table-wrap"><table data-ia="rotular">
+    <thead><tr><th>Droga</th><th>Dose padrão</th><th>Ajuste por ClCr (mL/min)</th><th>iHD e CRRT</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span><strong>Ceftazidima-avibactam</strong><br><span style="color:var(--text3)">KPC e OXA-48</span></span></td>
+        <td><span>2,5 g de 8/8 h, cada dose em 3 h.</span></td>
+        <td><span>Acima de 50: 2,5 g de 8/8 h. 31 a 50: 1,25 g de 8/8 h. 16 a 30: 0,94 g de 12/12 h. 6 a 15: 0,94 g de 24/24 h.</span></td>
+        <td><span>iHD ou ClCr 5 ou menos: 0,94 g de 48/48 h após a sessão. CRRT: 1,25 g de 8/8 h.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Ceftazidima-avibactam + aztreonam</strong><br><span style="color:var(--text3)">metalo-beta-lactamase</span></span></td>
+        <td><span>2,5 g + 2 g, ambos de 8/8 h, em Y e cada dose em 3 h.</span></td>
+        <td><span>ClCr 30 ou mais: esquema pleno. 10 a 29: 0,94 g de 12/12 h + 1 g de 8/8 a 12/12 h. Abaixo de 10: 0,94 g de 24/24 a 48/48 h + 2 g de 24/24 h.</span></td>
+        <td><span>CRRT: 1,25 g de 8/8 h + 2 g de 12/12 h.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Ceftolozana-tazobactam</strong><br><span style="color:var(--text3)">Pseudomonas DTR</span></span></td>
+        <td><span>3 g de 8/8 h em 3 h na pneumonia; 1,5 g de 8/8 h em foco urinário ou abdominal.</span></td>
+        <td><span>Acima de 50: dose plena. 30 a 50: 1,5 g de 8/8 h. 15 a 29: 750 mg de 8/8 h. Abaixo de 15: ataque de 1,5 g e depois 375 mg de 8/8 h.</span></td>
+        <td><span>iHD: ataque de 1,5 g e depois 375 mg de 8/8 h. CRRT: 1,5 g de 8/8 h.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Meropenem-vaborbactam</strong><br><span style="color:var(--text3)">KPC</span></span></td>
+        <td><span>4 g de 8/8 h em 3 h.</span></td>
+        <td><span>eGFR 50 ou mais: 4 g de 8/8 h. 30 a 49: 2 g de 8/8 h. 15 a 29: 2 g de 12/12 h. Abaixo de 15: 1 g de 12/12 h.</span></td>
+        <td><span>iHD: 1 g de 12/12 h após a sessão. CRRT: 2 g de 8/8 h.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Imipenem-relebactam</strong></span></td>
+        <td><span>1,25 g de 6/6 h.</span></td>
+        <td><span>90 ou mais: 1,25 g de 6/6 h. 60 a 89: 1 g de 6/6 h. 30 a 59: 750 mg de 6/6 h. 15 a 29: 500 mg de 6/6 h.</span></td>
+        <td><span>CRRT: 500 a 750 mg de 8/8 h.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Cefiderocol</strong></span></td>
+        <td><span>2 g de 8/8 h. <strong>Se houver clearance aumentado, com ClCr de 120 ou mais: 2 g de 6/6 h.</strong></span></td>
+        <td><span>60 a 119: 2 g de 8/8 h. 30 a 59: 1,5 g de 8/8 h. 15 a 29: 1 g de 8/8 h. Abaixo de 15: 750 mg de 12/12 h.</span></td>
+        <td><span>iHD: 750 mg de 12/12 h após a sessão. CRRT: 1,5 g de 12/12 h. O estudo CREDIBLE-CR mostrou sinal de mortalidade maior no subgrupo de <em>Acinetobacter</em>.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Sulbactam-durlobactam</strong><br><span style="color:var(--text3)">CRAB</span></span></td>
+        <td><span>1 g + 1 g de 6/6 h. Com clearance aumentado, ClCr de 130 ou mais: de 4/4 h.</span></td>
+        <td><span>45 a 129: de 6/6 h. 30 a 44: de 8/8 h. 15 a 29: de 12/12 h.</span></td>
+        <td><span>Abaixo de 15 e iHD: de 12/12 h por três doses e depois de 24/24 h.</span></td>
+      </tr>
+    </tbody>
+  </table></div>
+  <div class="info-box">
+    <strong>Enquanto a droga de reserva não chega.</strong>
+    <p class="box-body">Os esquemas-ponte montados com o que existe no estoque — polimixina B em dose plena,
+    tigeciclina em alta dose, amicacina com ataque cheio, ampicilina-sulbactam 9 g de 8/8 h para
+    <em>Acinetobacter</em>, e o meropenem mantido <strong>apenas se a MIC for de 8 mcg/mL ou menos</strong> —
+    estão descritos caso a caso na página de resistência. As doses de cada componente são as das tabelas das
+    seções 05 e 06 desta página.</p>
+    <a class="link-cta" href="resistencia.html">Ver os esquemas-ponte por perfil de resistência <span aria-hidden="true">&rarr;</span></a>
+  </div>
+  <div class="warn-box">
+    <strong>Colistimetato não é a escolha para infecção sistêmica, e polimixina B não é a escolha para
+    urina.</strong>
+    Vale repetir aqui porque é o erro mais comum quando o esquema-ponte é montado às pressas: em cistite por
+    enterobactéria resistente a carbapenêmico, use colistimetato. Em ventriculite nosocomial, a penetração
+    liquórica sistêmica das polimixinas fica abaixo de 5%, e a via intraventricular por derivação externa é
+    obrigatória — colistimetato 125.000 UI de 24/24 h, o que corresponde a 10 mg de colistina base ativa por
+    dia, ou polimixina B 5 mg de 24/24 h.
+  </div>
+
+  <div class="sec-h"><span class="sec-num">11</span><h2>Descalonamento: o time-out de 48 a 72 horas</h2></div>
+  <p class="sec-lead">
+    O esquema empírico é uma aposta feita com informação incompleta, e uma aposta feita sob pressão de tempo.
+    Ele não foi desenhado para durar sete dias. O descalonamento não é um gesto de economia — é a segunda
+    metade da mesma decisão terapêutica.
+  </p>
+  <p class="prose">
+    A pressa da primeira dose é justificada: cada hora de atraso na antibioticoterapia adequada custa
+    sobrevida, e a terapia empírica inadequada dobra o risco de óbito. Mas o mesmo raciocínio que exige
+    largueza na primeira hora exige estreitamento na segunda decisão. Manter o espectro largo depois que a
+    cultura respondeu não é prudência: é seleção de resistência, é toxicidade, e é a próxima infecção do
+    próprio paciente.
+  </p>
+  <p class="prose">
+    Por isso o <strong>time-out de 48 a 72 horas</strong> precisa ser um horário marcado na visita, e não uma
+    intenção. Quatro gatilhos objetivos mostram que a janela abriu: desmame de vasopressor em curso, cultura
+    com antibiograma disponível, procalcitonina em queda, e relação PaO<sub>2</sub>/FiO<sub>2</sub> em
+    melhora.
+  </p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Pergunta do time-out</th><th>O que se olha</th><th>Para onde a resposta empurra</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span><strong>A cultura respondeu?</strong></span></td>
+        <td><span>Hemocultura, cultura do sítio e antibiograma completo, incluindo a MIC quando disponível.</span></td>
+        <td><span>Germe identificado e sensível ao espectro estreito: descalone imediatamente, mesmo que o paciente ainda esteja em vasopressor.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>O foco foi controlado?</strong></span></td>
+        <td><span>Drenagem feita, cateter retirado, coleção abordada, tecido desbridado.</span></td>
+        <td><span>Foco controlado encurta o tempo total. Foco não controlado não se compensa com espectro mais largo — se compensa com nova abordagem cirúrgica.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>O paciente virou a curva?</strong></span></td>
+        <td><span>Vasopressor, lactato, temperatura, PaO<sub>2</sub>/FiO<sub>2</sub>, nível de consciência.</span></td>
+        <td><span>Melhora clínica com cultura negativa sugere que a infecção era do sítio tratado, ou que não havia infecção — e nesse caso a pergunta é sobre suspender, não sobre trocar.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Ainda preciso da cobertura extra?</strong></span></td>
+        <td><span>A cobertura de MRSA, de enterococo, de <em>Pseudomonas</em> ou de fungo que foi somada empiricamente.</span></td>
+        <td><span>Sem isolamento e sem fator de risco persistente, cada camada empírica extra sai. Cobertura de enterococo só se mantém em pós-operatório, exposição prévia a cefalosporina, imunossupressão ou prótese valvar.</span></td>
+      </tr>
+    </tbody>
+  </table></div>
+  <div class="tip-box">
+    <strong>A história do próprio paciente é o melhor preditor empírico que existe.</strong>
+    <p class="box-body">Antes de escolher o esquema, procure as culturas <strong>dos últimos 12 meses</strong>
+    no prontuário. ESBL isolada nos últimos 6 a 12 meses justifica carbapenêmico empírico. História de
+    enterobactéria resistente a carbapenêmico empurra para o inibidor dirigido. Nenhum escore substitui esse
+    dado. Exemplo prático: choque séptico de foco urinário em paciente com ESBL há 3 meses recebe meropenem
+    2 g de ataque, e não piperacilina-tazobactam — e se em 48 h a <em>E. coli</em> vier sensível à
+    ceftriaxona, o carbapenêmico sai no mesmo dia.</p>
+    <a class="link-cta" href="empirico.html">Rever a escolha empírica por foco <span aria-hidden="true">&rarr;</span></a>
+  </div>
+  <p class="prose">
+    Para <strong>decidir a suspensão</strong>, a procalcitonina seriada de 24 em 24 ou de 48 em 48 horas é
+    útil como critério de parada: queda de <strong>80% ou mais em relação ao pico</strong>, ou valor absoluto
+    <strong>abaixo de 0,25 mcg/L</strong>, sustenta suspender. Ela serve para parar, não para começar nem
+    para manter. E a imagem não decide tempo de tratamento: o infiltrado radiológico se resolve com atraso de
+    até 30 dias, e <strong>prolongar antibiótico por imagem residual é erro clássico</strong>.
+  </p>
+  <div class="table-wrap"><table data-ia="rotular">
+    <thead><tr><th>Cenário</th><th>Duração</th><th>Condição</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span><strong>Bacteremia por Gram-negativo, não complicada</strong></span></td>
+        <td><span>7 dias.</span></td>
+        <td><span>Paciente estável, defervescência precoce, foco controlado, sem disseminação metastática e sem endocardite. Nesses casos, 7 dias não são inferiores a 14.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Bacteremia complicada</strong></span></td>
+        <td><span>14 dias ou mais.</span></td>
+        <td><span>Instabilidade persistente, foco não controlado, material protético, foco endovascular ou metastático.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Infecção intra-abdominal complicada</strong></span></td>
+        <td><span>4 dias após o controle do foco.</span></td>
+        <td><span>Contado a partir da drenagem ou da cirurgia, e não a partir do primeiro antibiótico.</span></td>
+      </tr>
+    </tbody>
+  </table></div>
+  <p class="prose">
+    O <strong>step-down oral</strong> fecha o ciclo. Drogas de alta biodisponibilidade — fluoroquinolonas e
+    sulfametoxazol-trimetoprim — alcançam nível sérico equivalente ao endovenoso e permitem terminar o
+    tratamento fora da UTI, com ciprofloxacino de 500 a 750 mg de 12/12 h como exemplo típico. O critério é
+    trato gastrointestinal funcionante, estabilidade hemodinâmica e foco controlado.
+  </p>
+
+  <div class="sec-h"><span class="sec-num">12</span><h2>Descalonamento caso a caso, por foco</h2></div>
+  <p class="sec-lead">
+    O que segue é o esquema empírico de cada foco e o alvo do descalonamento quando a cultura responde. A
+    coluna do meio é a que se prescreve na admissão; a da direita é a decisão do time-out.
+  </p>
+
+  <div class="section-label">Trato urinário</div>
+  <div class="table-wrap"><table data-ia="rotular">
+    <thead><tr><th>Cenário</th><th>Esquema empírico</th><th>Descalonamento</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span><strong>Cistite comunitária</strong></span></td>
+        <td><span>Nitrofurantoína 100 mg VO de 12/12 h por 5 dias, ou fosfomicina 3 g VO em dose única.</span></td>
+        <td><span>A fosfomicina em dose única só cobre <em>E. coli</em>; outro isolado obriga a rever.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Pielonefrite</strong></span></td>
+        <td><span>Ceftriaxona 1 a 2 g de 24/24 h. Alternativa: ciprofloxacino 400 mg IV de 12/12 h ou levofloxacino 750 mg de 24/24 h, se a resistência local for menor que 10%.</span></td>
+        <td><span><em>E. coli</em> sensível confirma a ceftriaxona; step-down oral quando houver tolerância digestiva.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Urossepse ou pielonefrite complicada</strong></span></td>
+        <td><span>Cefepime 2 g de 8/8 h em 3 h, ou piperacilina-tazobactam 4,5 g de 8/8 h em 4 h. <strong>ESBL nos últimos 12 meses: meropenem 1 a 2 g de 8/8 h em 3 h.</strong></span></td>
+        <td><span>Sensibilidade à ceftriaxona derruba o carbapenêmico no mesmo dia. Amicacina, se tiver entrado como adjuvante, sai em 3 a 5 dias.</span></td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <div class="section-label">Abdome</div>
+  <div class="table-wrap"><table data-ia="rotular">
+    <thead><tr><th>Cenário</th><th>Esquema empírico</th><th>Descalonamento</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span><strong>Infecção intra-abdominal comunitária</strong></span></td>
+        <td><span>Ceftriaxona 2 g de 24/24 h + metronidazol 500 mg de 8/8 h, ou ertapenem 1 g de 24/24 h — que poupa o meropenem quando não há choque.</span></td>
+        <td><span>4 dias após o controle do foco, se ele tiver sido efetivo.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Pós-operatória, nosocomial ou com choque</strong></span></td>
+        <td><span>Piperacilina-tazobactam 4,5 g de 8/8 h em 4 h, ou meropenem 1 a 2 g de 8/8 h em 3 h. Ampicilina 2 g de 4/4 h apenas se houver prótese valvar ou imunossupressão grave.</span></td>
+        <td><span>Não some metronidazol a nenhum dos dois: a cobertura anaeróbia já está incluída.</span></td>
+      </tr>
+    </tbody>
+  </table></div>
+  <p class="prose">
+    Vale entender por que o anaeróbio importa tanto aqui. <em>B. fragilis</em> é aerotolerante — tem catalase
+    e superóxido-dismutase — e consome o oxigênio residual do tecido, criando ele mesmo a hipóxia local que o
+    protege e que favorece o abscesso. E <strong>clindamicina não substitui metronidazol</strong> nesse
+    cenário: a resistência do grupo <em>B. fragilis</em> à clindamicina é alta demais.
+  </p>
+
+  <div class="section-label">Sistema nervoso central</div>
+  <div class="table-wrap"><table data-ia="rotular">
+    <thead><tr><th>Cenário</th><th>Esquema empírico</th><th>Descalonamento</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span><strong>Meningite comunitária</strong></span></td>
+        <td><span>Ceftriaxona <strong>2 g de 12/12 h</strong> + <strong>vancomicina empírica obrigatória</strong> (ataque de 20 a 35 mg/kg, manutenção guiada por vancocinemia, alvo de 15 a 20) + dexametasona 10 mg IV de 15 a 20 min antes da primeira dose, ou junto dela. Ampicilina 2 g de 4/4 h se o paciente tiver mais de 50 anos, estiver gestante ou imunossuprimido.</span></td>
+        <td><span>A vancomicina sai quando o pneumococo vier plenamente sensível. Ela é obrigatória no empírico porque apenas cerca de 80% dos pneumococos são sensíveis às concentrações liquóricas que a ceftriaxona atinge, e a monoterapia falha se a MIC passar de 2 mcg/mL.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Ventriculite pós-neurocirúrgica</strong></span></td>
+        <td><span>Meropenem 2 g de 8/8 h em 3 h + vancomicina. <strong>Imipenem é proscrito no SNC</strong> pelo risco convulsivo.</span></td>
+        <td><span>Se houver Gram-negativo pan-resistente, a via intraventricular por derivação externa é obrigatória — a penetração liquórica sistêmica das polimixinas fica abaixo de 5%.</span></td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <div class="section-label">Pele e partes moles</div>
+  <div class="table-wrap"><table data-ia="rotular">
+    <thead><tr><th>Cenário</th><th>Esquema empírico</th><th>Descalonamento</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span><strong>Celulite e erisipela</strong></span></td>
+        <td><span>Cefazolina 1 a 2 g de 8/8 h, ou cefalotina 1 a 2 g de 6/6 h.</span></td>
+        <td><span>Step-down oral assim que houver defervescência e demarcação da lesão.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Infecção de sítio cirúrgico superficial</strong></span></td>
+        <td><span>Abertura dos pontos e drenagem. As diretrizes <strong>contraindicam cultura de rotina e antibiótico sistêmico</strong> nesse cenário.</span></td>
+        <td><span>Não há o que descalonar: não se deveria ter escalonado.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Fasceíte necrosante e Fournier</strong></span></td>
+        <td><span>Desbridamento cirúrgico de emergência + meropenem 1 g de 8/8 h em 3 h + <strong>linezolida 600 mg de 12/12 h</strong>.</span></td>
+        <td><span>A linezolida é preferida à vancomicina aqui porque inibe a síntese de exotoxinas. O tempo é definido pelo controle cirúrgico, não pelo calendário.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Pé diabético grave</strong></span></td>
+        <td><span>Piperacilina-tazobactam 4,5 g de 8/8 h em 4 h, ou ertapenem 1 g de 24/24 h se não houver suspeita de <em>Pseudomonas</em>.</span></td>
+        <td><span>Step-down oral de alta biodisponibilidade após o desbridamento, guiado por cultura de tecido profundo e não de <em>swab</em>.</span></td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <div class="section-label">Pulmão e corrente sanguínea</div>
+  <div class="table-wrap"><table data-ia="rotular">
+    <thead><tr><th>Cenário</th><th>Esquema empírico</th><th>Descalonamento</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span><strong>Pneumonia comunitária grave</strong></span></td>
+        <td><span>Ceftriaxona 2 g de 24/24 h + azitromicina 500 mg de 24/24 h. Levofloxacino 750 mg de 24/24 h se houver alergia grave a penicilina.</span></td>
+        <td><span>Pneumococo sensível permite estreitar; o macrolídeo sai quando o painel de atípicos for negativo.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Pneumonia hospitalar e associada à ventilação</strong></span></td>
+        <td><span>Cefepime 2 g de 8/8 h em 3 a 4 h, ou piperacilina-tazobactam 4,5 g de 8/8 h em 4 h, somando vancomicina ou linezolida se houver risco de MRSA.</span></td>
+        <td><span>Cultura de aspirado sem MRSA retira a cobertura Gram-positiva em 48 h. <strong>Daptomicina nunca entra aqui</strong> — é inativada pelo surfactante.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Bacteremia comunitária, foco urinário ou biliar</strong></span></td>
+        <td><span>Ceftriaxona 2 g de 24/24 h.</span></td>
+        <td><span>7 dias exatos, se o paciente estiver estável e não houver material protético nem foco endovascular.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Bacteremia nosocomial ou choque sem foco definido</strong></span></td>
+        <td><span>Cefepime 2 g de 8/8 h em 3 a 4 h, ou piperacilina-tazobactam 4,5 g de 8/8 h em 4 h. ESBL nos últimos 12 meses: meropenem.</span></td>
+        <td><span>O antibiograma decide. Sem isolamento em 72 h e com paciente melhorando, a pergunta passa a ser suspender.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Endocardite por <em>E. faecalis</em>, inclusive com alto nível de resistência a aminoglicosídeo</strong></span></td>
+        <td><span><strong>Ampicilina 2 g de 4/4 h + ceftriaxona 2 g de 12/12 h.</strong></span></td>
+        <td><span>A dupla satura PBP diferentes — a ampicilina as PBP 4 e 5, a ceftriaxona as PBP 2 e 3 — e produz sinergia de parede com nefrotoxicidade nula. É o padrão-ouro, superior ao esquema com gentamicina.</span></td>
+      </tr>
+      <tr>
+        <td><span><strong>Enterococo resistente à vancomicina</strong></span></td>
+        <td><span>Daptomicina 10 a 12 mg/kg de 24/24 h se o foco for endovascular; linezolida 600 mg de 12/12 h se for pulmonar.</span></td>
+        <td><span>A dose de bula da daptomicina, de 6 mg/kg, falha nesse cenário e seleciona resistência por LiaFSR. Confirme o fenótipo: VanC, de <em>E. gallinarum</em> e <em>E. casseliflavus</em>, dá apenas resistência de baixo nível e preserva a teicoplanina.</span></td>
+      </tr>
+    </tbody>
+  </table></div>
+  <div class="tip-box">
+    <strong>Dois detalhes que mudam conduta fora da UTI.</strong>
+    <p class="box-body">Bacteremia por <em>S. gallolyticus</em>, do antigo grupo <em>bovis</em>, obriga
+    colonoscopia pela associação com adenoma e adenocarcinoma colorretal — o achado microbiológico é o exame
+    de rastreamento. E <strong>profilaxia cirúrgica é dose única intraoperatória, suspensa no fechamento da
+    pele</strong>, com a cefazolina ajustada ao peso na obesidade; manter antibiótico no pós-operatório
+    "enquanto o dreno estiver" não previne infecção de sítio cirúrgico, apenas seleciona flora.</p>
+  </div>
+
+  <div class="tip-box" style="margin-top:32px;">
+    <strong>Prescreveu a dose — e agora?</strong>
+    <p class="box-body">A dose certa só resolve metade do problema: a outra metade é ter escolhido a droga
+    certa para aquele foco e aquele hospedeiro. Se a dúvida ainda é <em>qual</em> antibiótico começar, volte
+    à <a class="text-link" href="empirico.html">escolha empírica por foco</a>; se o antibiograma trouxe um
+    mecanismo que você precisa entender antes de decidir, veja <a class="text-link" href="resistencia.html">os
+    mecanismos de resistência</a> e a página de <a class="text-link" href="mdr.html">germes multirresistentes</a>.</p>
+    <a class="link-cta" href="../consulte/">Levar o caso ao assistente de conduta <span aria-hidden="true">&rarr;</span></a>
+  </div>
+
+  <div class="section-label">Referências</div>
+  <p class="prose">O conteúdo desta página foi construído sobre revisões de referência (UpToDate) e sobre a
+  diretriz da IDSA de 2024 para infecções por Gram-negativos resistentes. Os ensaios clínicos abaixo são
+  citados porque sustentam pontos específicos de duração, infusão e monitorização — cada um foi conferido na
+  fonte. Doses e ajustes devem sempre ser confrontados com o protocolo e a farmácia do seu serviço.</p>
+
+  <div class="section-label">Diretriz e ensaios clínicos</div>
+  <span class="ref">Tamma PD, Heil EL, Justo JA, et al. Infectious Diseases Society of America 2024 guidance on the treatment of antimicrobial-resistant Gram-negative infections. <em>Clin Infect Dis.</em> 2024;ciae403:1&ndash;56.</span>
+  <span class="ref">Rybak MJ, Le J, Lodise TP, et al. Therapeutic monitoring of vancomycin for serious methicillin-resistant Staphylococcus aureus infections: a revised consensus guideline and review by ASHP, IDSA, PIDS and SIDP. <em>Am J Health Syst Pharm.</em> 2020;77(11):835&ndash;864.</span>
+  <span class="ref">Dulhunty JM, Brett SJ, De Waele JJ, et al. Continuous vs intermittent beta-lactam antibiotic infusions in critically ill patients with sepsis (BLING III): a randomized clinical trial. <em>JAMA.</em> 2024. doi:10.1001/jama.2024.9779</span>
+  <span class="ref">Yahav D, Franceschini E, Koppel F, et al. Seven versus 14 days of antibiotic therapy for uncomplicated Gram-negative bacteremia: a noninferiority randomized controlled trial. <em>Clin Infect Dis.</em> 2019;69(7):1091&ndash;1098.</span>
+  <span class="ref">Daneman N, Rishu A, Pinto R, et al. Antibiotic treatment for 7 versus 14 days in patients with bloodstream infections (BALANCE). <em>N Engl J Med.</em> 2025. doi:10.1056/NEJMoa2404991</span>
+  <span class="ref">Sawyer RG, Claridge JA, Nathens AB, et al. Trial of short-course antimicrobial therapy for intraabdominal infection (STOP-IT). <em>N Engl J Med.</em> 2015;372(21):1996&ndash;2005.</span>
+  <span class="ref">de Jong E, van Oers JA, Beishuizen A, et al. Efficacy and safety of procalcitonin guidance in reducing the duration of antibiotic treatment in critically ill patients (SAPS): a randomised, controlled, open-label trial. <em>Lancet Infect Dis.</em> 2016;16(7):819&ndash;827.</span>
+
+  <div class="section-label">Revisões de referência consultadas</div>
+  <span class="ref">Moehring R, Sarubbi C. Prolonged infusions of beta-lactam antibiotics. In: Hooper DC, ed. <em>UpToDate</em>. Waltham, MA: UpToDate; 2026.</span>
+  <span class="ref">Letourneau AR. Combination beta-lactamase inhibitors, carbapenems and monobactams. In: Hooper DC, ed. <em>UpToDate</em>. Waltham, MA: UpToDate; 2026.</span>
+  <span class="ref">Hooper DC, Sexton DJ. Extended-spectrum beta-lactamases. In: Hooper DC, ed. <em>UpToDate</em>. Waltham, MA: UpToDate; 2026.</span>
+  <span class="ref">Quale J. Carbapenem-resistant E. coli, K. pneumoniae and other Enterobacterales (CRE). In: Hooper DC, ed. <em>UpToDate</em>. Waltham, MA: UpToDate; 2026.</span>
+  <span class="ref">Kanj SS. Principles of antimicrobial therapy of Pseudomonas aeruginosa infections. In: Calderwood SB, ed. <em>UpToDate</em>. Waltham, MA: UpToDate; 2026.</span>
+  <span class="ref">Kanafani ZA, Kanj SS. Acinetobacter infection: treatment and prevention. In: Calderwood SB, ed. <em>UpToDate</em>. Waltham, MA: UpToDate; 2026.</span>
+  <span class="ref">Arias CA, Miller WR. Mechanisms of antibiotic resistance in enterococci. In: Hooper DC, ed. <em>UpToDate</em>. Waltham, MA: UpToDate; 2026.</span>
+  <span class="ref">Moehring R, Anderson DJ. Gram-negative bacillary bacteremia in adults. In: Calderwood SB, ed. <em>UpToDate</em>. Waltham, MA: UpToDate; 2026.</span>
+  <span class="ref">Holubar M, Deresinski S. Antimicrobial stewardship in hospital settings. In: Hooper DC, ed. <em>UpToDate</em>. Waltham, MA: UpToDate; 2025.</span>
+  <span class="ref">Barshak MB. Antimicrobial approach to intra-abdominal infections in adults. In: Calderwood SB, ed. <em>UpToDate</em>. Waltham, MA: UpToDate; 2025.</span>
+  <span class="ref">Bible L, Cochran A, Collins KA. Overview of surgical site infection. In: Cochran A, ed. <em>UpToDate</em>. Waltham, MA: UpToDate; 2025.</span>
+  <span class="ref">Ramirez JA, File TM Jr. Overview of community-acquired pneumonia in adults. In: File TM Jr, ed. <em>UpToDate</em>. Waltham, MA: UpToDate; 2026.</span>
+  <span class="ref">Wang A, Holland TL, Chu VH. Overview of management of infective endocarditis in adults. In: Holland TL, ed. <em>UpToDate</em>. Waltham, MA: UpToDate; 2026.</span>
+  <span class="ref">Musher DM. Resistance of Streptococcus pneumoniae to beta-lactam antibiotics. In: File TM Jr, ed. <em>UpToDate</em>. Waltham, MA: UpToDate; 2024.</span>
+  <span class="ref">Musher DM. Resistance of Streptococcus pneumoniae to the fluoroquinolones, doxycycline and trimethoprim-sulfamethoxazole. In: File TM Jr, ed. <em>UpToDate</em>. Waltham, MA: UpToDate; 2024.</span>
+  <span class="ref">Musher DM. Resistance of Streptococcus pneumoniae to the macrolides, azalides and lincosamides. In: File TM Jr, ed. <em>UpToDate</em>. Waltham, MA: UpToDate; 2024.</span>
+  <span class="ref">Blumenthal KG, Solensky R. Choice of antibiotics in penicillin-allergic hospitalized patients. In: Phillips EJ, ed. <em>UpToDate</em>. Waltham, MA: UpToDate; 2024.</span>
+  <span class="ref">Solensky R, Adkinson NF Jr. Hypersensitivity reactions to macrolides, aminoglycosides, tetracyclines, clindamycin and metronidazole. In: Feldweg AM, ed. <em>UpToDate</em>. Waltham, MA: UpToDate; 2026.</span>
+  <span class="ref">Mody L, Schmader KE. Approach to infection in the older adult. In: Givens J, ed. <em>UpToDate</em>. Waltham, MA: UpToDate; 2025.</span>
+  <span class="ref">UpToDate Lexidrug. Ciprofloxacin (systemic): drug information. In: <em>UpToDate</em>. Waltham, MA: UpToDate; 2026.</span>
+</section>
+</main>
+<script src="../assets/app.js"></script>
+</body>
+</html>
