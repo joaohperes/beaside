@@ -1014,6 +1014,647 @@ html[data-theme="light"] .hero-demo-q{background:var(--bg4);color:var(--text);bo
 html[data-theme="light"] .hero-demo-q.is-typing::after{background:rgba(26,32,48,.75)}
 html[data-theme="light"] .hero-demo-direct{color:#1a2030}
 html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-color:var(--border);color:var(--text3)}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   WORKSPACE — html[data-design="ws"] (landing / home)
+   Composição editorial executiva: tipografia display grande
+   (Space Grotesk, carregada pelo theme-boot só nesta vista),
+   corpo maior, seções numeradas sob fio, cartões compactos.
+   As cores são as da be·aside — nenhuma cor nova.
+   landing.css não lê styles.css: os tokens são redeclarados aqui.
+   ═══════════════════════════════════════════════════════════════ */
+
+html[data-design="ws"]{
+  --display:'Space Grotesk',Inter,-apple-system,system-ui,sans-serif;
+}
+html[data-design="ws"][data-theme="light"]{
+  --bg:#fafbfc;
+  --bg2:#ffffff;
+  --bg3:#f4f6f8;
+  --bg4:#e8ecf0;
+  --border:rgba(18,26,38,.09);
+  --border2:rgba(18,26,38,.16);
+  --text:#14202e;
+  --text2:#4c5a6b;
+  --text3:#8a93a1;
+  --teal:#0d9a72;
+  --teal-soft:rgba(13,154,114,.1);
+  --shadow:0 16px 48px rgba(16,24,40,.08);
+  --ws-shadow:0 1px 2px rgba(16,24,40,.04);
+  --ws-shadow-md:0 1px 3px rgba(16,24,40,.06),0 8px 24px rgba(16,24,40,.06);
+}
+html[data-design="ws"]:not([data-theme="light"]){
+  --bg:#15171c;
+  --bg2:#1a1d23;
+  --bg3:#21252c;
+  --bg4:#2a2f38;
+  --border:rgba(255,255,255,.075);
+  --border2:rgba(255,255,255,.145);
+  --text:#e9ebef;
+  --text2:#9aa2ae;
+  --text3:#69707e;
+  --shadow:0 20px 64px rgba(0,0,0,.4);
+  --ws-shadow:0 1px 2px rgba(0,0,0,.22);
+  --ws-shadow-md:0 2px 6px rgba(0,0,0,.28),0 12px 32px rgba(0,0,0,.22);
+}
+
+html[data-design="ws"] body{
+  background:var(--bg);color:var(--text);
+  font-size:16px;letter-spacing:-.006em;
+}
+
+/* ── cena: sem brilho, sem ECG, sem anel girante ── */
+html[data-design="ws"] .glow{display:none}
+html[data-design="ws"] .trace{display:none}
+html[data-design="ws"] .scene-grid{opacity:.22}
+html[data-design="ws"][data-theme="light"] .scene-grid{
+  background-image:
+    linear-gradient(rgba(18,26,38,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(18,26,38,.045) 1px,transparent 1px);
+}
+
+/* ── topbar ── */
+html[data-design="ws"] .logo-wordmark{color:var(--text)}
+html[data-design="ws"] .logo-icon rect{animation:none}
+html[data-design="ws"] .mainnav a{font-size:13.5px;color:var(--text2)}
+html[data-design="ws"] .mainnav a:hover{color:var(--text)}
+html[data-design="ws"] .btn-entrar{
+  font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.04em;
+  background:var(--bg2);border-color:var(--border2);color:var(--text);
+}
+html[data-design="ws"] .btn-entrar:hover{
+  border-color:var(--teal);color:var(--text);background:var(--teal-soft);
+}
+
+/* ── hero: o título é o produto ── */
+html[data-design="ws"] .hero{margin-bottom:0;animation:none;opacity:1}
+html[data-design="ws"] .hero h1{
+  font-family:var(--display);
+  font-size:clamp(42px,4.6vw,58px);font-weight:700;
+  color:var(--text);letter-spacing:-.025em;line-height:1.04;
+}
+html[data-design="ws"] .hero h1 .grad{
+  background:none;-webkit-background-clip:initial;background-clip:initial;
+  -webkit-text-fill-color:currentColor;color:var(--teal);
+}
+html[data-design="ws"] .hero-lead{
+  font-size:18.5px;line-height:1.64;font-weight:400;color:var(--text2);
+  max-width:56ch;
+}
+html[data-design="ws"] .hero-eyebrow{
+  font-family:var(--mono);font-size:11px;font-weight:600;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--teal);
+}
+html[data-design="ws"] .hero-eyebrow::before{display:none}
+
+html[data-design="ws"] .btn-primary{
+  font-family:var(--mono);font-size:12.5px;font-weight:600;letter-spacing:.04em;
+  color:#fff;background:var(--teal);border-radius:8px;box-shadow:none;
+  padding:11px 18px;
+}
+html[data-design="ws"] .btn-primary:hover{
+  transform:none;filter:none;
+  background:color-mix(in srgb,var(--teal) 86%,#000);
+  box-shadow:var(--ws-shadow-md);
+}
+html[data-design="ws"] .btn-ghost{
+  font-family:var(--mono);font-size:12.5px;font-weight:600;letter-spacing:.04em;
+  color:var(--text2);background:var(--bg2);border-color:var(--border2);
+  border-radius:8px;box-shadow:none;padding:11px 18px;
+}
+html[data-design="ws"] .btn-ghost:hover{
+  color:var(--text);border-color:var(--text3);background:var(--bg2);
+}
+
+/* ── valores: itens numerados sob fio — sumário, não vitrine ── */
+html[data-design="ws"] .values{
+  gap:36px;margin:60px 0 68px;padding:0;border:0;
+}
+html[data-design="ws"] .value{
+  background:transparent;border:0;border-radius:0;box-shadow:none;
+  border-top:1px solid var(--border2);
+  padding:16px 0 0;
+}
+html[data-design="ws"] .value::before,
+html[data-design="ws"] .value::after{display:none;animation:none}
+html[data-design="ws"] .value-k{
+  font-family:var(--mono);font-size:10.5px;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--teal);
+}
+html[data-design="ws"] .value-k::before{display:none}
+html[data-design="ws"] .value-t{
+  font-family:var(--display);
+  color:var(--text);font-size:19px;font-weight:700;letter-spacing:-.018em;
+}
+html[data-design="ws"] .value-d{
+  font-size:15px;font-weight:400;color:var(--text2);line-height:1.6;max-width:40ch;
+}
+
+/* ── cabeçalho numerado de cada área — a espinha editorial ── */
+html[data-design="ws"] .area-head{gap:8px;margin:36px 0 8px}
+html[data-design="ws"] .area-eyebrow{
+  font-family:var(--mono);font-size:11px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;
+}
+html[data-design="ws"] .area-eyebrow .area-num{opacity:1}
+html[data-design="ws"] .area-head h2{
+  font-family:var(--display);
+  font-size:clamp(24px,2.5vw,30px);font-weight:700;
+  color:var(--text);letter-spacing:-.02em;line-height:1.12;
+}
+html[data-design="ws"] .area-head p{
+  font-size:16px;color:var(--text2);line-height:1.62;font-weight:400;max-width:64ch;
+}
+
+/* ── módulos: cartões compactos — menos moldura, mais índice ── */
+html[data-design="ws"] .card{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:10px;box-shadow:none;
+  padding:16px 18px 14px;
+  transition:border-color .16s var(--ease),background .16s var(--ease),box-shadow .16s var(--ease);
+}
+html[data-design="ws"] .card::before{display:none}
+html[data-design="ws"] .card.wide::before{display:none}
+html[data-design="ws"] .card.wide{background:var(--bg2)}
+html[data-design="ws"] .card:hover{
+  transform:none;box-shadow:var(--ws-shadow);
+  border-color:var(--border2);background:var(--bg2);
+}
+html[data-design="ws"] .card-rail{opacity:1;top:0;bottom:0;border-radius:10px 0 0 10px;width:3px}
+html[data-design="ws"] .card-top{display:none}
+html[data-design="ws"] .card-title,
+html[data-design="ws"] .card.wide .card-title{
+  font-family:var(--display);
+  color:var(--text);font-size:19px;font-weight:700;letter-spacing:-.016em;line-height:1.16;
+}
+html[data-design="ws"] .card.featured .card-title{
+  font-family:var(--display);font-size:22px;font-weight:700;letter-spacing:-.018em;
+}
+html[data-design="ws"] .card-sub{
+  font-size:14.5px;font-weight:400;color:var(--text2);line-height:1.55;margin-bottom:12px;
+}
+html[data-design="ws"] .card-tag{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;
+  background:var(--bg3);border-color:var(--border);color:var(--text3);
+  border-radius:4px;padding:3px 7px;
+}
+html[data-design="ws"] .card-foot{
+  margin-top:auto;padding-top:12px;border-top:1px solid var(--border);
+}
+html[data-design="ws"] .card-cta{
+  font-family:var(--sans);font-size:13.5px;font-weight:600;letter-spacing:0;opacity:1;
+}
+html[data-design="ws"] .card-badge{
+  align-self:flex-start;width:fit-content;
+  background:transparent;border:0;padding:0;
+  font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.14em;
+}
+
+/* ── demo do assistente: captura de software, não bolha de chat ── */
+html[data-design="ws"] .hero-demo{
+  background:var(--bg2);border:1px solid var(--border);
+  box-shadow:var(--ws-shadow-md);border-radius:12px;
+}
+
+/* ── fecho ── */
+html[data-design="ws"] .cta-final,
+html[data-design="ws"] .article-draft{
+  background:var(--bg2);border-color:var(--border);
+  border-radius:10px;box-shadow:none;
+}
+html[data-design="ws"] .cta-final-t{
+  font-family:var(--display);
+  color:var(--text);font-size:26px;font-weight:700;letter-spacing:-.02em;
+}
+html[data-design="ws"] .cta-final-d{font-size:16px;font-weight:400;color:var(--text2)}
+
+/* ── seletor de vista (Claro | Escuro | Mobile) — cópia local ── */
+.view-seg{
+  display:inline-flex;align-items:center;gap:2px;
+  padding:2px;border:1px solid var(--border);border-radius:8px;
+  background:var(--bg3);flex-shrink:0;
+}
+.view-seg button{
+  appearance:none;border:0;background:transparent;cursor:pointer;
+  font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:-.005em;
+  color:var(--text3);padding:5px 11px;border-radius:6px;
+  transition:color .14s var(--ease),background .14s var(--ease);
+}
+.view-seg button:hover{color:var(--text)}
+.view-seg button.is-active{background:var(--bg2);color:var(--text);box-shadow:var(--ws-shadow)}
+.view-seg button:focus-visible{outline:2px solid rgba(29,184,138,.45);outline-offset:1px}
+
+.btn-view{
+  position:relative;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:34px;height:32px;padding:0;
+  background:rgba(255,255,255,.03);border:1px solid var(--border);
+  border-radius:8px;color:var(--text2);cursor:pointer;
+  transition:border-color .15s,color .15s,background .15s,transform .15s;
+  flex-shrink:0;
+}
+.btn-view:hover{border-color:var(--border2);color:var(--text)}
+.btn-view:active{transform:scale(.94)}
+.btn-view:focus-visible{outline:2px solid rgba(29,184,138,.45);outline-offset:2px}
+.btn-view svg{display:block}
+
+@media(max-width:860px){
+  html[data-design="ws"] .values{gap:22px;margin:44px 0 52px}
+  html[data-design="ws"] .value{padding:14px 0 0}
+}
+
+/* o seletor de vista não pode empurrar o menu para fora da tela */
+@media(max-width:720px){
+  html[data-design="ws"] .view-seg{padding:1px;border-radius:7px}
+  html[data-design="ws"] .view-seg button{padding:4px 7px;font-size:11px;border-radius:5px}
+}
+@media(max-width:420px){
+  html[data-design="ws"] .view-seg button{padding:4px 5px;font-size:10.5px;letter-spacing:-.02em}
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   V8 — COMPOSIÇÃO EXECUTIVA (home)
+   Hero central (OpenAI/Linear), papel de ECG como textura da cena,
+   traçado de ECG da marca de volta como fio quase mudo, o cartão
+   da IA e o rodapé como bandas grafite (yossaumar), tokens de
+   papel esverdeado no claro e grafite profundo no escuro.
+   ═══════════════════════════════════════════════════════════════ */
+
+html[data-design="ws"][data-theme="light"]{
+  --bg:#f6f8f7;--bg3:#eef1f0;--bg4:#e3e8e6;
+  --ink:#14181d;
+  --ecg-minor:rgba(18,26,38,.03);--ecg-major:rgba(18,26,38,.06);
+}
+html[data-design="ws"]:not([data-theme="light"]){
+  --bg:#131519;--bg2:#191c21;--bg3:#20242a;--bg4:#2a2f36;
+  --ink:#0e1013;
+  --ecg-minor:rgba(255,255,255,.02);--ecg-major:rgba(255,255,255,.04);
+}
+
+/* papel de monitor: grade fina + grade maior, como papel de ECG */
+html[data-design="ws"] .scene-grid,
+html[data-design="ws"][data-theme="light"] .scene-grid{
+  opacity:1;
+  background-image:
+    linear-gradient(var(--ecg-minor) 1px,transparent 1px),
+    linear-gradient(90deg,var(--ecg-minor) 1px,transparent 1px),
+    linear-gradient(var(--ecg-major) 1px,transparent 1px),
+    linear-gradient(90deg,var(--ecg-major) 1px,transparent 1px);
+  background-size:24px 24px,24px 24px,120px 120px,120px 120px;
+}
+
+/* o traçado de ECG volta — um fio só, quase mudo, na cor da marca */
+html[data-design="ws"] .trace{display:block;top:44%;opacity:.16}
+html[data-design="ws"]:not([data-theme="light"]) .trace{opacity:.08}
+html[data-design="ws"] .trace svg *{animation:none}
+html[data-design="ws"] .trace path{stroke:var(--teal)}
+
+/* hero central: o título é o palco, a demo vira captura de produto */
+html[data-design="ws"] .hero{padding-top:30px}
+html[data-design="ws"] .hero-row.has-demo{
+  display:flex;flex-direction:column;align-items:center;
+  gap:52px;max-width:980px;margin:0 auto;text-align:center;
+}
+html[data-design="ws"] .hero-row.has-demo > div:first-child{max-width:800px}
+html[data-design="ws"] .hero h1{font-size:clamp(44px,5.2vw,64px)}
+html[data-design="ws"] .hero-lead{margin-left:auto;margin-right:auto}
+html[data-design="ws"] .hero-actions{justify-content:center}
+html[data-design="ws"] .hero-demo{width:100%;max-width:840px;box-shadow:var(--shadow)}
+
+/* o cartão da IA é a banda grafite da página — em qualquer tema */
+html[data-design="ws"] .card.wide:has(.card-cta-ai){
+  background:var(--ink);
+  border-color:rgba(255,255,255,.09);
+  border-radius:14px;padding:28px 30px 22px;
+}
+html[data-design="ws"] .card.wide:has(.card-cta-ai):hover{
+  background:var(--ink);border-color:rgba(255,255,255,.16);
+}
+html[data-design="ws"] .card.wide:has(.card-cta-ai) .card-title{
+  color:#f2f4f6;font-size:24px;
+}
+html[data-design="ws"] .card.wide:has(.card-cta-ai) .card-sub{
+  color:rgba(235,240,244,.72);font-size:15.5px;
+}
+html[data-design="ws"] .card.wide:has(.card-cta-ai) .card-tag{
+  background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.13);
+  color:rgba(235,240,244,.62);
+}
+html[data-design="ws"] .card.wide:has(.card-cta-ai) .card-foot{
+  border-top-color:rgba(255,255,255,.11);
+}
+html[data-design="ws"] .card.wide:has(.card-cta-ai) .card-cta{color:var(--teal)}
+html[data-design="ws"] .card.wide:has(.card-cta-ai) .card-cta:hover{color:#3ad39f}
+
+/* rodapé como lápide grafite — o fecho escuro da página */
+html[data-design="ws"] .footer.footer-pro{
+  background:var(--ink);
+  border:1px solid rgba(255,255,255,.08);border-top-color:rgba(255,255,255,.08);
+  border-radius:16px;padding:38px 42px 26px;margin-top:64px;
+}
+html[data-design="ws"] .footer.footer-pro .footer-k{color:rgba(235,240,244,.45)}
+html[data-design="ws"] .footer.footer-pro a{color:rgba(235,240,244,.66)}
+html[data-design="ws"] .footer.footer-pro a:hover{color:#fff}
+html[data-design="ws"] .footer.footer-pro .footer-tag{color:rgba(235,240,244,.55)}
+html[data-design="ws"] .footer.footer-pro .logo-wordmark{color:#f2f4f6}
+html[data-design="ws"] .footer.footer-pro p,
+html[data-design="ws"] .footer.footer-pro span{color:rgba(235,240,244,.5)}
+
+@media(max-width:768px){
+  html[data-design="ws"] .hero-row.has-demo{gap:36px}
+  html[data-design="ws"] .footer.footer-pro{padding:28px 22px 20px;border-radius:12px}
+  html[data-design="ws"] .card.wide:has(.card-cta-ai){padding:22px 20px 18px}
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   V9 — MENOS APLICATIVO, MAIS PRANCHETA
+   Os cartões de módulo deixam de ser caixas e viram linhas
+   editoriais sob fio (yossaumar services); o chat de exemplo
+   flui sem os pontos; o botão do hero sai; as etiquetas
+   numeradas das áreas crescem.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* hero sem botão — o índice logo abaixo já é o convite */
+html[data-design="ws"] .hero-actions{display:none}
+html[data-design="ws"] .hero-demo-dots{display:none}
+
+/* etiquetas de área maiores — a numeração é a espinha da página */
+html[data-design="ws"] .area-eyebrow{
+  font-size:13px;letter-spacing:.18em;
+}
+html[data-design="ws"] .area-head h2{
+  font-size:clamp(26px,2.8vw,33px);
+}
+html[data-design="ws"] .area-head{margin:44px 0 4px}
+
+/* módulos: linha de prancheta, não caixa de app.
+   O fio no topo delimita; a cor do módulo vive na etiqueta mono. */
+html[data-design="ws"] .card,
+html[data-design="ws"] .card.wide,
+html[data-design="ws"] .card.featured{
+  background:transparent;border:0;border-radius:0;box-shadow:none;
+  border-top:1px solid var(--border2);
+  padding:16px 4px 18px 0;min-height:0;
+}
+html[data-design="ws"] .card:hover,
+html[data-design="ws"] .card.wide:hover{
+  background:transparent;border-color:var(--border2);box-shadow:none;transform:none;
+}
+html[data-design="ws"] .card-rail{display:none}
+html[data-design="ws"] .card-tags{display:none}
+html[data-design="ws"] .card-badge{margin-bottom:9px}
+html[data-design="ws"] .card-title,
+html[data-design="ws"] .card.wide .card-title,
+html[data-design="ws"] .card.featured .card-title{
+  font-size:20px;line-height:1.14;
+}
+html[data-design="ws"] .card-sub{
+  font-size:14.5px;line-height:1.56;margin-bottom:4px;max-width:52ch;
+}
+html[data-design="ws"] .card-foot{
+  border-top:0;padding-top:8px;margin-top:auto;
+}
+html[data-design="ws"] .card-cta{font-size:13.5px}
+html[data-design="ws"] .card:hover .card-title{color:var(--c-accent,var(--teal))}
+
+/* a IA continua sendo a banda grafite da página — mas enxuta */
+html[data-design="ws"] .card.wide:has(.card-cta-ai),
+html[data-design="ws"] .card.wide:has(.card-cta-ai):hover{
+  background:var(--ink);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:12px;
+  padding:22px 26px 16px;
+}
+html[data-design="ws"] .card.wide:has(.card-cta-ai) .card-title{
+  font-size:21px;color:#f2f4f6;
+}
+html[data-design="ws"] .card.wide:has(.card-cta-ai):hover .card-title{color:#fff}
+html[data-design="ws"] .card.wide:has(.card-cta-ai) .card-sub{
+  font-size:15px;max-width:74ch;
+}
+
+@media(max-width:768px){
+  html[data-design="ws"] .area-eyebrow{font-size:12px}
+  html[data-design="ws"] .card,
+  html[data-design="ws"] .card.wide,
+  html[data-design="ws"] .card.featured{padding:14px 2px 16px 0}
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   V10 — OCUPAR A TELA
+   Contêiner mais largo (menos margem morta nos lados), títulos de
+   bloco claramente maiores que o texto abaixo, etiqueta redundante
+   fora.
+   ═══════════════════════════════════════════════════════════════ */
+
+html[data-design="ws"] .hub,
+html[data-design="ws"] .navbar-inner{max-width:1300px}
+html[data-design="ws"] .hero-row.has-demo{max-width:1060px}
+html[data-design="ws"] .hero-demo{max-width:920px}
+html[data-design="ws"] .bento,
+html[data-design="ws"] .raciocine-grid{column-gap:64px}
+
+/* o título do bloco manda: sempre maior que a escrita abaixo dele */
+html[data-design="ws"] .card-title,
+html[data-design="ws"] .card.wide .card-title,
+html[data-design="ws"] .card.featured .card-title{
+  font-size:24px;line-height:1.12;
+}
+html[data-design="ws"] .card-sub{font-size:15px}
+html[data-design="ws"] .card.wide:has(.card-cta-ai) .card-title{font-size:25px}
+html[data-design="ws"] .card.wide:has(.card-cta-ai) .card-sub{font-size:15px}
+
+/* a etiqueta "UTI & Emergência" sai — o título basta */
+html[data-design="ws"] .card.wide:has(.card-hit[href="artigos/"]) .card-badge{display:none}
+
+@media(max-width:768px){
+  html[data-design="ws"] .card-title,
+  html[data-design="ws"] .card.wide .card-title,
+  html[data-design="ws"] .card.featured .card-title{font-size:21px}
+}
+
+
+/* ═══ V11b — guides em 3 colunas: mesma letra, retângulos menores ═══ */
+html[data-design="ws"] .raciocine-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  column-gap:48px;
+}
+html[data-design="ws"] .raciocine-grid .card,
+html[data-design="ws"] .raciocine-grid .card.featured{
+  padding:14px 2px 16px 0;
+}
+html[data-design="ws"] .raciocine-grid .card-sub{max-width:none}
+@media(max-width:1080px){
+  html[data-design="ws"] .raciocine-grid{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:48px}
+}
+@media(max-width:700px){
+  html[data-design="ws"] .raciocine-grid{grid-template-columns:1fr}
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   V12 — O GRAFITE VIRA VERDE-BE·ASIDE
+   As duas lápides (Be-IA e rodapé) e o cabeçalho passam ao verde
+   profundo derivado do teal da marca. O modo claro segue claro —
+   o verde é o contraponto escuro dele.
+   ═══════════════════════════════════════════════════════════════ */
+
+html[data-design="ws"][data-theme="light"]{--ink:#0d2f27}
+html[data-design="ws"]:not([data-theme="light"]){--ink:#0b241e}
+
+html[data-design="ws"] .navbar{
+  background:var(--ink);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;
+}
+html[data-design="ws"] .navbar .logo-wordmark{color:#f2f4f6}
+html[data-design="ws"] .mainnav a{color:rgba(235,240,244,.72)}
+html[data-design="ws"] .mainnav a:hover{color:#fff}
+html[data-design="ws"] .mainnav a.is-secondary{color:rgba(235,240,244,.55)}
+html[data-design="ws"] .nav-burger{color:#f2f4f6;border-color:rgba(255,255,255,.22)}
+html[data-design="ws"] .btn-entrar{
+  background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.22);color:#fff;
+}
+html[data-design="ws"] .btn-entrar:hover{
+  background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);color:#fff;
+}
+html[data-design="ws"] .view-seg{
+  background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.14);
+}
+html[data-design="ws"] .view-seg button{color:rgba(235,240,244,.62)}
+html[data-design="ws"] .view-seg button:hover{color:#fff}
+html[data-design="ws"] .view-seg button.is-active{
+  background:#fff;color:#14202e;box-shadow:none;
+}
+
+
+/* ═══ V13 — guides só com o título; a descrição aparece no hover ═══
+   Sem deslocar o layout: a descrição surge como um painel flutuante
+   logo abaixo do item. No toque (sem mouse) ela fica visível. */
+@media(hover:hover) and (min-width:701px){
+  /* a descrição vive DENTRO do card: fechada no repouso, o card se
+     expande ao passar o mouse e volta a fechar ao sair — parte do site,
+     não um balão por cima. focus-within cobre navegação por teclado. */
+  html[data-design="ws"] .raciocine-grid .card-sub{
+    max-height:0;opacity:0;margin:0;overflow:hidden;
+    transform:translateY(-3px);
+    /* fechar: mais breve, sem atraso */
+    transition:max-height .6s var(--ease),opacity .35s var(--ease),
+               transform .6s var(--ease),margin .6s var(--ease);
+  }
+  html[data-design="ws"] .raciocine-grid .card:hover .card-sub,
+  html[data-design="ws"] .raciocine-grid .card:focus-within .card-sub{
+    max-height:150px;opacity:1;transform:none;margin:2px 0 8px;
+    /* abrir: lento, com o texto surgindo aos poucos depois do espaço */
+    transition:max-height .9s var(--ease),opacity .85s var(--ease) .12s,
+               transform .9s var(--ease),margin .9s var(--ease);
+  }
+  html[data-design="ws"] .raciocine-grid .card-foot{padding-top:2px}
+}
+
+
+/* o contêiner de rolagem clipa o painel do hover — no ws não há rolagem lateral */
+html[data-design="ws"] .raciocine-scroll{overflow:visible}
+
+/* ═══ V14 — movimento nos links e na lápide da IA ═══ */
+
+/* a seta dos CTAs desliza ao passar o mouse (Central, guias, Be-IA) */
+html[data-design="ws"] .card-cta{transition:color .25s var(--ease)}
+html[data-design="ws"] .card-cta .card-cta-arrow{
+  display:inline-block;
+  transition:transform .4s var(--ease);
+}
+html[data-design="ws"] .card-cta:hover .card-cta-arrow{transform:translateX(6px)}
+
+/* a lápide do Be-IA respira ao passar o mouse */
+html[data-design="ws"] .card.wide:has(.card-cta-ai){
+  transition:transform .45s var(--ease),box-shadow .45s var(--ease),
+             border-color .45s var(--ease);
+}
+html[data-design="ws"] .card.wide:has(.card-cta-ai):hover{
+  transform:translateY(-3px);
+  box-shadow:0 16px 44px rgba(6,24,19,.28);
+}
+
+/* ═══ V15 — legibilidade: as etiquetas numeradas viram TÍTULOS
+   e a letra sobe um degrau no site inteiro ═══ */
+
+html[data-design="ws"] .area-eyebrow{
+  font-size:17px;font-weight:700;letter-spacing:.14em;
+}
+html[data-design="ws"] .area-head{gap:10px}
+html[data-design="ws"] .area-head h2{
+  font-size:clamp(28px,3vw,36px);
+}
+html[data-design="ws"] .area-head p{font-size:17px;line-height:1.65}
+
+html[data-design="ws"] body{font-size:16.5px}
+html[data-design="ws"] .hero-lead{font-size:19.5px}
+html[data-design="ws"] .value-t{font-size:20px}
+html[data-design="ws"] .value-d{font-size:15.5px}
+html[data-design="ws"] .value-k{font-size:11.5px}
+html[data-design="ws"] .card-sub{font-size:15.5px}
+html[data-design="ws"] .card-cta{font-size:14px}
+html[data-design="ws"] .card-badge{font-size:11px}
+html[data-design="ws"] .card.wide:has(.card-cta-ai) .card-sub{font-size:16px}
+html[data-design="ws"] .mainnav a{font-size:14.5px}
+
+@media(max-width:768px){
+  html[data-design="ws"] .area-eyebrow{font-size:14px}
+}
+
+
+/* V15b — etiquetas do hero e dos valores em tamanho legível */
+html[data-design="ws"] .hero-eyebrow{font-size:14px;font-weight:700}
+html[data-design="ws"] .value-k{font-size:14px;font-weight:700}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   V16 — CENTRAL DE MONITORIZAÇÃO AO FUNDO (home)
+   Ordem de monitor de UTI, de cima para baixo:
+   ECG (.trace) → Pletismografia (SpO2) → PAI → Ventilador
+   (pressão e fluxo, este com deflexão expiratória negativa).
+   Frequências fisiológicas RELATIVAS: as cardíacas (pleth/PAI)
+   varrem a 30px/s com ciclo de 200px (~0,15 Hz — mesmo batimento
+   do ECG da base, que corre a ~51px/s com ciclo de ~360px);
+   o ventilador varre a 15px/s com ciclo de 300px (~0,05 Hz) —
+   frequência respiratória, 1 ciclo para cada 3 batimentos.
+   Tiles de 600px; deslocamentos múltiplos de 600 = loop sem emenda.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* o ECG sobe para o topo da tela, como no monitor */
+html[data-design="ws"] .trace{top:13%}
+
+html[data-design="ws"][data-theme="light"] .scene{
+  --wave-pleth:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 600 90%27 preserveAspectRatio=%27none%27%3E%3Cpath d=%27M0,64 C18,64 26,22 44,22 C58,22 60,48 72,52 C78,54 82,46 90,49 C102,54 112,62 140,64 L200,64 M200,64 C218,64 226,22 244,22 C258,22 260,48 272,52 C278,54 282,46 290,49 C302,54 312,62 340,64 L400,64 M400,64 C418,64 426,22 444,22 C458,22 460,48 472,52 C478,54 482,46 490,49 C502,54 512,62 540,64 L600,64 %27 fill=%27none%27 stroke=%27%230d9a72%27 stroke-opacity=%270.14%27 stroke-width=%271.6%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E");
+  --wave-pai:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 600 90%27 preserveAspectRatio=%27none%27%3E%3Cpath d=%27M0,66 L10,66 C13,66 16,16 26,16 C33,16 36,40 42,43 C45,44 46,37 50,39 C58,44 70,62 95,66 L200,66 M200,66 L210,66 C213,66 216,16 226,16 C233,16 236,40 242,43 C245,44 246,37 250,39 C258,44 270,62 295,66 L400,66 M400,66 L410,66 C413,66 416,16 426,16 C433,16 436,40 442,43 C445,44 446,37 450,39 C458,44 470,62 495,66 L600,66 %27 fill=%27none%27 stroke=%27%230d9a72%27 stroke-opacity=%270.14%27 stroke-width=%271.6%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E");
+  --wave-ventp:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 600 90%27 preserveAspectRatio=%27none%27%3E%3Cpath d=%27M0,70 L10,70 C13,70 14,24 24,22 L140,27 C150,28 156,62 190,70 L300,70 M300,70 L310,70 C313,70 314,24 324,22 L440,27 C450,28 456,62 490,70 L600,70 %27 fill=%27none%27 stroke=%27%230d9a72%27 stroke-opacity=%270.14%27 stroke-width=%271.6%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E");
+  --wave-ventf:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 600 90%27 preserveAspectRatio=%27none%27%3E%3Cpath d=%27M0,44 L8,44 C12,44 16,18 40,18 C90,18 120,38 138,44 C142,66 146,78 156,78 C172,78 196,48 230,44 L300,44 M300,44 L308,44 C312,44 316,18 340,18 C390,18 420,38 438,44 C442,66 446,78 456,78 C472,78 496,48 530,44 L600,44 %27 fill=%27none%27 stroke=%27%230d9a72%27 stroke-opacity=%270.14%27 stroke-width=%271.6%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E");
+}
+html[data-design="ws"]:not([data-theme="light"]) .scene{
+  --wave-pleth:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 600 90%27 preserveAspectRatio=%27none%27%3E%3Cpath d=%27M0,64 C18,64 26,22 44,22 C58,22 60,48 72,52 C78,54 82,46 90,49 C102,54 112,62 140,64 L200,64 M200,64 C218,64 226,22 244,22 C258,22 260,48 272,52 C278,54 282,46 290,49 C302,54 312,62 340,64 L400,64 M400,64 C418,64 426,22 444,22 C458,22 460,48 472,52 C478,54 482,46 490,49 C502,54 512,62 540,64 L600,64 %27 fill=%27none%27 stroke=%27%231db88a%27 stroke-opacity=%270.07%27 stroke-width=%271.6%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E");
+  --wave-pai:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 600 90%27 preserveAspectRatio=%27none%27%3E%3Cpath d=%27M0,66 L10,66 C13,66 16,16 26,16 C33,16 36,40 42,43 C45,44 46,37 50,39 C58,44 70,62 95,66 L200,66 M200,66 L210,66 C213,66 216,16 226,16 C233,16 236,40 242,43 C245,44 246,37 250,39 C258,44 270,62 295,66 L400,66 M400,66 L410,66 C413,66 416,16 426,16 C433,16 436,40 442,43 C445,44 446,37 450,39 C458,44 470,62 495,66 L600,66 %27 fill=%27none%27 stroke=%27%231db88a%27 stroke-opacity=%270.07%27 stroke-width=%271.6%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E");
+  --wave-ventp:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 600 90%27 preserveAspectRatio=%27none%27%3E%3Cpath d=%27M0,70 L10,70 C13,70 14,24 24,22 L140,27 C150,28 156,62 190,70 L300,70 M300,70 L310,70 C313,70 314,24 324,22 L440,27 C450,28 456,62 490,70 L600,70 %27 fill=%27none%27 stroke=%27%231db88a%27 stroke-opacity=%270.07%27 stroke-width=%271.6%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E");
+  --wave-ventf:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 600 90%27 preserveAspectRatio=%27none%27%3E%3Cpath d=%27M0,44 L8,44 C12,44 16,18 40,18 C90,18 120,38 138,44 C142,66 146,78 156,78 C172,78 196,48 230,44 L300,44 M300,44 L308,44 C312,44 316,18 340,18 C390,18 420,38 438,44 C442,66 446,78 456,78 C472,78 496,48 530,44 L600,44 %27 fill=%27none%27 stroke=%27%231db88a%27 stroke-opacity=%270.07%27 stroke-width=%271.6%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E");
+}
+html[data-design="ws"] .scene{
+  background-image:var(--wave-pleth),var(--wave-pai),var(--wave-ventp),var(--wave-ventf);
+  background-repeat:repeat-x,repeat-x,repeat-x,repeat-x;
+  background-position:0px 30%,60px 47%,0px 66%,150px 84%;
+  background-size:600px 84px,600px 84px,600px 88px,600px 96px;
+}
+@media (prefers-reduced-motion: no-preference){
+  html[data-design="ws"] .scene{
+    animation:ws-monitor-sweep 40s linear infinite;
+  }
+  @keyframes ws-monitor-sweep{
+    from{background-position:0px 30%,60px 47%,0px 66%,150px 84%}
+    to{background-position:-1200px 30%,-1140px 47%,-600px 66%,-450px 84%}
+  }
+}
 </style>
 </head>
 <body>
@@ -1092,6 +1733,18 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
       })();
       </script>
       <button class="btn-theme" data-theme-toggle type="button" onclick="toggleTheme()" aria-label="Alternar tema"></button>
+      <script>(function(){var tb=document.currentScript.previousElementSibling;
+var ws=document.documentElement.getAttribute('data-design')==='ws';
+if(ws){var d=document.createElement('div');d.className='view-seg';d.setAttribute('role','group');d.setAttribute('aria-label','Estilo de visualização');
+var light=(document.documentElement.getAttribute('data-theme')||'dark')==='light';
+function mk(lbl){var b=document.createElement('button');b.type='button';b.textContent=lbl;return b;}
+var bl=mk('Claro'),bd=mk('Escuro'),bm=mk('Mobile');bm.title='Identidade visual clássica do be·aside';
+function act(x){[bl,bd,bm].forEach(function(b){b.classList.toggle('is-active',b===x);});}
+bl.onclick=function(){applyTheme('light');act(bl);};bd.onclick=function(){applyTheme('dark');act(bd);};bm.onclick=function(){beasideSetView('mobile');};
+act(light?bl:bd);d.appendChild(bl);d.appendChild(bd);d.appendChild(bm);tb.parentNode.replaceChild(d,tb);}
+else{var v=document.createElement('button');v.className='btn-view';v.type='button';v.setAttribute('aria-label','Ver no modo workspace');v.title='Ver no modo workspace';
+v.innerHTML='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>';
+v.onclick=function(){beasideSetView('ws');};tb.parentNode.insertBefore(v,tb.nextSibling);}})();</script>
     </div>
   </div>
   <div class="mobilenav" id="mobilenav">
@@ -1121,9 +1774,6 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
         <div class="hero-eyebrow">Raciocínio clínico à beira do leito</div>
         <h1>Conhecimento<br><span class="grad">à beira do leito</span></h1>
         <p class="hero-lead">Do raciocínio clínico à conduta objetiva — fundamentos e ferramentas curadas para entender o mecanismo e decidir com segurança, sem ruído, entre um paciente e o próximo.</p>
-        <div class="hero-actions">
-          <a class="btn-primary" href="#modulos">Começar <span aria-hidden="true">→</span></a>
-        </div>
       </div>
 
       <div class="hero-demo" id="heroDemo" aria-label="Exemplos do assistente de conduta" style="--c-accent:#e05555;--c-glow:rgba(224,85,85,.16)">
@@ -1184,7 +1834,10 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
     // janela de chat, como uma conversa real, antes de trocar de assunto. As duas
     // primeiras (Perguntas de Plantão) vêm primeiro de propósito — são o carro-chefe
     // de conteúdo/SEO do site.
-    var SESSIONS=[[0,1],[2,3],[4,5],[6,7]];
+    // Na vista workspace o chat flui como uma conversa única e contínua,
+    // atravessando todas as perguntas; a vista clássica mantém as sessões.
+    var IS_WS=document.documentElement.getAttribute('data-design')==='ws';
+    var SESSIONS=IS_WS?[[0,1,2,3,4,5,6,7]]:[[0,1],[2,3],[4,5],[6,7]];
 
     var root=document.getElementById('heroDemo');
     if(!root) return;
@@ -1370,7 +2023,7 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
           t.src.innerHTML=sourcesHtml(it.s);
           t.src.classList.add('is-visible');
           pinBottom();
-          await sleep(k===refs.length-1?4200:1300,myToken);
+          await sleep(k===refs.length-1?(IS_WS?2600:4200):1300,myToken);
         }
         bodyEl.classList.add('is-fading');
         await sleep(240,myToken);
@@ -1417,7 +2070,7 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
 
     <div class="area-head" id="central" style="--c-accent:#1db88a">
       <div class="area-eyebrow"><span class="area-num">01</span> Central de Conhecimento</div>
-      <h2>Respostas rápidas para a dúvida de plantão</h2>
+      <h2>Dúvidas Gerais</h2>
       <p>Hipotensão pós-intubação, PEEP alta, rebaixamento de consciência, sepse — as dúvidas reais do plantão, com resposta direta e o raciocínio clínico por trás dela.</p>
     </div>
 
@@ -1435,7 +2088,6 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
           </div>
         </div>
         <div class="card-wide-main">
-          <div class="card-badge">UTI &amp; Emergência</div>
           <div class="card-title">Central de Conhecimento</div>
           <div class="card-sub">Condutas e perguntas reais de plantão, respondidas direto — resposta objetiva, mecanismo e conduta prática, com referência.</div>
         </div>
@@ -1453,7 +2105,7 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
 
     <div class="area-head" id="raciocine" style="--c-accent:#1db88a">
       <div class="area-eyebrow"><span class="area-num">02</span> Raciocine</div>
-      <h2>Do mecanismo à decisão — módulos de raciocínio</h2>
+      <h2>Do mecanismo à decisão</h2>
       <p>O núcleo educacional do be·aside: ventilação, hemodinâmica, neurocrítico, procedimentos, perioperatório e antimicrobianos organizados para entender o porquê e chegar à conduta.</p>
     </div>
 
@@ -1635,7 +2287,7 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
     <div class="card wide"
        style="--c-accent:#1db88a;--c-border:rgba(29,184,138,.4);--c-glow:rgba(29,184,138,.12);--c-shadow:rgba(29,184,138,.1)">
       <span class="card-rail" aria-hidden="true"></span>
-      <a class="card-hit" href="consulte/" aria-label="Consulte e Resolva — assistente de conduta com IA">
+      <a class="card-hit" href="consulte/" aria-label="Be-IA — assistente de conduta com IA">
         <div class="card-top">
           <div class="card-icon" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1645,8 +2297,8 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
           </div>
         </div>
         <div class="card-wide-main">
-          <div class="card-badge">Assistente IA</div>
-          <div class="card-title">Consulte e Resolva</div>
+          <div class="card-badge">Assistente de IA</div>
+          <div class="card-title">Be-IA</div>
           <div class="card-sub">Um só chat para o paciente crítico: cole a anamnese, os parâmetros do ventilador, o padrão hemodinâmico ou o quadro neurológico e discuta a conduta — inclusive doses, diluições e vazão da bomba. A IA usa o be·aside como base, com as fontes internas.</div>
         </div>
         <div class="card-tags">
@@ -1722,6 +2374,8 @@ html[data-theme="light"] .hero-demo-source{background:rgba(15,23,42,.03);border-
 const THEME_KEY='beaside-theme';
 function getTheme(){
   try{const t=localStorage.getItem(THEME_KEY);if(t==='light'||t==='dark')return t;}catch(e){}
+  var a=document.documentElement.getAttribute('data-theme');
+  if(a==='light'||a==='dark')return a;
   return 'dark';
 }
 const THEME_BTN_HTML=

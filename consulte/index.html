@@ -5,7 +5,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Assistente de Conduta (IA) — be·aside</title>
+<title>Be-IA — assistente de IA da be·aside</title>
 <meta name="description" content="Assistente de conduta do be·aside: discuta casos de UTI e emergência — ventilação mecânica, hemodinâmica e neurocrítico — em um único chat, com base no conteúdo validado do site.">
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:image" content="https://beaside.com.br/assets/og-image.png">
@@ -17,11 +17,11 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="be·aside">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:title" content="Assistente de Conduta (IA) — be·aside">
+<meta property="og:title" content="Be-IA — assistente de IA da be·aside">
 <meta property="og:description" content="Assistente de conduta do be·aside: discuta casos de UTI e emergência — ventilação mecânica, hemodinâmica e neurocrítico — em um único chat, com base no conteúdo…">
 <meta property="og:url" content="https://beaside.com.br/consulte/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Assistente de Conduta (IA) — be·aside">
+<meta name="twitter:title" content="Be-IA — assistente de IA da be·aside">
 <meta name="twitter:description" content="Assistente de conduta do be·aside: discuta casos de UTI e emergência — ventilação mecânica, hemodinâmica e neurocrítico — em um único chat, com base no conteúdo…">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
@@ -262,6 +262,38 @@
     .composer{padding:12px 14px 14px}
     .chat-status{padding:0 14px}
   }
+
+  /* ── Be-IA: chat geral ──
+     A coluna de "casos" sai nas duas vistas: o Be-IA é uma conversa
+     contínua única. O motor de casos continua no JS (reversível),
+     mas a interface não cria nem lista pacientes. */
+  .case-col{display:none!important}
+  .case-scrim{display:none!important}
+  .case-layout,.case-layout.collapsed{grid-template-columns:1fr}
+  .chat-head{display:none}
+
+  /* ── vista workspace: o app é um painel centrado, não um bloco torto ── */
+  html[data-design="ws"] body[data-page="assistente"] .main{
+    margin:calc(var(--header-h) + 18px) auto 18px;
+    width:calc(100% - 48px);max-width:1280px;
+    height:calc(100vh - var(--header-h) - 36px);
+    height:calc(100dvh - var(--header-h) - 36px);
+    padding:0;overflow:hidden;
+    background:var(--bg2);border:1px solid var(--border);
+    border-radius:14px;box-shadow:var(--ws-shadow-md);
+  }
+  html[data-design="ws"] .app-bar{padding:12px 20px}
+  html[data-design="ws"] .app-bar-eyebrow{font-size:10px}
+  html[data-design="ws"] .app-bar-title{
+    font-family:var(--display);font-size:17px;font-weight:700;letter-spacing:-.015em;
+  }
+  @media(max-width:768px){
+    html[data-design="ws"] body[data-page="assistente"] .main{
+      margin:var(--header-h) 0 0;width:100%;
+      height:calc(100vh - var(--header-h));height:calc(100dvh - var(--header-h));
+      border:0;border-radius:0;box-shadow:none;
+    }
+  }
 </style>
 </head>
 <body data-module="consulte" data-page="assistente">
@@ -269,8 +301,8 @@
 <section class="section" id="assistente">
   <div class="app-bar">
     <div class="app-bar-id">
-      <span class="app-bar-eyebrow">Consulte e Resolva</span>
-      <h1 class="app-bar-title">Assistente de Conduta (IA)</h1>
+      <span class="app-bar-eyebrow">Assistente de IA</span>
+      <h1 class="app-bar-title">Be-IA</h1>
     </div>
     <button type="button" class="app-bar-disc" id="as-disc-btn" aria-expanded="false" aria-controls="as-disc-body" onclick="toggleDisc()">
       <span aria-hidden="true">⚠</span>
@@ -515,7 +547,7 @@ function renderChat(){
   }
   let msgsHtml='';
   if(!c.messages.length){
-    msgsHtml='<div class="chat-empty">Apresente o paciente: parâmetros atuais, quadro clínico, gasometria…<br>O assistente cruza VM, hemodinâmica, neurocrítico e procedimentos, e você continua a discussão por aqui.</div>';
+    msgsHtml='<div class="chat-empty">Pergunte o que precisar da prática médica — dose e diluição, ajuste de VM, vasopressor, antibiótico, conduta.<br>Quer discutir um caso? É só apresentar o paciente na conversa.</div>';
   }else{
     msgsHtml=c.messages.map((m,idx)=>renderMsg(m,idx)).join('');
   }
@@ -738,6 +770,9 @@ function mdToHtml(md){
 
 // ----- boot -----
 loadCasos();
+// Chat geral: o Be-IA é uma conversa contínua única — sem criação de casos.
+// Quem quiser discutir um paciente simplesmente o apresenta na conversa.
+if(!casos.length){casos=[{id:uid(),nome:'Be-IA',messages:[],updatedAt:Date.now()}];saveCasos();}
 casoAtivo=casos.length?casos[0].id:null;
 // No celular a gaveta de casos começa fechada — a conversa é o que importa.
 if(ehEstreito())document.getElementById('as-app').classList.add('collapsed');

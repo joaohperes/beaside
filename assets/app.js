@@ -20,7 +20,33 @@ const THEME_BTN_HTML=
   '</span>';
 function getTheme(){
   try{const t=localStorage.getItem(THEME_KEY);if(t==='light'||t==='dark')return t;}catch(e){}
+  // sem preferência salva: respeita o que o theme-boot.js já decidiu
+  // (workspace estreia no claro; clássico continua estreando no escuro)
+  const a=document.documentElement.getAttribute('data-theme');
+  if(a==='light'||a==='dark')return a;
   return 'dark';
+}
+// seletor de vista — três identidades: Claro/Escuro (workspace) e Mobile (clássica).
+// No workspace vira um controle segmentado; na clássica, um botão discreto de volta.
+function segActive(btn){
+  btn.parentNode.querySelectorAll('button').forEach(b=>b.classList.toggle('is-active',b===btn));
+}
+function viewControlHTML(){
+  const ws=document.documentElement.getAttribute('data-design')==='ws';
+  if(!ws){
+    // identidade clássica intocada: só ganha o caminho de volta ao workspace
+    const label='Ver no modo workspace';
+    return '<button class="btn-theme" data-theme-toggle type="button" onclick="toggleTheme()" aria-label="Alternar tema"></button>'+
+      '<button class="btn-view" type="button" onclick="beasideSetView(\'ws\')" aria-label="'+label+'" title="'+label+'">'+
+        '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>'+
+      '</button>';
+  }
+  const light=getTheme()==='light';
+  return '<div class="view-seg" role="group" aria-label="Estilo de visualização">'+
+    '<button type="button" class="'+(light?'is-active':'')+'" aria-pressed="'+light+'" onclick="applyTheme(\'light\');segActive(this)">Claro</button>'+
+    '<button type="button" class="'+(!light?'is-active':'')+'" aria-pressed="'+(!light)+'" onclick="applyTheme(\'dark\');segActive(this)">Escuro</button>'+
+    '<button type="button" onclick="beasideSetView(\'mobile\')" title="Identidade visual clássica do be·aside">Mobile</button>'+
+  '</div>';
 }
 function prefersReduceMotion(){
   return !!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -293,7 +319,7 @@ function buildShell(){
         '<span class="header-title">'+modMeta.subtitle+'</span>'
       : '<span class="header-title">Guias clínicos de UTI</span>')+
     '<div class="header-actions">'+
-      '<button class="btn-theme" data-theme-toggle type="button" onclick="toggleTheme()" aria-label="Alternar tema"></button>'+
+      viewControlHTML()+
       '<button class="btn-search" onclick="openSearch()" type="button"><span>Buscar</span> <kbd>⌘K</kbd></button>'+
       '<button class="menu-btn" type="button" onclick="toggleMenu()">Menu</button>'+
     '</div>';
@@ -1144,11 +1170,76 @@ function enhanceSvgZoom(){
   });
 }
 
+
+// ============================================================
+// ÍNDICE DA PÁGINA (coluna direita) — só na vista Workspace
+// Lê os cabeçalhos que já existem no HTML; não cria conteúdo.
+// ============================================================
+function buildRail(){
+  if(document.documentElement.getAttribute('data-design')!=='ws')return;
+  const main=document.querySelector('.main');
+  if(!main)return;
+
+  // páginas de conteúdo: os .sec-h; hubs de módulo: os rótulos de categoria
+  let nodes=Array.from(main.querySelectorAll('.sec-h'));
+  let getLabel=n=>{const h=n.querySelector('h2');return h?h.textContent.trim():''};
+  if(!nodes.length){
+    nodes=Array.from(main.querySelectorAll('.lp-section-label'));
+    getLabel=n=>n.textContent.trim();
+  }
+  if(nodes.length<2)return;
+
+  nodes.forEach((n,i)=>{if(!n.id)n.id='ws-sec-'+(i+1);});
+
+  const rail=document.createElement('aside');
+  rail.className='ws-rail';
+  rail.setAttribute('aria-label','Índice da página');
+  let html='<div class="ws-rail-k">Nesta página</div>';
+  nodes.forEach(n=>{
+    const t=getLabel(n);
+    if(!t)return;
+    html+='<a href="#'+n.id+'" data-rail-to="'+n.id+'">'+t+'</a>';
+  });
+  html+='<div class="ws-rail-foot">'+
+          '<a href="#" onclick="window.scrollTo({top:0,behavior:\'smooth\'});return false;">↑ Topo da página</a>'+
+        '</div>';
+  rail.innerHTML=html;
+  document.body.appendChild(rail);
+  document.documentElement.classList.add('ws-has-rail');
+
+  // marcação do trecho em leitura
+  const links=Array.from(rail.querySelectorAll('a[data-rail-to]'));
+  if(!links.length)return;
+  const byId={};links.forEach(a=>{byId[a.getAttribute('data-rail-to')]=a});
+  let visible=new Set();
+  const mark=()=>{
+    let cur=null;
+    for(const n of nodes){if(visible.has(n.id)){cur=n.id;break;}}
+    if(!cur){
+      // nenhum cabeçalho na tela: o último que já passou pelo topo
+      for(const n of nodes){
+        if(n.getBoundingClientRect().top<160)cur=n.id;
+      }
+    }
+    links.forEach(a=>a.classList.toggle('is-cur',a.getAttribute('data-rail-to')===cur));
+  };
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting)visible.add(e.target.id);else visible.delete(e.target.id);
+    });
+    mark();
+  },{rootMargin:'-60px 0px -70% 0px'});
+  nodes.forEach(n=>io.observe(n));
+  window.addEventListener('scroll',()=>{if(!visible.size)mark();},{passive:true});
+  mark();
+}
+
 // ============================================================
 // BOOT
 // ============================================================
 document.addEventListener('DOMContentLoaded',()=>{
   buildShell();
+  buildRail();
   applyTheme(getTheme()); // atualiza ícone do toggle no header
   prepareStackableTables();
   observeStackableTables();
