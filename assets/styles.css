@@ -2993,3 +2993,723 @@ html[data-theme="light"] .peep-example-tag{
 .author-photo{width:88px;height:88px;border-radius:50%;object-fit:cover;border:1px solid var(--border);flex-shrink:0}
 .author-row .sec-lead{margin:0}
 @media(max-width:480px){.author-photo{width:64px;height:64px}}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   WORKSPACE — html[data-design="ws"]
+   "Clinical Intelligence Workspace": mesmo HTML, mesmo conteúdo,
+   mesma navegação — outra COMPOSIÇÃO. A página deixa de ser uma
+   coluna de blocos flutuando e passa a ser um documento clínico
+   emoldurado: cabeçalho com faixa de métricas, índice fixo à
+   direita, listas de navegação em tabela, tabela e fonte num só
+   painel, anotações rentes ao texto.
+   Nada aqui vale para o design clássico (vista "Mobile"): toda
+   regra é escopada em html[data-design="ws"].
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── tokens: claro (tema-guia) ── */
+html[data-design="ws"][data-theme="light"]{
+  --bg:#fafbfc;
+  --bg2:#ffffff;
+  --bg3:#f4f6f8;
+  --bg4:#e8ecf0;
+  --border:rgba(18,26,38,.09);
+  --border2:rgba(18,26,38,.16);
+  --text:#161c26;
+  --text2:#586274;
+  --text3:#8a93a1;
+  --ws-shadow:0 1px 2px rgba(16,24,40,.04);
+  --ws-shadow-md:0 1px 3px rgba(16,24,40,.06),0 8px 24px rgba(16,24,40,.06);
+}
+/* ── tokens: escuro grafite (plantão noturno) ── */
+html[data-design="ws"]:not([data-theme="light"]){
+  --bg:#15171c;
+  --bg2:#1a1d23;
+  --bg3:#21252c;
+  --bg4:#2a2f38;
+  --border:rgba(255,255,255,.075);
+  --border2:rgba(255,255,255,.145);
+  --text:#e9ebef;
+  --text2:#98a0ac;
+  --text3:#69707e;
+  --ws-shadow:0 1px 2px rgba(0,0,0,.22);
+  --ws-shadow-md:0 2px 6px rgba(0,0,0,.28),0 12px 32px rgba(0,0,0,.22);
+}
+
+/* ═══ 1. A CASCA — três colunas: navegação · documento · índice ═══ */
+
+html[data-design="ws"]{
+  --ws-rail-w:238px;
+  --display:'Space Grotesk',Inter,-apple-system,system-ui,sans-serif;
+}
+
+html[data-design="ws"] body{
+  background:var(--bg);color:var(--text);
+  font-size:16px;line-height:1.66;letter-spacing:-.006em;
+}
+html[data-design="ws"] ::selection{background:rgba(var(--accent-rgb),.18)}
+html[data-design="ws"] ::-webkit-scrollbar{width:9px;height:9px}
+html[data-design="ws"] ::-webkit-scrollbar-track{background:transparent}
+html[data-design="ws"] ::-webkit-scrollbar-thumb{
+  background:var(--bg4);border-radius:99px;border:2px solid var(--bg);
+}
+
+/* o documento: coluna útil fixa, não um bloco esticado pela tela */
+html[data-design="ws"] .main{
+  padding:0 40px 96px;
+  max-width:1010px;
+  margin-right:var(--ws-rail-w);
+}
+html[data-design="ws"] .section{padding-top:0;margin-bottom:0}
+html[data-design="ws"] .section:first-child{padding-top:0}
+
+/* índice fixo à direita — a peça que faz a página virar software */
+.ws-rail{display:none}
+html[data-design="ws"] .ws-rail{
+  display:block;position:fixed;top:var(--header-h);right:0;
+  width:var(--ws-rail-w);height:calc(100vh - var(--header-h));
+  overflow-y:auto;padding:38px 22px 48px 20px;
+  border-left:1px solid var(--border);background:var(--bg);
+  z-index:60;
+}
+html[data-design="ws"] .ws-rail-k{
+  font-family:var(--mono);font-size:9.5px;font-weight:600;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--text3);
+  padding-left:13px;margin-bottom:12px;
+}
+html[data-design="ws"] .ws-rail a{
+  display:block;padding:7px 0 7px 13px;
+  border-left:2px solid var(--border);
+  font-size:13.5px;line-height:1.42;color:var(--text2);
+  text-decoration:none;letter-spacing:-.004em;
+  transition:color .15s var(--ease),border-color .15s var(--ease);
+}
+html[data-design="ws"] .ws-rail a:hover{color:var(--text);border-left-color:var(--border2)}
+html[data-design="ws"] .ws-rail a.is-cur{
+  color:var(--accent);border-left-color:var(--accent);font-weight:500;
+}
+html[data-design="ws"] .ws-rail-foot{
+  margin-top:22px;padding-top:16px;border-top:1px solid var(--border);
+}
+html[data-design="ws"] .ws-rail-foot a{
+  border-left:0;padding-left:13px;font-family:var(--mono);
+  font-size:10.5px;letter-spacing:.06em;color:var(--text3);
+}
+html[data-design="ws"] .ws-rail-foot a:hover{color:var(--accent)}
+
+/* ── header: fino, sólido, sem brilho ── */
+html[data-design="ws"] .header{
+  background:color-mix(in srgb,var(--bg2) 92%,transparent);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);box-shadow:none;
+}
+html[data-design="ws"] .header::after{display:none}
+html[data-design="ws"] .header-wordmark{color:var(--text);opacity:1}
+html[data-design="ws"] .header-logo-bars rect{animation:none}
+html[data-design="ws"] .header-mod{
+  background:transparent;border-color:var(--border2);color:var(--text2);
+}
+html[data-design="ws"] .header-mod-dot{background:var(--accent)}
+html[data-design="ws"] .header-title{color:var(--text3)}
+html[data-design="ws"] .btn-theme,
+html[data-design="ws"] .btn-search,
+html[data-design="ws"] .menu-btn{
+  background:var(--bg2);border-color:var(--border);color:var(--text2);
+}
+html[data-design="ws"] .btn-theme:hover,
+html[data-design="ws"] .btn-search:hover,
+html[data-design="ws"] .menu-btn:hover{
+  background:var(--bg3);border-color:var(--border2);color:var(--text);
+}
+html[data-design="ws"] .btn-search kbd{
+  background:var(--bg3);border-color:var(--border);color:var(--text3);
+}
+
+/* ── sidebar: plana, silenciosa, do mesmo fundo do documento ── */
+html[data-design="ws"] .sidebar{
+  background:var(--bg);border-right:1px solid var(--border);
+}
+html[data-design="ws"] .sidebar-mod{border-bottom-color:var(--border)}
+html[data-design="ws"] .sidebar-mod-k{font-family:var(--sans);letter-spacing:.02em;text-transform:none;font-size:11px}
+html[data-design="ws"] .sidebar-mod-v{color:var(--text);font-size:14px}
+html[data-design="ws"] .sidebar-section{
+  font-family:var(--sans);font-size:11.5px;letter-spacing:.02em;
+  text-transform:none;font-weight:600;color:var(--text3);
+}
+html[data-design="ws"] .nav-link{
+  border-radius:6px;margin:1px 10px;font-size:14px;
+}
+html[data-design="ws"] .nav-link:hover{background:var(--bg3)}
+html[data-design="ws"] .nav-link.active{
+  background:rgba(var(--accent-rgb),.1);font-weight:500;
+}
+html[data-design="ws"] .nav-back{font-family:var(--sans);letter-spacing:0;font-size:12.5px}
+
+/* ═══ 2. CABEÇALHO DO DOCUMENTO — título + faixa de métricas ═══ */
+
+html[data-design="ws"] .page-head{
+  padding:38px 0 0;margin:0;border:0;
+}
+html[data-design="ws"] .page-head .hero-eyebrow{
+  font-family:var(--sans);font-size:12px;font-weight:500;
+  letter-spacing:0;text-transform:none;color:var(--text3);
+  margin-bottom:12px;gap:0;
+}
+html[data-design="ws"] .page-head .hero-eyebrow::before,
+html[data-design="ws"] .page-head .hero-eyebrow::after{display:none}
+html[data-design="ws"] .page-head .section-title,
+html[data-design="ws"] .section-title{
+  font-family:var(--display);
+  font-size:clamp(34px,3.6vw,42px);font-weight:700;color:var(--text);
+  letter-spacing:-.024em;line-height:1.06;margin:0 0 12px;
+}
+html[data-design="ws"] .page-head .section-subtitle,
+html[data-design="ws"] .section-subtitle{
+  font-size:17.5px;font-weight:400;color:var(--text2);
+  line-height:1.62;max-width:62ch;margin:0;
+}
+
+/* a faixa: métricas coladas ao cabeçalho, divididas por fio — monitor */
+html[data-design="ws"] .hero-meta{
+  display:flex;flex-wrap:wrap;gap:0;
+  margin:26px 0 0;padding:0;
+  background:transparent;border:0;border-radius:0;
+  border-top:1px solid var(--border2);
+  border-bottom:1px solid var(--border2);
+  grid-template-columns:none;
+}
+html[data-design="ws"] .hero-meta .hm-item{
+  flex:1 1 0;min-width:160px;
+  padding:14px 22px;border:0;border-left:1px solid var(--border);
+}
+html[data-design="ws"] .hero-meta .hm-item:first-child{border-left:0;padding-left:0}
+html[data-design="ws"] .hm-k{
+  font-family:var(--mono);font-size:9.5px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--text3);
+  margin-bottom:6px;
+}
+html[data-design="ws"] .hm-v{
+  font-family:var(--mono);font-size:16.5px;font-weight:500;color:var(--text);
+  font-variant-numeric:tabular-nums;letter-spacing:-.01em;
+}
+html[data-design="ws"] .page-head + .hero-meta{margin-top:26px}
+html[data-design="ws"] .hero-meta + .sec-h,
+html[data-design="ws"] .hero-meta + .sec-lead + .sec-h{margin-top:46px}
+html[data-design="ws"] .hero-meta + .sec-lead{margin-top:26px}
+
+/* ═══ 3. RITMO DAS SEÇÕES — número em chip, título, fio até a margem ═══ */
+
+html[data-design="ws"] .sec-h{
+  display:flex;align-items:baseline;gap:14px;
+  margin:46px 0 18px;padding:20px 0 0;
+  border-top:1px solid var(--border2);
+}
+html[data-design="ws"] .sec-h .sec-num{
+  font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.04em;
+  color:var(--accent);background:transparent;
+  border-radius:0;padding:0;line-height:1.35;flex-shrink:0;
+  font-variant-numeric:tabular-nums;
+}
+html[data-design="ws"] .sec-h h2{
+  font-family:var(--display);
+  font-size:25px;font-weight:700;color:var(--text);
+  letter-spacing:-.02em;line-height:1.2;margin:0;
+}
+html[data-design="ws"] .sec-h::after{display:none}
+html[data-design="ws"] h3{
+  font-family:var(--display);
+  font-size:19px;font-weight:700;color:var(--text);
+  letter-spacing:-.014em;line-height:1.3;
+}
+html[data-design="ws"] .prose,
+html[data-design="ws"] .sec-lead{
+  font-size:16.5px;line-height:1.7;color:var(--text2);max-width:70ch;
+}
+html[data-design="ws"] .prose strong,
+html[data-design="ws"] td strong,
+html[data-design="ws"] .concept-card .value{color:var(--text)}
+html[data-design="ws"] .anatomy-note strong{color:var(--teal)}
+html[data-design="ws"] .pitfall-list strong{color:var(--red)}
+
+/* ═══ 4. HUB — o módulo vira índice de prontuário, não vitrine ═══ */
+
+html[data-design="ws"] .lp-hero{margin:0;padding:38px 0 0}
+html[data-design="ws"] .lp-hero-row{
+  grid-template-columns:1.5fr .8fr;gap:56px;align-items:end;
+  padding-bottom:30px;border-bottom:1px solid var(--border2);
+}
+html[data-design="ws"] .lp-eyebrow{
+  font-family:var(--sans);font-size:12px;font-weight:500;
+  letter-spacing:0;text-transform:none;color:var(--text3);
+  margin-bottom:12px;gap:0;
+}
+html[data-design="ws"] .lp-eyebrow::before{display:none}
+html[data-design="ws"] .lp-title{
+  font-family:var(--display);
+  font-size:clamp(34px,3.8vw,44px);font-weight:700;color:var(--text);
+  letter-spacing:-.026em;line-height:1.04;margin-bottom:12px;
+}
+html[data-design="ws"] .lp-desc{
+  font-size:17px;font-weight:400;color:var(--text2);
+  line-height:1.64;max-width:58ch;
+}
+html[data-design="ws"] .lp-start{
+  font-family:var(--mono);font-size:12.5px;font-weight:600;letter-spacing:.04em;
+  color:#fff;background:var(--accent);border-radius:8px;
+  padding:11px 18px;margin-top:24px;box-shadow:none;
+}
+html[data-design="ws"] .lp-start:hover{
+  filter:none;transform:none;box-shadow:var(--ws-shadow-md);
+  background:color-mix(in srgb,var(--accent) 88%,#000);
+}
+
+/* painel do módulo: quadro de dados com fio, não caixa de vidro */
+html[data-design="ws"] .lp-panel{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:10px;box-shadow:none;
+  padding:0;overflow:hidden;
+}
+html[data-design="ws"] .lp-panel::before{display:none}
+html[data-design="ws"] .lp-panel-label{
+  margin:0;padding:9px 14px;background:var(--bg3);
+  border-bottom:1px solid var(--border);
+  font-size:9.5px;letter-spacing:.15em;color:var(--text3);
+}
+html[data-design="ws"] .lp-panel-stats{grid-template-columns:1fr 1fr;gap:0}
+html[data-design="ws"] .lp-stat{
+  background:transparent;border:0;border-radius:0;
+  border-right:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:12px 14px;
+}
+html[data-design="ws"] .lp-stat:nth-child(2n){border-right:0}
+html[data-design="ws"] .lp-stat-k{font-size:9.5px;letter-spacing:.13em;margin-bottom:5px}
+html[data-design="ws"] .lp-stat-v{color:var(--text);font-size:16px;font-variant-numeric:tabular-nums}
+html[data-design="ws"] .lp-panel-foot{
+  margin:0;padding:9px 14px;border-top:0;
+  font-size:10px;color:var(--text3);
+}
+
+/* o índice: cada categoria é um quadro fechado, cada página é uma linha */
+html[data-design="ws"] .lp-section-label{
+  display:flex;align-items:center;justify-content:flex-start;gap:0;
+  margin:34px 0 0;padding:10px 18px;
+  background:var(--bg3);
+  border:1px solid var(--border);border-bottom:0;
+  border-radius:9px 9px 0 0;
+  font-family:var(--mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--text2);
+}
+html[data-design="ws"] .lp-section-label::after{display:none}
+html[data-design="ws"] .lp-grid{
+  display:block;grid-template-columns:none;gap:0;
+  margin:0 0 8px;background:var(--bg2);
+  border:1px solid var(--border);border-radius:0 0 9px 9px;
+  overflow:hidden;
+}
+html[data-design="ws"] .lp-card{
+  display:grid;
+  grid-template-columns:34px minmax(0,1fr) auto 18px;
+  grid-template-rows:auto auto;
+  column-gap:14px;row-gap:3px;align-items:center;
+  padding:13px 18px;
+  background:transparent;border:0;border-radius:0;
+  border-bottom:1px solid var(--border);
+  box-shadow:none;transform:none;overflow:visible;
+  transition:background .14s var(--ease);
+}
+html[data-design="ws"] .lp-grid .lp-card:last-child{border-bottom:0}
+html[data-design="ws"] .lp-card::before{display:none}
+html[data-design="ws"] .lp-card::after{
+  left:0;top:0;bottom:0;width:2px;border-radius:0;
+}
+html[data-design="ws"] .lp-card:hover{
+  transform:none;box-shadow:none;border-color:var(--border);
+  background:var(--bg3);
+}
+html[data-design="ws"] .lp-card:hover::after{opacity:1;top:0;bottom:0}
+html[data-design="ws"] .lp-card-top{display:contents}
+html[data-design="ws"] .lp-card-idx{
+  grid-area:1/1/3/2;align-self:center;margin:0;
+  font-size:12px;font-weight:500;color:var(--text3);
+  font-variant-numeric:tabular-nums;
+}
+html[data-design="ws"] .lp-card:hover .lp-card-idx{color:var(--accent)}
+html[data-design="ws"] .lp-card-title{
+  grid-area:1/2/2/3;margin:0;
+  font-family:var(--display);
+  font-size:17px;font-weight:700;color:var(--text);
+  letter-spacing:-.014em;line-height:1.25;
+}
+html[data-design="ws"] .lp-card-sub{
+  grid-area:2/2/3/3;margin:0;flex-grow:0;
+  font-size:14.5px;font-weight:400;color:var(--text2);line-height:1.5;
+}
+html[data-design="ws"] .lp-card-cat{
+  grid-area:1/3/3/4;align-self:center;justify-self:end;
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;
+  color:var(--text3);background:var(--bg3);
+  border:1px solid var(--border);border-radius:4px;padding:3px 7px;
+}
+html[data-design="ws"] .lp-card:hover .lp-card-cat{color:var(--text2)}
+html[data-design="ws"] .lp-card-cta{
+  grid-area:1/4/3/5;align-self:center;justify-self:end;
+  margin:0;opacity:.35;transform:none;gap:0;
+  font-size:0;color:var(--text3);
+}
+html[data-design="ws"] .lp-card-cta span{font-size:13px}
+html[data-design="ws"] .lp-card:hover .lp-card-cta{opacity:1;color:var(--accent);gap:0}
+html[data-design="ws"] .lp-card.empty{opacity:1;background:transparent}
+html[data-design="ws"] .lp-card.empty .lp-card-title,
+html[data-design="ws"] .lp-card.empty .lp-card-sub{opacity:.5}
+html[data-design="ws"] .lp-badge-soon{
+  background:var(--bg3);border-color:var(--border);color:var(--text3);
+}
+
+/* ═══ 5. TABELA — painel único: cabeçalho, dados e fonte ═══ */
+
+html[data-design="ws"] .table-wrap{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:9px;box-shadow:none;margin:0 0 24px;
+}
+html[data-design="ws"] .table-wrap:has(+ .ref){
+  border-radius:9px 9px 0 0;margin-bottom:0;
+}
+html[data-design="ws"] .table-wrap:has(+ .ref) + .ref{
+  display:block;margin:0 0 26px;padding:9px 16px;
+  background:var(--bg3);border:1px solid var(--border);border-top:0;
+  border-left-width:1px;border-radius:0 0 9px 9px;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;
+  color:var(--text3);line-height:1.5;
+}
+html[data-design="ws"] table{font-size:14.5px}
+html[data-design="ws"] thead th,
+html[data-design="ws"] th{
+  background:var(--bg3);color:var(--text2);
+  font-family:var(--mono);font-size:10px;font-weight:600;
+  letter-spacing:.11em;text-transform:uppercase;
+  padding:11px 16px;border-bottom:1px solid var(--border2);
+}
+html[data-design="ws"] tbody td{
+  padding:12px 16px;border-bottom:1px solid var(--border);
+  vertical-align:top;line-height:1.55;
+}
+html[data-design="ws"] tbody tr:last-child td{border-bottom:0}
+html[data-design="ws"] tbody tr:hover td{background:var(--bg3)}
+html[data-design="ws"] .td-mono,
+html[data-design="ws"] td .td-mono{font-variant-numeric:tabular-nums}
+html[data-design="ws"] .ref{
+  border-left:2px solid var(--border2);color:var(--text3);
+}
+
+/* ═══ 6. ANOTAÇÕES — rentes ao texto, sem cara de cartão ═══ */
+
+html[data-design="ws"] .tip-box,
+html[data-design="ws"] .warn-box,
+html[data-design="ws"] .ok-box,
+html[data-design="ws"] .info-box,
+html[data-design="ws"] .alert-box,
+html[data-design="ws"] .anatomy-note{
+  background:var(--bg3);
+  border:0;border-left:2px solid var(--border2);
+  border-radius:0 8px 8px 0;
+  box-shadow:none;
+  padding:13px 16px;margin:20px 0;
+  font-size:15.5px;line-height:1.62;color:var(--text2);
+}
+html[data-design="ws"] .warn-box{border-left-color:var(--red)}
+html[data-design="ws"] .alert-box{border-left-color:var(--red)}
+html[data-design="ws"] .tip-box{border-left-color:var(--amber)}
+html[data-design="ws"] .ok-box{border-left-color:var(--teal)}
+html[data-design="ws"] .info-box{border-left-color:var(--blue)}
+html[data-design="ws"] .anatomy-note{border-left-color:var(--teal)}
+html[data-design="ws"] .tip-box > strong,
+html[data-design="ws"] .warn-box > strong,
+html[data-design="ws"] .ok-box > strong,
+html[data-design="ws"] .info-box > strong,
+html[data-design="ws"] .alert-box > strong{
+  display:block;font-size:16px;font-weight:650;
+  letter-spacing:-.014em;margin-bottom:6px;
+}
+html[data-design="ws"] .warn-box > strong,
+html[data-design="ws"] .alert-box > strong{color:var(--red)}
+html[data-design="ws"] .tip-box > strong{color:var(--amber)}
+html[data-design="ws"] .ok-box > strong{color:var(--teal)}
+html[data-design="ws"] .info-box > strong{color:var(--blue)}
+html[data-design="ws"] .box-body{
+  font-size:15.5px;line-height:1.62;color:var(--text2);margin:0;
+}
+html[data-design="ws"] .callout{border-radius:0 8px 8px 0}
+
+/* ═══ 7. COMPONENTES DE APOIO ═══ */
+
+html[data-design="ws"] .concept-card,
+html[data-design="ws"] .calc-panel,
+html[data-design="ws"] .formula-card{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:9px;box-shadow:none;
+}
+html[data-design="ws"] .concept-card:hover{border-color:var(--border2)}
+html[data-design="ws"] .formula{
+  background:var(--bg3);border-color:var(--border);border-radius:8px;
+}
+html[data-design="ws"] a.link-cta{
+  border-radius:7px;
+  border-color:rgba(var(--accent-rgb),.3);
+  background:rgba(var(--accent-rgb),.07);
+  font-family:var(--sans);font-size:13px;font-weight:550;letter-spacing:0;
+}
+html[data-design="ws"] a.link-cta:hover{
+  background:rgba(var(--accent-rgb),.12);
+  border-color:rgba(var(--accent-rgb),.45);
+}
+html[data-design="ws"] .section-label{
+  font-family:var(--sans);font-size:12px;letter-spacing:0;
+  text-transform:none;color:var(--text3);
+}
+
+/* ── seletor de vista (Claro | Escuro | Mobile) ── */
+.view-seg{
+  display:inline-flex;align-items:center;gap:2px;
+  padding:2px;border:1px solid var(--border);border-radius:8px;
+  background:var(--bg3);flex-shrink:0;
+}
+.view-seg button{
+  appearance:none;border:0;background:transparent;cursor:pointer;
+  font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:-.005em;
+  color:var(--text3);padding:5px 11px;border-radius:6px;
+  transition:color .14s var(--ease),background .14s var(--ease);
+}
+.view-seg button:hover{color:var(--text)}
+.view-seg button.is-active{background:var(--bg2);color:var(--text);box-shadow:var(--ws-shadow)}
+.view-seg button:focus-visible{outline:2px solid rgba(var(--accent-rgb),.45);outline-offset:1px}
+
+/* ── botão de volta ao workspace, visível na vista clássica ── */
+.btn-view{
+  position:relative;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:34px;height:32px;padding:0;
+  background:rgba(255,255,255,.03);border:1px solid var(--border);
+  border-radius:8px;color:var(--text2);cursor:pointer;
+  transition:border-color .15s,color .15s,background .15s,transform .15s;
+  flex-shrink:0;
+}
+.btn-view:hover{border-color:var(--border2);color:var(--text)}
+.btn-view:active{transform:scale(.94)}
+.btn-view:focus-visible{outline:2px solid rgba(var(--accent-rgb),.45);outline-offset:2px}
+.btn-view svg{display:block}
+html[data-theme="light"] .btn-view{background:rgba(15,23,42,.03)}
+
+/* ═══ 7b. CORREÇÕES DE COMPOSIÇÃO ═══ */
+
+/* a coluna do índice só reserva espaço quando o índice existe.
+   Página de seção única não gera trilho — e não deve deixar buraco. */
+html[data-design="ws"] .main{margin-right:0}
+html[data-design="ws"].ws-has-rail .main{margin-right:var(--ws-rail-w)}
+
+/* a etiqueta de categoria já está na barra do grupo logo acima:
+   repetir em cada linha é ruído. */
+html[data-design="ws"] .lp-grid .lp-card-cat{display:none}
+html[data-design="ws"] .lp-grid .lp-card{
+  grid-template-columns:34px minmax(0,1fr) 18px;
+}
+html[data-design="ws"] .lp-grid .lp-card-title{grid-area:1/2/2/3}
+html[data-design="ws"] .lp-grid .lp-card-sub{grid-area:2/2/3/3}
+html[data-design="ws"] .lp-grid .lp-card-cta{grid-area:1/3/3/4}
+
+/* voltar ao hub é navegação, não ação: fio de texto, não botão */
+html[data-design="ws"] .nav-back{
+  margin:16px 18px 6px;padding:0;
+  border:0;background:transparent;border-radius:0;
+  color:var(--text3);font-size:12.5px;
+}
+html[data-design="ws"] .nav-back:hover{
+  background:transparent;border:0;color:var(--accent);
+}
+
+/* CTA dentro de caixa: a caixa já é a moldura.
+   O link vira texto de ação, sem segunda moldura por cima. */
+html[data-design="ws"] a.link-cta{
+  border:0;background:transparent;border-radius:0;
+  padding:0;margin:12px 0 0;
+  font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:-.01em;
+  color:var(--accent);gap:7px;
+}
+html[data-design="ws"] a.link-cta:hover{
+  background:transparent;border:0;
+  color:color-mix(in srgb,var(--accent) 82%,var(--text));
+}
+html[data-design="ws"] a.link-cta:active{transform:none}
+html[data-design="ws"] a.link-cta:focus-visible{
+  outline:2px solid rgba(var(--accent-rgb),.45);outline-offset:3px;border-radius:3px;
+}
+
+/* ═══ 8. JANELAS ESTREITAS — o índice sai, o documento respira ═══ */
+
+@media(max-width:1240px){
+  html[data-design="ws"] .ws-rail{display:none}
+  html[data-design="ws"] .main,
+  html[data-design="ws"].ws-has-rail .main{margin-right:0;max-width:940px}
+}
+@media(max-width:1024px){
+  html[data-design="ws"] .lp-hero-row{grid-template-columns:1fr;gap:28px;align-items:start}
+}
+@media(max-width:768px){
+  html[data-design="ws"] .main{padding:0 20px 80px}
+  html[data-design="ws"] .page-head,
+  html[data-design="ws"] .lp-hero{padding-top:26px}
+  html[data-design="ws"] .page-head .section-title,
+  html[data-design="ws"] .section-title{font-size:31px}
+  html[data-design="ws"] .sec-h{margin:34px 0 14px;padding-top:16px}
+  html[data-design="ws"] .sec-h h2{font-size:21px;white-space:normal}
+  html[data-design="ws"] .sec-h::after{display:none}
+  html[data-design="ws"] .hero-meta .hm-item{
+    flex:1 1 100%;border-left:0;border-top:1px solid var(--border);padding:12px 0;
+  }
+  html[data-design="ws"] .hero-meta .hm-item:first-child{border-top:0}
+  html[data-design="ws"] .lp-card{
+    grid-template-columns:30px minmax(0,1fr) 16px;
+    padding:12px 14px;
+  }
+  html[data-design="ws"] .lp-card-cat{display:none}
+  html[data-design="ws"] .lp-card-cta{grid-area:1/3/3/4;opacity:1}
+  html[data-design="ws"] .lp-card-title{font-size:16px}
+}
+
+/* o seletor de vista não pode empurrar o Menu para fora da tela */
+@media(max-width:720px){
+  html[data-design="ws"] .view-seg{padding:1px;border-radius:7px}
+  html[data-design="ws"] .view-seg button{padding:4px 7px;font-size:11px;border-radius:5px}
+}
+@media(max-width:420px){
+  html[data-design="ws"] .view-seg button{padding:4px 5px;font-size:10.5px;letter-spacing:-.02em}
+}
+@media(max-width:480px){
+  html[data-design="ws"] .page-head .section-title,
+  html[data-design="ws"] .section-title{font-size:28px;line-height:1.12}
+  html[data-design="ws"] .sec-h h2{font-size:20px}
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   V8 — O DOCUMENTO VIRA FOLHA (Stripe Docs / Notion)
+   O conteúdo passa a viver numa folha branca sobre papel de
+   monitor; navegação e índice ficam no papel, fora da folha.
+   Claro = papel esverdeado #f6f8f7 + folha branca.
+   Escuro = grafite profundo #131519 + folha #191c21.
+   ═══════════════════════════════════════════════════════════════ */
+
+html[data-design="ws"][data-theme="light"]{
+  --bg:#f6f8f7;--bg3:#eef1f0;--bg4:#e3e8e6;
+  --ecg-minor:rgba(18,26,38,.025);--ecg-major:rgba(18,26,38,.05);
+}
+html[data-design="ws"]:not([data-theme="light"]){
+  --bg:#131519;--bg2:#191c21;--bg3:#20242a;--bg4:#2a2f36;
+  --ecg-minor:rgba(255,255,255,.016);--ecg-major:rgba(255,255,255,.032);
+}
+
+/* papel de ECG no fundo da estação — a folha cobre o centro */
+html[data-design="ws"] body{
+  background-image:
+    linear-gradient(var(--ecg-minor) 1px,transparent 1px),
+    linear-gradient(90deg,var(--ecg-minor) 1px,transparent 1px),
+    linear-gradient(var(--ecg-major) 1px,transparent 1px),
+    linear-gradient(90deg,var(--ecg-major) 1px,transparent 1px);
+  background-size:24px 24px,24px 24px,120px 120px,120px 120px;
+  background-attachment:fixed;
+}
+
+/* a folha */
+html[data-design="ws"] .main{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:14px;
+  box-shadow:var(--ws-shadow-md);
+  margin-top:calc(var(--header-h) + 22px);
+  margin-bottom:52px;
+  margin-left:calc(var(--sidebar-w) + 26px);
+  margin-right:30px;
+  padding:10px 48px 64px;
+}
+html[data-design="ws"].ws-has-rail .main{
+  margin-right:calc(var(--ws-rail-w) + 26px);
+}
+
+/* navegação e índice moram no papel, sem moldura própria */
+html[data-design="ws"] .sidebar{background:transparent;border-right:0}
+html[data-design="ws"] .ws-rail{background:transparent;border-left:0}
+html[data-design="ws"] .header{
+  background:color-mix(in srgb,var(--bg) 88%,transparent);
+}
+
+@media(max-width:1240px){
+  html[data-design="ws"] .ws-rail{display:none}
+  html[data-design="ws"] .main,
+  html[data-design="ws"].ws-has-rail .main{margin-right:26px;max-width:960px}
+}
+@media(max-width:768px){
+  html[data-design="ws"] .main,
+  html[data-design="ws"].ws-has-rail .main{
+    margin:calc(var(--header-h) + 10px) 10px 36px;
+    padding:4px 18px 46px;border-radius:12px;
+  }
+}
+
+/* V10 — ocupar a tela: a folha do documento fica mais larga */
+html[data-design="ws"] .main{max-width:1120px}
+
+/* ═══ V12 — cabeçalho verde-be·aside nas páginas internas ═══ */
+html[data-design="ws"][data-theme="light"]{--ink:#0d2f27}
+html[data-design="ws"]:not([data-theme="light"]){--ink:#0b241e}
+
+html[data-design="ws"] .header{
+  background:var(--ink);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none;
+}
+html[data-design="ws"] .header-wordmark{color:#f2f4f6}
+html[data-design="ws"] .header-mod{
+  background:transparent;border-color:rgba(255,255,255,.22);color:rgba(235,240,244,.8);
+}
+html[data-design="ws"] .header-title{color:rgba(235,240,244,.55)}
+html[data-design="ws"] .btn-theme,
+html[data-design="ws"] .btn-search,
+html[data-design="ws"] .menu-btn{
+  background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18);
+  color:rgba(235,240,244,.85);
+}
+html[data-design="ws"] .btn-theme:hover,
+html[data-design="ws"] .btn-search:hover,
+html[data-design="ws"] .menu-btn:hover{
+  background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3);color:#fff;
+}
+html[data-design="ws"] .btn-search kbd{
+  background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.16);
+  color:rgba(235,240,244,.7);
+}
+html[data-design="ws"] .view-seg{
+  background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.14);
+}
+html[data-design="ws"] .view-seg button{color:rgba(235,240,244,.62)}
+html[data-design="ws"] .view-seg button:hover{color:#fff}
+html[data-design="ws"] .view-seg button.is-active{
+  background:#fff;color:#14202e;box-shadow:none;
+}
+
+/* ═══ V15 — legibilidade geral: um degrau acima nas páginas internas ═══ */
+html[data-design="ws"] body{font-size:16.5px}
+html[data-design="ws"] .prose,
+html[data-design="ws"] .sec-lead{font-size:17px;line-height:1.7}
+html[data-design="ws"] .page-head .section-subtitle,
+html[data-design="ws"] .section-subtitle{font-size:18px}
+html[data-design="ws"] table{font-size:15px}
+html[data-design="ws"] .tip-box,
+html[data-design="ws"] .warn-box,
+html[data-design="ws"] .ok-box,
+html[data-design="ws"] .info-box,
+html[data-design="ws"] .alert-box,
+html[data-design="ws"] .anatomy-note{font-size:16px}
+html[data-design="ws"] .box-body{font-size:16px}
+html[data-design="ws"] .lp-desc{font-size:17.5px}
+html[data-design="ws"] .lp-card-title{font-size:17.5px}
+html[data-design="ws"] .lp-card-sub{font-size:15px}
+html[data-design="ws"] .nav-link{font-size:14.5px}
+html[data-design="ws"] .ws-rail a{font-size:14px}
