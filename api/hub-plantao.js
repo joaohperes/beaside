@@ -282,7 +282,6 @@ function sanitizePatient(raw) {
     admHosp: text('admHosp', 12),
     admUti: text('admUti', 12),
     setorOrigem: text('setorOrigem', 120),
-    motivoAdmissao: text('motivoAdmissao', 300),
     sexo: ['F', 'M'].includes(raw.sexo) ? raw.sexo : '',
     labs,
     vitals,
