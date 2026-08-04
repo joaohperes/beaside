@@ -14,6 +14,11 @@
 //     clínicas, o tipo MedicalWebPage com o público (médico) e a especialidade.
 // Nada disso inventa texto: todo rótulo vem do manifesto ou da própria página.
 //
+// Também injeta a tag do Google Analytics 4 (gtag.js) logo após o <head>, em
+// toda página que ainda não a tiver — snippet padrão do Google, sem custom.
+// O ID de medição vive só aqui (GA_ID); não é segredo: ele aparece de qualquer
+// forma no HTML publicado de qualquer site que usa GA.
+//
 // Executar: node scripts/seo-tags.js [--dry-run]
 
 import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from 'fs';
@@ -101,6 +106,25 @@ const ESPECIALIDADE = { vm: 'PulmonaryMedicine', hemo: 'Cardiovascular', neuro: 
 // Cartão social. A imagem é 1200×630 e vive em assets/og-image.png.
 const OG_IMAGE = BASE_URL + '/assets/og-image.png';
 const OG_IMAGE_ALT = 'be·aside — raciocínio clínico à beira do leito';
+
+// Google Analytics 4. Propriedade "beaside.com.br", fluxo "be·aside — site",
+// criada em 04/08/2026 na conta cesar.junior@unochapeco.edu.br. O snippet é o
+// padrão do Google (gtag.js), colado sem alteração, e entra logo após o <head>
+// — posição recomendada pela documentação do GA. Detecção pela URL do gtag:
+// página que já carrega googletagmanager.com/gtag/js não recebe segunda cópia.
+// hub-uti/ fica de fora (SKIP_DIRS): é app autenticado, medição é outra conversa.
+const GA_ID = 'G-7K0CML04MR';
+const GA_SNIPPET = [
+  '<!-- Google tag (gtag.js) -->',
+  '<script async src="https://www.googletagmanager.com/gtag/js?id=' + GA_ID + '"></script>',
+  '<script>',
+  '  window.dataLayer = window.dataLayer || [];',
+  '  function gtag(){dataLayer.push(arguments);}',
+  "  gtag('js', new Date());",
+  '',
+  "  gtag('config', '" + GA_ID + "');",
+  '</script>'
+].join('\n');
 
 function walk(dir, acc) {
   acc = acc || [];
@@ -220,6 +244,10 @@ const sitemapEntries = [];
 for (const relPath of files) {
   const rel = relPath.split(sep).join('/');
   if (SKIP_FILES.has(rel) || APOSENTADAS.has(rel)) continue;
+  // Protótipos de trabalho ("modelo-*.html" na raiz) não são páginas do site:
+  // vivem no disco sem estar no git, e um deles já entrou no sitemap por engano.
+  // Arquivo de modelo não recebe tag nenhuma e não existe para o gerador.
+  if (/^modelo-[^/]+\.html$/.test(rel)) continue;
   const full = join(root, relPath);
   let html = readFileSync(full, 'utf8');
   const original = html;
@@ -332,6 +360,15 @@ for (const relPath of files) {
     );
   }
 
+  // Google Analytics: só em página que ainda não carrega o gtag, logo após o
+  // <head>. Página noindex também mede — saber quanta gente bate no login ou
+  // num rascunho é informação, não indexação.
+  const hasGtag = /googletagmanager\.com\/gtag\/js/i.test(html);
+  const gtagAdded = !hasGtag && /<head[^>]*>/i.test(html);
+  if (gtagAdded) {
+    html = html.replace(/(<head[^>]*>\s*\n?)/i, function (m) { return m + GA_SNIPPET + '\n'; });
+  }
+
   const finalNoindex = /name="robots"[^>]*noindex/i.test(html);
   if (!finalNoindex) sitemapEntries.push(canonicalUrl);
 
@@ -339,6 +376,7 @@ for (const relPath of files) {
     report.push({
       relPath: relPath,
       added: inject.length,
+      gtagAdded: gtagAdded,
       noindexAdded: isUtility && !alreadyNoindexBefore,
       descSource: descSource,
       noDescriptionFound: !description
@@ -350,6 +388,7 @@ for (const relPath of files) {
 console.log((DRY_RUN ? '[DRY RUN] ' : '') + 'Paginas alteradas: ' + report.length + '/' + files.length);
 for (const r of report) {
   console.log('  ' + r.relPath + ' — +' + r.added + ' tags'
+    + (r.gtagAdded ? ' +gtag' : '')
     + (r.noindexAdded ? ' +noindex' : '')
     + (r.descSource ? ' [desc: ' + r.descSource + ']' : '')
     + (r.noDescriptionFound ? ' (SEM FONTE DE DESCRICAO — revisar manualmente)' : ''));
