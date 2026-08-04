@@ -1655,6 +1655,92 @@ html[data-design="ws"] .scene{
     to{background-position:-1200px 30%,-1140px 47%,-600px 66%,-450px 84%}
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   V17 — MONITORES DE UTI NO HERO (vista workspace)
+   As linhas soltas do fundo (V16 + traçado) SAEM; no lugar, quatro
+   janelas de equipamentos — desenho próprio, sem marca — flanqueiam
+   o hero: monitor multiparamétrico (Hemo), ventilador (VM),
+   neuromonitor (Neuro) e bomba de infusão de antimicrobiano
+   (Antibioticoterapia). Hover abre o rótulo do guia embaixo;
+   o scroll leva as janelas para cima até sumirem.
+   Cada curva desliza exatamente UM ciclo por volta — loop contínuo.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* fim das linhas antigas do fundo */
+html[data-design="ws"] .trace{display:none!important}
+html[data-design="ws"] .scene{background-image:none!important;animation:none!important}
+
+.ws-devices{display:none}
+html[data-design="ws"] .hero{position:relative}
+html[data-design="ws"] .ws-devices{
+  display:block;position:absolute;inset:-20px 0 0;pointer-events:none;
+  --wsd-ecg:#37d67a;--wsd-spo2:#3ec6e0;--wsd-art:#e05555;
+  --wsd-pvc:#e0b23e;--wsd-paw:#e09a3e;--wsd-co2:#e6cf4a;--wsd-pic:#b48af7;
+}
+html[data-design="ws"] .wsd{
+  position:absolute;width:280px;pointer-events:auto;
+  text-decoration:none;color:inherit;display:block;
+  transition:transform .45s var(--ease);will-change:transform,opacity;
+}
+/* ancoragem na BORDA DA TELA (fora da coluna de texto): o cálculo
+   (100% - 100vw)/2 leva o aparelho até a margem do viewport */
+html[data-design="ws"] body{overflow-x:hidden}
+html[data-design="ws"] .ws-devices{--edge:calc((100% - 100vw)/2 + 20px)}
+html[data-design="ws"] .wsd-l1{left:var(--edge);top:0;transform:rotate(-2.2deg)}
+html[data-design="ws"] .wsd-l2{left:calc(var(--edge) + 26px);top:268px;transform:rotate(1.6deg)}
+html[data-design="ws"] .wsd-r1{right:var(--edge);top:0;transform:rotate(2.2deg)}
+html[data-design="ws"] .wsd-r2{right:calc(var(--edge) + 26px);top:268px;transform:rotate(-1.6deg)}
+html[data-design="ws"] .wsd:hover{transform:rotate(0deg) translateY(-6px) scale(1.03);z-index:9}
+html[data-design="ws"] .wsd-shell{
+  background:linear-gradient(180deg,#eceff1,#dde2e5);
+  border:1px solid rgba(18,26,38,.14);border-radius:14px;padding:8px 8px 6px;
+  box-shadow:0 2px 4px rgba(16,24,40,.08),0 16px 38px rgba(16,24,40,.13);
+}
+html[data-design="ws"]:not([data-theme="light"]) .wsd-shell{
+  background:linear-gradient(180deg,#2a2f36,#21252c);border-color:rgba(255,255,255,.12);
+}
+html[data-design="ws"] .wsd-top{display:flex;align-items:center;justify-content:space-between;padding:1px 5px 6px}
+html[data-design="ws"] .wsd-name{font-family:var(--mono);font-size:8px;font-weight:700;letter-spacing:.15em;color:#5c6870;text-transform:uppercase}
+html[data-design="ws"]:not([data-theme="light"]) .wsd-name{color:#9aa2ae}
+html[data-design="ws"] .wsd-leds{display:flex;gap:4px}
+html[data-design="ws"] .wsd-leds i{width:5px;height:5px;border-radius:50%;background:#c3cacf;display:block}
+html[data-design="ws"] .wsd-leds i.on{background:#1db88a}
+html[data-design="ws"] .wsd-screen{
+  background:#0c1116;border-radius:8px;overflow:hidden;border:1px solid rgba(0,0,0,.5);
+  background-image:
+    linear-gradient(rgba(120,190,170,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(120,190,170,.07) 1px,transparent 1px);
+  background-size:15px 15px;
+}
+html[data-design="ws"] .wsd-screen svg{display:block;width:100%;height:auto}
+html[data-design="ws"] .wsd-foot{display:flex;align-items:center;justify-content:center;gap:7px;padding:6px 4px 1px}
+html[data-design="ws"] .wsd-foot i{width:22px;height:3px;border-radius:2px;background:#c3cacf;display:block}
+html[data-design="ws"] .wsd-foot i.g{background:#9fb8ad}
+html[data-design="ws"] .wsd-num text{font-family:var(--mono)}
+html[data-design="ws"] .wsd-wave{animation:wsd-shift linear infinite}
+@keyframes wsd-shift{to{transform:translateX(var(--wc))}}
+html[data-design="ws"] .wsd-bar{animation:wsd-fill 14s linear infinite alternate}
+@keyframes wsd-fill{from{width:120px}to{width:250px}}
+html[data-design="ws"] .wsd-drip{animation:wsd-drip 2.4s ease-in infinite}
+@keyframes wsd-drip{0%{transform:translateY(0);opacity:1}70%{transform:translateY(9px);opacity:1}100%{transform:translateY(12px);opacity:0}}
+html[data-design="ws"] .wsd-tag{
+  margin:9px 6px 0;display:flex;align-items:center;justify-content:space-between;
+  background:var(--bg2);border:1px solid var(--border2);border-radius:9px;padding:8px 12px;
+  opacity:0;transform:translateY(-6px);
+  transition:opacity .45s var(--ease),transform .45s var(--ease);
+}
+html[data-design="ws"] .wsd:hover .wsd-tag,
+html[data-design="ws"] .wsd:focus-visible .wsd-tag{opacity:1;transform:none}
+html[data-design="ws"] .wsd-tag-k{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+html[data-design="ws"] .wsd-tag-t{font-family:var(--display);font-size:14.5px;font-weight:700;color:var(--text);letter-spacing:-.014em}
+html[data-design="ws"] .wsd-tag-a{font-size:13px;font-weight:600}
+html[data-design="ws"] .wsd:focus-visible{outline:2px solid rgba(29,184,138,.5);outline-offset:4px;border-radius:16px}
+@media(max-width:1560px){html[data-design="ws"] .wsd{width:240px}html[data-design="ws"] .wsd-l2,html[data-design="ws"] .wsd-r2{top:232px}}
+@media(max-width:1370px){html[data-design="ws"] .ws-devices{display:none}}
+@media (prefers-reduced-motion: reduce){
+  html[data-design="ws"] .wsd-wave,html[data-design="ws"] .wsd-bar,html[data-design="ws"] .wsd-drip{animation:none}
+}
 </style>
 </head>
 <body>
@@ -1769,6 +1855,115 @@ v.onclick=function(){beasideSetView('ws');};tb.parentNode.insertBefore(v,tb.next
   </script>
 
   <section class="hero">
+
+  <!-- ── monitores de UTI flanqueando o hero (só na vista workspace) ── -->
+  <div class="ws-devices" aria-hidden="false">
+    <a class="wsd wsd-l1" href="hemo/" aria-label="Hemo Guide — Hemodinâmica e Choque">
+      <div class="wsd-shell">
+        <div class="wsd-top"><span class="wsd-name">Monitor &#183; Leito 07</span><span class="wsd-leds"><i class="on"></i><i></i><i></i></span></div>
+        <div class="wsd-screen"><svg viewBox="0 0 320 190">
+        <clipPath id="wsdc1"><rect x="6" y="6" width="222" height="178" rx="3"/></clipPath>
+        <g clip-path="url(#wsdc1)">
+          <g class="wsd-wave" style="--wc:-110px;animation-duration:2.6s"><path d="M6,34 h13 c3,0 4,-4 7,-4 3,0 4,4 7,4 h11 l3,2 4,-18 5,28 4,-12 h11 c5,0 7,-7 11,-7 4,0 6,7 11,7 h23 M116,34 h13 c3,0 4,-4 7,-4 3,0 4,4 7,4 h11 l3,2 4,-18 5,28 4,-12 h11 c5,0 7,-7 11,-7 4,0 6,7 11,7 h23 M226,34 h13 c3,0 4,-4 7,-4 3,0 4,4 7,4 h11 l3,2 4,-18 5,28 4,-12 h11 c5,0 7,-7 11,-7 4,0 6,7 11,7 h23 M336,34 h13 c3,0 4,-4 7,-4 3,0 4,4 7,4 h11 l3,2 4,-18 5,28 4,-12 h11 c5,0 7,-7 11,-7 4,0 6,7 11,7 h23 M446,34 h13 c3,0 4,-4 7,-4 3,0 4,4 7,4 h11 l3,2 4,-18 5,28 4,-12 h11 c5,0 7,-7 11,-7 4,0 6,7 11,7 h23 " fill="none" stroke="var(--wsd-ecg)" stroke-width="1.7" stroke-linecap="round"/></g>
+          <g class="wsd-wave" style="--wc:-110px;animation-duration:2.6s"><path d="M6,82 c10,-20 18,-24 28,-24 10,0 14,12 20,15 4,2 7,-2 10,0 14,4 20,8 28,9 8,0 16,0 24,0 M116,82 c10,-20 18,-24 28,-24 10,0 14,12 20,15 4,2 7,-2 10,0 14,4 20,8 28,9 8,0 16,0 24,0 M226,82 c10,-20 18,-24 28,-24 10,0 14,12 20,15 4,2 7,-2 10,0 14,4 20,8 28,9 8,0 16,0 24,0 M336,82 c10,-20 18,-24 28,-24 10,0 14,12 20,15 4,2 7,-2 10,0 14,4 20,8 28,9 8,0 16,0 24,0 M446,82 c10,-20 18,-24 28,-24 10,0 14,12 20,15 4,2 7,-2 10,0 14,4 20,8 28,9 8,0 16,0 24,0 " fill="none" stroke="var(--wsd-spo2)" stroke-width="1.6" stroke-linecap="round"/></g>
+          <g class="wsd-wave" style="--wc:-110px;animation-duration:2.6s"><path d="M6,132 h8 c3,0 5,-30 12,-30 5,0 6,12 10,15 2,1 4,-3 6,-1 8,3 12,10 20,13 10,2 14,3 22,3 h32 M116,132 h8 c3,0 5,-30 12,-30 5,0 6,12 10,15 2,1 4,-3 6,-1 8,3 12,10 20,13 10,2 14,3 22,3 h32 M226,132 h8 c3,0 5,-30 12,-30 5,0 6,12 10,15 2,1 4,-3 6,-1 8,3 12,10 20,13 10,2 14,3 22,3 h32 M336,132 h8 c3,0 5,-30 12,-30 5,0 6,12 10,15 2,1 4,-3 6,-1 8,3 12,10 20,13 10,2 14,3 22,3 h32 M446,132 h8 c3,0 5,-30 12,-30 5,0 6,12 10,15 2,1 4,-3 6,-1 8,3 12,10 20,13 10,2 14,3 22,3 h32 " fill="none" stroke="var(--wsd-art)" stroke-width="1.6" stroke-linecap="round"/></g>
+          <g class="wsd-wave" style="--wc:-110px;animation-duration:2.6s"><path d="M6,170 c10,-6 16,-8 24,-8 10,0 14,6 22,7 8,1 12,-4 20,-4 8,0 12,5 20,5 h24 M116,170 c10,-6 16,-8 24,-8 10,0 14,6 22,7 8,1 12,-4 20,-4 8,0 12,5 20,5 h24 M226,170 c10,-6 16,-8 24,-8 10,0 14,6 22,7 8,1 12,-4 20,-4 8,0 12,5 20,5 h24 M336,170 c10,-6 16,-8 24,-8 10,0 14,6 22,7 8,1 12,-4 20,-4 8,0 12,5 20,5 h24 M446,170 c10,-6 16,-8 24,-8 10,0 14,6 22,7 8,1 12,-4 20,-4 8,0 12,5 20,5 h24 " fill="none" stroke="var(--wsd-pvc)" stroke-width="1.4" stroke-linecap="round"/></g>
+        </g>
+        <g class="wsd-num">
+          <line x1="232" y1="8" x2="232" y2="182" stroke="rgba(255,255,255,.1)"/>
+          <text x="240" y="20" font-size="9" fill="var(--wsd-ecg)" opacity=".8">FC</text>
+          <text x="240" y="46" font-size="26" font-weight="700" fill="var(--wsd-ecg)">78</text>
+          <text x="240" y="66" font-size="9" fill="var(--wsd-spo2)" opacity=".8">SpO2</text>
+          <text x="240" y="90" font-size="24" font-weight="700" fill="var(--wsd-spo2)">97</text>
+          <text x="240" y="110" font-size="9" fill="var(--wsd-art)" opacity=".8">PAI</text>
+          <text x="240" y="132" font-size="17" font-weight="700" fill="var(--wsd-art)">118/72</text>
+          <text x="240" y="152" font-size="9" fill="var(--wsd-pvc)" opacity=".8">PVC</text>
+          <text x="240" y="174" font-size="20" font-weight="700" fill="var(--wsd-pvc)">8</text>
+        </g>
+      </svg></div>
+        <div class="wsd-foot"><i class="g"></i><i></i><i></i></div>
+      </div>
+      <div class="wsd-tag"><div><div class="wsd-tag-k" style="color:#d63d3d">Hemo Guide</div><div class="wsd-tag-t">Hemodin&#226;mica &amp; Choque</div></div><span class="wsd-tag-a" style="color:#d63d3d">Abrir &#8594;</span></div>
+    </a>
+    <a class="wsd wsd-l2" href="vm/" aria-label="VM Guide — Ventilação Mecânica">
+      <div class="wsd-shell">
+        <div class="wsd-top"><span class="wsd-name">Ventilador &#183; VC-AC</span><span class="wsd-leds"><i class="on"></i><i></i><i></i></span></div>
+        <div class="wsd-screen"><svg viewBox="0 0 320 168">
+        <clipPath id="wsdc2"><rect x="6" y="6" width="222" height="156" rx="3"/></clipPath>
+        <g clip-path="url(#wsdc2)">
+          <text x="10" y="18" font-family="monospace" font-size="8" fill="var(--wsd-paw)" opacity=".7">Paw</text>
+          <g class="wsd-wave" style="--wc:-330px;animation-duration:7.8s"><path d="M6,54 h20 c4,0 4,-30 12,-31 l130,3 c6,1 8,24 16,28 h152 M336,54 h20 c4,0 4,-30 12,-31 l130,3 c6,1 8,24 16,28 h152 M666,54 h20 c4,0 4,-30 12,-31 l130,3 c6,1 8,24 16,28 h152 " fill="none" stroke="var(--wsd-paw)" stroke-width="1.6" stroke-linecap="round"/></g>
+          <text x="10" y="70" font-family="monospace" font-size="8" fill="var(--wsd-spo2)" opacity=".7">Fluxo</text>
+          <g class="wsd-wave" style="--wc:-330px;animation-duration:7.8s"><path d="M6,100 c6,-26 12,-30 24,-30 14,0 20,14 26,22 3,9 4,16 9,16 8,0 14,-2 20,-5 6,-2 10,-3 16,-3 h235 M336,100 c6,-26 12,-30 24,-30 14,0 20,14 26,22 3,9 4,16 9,16 8,0 14,-2 20,-5 6,-2 10,-3 16,-3 h235 M666,100 c6,-26 12,-30 24,-30 14,0 20,14 26,22 3,9 4,16 9,16 8,0 14,-2 20,-5 6,-2 10,-3 16,-3 h235 " fill="none" stroke="var(--wsd-spo2)" stroke-width="1.6" stroke-linecap="round"/></g>
+          <text x="10" y="120" font-family="monospace" font-size="8" fill="#7ea8e0" opacity=".7">Volume</text>
+          <g class="wsd-wave" style="--wc:-330px;animation-duration:7.8s"><path d="M6,154 c16,-4 22,-34 36,-34 14,0 20,30 36,34 h258 M336,154 c16,-4 22,-34 36,-34 14,0 20,30 36,34 h258 M666,154 c16,-4 22,-34 36,-34 14,0 20,30 36,34 h258 " fill="none" stroke="#7ea8e0" stroke-width="1.5" stroke-linecap="round"/></g>
+        </g>
+        <g class="wsd-num">
+          <line x1="232" y1="8" x2="232" y2="160" stroke="rgba(255,255,255,.1)"/>
+          <text x="240" y="20" font-size="8.5" fill="var(--wsd-paw)" opacity=".8">Ppico</text>
+          <text x="240" y="42" font-size="21" font-weight="700" fill="var(--wsd-paw)">24</text>
+          <text x="240" y="60" font-size="8.5" fill="var(--wsd-paw)" opacity=".8">PEEP</text>
+          <text x="240" y="80" font-size="18" font-weight="700" fill="var(--wsd-paw)">8</text>
+          <text x="240" y="98" font-size="8.5" fill="#7ea8e0" opacity=".8">VC</text>
+          <text x="240" y="118" font-size="18" font-weight="700" fill="#7ea8e0">420</text>
+          <text x="278" y="98" font-size="8.5" fill="#fff" opacity=".55">FR</text>
+          <text x="278" y="118" font-size="18" font-weight="700" fill="#fff" opacity=".85">16</text>
+          <text x="240" y="138" font-size="8.5" fill="#fff" opacity=".55">FiO2</text>
+          <text x="240" y="158" font-size="18" font-weight="700" fill="#fff" opacity=".85">40</text>
+        </g>
+      </svg></div>
+        <div class="wsd-foot"><i class="g"></i><i></i><i></i></div>
+      </div>
+      <div class="wsd-tag"><div><div class="wsd-tag-k" style="color:#0e8fa0">VM Guide</div><div class="wsd-tag-t">Ventila&#231;&#227;o Mec&#226;nica</div></div><span class="wsd-tag-a" style="color:#0e8fa0">Abrir &#8594;</span></div>
+    </a>
+    <a class="wsd wsd-r1" href="neuro/" aria-label="Neuro Guide — Manejo Neurocrítico">
+      <div class="wsd-shell">
+        <div class="wsd-top"><span class="wsd-name">Neuromonitor</span><span class="wsd-leds"><i class="on"></i><i></i><i></i></span></div>
+        <div class="wsd-screen"><svg viewBox="0 0 320 168">
+        <clipPath id="wsdc3"><rect x="6" y="6" width="222" height="156" rx="3"/></clipPath>
+        <g clip-path="url(#wsdc3)">
+          <text x="10" y="20" font-family="monospace" font-size="8" fill="var(--wsd-co2)" opacity=".7">EtCO2</text>
+          <g class="wsd-wave" style="--wc:-330px;animation-duration:7.8s"><path d="M6,74 h12 c4,0 4,-34 10,-36 l6,-1 40,2 c4,1 5,3 6,6 l3,23 c1,4 3,6 8,6 h245 M336,74 h12 c4,0 4,-34 10,-36 l6,-1 40,2 c4,1 5,3 6,6 l3,23 c1,4 3,6 8,6 h245 M666,74 h12 c4,0 4,-34 10,-36 l6,-1 40,2 c4,1 5,3 6,6 l3,23 c1,4 3,6 8,6 h245 " fill="none" stroke="var(--wsd-co2)" stroke-width="1.7" stroke-linecap="round"/></g>
+          <text x="10" y="96" font-family="monospace" font-size="8" fill="var(--wsd-pic)" opacity=".7">PIC</text>
+          <g class="wsd-wave" style="--wc:-110px;animation-duration:2.6s"><path d="M6,150 h8 c3,-14 6,-16 11,-16 4,0 6,8 9,10 2,1 3,-2 5,-1 5,2 8,5 13,7 h64 M116,150 h8 c3,-14 6,-16 11,-16 4,0 6,8 9,10 2,1 3,-2 5,-1 5,2 8,5 13,7 h64 M226,150 h8 c3,-14 6,-16 11,-16 4,0 6,8 9,10 2,1 3,-2 5,-1 5,2 8,5 13,7 h64 M336,150 h8 c3,-14 6,-16 11,-16 4,0 6,8 9,10 2,1 3,-2 5,-1 5,2 8,5 13,7 h64 M446,150 h8 c3,-14 6,-16 11,-16 4,0 6,8 9,10 2,1 3,-2 5,-1 5,2 8,5 13,7 h64 " fill="none" stroke="var(--wsd-pic)" stroke-width="1.6" stroke-linecap="round"/></g>
+        </g>
+        <g class="wsd-num">
+          <line x1="232" y1="8" x2="232" y2="160" stroke="rgba(255,255,255,.1)"/>
+          <text x="240" y="24" font-size="9" fill="var(--wsd-co2)" opacity=".8">EtCO2</text>
+          <text x="240" y="50" font-size="24" font-weight="700" fill="var(--wsd-co2)">35</text>
+          <text x="240" y="76" font-size="9" fill="var(--wsd-pic)" opacity=".8">PIC</text>
+          <text x="240" y="102" font-size="24" font-weight="700" fill="var(--wsd-pic)">12</text>
+          <text x="240" y="128" font-size="9" fill="#fff" opacity=".55">PPC</text>
+          <text x="240" y="154" font-size="24" font-weight="700" fill="#fff" opacity=".85">68</text>
+        </g>
+      </svg></div>
+        <div class="wsd-foot"><i class="g"></i><i></i><i></i></div>
+      </div>
+      <div class="wsd-tag"><div><div class="wsd-tag-k" style="color:#6d4fd6">Neuro Guide</div><div class="wsd-tag-t">Manejo Neurocr&#237;tico</div></div><span class="wsd-tag-a" style="color:#6d4fd6">Abrir &#8594;</span></div>
+    </a>
+    <a class="wsd wsd-r2" href="infecto/" aria-label="Antimicrobianos — Antibioticoterapia na UTI">
+      <div class="wsd-shell">
+        <div class="wsd-top"><span class="wsd-name">Bomba de infus&#227;o</span><span class="wsd-leds"><i class="on"></i><i></i><i></i></span></div>
+        <div class="wsd-screen"><svg viewBox="0 0 320 168">
+        <rect x="6" y="6" width="308" height="156" rx="3" fill="none"/>
+        <text x="16" y="30" font-family="monospace" font-size="9" fill="#8a93a1">FÁRMACO</text>
+        <text x="16" y="52" font-family="monospace" font-size="17" font-weight="700" fill="#7c85f0">MEROPENEM 1 g</text>
+        <text x="16" y="72" font-family="monospace" font-size="10" fill="#cfd8de" opacity=".8">8/8 h &#183; infus&#227;o estendida 3 h</text>
+        <text x="16" y="106" font-family="monospace" font-size="9" fill="#8a93a1">VAZ&#195;O</text>
+        <text x="16" y="132" font-family="monospace" font-size="26" font-weight="700" fill="#fff">33 <tspan font-size="12" fill="#8a93a1">mL/h</tspan></text>
+        <rect x="16" y="144" width="288" height="7" rx="3.5" fill="rgba(255,255,255,.12)"/>
+        <rect x="16" y="144" width="180" height="7" rx="3.5" fill="#7c85f0" class="wsd-bar"/>
+        <g class="wsd-drip">
+          <circle cx="282" cy="52" r="3.4" fill="#7c85f0"/>
+          <path d="M282,38 c-5,7 -5,10 0,14 5,-4 5,-7 0,-14" fill="none" stroke="#7c85f0" stroke-width="1.4"/>
+        </g>
+      </svg></div>
+        <div class="wsd-foot"><i class="g"></i><i></i><i></i></div>
+      </div>
+      <div class="wsd-tag"><div><div class="wsd-tag-k" style="color:#4a52d0">Antimicrobianos</div><div class="wsd-tag-t">Antibioticoterapia na UTI</div></div><span class="wsd-tag-a" style="color:#4a52d0">Abrir &#8594;</span></div>
+    </a>
+  </div>
+
     <div class="hero-row has-demo">
       <div>
         <div class="hero-eyebrow">Raciocínio clínico à beira do leito</div>
@@ -2045,6 +2240,32 @@ v.onclick=function(){beasideSetView('ws');};tb.parentNode.insertBefore(v,tb.next
 
     renderDots();
     runSession(token);
+  })();
+  </script>
+
+
+  <script>
+  /* monitores do hero: ao rolar, sobem mais rápido que a página e somem */
+  (function(){
+    if(document.documentElement.getAttribute('data-design')!=='ws')return;
+    var devs=document.querySelectorAll('.wsd');
+    if(!devs.length)return;
+    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    var base={'wsd-l1':'rotate(-2.2deg)','wsd-l2':'rotate(1.6deg)','wsd-r1':'rotate(2.2deg)','wsd-r2':'rotate(-1.6deg)'};
+    function onScroll(){
+      var y=window.scrollY;
+      var fade=Math.max(0,1-y/420);
+      var lift=y*0.55;
+      devs.forEach(function(d){
+        if(d.matches(':hover'))return;
+        var k=['wsd-l1','wsd-l2','wsd-r1','wsd-r2'].find(function(c){return d.classList.contains(c)});
+        d.style.transform=base[k]+' translateY(-'+lift+'px)';
+        d.style.opacity=fade;
+        d.style.pointerEvents=fade<.25?'none':'auto';
+      });
+    }
+    window.addEventListener('scroll',onScroll,{passive:true});
+    onScroll();
   })();
   </script>
 
