@@ -1236,3 +1236,89 @@ html[data-design="ws"] .scene{
     to{background-position:-1200px 30%,-1140px 47%,-600px 66%,-450px 84%}
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   V17 — MONITORES DE UTI NO HERO (vista workspace)
+   As linhas soltas do fundo (V16 + traçado) SAEM; no lugar, quatro
+   janelas de equipamentos — desenho próprio, sem marca — flanqueiam
+   o hero: monitor multiparamétrico (Hemo), ventilador (VM),
+   neuromonitor (Neuro) e bomba de infusão de antimicrobiano
+   (Antibioticoterapia). Hover abre o rótulo do guia embaixo;
+   o scroll leva as janelas para cima até sumirem.
+   Cada curva desliza exatamente UM ciclo por volta — loop contínuo.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* fim das linhas antigas do fundo */
+html[data-design="ws"] .trace{display:none!important}
+html[data-design="ws"] .scene{background-image:none!important;animation:none!important}
+
+.ws-devices{display:none}
+html[data-design="ws"] .hero{position:relative}
+html[data-design="ws"] .ws-devices{
+  display:block;position:absolute;inset:-20px 0 0;pointer-events:none;
+  --wsd-ecg:#37d67a;--wsd-spo2:#3ec6e0;--wsd-art:#e05555;
+  --wsd-pvc:#e0b23e;--wsd-paw:#e09a3e;--wsd-co2:#e6cf4a;--wsd-pic:#b48af7;
+}
+html[data-design="ws"] .wsd{
+  position:absolute;width:280px;pointer-events:auto;
+  text-decoration:none;color:inherit;display:block;
+  transition:transform .45s var(--ease);will-change:transform,opacity;
+}
+/* ancoragem na BORDA DA TELA (fora da coluna de texto): o cálculo
+   (100% - 100vw)/2 leva o aparelho até a margem do viewport */
+html[data-design="ws"] body{overflow-x:hidden}
+html[data-design="ws"] .ws-devices{--edge:calc((100% - 100vw)/2 + 20px)}
+html[data-design="ws"] .wsd-l1{left:var(--edge);top:0;transform:rotate(-2.2deg)}
+html[data-design="ws"] .wsd-l2{left:calc(var(--edge) + 26px);top:268px;transform:rotate(1.6deg)}
+html[data-design="ws"] .wsd-r1{right:var(--edge);top:0;transform:rotate(2.2deg)}
+html[data-design="ws"] .wsd-r2{right:calc(var(--edge) + 26px);top:268px;transform:rotate(-1.6deg)}
+html[data-design="ws"] .wsd:hover{transform:rotate(0deg) translateY(-6px) scale(1.03);z-index:9}
+html[data-design="ws"] .wsd-shell{
+  background:linear-gradient(180deg,#eceff1,#dde2e5);
+  border:1px solid rgba(18,26,38,.14);border-radius:14px;padding:8px 8px 6px;
+  box-shadow:0 2px 4px rgba(16,24,40,.08),0 16px 38px rgba(16,24,40,.13);
+}
+html[data-design="ws"]:not([data-theme="light"]) .wsd-shell{
+  background:linear-gradient(180deg,#2a2f36,#21252c);border-color:rgba(255,255,255,.12);
+}
+html[data-design="ws"] .wsd-top{display:flex;align-items:center;justify-content:space-between;padding:1px 5px 6px}
+html[data-design="ws"] .wsd-name{font-family:var(--mono);font-size:8px;font-weight:700;letter-spacing:.15em;color:#5c6870;text-transform:uppercase}
+html[data-design="ws"]:not([data-theme="light"]) .wsd-name{color:#9aa2ae}
+html[data-design="ws"] .wsd-leds{display:flex;gap:4px}
+html[data-design="ws"] .wsd-leds i{width:5px;height:5px;border-radius:50%;background:#c3cacf;display:block}
+html[data-design="ws"] .wsd-leds i.on{background:#1db88a}
+html[data-design="ws"] .wsd-screen{
+  background:#0c1116;border-radius:8px;overflow:hidden;border:1px solid rgba(0,0,0,.5);
+  background-image:
+    linear-gradient(rgba(120,190,170,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(120,190,170,.07) 1px,transparent 1px);
+  background-size:15px 15px;
+}
+html[data-design="ws"] .wsd-screen svg{display:block;width:100%;height:auto}
+html[data-design="ws"] .wsd-foot{display:flex;align-items:center;justify-content:center;gap:7px;padding:6px 4px 1px}
+html[data-design="ws"] .wsd-foot i{width:22px;height:3px;border-radius:2px;background:#c3cacf;display:block}
+html[data-design="ws"] .wsd-foot i.g{background:#9fb8ad}
+html[data-design="ws"] .wsd-num text{font-family:var(--mono)}
+html[data-design="ws"] .wsd-wave{animation:wsd-shift linear infinite}
+@keyframes wsd-shift{to{transform:translateX(var(--wc))}}
+html[data-design="ws"] .wsd-bar{animation:wsd-fill 14s linear infinite alternate}
+@keyframes wsd-fill{from{width:120px}to{width:250px}}
+html[data-design="ws"] .wsd-drip{animation:wsd-drip 2.4s ease-in infinite}
+@keyframes wsd-drip{0%{transform:translateY(0);opacity:1}70%{transform:translateY(9px);opacity:1}100%{transform:translateY(12px);opacity:0}}
+html[data-design="ws"] .wsd-tag{
+  margin:9px 6px 0;display:flex;align-items:center;justify-content:space-between;
+  background:var(--bg2);border:1px solid var(--border2);border-radius:9px;padding:8px 12px;
+  opacity:0;transform:translateY(-6px);
+  transition:opacity .45s var(--ease),transform .45s var(--ease);
+}
+html[data-design="ws"] .wsd:hover .wsd-tag,
+html[data-design="ws"] .wsd:focus-visible .wsd-tag{opacity:1;transform:none}
+html[data-design="ws"] .wsd-tag-k{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+html[data-design="ws"] .wsd-tag-t{font-family:var(--display);font-size:14.5px;font-weight:700;color:var(--text);letter-spacing:-.014em}
+html[data-design="ws"] .wsd-tag-a{font-size:13px;font-weight:600}
+html[data-design="ws"] .wsd:focus-visible{outline:2px solid rgba(29,184,138,.5);outline-offset:4px;border-radius:16px}
+@media(max-width:1560px){html[data-design="ws"] .wsd{width:240px}html[data-design="ws"] .wsd-l2,html[data-design="ws"] .wsd-r2{top:232px}}
+@media(max-width:1370px){html[data-design="ws"] .ws-devices{display:none}}
+@media (prefers-reduced-motion: reduce){
+  html[data-design="ws"] .wsd-wave,html[data-design="ws"] .wsd-bar,html[data-design="ws"] .wsd-drip{animation:none}
+}
