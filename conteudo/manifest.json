@@ -57,6 +57,23 @@
       },
       "paginas": [
         {
+          "id": "fluxograma",
+          "arquivo": "fluxograma.html",
+          "categoria": "Comece aqui",
+          "menu": "Fluxograma",
+          "titulo": "Fluxograma da VM",
+          "subtitulo": "Do intubado à extubação — proteger, oxigenar, resgatar, desmamar",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Comece aqui",
+            "selo": "Fluxograma",
+            "titulo": "Fluxograma da VM",
+            "resumo": "Do intubado à extubação — proteger, oxigenar, resgatar, desmamar"
+          }
+        },
+        {
           "id": "fisiologia",
           "arquivo": "fisiologia.html",
           "categoria": "Fundamentos",
@@ -329,23 +346,6 @@
           }
         },
         {
-          "id": "fluxograma",
-          "arquivo": "fluxograma.html",
-          "categoria": "Síntese",
-          "menu": "Fluxograma",
-          "titulo": "Fluxograma da VM",
-          "subtitulo": "Do intubado à extubação — proteger, oxigenar, resgatar, desmamar",
-          "tipo": "guia",
-          "status": "rascunho",
-          "ia": true,
-          "hub": {
-            "grupo": "Síntese",
-            "selo": "Síntese",
-            "titulo": "Fluxograma da VM",
-            "resumo": "Do intubado à extubação — proteger, oxigenar, resgatar, desmamar"
-          }
-        },
-        {
           "id": "calculadora",
           "arquivo": "calculadora.html",
           "categoria": "Referência",
@@ -436,6 +436,23 @@
         "desc": "fisiologia, avaliação à beira do leito, drogas vasoativas, choque."
       },
       "paginas": [
+        {
+          "id": "fluxograma",
+          "arquivo": "fluxograma.html",
+          "categoria": "Comece aqui",
+          "menu": "Fluxograma",
+          "titulo": "Fluxograma Integrado",
+          "subtitulo": "Do choque à conduta — padrão, gasometria, POCUS, drogas",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": true,
+          "hub": {
+            "grupo": "Comece aqui",
+            "selo": "Fluxograma",
+            "titulo": "Fluxograma integrado",
+            "resumo": "Do choque à conduta — padrão, gasometria, POCUS, drogas"
+          }
+        },
         {
           "id": "fisio",
           "arquivo": "fisio.html",
@@ -604,23 +621,6 @@
             "selo": "Síntese",
             "titulo": "Integração clínica",
             "resumo": "Gasometria pareada + POCUS VCI em conjunto"
-          }
-        },
-        {
-          "id": "fluxograma",
-          "arquivo": "fluxograma.html",
-          "categoria": "Síntese",
-          "menu": "Fluxograma",
-          "titulo": "Fluxograma Integrado",
-          "subtitulo": "Do choque à conduta — padrão, gasometria, POCUS, drogas",
-          "tipo": "guia",
-          "status": "publicado",
-          "ia": true,
-          "hub": {
-            "grupo": "Síntese & Terapêutica",
-            "selo": "Síntese",
-            "titulo": "Fluxograma integrado",
-            "resumo": "Do choque à conduta — padrão, gasometria, POCUS, drogas"
           }
         },
         {

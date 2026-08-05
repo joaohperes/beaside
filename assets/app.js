@@ -172,6 +172,7 @@ const MODULES = {
 // ── Índice de páginas por módulo ─────────────────────────────
 const MODULE_PAGES = {
   vm: [
+    {id:'fluxograma',    file:'fluxograma.html',    cat:'Comece aqui',               label:'Fluxograma',             title:'Fluxograma da VM',                             subtitle:'Do intubado à extubação — proteger, oxigenar, resgatar, desmamar'},
     {id:'fisiologia',    file:'fisiologia.html',    cat:'Fundamentos',               label:'Fisiologia da VM',       title:'Fisiologia da VM com Pressão Positiva',        subtitle:'Ciclo ventilatório, mecânica pulmonar e efeitos hemodinâmicos'},
     {id:'modos',         file:'modos.html',         cat:'Fundamentos',               label:'Modos de VM',            title:'Modos de Ventilação Mecânica',                 subtitle:'AC-VC · AC-PC · SIMV-PSV · PSV'},
     {id:'parametros',    file:'parametros.html',    cat:'Fundamentos',               label:'Parâmetros iniciais',    title:'Parâmetros Iniciais',                          subtitle:'Configuração passo a passo (UpToDate / FCCS)'},
@@ -188,13 +189,13 @@ const MODULE_PAGES = {
     {id:'bnm',           file:'bnm.html',           cat:'Monitorização & Segurança', label:'Bloqueio neuromuscular', title:'Bloqueio Neuromuscular na SDRA',               subtitle:'Quando paralisar, qual agente e por quanto tempo'},
     {id:'desmame',       file:'desmame.html',       cat:'Desmame',                   label:'SAT / SBT / Extubação',  title:'Desmame Ventilatório — SAT / SBT / Extubação', subtitle:'Critérios, protocolo e T-piece vs PSV baixo'},
     {id:'vni',           file:'vni.html',           cat:'Desmame',                   label:'VNI & alto fluxo',       title:'VNI & Cânula Nasal de Alto Fluxo',             subtitle:'Quando evitar a IOT — e quando não insistir (ROX)'},
-    {id:'fluxograma',    file:'fluxograma.html',    cat:'Síntese',                   label:'Fluxograma',             title:'Fluxograma da VM',                             subtitle:'Do intubado à extubação — proteger, oxigenar, resgatar, desmamar'},
     {id:'calculadora',   file:'calculadora.html',   cat:'Referência',                label:'Calculadoras',           title:'Calculadoras',                                 subtitle:'PBW/VC · Driving Pressure · VM · P/F · IRRS'},
     {id:'tabelas',       file:'tabelas.html',       cat:'Referência',                label:'Tabelas rápidas',        title:'Tabelas Rápidas',                              subtitle:'Consulta de plantão — situação vs estratégia'},
     {id:'pearls',        file:'pearls.html',        cat:'Pearls & Pitfalls',         label:'Cards clínicos',         title:'Pearls & Pitfalls',                            subtitle:'Cenários de plantão: acerto, erro comum e o porquê do mecanismo'},
     {id:'quiz',          file:'quiz.html',          cat:'Pearls & Pitfalls',         label:'Caso clínico / Quiz',    title:'Caso Clínico Interativo',                      subtitle:'Quiz de múltipla escolha'},
   ],
   hemo: [
+    {id:'fluxograma', file:'fluxograma.html', cat:'Comece aqui',            label:'Fluxograma',                       title:'Fluxograma Integrado',             subtitle:'Do choque à conduta — padrão, gasometria, POCUS, drogas'},
     {id:'fisio',      file:'fisio.html',      cat:'Fundamentos',            label:'Fisiologia',                       title:'Base Fisiológica',                 subtitle:'DO₂, VO₂, Fick, Frank-Starling e choque críptico'},
     {id:'do2',        file:'do2.html',        cat:'Fundamentos',            label:'DO₂ / CaO₂',                       title:'Oferta de O₂',                     subtitle:'DO₂, CaO₂, tríade da oferta e intervenções'},
     {id:'rush',       file:'rush.html',       cat:'POCUS / Imagem',         label:'RUSH',                             title:'Protocolo RUSH',                   subtitle:'Rapid Ultrasound for Shock and Hypotension'},
@@ -205,7 +206,6 @@ const MODULE_PAGES = {
     {id:'quadrantes', file:'quadrantes.html', cat:'POCUS / Imagem',         label:'Quadrantes',                       title:'Os 4 Quadrantes SvcO₂ × Δ pCO₂',   subtitle:'Plano cartesiano para interpretar a hipoperfusão'},
     {id:'vti',        file:'vti.html',        cat:'POCUS / Imagem',         label:'VTI — Débito Cardíaco pelo POCUS', title:'VTI — Débito Cardíaco pelo POCUS', subtitle:'Como medir o VTI subvalvar aórtico e calcular DC, IC e ΔVTI'},
     {id:'integracao', file:'integracao.html', cat:'Síntese',                label:'Integração',                       title:'Integração Clínica',               subtitle:'Gasometria pareada + POCUS VCI em conjunto'},
-    {id:'fluxograma', file:'fluxograma.html', cat:'Síntese',                label:'Fluxograma',                       title:'Fluxograma Integrado',             subtitle:'Do choque à conduta — padrão, gasometria, POCUS, drogas'},
     {id:'padroes',    file:'padroes.html',    cat:'Síntese',                label:'Padrões',                          title:'Padrões Hemodinâmicos',            subtitle:'Tabelas de referência por tipo de choque'},
     {id:'drogas',     file:'drogas.html',     cat:'Terapêutica',            label:'Drogas vasoativas',                title:'Drogas Vasoativas',                subtitle:'Doses, diluições e escalonamento'},
     {id:'calc-hemo',  file:'calc-hemo.html',  cat:'Ferramentas',            label:'Calculadoras',                     title:'Calculadoras Hemodinâmicas',       subtitle:'Δ pCO₂ · VCI · VPP · Winter · DO₂'},

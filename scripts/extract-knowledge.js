@@ -28,17 +28,17 @@ const root = join(__dirname, '..');
 /* AUTO:conteudo */
 const PAGES_BY_MODULE = {
   vm: [
-    'fisiologia.html', 'modos.html', 'parametros.html', 'indutores.html',
-    'sedoanalgesia.html', 'sdra.html', 'prona.html', 'dpoc-asma.html',
-    'hipercapnia.html', 'tce.html', 'complicacoes.html', 'capnografia.html',
-    'dissincronia.html', 'bnm.html', 'desmame.html', 'vni.html',
-    'fluxograma.html', 'tabelas.html', 'pearls.html',
+    'fluxograma.html', 'fisiologia.html', 'modos.html', 'parametros.html',
+    'indutores.html', 'sedoanalgesia.html', 'sdra.html', 'prona.html',
+    'dpoc-asma.html', 'hipercapnia.html', 'tce.html', 'complicacoes.html',
+    'capnografia.html', 'dissincronia.html', 'bnm.html', 'desmame.html',
+    'vni.html', 'tabelas.html', 'pearls.html',
   ],
   hemo: [
-    'fisio.html', 'do2.html', 'rush.html', 'vci.html', 'ecg.html',
-    'scvo2.html', 'dpco2.html', 'quadrantes.html', 'vti.html',
-    'integracao.html', 'fluxograma.html', 'padroes.html', 'drogas.html',
-    'pratica.html', 'siglas.html', 'pearls.html',
+    'fluxograma.html', 'fisio.html', 'do2.html', 'rush.html', 'vci.html',
+    'ecg.html', 'scvo2.html', 'dpco2.html', 'quadrantes.html', 'vti.html',
+    'integracao.html', 'padroes.html', 'drogas.html', 'pratica.html',
+    'siglas.html', 'pearls.html',
   ],
   neuro: [
     'fluxograma.html', 'fisio.html', 'tce.html', 'avc-h.html', 'vm.html',

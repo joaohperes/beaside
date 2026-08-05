@@ -55,6 +55,7 @@ be·aside reúne guias clínicos, algoritmos, calculadoras, casos práticos e um
 
 ### Hemo Guide
 
+- [Fluxograma Integrado](https://beaside.com.br/hemo/fluxograma.html): Do choque à conduta — padrão, gasometria, POCUS, drogas
 - [Base Fisiológica](https://beaside.com.br/hemo/fisio.html): DO₂, VO₂, Fick, Frank-Starling e choque críptico
 - [Oferta de O₂](https://beaside.com.br/hemo/do2.html): DO₂, CaO₂, tríade da oferta e intervenções
 - [Protocolo RUSH](https://beaside.com.br/hemo/rush.html): Rapid Ultrasound for Shock and Hypotension
@@ -65,7 +66,6 @@ be·aside reúne guias clínicos, algoritmos, calculadoras, casos práticos e um
 - [Os 4 Quadrantes SvcO₂ × Δ pCO₂](https://beaside.com.br/hemo/quadrantes.html): Plano cartesiano para interpretar a hipoperfusão
 - [VTI — Débito Cardíaco pelo POCUS](https://beaside.com.br/hemo/vti.html): Como medir o VTI subvalvar aórtico e calcular DC, IC e ΔVTI
 - [Integração Clínica](https://beaside.com.br/hemo/integracao.html): Gasometria pareada + POCUS VCI em conjunto
-- [Fluxograma Integrado](https://beaside.com.br/hemo/fluxograma.html): Do choque à conduta — padrão, gasometria, POCUS, drogas
 - [Padrões Hemodinâmicos](https://beaside.com.br/hemo/padroes.html): Tabelas de referência por tipo de choque
 - [Drogas Vasoativas](https://beaside.com.br/hemo/drogas.html): Doses, diluições e escalonamento
 - [Calculadoras Hemodinâmicas](https://beaside.com.br/hemo/calc-hemo.html): Δ pCO₂ · VCI · VPP · Winter · DO₂
