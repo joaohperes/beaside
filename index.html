@@ -1786,11 +1786,12 @@ html[data-design="ws"] .wsd:focus-visible{outline:2px solid rgba(29,184,138,.5);
       <span class="logo-wordmark">be·aside</span>
     </a>
     <nav class="mainnav" aria-label="Áreas do be·aside">
-      <a class="is-secondary" href="institucional/sobre.html">A be·aside</a>
-      <span class="nav-sep" aria-hidden="true"></span>
-      <a href="artigos/" data-nav-section="central">Perguntas de Plantão</a>
       <a href="#raciocine" data-nav-section="raciocine">Raciocine</a>
-      <a href="#consulte" data-nav-section="consulte">Consulte e Resolva</a>
+      <a href="#consulte" data-nav-section="consulte">Consulte</a>
+      <a href="consulte/" data-nav-section="resolva">Resolva</a>
+      <span class="nav-sep" aria-hidden="true"></span>
+      <a class="is-secondary" href="institucional/sobre.html">A be·aside</a>
+      <a href="artigos/" data-nav-section="central">Perguntas de Plantão</a>
     </nav>
     <div class="top-meta">
       <button class="nav-burger" type="button" aria-label="Abrir menu" aria-expanded="false" onclick="toggleMobileNav()">
@@ -1843,10 +1844,11 @@ v.onclick=function(){beasideSetView('ws');};tb.parentNode.insertBefore(v,tb.next
     </div>
   </div>
   <div class="mobilenav" id="mobilenav">
+    <a href="#raciocine" onclick="toggleMobileNav()">Raciocine</a>
+    <a href="#consulte" onclick="toggleMobileNav()">Consulte</a>
+    <a href="consulte/" onclick="toggleMobileNav()">Resolva</a>
     <a href="institucional/sobre.html">A be·aside</a>
     <a href="artigos/" onclick="toggleMobileNav()">Perguntas de Plantão</a>
-    <a href="#raciocine" onclick="toggleMobileNav()">Raciocine</a>
-    <a href="#consulte" onclick="toggleMobileNav()">Consulte e Resolva</a>
     <a href="institucional/faq.html">FAQ</a>
   </div>
 </header>
@@ -2573,9 +2575,10 @@ v.onclick=function(){beasideSetView('ws');};tb.parentNode.insertBefore(v,tb.next
       </div>
       <nav class="footer-col" aria-label="Plataforma">
         <div class="footer-k">Plataforma</div>
-        <a href="artigos/">Perguntas de Plantão</a>
         <a href="index.html#raciocine">Raciocine</a>
-        <a href="index.html#consulte">Consulte e Resolva</a>
+        <a href="index.html#consulte">Consulte</a>
+        <a href="consulte/">Resolva</a>
+        <a href="artigos/">Perguntas de Plantão</a>
         <a href="login.html">Entrar</a>
       </nav>
       <nav class="footer-col" aria-label="Institucional">
