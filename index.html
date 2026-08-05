@@ -194,8 +194,8 @@ html[data-theme="light"] .mainnav a:hover{color:var(--text)}
   background:rgba(29,184,138,.1);
 }
 .btn-entrar:active{transform:scale(.97)}
-/* nav das 3 áreas (Central de Conhecimento · Raciocine · Consulte e Resolva) */
-/* Sans, não mono: em mono "Central de Conhecimento" esparrama pela largura fixa
+/* nav das 3 áreas (Perguntas de Plantão · Raciocine · Consulte e Resolva) */
+/* Sans, não mono: em mono "Perguntas de Plantão" esparrama pela largura fixa
    por caractere e a nav ocupa muito mais do que precisa. */
 .mainnav{display:flex;align-items:center;gap:3px}
 .mainnav a{
@@ -600,7 +600,7 @@ a.card-hit{
 .card.featured .card-title{font-size:28px}
 .card.featured .card-sub{font-size:14px;max-width:42ch}
 
-/* card retangular full-width: Central de Conhecimento (acima dos módulos) */
+/* card retangular full-width: Perguntas de Plantão (acima dos módulos) */
 .card.wide{
   grid-column:1/-1;min-height:0;padding:22px 26px 18px;
   background:linear-gradient(120deg,rgba(29,184,138,.06),rgba(255,255,255,.012) 55%);
@@ -1788,7 +1788,7 @@ html[data-design="ws"] .wsd:focus-visible{outline:2px solid rgba(29,184,138,.5);
     <nav class="mainnav" aria-label="Áreas do be·aside">
       <a class="is-secondary" href="institucional/sobre.html">A be·aside</a>
       <span class="nav-sep" aria-hidden="true"></span>
-      <a href="artigos/" data-nav-section="central">Central de Conhecimento</a>
+      <a href="artigos/" data-nav-section="central">Perguntas de Plantão</a>
       <a href="#raciocine" data-nav-section="raciocine">Raciocine</a>
       <a href="#consulte" data-nav-section="consulte">Consulte e Resolva</a>
     </nav>
@@ -1844,7 +1844,7 @@ v.onclick=function(){beasideSetView('ws');};tb.parentNode.insertBefore(v,tb.next
   </div>
   <div class="mobilenav" id="mobilenav">
     <a href="institucional/sobre.html">A be·aside</a>
-    <a href="artigos/" onclick="toggleMobileNav()">Central de Conhecimento</a>
+    <a href="artigos/" onclick="toggleMobileNav()">Perguntas de Plantão</a>
     <a href="#raciocine" onclick="toggleMobileNav()">Raciocine</a>
     <a href="#consulte" onclick="toggleMobileNav()">Consulte e Resolva</a>
     <a href="institucional/faq.html">FAQ</a>
@@ -2299,7 +2299,7 @@ v.onclick=function(){beasideSetView('ws');};tb.parentNode.insertBefore(v,tb.next
   <div class="bento" id="modulos">
 
     <div class="area-head" id="central" style="--c-accent:#1db88a">
-      <div class="area-eyebrow"><span class="area-num">01</span> Central de Conhecimento</div>
+      <div class="area-eyebrow"><span class="area-num">01</span> Perguntas de Plantão</div>
       <h2>Dúvidas Gerais</h2>
       <p>Hipotensão pós-intubação, PEEP alta, rebaixamento de consciência, sepse — as dúvidas reais do plantão, com resposta direta e o raciocínio clínico por trás dela.</p>
     </div>
@@ -2307,7 +2307,7 @@ v.onclick=function(){beasideSetView('ws');};tb.parentNode.insertBefore(v,tb.next
     <div class="card wide"
        style="--c-accent:#1db88a;--c-border:rgba(29,184,138,.4);--c-glow:rgba(29,184,138,.12);--c-shadow:rgba(29,184,138,.1)">
       <span class="card-rail" aria-hidden="true"></span>
-      <a class="card-hit" href="artigos/" aria-label="Central de Conhecimento — condutas e perguntas reais de plantão, respondidas direto">
+      <a class="card-hit" href="artigos/" aria-label="Perguntas de Plantão — condutas e perguntas reais de plantão, respondidas direto">
         <div class="card-top">
           <div class="card-icon" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -2318,7 +2318,7 @@ v.onclick=function(){beasideSetView('ws');};tb.parentNode.insertBefore(v,tb.next
           </div>
         </div>
         <div class="card-wide-main">
-          <div class="card-title">Central de Conhecimento</div>
+          <div class="card-title">Perguntas de Plantão</div>
           <div class="card-sub">Condutas e perguntas reais de plantão, respondidas direto — resposta objetiva, mecanismo e conduta prática, com referência.</div>
         </div>
         <div class="card-tags">
@@ -2573,7 +2573,7 @@ v.onclick=function(){beasideSetView('ws');};tb.parentNode.insertBefore(v,tb.next
       </div>
       <nav class="footer-col" aria-label="Plataforma">
         <div class="footer-k">Plataforma</div>
-        <a href="artigos/">Central de Conhecimento</a>
+        <a href="artigos/">Perguntas de Plantão</a>
         <a href="index.html#raciocine">Raciocine</a>
         <a href="index.html#consulte">Consulte e Resolva</a>
         <a href="login.html">Entrar</a>
@@ -2670,7 +2670,7 @@ applyTheme(getTheme());
 <script>
 /* Marca na nav a seção da home em que o leitor está. Fica no fim do <body> de
    propósito: as seções já existem no DOM quando este script roda.
-   "Central de Conhecimento" participa mesmo apontando para /artigos/: a home
+   "Perguntas de Plantão" participa mesmo apontando para /artigos/: a home
    tem a seção #central, e o sublinhado indica onde o leitor está, não para onde
    o link leva. "A be·aside" fica de fora — não tem seção correspondente. */
 (function(){

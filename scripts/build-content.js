@@ -6,7 +6,7 @@
  * A partir dele, este script REGENERA automaticamente:
  *   1. assets/app.js .............. MODULES + MODULE_PAGES (menu lateral, prev/próximo, busca ⌘K)
  *   2. <modulo>/index.html ........ os cards do hub de cada módulo (numeração automática)
- *   3. artigos/index.html ......... os cards da Central de Conhecimento
+ *   3. artigos/index.html ......... os cards da Perguntas de Plantão
  *   4. scripts/extract-knowledge.js  a lista de páginas que alimentam a IA
  *   5. llms.txt ................... a lista de áreas e o mapa completo do conteúdo para os robôs de IA
  *   6. api/farmacos.js ........... doses, diluições e vazão de bomba pré-calculada (fonte: conteudo/farmacos.json)
@@ -154,7 +154,7 @@ function gerarHubs() {
   }
 }
 
-// ── 3. hub da Central de Conhecimento ──────────────────────────────────
+// ── 3. hub da Perguntas de Plantão ──────────────────────────────────
 function gerarArtigos() {
   const publicados = manifest.artigos.filter((a) => a.status !== 'oculto');
   let out = '\n  <div class="bento" id="lista">\n\n';
@@ -172,7 +172,7 @@ function gerarArtigos() {
     for (const t of a.tags || []) out += `          <span class="card-tag">${esc(t)}</span>\n`;
     out += `        </div>\n      </a>\n`;
     out += `      <div class="card-foot">\n`;
-    out += `        <a class="card-cta" href="${a.arquivo}">Ler artigo <span class="card-cta-arrow" aria-hidden="true">→</span></a>\n`;
+    out += `        <a class="card-cta" href="${a.arquivo}">Ver resposta <span class="card-cta-arrow" aria-hidden="true">→</span></a>\n`;
     out += `      </div>\n    </div>\n\n`;
   }
   out += '  </div>\n\n';
@@ -242,7 +242,7 @@ function gerarLlms() {
   }
   const arts = manifest.artigos.filter((a) => a.status === 'publicado');
   if (arts.length) {
-    out += `\n### Central de Conhecimento\n\n`;
+    out += `\n### Perguntas de Plantão\n\n`;
     for (const a of arts) out += `- [${a.titulo}](${base}/artigos/${a.arquivo}): ${a.resumo}\n`;
   }
   out += '\n';

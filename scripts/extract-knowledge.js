@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Extrai o texto médico/clínico dos HTMLs do site e gera api/knowledge.js
 // Cobre TODOS os módulos de conteúdo: VM, Hemo, Neuro, Procedimentos e Artigos
-// (Central de Conhecimento) — a mesma base que alimenta o Assistente de Conduta
+// (Perguntas de Plantão) — a mesma base que alimenta o Assistente de Conduta
 // unificado (api/sugerir-uni.js).
 //
 // Execute: node scripts/extract-knowledge.js  (ou: npm run extract-knowledge)
