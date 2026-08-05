@@ -1380,7 +1380,7 @@
           "titulo": "Pneumonia na UTI: CAP grave, HAP e PAV",
           "subtitulo": "Terapia empírica, procalcitonina e o tempo certo de tratamento",
           "tipo": "guia",
-          "status": "em-breve",
+          "status": "rascunho",
           "ia": true,
           "hub": {
             "grupo": "Cenários por foco",
@@ -1397,7 +1397,7 @@
           "titulo": "Infecção intra-abdominal e das vias biliares",
           "subtitulo": "Controle de foco, comunitária versus nosocomial, colangite, colecistite e peritonite bacteriana espontânea",
           "tipo": "guia",
-          "status": "em-breve",
+          "status": "rascunho",
           "ia": true,
           "hub": {
             "grupo": "Cenários por foco",
@@ -1414,7 +1414,7 @@
           "titulo": "Urossepse e ITU complicada",
           "subtitulo": "Pielonefrite grave, ITU associada a cateter e a fonte urinária de sepse no paciente crítico",
           "tipo": "guia",
-          "status": "em-breve",
+          "status": "rascunho",
           "ia": true,
           "hub": {
             "grupo": "Cenários por foco",
@@ -1431,7 +1431,7 @@
           "titulo": "Pele e partes moles graves",
           "subtitulo": "Fasceíte necrotizante, pé diabético grave e infecção de sítio cirúrgico",
           "tipo": "guia",
-          "status": "em-breve",
+          "status": "rascunho",
           "ia": true,
           "hub": {
             "grupo": "Cenários por foco",
@@ -1448,7 +1448,7 @@
           "titulo": "Infecções do sistema nervoso central",
           "subtitulo": "Meningite bacteriana, encefalite herpética e abscesso cerebral: a escolha do antimicrobiano",
           "tipo": "guia",
-          "status": "em-breve",
+          "status": "rascunho",
           "ia": true,
           "hub": {
             "grupo": "Cenários por foco",
@@ -1465,7 +1465,7 @@
           "titulo": "Bacteremia, infecção de cateter e endocardite",
           "subtitulo": "Terapia empírica adequada, CLABSI, hemoculturas de controle, duração e endocardite",
           "tipo": "guia",
-          "status": "em-breve",
+          "status": "rascunho",
           "ia": true,
           "hub": {
             "grupo": "Cenários por foco",
@@ -1482,7 +1482,7 @@
           "titulo": "Candidemia e candidíase invasiva",
           "subtitulo": "Quando suspeitar, equinocandina como primeira linha, fundo de olho e duração",
           "tipo": "guia",
-          "status": "em-breve",
+          "status": "rascunho",
           "ia": true,
           "hub": {
             "grupo": "Cenários por foco",
@@ -1499,7 +1499,7 @@
           "titulo": "Colite por Clostridioides difficile",
           "subtitulo": "Diagnóstico, vancomicina oral versus fidaxomicina e o manejo do caso grave",
           "tipo": "guia",
-          "status": "em-breve",
+          "status": "rascunho",
           "ia": true,
           "hub": {
             "grupo": "Cenários por foco",
@@ -1516,7 +1516,7 @@
           "titulo": "Neutropenia febril",
           "subtitulo": "Emergência oncológica: cobertura antipseudomonas empírica e quando associar Gram-positivo",
           "tipo": "guia",
-          "status": "em-breve",
+          "status": "rascunho",
           "ia": true,
           "hub": {
             "grupo": "Cenários por foco",

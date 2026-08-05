@@ -54,6 +54,9 @@ const PAGES_BY_MODULE = {
   ],
   infecto: [
     'empirico.html', 'pkpd.html', 'resistencia.html', 'mdr.html',
+    'pneumonia.html', 'abdome.html', 'urinario.html', 'partesmoles.html',
+    'snc.html', 'bacteremia.html', 'candidemia.html', 'cdiff.html',
+    'neutropenia.html',
   ],
   artigos: [
     'perguntas-plantao-hemodinamica.html', 'medidas-gerais-neurocritico.html',
