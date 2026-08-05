@@ -245,10 +245,11 @@ const MODULE_PAGES = {
     {id:'pearls',         file:'pearls.html',         cat:'Pearls & Pitfalls',      label:'Dúvidas de plantão',         title:'Dúvidas de Plantão',                        subtitle:'As perguntas que ninguém responde no guia clássico'},
   ],
   peri: [
-    {id:'pre-op', file:'pre-op.html', cat:'Antes da sala',  label:'Avaliação pré-op',      title:'Avaliação e Preparo Pré-Operatório',        subtitle:'ASA, capacidade funcional, fragilidade e o que realmente adia uma cirurgia'},
-    {id:'atb',    file:'atb.html',    cat:'Antes da sala',  label:'Profilaxia ATB',        title:'Profilaxia Antibiótica Cirúrgica',          subtitle:'Timing, dose por peso, repique e a hora de suspender'},
-    {id:'manejo', file:'manejo.html', cat:'Depois da sala', label:'Manejo perioperatório', title:'Manejo Perioperatório do Paciente Crítico', subtitle:'Coração, cérebro, glicemia e hemostasia nas primeiras horas depois da sala'},
-    {id:'pocus',  file:'pocus.html',  cat:'Depois da sala', label:'POCUS pós-op',          title:'POCUS no Pós-Operatório',                   subtitle:'FOCUS e RUSH para dar nome à hipotensão e à hipoxemia da primeira noite'},
+    {id:'fluxograma', file:'fluxograma.html', cat:'Comece aqui',    label:'Fluxograma',            title:'Fluxograma do Perioperatório',              subtitle:'Antes, na sala e depois — otimizar, o que adia e o pós montado antes'},
+    {id:'pre-op',     file:'pre-op.html',     cat:'Antes da sala',  label:'Avaliação pré-op',      title:'Avaliação e Preparo Pré-Operatório',        subtitle:'ASA, capacidade funcional, fragilidade e o que realmente adia uma cirurgia'},
+    {id:'atb',        file:'atb.html',        cat:'Antes da sala',  label:'Profilaxia ATB',        title:'Profilaxia Antibiótica Cirúrgica',          subtitle:'Timing, dose por peso, repique e a hora de suspender'},
+    {id:'manejo',     file:'manejo.html',     cat:'Depois da sala', label:'Manejo perioperatório', title:'Manejo Perioperatório do Paciente Crítico', subtitle:'Coração, cérebro, glicemia e hemostasia nas primeiras horas depois da sala'},
+    {id:'pocus',      file:'pocus.html',      cat:'Depois da sala', label:'POCUS pós-op',          title:'POCUS no Pós-Operatório',                   subtitle:'FOCUS e RUSH para dar nome à hipotensão e à hipoxemia da primeira noite'},
   ],
   infecto: [
     {id:'empirico',    file:'empirico.html',    cat:'Pensar antes do antibiograma', label:'Terapia empírica',                  title:'Terapia empírica: do foco ao espectro',                          subtitle:'Escolher o antibiótico antes do antibiograma — pelo foco, pelo hospedeiro e pela ecologia local'},

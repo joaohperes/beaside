@@ -51,7 +51,7 @@ const PAGES_BY_MODULE = {
     'ritmo.html', 'pearls.html',
   ],
   peri: [
-    'pre-op.html', 'atb.html', 'manejo.html', 'pocus.html',
+    'fluxograma.html', 'pre-op.html', 'atb.html', 'manejo.html', 'pocus.html',
   ],
   infecto: [
     'empirico.html', 'pkpd.html', 'resistencia.html', 'mdr.html',

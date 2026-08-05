@@ -1264,6 +1264,23 @@
       ],
       "paginas": [
         {
+          "id": "fluxograma",
+          "arquivo": "fluxograma.html",
+          "categoria": "Comece aqui",
+          "menu": "Fluxograma",
+          "titulo": "Fluxograma do Perioperatório",
+          "subtitulo": "Antes, na sala e depois — otimizar, o que adia e o pós montado antes",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Comece aqui",
+            "selo": "Fluxograma",
+            "titulo": "Fluxograma do Perioperatório",
+            "resumo": "Antes, na sala e depois — otimizar, o que adia e o pós montado antes"
+          }
+        },
+        {
           "id": "pre-op",
           "arquivo": "pre-op.html",
           "categoria": "Antes da sala",
