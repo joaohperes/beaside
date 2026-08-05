@@ -311,6 +311,9 @@ function sanitizePatient(raw) {
       problemas: cleanString(raw.evo?.problemas, 12_000),
       examesRelevantes: cleanString(raw.evo?.examesRelevantes, 12_000),
       culturas: cleanString(raw.evo?.culturas, 12_000),
+      /* Comentário livre da seção Laboratorial. Campo nomeado: sem esta linha
+         ele sumiria no sync, como já aconteceu com `setorOrigem`. */
+      laboratorial: cleanString(raw.evo?.laboratorial, 12_000),
       clinica: cleanString(raw.evo?.clinica, 12_000),
       avaliacao: cleanString(raw.evo?.avaliacao, 12_000),
       conduta: cleanString(raw.evo?.conduta, 12_000),

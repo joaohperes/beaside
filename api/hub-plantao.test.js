@@ -169,4 +169,38 @@ describe('hub-plantao API contract', () => {
     assert.equal(sanitizePlantao(null), null)
     assert.equal(sanitizePlantao({ patients: 'não-array' }), null)
   })
+
+  /*
+   * O `evo` é WHITELIST NOMEADA: campo que não estiver listado no
+   * `sanitizePatient` é descartado no sync sem erro nenhum — o texto
+   * simplesmente não chega ao outro aparelho. Já aconteceu com `setorOrigem`.
+   * Estes testes existem para que o próximo campo novo não repita isso.
+   */
+  it('preserva todos os campos de texto da evolução', () => {
+    const evo = {
+      problemas: 'HAS, DM2',
+      examesRelevantes: 'TC de tórax',
+      culturas: 'HMC em andamento',
+      laboratorial: '05/08 amostra hemolisada',
+      clinica: 'Sedado, RASS -3',
+      avaliacao: 'Choque em resolução',
+      conduta: 'Desmame de DVA',
+    }
+    const out = sanitizePlantao({
+      patients: [{ id: 'p-1', leito: '1-01', evo }],
+      activeId: 'p-1',
+    })
+    assert.deepEqual(
+      { ...out.patients[0].evo, templateId: undefined },
+      { ...evo, templateId: undefined },
+    )
+  })
+
+  it('o comentário laboratorial sobrevive ao sync', () => {
+    const out = sanitizePlantao({
+      patients: [{ id: 'p-1', leito: '1-01', evo: { laboratorial: 'aguardando coleta' } }],
+      activeId: 'p-1',
+    })
+    assert.equal(out.patients[0].evo.laboratorial, 'aguardando coleta')
+  })
 })
