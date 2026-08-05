@@ -41,8 +41,8 @@ const PAGES_BY_MODULE = {
     'pratica.html', 'siglas.html', 'pearls.html',
   ],
   neuro: [
-    'fisio.html', 'tce.html', 'avc-h.html', 'vm.html', 'metabolico.html',
-    'pos-op.html', 'sedoanalgesia.html',
+    'fluxograma.html', 'fisio.html', 'tce.html', 'avc-h.html', 'vm.html',
+    'metabolico.html', 'pos-op.html', 'sedoanalgesia.html',
   ],
   proc: [
     'cvc.html', 'linha-arterial.html', 'io.html', 'iot.html', 'vad.html',

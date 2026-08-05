@@ -214,6 +214,7 @@ const MODULE_PAGES = {
     {id:'pearls',     file:'pearls.html',     cat:'Pearls & Pitfalls',      label:'Cards clínicos',                   title:'Pearls & Pitfalls',                subtitle:'Cenários de plantão: acerto, erro comum e o porquê do mecanismo'},
   ],
   neuro: [
+    {id:'fluxograma',    file:'fluxograma.html',    cat:'Comece aqui',       label:'Fluxograma',           title:'Fluxograma do Neurocrítico',                   subtitle:'Prevenir a lesão secundária — a meta pressórica muda com o perfil'},
     {id:'fisio',         file:'fisio.html',         cat:'Fundamentos',       label:'Fisiologia neuro',     title:'Fisiologia do Neurocrítico',                   subtitle:'Monro-Kellie, PPC, autorregulação cerebral e herniação'},
     {id:'tce',           file:'tce.html',           cat:'Patologias',        label:'Hemodinâmica & PIC',   title:'Hemodinâmica e Manejo Aprofundado da PIC',     subtitle:'Metas de PAS/PAM por etiologia e algoritmo em degraus'},
     {id:'avc-i',         file:'avc-i.html',         cat:'Patologias',        label:'AVC isquêmico',        title:'AVC Isquêmico Agudo',                          subtitle:'Janela terapêutica, trombólise e trombectomia'},

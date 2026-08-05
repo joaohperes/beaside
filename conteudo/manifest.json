@@ -749,6 +749,23 @@
       },
       "paginas": [
         {
+          "id": "fluxograma",
+          "arquivo": "fluxograma.html",
+          "categoria": "Comece aqui",
+          "menu": "Fluxograma",
+          "titulo": "Fluxograma do Neurocrítico",
+          "subtitulo": "Prevenir a lesão secundária — a meta pressórica muda com o perfil",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Comece aqui",
+            "selo": "Fluxograma",
+            "titulo": "Fluxograma do Neurocrítico",
+            "resumo": "Prevenir a lesão secundária — a meta pressórica muda com o perfil"
+          }
+        },
+        {
           "id": "fisio",
           "arquivo": "fisio.html",
           "categoria": "Fundamentos",
