@@ -252,6 +252,7 @@ const MODULE_PAGES = {
     {id:'pocus',      file:'pocus.html',      cat:'Depois da sala', label:'POCUS pós-op',          title:'POCUS no Pós-Operatório',                   subtitle:'FOCUS e RUSH para dar nome à hipotensão e à hipoxemia da primeira noite'},
   ],
   infecto: [
+    {id:'fluxograma',  file:'fluxograma.html',  cat:'Comece aqui',                  label:'Fluxograma',                        title:'Fluxograma da Antibioticoterapia',                               subtitle:'Do foco à duração — antecipar, largo e certo na 1ª dose, estreitar no time-out'},
     {id:'empirico',    file:'empirico.html',    cat:'Pensar antes do antibiograma', label:'Terapia empírica',                  title:'Terapia empírica: do foco ao espectro',                          subtitle:'Escolher o antibiótico antes do antibiograma — pelo foco, pelo hospedeiro e pela ecologia local'},
     {id:'pkpd',        file:'pkpd.html',        cat:'Pensar antes do antibiograma', label:'PK/PD e dose',                      title:'PK/PD e dose no paciente crítico',                               subtitle:'Por que a dose muda na UTI: ataque, hipoalbuminemia, clearance aumentado, infusão prolongada e ajuste renal'},
     {id:'resistencia', file:'resistencia.html', cat:'Ler a resistência',            label:'ESBL, AmpC e CRE',                  title:'Resistência que muda a conduta: ESBL, AmpC e CRE',               subtitle:'Ler o mecanismo de resistência antes do resultado e escolher a droga que não falha'},

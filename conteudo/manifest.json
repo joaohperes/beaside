@@ -1373,6 +1373,23 @@
       ],
       "paginas": [
         {
+          "id": "fluxograma",
+          "arquivo": "fluxograma.html",
+          "categoria": "Comece aqui",
+          "menu": "Fluxograma",
+          "titulo": "Fluxograma da Antibioticoterapia",
+          "subtitulo": "Do foco à duração — antecipar, largo e certo na 1ª dose, estreitar no time-out",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Comece aqui",
+            "selo": "Fluxograma",
+            "titulo": "Fluxograma da Antibioticoterapia",
+            "resumo": "Do foco à duração — antecipar, largo e certo na 1ª dose, estreitar no time-out"
+          }
+        },
+        {
           "id": "empirico",
           "arquivo": "empirico.html",
           "categoria": "Pensar antes do antibiograma",
