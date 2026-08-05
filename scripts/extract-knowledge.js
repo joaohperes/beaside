@@ -32,7 +32,7 @@ const PAGES_BY_MODULE = {
     'sedoanalgesia.html', 'sdra.html', 'prona.html', 'dpoc-asma.html',
     'hipercapnia.html', 'tce.html', 'complicacoes.html', 'capnografia.html',
     'dissincronia.html', 'bnm.html', 'desmame.html', 'vni.html',
-    'tabelas.html', 'pearls.html',
+    'fluxograma.html', 'tabelas.html', 'pearls.html',
   ],
   hemo: [
     'fisio.html', 'do2.html', 'rush.html', 'vci.html', 'ecg.html',

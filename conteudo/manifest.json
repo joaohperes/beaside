@@ -329,6 +329,23 @@
           }
         },
         {
+          "id": "fluxograma",
+          "arquivo": "fluxograma.html",
+          "categoria": "Síntese",
+          "menu": "Fluxograma",
+          "titulo": "Fluxograma da VM",
+          "subtitulo": "Do intubado à extubação — proteger, oxigenar, resgatar, desmamar",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Síntese",
+            "selo": "Síntese",
+            "titulo": "Fluxograma da VM",
+            "resumo": "Do intubado à extubação — proteger, oxigenar, resgatar, desmamar"
+          }
+        },
+        {
           "id": "calculadora",
           "arquivo": "calculadora.html",
           "categoria": "Referência",
