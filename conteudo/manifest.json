@@ -976,6 +976,23 @@
       },
       "paginas": [
         {
+          "id": "fluxograma",
+          "arquivo": "fluxograma.html",
+          "categoria": "Comece aqui",
+          "menu": "Fluxograma",
+          "titulo": "Fluxograma da Via Aérea",
+          "subtitulo": "Da preparação ao CICO — planejar, limitar tentativas, confirmar",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Comece aqui",
+            "selo": "Fluxograma",
+            "titulo": "Fluxograma da Via Aérea",
+            "resumo": "Da preparação ao CICO — planejar, limitar tentativas, confirmar"
+          }
+        },
+        {
           "id": "cvc",
           "arquivo": "cvc.html",
           "categoria": "Acesso vascular",

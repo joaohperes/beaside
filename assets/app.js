@@ -228,6 +228,7 @@ const MODULE_PAGES = {
     {id:'pearls',        file:'pearls.html',        cat:'Pearls & Pitfalls', label:'Cards clínicos',       title:'Pearls & Pitfalls',                            subtitle:'Cenários de plantão: acerto, erro comum e o porquê do mecanismo'},
   ],
   proc: [
+    {id:'fluxograma',     file:'fluxograma.html',     cat:'Comece aqui',            label:'Fluxograma',                 title:'Fluxograma da Via Aérea',                   subtitle:'Da preparação ao CICO — planejar, limitar tentativas, confirmar'},
     {id:'cvc',            file:'cvc.html',            cat:'Acesso vascular',        label:'CVC',                        title:'Cateter Venoso Central',                    subtitle:'Seldinger, escolha de sítio, profundidade e complicações'},
     {id:'linha-arterial', file:'linha-arterial.html', cat:'Acesso vascular',        label:'Linha arterial',             title:'Linha Arterial',                            subtitle:'Técnica, zeragem, Allen test e armadilhas do sítio'},
     {id:'io',             file:'io.html',             cat:'Acesso vascular',        label:'Acesso intraósseo',          title:'Acesso Intraósseo (IO)',                    subtitle:'Quando usar, sítios, técnica e drogas compatíveis'},

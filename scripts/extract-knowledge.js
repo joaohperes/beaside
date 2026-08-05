@@ -45,9 +45,10 @@ const PAGES_BY_MODULE = {
     'metabolico.html', 'pos-op.html', 'sedoanalgesia.html',
   ],
   proc: [
-    'cvc.html', 'linha-arterial.html', 'io.html', 'iot.html', 'vad.html',
-    'traqueo.html', 'toracocentese.html', 'dreno.html', 'paracentese.html',
-    'pl.html', 'pai.html', 'swan.html', 'ritmo.html', 'pearls.html',
+    'fluxograma.html', 'cvc.html', 'linha-arterial.html', 'io.html',
+    'iot.html', 'vad.html', 'traqueo.html', 'toracocentese.html',
+    'dreno.html', 'paracentese.html', 'pl.html', 'pai.html', 'swan.html',
+    'ritmo.html', 'pearls.html',
   ],
   peri: [
     'pre-op.html', 'atb.html', 'manejo.html', 'pocus.html',
