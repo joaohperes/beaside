@@ -264,7 +264,8 @@ const MODULE_PAGES = {
     {id:'idoso',       file:'idoso.html',       cat:'Populações',                   label:'Paciente idoso',                    title:'Antibioticoterapia no paciente idoso e frágil',                  subtitle:'Apresentação atípica, nefrotoxicidade e interações que mudam a escolha'},
   ],
   consulte: [
-    {id:'assistente', file:'index.html', cat:'Assistente IA', label:'Assistente de conduta', title:'Assistente de Conduta (IA)', subtitle:'VM, hemodinâmica e neurocrítico em um só chat'},
+    {id:'ferramentas', file:'ferramentas.html', cat:'Consulte',      label:'Ferramentas',           title:'Consulte — execução rápida', subtitle:'Doses, tabelas, calculadoras e metas do plantão'},
+    {id:'assistente',  file:'index.html',       cat:'Assistente IA', label:'Assistente de conduta', title:'Assistente de Conduta (IA)', subtitle:'VM, hemodinâmica e neurocrítico em um só chat'},
   ],
   institucional: [
     {id:'sobre',        file:'sobre.html',        cat:'Institucional', label:'A be·aside',      title:'Sobre o be·aside',                      subtitle:'Feito para pensar o paciente crítico — do mecanismo à decisão'},

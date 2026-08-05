@@ -1553,6 +1553,18 @@
       "cor": "#1db88a",
       "paginas": [
         {
+          "id": "ferramentas",
+          "arquivo": "ferramentas.html",
+          "categoria": "Consulte",
+          "menu": "Ferramentas",
+          "titulo": "Consulte — execução rápida",
+          "subtitulo": "Doses, tabelas, calculadoras e metas do plantão",
+          "tipo": "referencia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
           "id": "assistente",
           "arquivo": "index.html",
           "categoria": "Assistente IA",
