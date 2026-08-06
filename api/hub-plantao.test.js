@@ -196,6 +196,21 @@ describe('hub-plantao API contract', () => {
     )
   })
 
+  it('chave de coleta com hora não é truncada', () => {
+    /*
+     * `'06/08/26 14:30'` tem 14 caracteres; o limite antigo era 12 e a chave
+     * chegava como `'06/08/26 14:'`. Seriar hemoglobina no mesmo dia depende
+     * dela chegar inteira ao outro aparelho.
+     */
+    const out = sanitizePlantao({
+      patients: [
+        { id: 'p-1', leito: '1-01', labs: { '06/08/26 14:30': { hb: '7,2' } } },
+      ],
+      activeId: 'p-1',
+    })
+    assert.deepEqual(Object.keys(out.patients[0].labs), ['06/08/26 14:30'])
+  })
+
   it('o comentário laboratorial sobrevive ao sync', () => {
     const out = sanitizePlantao({
       patients: [{ id: 'p-1', leito: '1-01', evo: { laboratorial: 'aguardando coleta' } }],

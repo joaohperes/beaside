@@ -251,7 +251,13 @@ function sanitizePatient(raw) {
   const text = (key, max = 200) => cleanString(raw[key], max)
   const labs = {}
   for (const [date, values] of Object.entries(raw.labs || {}).slice(0, 40)) {
-    labs[cleanString(date, 12)] = cleanRecord(values, 100, 80)
+    /*
+     * 20 e não 12: a chave da coleta passou a aceitar hora
+     * (`'06/08/26 14:30'`, 14 caracteres), o que permite seriar exame no mesmo
+     * dia. Com o limite antigo ela era TRUNCADA para `'06/08/26 14:'` — a
+     * coleta chegava ao outro aparelho com a chave corrompida.
+     */
+    labs[cleanString(date, 20)] = cleanRecord(values, 100, 80)
   }
   const vitals = {}
   for (const [date, values] of Object.entries(raw.vitals || {}).slice(0, 40)) {
