@@ -33,6 +33,8 @@ const avisos = [];
 // ── helpers ────────────────────────────────────────────────────────────
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const jsStr = (s) => "'" + String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "'";
+// chave de objeto JS: sem aspas se for identificador válido; com aspas se tiver hífen etc.
+const jsKey = (id) => /^[A-Za-z_$][\w$]*$/.test(id) ? id : jsStr(id);
 const pad = (s, n) => s + ' '.repeat(Math.max(0, n - s.length));
 const nn = (i) => String(i).padStart(2, '0');
 const rgb = (hex) => {
@@ -68,7 +70,7 @@ function gerarAppJs() {
   let out = '\n// ── Módulos disponíveis ──────────────────────────────────────\n';
   out += 'const MODULES = {\n';
   for (const m of manifest.modulos) {
-    out += `  ${m.id}: {\n`;
+    out += `  ${jsKey(m.id)}: {\n`;
     out += `    id: ${jsStr(m.id)},\n`;
     out += `    label: ${jsStr(m.label)},\n`;
     out += `    area: ${jsStr(m.area)},\n`;
@@ -88,7 +90,7 @@ function gerarAppJs() {
     const wId = w('id', (p) => jsStr(p.id)), wFile = w('f', (p) => jsStr(p.arquivo));
     const wCat = w('c', (p) => jsStr(p.categoria)), wLab = w('l', (p) => jsStr(p.menu));
     const wTit = w('t', (p) => jsStr(p.titulo));
-    out += `  ${m.id}: [\n`;
+    out += `  ${jsKey(m.id)}: [\n`;
     for (const p of pubs) {
       out += `    {id:${pad(jsStr(p.id) + ',', wId + 1)}file:${pad(jsStr(p.arquivo) + ',', wFile + 1)}`;
       out += `cat:${pad(jsStr(p.categoria) + ',', wCat + 1)}label:${pad(jsStr(p.menu) + ',', wLab + 1)}`;

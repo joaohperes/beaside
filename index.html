@@ -73,6 +73,63 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://beaside.com.br/#faq",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "O que é o be·aside?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Uma plataforma de raciocínio clínico para médicos que cuidam de pacientes críticos em UTI, emergência e enfermaria. Organiza ventilação mecânica, hemodinâmica e choque, neurocrítico, procedimentos, perioperatório e antibioticoterapia como módulos de raciocínio — do mecanismo fisiológico à conduta de beira-leito — além de artigos que respondem dúvidas reais de plantão e um assistente de IA para discussão de casos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Para quem é o be·aside?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para médicos que trabalham com pacientes críticos: plantonistas, residentes, clínicos, intensivistas e emergencistas. A linguagem é médica e profissional e pressupõe formação clínica. Pode ter valor educacional para outros profissionais de saúde, mas é escrito para quem toma decisão à beira do leito."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O conteúdo tem referências?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. As recomendações citam a fonte (UpToDate, FCCS, diretrizes específicas com ano) próxima ao conteúdo. Quando há controvérsia ou prática variável entre serviços, isso é declarado em vez de apresentado como consenso."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O be·aside substitui o UpToDate, as diretrizes ou o protocolo da minha instituição?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Não. O be·aside é curadoria sobre fontes primárias (UpToDate, FCCS e diretrizes atuais), estruturada para consulta rápida à beira do leito. Não substitui o julgamento médico individualizado nem os protocolos da sua instituição — que prevalecem sempre que existirem."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como funciona o assistente de IA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O assistente usa o conteúdo validado do próprio be·aside como base de conhecimento para discutir casos: ajuste de ventilação, interpretação hemodinâmica, padrões de choque, doses e condutas. É uma ferramenta de apoio ao raciocínio, aponta limitações quando faltam dados e não substitui a decisão do médico responsável. Toda dose ou conduta sugerida deve ser conferida antes da prescrição."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O be·aside é gratuito?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Os guias e artigos são de acesso aberto. O assistente de IA tem acesso controlado, e modelos de assinatura estão em desenvolvimento — mudanças serão comunicadas na plataforma antes de entrarem em vigor."
+      }
+    }
+  ]
+}
+</script>
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -2637,6 +2694,42 @@ v.onclick=function(){beasideSetView('ws');};tb.parentNode.insertBefore(v,tb.next
       </div>
     </div>
 
+    <div class="area-head" id="knowledge-optimization" style="--c-accent:#1db88a">
+      <div class="area-eyebrow"><span class="area-num">05</span> Knowledge Optimization</div>
+      <h2>Como pensamos medicina na era da IA</h2>
+      <p>Não é blog nem notícia: é a filosofia intelectual do be·aside. Ensaios sobre como o conhecimento médico deve ser organizado, validado e conectado numa época em que a inteligência artificial democratizou o acesso à informação.</p>
+    </div>
+
+    <div class="card wide"
+       style="--c-accent:#1db88a;--c-border:rgba(29,184,138,.4);--c-glow:rgba(29,184,138,.12);--c-shadow:rgba(29,184,138,.1)">
+      <span class="card-rail" aria-hidden="true"></span>
+      <a class="card-hit" href="knowledge-optimization/" aria-label="Knowledge Optimization — ensaios sobre conhecimento, raciocínio clínico e inteligência artificial">
+        <div class="card-top">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="5" r="2.2"/>
+              <circle cx="5" cy="17.5" r="2.2"/>
+              <circle cx="19" cy="17.5" r="2.2"/>
+              <path d="M10.5 6.7 6.5 15.4M13.5 6.7 17.5 15.4M7.2 17.5h9.6"/>
+            </svg>
+          </div>
+        </div>
+        <div class="card-wide-main">
+          <div class="card-title">Knowledge Optimization</div>
+          <div class="card-sub">Ensaios autorais sobre conhecimento, raciocínio clínico, inteligência artificial, medicina baseada em evidências e o futuro da prática médica.</div>
+        </div>
+        <div class="card-tags">
+          <span class="card-tag">Inteligência Artificial</span>
+          <span class="card-tag">Raciocínio Clínico</span>
+          <span class="card-tag">MBE</span>
+          <span class="card-tag">Curadoria</span>
+        </div>
+      </a>
+      <div class="card-foot">
+        <a class="card-cta" href="knowledge-optimization/">Explorar ensaios <span class="card-cta-arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
 
   </div>
 
@@ -2652,6 +2745,53 @@ v.onclick=function(){beasideSetView('ws');};tb.parentNode.insertBefore(v,tb.next
         <span class="author-role">Cofundador · Médico</span>
       </div>
     </div>
+  </section>
+
+  <style>
+  .faqh{max-width:900px;margin:66px auto 8px;padding:0 24px}
+  .faqh-k{font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);text-align:center}
+  .faqh h2{font-size:clamp(27px,3.4vw,39px);color:var(--text);margin:14px 0 30px;letter-spacing:-.025em;font-weight:700;text-align:center}
+  .faqh-item{border-top:1px solid var(--border2)}
+  .faqh-item:last-of-type{border-bottom:1px solid var(--border2)}
+  .faqh-item summary{list-style:none;cursor:pointer;padding:19px 0;display:flex;justify-content:space-between;align-items:center;gap:18px;font-weight:600;font-size:18px;color:var(--text);letter-spacing:-.01em;transition:color .18s var(--ease)}
+  .faqh-item summary::-webkit-details-marker{display:none}
+  .faqh-item summary:hover{color:var(--teal)}
+  .faqh-item summary::after{content:"+";font-family:var(--mono);font-size:22px;font-weight:400;color:var(--teal);flex:none;line-height:1}
+  .faqh-item[open] summary::after{content:"\2013"}
+  .faqh-item .faqh-a{padding:0 0 20px;color:var(--text2);line-height:1.65;font-size:15.5px;max-width:74ch}
+  .faqh-foot{text-align:center;margin-top:28px;font-size:14.5px;color:var(--text2)}
+  .faqh-foot a{color:var(--teal);text-decoration:none}
+  .faqh-foot a:hover{text-decoration:underline}
+  @media(max-width:520px){.faqh-item summary{font-size:16.5px}}
+  </style>
+  <section class="faqh" id="faq" aria-label="Perguntas frequentes">
+    <div class="faqh-k">Perguntas frequentes</div>
+    <h2>Antes de começar</h2>
+    <details class="faqh-item" open>
+      <summary>O que é o be·aside?</summary>
+      <div class="faqh-a">Uma plataforma de raciocínio clínico para médicos que cuidam de pacientes críticos em UTI, emergência e enfermaria. Organiza ventilação mecânica, hemodinâmica e choque, neurocrítico, procedimentos, perioperatório e antibioticoterapia como módulos de raciocínio — do mecanismo fisiológico à conduta de beira-leito — além de artigos que respondem dúvidas reais de plantão e um assistente de IA para discussão de casos.</div>
+    </details>
+    <details class="faqh-item">
+      <summary>Para quem é o be·aside?</summary>
+      <div class="faqh-a">Para médicos que trabalham com pacientes críticos: plantonistas, residentes, clínicos, intensivistas e emergencistas. A linguagem é médica e profissional e pressupõe formação clínica. Pode ter valor educacional para outros profissionais de saúde, mas é escrito para quem toma decisão à beira do leito.</div>
+    </details>
+    <details class="faqh-item">
+      <summary>O conteúdo tem referências?</summary>
+      <div class="faqh-a">Sim. As recomendações citam a fonte (UpToDate, FCCS, diretrizes específicas com ano) próxima ao conteúdo. Quando há controvérsia ou prática variável entre serviços, isso é declarado em vez de apresentado como consenso.</div>
+    </details>
+    <details class="faqh-item">
+      <summary>O be·aside substitui o UpToDate, as diretrizes ou o protocolo da minha instituição?</summary>
+      <div class="faqh-a">Não. O be·aside é curadoria sobre fontes primárias (UpToDate, FCCS e diretrizes atuais), estruturada para consulta rápida à beira do leito. Não substitui o julgamento médico individualizado nem os protocolos da sua instituição — que prevalecem sempre que existirem.</div>
+    </details>
+    <details class="faqh-item">
+      <summary>Como funciona o assistente de IA?</summary>
+      <div class="faqh-a">O assistente usa o conteúdo validado do próprio be·aside como base de conhecimento para discutir casos: ajuste de ventilação, interpretação hemodinâmica, padrões de choque, doses e condutas. É uma ferramenta de apoio ao raciocínio, aponta limitações quando faltam dados e não substitui a decisão do médico responsável. Toda dose ou conduta sugerida deve ser conferida antes da prescrição.</div>
+    </details>
+    <details class="faqh-item">
+      <summary>O be·aside é gratuito?</summary>
+      <div class="faqh-a">Os guias e artigos são de acesso aberto. O assistente de IA tem acesso controlado, e modelos de assinatura estão em desenvolvimento — mudanças serão comunicadas na plataforma antes de entrarem em vigor.</div>
+    </details>
+    <p class="faqh-foot">Mais sobre conteúdo, IA e acesso na <a href="institucional/faq.html">página de perguntas frequentes</a>.</p>
   </section>
 
   <footer class="footer footer-pro">
