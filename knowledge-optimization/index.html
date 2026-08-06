@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7K0CML04MR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7K0CML04MR');
+</script>
+<script src="../assets/theme-boot.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Knowledge Optimization — Como pensamos medicina na era da IA | be·aside</title>
+<meta name="description" content="Knowledge Optimization: ensaios do be·aside sobre como o conhecimento médico deve ser organizado, validado e conectado na era da inteligência artificial — raciocínio clínico, medicina baseada em evidências e IA.">
+<meta property="og:image" content="https://beaside.com.br/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="be·aside — raciocínio clínico à beira do leito">
+<meta name="twitter:image" content="https://beaside.com.br/assets/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "be·aside",
+      "item": "https://beaside.com.br/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Knowledge Optimization",
+      "item": "https://beaside.com.br/knowledge-optimization/"
+    }
+  ]
+}
+</script>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Knowledge Optimization — be·aside">
+<meta name="twitter:description" content="Como pensamos medicina na era da IA. Ensaios sobre conhecimento, raciocínio clínico e inteligência artificial.">
+<link rel="canonical" href="https://beaside.com.br/knowledge-optimization/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="be·aside">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Knowledge Optimization — be·aside">
+<meta property="og:description" content="Ensaios sobre conhecimento, raciocínio clínico e inteligência artificial na medicina.">
+<meta property="og:url" content="https://beaside.com.br/knowledge-optimization/">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/landing.css">
+</head>
+<body>
+
+<div class="scene" aria-hidden="true">
+  <div class="scene-grid"></div>
+  <div class="glow glow-main"></div>
+</div>
+
+<header class="navbar">
+  <div class="navbar-inner">
+    <a class="logo" href="../index.html" aria-label="be·aside — início">
+      <svg class="logo-icon" width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="0" y="2" width="6" height="20" rx="3" fill="#1db88a"/>
+        <rect x="10" y="0" width="6" height="15" rx="3" fill="#1db88a" opacity=".55"/>
+      </svg>
+      <span class="logo-wordmark">be·aside</span>
+    </a>
+    <nav class="mainnav" aria-label="Áreas do be·aside">
+      <a class="is-secondary" href="../institucional/sobre.html">A be·aside</a>
+      <span class="nav-sep" aria-hidden="true"></span>
+      <a href="../artigos/">Perguntas de Plantão</a>
+      <a href="../index.html#raciocine">Raciocine</a>
+      <a href="../index.html#consulte">Consulte e Resolva</a>
+    </nav>
+    <div class="top-meta">
+      <button class="nav-burger" type="button" aria-label="Abrir menu" aria-expanded="false" onclick="toggleMobileNav()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <a class="btn-entrar" id="btn-entrar" href="../login.html">Entrar</a>
+      <script>
+      (function(){
+        var slot=document.getElementById('btn-entrar');
+        if(!slot||!slot.parentNode) return;
+        var hint=null;
+        try{hint=JSON.parse(localStorage.getItem('beaside-auth-hint')||'null');}catch(e){}
+        if(!hint||!(hint.shortName||hint.fullName||hint.email)) return;
+        var full=String(hint.fullName||hint.shortName||'').trim();
+        var short=String(hint.shortName||(full.split(/\s+/)[0])||'Conta').trim();
+        var email=String(hint.email||'');
+        var tip=(full&&email)?(full+' · '+email):(email||full||short);
+        function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+        var wrap=document.createElement('div');
+        wrap.setAttribute('data-auth-chip','1');
+        wrap.setAttribute('data-auth-boot','1');
+        wrap.className='auth-chip-wrap is-optimistic is-boot';
+        wrap.innerHTML=
+          '<button type="button" class="auth-chip" tabindex="-1" aria-hidden="true">'+
+          '<span class="auth-chip-dot" aria-hidden="true"></span>'+
+          '<span class="auth-chip-name" title="'+esc(tip)+'">'+esc(short)+'</span>'+
+          '<span class="auth-chip-caret" aria-hidden="true">▾</span>'+
+          '</button>';
+        slot.parentNode.insertBefore(wrap,slot);
+        slot.hidden=true;
+        slot.style.display='none';
+      })();
+      </script>
+      <button class="btn-theme" data-theme-toggle type="button" onclick="toggleTheme()" aria-label="Alternar tema"></button>
+    </div>
+  </div>
+  <div class="mobilenav" id="mobilenav">
+    <a href="../institucional/sobre.html">A be·aside</a>
+    <a href="../artigos/" onclick="toggleMobileNav()">Perguntas de Plantão</a>
+    <a href="../index.html#raciocine" onclick="toggleMobileNav()">Raciocine</a>
+    <a href="../index.html#consulte" onclick="toggleMobileNav()">Consulte e Resolva</a>
+    <a href="../institucional/faq.html">FAQ</a>
+  </div>
+</header>
+
+<div class="hub">
+
+  <script>
+  function toggleMobileNav(){
+    var m=document.getElementById('mobilenav');if(!m)return;
+    var open=m.classList.toggle('open');
+    var b=document.querySelector('.nav-burger');
+    if(b)b.setAttribute('aria-expanded',open?'true':'false');
+  }
+  </script>
+
+  <div class="ko-intro">
+    <div class="ko-eyebrow">Knowledge Optimization</div>
+    <h1>Como pensamos medicina na era da IA</h1>
+    <p class="ko-dek">Uma proposta do be·aside para discutir como o conhecimento médico deve ser organizado na era da inteligência artificial.</p>
+    <p>Vivemos uma transformação sem precedentes na forma como médicos acessam informação. Se durante décadas o desafio consistia em <strong>encontrar</strong> conhecimento, hoje o desafio passou a ser <strong>interpretar, validar e organizar</strong> uma quantidade praticamente ilimitada de conteúdo produzido por humanos e inteligências artificiais.</p>
+    <p>Acreditamos que o diferencial da próxima geração de plataformas médicas não será possuir a melhor inteligência artificial, mas <strong>organizar melhor o conhecimento</strong> que alimenta essa inteligência. Chamamos essa filosofia de <span class="ko-term">Knowledge Optimization</span>.</p>
+    <p>Esta seção reúne ensaios que discutem medicina, tecnologia, inteligência artificial, raciocínio clínico e organização do conhecimento.</p>
+    <div class="ko-note"><strong>Modelo conceitual</strong>Knowledge Optimization é uma proposta em construção — um modelo conceitual que ainda necessita de validação empírica.</div>
+  </div>
+
+  <div class="ko-lib">
+    <div class="ko-lib-head"><h2>Ensaios</h2><span class="line"></span></div>
+
+    <a class="essay-card" href="do-seo-ao-knowledge-optimization.html">
+      <span class="ec-cat">Organização do Conhecimento</span>
+      <h3>Do Search Engine Optimization ao Knowledge Optimization</h3>
+      <p class="ec-dek">Uma proposta para a era da inteligência artificial.</p>
+      <p class="ec-resumo">Quando encontrar informação deixou de ser o problema, o diferencial deixa de ser o acesso à inteligência artificial e passa a ser a qualidade do conhecimento que a alimenta.</p>
+      <div class="ec-meta"><span class="author">Dr. Cesar A. Seidler Jr.</span><span class="dot">·</span><span>7 min de leitura</span><span class="dot">·</span><span>Agosto de 2026</span><span class="ec-cta" aria-hidden="true">→</span></div>
+    </a>
+
+    <div class="essay-card soon">
+      <span class="ec-cat">Raciocínio Clínico</span>
+      <h3>A inteligência artificial não substitui o raciocínio clínico</h3>
+      <div class="ec-meta"><span>Em breve</span></div>
+    </div>
+    <div class="essay-card soon">
+      <span class="ec-cat">Organização do Conhecimento</span>
+      <h3>Curadoria é a nova segurança da medicina</h3>
+      <div class="ec-meta"><span>Em breve</span></div>
+    </div>
+    <div class="essay-card soon">
+      <span class="ec-cat">Filosofia da Medicina</span>
+      <h3>Como pensamos o be·aside</h3>
+      <div class="ec-meta"><span>Em breve</span></div>
+    </div>
+    <div class="essay-card soon">
+      <span class="ec-cat">Filosofia da Medicina</span>
+      <h3>O excesso de informação e a perda do conhecimento</h3>
+      <div class="ec-meta"><span>Em breve</span></div>
+    </div>
+    <div class="essay-card soon">
+      <span class="ec-cat">Tecnologia em Saúde</span>
+      <h3>O futuro da prática médica na era da IA</h3>
+      <div class="ec-meta"><span>Em breve</span></div>
+    </div>
+    <div class="essay-card soon">
+      <span class="ec-cat">Medicina Baseada em Evidências</span>
+      <h3>Evidência, contexto e decisão clínica</h3>
+      <div class="ec-meta"><span>Em breve</span></div>
+    </div>
+    <div class="essay-card soon">
+      <span class="ec-cat">Organização do Conhecimento</span>
+      <h3>Quando encontrar informação deixou de ser o problema</h3>
+      <div class="ec-meta"><span>Em breve</span></div>
+    </div>
+  </div>
+
+
+  <div class="cta-final">
+    <div class="cta-final-t">A filosofia por trás da plataforma</div>
+    <div class="cta-final-d">Knowledge Optimization é o princípio que orienta o be·aside: organizar, validar e conectar o conhecimento clínico que sustenta o raciocínio à beira do leito — e alimenta o assistente de IA.</div>
+    <div class="cta-final-actions">
+      <a class="btn-primary" href="../index.html#modulos">Conhecer os guias clínicos <span aria-hidden="true">→</span></a>
+      <a class="btn-ghost" href="../institucional/metodologia.html">Como revisamos o conteúdo</a>
+    </div>
+  </div>
+
+  <section class="authors" aria-label="Autores">
+    <div class="authors-label">Curadoria</div>
+    <div class="authors-row">
+      <div class="author"><span class="author-name">Dr. João H. Peres</span><span class="author-role">Cofundador · Médico</span></div>
+      <div class="author"><span class="author-name">Dr. Cesar A. Seidler Jr.</span><span class="author-role">Cofundador · Médico</span></div>
+    </div>
+  </section>
+
+  <footer class="footer footer-pro">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="../index.html" aria-label="be·aside — início">
+          <svg class="logo-icon" width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="0" y="2" width="6" height="20" rx="3" fill="#1db88a"/>
+        <rect x="10" y="0" width="6" height="15" rx="3" fill="#1db88a" opacity=".55"/>
+      </svg>
+          <span class="logo-wordmark">be·aside</span>
+        </a>
+        <p class="footer-tag">Raciocínio clínico à beira do leito — do mecanismo à decisão, para quem cuida de paciente crítico.</p>
+      </div>
+      <nav class="footer-col" aria-label="Plataforma">
+        <div class="footer-k">Plataforma</div>
+        <a href="../artigos/">Perguntas de Plantão</a>
+        <a href="../index.html#raciocine">Raciocine</a>
+        <a href="../index.html#consulte">Consulte e Resolva</a>
+        <a href="../login.html">Entrar</a>
+      </nav>
+      <nav class="footer-col" aria-label="Institucional">
+        <div class="footer-k">Institucional</div>
+        <a href="../institucional/sobre.html">A be·aside</a>
+        <a href="../institucional/equipe.html">Quem somos</a>
+        <a href="../institucional/metodologia.html">Metodologia</a>
+        <a href="../institucional/faq.html">FAQ</a>
+      </nav>
+      <nav class="footer-col" aria-label="Confiança e legal">
+        <div class="footer-k">Confiança &amp; Legal</div>
+        <a href="../institucional/seguranca-ia.html">Segurança da IA</a>
+        <a href="../institucional/aviso-medico.html">Aviso médico</a>
+        <a href="../institucional/termos.html">Termos de Uso</a>
+        <a href="../institucional/privacidade.html">Privacidade</a>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <div class="footer-left"><strong>Material de apoio clínico</strong> — não substitui julgamento médico individualizado nem protocolo institucional.</div>
+      <div class="footer-right">© 2026 be·aside · <a href="mailto:cesar.junior@unochapeco.edu.br">Contato</a> · <a href="https://www.instagram.com/caseidlercj/" rel="me noopener" target="_blank">@caseidlercj</a> · <a href="https://www.instagram.com/joaohperes/" rel="me noopener" target="_blank">@joaohperes</a> · Atualizado jul/2026</div>
+    </div>
+  </footer>
+
+</div>
+<script>
+const THEME_KEY='beaside-theme';
+function getTheme(){try{const t=localStorage.getItem(THEME_KEY);if(t==='light'||t==='dark')return t;}catch(e){}return 'dark';}
+const THEME_BTN_HTML=
+  '<span class="theme-icon theme-icon-sun" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></span>'+
+  '<span class="theme-icon theme-icon-moon" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>';
+function prefersReduceMotion(){return !!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);}
+function syncThemeButtons(t){
+  document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){
+    if(!btn.dataset.iconsReady){btn.innerHTML=THEME_BTN_HTML;btn.dataset.iconsReady='1';}
+    var next=t==='light'?'dark':'light';
+    btn.setAttribute('aria-label',next==='light'?'Ativar modo claro':'Ativar modo escuro');
+    btn.setAttribute('title',next==='light'?'Modo claro':'Modo escuro');
+    btn.setAttribute('aria-pressed',t==='light'?'true':'false');
+  });
+}
+function applyTheme(theme){
+  var t=(theme==='light'||theme==='dark')?theme:'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  try{localStorage.setItem(THEME_KEY,t);}catch(e){}
+  syncThemeButtons(t);
+}
+function toggleTheme(){
+  var next=getTheme()==='light'?'dark':'light';
+  document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){
+    btn.classList.remove('is-toggling');void btn.offsetWidth;btn.classList.add('is-toggling');
+    clearTimeout(btn._togTid);btn._togTid=setTimeout(function(){btn.classList.remove('is-toggling');},420);
+  });
+  if(document.startViewTransition&&!prefersReduceMotion()){document.startViewTransition(function(){applyTheme(next);});return;}
+  if(!prefersReduceMotion()){
+    document.documentElement.classList.add('theme-switching');applyTheme(next);
+    clearTimeout(toggleTheme._tid);toggleTheme._tid=setTimeout(function(){document.documentElement.classList.remove('theme-switching');},320);return;
+  }
+  applyTheme(next);
+}
+applyTheme(getTheme());
+</script>
+<script src="../assets/auth-config.js?v=5"></script>
+<script src="../assets/auth.js?v=5"></script>
+<script>
+(function hubAuth(){
+  var slot=document.querySelector('.btn-entrar');
+  if(!slot||!window.BeAsideAuth) return;
+  if(typeof BeAsideAuth.bindHubAuth==='function'){BeAsideAuth.bindHubAuth(slot);}
+  else{BeAsideAuth.init().then(function(){ BeAsideAuth.paintHubAuth(slot); }).catch(function(){});}
+})();
+</script>
+</body>
+</html>

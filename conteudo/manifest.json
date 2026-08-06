@@ -1769,6 +1769,28 @@
           "hub": null
         }
       ]
+    },
+    {
+      "id": "knowledge-optimization",
+      "area": "editorial",
+      "label": "Knowledge Optimization",
+      "subtitulo": "Ensaios sobre conhecimento, raciocínio clínico e IA",
+      "root": "knowledge-optimization/",
+      "cor": "#1db88a",
+      "paginas": [
+        {
+          "id": "do-seo-ao-knowledge-optimization",
+          "arquivo": "do-seo-ao-knowledge-optimization.html",
+          "categoria": "Organização do Conhecimento",
+          "menu": "Do SEO ao Knowledge Optimization",
+          "titulo": "Do Search Engine Optimization ao Knowledge Optimization",
+          "subtitulo": "Uma proposta para a era da inteligência artificial",
+          "tipo": "guia",
+          "status": "publicado",
+          "ia": false,
+          "hub": null
+        }
+      ]
     }
   ],
   "artigos": [

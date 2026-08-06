@@ -167,6 +167,14 @@ const MODULES = {
     semHub: true,
     color: '#1db88a',
   },
+  'knowledge-optimization': {
+    id: 'knowledge-optimization',
+    label: 'Knowledge Optimization',
+    area: 'editorial',
+    subtitle: 'Ensaios sobre conhecimento, raciocínio clínico e IA',
+    root: 'knowledge-optimization/',
+    color: '#1db88a',
+  },
 };
 
 // ── Índice de páginas por módulo ─────────────────────────────
@@ -281,6 +289,9 @@ const MODULE_PAGES = {
     {id:'aviso-medico', file:'aviso-medico.html', cat:'Políticas',     label:'Aviso médico',    title:'Aviso Médico',                          subtitle:'Leia antes de usar qualquer conteúdo do be·aside na prática'},
     {id:'termos',       file:'termos.html',       cat:'Políticas',     label:'Termos de Uso',   title:'Termos de Uso',                         subtitle:'Condições para uso da plataforma be·aside'},
     {id:'privacidade',  file:'privacidade.html',  cat:'Políticas',     label:'Privacidade',     title:'Política de Privacidade',               subtitle:'Como o be·aside trata dados pessoais (LGPD)'},
+  ],
+  'knowledge-optimization': [
+    {id:'do-seo-ao-knowledge-optimization', file:'do-seo-ao-knowledge-optimization.html', cat:'Organização do Conhecimento', label:'Do SEO ao Knowledge Optimization', title:'Do Search Engine Optimization ao Knowledge Optimization', subtitle:'Uma proposta para a era da inteligência artificial'},
   ],
 };
 /* /AUTO:conteudo */
