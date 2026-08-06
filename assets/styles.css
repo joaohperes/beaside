@@ -2706,6 +2706,16 @@ html[data-theme="light"] .iq-detail-name,
 html[data-theme="light"] .iq-detail-action{
   color:#0f1419;
 }
+
+/* contraste tema claro (corrige texto quase-branco sem override que sumia no claro) */
+html[data-theme="light"] .prose strong,
+html[data-theme="light"] .concept-card .value,
+html[data-theme="light"] .quiz-question,
+html[data-theme="light"] .compl-item .c-name,
+html[data-theme="light"] .hub-hero h1,
+html[data-theme="light"] .hub-card .hc-title,
+html[data-theme="light"] .dv-q-text,
+html[data-theme="light"] .dv-a strong{color:#0f1419}
 html[data-theme="light"] .ind-item,
 html[data-theme="light"] .hero-meta,
 html[data-theme="light"] .table-wrap,
