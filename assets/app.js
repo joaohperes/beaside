@@ -172,6 +172,7 @@ const MODULES = {
 // ── Índice de páginas por módulo ─────────────────────────────
 const MODULE_PAGES = {
   vm: [
+    {id:'fluxograma',    file:'fluxograma.html',    cat:'Comece aqui',               label:'Fluxograma',             title:'Fluxograma da VM',                             subtitle:'Do intubado à extubação — proteger, oxigenar, resgatar, desmamar'},
     {id:'fisiologia',    file:'fisiologia.html',    cat:'Fundamentos',               label:'Fisiologia da VM',       title:'Fisiologia da VM com Pressão Positiva',        subtitle:'Ciclo ventilatório, mecânica pulmonar e efeitos hemodinâmicos'},
     {id:'modos',         file:'modos.html',         cat:'Fundamentos',               label:'Modos de VM',            title:'Modos de Ventilação Mecânica',                 subtitle:'AC-VC · AC-PC · SIMV-PSV · PSV'},
     {id:'parametros',    file:'parametros.html',    cat:'Fundamentos',               label:'Parâmetros iniciais',    title:'Parâmetros Iniciais',                          subtitle:'Configuração passo a passo (UpToDate / FCCS)'},
@@ -194,6 +195,7 @@ const MODULE_PAGES = {
     {id:'quiz',          file:'quiz.html',          cat:'Pearls & Pitfalls',         label:'Caso clínico / Quiz',    title:'Caso Clínico Interativo',                      subtitle:'Quiz de múltipla escolha'},
   ],
   hemo: [
+    {id:'fluxograma', file:'fluxograma.html', cat:'Comece aqui',            label:'Fluxograma',                       title:'Fluxograma Integrado',             subtitle:'Do choque à conduta — padrão, gasometria, POCUS, drogas'},
     {id:'fisio',      file:'fisio.html',      cat:'Fundamentos',            label:'Fisiologia',                       title:'Base Fisiológica',                 subtitle:'DO₂, VO₂, Fick, Frank-Starling e choque críptico'},
     {id:'do2',        file:'do2.html',        cat:'Fundamentos',            label:'DO₂ / CaO₂',                       title:'Oferta de O₂',                     subtitle:'DO₂, CaO₂, tríade da oferta e intervenções'},
     {id:'rush',       file:'rush.html',       cat:'POCUS / Imagem',         label:'RUSH',                             title:'Protocolo RUSH',                   subtitle:'Rapid Ultrasound for Shock and Hypotension'},
@@ -204,7 +206,6 @@ const MODULE_PAGES = {
     {id:'quadrantes', file:'quadrantes.html', cat:'POCUS / Imagem',         label:'Quadrantes',                       title:'Os 4 Quadrantes SvcO₂ × Δ pCO₂',   subtitle:'Plano cartesiano para interpretar a hipoperfusão'},
     {id:'vti',        file:'vti.html',        cat:'POCUS / Imagem',         label:'VTI — Débito Cardíaco pelo POCUS', title:'VTI — Débito Cardíaco pelo POCUS', subtitle:'Como medir o VTI subvalvar aórtico e calcular DC, IC e ΔVTI'},
     {id:'integracao', file:'integracao.html', cat:'Síntese',                label:'Integração',                       title:'Integração Clínica',               subtitle:'Gasometria pareada + POCUS VCI em conjunto'},
-    {id:'fluxograma', file:'fluxograma.html', cat:'Síntese',                label:'Fluxograma',                       title:'Fluxograma Integrado',             subtitle:'Do choque à conduta — padrão, gasometria, POCUS, drogas'},
     {id:'padroes',    file:'padroes.html',    cat:'Síntese',                label:'Padrões',                          title:'Padrões Hemodinâmicos',            subtitle:'Tabelas de referência por tipo de choque'},
     {id:'drogas',     file:'drogas.html',     cat:'Terapêutica',            label:'Drogas vasoativas',                title:'Drogas Vasoativas',                subtitle:'Doses, diluições e escalonamento'},
     {id:'calc-hemo',  file:'calc-hemo.html',  cat:'Ferramentas',            label:'Calculadoras',                     title:'Calculadoras Hemodinâmicas',       subtitle:'Δ pCO₂ · VCI · VPP · Winter · DO₂'},
@@ -213,6 +214,7 @@ const MODULE_PAGES = {
     {id:'pearls',     file:'pearls.html',     cat:'Pearls & Pitfalls',      label:'Cards clínicos',                   title:'Pearls & Pitfalls',                subtitle:'Cenários de plantão: acerto, erro comum e o porquê do mecanismo'},
   ],
   neuro: [
+    {id:'fluxograma',    file:'fluxograma.html',    cat:'Comece aqui',       label:'Fluxograma',           title:'Fluxograma do Neurocrítico',                   subtitle:'Prevenir a lesão secundária — a meta pressórica muda com o perfil'},
     {id:'fisio',         file:'fisio.html',         cat:'Fundamentos',       label:'Fisiologia neuro',     title:'Fisiologia do Neurocrítico',                   subtitle:'Monro-Kellie, PPC, autorregulação cerebral e herniação'},
     {id:'tce',           file:'tce.html',           cat:'Patologias',        label:'Hemodinâmica & PIC',   title:'Hemodinâmica e Manejo Aprofundado da PIC',     subtitle:'Metas de PAS/PAM por etiologia e algoritmo em degraus'},
     {id:'avc-i',         file:'avc-i.html',         cat:'Patologias',        label:'AVC isquêmico',        title:'AVC Isquêmico Agudo',                          subtitle:'Janela terapêutica, trombólise e trombectomia'},
@@ -226,6 +228,7 @@ const MODULE_PAGES = {
     {id:'pearls',        file:'pearls.html',        cat:'Pearls & Pitfalls', label:'Cards clínicos',       title:'Pearls & Pitfalls',                            subtitle:'Cenários de plantão: acerto, erro comum e o porquê do mecanismo'},
   ],
   proc: [
+    {id:'fluxograma',     file:'fluxograma.html',     cat:'Comece aqui',            label:'Fluxograma',                 title:'Fluxograma da Via Aérea',                   subtitle:'Da preparação ao CICO — planejar, limitar tentativas, confirmar'},
     {id:'cvc',            file:'cvc.html',            cat:'Acesso vascular',        label:'CVC',                        title:'Cateter Venoso Central',                    subtitle:'Seldinger, escolha de sítio, profundidade e complicações'},
     {id:'linha-arterial', file:'linha-arterial.html', cat:'Acesso vascular',        label:'Linha arterial',             title:'Linha Arterial',                            subtitle:'Técnica, zeragem, Allen test e armadilhas do sítio'},
     {id:'io',             file:'io.html',             cat:'Acesso vascular',        label:'Acesso intraósseo',          title:'Acesso Intraósseo (IO)',                    subtitle:'Quando usar, sítios, técnica e drogas compatíveis'},
@@ -242,12 +245,14 @@ const MODULE_PAGES = {
     {id:'pearls',         file:'pearls.html',         cat:'Pearls & Pitfalls',      label:'Dúvidas de plantão',         title:'Dúvidas de Plantão',                        subtitle:'As perguntas que ninguém responde no guia clássico'},
   ],
   peri: [
-    {id:'pre-op', file:'pre-op.html', cat:'Antes da sala',  label:'Avaliação pré-op',      title:'Avaliação e Preparo Pré-Operatório',        subtitle:'ASA, capacidade funcional, fragilidade e o que realmente adia uma cirurgia'},
-    {id:'atb',    file:'atb.html',    cat:'Antes da sala',  label:'Profilaxia ATB',        title:'Profilaxia Antibiótica Cirúrgica',          subtitle:'Timing, dose por peso, repique e a hora de suspender'},
-    {id:'manejo', file:'manejo.html', cat:'Depois da sala', label:'Manejo perioperatório', title:'Manejo Perioperatório do Paciente Crítico', subtitle:'Coração, cérebro, glicemia e hemostasia nas primeiras horas depois da sala'},
-    {id:'pocus',  file:'pocus.html',  cat:'Depois da sala', label:'POCUS pós-op',          title:'POCUS no Pós-Operatório',                   subtitle:'FOCUS e RUSH para dar nome à hipotensão e à hipoxemia da primeira noite'},
+    {id:'fluxograma', file:'fluxograma.html', cat:'Comece aqui',    label:'Fluxograma',            title:'Fluxograma do Perioperatório',              subtitle:'Antes, na sala e depois — otimizar, o que adia e o pós montado antes'},
+    {id:'pre-op',     file:'pre-op.html',     cat:'Antes da sala',  label:'Avaliação pré-op',      title:'Avaliação e Preparo Pré-Operatório',        subtitle:'ASA, capacidade funcional, fragilidade e o que realmente adia uma cirurgia'},
+    {id:'atb',        file:'atb.html',        cat:'Antes da sala',  label:'Profilaxia ATB',        title:'Profilaxia Antibiótica Cirúrgica',          subtitle:'Timing, dose por peso, repique e a hora de suspender'},
+    {id:'manejo',     file:'manejo.html',     cat:'Depois da sala', label:'Manejo perioperatório', title:'Manejo Perioperatório do Paciente Crítico', subtitle:'Coração, cérebro, glicemia e hemostasia nas primeiras horas depois da sala'},
+    {id:'pocus',      file:'pocus.html',      cat:'Depois da sala', label:'POCUS pós-op',          title:'POCUS no Pós-Operatório',                   subtitle:'FOCUS e RUSH para dar nome à hipotensão e à hipoxemia da primeira noite'},
   ],
   infecto: [
+    {id:'fluxograma',  file:'fluxograma.html',  cat:'Comece aqui',                  label:'Fluxograma',                        title:'Fluxograma da Antibioticoterapia',                               subtitle:'Do foco à duração — antecipar, largo e certo na 1ª dose, estreitar no time-out'},
     {id:'empirico',    file:'empirico.html',    cat:'Pensar antes do antibiograma', label:'Terapia empírica',                  title:'Terapia empírica: do foco ao espectro',                          subtitle:'Escolher o antibiótico antes do antibiograma — pelo foco, pelo hospedeiro e pela ecologia local'},
     {id:'pkpd',        file:'pkpd.html',        cat:'Pensar antes do antibiograma', label:'PK/PD e dose',                      title:'PK/PD e dose no paciente crítico',                               subtitle:'Por que a dose muda na UTI: ataque, hipoalbuminemia, clearance aumentado, infusão prolongada e ajuste renal'},
     {id:'resistencia', file:'resistencia.html', cat:'Ler a resistência',            label:'ESBL, AmpC e CRE',                  title:'Resistência que muda a conduta: ESBL, AmpC e CRE',               subtitle:'Ler o mecanismo de resistência antes do resultado e escolher a droga que não falha'},
@@ -264,7 +269,8 @@ const MODULE_PAGES = {
     {id:'idoso',       file:'idoso.html',       cat:'Populações',                   label:'Paciente idoso',                    title:'Antibioticoterapia no paciente idoso e frágil',                  subtitle:'Apresentação atípica, nefrotoxicidade e interações que mudam a escolha'},
   ],
   consulte: [
-    {id:'assistente', file:'index.html', cat:'Assistente IA', label:'Assistente de conduta', title:'Assistente de Conduta (IA)', subtitle:'VM, hemodinâmica e neurocrítico em um só chat'},
+    {id:'ferramentas', file:'ferramentas.html', cat:'Consulte',      label:'Ferramentas',           title:'Consulte — execução rápida', subtitle:'Doses, tabelas, calculadoras e metas do plantão'},
+    {id:'assistente',  file:'index.html',       cat:'Assistente IA', label:'Assistente de conduta', title:'Assistente de Conduta (IA)', subtitle:'VM, hemodinâmica e neurocrítico em um só chat'},
   ],
   institucional: [
     {id:'sobre',        file:'sobre.html',        cat:'Institucional', label:'A be·aside',      title:'Sobre o be·aside',                      subtitle:'Feito para pensar o paciente crítico — do mecanismo à decisão'},

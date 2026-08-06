@@ -101,7 +101,7 @@ const ARTIGOS = new Map(manifesto.artigos.map((a) => ['artigos/' + a.arquivo, a]
 
 // Especialidade médica (vocabulário MedicalSpecialty do schema.org) por módulo.
 // Só os módulos clínicos entram: institucional e consulte não são MedicalWebPage.
-const ESPECIALIDADE = { vm: 'PulmonaryMedicine', hemo: 'Cardiovascular', neuro: 'Neurologic', proc: 'Emergency', peri: 'Surgical' };
+const ESPECIALIDADE = { vm: 'PulmonaryMedicine', hemo: 'Cardiovascular', neuro: 'Neurologic', proc: 'Emergency', peri: 'Surgical', infecto: 'Infectious' };
 
 // Cartão social. A imagem é 1200×630 e vive em assets/og-image.png.
 const OG_IMAGE = BASE_URL + '/assets/og-image.png';
@@ -187,10 +187,10 @@ function trilha(rel, canonicalUrl) {
     }
     itens.push({ name: daPagina.pag.titulo, url: canonicalUrl });
   } else if (artigo) {
-    itens.push({ name: 'Central de Conhecimento', url: BASE_URL + '/artigos/' });
+    itens.push({ name: 'Perguntas de Plantão', url: BASE_URL + '/artigos/' });
     itens.push({ name: artigo.titulo, url: canonicalUrl });
   } else if (rel === 'artigos/index.html') {
-    itens.push({ name: 'Central de Conhecimento', url: canonicalUrl });
+    itens.push({ name: 'Perguntas de Plantão', url: canonicalUrl });
   } else {
     return null;
   }

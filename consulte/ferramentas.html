@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7K0CML04MR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7K0CML04MR');
+</script>
+<script src="../assets/theme-boot.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consulte — doses, tabelas e calculadoras do plantão | be·aside</title>
+<meta name="robots" content="noindex, nofollow" data-beaside="status">
+<link rel="canonical" href="https://beaside.com.br/consulte/ferramentas.html">
+<meta name="description" content="Consulte be·aside: a camada de execução rápida — doses, diluições, tabelas, calculadoras, scores e metas do paciente crítico. Uma fonte de verdade, vários pontos de acesso.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="be·aside">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Consulte — execução rápida à beira do leito | be·aside">
+<meta property="og:description" content="Doses, tabelas, calculadoras e metas do paciente crítico, num acesso rápido.">
+<meta property="og:url" content="https://beaside.com.br/consulte/ferramentas.html">
+<meta property="og:image" content="https://beaside.com.br/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Consulte — execução rápida | be·aside">
+<meta name="twitter:image" content="https://beaside.com.br/assets/og-image.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+  .cx-filters{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 22px}
+  .cx-chip{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.02em;padding:7px 13px;border:1px solid var(--border2);border-radius:999px;background:var(--bg2);color:var(--text2);cursor:pointer;transition:color .15s,border-color .15s,background .15s}
+  .cx-chip:hover{color:var(--text);border-color:var(--text3)}
+  .cx-chip[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .cx-chip:focus-visible{outline:2px solid rgba(var(--accent-rgb),.45);outline-offset:2px}
+  .cx-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(278px,1fr));gap:16px}
+  .cx-card{position:relative;display:flex;flex-direction:column;gap:7px;padding:17px 18px 15px;border:1px solid var(--border);border-left:3px solid var(--cxc,var(--accent));border-radius:12px;background:var(--bg2);text-decoration:none;transition:border-color .16s var(--ease,ease),transform .16s,box-shadow .16s}
+  .cx-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,.13)}
+  .cx-card:focus-visible{outline:2px solid rgba(var(--accent-rgb),.45);outline-offset:2px}
+  .cx-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .cx-area{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cxc,var(--accent))}
+  .cx-type{font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--text3);border:1px solid var(--border);border-radius:5px;padding:3px 7px;white-space:nowrap}
+  .cx-title{font-size:16px;font-weight:600;color:var(--text);letter-spacing:-.01em;line-height:1.25}
+  .cx-sub{font-size:12.5px;color:var(--text2);line-height:1.5}
+  .cx-cta{margin-top:auto;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--cxc,var(--accent));padding-top:9px}
+  .cx-empty{color:var(--text3);font-size:14px;padding:24px 0}
+  @media(max-width:560px){.cx-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-module="consulte" data-page="ferramentas">
+<main class="main">
+<section class="section" id="consulte">
+  <header class="page-head">
+    <div class="hero-eyebrow">Consulte · Execução rápida</div>
+    <h1 class="section-title">Consulte</h1>
+    <p class="section-subtitle">Doses, diluições, tabelas, calculadoras, scores e metas — a camada de execução do método. Uma fonte de verdade, vários pontos de acesso: cada ferramenta vive na sua página de origem, referenciada; aqui é o atalho do plantão.</p>
+  </header>
+
+  <div class="cx-filters" id="cxFilters" aria-label="Filtrar por área"></div>
+  <div class="cx-grid" id="cxGrid"></div>
+
+  <div class="tip-box" style="margin-top:30px">
+    <strong>Uma fonte, vários acessos.</strong>
+    <p class="box-body">Nada aqui é cópia: cada card abre a página onde a ferramenta é mantida e referenciada — a mesma que aparece no guia. Precisa aplicar ao caso real? Leve o cenário ao <a class="text-link" href="./">assistente Be-IA</a>.</p>
+  </div>
+</section>
+</main>
+
+<script>
+const CX_TOOLS=[
+ {t:'Vasopressores e inotrópicos',a:'Hemodinâmica',c:'#e05555',ty:'Doses',h:'../hemo/drogas.html',s:'Doses, diluições e vazões das drogas vasoativas e inotrópicas.'},
+ {t:'PK/PD e dose dos antimicrobianos',a:'Antimicrobianos',c:'#5b63e0',ty:'Doses',h:'../infecto/pkpd.html',s:'Tabela mestra de dose e ajuste renal do que existe na farmácia.'},
+ {t:'Calculadoras hemodinâmicas',a:'Hemodinâmica',c:'#e05555',ty:'Calculadora',h:'../hemo/calc-hemo.html',s:'Débito cardíaco, resistências, VTI e derivados.'},
+ {t:'Calculadoras de ventilação',a:'Ventilação',c:'#0ea5b7',ty:'Calculadora',h:'../vm/calculadora.html',s:'Peso predito, volume corrente e driving pressure.'},
+ {t:'Calculadoras neurológicas',a:'Neurocrítico',c:'#9b6ff7',ty:'Calculadora',h:'../neuro/calc-neuro.html',s:'PPC, osmolaridade e correções de sódio.'},
+ {t:'Parâmetros iniciais de VM',a:'Ventilação',c:'#0ea5b7',ty:'Referência',h:'../vm/parametros.html',s:'Configuração inicial do ventilador, passo a passo.'},
+ {t:'Tabelas rápidas de ventilação',a:'Ventilação',c:'#0ea5b7',ty:'Tabela',h:'../vm/tabelas.html',s:'Metas, fórmulas e valores de referência da VM.'},
+ {t:'Padrões hemodinâmicos',a:'Hemodinâmica',c:'#e05555',ty:'Referência',h:'../hemo/padroes.html',s:'Perfis de choque e assinaturas hemodinâmicas ao POCUS.'},
+ {t:'Manejo metabólico e hídrico',a:'Neurocrítico',c:'#9b6ff7',ty:'Referência',h:'../neuro/metabolico.html',s:'Sódio, osmolaridade e metas no paciente neurocrítico.'},
+ {t:'Profilaxia antibiótica cirúrgica',a:'Antimicrobianos',c:'#5b63e0',ty:'Referência',h:'../peri/atb.html',s:'Esquema, dose e timing da profilaxia perioperatória.'},
+ {t:'Siglas hemodinâmicas',a:'Hemodinâmica',c:'#e05555',ty:'Referência',h:'../hemo/siglas.html',s:'Glossário rápido das siglas do módulo.'}
+];
+(function(){
+  const grid=document.getElementById('cxGrid'), fil=document.getElementById('cxFilters');
+  const areas=['Todas'].concat([...new Set(CX_TOOLS.map(x=>x.a))].sort());
+  let active='Todas';
+  function card(x){
+    return '<a class="cx-card" style="--cxc:'+x.c+'" href="'+x.h+'">'
+      +'<div class="cx-top"><span class="cx-area">'+x.a+'</span><span class="cx-type">'+x.ty+'</span></div>'
+      +'<div class="cx-title">'+x.t+'</div>'
+      +'<div class="cx-sub">'+x.s+'</div>'
+      +'<div class="cx-cta">Abrir &rarr;</div></a>';
+  }
+  function render(){
+    const list=CX_TOOLS.filter(x=>active==='Todas'||x.a===active);
+    grid.innerHTML=list.length?list.map(card).join(''):'<div class="cx-empty">Nada nesta área ainda.</div>';
+  }
+  fil.innerHTML=areas.map(a=>'<button class="cx-chip" type="button" aria-pressed="'+(a===active)+'" data-a="'+a+'">'+a+'</button>').join('');
+  fil.addEventListener('click',e=>{const b=e.target.closest('.cx-chip');if(!b)return;active=b.dataset.a;[...fil.children].forEach(c=>c.setAttribute('aria-pressed',c.dataset.a===active));render();});
+  render();
+})();
+</script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

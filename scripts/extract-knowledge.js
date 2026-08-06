@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Extrai o texto médico/clínico dos HTMLs do site e gera api/knowledge.js
 // Cobre TODOS os módulos de conteúdo: VM, Hemo, Neuro, Procedimentos e Artigos
-// (Central de Conhecimento) — a mesma base que alimenta o Assistente de Conduta
+// (Perguntas de Plantão) — a mesma base que alimenta o Assistente de Conduta
 // unificado (api/sugerir-uni.js).
 //
 // Execute: node scripts/extract-knowledge.js  (ou: npm run extract-knowledge)
@@ -28,35 +28,36 @@ const root = join(__dirname, '..');
 /* AUTO:conteudo */
 const PAGES_BY_MODULE = {
   vm: [
-    'fisiologia.html', 'modos.html', 'parametros.html', 'indutores.html',
-    'sedoanalgesia.html', 'sdra.html', 'prona.html', 'dpoc-asma.html',
-    'hipercapnia.html', 'tce.html', 'complicacoes.html', 'capnografia.html',
-    'dissincronia.html', 'bnm.html', 'desmame.html', 'vni.html',
-    'tabelas.html', 'pearls.html',
+    'fluxograma.html', 'fisiologia.html', 'modos.html', 'parametros.html',
+    'indutores.html', 'sedoanalgesia.html', 'sdra.html', 'prona.html',
+    'dpoc-asma.html', 'hipercapnia.html', 'tce.html', 'complicacoes.html',
+    'capnografia.html', 'dissincronia.html', 'bnm.html', 'desmame.html',
+    'vni.html', 'tabelas.html', 'pearls.html',
   ],
   hemo: [
-    'fisio.html', 'do2.html', 'rush.html', 'vci.html', 'ecg.html',
-    'scvo2.html', 'dpco2.html', 'quadrantes.html', 'vti.html',
-    'integracao.html', 'fluxograma.html', 'padroes.html', 'drogas.html',
-    'pratica.html', 'siglas.html', 'pearls.html',
+    'fluxograma.html', 'fisio.html', 'do2.html', 'rush.html', 'vci.html',
+    'ecg.html', 'scvo2.html', 'dpco2.html', 'quadrantes.html', 'vti.html',
+    'integracao.html', 'padroes.html', 'drogas.html', 'pratica.html',
+    'siglas.html', 'pearls.html',
   ],
   neuro: [
-    'fisio.html', 'tce.html', 'avc-h.html', 'vm.html', 'metabolico.html',
-    'pos-op.html', 'sedoanalgesia.html',
+    'fluxograma.html', 'fisio.html', 'tce.html', 'avc-h.html', 'vm.html',
+    'metabolico.html', 'pos-op.html', 'sedoanalgesia.html',
   ],
   proc: [
-    'cvc.html', 'linha-arterial.html', 'io.html', 'iot.html', 'vad.html',
-    'traqueo.html', 'toracocentese.html', 'dreno.html', 'paracentese.html',
-    'pl.html', 'pai.html', 'swan.html', 'ritmo.html', 'pearls.html',
+    'fluxograma.html', 'cvc.html', 'linha-arterial.html', 'io.html',
+    'iot.html', 'vad.html', 'traqueo.html', 'toracocentese.html',
+    'dreno.html', 'paracentese.html', 'pl.html', 'pai.html', 'swan.html',
+    'ritmo.html', 'pearls.html',
   ],
   peri: [
-    'pre-op.html', 'atb.html', 'manejo.html', 'pocus.html',
+    'fluxograma.html', 'pre-op.html', 'atb.html', 'manejo.html', 'pocus.html',
   ],
   infecto: [
-    'empirico.html', 'pkpd.html', 'resistencia.html', 'mdr.html',
-    'pneumonia.html', 'abdome.html', 'urinario.html', 'partesmoles.html',
-    'snc.html', 'bacteremia.html', 'candidemia.html', 'cdiff.html',
-    'neutropenia.html',
+    'fluxograma.html', 'empirico.html', 'pkpd.html', 'resistencia.html',
+    'mdr.html', 'pneumonia.html', 'abdome.html', 'urinario.html',
+    'partesmoles.html', 'snc.html', 'bacteremia.html', 'candidemia.html',
+    'cdiff.html', 'neutropenia.html',
   ],
   artigos: [
     'perguntas-plantao-hemodinamica.html', 'medidas-gerais-neurocritico.html',
