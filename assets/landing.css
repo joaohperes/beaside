@@ -1395,3 +1395,8 @@ html[data-design="ws"] .wsd:focus-visible{outline:2px solid rgba(29,184,138,.5);
 .essay-back{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;
   letter-spacing:.04em;color:var(--text2);text-decoration:none;margin-bottom:30px}
 .essay-back:hover{color:var(--teal)}
+
+/* KO tema claro — títulos usam #fff no escuro; no claro escurecem como o resto do site */
+html[data-theme="light"] .ko-intro h1,
+html[data-theme="light"] .essay-card h3,
+html[data-theme="light"] .essay-head h1{color:#0f1419}
