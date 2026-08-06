@@ -263,6 +263,29 @@ function sanitizePatient(raw) {
   for (const [date, values] of Object.entries(raw.vitals || {}).slice(0, 40)) {
     vitals[cleanString(date, 12)] = cleanRecord(values, 80, 100)
   }
+  /*
+   * VR do laudo — `{ hb: { lo, hi }, … }`. Sanitizado à parte porque
+   * `cleanRecord` trata valores como texto, e aqui eles são NÚMEROS que a UI
+   * usa para colorir a tabela e decidir o rumo da seta.
+   *
+   * Sem este bloco o campo seria descartado em silêncio no sync: a
+   * sanitização é campo a campo, e o que não é nomeado não atravessa. O
+   * paciente chegaria ao outro aparelho com as faixas do laudo perdidas,
+   * voltando ao padrão da casa sem aviso.
+   *
+   * Só passa faixa numérica finita e crescente — a mesma regra de
+   * `faixaPlausivel` no cliente, repetida aqui porque servidor não confia no
+   * que recebe.
+   */
+  const labsRef = {}
+  for (const [k, faixa] of Object.entries(raw.labsRef || {}).slice(0, 80)) {
+    if (!faixa || typeof faixa !== 'object') continue
+    const lo = Number(faixa.lo)
+    const hi = Number(faixa.hi)
+    if (!Number.isFinite(lo) || !Number.isFinite(hi)) continue
+    if (!(lo < hi) || Math.abs(lo) > 1e6 || Math.abs(hi) > 1e6) continue
+    labsRef[cleanString(k, 24)] = { lo, hi }
+  }
   return {
     id: text('id', 80),
     episodeId: text('episodeId', 80),
@@ -290,6 +313,7 @@ function sanitizePatient(raw) {
     setorOrigem: text('setorOrigem', 120),
     sexo: ['F', 'M'].includes(raw.sexo) ? raw.sexo : '',
     labs,
+    labsRef,
     vitals,
     bh: cleanList(raw.bh, 90, (x) => cleanRecord(x, 20, 100)),
     invasoes: cleanList(raw.invasoes, 40, (x) => cleanRecord(x, 20, 500)),
