@@ -530,3 +530,163 @@ ver "Em aberto" no fim da seção.
 
 
 ---
+### Sessão 06–07/ago/2026 — Hub UTI: evolução preenchida, tooltips e exame de imagem
+
+**52 commits** no fonte (`~/hub-uti`), publicados em produção em 07/ago
+(`a4098e4` → bundle `488a703`). Trabalho feito em três ferramentas diferentes
+(Claude, Codex, e o registro abaixo é o que sobrevive à troca). 887 testes
+passando.
+
+O eixo dos dois dias: **a evolução deixou de ser formulário para ser documento
+preenchido com o que o Hub já sabe** — e, junto, a regra que atravessa quase
+toda decisão abaixo: *nada cadastrado ≠ ausência clínica.*
+
+#### A regra que se repete (a mais importante daqui)
+
+1. **Falta de registro nunca vira afirmação.** Aparece em cinco lugares
+   independentes, e é o que mais custa se for desfeito por engano:
+   - `Number('')` é `0` — leito sem diurese lançada saía `0,0 mL/kg/h`, que é
+     **anúria afirmada** onde só falta o registro;
+   - `periodo_bh` tinha `24` como padrão: período que ninguém registrou não pode
+     sair escrito como se fosse;
+   - sem droga cadastrada o texto traz `[sem DVA / com DVA: …]`, **não** "sem
+     DVA" — "nada cadastrado" não é "paciente sem suporte";
+   - sem peso não há taxa: dividir por peso presumido produz número com cara de
+     medido que decide conduta renal;
+   - chips de exame de imagem **não** recebem nível de risco: "alterado" depende
+     do laudo em prosa, e deduzir por heurística é o Hub opinando sobre laudo
+     que não leu.
+2. **Uma marca só para o que falta.** `......` virou `[...]`, a mesma dos
+   achados sugeridos: tudo entre colchetes é o que ainda não foi conferido. Duas
+   convenções obrigavam a aprender a diferença. `contarPreenchidos` ignora
+   colchete — senão o aviso diria "12 de 14" para um texto quase todo por
+   escrever.
+
+#### Evolução preenchida a partir do leito
+
+3. **Modelos com marcadores** (`{{pa}}`, `{{dva}}`, `{{bh}}`…) resolvidos por
+   `preencherModelo.js`. Com paciente real: 13 de 14 campos com dado, zero
+   reticências. VM vem das Invasões via `formatVmSnippet`, o **mesmo** formatador
+   do texto do plantão — evolução e documento copiado não podem divergir.
+4. **O anexo automático é suprimido quando há `templateId`.** Sem isso,
+   `buildClinicaAuto` despejava os mesmos dados como linhas soltas no fim, e a
+   pessoa apagava a duplicata à mão.
+5. **`storage.js` validava `templateId` contra lista escrita à mão** e
+   `sedado_hro` não constava: o campo era descartado em silêncio e o BH saía
+   duplicado. A lista passa a derivar de `EVO_TEMPLATES` — fecha a classe inteira
+   de erro. Três testes travam, um deles percorrendo todos os ids.
+6. **Siglas de UTI, não prosa.** "MV+ bilateral, SRA" no lugar de "murmúrio
+   vesicular presente bilateralmente". Forma longa denuncia texto não escrito por
+   quem trabalha ali, e modelo com cara de estranho ninguém adota. O glossário
+   ficou **no comentário do arquivo** para ninguém "corrigir" de volta — incluindo
+   a nota de que `MV` tem dois sentidos (murmúrio vesicular / máscara de Venturi)
+   e continua ambíguo porque é assim que a UTI usa.
+
+#### Tooltip própria, em portal
+
+7. **O `title=` nativo abre em ~1s e esse número é do navegador** — não se ajusta
+   por CSS nem JS. Era a origem do "hover demora muito"; não faltava refinar
+   animação, faltava o atraso ser nosso. Agora 400ms.
+8. **Em portal no `<body>`, obrigatoriamente.** O Hub tem **66 contêineres com
+   `overflow`**; basta um `overflow-x: auto` no caminho para o eixo Y deixar de
+   ser `visible` por regra do CSS e o balão ser cortado. O corte é
+   **intermitente** — depende do espaço abaixo da âncora, então passa no teste e
+   falha no plantão.
+9. **Atraso e grupo andam juntos:** a primeira espera 400ms (filtra o mouse de
+   passagem); com uma aberta, as vizinhas abrem na hora — a intenção de ler já
+   foi declarada. A janela sobrevive 300ms ao fechamento.
+10. **O `title` sai onde a tooltip entra.** Manter os dois faz o balão aparecer
+    em 400ms e o do sistema surgir por cima 600ms depois. `aria-label` segue como
+    nome acessível; a tooltip usa `aria-describedby`, que descreve sem
+    sobrescrever o nome da ação.
+11. **Onde o `title` nativo ficou, de propósito:** itens dentro de `<details>` (o
+    balão cobriria o menu), a linha da coleta em `ColetaLab` (a dica taparia o
+    dado que se está lendo), `<input>` de leito (atrapalha quem digita), o logo e
+    `<ConfirmDialog>` (prop, nunca chega ao DOM). Setas de snapshot ficam
+    `disabled` nos extremos, onde `pointerenter` não dispara de forma confiável.
+12. **`pointer-events: none` em botão desativado foi tentado e revertido** —
+    cortava o `pointerenter` e deixava o botão inerte sem explicação. `disabled`
+    já barra o clique.
+
+#### Laboratorial: faixa de referência e rumo
+
+13. **A seta separa DIREÇÃO de RUMO.** Colorir por direção afirmava "subir é
+    piorar": Hb 9,1→9,2 saía vermelha e plaqueta 122k→73k saía verde. Agora o
+    glifo diz para onde foi e a cor diz se **aproximou ou afastou da faixa**
+    (`rumoVsRef`) — verdadeiro para qualquer analito sem saber se é "bom alto" ou
+    "bom baixo".
+14. **VR do laudo do hospital, por paciente** (`labsRef`). Por coleta deixaria
+    colunas vizinhas coloridas por critérios diferentes sem nada dizer isso;
+    global espalharia um laudo atípico pelos 40 leitos. `parseRefRange` só aceita
+    dois números plausíveis com `lo < hi` e devolve proposta **sem gravar**: VR
+    lido errado é pior que VR ausente, porque recolore a tabela com aparência de
+    conferido.
+15. **Fora da faixa usa `--fora`, não `--warm`** — aquele resolve para o vermelho
+    de excluir, e numa UTI quase todo lab está fora da faixa: a coluna inteira
+    saía com a cor de "apagar".
+16. **Sem faixa fixa, de propósito:** qualitativos do EQU, **troponina e CK-MB** —
+    o corte depende do ensaio, e faixa fixa seria afirmação falsa no exame em que
+    o erro custa mais caro. 52 analitos ganharam faixa.
+
+#### Exame de imagem vira entidade clínica
+
+17. **Era o único bloco que a Evolução só sabia MOSTRAR** — parágrafo de texto
+    morto, sem alvo de clique; corrigir data exigia sair da aba, e remover não
+    existia. Origem conceitual: foi tratado como dado **importado**, não como
+    entidade que se cadastra, corrige e apaga.
+18. **`ExameImgEditorFields` é o MESMO editor da aba Exames**, para que as duas
+    superfícies não possam divergir.
+19. **O "+" abre formulário, não linha de texto.** Os outros três usam
+    `LinhaDigitada`, que exige parser; para imagem seria parser novo para um campo
+    cujo laudo é **prosa livre** — justamente o que nenhuma gramática delimita bem.
+20. **Data obrigatória; laudo e sítio não.** Uma TC da admissão e uma de hoje
+    respondem perguntas opostas. Mas o exame se cadastra **quando é pedido**,
+    antes do resultado: exigir texto empurraria a escrever "aguardando" ou a
+    inventar impressão para salvar.
+21. **`TabImagem` migrou para `EntityCard`** (feito no dia pelo Codex): as cinco
+    abas de entidade — Culturas, Drogas, Imagem, Infeccioso, Invasões — ficam no
+    mesmo padrão `.ecard`.
+
+#### Altura, alça e estado antes da ferramenta
+
+22. **Altura por seção, guardada no aparelho** (`prefsAltura.js`), **não por
+    paciente**: "conduta sempre alta" é hábito de quem escreve, não propriedade do
+    doente — por leito faria a mesma pessoa reajustar a cada troca e encheria o
+    estado sincronizado de preferência de layout.
+23. **O conteúdo ganhou camada própria:** esticar o `fold-inner` colidiria com o
+    `useCollapse`, que mede a altura natural desse nó para animar.
+24. **Duplo clique na alça ajusta ao texto.** O piso real era o `min-height`
+    inline que `CampoRico` escreve a partir do `rows`; sem soltá-lo a medida
+    devolvia o piso e nada encolhia. Não é devolvido depois — com o campo preso em
+    163px numa caixa de 76px o texto rolava escondido.
+25. **Estado antes da ferramenta.** A entrada rápida abria a seção e o "Nenhuma
+    cultura registrada" ficava embaixo dela. Quem abre a evolução pergunta
+    primeiro "o que este leito tem?", e a resposta vinha por último, atrás de um
+    formulário. Conteúdo primeiro; a ferramenta a um clique do "+".
+26. **`min-height: 130px` do `.input`** (número de campo de importador) vencia o
+    `rows={3}` do textarea de edição: "Cancelar / Salvar / Excluir coleta" iam
+    para fora da seção reduzida.
+27. **Faixa "Laboratorial atualizado" ganhou × e expira em 12s** — mas **não
+    expira com conflito pendente**: ali a pessoa está decidindo, e sumir com a
+    saída no meio da decisão tira a rede na hora em que ela serve. O motivo maior
+    é dessensibilização: faixa sempre presente deixa de avisar.
+28. **Seta de link sempre visível.** Era `opacity: 0` no hover; quatro das dez
+    seções levam a uma aba e as outras seis não — sem a seta as duas famílias
+    ficavam idênticas. **Em tablet, que é onde o Hub roda à beira do leito, não
+    existe hover.**
+29. **Botão de copiar desativado em vez de sumido.** Sumir não se distingue de
+    "não existe": numa fileira fixa lia como "esta seção não pode ser copiada".
+30. **Rótulo sem a convenção do formato de saída.** Era "Copiar #EXAMES
+    RELEVANTES" — o `#` e o caixa-alta existem para o **texto do prontuário**, e
+    na interface gritam e repetem o título ao lado.
+
+#### Em aberto
+
+31. **A entrada rápida por texto do Laboratorial pode não valer a pena.** O
+    usuário questionou; ficou como caminho **secundário**, com o "+" como
+    principal. O argumento que a sustenta é o valor isolado com hora
+    (`14:30 K 3,4`), ~3s digitando contra quatro campos. Se na prática isso quase
+    não acontecer, o argumento cai: são **405 linhas de parser e 25 testes** que
+    saem juntos.
+
+---
