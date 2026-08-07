@@ -6,7 +6,7 @@ AC – [BNF, 2T, SS].
 AR – [MV+ bilateral, SRA]. Drenos: [sem drenos].
 HGT {{hgt}} mg/dL. Dieta [enteral em curso, bem tolerada]. Evacuações [presentes].
 Abdome – [flácido, indolor, RHA+, sem VMG].
-Diurese {{diurese}} mL/24h ([...] mL/kg/h) | BH {{bh}} mL/24h.
+Diurese {{diurese}} mL/{{periodo_bh}}h ({{diurese_kgh}} mL/kg/h) | BH {{bh}} mL/{{periodo_bh}}h.
 [Afebril], Tmax {{temp}} °C.`},sem_sedacao_hro:{id:`sem_sedacao_hro`,label:`HRO · sem sedação (texto-base)`,body:`Paciente sem sedação, GCS [15], [orientado, mantendo NC, PIFR].
 PAi/PANi {{pa}} mmHg (PAM {{pam}}), {{dva}}. TEC [< 3] s. Extremidades [aquecidas, bem perfundidas].
 FC {{fc}} bpm. [RS] ao monitor.
@@ -15,7 +15,7 @@ VE, em [AA], FR {{fr}} irpm; SpO₂ {{spo2}}%.
 AR – [MV+ bilateral, SRA]. Drenos: [sem drenos].
 HGT {{hgt}} mg/dL. Dieta [via oral, bem aceita]. Evacuações [presentes].
 Abdome – [flácido, indolor, RHA+, sem VMG].
-Diurese {{diurese}} mL/24h ([...] mL/kg/h) | BH {{bh}} mL/24h.
+Diurese {{diurese}} mL/{{periodo_bh}}h ({{diurese_kgh}} mL/kg/h) | BH {{bh}} mL/{{periodo_bh}}h.
 [Afebril], Tmax {{temp}} °C.`},sedado:{id:`sedado`,label:`Guiado · sedado + VM (placeholders)`,body:`Paciente sedado, em uso de [sedativo: nome e taxa em mL/h] + [analgésico: nome e taxa em mL/h]. RASS [preencher]. Pupilas [descrever simetria e fotorreação].
 PA [PAi/PANi] [preencher] mmHg (PAM [preencher]), [com/sem] DVA: [nome, taxa em mL/h e dose calculada]. TEC [preencher] s. Extremidades [descrever perfusão e edema].
 FC [preencher] bpm. Ritmo [regular/irregular] ao monitor.
