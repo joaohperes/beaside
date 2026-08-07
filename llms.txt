@@ -107,4 +107,8 @@ be·aside reúne guias clínicos, algoritmos, calculadoras, casos práticos e um
 - [Manejo Perioperatório do Paciente Crítico](https://beaside.com.br/peri/manejo.html): Coração, cérebro, glicemia e hemostasia nas primeiras horas depois da sala
 - [POCUS no Pós-Operatório](https://beaside.com.br/peri/pocus.html): FOCUS e RUSH para dar nome à hipotensão e à hipoxemia da primeira noite
 
+### Antimicrobianos
+
+- [Resistência que muda a conduta: ESBL, AmpC e CRE](https://beaside.com.br/infecto/resistencia.html): Ler o mecanismo de resistência antes do resultado e escolher a droga que não falha
+
 <!-- /AUTO:conteudo -->
