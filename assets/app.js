@@ -302,6 +302,7 @@ const MODULE_PAGES = {
     {id:'taqui-ventricular',   file:'taqui-ventricular.html',   cat:'Cardiovascular', label:'Taquicardia ventricular', title:'Prescrição comentada — Taquicardia ventricular',              subtitle:'QRS largo é TV até prova em contrário — monomórfica, polimórfica, torsades e FA pré-excitada'},
     {id:'ic-descompensada',    file:'ic-descompensada.html',    cat:'Cardiovascular', label:'IC descompensada',        title:'Prescrição comentada — IC descompensada',                     subtitle:'Os 4 perfis, a descongestão até o fim e a alta com o quarteto nas doses-alvo'},
     {id:'iam-vd',              file:'iam-vd.html',              cat:'Cardiovascular', label:'Infarto de VD',           title:'Prescrição comentada — Infarto de ventrículo direito',        subtitle:'Pré-carga sagrada, volume por prova, ritmo como pressão — e nada de nitrato'},
+    {id:'minoca',              file:'minoca.html',              cat:'Cardiovascular', label:'MINOCA',                  title:'Prescrição comentada — MINOCA',                               subtitle:'A RM dá o nome — placa, embolia, vasoespasmo, SCAD e ponte, cada um com sua prescrição'},
   ],
   institucional: [
     {id:'sobre',        file:'sobre.html',        cat:'Institucional', label:'A be·aside',      title:'Sobre o be·aside',                      subtitle:'Feito para pensar o paciente crítico — do mecanismo à decisão'},

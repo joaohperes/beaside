@@ -1827,6 +1827,18 @@
           "status": "rascunho",
           "ia": false,
           "hub": null
+        },
+        {
+          "id": "minoca",
+          "arquivo": "minoca.html",
+          "categoria": "Cardiovascular",
+          "menu": "MINOCA",
+          "titulo": "Prescrição comentada — MINOCA",
+          "subtitulo": "A RM dá o nome — placa, embolia, vasoespasmo, SCAD e ponte, cada um com sua prescrição",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
         }
       ]
     },

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7K0CML04MR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7K0CML04MR');
+</script>
+<script src="../../assets/theme-boot.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Prescrição comentada — MINOCA | be·aside</title>
+<meta name="robots" content="noindex, nofollow" data-beaside="status">
+<link rel="canonical" href="https://beaside.com.br/consulte/prescricoes/minoca.html">
+<meta name="description" content="Prescrição comentada do MINOCA: infarto com coronárias sem obstrução é diagnóstico provisório — a investigação (RM cardíaca) dá o nome, e cada etiologia tem prescrição própria: placa, vasoespasmo, SCAD, embolia, ponte miocárdica.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="be·aside">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Prescrição comentada — MINOCA | be·aside">
+<meta property="og:description" content="O infarto sem obstrução não é um diagnóstico — é uma pergunta. Cinco etiologias, cinco prescrições.">
+<meta property="og:url" content="https://beaside.com.br/consulte/prescricoes/minoca.html">
+<meta property="og:image" content="https://beaside.com.br/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prescrição comentada — MINOCA | be·aside">
+<meta name="twitter:image" content="https://beaside.com.br/assets/og-image.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/styles.css">
+<style>
+  /* componente da prescrição comentada — usa só tokens; variante do .card.collapsible */
+  .rx-list{counter-reset:rx;display:flex;flex-direction:column;gap:14px;margin:26px 0 8px}
+  .rx-item{counter-increment:rx}
+  .rx-head{display:flex;gap:13px;align-items:flex-start;padding:16px 18px 0}
+  .rx-n{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--accent);background:rgba(var(--accent-rgb),.12);border-radius:6px;padding:3px 8px;margin-top:2px;flex-shrink:0}
+  .rx-n::before{content:counter(rx,decimal-leading-zero)}
+  .rx-title{font-size:15.5px;font-weight:600;color:var(--text);letter-spacing:-.01em;line-height:1.3}
+  .rx-cond{font-size:12.5px;color:var(--text2);margin-top:3px;line-height:1.5}
+  .rx-body{padding:2px 18px 6px}
+  .rx-dose{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;line-height:1.8;color:var(--text);background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:11px 14px;margin:12px 0 0}
+  .rx-dose+.rx-dose{margin-top:8px}
+  .rx-dose b{color:var(--accent);font-weight:600}
+  .rx-body .tag-row{margin:10px 0 0}
+  .rx-body .alert-box{margin:12px 0 0}
+  .rx-item .card-toggle{border-top:1px solid var(--border);margin-top:14px}
+  .rx-why{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);flex:1}
+  .rx-item .card-body p{font-size:13.5px;line-height:1.75;color:var(--text2);margin:0 0 10px}
+  .rx-item .card-body p strong{color:var(--text)}
+  .rx-item .card-body .ref{display:block;margin-top:10px}
+  @media(max-width:600px){.rx-head{padding:14px 14px 0}.rx-body{padding:2px 14px 6px}}
+</style>
+</head>
+<body data-module="prescricoes" data-page="minoca" data-root="../../">
+<main class="main">
+
+<section class="section" id="topo">
+  <header class="page-head">
+    <div class="hero-eyebrow">Consulte · Prescrições comentadas</div>
+    <h1 class="section-title">MINOCA</h1>
+    <p class="section-subtitle">Infarto com troponina subindo e coronárias "limpas" não é um diagnóstico — é uma pergunta. A prescrição do MINOCA tem duas metades: investigar até achar o mecanismo, e tratar o mecanismo que aparecer.</p>
+  </header>
+
+  <p class="prose">Serve para o <strong>infarto sem obstrução coronariana</strong> — critérios de IAM preenchidos, cateterismo com lesões &lt; 50% e nenhuma causa alternativa evidente. Até o cate, o paciente foi tratado como <a class="text-link" href="sca-sem-supra.html">SCA sem supra</a> ou <a class="text-link" href="sca-com-supra.html">com supra</a> — e estava certo. Desta página em diante, o pacote único acaba: cada etiologia tem prescrição própria, e algumas se contradizem.</p>
+
+  <div class="warn-box">
+    <strong>Antes de prescrever qualquer item desta página.</strong>
+    <p class="box-body">Condutas seguem o statement da AHA (2019), ESC e SBC, e <strong>não substituem o protocolo do seu serviço</strong>. No MINOCA o risco maior é de raciocínio: manter para sempre o "pacote de infarto" num paciente cujo mecanismo pedia outra coisa — ou pedia até a suspensão do que foi começado.</p>
+  </div>
+
+  <div class="info-box">
+    <strong>Como usar.</strong>
+    <p class="box-body">A ordem é a do raciocínio: <strong>entender o rótulo</strong> (é provisório), <strong>investigar</strong> (a RM dá o nome), e <strong>tratar pela etiologia</strong> — placa, embolia, vasoespasmo, ponte, SCAD. Dose sempre visível; o porquê em <em>"por quê &amp; armadilhas"</em>.</p>
+  </div>
+</section>
+
+<section class="section" id="prescricao">
+  <div class="section-label">A prescrição</div>
+  <h2 class="section-title">Item por item</h2>
+
+  <div class="rx-list">
+
+    <div class="section-label" style="margin-top:26px">Entender o rótulo — e investigar</div>
+
+    <!-- 01 · Rótulo -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">MINOCA é diagnóstico provisório — não alta</div>
+          <div class="rx-cond">critérios de IAM + coronárias &lt; 50% + sem causa alternativa óbvia</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose">Enquanto investiga: manter o tratamento de SCA já iniciado (AAS, estatina, anticoagulação conforme o caso) — a <b>revisão do filme do cateterismo</b> com o hemodinamicista é o primeiro exame da investigação (dissecção e trombo distal passam despercebidos no laudo)</div>
+        <div class="rx-dose">Excluir os imitadores de troponina que <em>não</em> são MINOCA: sepse, TEP, IC descompensada, insuficiência renal — infarto tipo 2 por desbalanço não ganha pacote de aterotrombose</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O erro fundacional do MINOCA é tratá-lo como resposta quando ele é pergunta: 6–8% dos infartos chegam com coronárias sem obstrução, e dentro desse rótulo convivem doenças com tratamentos <strong>opostos</strong> — o vasoespasmo que proíbe betabloqueador, a ponte que proíbe nitrato, a SCAD que pede <em>menos</em> antitrombótico. Dar alta com "IAM tratado, DAPT 1 ano" sem investigar é acertar por sorte em um terço dos casos e errar nos outros dois.</p>
+        <span class="ref">Tamis-Holland JE, et al. — AHA Scientific Statement (Circulation 2019) · ESC 2023.</span>
+      </div>
+    </div>
+
+    <!-- 02 · Investigação -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">A investigação que dá o nome — RM cardíaca no centro</div>
+          <div class="rx-cond">a prescrição mais importante da página não é um remédio</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>RM cardíaca</b> (idealmente na internação ou em 1–2 semanas): separa infarto verdadeiro (realce isquêmico subendocárdico) de <b>miocardite</b> (realce mesocárdico/epicárdico) e <b>takotsubo</b> (edema sem realce, balonamento) — muda o diagnóstico em até metade dos casos</div>
+        <div class="rx-dose">Conforme suspeita e disponibilidade: <b>imagem intracoronária</b> (IVUS/OCT — placa rota, dissecção), <b>ecocardiograma</b>, teste de vasoespasmo em centro experiente, e investigação de fonte embólica quando o padrão sugerir (FA? FOP? valva?)</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A RM é o divisor de águas do MINOCA porque responde a pergunta que o cate não respondeu: <em>isso foi mesmo um infarto?</em> Miocardite e takotsubo respondem por uma fração enorme dos "MINOCAs" — e ambos saem do rótulo e da prescrição de aterotrombose. A armadilha logística é a RM "ambulatorial em 6 meses": o realce e o edema que diagnosticam esmaecem com o tempo, e o exame tardio devolve um laudo inconclusivo para uma decisão que já foi tomada errada.</p>
+        <span class="ref">AHA 2019 · Occhipinti G, et al. (Eur Heart J Acute Cardiovasc Care 2021) — fluxo diagnóstico.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">Tratar pela etiologia — cinco doenças, cinco prescrições</div>
+
+    <!-- 03 · Placa -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Ruptura/erosão de placa &lt; 50% — aterosclerose sem estenose</div>
+          <div class="rx-cond">também é o caminho padrão quando a etiologia fica indefinida</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>AAS</b> 100 mg/dia + <b>clopidogrel</b> 75 mg/dia por <b>1 ano</b> → AAS indefinidamente · <b>estatina de alta intensidade</b> (atorvastatina 40–80 mg ou rosuvastatina 20–40 mg) · IECA e betabloqueador conforme FEVE/comorbidades</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Placa que rompe não precisa estenosar para infartar — a estenose "insignificante" de 30% com cap fino é a assassina silenciosa do MINOCA, e é por isso que a etiologia indefinida também recebe este esquema: na dúvida, a aposta estatística é aterosclerose. O que separa este cenário do infarto comum é só a ausência de stent — a biologia (e a prevenção secundária) é a mesma.</p>
+        <span class="ref">AHA 2019 · SBC 2021 · ESC 2023.</span>
+      </div>
+    </div>
+
+    <!-- 04 · Embolia -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Trombose/embolia coronária — anticoagular e achar a fonte</div>
+          <div class="rx-cond">trombo sem placa pede pergunta: de onde ele veio?</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose">Fase aguda: <b>anticoagulação plena</b> — enoxaparina 1 mg/kg SC 12/12 h (ajustes de idade/rim já conhecidos) ou HNF, com as doses da <a class="text-link" href="sca-sem-supra.html">página da SCA</a></div>
+        <div class="rx-dose"><b>Caçar a fonte:</b> FA (Holter se preciso), FOP com shunt, valvopatia/prótese, endocardite, trombofilia/SAF, neoplasia · <b>anticoagulação de longo prazo individualizada pela fonte</b> — FA achada = DOAC pela <a class="text-link" href="fa-flutter.html">página da FA</a></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Embolia coronária é o MINOCA em que a prescrição certa mora fora do coração: o trombo que foi para a descendente anterior é o mesmo que amanhã vai para a cerebral média — achar a FA silenciosa ou o FOP muda a história de dois órgãos. A armadilha é a inércia da DAPT: antiagregação dupla não trata cardioembolismo; quem tem fonte embólica precisa de <em>anticoagulante</em>, e mantê-lo sem diagnóstico de fonte é tão errado quanto suspendê-lo com ela.</p>
+        <span class="ref">AHA 2019 — MINOCA tromboembólico.</span>
+      </div>
+    </div>
+
+    <!-- 05 · Vasoespasmo -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Vasoespasmo coronariano — cálcio sim, betabloqueador não</div>
+          <div class="rx-cond">angina em repouso, madrugada, supra transitório que some — e cate limpo</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose">Na crise: <b>nitrato de ação curta SL</b> (dinitrato de isossorbida 2,5–5 mg, repetir em 5 min se persistir) · refratária: <b>nitroglicerina EV</b> 5–10 mcg/min titulando (preparo na <a class="text-link" href="sca-sem-supra.html">página da SCA</a>)</div>
+        <div class="rx-dose">Manutenção: <b>bloqueador de canal de cálcio</b> — anlodipino 5–10 mg/dia <em>ou</em> diltiazem 240–360 mg/dia · persistindo sintomas: associar <b>mononitrato de isossorbida</b> 60–120 mg/dia · <b>cessar tabagismo e cocaína</b> (é tratamento, não conselho)</div>
+        <div class="alert-box danger"><div class="icon">!</div><div class="content"><strong>Betabloqueador é contraindicado no vasoespasmo</strong> — o bloqueio β deixa o receptor α sem oposição e pode piorar o espasmo. Se o paciente saiu da fase SCA com betabloqueador "de rotina", este é o momento de suspendê-lo.</div></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>É o exemplo perfeito de por que MINOCA não aceita pacote: a droga que o infarto comum recebe de rotina é a que o vasoespasmo proíbe. O BCC trata o mecanismo (o músculo liso que aperta), o nitrato cobre a crise, e a cocaína/tabaco são o gatilho que nenhuma dose compensa. Nos refratários existem opções de evidência menor (estatina, magnésio, cilostazol) — território de especialista, não de folha.</p>
+        <span class="ref">AHA 2019 · ESC — angina vasoespástica.</span>
+      </div>
+    </div>
+
+    <!-- 06 · SCAD -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Dissecção coronária espontânea (SCAD) — tratar é, sobretudo, desprescriver</div>
+          <div class="rx-cond">mulher jovem, periparto ou pós-estresse: pensar antes de ver — e rever o filme</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose">Diagnosticada a dissecção: <b>suspender anticoagulação e o segundo antiagregante</b> · manter <b>AAS 100 mg</b> · <b>betabloqueador</b> (reduz recorrência) — doses habituais, titulando por FC/PA</div>
+        <div class="rx-dose">Manejo <b>conservador</b> na maioria: a artéria cicatriza sozinha em semanas — ICP só com isquemia em curso/instabilidade (e com resultados piores) · depois: rastrear <b>displasia fibromuscular</b> (angio-TC/RM de vasos cervicais e renais) e evitar novo estresse extremo</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A SCAD inverte os instintos do plantão duas vezes: o sangue que disseca a parede piora com <strong>mais</strong> antitrombótico (daí a suspensão ser prescrição), e o stent que "resolveria" costuma propagar a dissecção — a paciência do conservador vence a intervenção na maioria. É também o MINOCA com dono demográfico: mulher jovem sem fator de risco, às vezes puérpera, cujo "infarto inexplicável" ganha nome quando alguém revê o filme procurando o duplo lúmen.</p>
+        <span class="ref">Hayes SN, et al. — AHA Scientific Statement sobre SCAD (Circulation 2018) · AHA 2019.</span>
+      </div>
+    </div>
+
+    <!-- 07 · Ponte -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Ponte miocárdica — diástole é o tratamento</div>
+          <div class="rx-cond">a artéria que mergulha no músculo só perfunde quando o coração relaxa</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Betabloqueador</b> 1ª escolha (metoprolol, bisoprolol, atenolol — doses habituais tituladas por FC) · persistindo sintomas: <b>ivabradina</b> 5–7,5 mg 12/12 h (sinusal, FC &gt; 70) <em>ou</em> <b>verapamil/diltiazem</b> de liberação prolongada</div>
+        <div class="alert-box danger"><div class="icon">!</div><div class="content"><strong>Nitrato é contraindicado na ponte miocárdica</strong> — a taquicardia reflexa encurta a diástole e a vasodilatação piora a compressão sistólica. Refratário a tudo: especialista (avaliar miotomia/cirurgia), não mais uma droga.</div></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A ponte comprime a artéria na sístole — mas a coronária enche na diástole, então o problema real é o tempo diastólico que a taquicardia rouba. Tudo que alonga a diástole trata (betabloqueador, ivabradina, BCC não-DHP); tudo que taquicardiza ou tira o tônus da parede piora — e é por isso que ponte e vasoespasmo, vizinhos de capítulo, têm prescrições espelhadas: o betabloqueador proibido lá é a primeira escolha aqui, e o nitrato de lá é o proibido daqui. Etiqueta certa antes da droga certa.</p>
+        <span class="ref">Sternheim D, et al. — JACC State-of-the-Art (2021) · AHA 2019.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">Os impostores e o depois</div>
+
+    <!-- 08 · Impostores + seguimento -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Quando a RM muda o nome — e o que todo MINOCA leva de alta</div>
+          <div class="rx-cond">takotsubo e miocardite saem do rótulo; disfunção ventricular entra no quarteto</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Takotsubo:</b> suporte + cuidado com QT longo e obstrução dinâmica de via de saída (cautela com inotrópico e nitrato) — recupera em semanas · <b>miocardite:</b> conduta própria (página em construção); grave/fulminante = centro especializado</div>
+        <div class="rx-dose">Evoluiu com <b>FEVE ≤ 40%</b>, qualquer etiologia: o <b>quarteto da IC</b> entra — doses e alvos na <a class="text-link" href="ic-descompensada.html">página da IC</a> · alta sempre com: etiologia (ou plano de RM) documentada, medicações <em>com motivo</em> anotado, e retorno em cardiologia marcado</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O fechamento do MINOCA é uma evolução bem escrita: qual mecanismo, qual prova, e por que cada droga está na receita. O paciente que sai com "AAS + clopidogrel + estatina + betabloqueador + nitrato SN" sem etiologia carrega três drogas possivelmente certas e duas possivelmente proibidas — e nenhum médico do futuro saberá qual é qual. MINOCA bem tratado é MINOCA com sobrenome.</p>
+        <span class="ref">AHA 2019 · Templin C, et al. (NEJM 2015 — takotsubo).</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="nao-prescrever">
+  <div class="section-label">Tão importante quanto</div>
+  <h2 class="section-title">O que <em>não</em> prescrever</h2>
+  <div class="warn-box">
+    <strong>Erros que pioram o desfecho no MINOCA.</strong>
+    <p class="box-body"><strong>O pacote único de infarto para todos.</strong> <strong>Betabloqueador no vasoespasmo.</strong> <strong>Nitrato na ponte miocárdica.</strong> <strong>Anticoagulação + DAPT mantidas na SCAD.</strong> <strong>DAPT no lugar de anticoagulante</strong> quando a fonte é embólica. <strong>Encerrar a investigação porque "o cate foi limpo"</strong> — o cate limpo é onde ela começa. E <strong>RM "ambulatorial para daqui a 6 meses"</strong> — o edema que diagnostica não espera.</p>
+  </div>
+</section>
+
+<section class="section" id="fechamento">
+  <div class="tip-box" style="margin-top:32px;">
+    <strong>Prescreveu — e agora?</strong>
+    <p class="box-body">A fase aguda correu nas páginas da <a class="text-link" href="sca-sem-supra.html">SCA sem supra</a> e <a class="text-link" href="sca-com-supra.html">com supra</a>; se a fonte embólica for FA, a anticoagulação vive na <a class="text-link" href="fa-flutter.html">página da FA</a>; se sobrou disfunção ventricular, o quarteto está na <a class="text-link" href="ic-descompensada.html">IC</a>. E a miocardite — o vizinho que a RM mais encontra — é a próxima página desta fila.</p>
+    <a class="link-cta" href="../index.html">Levar o caso ao assistente de conduta <span aria-hidden="true">&rarr;</span></a>
+  </div>
+
+  <div class="section-label">Referências</div>
+  <span class="ref">Tamis-Holland JE, et al. Contemporary Diagnosis and Management of Patients With Myocardial Infarction in the Absence of Obstructive Coronary Artery Disease — AHA Scientific Statement. <em>Circulation.</em> 2019;139(18):e891–e908 (doi:10.1161/CIR.0000000000000670).</span>
+  <span class="ref">Hayes SN, et al. Spontaneous Coronary Artery Dissection: Current State of the Science — AHA Scientific Statement. <em>Circulation.</em> 2018;137(19):e523–e557.</span>
+  <span class="ref">Occhipinti G, Bucciarelli-Ducci C, Capodanno D. Diagnostic pathways in MINOCA. <em>Eur Heart J Acute Cardiovasc Care.</em> 2021;10(7):813–822 (doi:10.1093/ehjacc/zuab049).</span>
+  <span class="ref">Sternheim D, et al. Myocardial Bridging: Diagnosis, Functional Assessment, and Management — JACC State-of-the-Art Review. <em>J Am Coll Cardiol.</em> 2021;78(22):2196–2212.</span>
+  <span class="ref">Templin C, et al. Clinical Features and Outcomes of Takotsubo (Stress) Cardiomyopathy. <em>N Engl J Med.</em> 2015;373(10):929–938.</span>
+</section>
+
+</main>
+<script src="../../assets/app.js"></script>
+<script>
+function toggleCard(card,e){
+  if(e&&e.target.tagName&&e.target.tagName.toLowerCase()==='a')return;
+  card.classList.toggle('open');
+}
+document.addEventListener('keydown',function(e){
+  if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('card-toggle')){
+    e.preventDefault();toggleCard(e.target.parentNode,e);
+  }
+});
+</script>
+</body>
+</html>
