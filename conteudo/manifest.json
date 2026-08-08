@@ -1851,6 +1851,18 @@
           "status": "rascunho",
           "ia": false,
           "hub": null
+        },
+        {
+          "id": "pa-elevada",
+          "arquivo": "pa-elevada.html",
+          "categoria": "Cardiovascular",
+          "menu": "PA muito elevada",
+          "titulo": "Prescrição comentada — PA muito elevada",
+          "subtitulo": "Órgão-alvo define tudo — emergência na veia por órgão; assintomático sem derrubar",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
         }
       ]
     },

@@ -304,6 +304,7 @@ const MODULE_PAGES = {
     {id:'iam-vd',              file:'iam-vd.html',              cat:'Cardiovascular', label:'Infarto de VD',           title:'Prescrição comentada — Infarto de ventrículo direito',        subtitle:'Pré-carga sagrada, volume por prova, ritmo como pressão — e nada de nitrato'},
     {id:'minoca',              file:'minoca.html',              cat:'Cardiovascular', label:'MINOCA',                  title:'Prescrição comentada — MINOCA',                               subtitle:'A RM dá o nome — placa, embolia, vasoespasmo, SCAD e ponte, cada um com sua prescrição'},
     {id:'miocardite',          file:'miocardite.html',          cat:'Cardiovascular', label:'Miocardite',              title:'Prescrição comentada — Miocardite',                           subtitle:'Suporte com dose, fulminante com telefonema — imunossupressão só com biópsia'},
+    {id:'pa-elevada',          file:'pa-elevada.html',          cat:'Cardiovascular', label:'PA muito elevada',        title:'Prescrição comentada — PA muito elevada',                     subtitle:'Órgão-alvo define tudo — emergência na veia por órgão; assintomático sem derrubar'},
   ],
   institucional: [
     {id:'sobre',        file:'sobre.html',        cat:'Institucional', label:'A be·aside',      title:'Sobre o be·aside',                      subtitle:'Feito para pensar o paciente crítico — do mecanismo à decisão'},
