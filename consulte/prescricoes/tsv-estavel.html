@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7K0CML04MR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7K0CML04MR');
+</script>
+<script src="../../assets/theme-boot.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Prescrição comentada — TSV estável | be·aside</title>
+<meta name="robots" content="noindex, nofollow" data-beaside="status">
+<link rel="canonical" href="https://beaside.com.br/consulte/prescricoes/tsv-estavel.html">
+<meta name="description" content="Prescrição comentada da taquicardia supraventricular estável: Valsalva modificada do REVERT, adenosina com os cuidados que importam, a escada até a cardioversão e a alta que encaminha para a cura — ESC 2019 e ACC/AHA/HRS 2015.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="be·aside">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Prescrição comentada — TSV estável | be·aside">
+<meta property="og:description" content="Da manobra vagal à ablação: a escada da TPSV com dose, cuidado e o porquê de cada degrau.">
+<meta property="og:url" content="https://beaside.com.br/consulte/prescricoes/tsv-estavel.html">
+<meta property="og:image" content="https://beaside.com.br/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prescrição comentada — TSV estável | be·aside">
+<meta name="twitter:image" content="https://beaside.com.br/assets/og-image.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/styles.css">
+<style>
+  /* componente da prescrição comentada — usa só tokens; variante do .card.collapsible */
+  .rx-list{counter-reset:rx;display:flex;flex-direction:column;gap:14px;margin:26px 0 8px}
+  .rx-item{counter-increment:rx}
+  .rx-head{display:flex;gap:13px;align-items:flex-start;padding:16px 18px 0}
+  .rx-n{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--accent);background:rgba(var(--accent-rgb),.12);border-radius:6px;padding:3px 8px;margin-top:2px;flex-shrink:0}
+  .rx-n::before{content:counter(rx,decimal-leading-zero)}
+  .rx-title{font-size:15.5px;font-weight:600;color:var(--text);letter-spacing:-.01em;line-height:1.3}
+  .rx-cond{font-size:12.5px;color:var(--text2);margin-top:3px;line-height:1.5}
+  .rx-body{padding:2px 18px 6px}
+  .rx-dose{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;line-height:1.8;color:var(--text);background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:11px 14px;margin:12px 0 0}
+  .rx-dose+.rx-dose{margin-top:8px}
+  .rx-dose b{color:var(--accent);font-weight:600}
+  .rx-body .tag-row{margin:10px 0 0}
+  .rx-body .alert-box{margin:12px 0 0}
+  .rx-item .card-toggle{border-top:1px solid var(--border);margin-top:14px}
+  .rx-why{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);flex:1}
+  .rx-item .card-body p{font-size:13.5px;line-height:1.75;color:var(--text2);margin:0 0 10px}
+  .rx-item .card-body p strong{color:var(--text)}
+  .rx-item .card-body .ref{display:block;margin-top:10px}
+  @media(max-width:600px){.rx-head{padding:14px 14px 0}.rx-body{padding:2px 14px 6px}}
+</style>
+</head>
+<body data-module="prescricoes" data-page="tsv-estavel" data-root="../../">
+<main class="main">
+
+<section class="section" id="topo">
+  <header class="page-head">
+    <div class="hero-eyebrow">Consulte · Prescrições comentadas</div>
+    <h1 class="section-title">Taquicardia supraventricular estável</h1>
+    <p class="section-subtitle">Paciente estável é tempo para fazer certo: ECG antes de tudo, manobra antes de droga, droga antes de choque — e, no fim, o encaminhamento que cura em vez do remédio que adia.</p>
+  </header>
+
+  <p class="prose">Serve para a <strong>TSV com QRS estreito e paciente estável</strong> — do episódio clássico de TPSV (reentrada nodal ou por via acessória) às taquicardias atrial, multifocal e juncional. Se há qualquer sinal de instabilidade, a página é a da <a class="text-link" href="taqui-instavel.html">taquiarritmia instável</a>; se o ritmo é FA ou flutter, a <a class="text-link" href="fa-flutter.html">página da FA</a> assume.</p>
+
+  <div class="warn-box">
+    <strong>Antes de prescrever qualquer item desta página.</strong>
+    <p class="box-body">Doses seguem ESC 2019 (taquicardias supraventriculares) e ACC/AHA/HRS 2015, e <strong>não substituem o protocolo do seu serviço</strong>. A adenosina em particular exige preparo do time e do paciente — leia os cuidados do item 04 antes da primeira vez.</p>
+  </div>
+
+  <div class="info-box">
+    <strong>Como usar.</strong>
+    <p class="box-body">A ordem é a da escada: <strong>ler o ritmo</strong>, subir degrau a degrau na TPSV (vagal → adenosina → bloqueador de nó → CVE), tratar as outras TSVs pela <strong>causa</strong>, e dar a alta que resolve. Dose sempre visível; o porquê em <em>"por quê &amp; armadilhas"</em>.</p>
+  </div>
+</section>
+
+<section class="section" id="prescricao">
+  <div class="section-label">A prescrição</div>
+  <h2 class="section-title">Item por item</h2>
+
+  <div class="rx-list">
+
+    <div class="section-label" style="margin-top:26px">Antes de qualquer droga</div>
+
+    <!-- 01 · ECG -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Monitor, acesso — e o ECG que vale ouro</div>
+          <div class="rx-cond">estável é quem tem tempo de documentar; documente</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Monitorização + acesso venoso + ECG 12 derivações</b> antes de tratar · O₂ só se SpO₂ &lt; 90% · reavaliar estabilidade a cada passo — estável é estado, não rótulo</div>
+        <div class="rx-dose"><b>Deixar o traçado correndo</b> durante manobra vagal e adenosina — a resposta ao bloqueio do nó é diagnóstico gravado</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O ECG de 12 derivações <em>em crise</em> é o exame mais valioso que este paciente vai fazer — é ele que o eletrofisiologista vai querer ver na consulta da ablação. E o traçado contínuo durante a adenosina transforma tratamento em diagnóstico: se a pausa do nó revela ondas F de flutter serrilhando a 300, o caso muda de página na hora. Tratar sem documentar é apagar a única testemunha.</p>
+        <span class="ref">ESC 2019 (TSV) · ACC/AHA/HRS 2015.</span>
+      </div>
+    </div>
+
+    <!-- 02 · Que TSV -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Que TSV é essa? Trinta segundos de leitura</div>
+          <div class="rx-cond">RR regular ou não, P visível ou não — e cada resposta tem um caminho</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Sinusal</b> (P normal antes de cada QRS, começo/fim graduais): tratar a <em>causa</em> — febre, dor, hipovolemia, sepse, anemia, hipertireoidismo — nunca o nó AV</div>
+        <div class="rx-dose"><b>TPSV</b> (regular, início súbito, P escondida ou retrógrada): a escada dos itens 03–06</div>
+        <div class="rx-dose"><b>Atrial/multifocal</b> (P diferente da sinusal; multifocal = ≥ 3 morfologias de P, irregular): item 07 · <b>FA/flutter</b>: <a class="text-link" href="fa-flutter.html">página própria</a></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Metade dos erros desta página nasce de pular esta leitura: adenosina em taquicardia sinusal de sepse (pausa assustadora, arritmia de volta em segundos), bloqueador de nó em multifocal de DPOC descompensado (a arritmia é sintoma do pulmão, não do nó). A TPSV de reentrada tem assinatura — <strong>súbita, regular, com P invisível</strong> — e é só nela que a escada seguinte funciona como promete.</p>
+        <span class="ref">ESC 2019 — algoritmo diagnóstico da taquicardia de QRS estreito.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">A escada da TPSV — degrau a degrau</div>
+
+    <!-- 03 · Valsalva -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Degrau 1 — Valsalva modificada (a manobra que funciona)</div>
+          <div class="rx-cond">custa zero, reverte quase metade — se feita do jeito do estudo</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Valsalva modificada (REVERT):</b> semissentado a 45° → soprar seringa de 10 mL tentando mover o êmbolo por <b>15 s</b> (≈ 40 mmHg) → deitar a 0° <em>imediatamente</em> + elevar as pernas a 45° por 15 s → reavaliar o ritmo em 45 s · pode repetir</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A diferença entre a Valsalva "de enfermaria" (~17% de reversão) e a modificada do REVERT (~43%) é a segunda metade que quase ninguém faz: <strong>deitar e levantar as pernas logo após o esforço</strong> — é o retorno venoso súbito que dispara o reflexo vagal de verdade. A seringa de 10 mL calibra a pressão sem manômetro. Massagem de seio carotídeo é alternativa (um lado por vez, auscultar carótida antes, evitar no idoso com sopro/AVC prévio) — mas a Valsalva bem feita costuma bastar.</p>
+        <span class="ref">REVERT — Appelboam A, et al. <em>Lancet.</em> 2015;386:1747–1753 (doi:10.1016/S0140-6736(15)61485-4).</span>
+      </div>
+    </div>
+
+    <!-- 04 · Adenosina -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Degrau 2 — adenosina, rápida e avisada</div>
+          <div class="rx-cond">meia-vida de segundos: a técnica do bolus importa tanto quanto a dose</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Adenosina</b> 6 mg EV em bolus <em>rápido</em> (1–2 s) + flush imediato de 20 mL de SF com o braço elevado → sem reversão em 1–2 min: <b>12 mg</b> → pode repetir 12 mg uma vez</div>
+        <div class="rx-dose">Ajustes: <b>acesso central</b> ou uso de <b>dipiridamol/carbamazepina</b> → começar com 3 mg · <b>coração transplantado</b> → dose reduzida e cautela extrema (denervado, hipersensível) · cafeína/teofilina antagonizam (pode precisar de dose maior)</div>
+        <div class="alert-box danger"><div class="icon">!</div><div class="content"><strong>Adenosina não vai em:</strong> QRS largo <em>irregular</em> (FA pré-excitada → risco de FV; conduta é cardioversão) e broncoespasmo grave/asma instável. E <strong>avise o paciente</strong>: sensação de morte iminente e aperto no peito por alguns segundos são esperados — paciente não avisado nunca mais deixa repetir.</div></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A adenosina morre em ~10 segundos de plasma — bolus lento é bolus que não chega ao nó. Daí o ritual: veia calibrosa o mais proximal possível, droga e flush em torneirinha, êmbolo firme, braço para cima. A pausa que ela produz assusta o monitor inteiro (segundos de assistolia são esperados); é exatamente nessa pausa que o diagnóstico aparece. Se nem 12 mg tocaram o ritmo, desconfie do diagnóstico antes de escalar: taquicardia sinusal e atrial "resistem" à adenosina porque não são reentrada nodal.</p>
+        <span class="ref">ESC 2019 · ACC/AHA/HRS 2015 — adenosina 6/12 mg.</span>
+      </div>
+    </div>
+
+    <!-- 05 · BB/BCC -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Degrau 3 — bloqueador de nó em infusão lenta</div>
+          <div class="rx-cond">TPSV que resistiu ou recorre logo após a adenosina</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Verapamil</b> 5–10 mg EV em 2–5 min (pode repetir após 15–30 min; máx. 20 mg) <em>ou</em> <b>diltiazem</b> 0,25 mg/kg EV em 2 min (2ª dose 0,35 mg/kg; manutenção 5–15 mg/h, conforme disponibilidade)</div>
+        <div class="rx-dose"><em>ou</em> <b>metoprolol</b> 2,5–5 mg EV lento, repetindo a cada 5–10 min até 15 mg</div>
+        <div class="alert-box warn"><div class="icon">!</div><div class="content"><strong>Não usar verapamil/diltiazem</strong> na FEVE reduzida/IC descompensada — e <strong>não empilhar</strong> bloqueador de cálcio EV + betabloqueador EV em sequência: a soma é hipotensão e bradicardia que transformam o estável em instável.</div></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O terceiro degrau troca velocidade por duração: verapamil e diltiazem revertem a TPSV quase tão bem quanto a adenosina, com efeito que dura — útil quando a arritmia reverte e volta a cada dez minutos. O preço é hemodinâmico e cumulativo, e é por isso que a regra de ouro é <strong>um bloqueador de nó de cada vez</strong>. Amiodarona não é droga de TPSV estável: guarde-a para quando o diagnóstico ou a função ventricular a pedirem.</p>
+        <span class="ref">ESC 2019 · ACC/AHA/HRS 2015.</span>
+      </div>
+    </div>
+
+    <!-- 06 · CVE eletiva -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Degrau 4 — rever o diagnóstico, depois cardioverter</div>
+          <div class="rx-cond">a TPSV que venceu três degraus merece uma segunda olhada antes do choque</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose">Persistiu: <b>reler o ECG</b> (é flutter 2:1? atrial? sinusal?) → se TPSV mesmo: <b>CVE sincronizada eletiva</b>, 50–100 J bifásico, com a técnica e a sedação da <a class="text-link" href="taqui-instavel.html">página da taqui instável</a></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Reentrada nodal que sobrevive a vagal + adenosina + verapamil é rara — o mais provável é que o diagnóstico esteja errado, e o clássico é o <strong>flutter 2:1</strong> a 150 bpm fingindo regularidade de TPSV (que muda a conduta: anticoagulação!). Por isso o degrau 4 começa com releitura, não com pás. Confirmada a TPSV refratária, o choque eletivo sincronizado em paciente estável, alimentado e sedado com calma é procedimento tranquilo — muito melhor que a quarta droga.</p>
+        <span class="ref">ESC 2019 · AHA — ACLS.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">As outras TSVs — a causa manda</div>
+
+    <!-- 07 · Atrial/multifocal/juncional -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Atrial, multifocal e juncional — tratar o dono da arritmia</div>
+          <div class="rx-cond">três taquicardias em que a droga de nó é coadjuvante</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Taquicardia atrial:</b> controle com metoprolol, diltiazem ou verapamil (doses do item 05) · <b>amiodarona</b> (150 mg em 100 mL SG 5% em 10 min → 1 mg/min 6 h → 0,5 mg/min 18 h) se hemodinâmica limítrofe</div>
+        <div class="rx-dose"><b>Multifocal</b> (≥ 3 P's, quase sempre DPOC/hipoxemia): tratar o pulmão + repor <b>K⁺ ≥ 4,0 e Mg²⁺ ≥ 2,0</b> · se precisar de controle: metoprolol com cautela, ou verapamil se broncoespasmo · <em>digital não ajuda</em>; CVE não resolve</div>
+        <div class="rx-dose"><b>Juncional:</b> pensar no gatilho antes da droga — <b>intoxicação digitálica</b>, IAM, miocardite, pós-operatório cardíaco · controle com BB/BCC quando indicado</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Estas três são taquicardias de <strong>automatismo</strong>, não de reentrada — por isso adenosina e choque não as curam: o foco reacende assim que o efeito passa. A multifocal é o exemplo extremo: é o ECG do pulmão doente, e melhora com broncodilatador, O₂ e magnésio mais do que com qualquer antiarrítmico. E a juncional carrega o alerta histórico: taquicardia juncional em usuário de digoxina é intoxicação digitálica até prova em contrário — a conduta é suspender e dosar, não bloquear mais o nó.</p>
+        <span class="ref">ESC 2019 · ACC/AHA/HRS 2015 — taquicardias atriais e juncionais.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">Alta e depois — a parte que cura</div>
+
+    <!-- 08 · Alta -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Alta da TPSV revertida — com o encaminhamento certo</div>
+          <div class="rx-cond">o episódio acabou; a via de reentrada continua lá</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose">Revertida, assintomática, sem cardiopatia: <b>alta da emergência</b> com ECG em ritmo sinusal documentado · ensinar a <b>Valsalva modificada</b> para casa</div>
+        <div class="rx-dose">Se recorrente/sintomática: <b>betabloqueador VO</b> (ex.: metoprolol 25–100 mg/dia) <em>ou</em> <b>diltiazem/verapamil VO</b> (não na FEVE reduzida) enquanto aguarda avaliação</div>
+        <div class="rx-dose"><b>Encaminhar à eletrofisiologia:</b> a ablação por cateter cura &gt; 95% das reentradas nodais — é o único item desta página que encerra a história</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A TPSV revertida não precisa de internação nem de exame em série — precisa de um papel com o ECG da crise e um encaminhamento. O betabloqueador da alta é muleta honesta (reduz recorrência, não elimina), e o paciente merece saber que existe tratamento definitivo com taxa de cura alta e risco baixo. A prescrição mais importante deste item não é farmacológica: é o nome do eletrofisiologista no encaminhamento.</p>
+        <span class="ref">ESC 2019 — ablação como terapia de primeira linha na TRN recorrente.</span>
+      </div>
+    </div>
+
+    <!-- 09 · Kit -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Se ficar em observação: o kit enxuto</div>
+          <div class="rx-cond">a maioria não interna; quem fica, fica vigiado</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Monitorização</b> enquanto houver droga de nó circulando · <b>dipirona</b> 1 g EV/VO até 6/6 h SN (dor/febre) ou <b>paracetamol</b> 500–750 mg VO 6/6 h · antiemético SN (ondansetrona 4–8 mg EV ou metoclopramida 10 mg EV 8/8 h) · <b>profilaxia de TEV</b> só se internação &gt; 24 h esperada · <b>HGT 6/6 h</b> se DM/jejum/crítico (alvo 140–180, protocolo do serviço)</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O kit aqui é deliberadamente menor que o das outras páginas: TPSV revertida em jovem sem cardiopatia é caso de observação curta, não de internação com pacote completo. O que não pode faltar é o monitor <em>enquanto</em> verapamil ou metoprolol EV ainda circulam — a bradicardia deles chega depois da reversão, quando ninguém está mais olhando.</p>
+        <span class="ref">ADA 2026 (glicemia hospitalar) · rotina do internado clínico.</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="nao-prescrever">
+  <div class="section-label">Tão importante quanto</div>
+  <h2 class="section-title">O que <em>não</em> prescrever</h2>
+  <div class="warn-box">
+    <strong>Erros que pioram o desfecho na TSV estável.</strong>
+    <p class="box-body"><strong>Adenosina no QRS largo irregular</strong> (FA pré-excitada → FV) e no <strong>broncoespasmo grave</strong>. <strong>Bloquear o nó da taquicardia sinusal</strong> — a causa continua lá, agora hipotensa. <strong>Verapamil na FEVE reduzida.</strong> <strong>Verapamil EV + betabloqueador EV empilhados.</strong> <strong>Digoxina na multifocal.</strong> <strong>Adenosina sem avisar o paciente</strong> — e sem o traçado correndo. <strong>Amiodarona como atalho</strong> da TPSV estável. E dar alta <strong>sem o ECG da crise e sem o encaminhamento</strong> para ablação.</p>
+  </div>
+</section>
+
+<section class="section" id="fechamento">
+  <div class="tip-box" style="margin-top:32px;">
+    <strong>Prescreveu — e agora?</strong>
+    <p class="box-body">Se em qualquer degrau o paciente deixou de ser estável, a conduta vira a da <a class="text-link" href="taqui-instavel.html">taquiarritmia instável</a>. Se a adenosina revelou flutter ou FA, siga para a <a class="text-link" href="fa-flutter.html">página da FA</a> — com a anticoagulação que ela exige. E se o QRS era largo e regular, trate como TV até prova em contrário (página em construção).</p>
+    <a class="link-cta" href="../index.html">Levar o caso ao assistente de conduta <span aria-hidden="true">&rarr;</span></a>
+  </div>
+
+  <div class="section-label">Referências</div>
+  <span class="ref">Brugada J, et al. 2019 ESC Guidelines for the management of patients with supraventricular tachycardia. <em>Eur Heart J.</em> 2020;41(5):655–720.</span>
+  <span class="ref">Page RL, et al. 2015 ACC/AHA/HRS Guideline for the Management of Adult Patients With Supraventricular Tachycardia. <em>Circulation.</em> 2016;133(14):e506–e574.</span>
+  <span class="ref">Appelboam A, et al. Postural modification to the standard Valsalva manoeuvre for emergency treatment of supraventricular tachycardias (REVERT). <em>Lancet.</em> 2015;386(10005):1747–1753 (doi:10.1016/S0140-6736(15)61485-4).</span>
+  <span class="ref">American Diabetes Association. Diabetes Care in the Hospital — Standards of Care in Diabetes. <em>Diabetes Care.</em> 2026;49(Suppl 1).</span>
+</section>
+
+</main>
+<script src="../../assets/app.js"></script>
+<script>
+function toggleCard(card,e){
+  if(e&&e.target.tagName&&e.target.tagName.toLowerCase()==='a')return;
+  card.classList.toggle('open');
+}
+document.addEventListener('keydown',function(e){
+  if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('card-toggle')){
+    e.preventDefault();toggleCard(e.target.parentNode,e);
+  }
+});
+</script>
+</body>
+</html>

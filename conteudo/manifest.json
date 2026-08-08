@@ -1779,6 +1779,18 @@
           "status": "rascunho",
           "ia": false,
           "hub": null
+        },
+        {
+          "id": "tsv-estavel",
+          "arquivo": "tsv-estavel.html",
+          "categoria": "Cardiovascular",
+          "menu": "TSV estável",
+          "titulo": "Prescrição comentada — Taquicardia supraventricular estável",
+          "subtitulo": "Valsalva modificada, adenosina com os cuidados certos, a escada até a CVE — e a ablação que cura",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
         }
       ]
     },
