@@ -1707,6 +1707,18 @@
           "status": "rascunho",
           "ia": false,
           "hub": null
+        },
+        {
+          "id": "eap",
+          "arquivo": "eap.html",
+          "categoria": "Cardiovascular",
+          "menu": "Edema agudo de pulmão",
+          "titulo": "Prescrição comentada — Edema agudo de pulmão",
+          "subtitulo": "VNI, vasodilatador e diurético na dose que resolve — fenótipo antes de inotrópico",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
         }
       ]
     },

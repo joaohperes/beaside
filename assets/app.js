@@ -289,9 +289,10 @@ const MODULE_PAGES = {
     {id:'assistente',  file:'index.html',       cat:'Assistente IA', label:'Assistente de conduta', title:'Assistente de Conduta (IA)', subtitle:'VM, hemodinâmica e neurocrítico em um só chat'},
   ],
   prescricoes: [
-    {id:'hub',           file:'index.html',         cat:'Prescrições',    label:'Todas as prescrições', title:'Prescrições comentadas',                     subtitle:'O que prescrever e por quê, cenário por cenário'},
-    {id:'sca-sem-supra', file:'sca-sem-supra.html', cat:'Cardiovascular', label:'SCA sem supra',        title:'Prescrição comentada — SCA sem supra de ST', subtitle:'Item por item, com dose, contraindicação e o porquê'},
-    {id:'sca-com-supra', file:'sca-com-supra.html', cat:'Cardiovascular', label:'SCA com supra',        title:'Prescrição comentada — SCA com supra de ST', subtitle:'Reperfusão contra o relógio — ICP primária ou fibrinólise, e a prescrição em volta'},
+    {id:'hub',           file:'index.html',         cat:'Prescrições',    label:'Todas as prescrições',  title:'Prescrições comentadas',                       subtitle:'O que prescrever e por quê, cenário por cenário'},
+    {id:'sca-sem-supra', file:'sca-sem-supra.html', cat:'Cardiovascular', label:'SCA sem supra',         title:'Prescrição comentada — SCA sem supra de ST',   subtitle:'Item por item, com dose, contraindicação e o porquê'},
+    {id:'sca-com-supra', file:'sca-com-supra.html', cat:'Cardiovascular', label:'SCA com supra',         title:'Prescrição comentada — SCA com supra de ST',   subtitle:'Reperfusão contra o relógio — ICP primária ou fibrinólise, e a prescrição em volta'},
+    {id:'eap',           file:'eap.html',           cat:'Cardiovascular', label:'Edema agudo de pulmão', title:'Prescrição comentada — Edema agudo de pulmão', subtitle:'VNI, vasodilatador e diurético na dose que resolve — fenótipo antes de inotrópico'},
   ],
   institucional: [
     {id:'sobre',        file:'sobre.html',        cat:'Institucional', label:'A be·aside',      title:'Sobre o be·aside',                      subtitle:'Feito para pensar o paciente crítico — do mecanismo à decisão'},
