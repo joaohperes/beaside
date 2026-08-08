@@ -1863,6 +1863,18 @@
           "status": "rascunho",
           "ia": false,
           "hub": null
+        },
+        {
+          "id": "disseccao-aorta",
+          "arquivo": "disseccao-aorta.html",
+          "categoria": "Cardiovascular",
+          "menu": "Dissecção de aorta",
+          "titulo": "Prescrição comentada — Dissecção de aorta",
+          "subtitulo": "Betabloqueador antes do vasodilatador, FC < 60 em minutos — tipo A se opera",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
         }
       ]
     },
