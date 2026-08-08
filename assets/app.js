@@ -297,6 +297,7 @@ const MODULE_PAGES = {
     {id:'tep',                 file:'tep.html',                 cat:'Cardiovascular', label:'TEP',                    title:'Prescrição comentada — Tromboembolismo pulmonar',    subtitle:'Estratificar primeiro — DOAC com ataque, heparina na dose de TEV, trombólise só no alto risco'},
     {id:'choque-cardiogenico', file:'choque-cardiogenico.html', cat:'Cardiovascular', label:'Choque cardiogênico',    title:'Prescrição comentada — Choque cardiogênico',         subtitle:'Perfusão antes de pressão, mecanismo antes de bomba — e a escalada na hora certa'},
     {id:'taqui-instavel',      file:'taqui-instavel.html',      cat:'Cardiovascular', label:'Taquiarritmia instável', title:'Prescrição comentada — Taquiarritmia instável',      subtitle:'CVE sem improviso: carga por ritmo, sedação pela hemodinâmica, e o pós-choque'},
+    {id:'bradiarritmias',      file:'bradiarritmias.html',      cat:'Cardiovascular', label:'Bradiarritmias',         title:'Prescrição comentada — Bradiarritmias',              subtitle:'Nodal × infranodal, a escada atropina → marca-passo → transvenoso, e as causas reversíveis'},
   ],
   institucional: [
     {id:'sobre',        file:'sobre.html',        cat:'Institucional', label:'A be·aside',      title:'Sobre o be·aside',                      subtitle:'Feito para pensar o paciente crítico — do mecanismo à decisão'},

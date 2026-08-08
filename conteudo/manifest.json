@@ -1767,6 +1767,18 @@
           "status": "rascunho",
           "ia": false,
           "hub": null
+        },
+        {
+          "id": "bradiarritmias",
+          "arquivo": "bradiarritmias.html",
+          "categoria": "Cardiovascular",
+          "menu": "Bradiarritmias",
+          "titulo": "Prescrição comentada — Bradiarritmias",
+          "subtitulo": "Nodal × infranodal, a escada atropina → marca-passo → transvenoso, e as causas reversíveis",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
         }
       ]
     },
