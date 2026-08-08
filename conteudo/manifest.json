@@ -1839,6 +1839,18 @@
           "status": "rascunho",
           "ia": false,
           "hub": null
+        },
+        {
+          "id": "miocardite",
+          "arquivo": "miocardite.html",
+          "categoria": "Cardiovascular",
+          "menu": "Miocardite",
+          "titulo": "Prescrição comentada — Miocardite",
+          "subtitulo": "Suporte com dose, fulminante com telefonema — imunossupressão só com biópsia",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
         }
       ]
     },

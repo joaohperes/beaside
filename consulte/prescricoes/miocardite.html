@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7K0CML04MR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7K0CML04MR');
+</script>
+<script src="../../assets/theme-boot.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Prescrição comentada — Miocardite | be·aside</title>
+<meta name="robots" content="noindex, nofollow" data-beaside="status">
+<link rel="canonical" href="https://beaside.com.br/consulte/prescricoes/miocardite.html">
+<meta name="description" content="Prescrição comentada da miocardite aguda: reconhecer e estratificar, suportar IC e arritmia, restringir exercício, evitar AINE — e saber o que é do plantão e o que é da biópsia e do centro especializado. ESC 2025 e SBC 2022.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="be·aside">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Prescrição comentada — Miocardite | be·aside">
+<meta property="og:description" content="O coração inflamado: suporte com dose, fulminante com telefonema — e imunossupressão só depois da biópsia.">
+<meta property="og:url" content="https://beaside.com.br/consulte/prescricoes/miocardite.html">
+<meta property="og:image" content="https://beaside.com.br/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prescrição comentada — Miocardite | be·aside">
+<meta name="twitter:image" content="https://beaside.com.br/assets/og-image.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/styles.css">
+<style>
+  /* componente da prescrição comentada — usa só tokens; variante do .card.collapsible */
+  .rx-list{counter-reset:rx;display:flex;flex-direction:column;gap:14px;margin:26px 0 8px}
+  .rx-item{counter-increment:rx}
+  .rx-head{display:flex;gap:13px;align-items:flex-start;padding:16px 18px 0}
+  .rx-n{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--accent);background:rgba(var(--accent-rgb),.12);border-radius:6px;padding:3px 8px;margin-top:2px;flex-shrink:0}
+  .rx-n::before{content:counter(rx,decimal-leading-zero)}
+  .rx-title{font-size:15.5px;font-weight:600;color:var(--text);letter-spacing:-.01em;line-height:1.3}
+  .rx-cond{font-size:12.5px;color:var(--text2);margin-top:3px;line-height:1.5}
+  .rx-body{padding:2px 18px 6px}
+  .rx-dose{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;line-height:1.8;color:var(--text);background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:11px 14px;margin:12px 0 0}
+  .rx-dose+.rx-dose{margin-top:8px}
+  .rx-dose b{color:var(--accent);font-weight:600}
+  .rx-body .tag-row{margin:10px 0 0}
+  .rx-body .alert-box{margin:12px 0 0}
+  .rx-item .card-toggle{border-top:1px solid var(--border);margin-top:14px}
+  .rx-why{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);flex:1}
+  .rx-item .card-body p{font-size:13.5px;line-height:1.75;color:var(--text2);margin:0 0 10px}
+  .rx-item .card-body p strong{color:var(--text)}
+  .rx-item .card-body .ref{display:block;margin-top:10px}
+  @media(max-width:600px){.rx-head{padding:14px 14px 0}.rx-body{padding:2px 14px 6px}}
+</style>
+</head>
+<body data-module="prescricoes" data-page="miocardite" data-root="../../">
+<main class="main">
+
+<section class="section" id="topo">
+  <header class="page-head">
+    <div class="hero-eyebrow">Consulte · Prescrições comentadas</div>
+    <h1 class="section-title">Miocardite</h1>
+    <p class="section-subtitle">O coração inflamado tem dois tratamentos: o suporte, que é do plantão e tem dose — e o etiológico, que é da biópsia e do centro especializado. Confundir os dois é o erro que esta página existe para impedir.</p>
+  </header>
+
+  <p class="prose">Serve para a <strong>miocardite aguda</strong> — do jovem com dor torácica e troponina pós-viral ao fulminante que choca em 48 horas. O diagnóstico costuma nascer no caminho do <a class="text-link" href="minoca.html">MINOCA</a> (é o que a RM mais encontra); o suporte usa as páginas de <a class="text-link" href="ic-descompensada.html">IC</a>, <a class="text-link" href="choque-cardiogenico.html">choque</a> e arritmias. Aqui está o que a miocardite muda em cada uma — e onde ela exige freio.</p>
+
+  <div class="warn-box">
+    <strong>Antes de prescrever qualquer item desta página.</strong>
+    <p class="box-body">Condutas seguem ESC 2025 (miocardite e pericardite) e SBC 2022 (Diretriz de Miocardites), e <strong>não substituem o protocolo do seu serviço</strong>. Imunossupressão e antivirais <em>não são itens desta página</em>: são decisões de biópsia e equipe especializada — o item 07 explica o porquê.</p>
+  </div>
+
+  <div class="info-box">
+    <strong>Como usar.</strong>
+    <p class="box-body">A ordem é a do raciocínio: <strong>reconhecer e estratificar</strong> (a fulminante muda tudo), <strong>suportar</strong> (IC, arritmia, exercício, analgesia), e <strong>saber o que encaminhar</strong>. Dose sempre visível quando a dose é do plantão; o porquê em <em>"por quê &amp; armadilhas"</em>.</p>
+  </div>
+</section>
+
+<section class="section" id="prescricao">
+  <div class="section-label">A prescrição</div>
+  <h2 class="section-title">Item por item</h2>
+
+  <div class="rx-list">
+
+    <div class="section-label" style="margin-top:26px">Reconhecer e estratificar</div>
+
+    <!-- 01 · Reconhecer -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Suspeitar, confirmar — e medir a gravidade certa</div>
+          <div class="rx-cond">dor torácica + troponina no jovem pós-viral: a coronária sai, a RM entra</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Na chegada:</b> ECG + troponina + eco · excluir coronária conforme idade/risco (cate ou angio-TC) · <b>RM cardíaca</b> confirma (edema + realce não isquêmico — critérios de Lake Louise)</div>
+        <div class="rx-dose"><b>Estratificar:</b> <em>não complicada</em> (FE preservada, sem arritmia, troponina em queda) → enfermaria/observação · <em>complicada</em> (FE ↓, arritmia, IC) → unidade monitorizada · <em>fulminante</em> (choque/deterioração em horas-dias) → item 02, agora</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A miocardite engana nas duas pontas: o jovem com "infartinho" pós-viral que na verdade tem doença benigna e autolimitada — e o mesmo jovem cuja FE despenca em 48 horas. O que separa os dois não é a troponina da chegada, é a <strong>trajetória</strong>: FE, ritmo e perfusão reavaliados de verdade nas primeiras 24–72 h. Toda miocardite internada merece essa vigilância ativa; a fulminante raramente avisa com antecedência educada.</p>
+        <span class="ref">ESC 2025 · SBC 2022 — diagnóstico e estratificação.</span>
+      </div>
+    </div>
+
+    <!-- 02 · Fulminante -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Fulminante: o telefonema vem antes do colapso</div>
+          <div class="rx-cond">choque + miocardite = a melhor indicação de suporte mecânico que existe</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose">Choque instalando: conduzir pelo <a class="text-link" href="choque-cardiogenico.html">choque cardiogênico</a> (nora → inotrópico por fenótipo; doses no <a class="text-link" href="../../hemo/drogas.html">Hemo</a>) <b>+ contato imediato com centro com ECMO/suporte mecânico</b> — não esperar refratariedade</div>
+        <div class="rx-dose">Sinais de alarme que anteciparam o telefonema: lactato subindo, <b>BAV novo</b>, TV recorrente, FE despencando entre dois ecos</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A miocardite fulminante é o cenário em que o suporte mecânico faz mais sentido em toda a cardiologia: o miocárdio não morreu — está inflamado, e inflamação <em>passa</em>. ECMO aqui é ponte para a recuperação de um coração que tende a voltar inteiro, o oposto do infarto extenso. Por isso o limiar de transferir é mais baixo que no choque isquêmico: o paciente jovem chocando por miocardite pertence a um centro com circulação extracorpórea <strong>antes</strong> de estar em três drogas no teto. E BAV + TV + choque na miocardite é a tríade que grita célula gigante — biópsia urgente muda o tratamento (item 07).</p>
+        <span class="ref">ESC 2025 · SBC 2022 — miocardite fulminante e suporte circulatório.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">Suporte — o tratamento que é do plantão</div>
+
+    <!-- 03 · IC -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">A disfunção ventricular — quarteto cedo, e por mais tempo que a FE</div>
+          <div class="rx-cond">FEVE reduzida: tratar como IC, com um calendário próprio</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>FEVE ≤ 40%:</b> IECA/BRA + betabloqueador + espironolactona (± SGLT2i), nas doses de início e alvo da <a class="text-link" href="ic-descompensada.html">página da IC</a> · congestão: furosemida com as metas de lá</div>
+        <div class="rx-dose"><b>Manter por 6–12 meses no mínimo</b> — mesmo que a FE normalize antes · a retirada é decisão de seguimento, com eco e RM de controle, nunca de alta</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O ventrículo da miocardite recupera com frequência — e é exatamente por isso que a armadilha é a pressa em desprescriver: a FE que normalizou em 3 meses ainda guarda inflamação e remodelamento em curso, e a suspensão precoce do bloqueio neuro-hormonal cobra em recidiva de disfunção. O betabloqueador tem a ressalva de sempre: não se <em>inicia</em> no baixo débito agudo — entra quando o paciente compensa, e aí fica.</p>
+        <span class="ref">SBC 2022 (duração mínima da terapia) · ESC 2025.</span>
+      </div>
+    </div>
+
+    <!-- 04 · Arritmia -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Arritmia na fase aguda — tratar o episódio, adiar o definitivo</div>
+          <div class="rx-cond">o miocárdio inflamado é eletricamente instável — e provisoriamente</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>TV sustentada/instável:</b> conduzir pela <a class="text-link" href="taqui-instavel.html">taqui instável</a>/<a class="text-link" href="taqui-ventricular.html">TV</a> · TV recorrente ou TVNS sintomática: <b>amiodarona</b> 150 mg EV em 10 min → 1 mg/min 6 h → 0,5 mg/min 18 h · K⁺ ≥ 4,0 / Mg²⁺ ≥ 2,0</div>
+        <div class="rx-dose"><b>BAV avançado:</b> marca-passo <em>temporário</em> pela escada das <a class="text-link" href="bradiarritmias.html">bradiarritmias</a> — e a pergunta obrigatória: por que um jovem bloqueou? (célula gigante, sarcoidose, Chagas, Lyme) · <b>CDI: não na fase aguda</b> — reavaliar após 3–6 meses com RM</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A instabilidade elétrica da miocardite é da inflamação, não (necessariamente) da cicatriz — por isso o definitivo espera: implantar CDI na primeira semana é tratar como permanente um substrato que pode sumir com a resolução. O que não espera é o significado do <strong>BAV</strong>: bloqueio avançado em miocardite é bandeira vermelha etiológica (célula gigante e sarcoidose adoram o sistema de condução) e acelera a biópsia — enquanto o marca-passo temporário segura a hemodinâmica.</p>
+        <span class="ref">ESC 2025 · SBC 2022 — arritmias e dispositivo na miocardite.</span>
+      </div>
+    </div>
+
+    <!-- 05 · Exercício -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Restrição de exercício — a prescrição que não é remédio</div>
+          <div class="rx-cond">para todos, atleta ou não: 3–6 meses longe do esforço competitivo/intenso</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Sem exercício moderado-intenso por 3–6 meses</b> (atividades leves da vida diária liberadas conforme sintomas) · liberação só após reavaliação com <b>eco + Holter ± RM</b> mostrando função normal, sem arritmia e sem inflamação ativa — e por escrito na alta</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Miocardite é causa clássica de morte súbita no esporte — o miocárdio inflamado sob descarga adrenérgica é arena de arritmia ventricular. A restrição vale para o paciente "curado" da alta: a inflamação sobrevive semanas à troponina normalizada. Como é a prescrição mais fácil de se perder no caminho, ela vai <strong>escrita</strong> no sumário de alta, com a data da reavaliação que pode revogá-la — "evitar academia" dito de boca não sobrevive ao primeiro convite de futebol.</p>
+        <span class="ref">ESC 2025 · SBC 2022 — retorno ao exercício.</span>
+      </div>
+    </div>
+
+    <!-- 06 · Analgesia -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Dor e febre — sem AINE no miocárdio inflamado</div>
+          <div class="rx-cond">a exceção fica com a pericardite predominante e a função normal</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Dipirona</b> 1 g EV/VO até 6/6 h SN <em>ou</em> <b>paracetamol</b> 500–750 mg VO 6/6 h · antiemético SN (ondansetrona 4–8 mg EV ou metoclopramida 10 mg EV)</div>
+        <div class="alert-box warn"><div class="icon">!</div><div class="content"><strong>AINE não entra na miocardite</strong> com disfunção/miocardite predominante — associado a pior evolução e mais retenção. Na <em>perimiocardite</em> com FE normal e dor pleurítica dominante, AINE + colchicina (o esquema da pericardite) é aceitável — é a distinção que o eco faz.</div></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A dor da miocardite parece pericardite, e o reflexo de dar ibuprofeno é compreensível — mas o miocárdio inflamado não é a serosa: AINE em modelos experimentais piora a lesão, e no doente com FE caindo soma retenção de sódio e dano renal ao que já está frágil. A régua prática é a função ventricular: FE normal com quadro claramente pericárdico → esquema de pericardite; qualquer disfunção → dipirona/paracetamol e ponto.</p>
+        <span class="ref">ESC 2025 — perimiocardite × miocardite · SBC 2022.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">O que é do especialista — e por quê</div>
+
+    <!-- 07 · Biópsia/imunossupressão -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Biópsia, imunossupressão e antivirais — nomear sem prescrever</div>
+          <div class="rx-cond">o plantão indica a suspeita e o transporte; o regime é do centro</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Biópsia endomiocárdica</b> — quem pede: fulminante, BAV novo, TV recorrente, eosinofilia, refratária à terapia padrão · é ela que separa célula gigante, eosinofílica, sarcoidose e miocardite viral</div>
+        <div class="rx-dose"><b>Imunossupressão</b> (pulsoterapia, timoglobulina, azatioprina...) — <em>somente</em> com biópsia confirmando forma imunomediada e sem vírus ativo, conduzida por centro especializado · <b>antivirais</b> — só com genoma viral demonstrado na biópsia · corticoide empírico na miocardite viral comum: <b>não</b></div>
+        <div class="rx-dose">Exceção com pressa: <b>miocardite por inibidor de checkpoint</b> (imunoterapia oncológica) — suspender a imunoterapia e iniciar corticoide em dose alta <em>precocemente</em>, junto com oncologia/cardio-oncologia</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A tentação de "dar um corticoide" na miocardite viral é antiga e a evidência é contra: na forma comum, imunossuprimir não ajuda e pode atrapalhar a limpeza do vírus. Já a célula gigante <em>sem</em> imunossupressão mata em semanas — e só a biópsia distingue as duas. É por isso que esta página nomeia os regimes sem transcrevê-los: a decisão certa aqui não é uma dose, é um encaminhamento com a suspeita certa escrita. A exceção do checkpoint é o lembrete moderno: no paciente oncológico em imunoterapia, a miocardite é emergência imunomediada onde o corticoide precoce salva — e a anamnese medicamentosa é o exame que a encontra.</p>
+        <span class="ref">SBC 2022 (indicações de biópsia e formas específicas) · ESC 2025 (incl. miocardite por ICI).</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">Suporte e vigilância</div>
+
+    <!-- 08 · Kit -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Kit do internado — e a alta que agenda o futuro</div>
+          <div class="rx-cond">a miocardite se resolve no seguimento, não na alta</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Monitorização contínua</b> na fase aguda (arritmia não avisa) · <b>dieta</b> conforme estabilidade · <b>profilaxia de TEV</b> (enoxaparina 40 mg SC 1×/dia; ClCr &lt; 30: HNF 5.000 UI 8/8–12/12 h) se sem ACO plena · <b>HGT 6/6 h</b> se DM/jejum/crítico (alvo 140–180, protocolo do serviço) · IBP só com indicação</div>
+        <div class="rx-dose"><b>Alta com:</b> restrição de exercício por escrito + eco de controle agendado + <b>RM de reavaliação</b> (3–6 meses) + retorno em cardiologia marcado</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A miocardite é doença de trajetória: a decisão sobre CDI, sobre suspender o quarteto e sobre liberar o esporte mora toda nos exames de 3–6 meses — que só acontecem se saíram <em>agendados</em>. O sumário de alta desta doença é meio prontuário, meio contrato: o que foi visto, o que ficou proibido, e quando cada proibição será revista.</p>
+        <span class="ref">ESC 2025 · SBC 2022 · ADA 2026 (glicemia hospitalar).</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="nao-prescrever">
+  <div class="section-label">Tão importante quanto</div>
+  <h2 class="section-title">O que <em>não</em> prescrever</h2>
+  <div class="warn-box">
+    <strong>Erros que pioram o desfecho na miocardite.</strong>
+    <p class="box-body"><strong>AINE</strong> no miocárdio inflamado com disfunção. <strong>Corticoide empírico</strong> na miocardite viral sem biópsia. <strong>CDI na fase aguda.</strong> <strong>Liberar exercício cedo</strong> — ou só de boca. <strong>Betabloqueador iniciado no baixo débito.</strong> <strong>Suspender o quarteto porque a FE normalizou</strong> antes do prazo. <strong>Segurar o paciente fulminante</strong> longe do centro com suporte mecânico até a refratariedade. E <strong>não perguntar por imunoterapia oncológica</strong> — a miocardite por checkpoint se trata ao contrário das outras.</p>
+  </div>
+</section>
+
+<section class="section" id="fechamento">
+  <div class="tip-box" style="margin-top:32px;">
+    <strong>Prescreveu — e agora?</strong>
+    <p class="box-body">O caminho diagnóstico cruzou com o <a class="text-link" href="minoca.html">MINOCA</a>; a disfunção usa a <a class="text-link" href="ic-descompensada.html">IC</a>; o colapso, o <a class="text-link" href="choque-cardiogenico.html">choque cardiogênico</a>; as arritmias, as páginas de <a class="text-link" href="taqui-ventricular.html">TV</a> e <a class="text-link" href="bradiarritmias.html">bradiarritmias</a>. A miocardite é a página que mais conversa com as outras — como a doença.</p>
+    <a class="link-cta" href="../index.html">Levar o caso ao assistente de conduta <span aria-hidden="true">&rarr;</span></a>
+  </div>
+
+  <div class="section-label">Referências</div>
+  <span class="ref">2025 ESC Guidelines for the management of myocarditis and pericarditis. <em>Eur Heart J.</em> 2025.</span>
+  <span class="ref">Montera MW, Marcondes-Braga FG, Simões MV, et al. Diretriz de Miocardites da Sociedade Brasileira de Cardiologia — 2022. <em>Arq Bras Cardiol.</em> 2022;119(1):143–211 (doi:10.36660/abc.20220412).</span>
+  <span class="ref">Cooper LT. Myocarditis. <em>N Engl J Med.</em> 2009;360:1526–1538.</span>
+  <span class="ref">American Diabetes Association. Diabetes Care in the Hospital — Standards of Care in Diabetes. <em>Diabetes Care.</em> 2026;49(Suppl 1).</span>
+</section>
+
+</main>
+<script src="../../assets/app.js"></script>
+<script>
+function toggleCard(card,e){
+  if(e&&e.target.tagName&&e.target.tagName.toLowerCase()==='a')return;
+  card.classList.toggle('open');
+}
+document.addEventListener('keydown',function(e){
+  if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('card-toggle')){
+    e.preventDefault();toggleCard(e.target.parentNode,e);
+  }
+});
+</script>
+</body>
+</html>
