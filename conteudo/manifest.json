@@ -1815,6 +1815,18 @@
           "status": "rascunho",
           "ia": false,
           "hub": null
+        },
+        {
+          "id": "iam-vd",
+          "arquivo": "iam-vd.html",
+          "categoria": "Cardiovascular",
+          "menu": "Infarto de VD",
+          "titulo": "Prescrição comentada — Infarto de ventrículo direito",
+          "subtitulo": "Pré-carga sagrada, volume por prova, ritmo como pressão — e nada de nitrato",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
         }
       ]
     },
