@@ -1664,6 +1664,41 @@
       ]
     },
     {
+      "id": "prescricoes",
+      "area": "consulte",
+      "status": "rascunho",
+      "label": "Prescrições",
+      "subtitulo": "Prescrições comentadas",
+      "root": "consulte/prescricoes/",
+      "cor": "#1db88a",
+      "paginas": [
+        {
+          "id": "hub",
+          "arquivo": "index.html",
+          "categoria": "Prescrições",
+          "menu": "Todas as prescrições",
+          "titulo": "Prescrições comentadas",
+          "subtitulo": "O que prescrever e por quê, cenário por cenário",
+          "tipo": "referencia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "sca-sem-supra",
+          "arquivo": "sca-sem-supra.html",
+          "categoria": "Cardiovascular",
+          "menu": "SCA sem supra",
+          "titulo": "Prescrição comentada — SCA sem supra de ST",
+          "subtitulo": "Item por item, com dose, contraindicação e o porquê",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        }
+      ]
+    },
+    {
       "id": "institucional",
       "area": "institucional",
       "label": "Institucional",

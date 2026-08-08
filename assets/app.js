@@ -158,6 +158,14 @@ const MODULES = {
     root: 'consulte/',
     color: '#1db88a',
   },
+  prescricoes: {
+    id: 'prescricoes',
+    label: 'Prescrições',
+    area: 'consulte',
+    subtitle: 'Prescrições comentadas',
+    root: 'consulte/prescricoes/',
+    color: '#1db88a',
+  },
   institucional: {
     id: 'institucional',
     label: 'Institucional',
@@ -279,6 +287,10 @@ const MODULE_PAGES = {
   consulte: [
     {id:'ferramentas', file:'ferramentas.html', cat:'Consulte',      label:'Ferramentas',           title:'Consulte — execução rápida', subtitle:'Doses, tabelas, calculadoras e metas do plantão'},
     {id:'assistente',  file:'index.html',       cat:'Assistente IA', label:'Assistente de conduta', title:'Assistente de Conduta (IA)', subtitle:'VM, hemodinâmica e neurocrítico em um só chat'},
+  ],
+  prescricoes: [
+    {id:'hub',           file:'index.html',         cat:'Prescrições',    label:'Todas as prescrições', title:'Prescrições comentadas',                     subtitle:'O que prescrever e por quê, cenário por cenário'},
+    {id:'sca-sem-supra', file:'sca-sem-supra.html', cat:'Cardiovascular', label:'SCA sem supra',        title:'Prescrição comentada — SCA sem supra de ST', subtitle:'Item por item, com dose, contraindicação e o porquê'},
   ],
   institucional: [
     {id:'sobre',        file:'sobre.html',        cat:'Institucional', label:'A be·aside',      title:'Sobre o be·aside',                      subtitle:'Feito para pensar o paciente crítico — do mecanismo à decisão'},

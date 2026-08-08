@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7K0CML04MR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7K0CML04MR');
+</script>
+<script src="../../assets/theme-boot.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Prescrição comentada — SCA sem supra de ST | be·aside</title>
+<meta name="robots" content="noindex, nofollow" data-beaside="status">
+<link rel="canonical" href="https://beaside.com.br/consulte/prescricoes/sca-sem-supra.html">
+<meta name="description" content="Prescrição comentada da síndrome coronariana aguda sem supra de ST: cada item na ordem do raciocínio clínico, com dose, contraindicação e o porquê — baseada nas diretrizes SBC 2021, ESC 2023 e AHA/ACC 2025.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="be·aside">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Prescrição comentada — SCA sem supra de ST | be·aside">
+<meta property="og:description" content="Cada item da prescrição da SCASSST com dose, contraindicação e o porquê — do antitrombótico à vigilância.">
+<meta property="og:url" content="https://beaside.com.br/consulte/prescricoes/sca-sem-supra.html">
+<meta property="og:image" content="https://beaside.com.br/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prescrição comentada — SCA sem supra de ST | be·aside">
+<meta name="twitter:image" content="https://beaside.com.br/assets/og-image.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/styles.css">
+<style>
+  /* componente da prescrição comentada — usa só tokens; variante do .card.collapsible */
+  .rx-list{counter-reset:rx;display:flex;flex-direction:column;gap:14px;margin:26px 0 8px}
+  .rx-item{counter-increment:rx}
+  .rx-head{display:flex;gap:13px;align-items:flex-start;padding:16px 18px 0}
+  .rx-n{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--accent);background:rgba(var(--accent-rgb),.12);border-radius:6px;padding:3px 8px;margin-top:2px;flex-shrink:0}
+  .rx-n::before{content:counter(rx,decimal-leading-zero)}
+  .rx-title{font-size:15.5px;font-weight:600;color:var(--text);letter-spacing:-.01em;line-height:1.3}
+  .rx-cond{font-size:12.5px;color:var(--text2);margin-top:3px;line-height:1.5}
+  .rx-body{padding:2px 18px 6px}
+  .rx-dose{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;line-height:1.8;color:var(--text);background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:11px 14px;margin:12px 0 0}
+  .rx-dose+.rx-dose{margin-top:8px}
+  .rx-dose b{color:var(--accent);font-weight:600}
+  .rx-body .tag-row{margin:10px 0 0}
+  .rx-body .alert-box{margin:12px 0 0}
+  .rx-item .card-toggle{border-top:1px solid var(--border);margin-top:14px}
+  .rx-why{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);flex:1}
+  .rx-item .card-body p{font-size:13.5px;line-height:1.75;color:var(--text2);margin:0 0 10px}
+  .rx-item .card-body p strong{color:var(--text)}
+  .rx-item .card-body .ref{display:block;margin-top:10px}
+  @media(max-width:600px){.rx-head{padding:14px 14px 0}.rx-body{padding:2px 14px 6px}}
+</style>
+</head>
+<body data-module="prescricoes" data-page="sca-sem-supra" data-root="../../">
+<main class="main">
+
+<section class="section" id="topo">
+  <header class="page-head">
+    <div class="hero-eyebrow">Consulte · Prescrições comentadas</div>
+    <h1 class="section-title">SCA sem supra de ST</h1>
+    <p class="section-subtitle">A prescrição da internação, item por item, na ordem do raciocínio — cada dose com o porquê e a armadilha logo abaixo, para conferir sem sair da página.</p>
+  </header>
+
+  <p class="prose">Serve para o paciente com <strong>síndrome coronariana aguda sem supradesnível de ST</strong> (angina instável ou IAMSSST) já reconhecida — dor torácica típica com troponina alterada e/ou ECG isquêmico sem supra — internado em unidade monitorizada. Não serve para o supra de ST (reperfusão é outra prescrição), nem para o choque cardiogênico instalado.</p>
+
+  <div class="warn-box">
+    <strong>Antes de prescrever qualquer item desta página.</strong>
+    <p class="box-body">As doses seguem as diretrizes de referência (SBC 2021, ESC 2023, AHA/ACC 2025) e <strong>não substituem o protocolo do seu serviço</strong>, a padronização da sua farmácia nem o julgamento clínico à beira do leito. Confirme apresentação, diluição e compatibilidade antes de cada prescrição — concentração de ampola muda de hospital para hospital.</p>
+  </div>
+
+  <div class="info-box">
+    <strong>Como usar.</strong>
+    <p class="box-body">Os itens seguem a ordem do raciocínio, não a da folha impressa: primeiro <strong>o que muda desfecho</strong> (antitrombóticos), depois o alívio da isquemia, a prevenção secundária que começa na internação e, por fim, suporte e vigilância. A dose está sempre visível; o raciocínio abre em <em>"por quê &amp; armadilhas"</em> dentro de cada item. Na folha do seu serviço, a ordem administrativa (dieta, cuidados, medicações) continua sendo a da sua rotina.</p>
+  </div>
+</section>
+
+<section class="section" id="prescricao">
+  <div class="section-label">A prescrição</div>
+  <h2 class="section-title">Item por item</h2>
+
+  <div class="rx-list">
+
+    <div class="section-label" style="margin-top:26px">O que muda desfecho — antitrombóticos</div>
+
+    <!-- 01 · AAS -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Antiagregação 1 — AAS</div>
+          <div class="rx-cond">todos os pacientes, salvo contraindicação</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>AAS</b> ataque 150–300 mg VO mastigados (na prática: 3 cp de 100 mg) → manutenção 100 mg/dia, indefinidamente</div>
+        <div class="alert-box warn"><div class="icon">!</div><div class="content"><strong>Contraindicação:</strong> sangramento ativo ou hipersensibilidade verdadeira ao AAS.</div></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>É o item de melhor custo-benefício da página inteira: antiagregação imediata com redução robusta de morte e reinfarto. Mastigar acelera a absorção — importa na admissão, não na manutenção. Se o paciente "já usa AAS em casa", o ataque continua valendo: dose habitual de prevenção não substitui a carga da fase aguda.</p>
+        <span class="ref">SBC 2021 · ESC 2023 · AHA/ACC 2025 — AAS ataque + manutenção em todos.</span>
+      </div>
+    </div>
+
+    <!-- 02 · P2Y12 -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Antiagregação 2 — inibidor de P2Y12</div>
+          <div class="rx-cond">a escolha e o momento dependem da estratégia invasiva</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Ticagrelor</b> ataque 180 mg VO → 90 mg VO 12/12 h</div>
+        <div class="rx-dose"><b>Prasugrel</b> ataque 60 mg VO → 10 mg VO 1×/dia — só após anatomia coronariana conhecida, quando a ICP está decidida</div>
+        <div class="rx-dose"><b>Clopidogrel</b> ataque 300–600 mg VO → 75 mg VO 1×/dia — preferir se anticoagulação oral concomitante (ex.: FA) ou alto risco de sangramento</div>
+        <div class="tag-row"><span class="tag">cate &lt; 24 h: não pré-tratar de rotina — definir o P2Y12 com a anatomia</span><span class="tag">ticagrelor/prasugrel &gt; clopidogrel na ICP</span></div>
+        <div class="alert-box warn"><div class="icon">!</div><div class="content"><strong>Contraindicações que mudam a escolha:</strong> prasugrel — AVC/AIT prévio (não usar); ≥ 75 anos ou &lt; 60 kg (evitar; se usado, manutenção 5 mg). Ticagrelor — AVC hemorrágico prévio, hepatopatia grave, inibidor forte de CYP3A4. Todos — sangramento ativo.</div></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O segundo antiagregante é onde a prescrição exige estratégia, não reflexo. Se o cateterismo vem em &lt; 24 h, <strong>não há benefício em pré-tratar</strong> com P2Y12 às cegas — só risco de sangrar uma cirurgia de revascularização que a anatomia ainda pode indicar. Por isso a ordem lógica é: AAS + anticoagulante já, P2Y12 junto com a decisão. Se a angiografia vai demorar mais de 24 h (hospital sem hemodinâmica, fila), aí o pré-tratamento com ticagrelor ou clopidogrel pode ser considerado.</p>
+        <p>Na escolha da droga: ticagrelor e prasugrel são mais potentes que clopidogrel e preferidos na ICP; clopidogrel volta a ser o certo quando o paciente precisa de anticoagulante oral junto, quando o risco hemorrágico é alto — ou quando é o que existe na farmácia.</p>
+        <span class="ref">ESC 2023 (pré-tratamento rotineiro: III) · AHA/ACC 2025 · SBC 2021.</span>
+      </div>
+    </div>
+
+    <!-- 03 · Anticoagulação -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Anticoagulação parenteral</div>
+          <div class="rx-cond">todos, desde o diagnóstico — manter até a ICP, por 8 dias ou até a alta</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Enoxaparina</b> (escolha) 1 mg/kg SC 12/12 h · ≥ 75 anos: 0,75 mg/kg 12/12 h · ClCr 15–29: 1 mg/kg 24/24 h · máx. 150 mg/dose · ClCr &lt; 15: não usar → HNF</div>
+        <div class="rx-dose"><b>HNF</b> bolus 60 U/kg EV (máx. 4.000 U) → infusão 12 U/kg/h, ajustada por TTPa 6/6 h para 1,5–2,5× o controle (≈ 50–70 s)<br>ex. 70 kg: bolus 4.000 U + 840 U/h</div>
+        <div class="rx-dose"><b>Fondaparinux</b> 2,5 mg SC 1×/dia — opção na estratégia conservadora ou alto risco de sangramento · não usar se ClCr &lt; 20 · se for para ICP, exige HNF adicional na sala</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Anticoagular é tratamento da doença — o trombo não espera a sala de hemodinâmica. A anticoagulação entra <strong>no diagnóstico</strong>, ajustada à estratégia; "segurar a heparina porque vai cateterizar" atrasa terapia com benefício comprovado. A enoxaparina é a escolha pela previsibilidade sem controle laboratorial; os dois ajustes que não podem escapar são <strong>idade ≥ 75</strong> e <strong>função renal</strong> — é aí que mora o sangramento iatrogênico. A HNF assume no rim falido (ClCr &lt; 15) e em quem pode precisar desligar rápido. O fondaparinux tem o melhor perfil de sangramento na estratégia conservadora, mas tromboza cateter: se o paciente for para a ICP, a sala complementa com HNF.</p>
+        <span class="ref">SBC 2021 (ajustes renais e de idade) · ESC 2023 · AHA/ACC 2025.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">Alívio da isquemia — sintomáticos</div>
+
+    <!-- 04 · Nitrato e dor -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Controle da dor e da isquemia — nitrato</div>
+          <div class="rx-cond">dor isquêmica em curso; EV se dor persistente, hipertensão ou congestão</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Dinitrato de isossorbida</b> 5 mg SL — repetir a cada 5 min se a dor persistir, até 3 doses (15 mg)</div>
+        <div class="rx-dose"><b>Nitroglicerina EV</b> — iniciar 5–10 mcg/min e titular a cada 3–5 min pela dor e pela PA (máx. usual 200 mcg/min)<br>ex. de preparo: 50 mg em SG 5% qsp 250 mL = 200 mcg/mL → 10 mcg/min = 3 mL/h</div>
+        <div class="alert-box danger"><div class="icon">!</div><div class="content"><strong>Não usar nitrato se:</strong> PAS &lt; 90 mmHg, suspeita de infarto de VD, ou uso de inibidor de fosfodiesterase-5 (sildenafila/vardenafila &lt; 24 h; tadalafila &lt; 48 h) — risco de hipotensão grave e refratária.</div></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Nitrato é sintomático: venodilata, reduz pré-carga e consumo de O₂ do miocárdio — alivia a dor, mas <strong>não muda mortalidade</strong>. Por isso ele nunca justifica atrasar o que muda desfecho (antiagregação, anticoagulação, estratificação invasiva). A infusão EV entra quando a dor persiste apesar do SL, ou quando hipertensão/congestão dão a ela um segundo trabalho. Titule pela dor e pela PA; a dose que importa é a que o paciente precisa, não a da tabela. E confirme a concentração da sua farmácia antes de converter mcg/min em mL/h — a conta acima vale para 200 mcg/mL.</p>
+        <span class="ref">SBC 2021 · ESC 2023 — nitratos como terapia sintomática na SCASSST.</span>
+      </div>
+    </div>
+
+    <!-- 05 · Morfina -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Morfina — só a dor refratária</div>
+          <div class="rx-cond">se dor persistir apesar do nitrato otimizado</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Morfina</b> 2–4 mg EV, podendo repetir conforme dor e vigilância de PA e sensório</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Morfina saiu da rotina e virou exceção: além de hipotensão e depressão respiratória, ela <strong>retarda o esvaziamento gástrico e a absorção dos inibidores de P2Y12</strong> — justamente o remédio que você acabou de dar. Reserve para a dor que resistiu ao nitrato. Dor refratária de verdade, aliás, é sinal de alarme: reavalie o ECG e pense em isquemia em curso que pede sala de hemodinâmica, não mais opioide.</p>
+        <span class="ref">ESC 2023 — uso criterioso de opioides; interação com P2Y12.</span>
+      </div>
+    </div>
+
+    <!-- 06 · Oxigênio -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Oxigênio — só se precisar</div>
+          <div class="rx-cond">se SpO₂ &lt; 90% ou desconforto respiratório</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>O₂ suplementar</b> (cateter nasal ou máscara), titulado para SpO₂ ≥ 90% — suspender quando não for mais necessário</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Oxigênio em quem não está hipoxêmico não alivia isquemia — e a hiperóxia causa vasoconstrição coronariana. Desde o DETO2X-AMI, as diretrizes só recomendam O₂ quando SpO₂ &lt; 90%. A armadilha é a "litragem de rotina" no papel: 2 L/min para todos é prescrição decorativa que ninguém titula. Prescreva o <strong>alvo</strong>, não a vazão.</p>
+        <span class="ref">ESC 2023 · AHA/ACC 2025 — O₂ apenas se SpO₂ &lt; 90%.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">Prevenção secundária — começa na internação</div>
+
+    <!-- 07 · Betabloqueador -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Betabloqueador VO nas primeiras 24 h</div>
+          <div class="rx-cond">se não houver sinais de IC nem risco de choque cardiogênico</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Metoprolol</b> (tartarato) 25–50 mg VO 12/12 h, titulando conforme FC e PA</div>
+        <div class="rx-dose">alternativas: <b>bisoprolol</b> 2,5–10 mg 1×/dia · <b>carvedilol</b> 3,125–25 mg 12/12 h · <b>atenolol</b> 25–100 mg/dia · <b>propranolol</b> 10–80 mg 8/8–12/12 h</div>
+        <div class="rx-dose"><b>Metoprolol EV</b> 5 mg lento, repetir a cada 5 min até 15 mg — exceção: isquemia persistente com taquicardia + hipertensão, sem qualquer sinal de IC</div>
+        <div class="alert-box danger"><div class="icon">!</div><div class="content"><strong>Não iniciar se</strong> sinais de IC ou baixo débito, risco de choque cardiogênico (idade &gt; 70, PAS &lt; 120, FC &gt; 110 ou &lt; 60), PR &gt; 0,24 s, BAV 2º/3º grau, broncoespasmo ativo.</div></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Betabloqueador reduz consumo de O₂, arritmia e reinfarto — mas o COMMIT ensinou o preço do excesso de pressa: betabloqueio agressivo em paciente errado converte isquemia em <strong>choque cardiogênico</strong>. Daí a regra: <strong>VO, dose baixa, nas primeiras 24 h</strong>, em quem está compensado — e a lista de exclusão acima levada a sério. O EV ficou para a exceção taquicárdica-hipertensiva sem nenhum traço de disfunção ventricular. Na dúvida entre começar hoje ou amanhã, a resposta certa raramente é o bolus.</p>
+        <span class="ref">SBC 2021 · ESC 2023 · AHA/ACC 2025 (critérios de risco do COMMIT/CCS-2).</span>
+      </div>
+    </div>
+
+    <!-- 08 · IECA/BRA -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">IECA (ou BRA se intolerância)</div>
+          <div class="rx-cond">nas primeiras 24 h se HAS, DM, DRC ou FEVE ≤ 40% — razoável nos demais</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Captopril</b> 6,25–50 mg VO 8/8 h (início baixo, titular) · <b>enalapril</b> 2,5–20 mg 12/12 h · <b>lisinopril</b> 2,5–10 mg 1×/dia</div>
+        <div class="rx-dose">se intolerância (tosse/angioedema): <b>losartana</b> 25–100 mg/dia · <b>valsartana</b> 80–320 mg/dia</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O benefício do IECA na SCA se concentra em quem tem remodelamento a prevenir: disfunção ventricular, diabetes, hipertensão, doença renal. Começa-se baixo (o captopril de 8/8 h existe justamente para titular rápido na internação) e troca-se por um de dose única na alta. Vigie potássio e creatinina — e não some IECA com BRA: a combinação só adiciona hipercalemia.</p>
+        <span class="ref">SBC 2021 · AHA/ACC 2025.</span>
+      </div>
+    </div>
+
+    <!-- 09 · Estatina -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Estatina de alta intensidade — já</div>
+          <div class="rx-cond">todos, independentemente do LDL de chegada</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Atorvastatina</b> 40–80 mg VO 1×/dia <em>ou</em> <b>rosuvastatina</b> 20–40 mg VO 1×/dia</div>
+        <div class="rx-dose">pode-se associar <b>ezetimiba</b> 10 mg/dia desde o início; se só houver sinvastatina: 40 mg/noite + ezetimiba 10 mg (intensidade moderada — trocar assim que possível)</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Alta intensidade, precoce, para todos — o LDL da admissão não muda a conduta, só serve de linha de base. A meta pós-SCA é agressiva (LDL &lt; 50–55 mg/dL nas diretrizes atuais), e por isso o AHA/ACC 2025 já admite ezetimiba de saída em vez de esperar a primeira dosagem de controle. A armadilha clássica é a alta com "sinvastatina 20 mg" herdada da prescrição antiga: intensidade errada para o risco errado.</p>
+        <span class="ref">AHA/ACC 2025 · ESC 2023 — estatina de alta intensidade ± ezetimiba.</span>
+      </div>
+    </div>
+
+    <!-- 10 · Espironolactona -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Espironolactona — em casos selecionados</div>
+          <div class="rx-cond">se FEVE ≤ 40% com sintomas de IC ou diabetes, já em uso de IECA + betabloqueador</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Espironolactona</b> 25 mg VO 1×/dia</div>
+        <div class="alert-box warn"><div class="icon">!</div><div class="content"><strong>Não iniciar se</strong> K⁺ &gt; 5,0 mEq/L ou disfunção renal significativa — rechecar potássio e creatinina na primeira semana.</div></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O antagonista mineralocorticoide reduz mortalidade no pós-infarto com disfunção ventricular — o critério das diretrizes é <strong>FEVE ≤ 40%</strong> com sintomas de IC ou diabetes, em cima da terapia otimizada. Não é item universal: em FE preservada sem IC, só adiciona hipercalemia. O erro mais caro é prescrever e não recontrolar o potássio.</p>
+        <span class="ref">SBC 2021 · AHA/ACC 2025 (critérios do EPHESUS).</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">Suporte e vigilância</div>
+
+    <!-- 11 · Dieta -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Dieta e via</div>
+          <div class="rx-cond">conforme estabilidade e programação do cateterismo</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Dieta VO</b> (geral, para diabéticos ou hipossódica, conforme o caso) — se estável e sem procedimento iminente</div>
+        <div class="rx-dose"><b>Jejum</b> — se cateterismo programado nas próximas horas, conforme a rotina do serviço</div>
+        <div class="rx-dose"><b>Dieta enteral</b> — se rebaixamento do nível de consciência, IOT ou disfagia/engasgos; vazão e progressão conforme avaliação nutricional</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A dieta não é o item nobre da SCASSST, mas é o primeiro da folha — e é onde se erra por automatismo. Vazão fixa de dieta ou de glicose "para todo mundo" não tem respaldo: aporte se individualiza com a nutrição, e paciente crítico segue progressão própria. O que importa aqui é a decisão de <strong>via</strong> (VO × enteral × jejum) e a coerência com a estratégia invasiva: se o cateterismo é precoce, alinhe o jejum com a hemodinâmica em vez de deixar o paciente 24 h sem comer "por via das dúvidas".</p>
+        <span class="ref">ESPEN 2023 — nutrição clínica em UTI (individualização e progressão do aporte).</span>
+      </div>
+    </div>
+
+    <!-- 12 · Glicemia -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Glicemia — controle sem hipoglicemia</div>
+          <div class="rx-cond">HGT se diabetes, jejum, dieta enteral ou paciente crítico</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>HGT</b> (glicemia capilar) 6/6 h · alvo hospitalar <b>140–180 mg/dL</b> · correção com insulina regular conforme o protocolo do serviço</div>
+        <div class="rx-dose">se HGT &lt; 70 mg/dL: <b>glicose 50%</b> EV (ex.: 40 mL = 20 g) → repetir HGT em 15 min</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>No coronariopata agudo, a hipoglicemia mata mais depressa que a hiperglicemia — por isso o alvo hospitalar é 140–180 mg/dL, e não a normoglicemia estrita. Escala fixa de insulina "para todo mundo" ignora sensibilidade individual e via de dieta: use o protocolo institucional e ajuste pelo padrão do paciente. Na hipoglicemia, a dose de glicose depende da apresentação disponível — a conta acima (40 mL de G50% = 20 g) é o exemplo; o que não se negocia é <strong>rechecar em 15 min</strong>.</p>
+        <span class="ref">ADA 2026 — Standards of Care, cap. 16 (cuidado hospitalar).</span>
+      </div>
+    </div>
+
+    <!-- 13 · Sintomáticos -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Antiemético se necessário</div>
+          <div class="rx-cond">náusea ou vômitos</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Ondansetrona</b> 4–8 mg EV até 8/8 h SN <em>ou</em> <b>metoclopramida</b> 10 mg EV 8/8 h SN</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Náusea no infarto é comum (dor, opioide, reflexo vagal). Dois lembretes: ondansetrona prolonga QT — atenção se o paciente acumular outros prolongadores ou distúrbio eletrolítico — e metoclopramida pede cautela no idoso (extrapiramidalismo). "SN" de verdade: sem horário fixo.</p>
+      </div>
+    </div>
+
+    <!-- 14 · Monitorização -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Monitorização e vigilância</div>
+          <div class="rx-cond">enquanto durar o risco arrítmico e isquêmico</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Monitorização cardíaca contínua</b> por 24–48 h + <b>oximetria de pulso</b> · PA e FC de horário · <b>ECG</b> se nova dor ou instabilidade · troponina seriada conforme protocolo</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>As primeiras 24–48 h concentram o risco de arritmia ventricular e de reisquemia — a monitorização é o item que transforma "internado" em "vigiado". Nova dor pede ECG na hora, não no horário: supra novo muda a página inteira (vira reperfusão). E lembre que monitor só ajuda se alguém olha: prescreva também os limites de alarme que fazem sentido para este paciente.</p>
+        <span class="ref">SBC 2021 · ESC 2023.</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="nao-prescrever">
+  <div class="section-label">Tão importante quanto</div>
+  <h2 class="section-title">O que <em>não</em> prescrever</h2>
+  <div class="warn-box">
+    <strong>Itens que pioram o desfecho na SCASSST.</strong>
+    <p class="box-body"><strong>AINEs</strong> (exceto AAS): suspender na admissão — aumentam risco de morte, reinfarto e ruptura. <strong>O₂ de rotina</strong> em quem satura bem. <strong>Morfina de rotina</strong> para toda dor. <strong>Pré-tratamento rotineiro com P2Y12</strong> quando o cateterismo vem em &lt; 24 h. <strong>Nitrato</strong> com PAS &lt; 90, infarto de VD ou inibidor de PDE-5 recente. E não postergar a <strong>anticoagulação</strong> à espera da hemodinâmica.</p>
+  </div>
+</section>
+
+<section class="section" id="fechamento">
+  <div class="tip-box" style="margin-top:32px;">
+    <strong>Prescreveu — e agora?</strong>
+    <p class="box-body">A prescrição cobre as primeiras 24 h; o desfecho se decide na <strong>estratificação invasiva</strong> — risco intermediário/alto vai ao cateterismo com intenção de revascularizar. Se o paciente hipotensar ou congestionar, o raciocínio muda de página: reveja os <a class="text-link" href="../../hemo/padroes.html">padrões hemodinâmicos</a> e as <a class="text-link" href="../../hemo/drogas.html">drogas vasoativas</a>. Caso concreto com nuance que a página não cobre?</p>
+    <a class="link-cta" href="../index.html">Levar o caso ao assistente de conduta <span aria-hidden="true">&rarr;</span></a>
+  </div>
+
+  <div class="section-label">Referências</div>
+  <span class="ref">Nicolau JC, Feitosa Filho GS, Petriz JL, et al. Diretrizes da Sociedade Brasileira de Cardiologia sobre Angina Instável e Infarto Agudo do Miocárdio sem Supradesnível do Segmento ST — 2021. <em>Arq Bras Cardiol.</em> 2021;117(1):181–264 (doi:10.36660/abc.20210180).</span>
+  <span class="ref">Byrne RA, Rossello X, Coughlan JJ, et al. 2023 ESC Guidelines for the management of acute coronary syndromes. <em>Eur Heart J.</em> 2023;44(38):3720–3826 (doi:10.1093/eurheartj/ehad191).</span>
+  <span class="ref">Rao SV, O'Donoghue ML, et al. 2025 ACC/AHA/ACEP/NAEMSP/SCAI Guideline for the Management of Patients With Acute Coronary Syndromes. <em>J Am Coll Cardiol.</em> 2025 (doi:10.1016/j.jacc.2024.11.009).</span>
+  <span class="ref">American Diabetes Association. Diabetes Care in the Hospital — Standards of Care in Diabetes. <em>Diabetes Care.</em> 2026;49(Suppl 1).</span>
+  <span class="ref">Singer P, et al.; ESPEN. Practical and partially revised guideline: clinical nutrition in the intensive care unit. <em>Clin Nutr.</em> 2023.</span>
+</section>
+
+</main>
+<script src="../../assets/app.js"></script>
+<script>
+function toggleCard(card,e){
+  if(e&&e.target.tagName&&e.target.tagName.toLowerCase()==='a')return;
+  card.classList.toggle('open');
+}
+document.addEventListener('keydown',function(e){
+  if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('card-toggle')){
+    e.preventDefault();toggleCard(e.target.parentNode,e);
+  }
+});
+</script>
+</body>
+</html>
