@@ -15,3 +15,6 @@ node_modules
 
 # grafo de código (Graphify) — artefato local, regerado a cada indexação
 graphify-out/
+
+# lixo local do mount (rm não funciona; apagar à mão)
+_to_delete*/

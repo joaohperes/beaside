@@ -1695,6 +1695,18 @@
           "status": "rascunho",
           "ia": false,
           "hub": null
+        },
+        {
+          "id": "sca-com-supra",
+          "arquivo": "sca-com-supra.html",
+          "categoria": "Cardiovascular",
+          "menu": "SCA com supra",
+          "titulo": "Prescrição comentada — SCA com supra de ST",
+          "subtitulo": "Reperfusão contra o relógio — ICP primária ou fibrinólise, e a prescrição em volta",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
         }
       ]
     },
