@@ -1911,6 +1911,18 @@
           "status": "rascunho",
           "ia": false,
           "hub": null
+        },
+        {
+          "id": "avch",
+          "arquivo": "avch.html",
+          "categoria": "Neuro",
+          "menu": "AVC hemorrágico",
+          "titulo": "Prescrição comentada — AVC hemorrágico",
+          "subtitulo": "Reverter o anticoagulante, PA suave até 140, o telefonema do cerebelo",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
         }
       ]
     },

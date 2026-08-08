@@ -309,6 +309,7 @@ const MODULE_PAGES = {
     {id:'tvp',                 file:'tvp.html',                 cat:'Cardiovascular', label:'TVP',                     title:'Prescrição comentada — Trombose venosa profunda',             subtitle:'A maioria trata em casa com DOAC — quem interna, a escolha pelo paciente, a duração'},
     {id:'sepse',               file:'sepse.html',               cat:'Infecção',       label:'Sepse e choque séptico',  title:'Prescrição comentada — Sepse e choque séptico',               subtitle:'Antibiótico na 1ª hora pelo foco, volume com juízo, nora precoce — e desescalonar'},
     {id:'avci',                file:'avci.html',                cat:'Neuro',          label:'AVC isquêmico',           title:'Prescrição comentada — AVC isquêmico',                        subtitle:'Trombólise e trombectomia contra o relógio — e a pressão que aqui se respeita'},
+    {id:'avch',                file:'avch.html',                cat:'Neuro',          label:'AVC hemorrágico',         title:'Prescrição comentada — AVC hemorrágico',                      subtitle:'Reverter o anticoagulante, PA suave até 140, o telefonema do cerebelo'},
   ],
   institucional: [
     {id:'sobre',        file:'sobre.html',        cat:'Institucional', label:'A be·aside',      title:'Sobre o be·aside',                      subtitle:'Feito para pensar o paciente crítico — do mecanismo à decisão'},
