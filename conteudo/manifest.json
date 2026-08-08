@@ -1875,6 +1875,18 @@
           "status": "rascunho",
           "ia": false,
           "hub": null
+        },
+        {
+          "id": "tvp",
+          "arquivo": "tvp.html",
+          "categoria": "Cardiovascular",
+          "menu": "TVP",
+          "titulo": "Prescrição comentada — Trombose venosa profunda",
+          "subtitulo": "A maioria trata em casa com DOAC — quem interna, a escolha pelo paciente, a duração",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
         }
       ]
     },
