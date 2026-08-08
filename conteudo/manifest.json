@@ -1791,6 +1791,18 @@
           "status": "rascunho",
           "ia": false,
           "hub": null
+        },
+        {
+          "id": "taqui-ventricular",
+          "arquivo": "taqui-ventricular.html",
+          "categoria": "Cardiovascular",
+          "menu": "Taquicardia ventricular",
+          "titulo": "Prescrição comentada — Taquicardia ventricular",
+          "subtitulo": "QRS largo é TV até prova em contrário — monomórfica, polimórfica, torsades e FA pré-excitada",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
         }
       ]
     },
