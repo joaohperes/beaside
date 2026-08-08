@@ -294,6 +294,7 @@ const MODULE_PAGES = {
     {id:'sca-com-supra', file:'sca-com-supra.html', cat:'Cardiovascular', label:'SCA com supra',         title:'Prescrição comentada — SCA com supra de ST',         subtitle:'Reperfusão contra o relógio — ICP primária ou fibrinólise, e a prescrição em volta'},
     {id:'eap',           file:'eap.html',           cat:'Cardiovascular', label:'Edema agudo de pulmão', title:'Prescrição comentada — Edema agudo de pulmão',       subtitle:'VNI, vasodilatador e diurético na dose que resolve — fenótipo antes de inotrópico'},
     {id:'fa-flutter',    file:'fa-flutter.html',    cat:'Cardiovascular', label:'FA e flutter atrial',   title:'Prescrição comentada — Fibrilação e flutter atrial', subtitle:'Instável? Quanto tempo? Anticoagular quem? — e as doses certas de DOAC'},
+    {id:'tep',           file:'tep.html',           cat:'Cardiovascular', label:'TEP',                   title:'Prescrição comentada — Tromboembolismo pulmonar',    subtitle:'Estratificar primeiro — DOAC com ataque, heparina na dose de TEV, trombólise só no alto risco'},
   ],
   institucional: [
     {id:'sobre',        file:'sobre.html',        cat:'Institucional', label:'A be·aside',      title:'Sobre o be·aside',                      subtitle:'Feito para pensar o paciente crítico — do mecanismo à decisão'},

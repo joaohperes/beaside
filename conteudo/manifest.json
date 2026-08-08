@@ -1731,6 +1731,18 @@
           "status": "rascunho",
           "ia": false,
           "hub": null
+        },
+        {
+          "id": "tep",
+          "arquivo": "tep.html",
+          "categoria": "Cardiovascular",
+          "menu": "TEP",
+          "titulo": "Prescrição comentada — Tromboembolismo pulmonar",
+          "subtitulo": "Estratificar primeiro — DOAC com ataque, heparina na dose de TEV, trombólise só no alto risco",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
         }
       ]
     },

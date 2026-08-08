@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7K0CML04MR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7K0CML04MR');
+</script>
+<script src="../../assets/theme-boot.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Prescrição comentada — Tromboembolismo pulmonar | be·aside</title>
+<meta name="robots" content="noindex, nofollow" data-beaside="status">
+<link rel="canonical" href="https://beaside.com.br/consulte/prescricoes/tep.html">
+<meta name="description" content="Prescrição comentada do TEP: estratificação de risco primeiro, anticoagulação com DOAC nas doses de ataque certas, HNF 80 U/kg + 18 U/kg/h quando é ela, trombólise só no alto risco — AHA/ACC 2026 e ESC 2019.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="be·aside">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Prescrição comentada — TEP | be·aside">
+<meta property="og:description" content="O TEP se trata por risco: quem vai pra casa, quem interna, quem trombolisa — com as doses de cada caminho.">
+<meta property="og:url" content="https://beaside.com.br/consulte/prescricoes/tep.html">
+<meta property="og:image" content="https://beaside.com.br/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prescrição comentada — TEP | be·aside">
+<meta name="twitter:image" content="https://beaside.com.br/assets/og-image.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/styles.css">
+<style>
+  /* componente da prescrição comentada — usa só tokens; variante do .card.collapsible */
+  .rx-list{counter-reset:rx;display:flex;flex-direction:column;gap:14px;margin:26px 0 8px}
+  .rx-item{counter-increment:rx}
+  .rx-head{display:flex;gap:13px;align-items:flex-start;padding:16px 18px 0}
+  .rx-n{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--accent);background:rgba(var(--accent-rgb),.12);border-radius:6px;padding:3px 8px;margin-top:2px;flex-shrink:0}
+  .rx-n::before{content:counter(rx,decimal-leading-zero)}
+  .rx-title{font-size:15.5px;font-weight:600;color:var(--text);letter-spacing:-.01em;line-height:1.3}
+  .rx-cond{font-size:12.5px;color:var(--text2);margin-top:3px;line-height:1.5}
+  .rx-body{padding:2px 18px 6px}
+  .rx-dose{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;line-height:1.8;color:var(--text);background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:11px 14px;margin:12px 0 0}
+  .rx-dose+.rx-dose{margin-top:8px}
+  .rx-dose b{color:var(--accent);font-weight:600}
+  .rx-body .tag-row{margin:10px 0 0}
+  .rx-body .alert-box{margin:12px 0 0}
+  .rx-item .card-toggle{border-top:1px solid var(--border);margin-top:14px}
+  .rx-why{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);flex:1}
+  .rx-item .card-body p{font-size:13.5px;line-height:1.75;color:var(--text2);margin:0 0 10px}
+  .rx-item .card-body p strong{color:var(--text)}
+  .rx-item .card-body .ref{display:block;margin-top:10px}
+  @media(max-width:600px){.rx-head{padding:14px 14px 0}.rx-body{padding:2px 14px 6px}}
+</style>
+</head>
+<body data-module="prescricoes" data-page="tep" data-root="../../">
+<main class="main">
+
+<section class="section" id="topo">
+  <header class="page-head">
+    <div class="hero-eyebrow">Consulte · Prescrições comentadas</div>
+    <h1 class="section-title">Tromboembolismo pulmonar</h1>
+    <p class="section-subtitle">O TEP não tem uma prescrição — tem três, e quem escolhe é a estratificação de risco: quem vai para casa com DOAC, quem interna anticoagulado, quem trombolisa agora.</p>
+  </header>
+
+  <p class="prose">Serve para o <strong>TEP agudo confirmado</strong> (ou com probabilidade alta o bastante para tratar enquanto se confirma). A primeira pergunta não é "qual heparina" — é <strong>"em que risco este paciente está?"</strong>: é isso que decide alocação (casa, enfermaria, UTI), anticoagulante e se a trombólise entra em cena.</p>
+
+  <div class="warn-box">
+    <strong>Antes de prescrever qualquer item desta página.</strong>
+    <p class="box-body">As doses seguem as diretrizes de TEP (AHA/ACC 2026, ESC 2019) e <strong>não substituem o protocolo do seu serviço</strong> nem a padronização da farmácia. Atenção especial à HNF: circula por aí tabela de SCA (60 U/kg + 12) colada em capítulo de TEP — no TEV o esquema clássico é outro (80 U/kg + 18).</p>
+  </div>
+
+  <div class="info-box">
+    <strong>Como usar.</strong>
+    <p class="box-body">A ordem é a do raciocínio: <strong>estratificar</strong>, anticoagular pelo caminho certo, e reservar suporte agressivo e trombólise para quem precisa. Dose sempre visível; o porquê em <em>"por quê &amp; armadilhas"</em>.</p>
+  </div>
+</section>
+
+<section class="section" id="prescricao">
+  <div class="section-label">A prescrição</div>
+  <h2 class="section-title">Item por item</h2>
+
+  <div class="rx-list">
+
+    <div class="section-label" style="margin-top:26px">Estratificar primeiro — o TEP se trata por risco</div>
+
+    <!-- 01 · Estratificação -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Classificar o risco — a "prescrição" que aloca o paciente</div>
+          <div class="rx-cond">PA, sPESI/PESI, VD (POCUS/angioTC) e troponina respondem</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Alto risco</b> = instabilidade hemodinâmica (PAS &lt; 90, vasopressor, parada) → UTI + candidato a <em>trombólise</em></div>
+        <div class="rx-dose"><b>Intermediário-alto</b> = estável, mas VD disfuncional <em>E</em> troponina positiva → leito monitorizado/UTI, anticoagulação e vigilância — trombólise só de resgate</div>
+        <div class="rx-dose"><b>Intermediário-baixo</b> = sPESI ≥ 1 com apenas um (ou nenhum) marcador → enfermaria</div>
+        <div class="rx-dose"><b>Baixo risco</b> = sPESI 0, sem VD/troponina → considerar alta precoce e tratamento domiciliar com DOAC</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O espectro do TEP vai do paciente que podia ter ido para casa ao que morre na próxima hora — tratar os dois igual erra nos dois sentidos: interna (e às vezes sangra) quem não precisava, e subestima o intermediário-alto que descompensa na enfermaria sem monitor. O trio <strong>PA + VD + troponina</strong> é o que separa. E vale dizer o óbvio esquecido: o baixo risco bem selecionado tratado em casa com DOAC tem desfecho igual ao internado — internar "por via das dúvidas" não é neutro.</p>
+        <span class="ref">AHA/ACC 2026 · ESC 2019 — estratificação e tratamento ambulatorial do baixo risco.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">Anticoagulação — para todos, na hora do diagnóstico</div>
+
+    <!-- 02 · DOAC -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Estável: DOAC — com a fase de ataque que não pode faltar</div>
+          <div class="rx-cond">primeira escolha no baixo risco e no intermediário estabilizado</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Rivaroxabana</b> 15 mg VO 12/12 h por <b>21 dias</b> → 20 mg 1×/dia (com alimento)</div>
+        <div class="rx-dose"><b>Apixabana</b> 10 mg VO 12/12 h por <b>7 dias</b> → 5 mg 12/12 h</div>
+        <div class="rx-dose"><b>Dabigatrana</b> 150 mg 12/12 h <em>ou</em> <b>edoxabana</b> 60 mg 1×/dia (30 mg se peso ≤ 60 kg ou ClCr 15–50) — ambas só <b>após ≥ 5 dias de heparina</b> parenteral</div>
+        <div class="rx-dose">Duração mínima do tratamento: <b>3 meses</b> — estender é decisão de ambulatório (provocado × não provocado × câncer)</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A armadilha do DOAC no TEV é <strong>pular a fase de ataque</strong>: rivaroxabana que começa direto em 20 mg ou apixabana em 5 mg trata o rótulo, não o trombo — as doses dobradas das primeiras semanas fazem o papel da heparina dos esquemas antigos. O contrário também confunde: dabigatrana e edoxabana <em>não têm</em> fase oral de ataque e exigem os 5 dias de heparina antes. São dois desenhos de estudo diferentes — misturá-los gera subdose ou heparina desnecessária.</p>
+        <span class="ref">EINSTEIN-PE · AMPLIFY · RE-COVER · Hokusai-VTE · AHA/ACC 2026.</span>
+      </div>
+    </div>
+
+    <!-- 03 · Parenteral -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Internado: heparina — e a dose de TEV é diferente da de SCA</div>
+          <div class="rx-cond">intermediário e alto risco, via oral indisponível, ou possibilidade de trombólise/procedimento</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Enoxaparina</b> (escolha no estável) 1 mg/kg SC 12/12 h · alternativa 1,5 mg/kg 1×/dia · ClCr 15–29: 1 mg/kg 24/24 h · ClCr &lt; 15: HNF</div>
+        <div class="rx-dose"><b>HNF EV</b> (instável, possível trombólise, rim falido, obesidade extrema): bolus <b>80 U/kg</b> → infusão <b>18 U/kg/h</b>, TTPa 6/6 h no alvo 1,5–2,5× (nomograma de Raschke) · sem bomba disponível: HNF SC 333 U/kg → 250 U/kg 12/12 h</div>
+        <div class="rx-dose"><b>Fondaparinux</b> SC 1×/dia por peso: &lt; 50 kg → 5 mg · 50–100 kg → 7,5 mg · &gt; 100 kg → 10 mg (não usar se ClCr &lt; 30; opção na suspeita de HIT)</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Aqui mora uma confusão que já saiu impressa por aí: <strong>80 U/kg + 18 U/kg/h é a dose do TEV; 60 U/kg + 12 U/kg/h é a da SCA</strong> — no infarto anda junto trombolítico e antiplaquetário duplo, por isso a dose é menor. Colar a tabela de um no capítulo do outro subdosa o TEP. A HNF ganha do enoxaparina quando pode ser preciso <em>desligar rápido</em> (trombólise iminente, procedimento) ou quando o rim não depura HBPM; fora isso, enoxaparina é mais previsível e não exige TTPa.</p>
+        <span class="ref">Raschke 1993 (nomograma) · ESC 2019 · AHA/ACC 2026 · SBC 2021 (ajustes renais).</span>
+      </div>
+    </div>
+
+    <!-- 04 · Populações especiais -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Populações que mudam a escolha</div>
+          <div class="rx-cond">câncer, rim, gestação e SAF não seguem a regra geral</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Câncer ativo:</b> apixabana (doses do item 02) ou HBPM plena · cautela com DOAC no tumor gastrointestinal/geniturinário não ressecado (sangramento) · varfarina não</div>
+        <div class="rx-dose"><b>Rim:</b> ClCr &lt; 30 → evitar rivaroxabana/dabigatrana · apixabana/edoxabana evitadas &lt; 25 · a escolha vira HNF/HBPM ajustada → varfarina</div>
+        <div class="rx-dose"><b>Gestação:</b> HBPM plena — DOAC e varfarina são contraindicados</div>
+        <div class="rx-dose"><b>SAF</b> (especialmente triplo-positivo): <b>varfarina</b>, INR 2–3 — DOAC falhou em ensaio</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Quatro exceções que valem decorar porque cada uma inverte a primeira escolha: no câncer, o DOAC (Caravaggio) empatou com a HBPM em eficácia com menos incômodo — mas o tumor de trato digestivo sangra mais com anti-Xa oral; no rim falido, quase tudo acumula; na gestação, DOAC atravessa placenta e varfarina é teratogênica — sobra HBPM; e na SAF o TRAPS mostrou mais trombose arterial com rivaroxabana — é o raro cenário moderno em que a varfarina ganha por eficácia.</p>
+        <span class="ref">Caravaggio (NEJM 2020) · TRAPS · AHA/ACC 2026 · ESC 2019.</span>
+      </div>
+    </div>
+
+    <!-- 05 · Varfarina -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Varfarina — quando for ela, com a ponte certa</div>
+          <div class="rx-cond">rim falido, SAF, custo/acesso — sempre com sobreposição de heparina</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Varfarina</b> 5 mg VO 1×/dia (2,5 mg se idoso &gt; 70, hepatopatia, interação com amiodarona) <b>+ enoxaparina 1 mg/kg 12/12 h juntas</b> · INR a partir do 2º–3º dia · suspender a heparina só com <b>INR 2–3 por 2 medidas E ≥ 5 dias de sobreposição</b> · alvo INR 2–3</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A varfarina começa <em>pró-trombótica</em>: ela derruba a proteína C antes dos fatores da coagulação, e por isso os primeiros dias sem heparina são os mais perigosos. A regra tem duas condições simultâneas — INR no alvo <strong>e</strong> cinco dias de sobreposição — e quem solta a heparina no primeiro INR 2,1 do terceiro dia cumpriu só metade dela.</p>
+        <span class="ref">Diretrizes de TEV — transição heparina→varfarina.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">O TEP de alto risco</div>
+
+    <!-- 06 · Suporte -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Sustentar o VD — com volume contado e vasopressor cedo</div>
+          <div class="rx-cond">o ventrículo direito falindo é a causa da morte no TEP — e ele não perdoa excesso</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Volume com parcimônia:</b> cristaloide 250–500 mL EV, só se hipotensão com VCI/pressões baixas — reavaliar após cada alíquota; VD dilatado piora com volume</div>
+        <div class="rx-dose"><b>Noradrenalina</b> cedo para PAM ≥ 65 mmHg · <b>dobutamina</b> apenas se baixo débito persistir apesar da PA restaurada — doses e diluições na página de <a class="text-link" href="../../hemo/drogas.html">drogas vasoativas</a></div>
+        <div class="rx-dose"><b>O₂</b> para SpO₂ ≥ 90% · cautela extrema com IOT/VPP no VD falido (a pressão positiva derruba o retorno venoso — intubar já com vasopressor correndo)</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O instinto de "abrir soro" mata no TEP: o VD já está dilatado contra uma pós-carga fixa, e cada 500 mL a mais desvia o septo e rouba enchimento do VE — volume aqui é dose de remédio, não gotejo aberto. A noradrenalina faz o que o volume não faz: sobe a PA que perfunde a coronária direita do VD isquêmico. Dobutamina entra depois, se o débito seguir baixo — não "sempre associada". E a intubação é o momento mais perigoso do TEP grave: sedação + pressão positiva no VD vazio é assistolia anunciada.</p>
+        <span class="ref">ESC 2019 · AHA/ACC 2026 — suporte do VD; fluido cauteloso.</span>
+      </div>
+    </div>
+
+    <!-- 07 · Trombólise -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Trombólise sistêmica — só no alto risco</div>
+          <div class="rx-cond">instabilidade hemodinâmica; no intermediário-alto, só resgate</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Alteplase</b> 100 mg EV em 2 h · parada iminente/PCR: regime acelerado 0,6 mg/kg (máx. 50 mg) em 15 min</div>
+        <div class="rx-dose"><b>Estreptoquinase</b> 1.500.000 UI EV em 2 h (alternativa; vigiar reação alérgica; não repetir se uso prévio)</div>
+        <div class="rx-dose">Antes: checar contraindicações (mesma lista do <a class="text-link" href="sca-com-supra.html">supra</a>) e fazer os procedimentos invasivos (SVD, PAi) <em>antes</em> do trombolítico · durante/após: <b>HNF</b> (não DOAC)</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>No alto risco a trombólise salva vida e a maior contraindicação relativa some diante da parada iminente. No <strong>intermediário-alto</strong>, o PEITHO encerrou a discussão: trombolisar de rotina evita descompensações ao preço de hemorragia intracraniana — saldo ruim; o certo é anticoagular, vigiar de perto e <em>resgatar</em> quem deteriora. Onde houver equipe, cateter (trombectomia/trombólise dirigida) é alternativa no sangrador de alto risco — decisão de time de TEP, não de folha.</p>
+        <span class="ref">ESC 2019 · PEITHO (NEJM 2014) · AHA/ACC 2026.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">O resto da folha</div>
+
+    <!-- 08 · Sintomáticos -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Dor pleurítica, febre e náusea</div>
+          <div class="rx-cond">analgesia sem sabotar a anticoagulação</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Dipirona</b> 1 g EV/VO até 6/6 h SN (dor ou febre) · opioide fraco se refratária · <b>evitar AINE</b> em quem está plenamente anticoagulado</div>
+        <div class="rx-dose"><b>Ondansetrona</b> 4–8 mg EV até 8/8 h SN <em>ou</em> <b>metoclopramida</b> 10 mg EV 8/8 h SN</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A dor pleurítica do infarto pulmonar é real e limita a respiração — trate. Só não trate com AINE em cima de anticoagulação plena: é somar antiagregação plaquetária e lesão de mucosa a quem já sangra fácil. Dipirona resolve a maioria; febre baixa nos primeiros dias pode ser do próprio infarto pulmonar, mas febre alta persistente pede procurar outra causa.</p>
+      </div>
+    </div>
+
+    <!-- 09 · Kit -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Kit do internado — sem dupla heparina</div>
+          <div class="rx-cond">o padrão das outras páginas, com as exceções do anticoagulado</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Dieta</b> VO se estável (zero se instável/muito sintomático, reavaliando cedo) · <b>HGT 6/6 h</b> se DM/jejum/crítico — alvo 140–180, protocolo do serviço · <b>monitorização</b> + débito urinário no intermediário-alto e alto · <b>sem profilaxia de TEV</b> (anticoagulação já é plena) · deambular assim que anticoagulado e estável</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Duas heranças antigas caem aqui: a profilaxia de TEV (redundante — e perigosa — sobre anticoagulação plena) e o repouso absoluto: uma vez anticoagulado e estável, <strong>deambular é seguro</strong> e o repouso prolongado só adiciona risco. O débito urinário no grave não é burocracia — é o marcador mais simples de que o VD está dando conta do débito.</p>
+        <span class="ref">ADA 2026 (glicemia hospitalar) · diretrizes de TEV.</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="nao-prescrever">
+  <div class="section-label">Tão importante quanto</div>
+  <h2 class="section-title">O que <em>não</em> prescrever</h2>
+  <div class="warn-box">
+    <strong>Itens que pioram o desfecho no TEP.</strong>
+    <p class="box-body"><strong>Volume liberal</strong> no VD falido. <strong>Dobutamina "sempre associada"</strong> sem baixo débito documentado. <strong>Trombólise de rotina no intermediário-alto</strong> (PEITHO). <strong>HNF com dose de SCA</strong> (60/12) — no TEV é 80/18. <strong>DOAC sem fase de ataque</strong> (rivaroxabana 20 direto, apixabana 5 direto). <strong>DOAC na gestação e na SAF.</strong> <strong>AINE + anticoagulação plena.</strong> <strong>Profilaxia de TEV somada à plena.</strong> E <strong>repouso absoluto prolongado</strong>.</p>
+  </div>
+</section>
+
+<section class="section" id="fechamento">
+  <div class="tip-box" style="margin-top:32px;">
+    <strong>Prescreveu — e agora?</strong>
+    <p class="box-body">O internado de risco intermediário-alto precisa de olhos: piora de perfusão, lactato subindo ou síncope nova = reavaliar resgate. O suporte do VD instável é raciocínio de choque obstrutivo — <a class="text-link" href="../../hemo/padroes.html">padrões hemodinâmicos</a> e <a class="text-link" href="../../hemo/drogas.html">drogas vasoativas</a>. E a decisão de <em>quanto tempo</em> anticoagular (3 meses × indefinido) merece consulta dedicada — provocado, não provocado, câncer e trombofilia mudam a resposta.</p>
+    <a class="link-cta" href="../index.html">Levar o caso ao assistente de conduta <span aria-hidden="true">&rarr;</span></a>
+  </div>
+
+  <div class="section-label">Referências</div>
+  <span class="ref">2026 AHA/ACC/ACCP/CHEST/SCAI/SHM/SIR/SVM/SVN Guideline for the Evaluation and Management of Acute Pulmonary Embolism. <em>Circulation.</em> 2026 (doi:10.1161/CIR.0000000000001415).</span>
+  <span class="ref">Konstantinides SV, Meyer G, Becattini C, et al. 2019 ESC Guidelines for the diagnosis and management of acute pulmonary embolism. <em>Eur Heart J.</em> 2020;41(4):543–603 (doi:10.1093/eurheartj/ehz405).</span>
+  <span class="ref">Meyer G, et al. Fibrinolysis for patients with intermediate-risk pulmonary embolism (PEITHO). <em>N Engl J Med.</em> 2014;370:1402–1411.</span>
+  <span class="ref">Agnelli G, et al. Apixaban for the treatment of venous thromboembolism associated with cancer (Caravaggio). <em>N Engl J Med.</em> 2020;382:1599–1607.</span>
+  <span class="ref">Agnelli G, et al. Oral apixaban for the treatment of acute venous thromboembolism (AMPLIFY). <em>N Engl J Med.</em> 2013;369:799–808 · EINSTEIN Investigators. <em>N Engl J Med.</em> 2010;363:2499–2510.</span>
+  <span class="ref">Raschke RA, et al. The weight-based heparin dosing nomogram. <em>Ann Intern Med.</em> 1993;119(9):874–881.</span>
+</section>
+
+</main>
+<script src="../../assets/app.js"></script>
+<script>
+function toggleCard(card,e){
+  if(e&&e.target.tagName&&e.target.tagName.toLowerCase()==='a')return;
+  card.classList.toggle('open');
+}
+document.addEventListener('keydown',function(e){
+  if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('card-toggle')){
+    e.preventDefault();toggleCard(e.target.parentNode,e);
+  }
+});
+</script>
+</body>
+</html>
