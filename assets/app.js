@@ -307,6 +307,7 @@ const MODULE_PAGES = {
     {id:'pa-elevada',          file:'pa-elevada.html',          cat:'Cardiovascular', label:'PA muito elevada',        title:'Prescrição comentada — PA muito elevada',                     subtitle:'Órgão-alvo define tudo — emergência na veia por órgão; assintomático sem derrubar'},
     {id:'disseccao-aorta',     file:'disseccao-aorta.html',     cat:'Cardiovascular', label:'Dissecção de aorta',      title:'Prescrição comentada — Dissecção de aorta',                   subtitle:'Betabloqueador antes do vasodilatador, FC < 60 em minutos — tipo A se opera'},
     {id:'tvp',                 file:'tvp.html',                 cat:'Cardiovascular', label:'TVP',                     title:'Prescrição comentada — Trombose venosa profunda',             subtitle:'A maioria trata em casa com DOAC — quem interna, a escolha pelo paciente, a duração'},
+    {id:'sepse',               file:'sepse.html',               cat:'Infecção',       label:'Sepse e choque séptico',  title:'Prescrição comentada — Sepse e choque séptico',               subtitle:'Antibiótico na 1ª hora pelo foco, volume com juízo, nora precoce — e desescalonar'},
   ],
   institucional: [
     {id:'sobre',        file:'sobre.html',        cat:'Institucional', label:'A be·aside',      title:'Sobre o be·aside',                      subtitle:'Feito para pensar o paciente crítico — do mecanismo à decisão'},

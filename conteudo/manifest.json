@@ -1887,6 +1887,18 @@
           "status": "rascunho",
           "ia": false,
           "hub": null
+        },
+        {
+          "id": "sepse",
+          "arquivo": "sepse.html",
+          "categoria": "Infecção",
+          "menu": "Sepse e choque séptico",
+          "titulo": "Prescrição comentada — Sepse e choque séptico",
+          "subtitulo": "Antibiótico na 1ª hora pelo foco, volume com juízo, nora precoce — e desescalonar",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
         }
       ]
     },
