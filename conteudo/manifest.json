@@ -1923,6 +1923,18 @@
           "status": "rascunho",
           "ia": false,
           "hub": null
+        },
+        {
+          "id": "hsa",
+          "arquivo": "hsa.html",
+          "categoria": "Neuro",
+          "menu": "Hemorragia subaracnóidea",
+          "titulo": "Prescrição comentada — Hemorragia subaracnóidea",
+          "subtitulo": "Aneurisma tratado cedo, PAS < 160, nimodipina 21 dias — e os três relógios",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
         }
       ]
     },
