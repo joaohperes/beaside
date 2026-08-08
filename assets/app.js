@@ -308,6 +308,7 @@ const MODULE_PAGES = {
     {id:'disseccao-aorta',     file:'disseccao-aorta.html',     cat:'Cardiovascular', label:'Dissecção de aorta',      title:'Prescrição comentada — Dissecção de aorta',                   subtitle:'Betabloqueador antes do vasodilatador, FC < 60 em minutos — tipo A se opera'},
     {id:'tvp',                 file:'tvp.html',                 cat:'Cardiovascular', label:'TVP',                     title:'Prescrição comentada — Trombose venosa profunda',             subtitle:'A maioria trata em casa com DOAC — quem interna, a escolha pelo paciente, a duração'},
     {id:'sepse',               file:'sepse.html',               cat:'Infecção',       label:'Sepse e choque séptico',  title:'Prescrição comentada — Sepse e choque séptico',               subtitle:'Antibiótico na 1ª hora pelo foco, volume com juízo, nora precoce — e desescalonar'},
+    {id:'avci',                file:'avci.html',                cat:'Neuro',          label:'AVC isquêmico',           title:'Prescrição comentada — AVC isquêmico',                        subtitle:'Trombólise e trombectomia contra o relógio — e a pressão que aqui se respeita'},
   ],
   institucional: [
     {id:'sobre',        file:'sobre.html',        cat:'Institucional', label:'A be·aside',      title:'Sobre o be·aside',                      subtitle:'Feito para pensar o paciente crítico — do mecanismo à decisão'},

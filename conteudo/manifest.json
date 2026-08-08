@@ -1899,6 +1899,18 @@
           "status": "rascunho",
           "ia": false,
           "hub": null
+        },
+        {
+          "id": "avci",
+          "arquivo": "avci.html",
+          "categoria": "Neuro",
+          "menu": "AVC isquêmico",
+          "titulo": "Prescrição comentada — AVC isquêmico",
+          "subtitulo": "Trombólise e trombectomia contra o relógio — e a pressão que aqui se respeita",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
         }
       ]
     },
