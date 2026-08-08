@@ -1803,6 +1803,18 @@
           "status": "rascunho",
           "ia": false,
           "hub": null
+        },
+        {
+          "id": "ic-descompensada",
+          "arquivo": "ic-descompensada.html",
+          "categoria": "Cardiovascular",
+          "menu": "IC descompensada",
+          "titulo": "Prescrição comentada — IC descompensada",
+          "subtitulo": "Os 4 perfis, a descongestão até o fim e a alta com o quarteto nas doses-alvo",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
         }
       ]
     },

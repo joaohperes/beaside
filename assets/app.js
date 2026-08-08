@@ -300,6 +300,7 @@ const MODULE_PAGES = {
     {id:'bradiarritmias',      file:'bradiarritmias.html',      cat:'Cardiovascular', label:'Bradiarritmias',          title:'Prescrição comentada — Bradiarritmias',                       subtitle:'Nodal × infranodal, a escada atropina → marca-passo → transvenoso, e as causas reversíveis'},
     {id:'tsv-estavel',         file:'tsv-estavel.html',         cat:'Cardiovascular', label:'TSV estável',             title:'Prescrição comentada — Taquicardia supraventricular estável', subtitle:'Valsalva modificada, adenosina com os cuidados certos, a escada até a CVE — e a ablação que cura'},
     {id:'taqui-ventricular',   file:'taqui-ventricular.html',   cat:'Cardiovascular', label:'Taquicardia ventricular', title:'Prescrição comentada — Taquicardia ventricular',              subtitle:'QRS largo é TV até prova em contrário — monomórfica, polimórfica, torsades e FA pré-excitada'},
+    {id:'ic-descompensada',    file:'ic-descompensada.html',    cat:'Cardiovascular', label:'IC descompensada',        title:'Prescrição comentada — IC descompensada',                     subtitle:'Os 4 perfis, a descongestão até o fim e a alta com o quarteto nas doses-alvo'},
   ],
   institucional: [
     {id:'sobre',        file:'sobre.html',        cat:'Institucional', label:'A be·aside',      title:'Sobre o be·aside',                      subtitle:'Feito para pensar o paciente crítico — do mecanismo à decisão'},
