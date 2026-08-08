@@ -1755,6 +1755,18 @@
           "status": "rascunho",
           "ia": false,
           "hub": null
+        },
+        {
+          "id": "taqui-instavel",
+          "arquivo": "taqui-instavel.html",
+          "categoria": "Cardiovascular",
+          "menu": "Taquiarritmia instável",
+          "titulo": "Prescrição comentada — Taquiarritmia instável",
+          "subtitulo": "CVE sem improviso: carga por ritmo, sedação pela hemodinâmica, e o pós-choque",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
         }
       ]
     },

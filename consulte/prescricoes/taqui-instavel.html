@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7K0CML04MR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7K0CML04MR');
+</script>
+<script src="../../assets/theme-boot.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Prescrição comentada — Taquiarritmia instável | be·aside</title>
+<meta name="robots" content="noindex, nofollow" data-beaside="status">
+<link rel="canonical" href="https://beaside.com.br/consulte/prescricoes/taqui-instavel.html">
+<meta name="description" content="Prescrição comentada da taquiarritmia instável: quando chocar, carga por ritmo, sedoanalgesia breve escolhida pela hemodinâmica, e o que fazer depois do choque — ACLS/AHA e ESC.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="be·aside">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Prescrição comentada — Taquiarritmia instável | be·aside">
+<meta property="og:description" content="Cardioversão sincronizada sem improviso: carga certa, sedação certa, e o depois que ninguém prescreve.">
+<meta property="og:url" content="https://beaside.com.br/consulte/prescricoes/taqui-instavel.html">
+<meta property="og:image" content="https://beaside.com.br/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prescrição comentada — Taquiarritmia instável | be·aside">
+<meta name="twitter:image" content="https://beaside.com.br/assets/og-image.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/styles.css">
+<style>
+  /* componente da prescrição comentada — usa só tokens; variante do .card.collapsible */
+  .rx-list{counter-reset:rx;display:flex;flex-direction:column;gap:14px;margin:26px 0 8px}
+  .rx-item{counter-increment:rx}
+  .rx-head{display:flex;gap:13px;align-items:flex-start;padding:16px 18px 0}
+  .rx-n{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--accent);background:rgba(var(--accent-rgb),.12);border-radius:6px;padding:3px 8px;margin-top:2px;flex-shrink:0}
+  .rx-n::before{content:counter(rx,decimal-leading-zero)}
+  .rx-title{font-size:15.5px;font-weight:600;color:var(--text);letter-spacing:-.01em;line-height:1.3}
+  .rx-cond{font-size:12.5px;color:var(--text2);margin-top:3px;line-height:1.5}
+  .rx-body{padding:2px 18px 6px}
+  .rx-dose{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;line-height:1.8;color:var(--text);background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:11px 14px;margin:12px 0 0}
+  .rx-dose+.rx-dose{margin-top:8px}
+  .rx-dose b{color:var(--accent);font-weight:600}
+  .rx-body .tag-row{margin:10px 0 0}
+  .rx-body .alert-box{margin:12px 0 0}
+  .rx-item .card-toggle{border-top:1px solid var(--border);margin-top:14px}
+  .rx-why{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);flex:1}
+  .rx-item .card-body p{font-size:13.5px;line-height:1.75;color:var(--text2);margin:0 0 10px}
+  .rx-item .card-body p strong{color:var(--text)}
+  .rx-item .card-body .ref{display:block;margin-top:10px}
+  @media(max-width:600px){.rx-head{padding:14px 14px 0}.rx-body{padding:2px 14px 6px}}
+</style>
+</head>
+<body data-module="prescricoes" data-page="taqui-instavel" data-root="../../">
+<main class="main">
+
+<section class="section" id="topo">
+  <header class="page-head">
+    <div class="hero-eyebrow">Consulte · Prescrições comentadas</div>
+    <h1 class="section-title">Taquiarritmia instável</h1>
+    <p class="section-subtitle">Aqui a "prescrição" é um procedimento: reconhecer que é a arritmia que está matando, sincronizar, sedar rápido e chocar com a carga certa — sem improviso em nenhum dos quatro passos.</p>
+  </header>
+
+  <p class="prose">Serve para a <strong>taquiarritmia com instabilidade</strong> — supraventricular ou ventricular com pulso. O gesto central é a <strong>cardioversão elétrica sincronizada (CVE)</strong>; a exceção é a TV polimórfica, que se trata como fibrilação: desfibrilação. As taquiarritmias <em>estáveis</em> terão páginas próprias (TSV e TV), e a FA tem a <a class="text-link" href="fa-flutter.html">dela</a>.</p>
+
+  <div class="warn-box">
+    <strong>Antes de prescrever qualquer item desta página.</strong>
+    <p class="box-body">Cargas e doses seguem o ACLS (AHA) e as diretrizes de arritmia (ESC), e <strong>não substituem o protocolo do seu serviço</strong> — desfibrilador, drogas de sedação disponíveis e quem executa variam por hospital. O aparelho da sua sala (bifásico × monofásico, cargas do fabricante) manda na energia final.</p>
+  </div>
+
+  <div class="info-box">
+    <strong>Como usar.</strong>
+    <p class="box-body">A ordem é a do procedimento: <strong>reconhecer</strong> → <strong>preparar o choque</strong> (sincronia + carga) → <strong>sedoanalgesia breve</strong> → <strong>o depois</strong>, que é onde a maioria das folhas para cedo demais. Dose sempre visível; o porquê em <em>"por quê &amp; armadilhas"</em>.</p>
+  </div>
+</section>
+
+<section class="section" id="prescricao">
+  <div class="section-label">A prescrição</div>
+  <h2 class="section-title">Item por item</h2>
+
+  <div class="rx-list">
+
+    <div class="section-label" style="margin-top:26px">Reconhecer — chocar é decisão de beira de leito</div>
+
+    <!-- 01 · Reconhecer -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">É instável — e é a arritmia a culpada?</div>
+          <div class="rx-cond">monitor, O₂ se SpO₂ &lt; 90%, acesso venoso e ECG andando juntos com a avaliação</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Instabilidade pela arritmia</b> = hipotensão/choque · rebaixamento do sensório · dor torácica isquêmica · congestão/IC aguda — qualquer um deles com a taquiarritmia como causa → <b>CVE imediata</b></div>
+        <div class="rx-dose">Antes de carregar: <b>é taquicardia sinusal?</b> P antes de cada QRS, FC que acompanha o quadro (febre, dor, hipovolemia, sepse) → <em>não se choca</em> — trata-se a causa</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A pergunta que evita o choque errado é a de causalidade: <strong>a arritmia produz a instabilidade, ou a instabilidade produz a arritmia?</strong> Sepse a 140 bpm, hipovolemia taquicárdica e a FA "crônica de sempre" num paciente chocado por outra razão não melhoram com energia — pioram, e a taquicardia sinusal cardiovertida volta em segundos com um miocárdio irritado a mais. Quando a dúvida é real e o paciente desaba, o choque sincronizado é o erro menos punido; mas gaste os trinta segundos do ECG antes, se o paciente os tiver.</p>
+        <span class="ref">AHA — ACLS (algoritmo de taquicardia com pulso).</span>
+      </div>
+    </div>
+
+    <!-- 02 · Carga -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Sincronizar e escolher a carga pelo ritmo</div>
+          <div class="rx-cond">tecla SYNC apertada — e reapertada antes de cada novo choque</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose">Bifásico: <b>FA</b> 120–200 J (na prática, muitos serviços já começam na máxima) · <b>flutter / TSV</b> 50–100 J · <b>TV monomórfica com pulso</b> 100 J · falhou → <b>aumentar a carga</b> e chocar de novo</div>
+        <div class="rx-dose"><b>TV polimórfica</b> (ou QRS que o aparelho não sincroniza): tratar como FV → <b>desfibrilar</b> (carga máxima, não sincronizada) · se QT longo de base (torsades): <b>sulfato de magnésio</b> 2 g EV em 10–15 min</div>
+        <div class="rx-dose">Pás com gel e pressão firme · posição <b>anteroposterior</b> ajuda na FA e é a escolha com <b>marca-passo/CDI</b> (pás a ≥ 8–10 cm do gerador)</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A sincronia existe para o choque não cair na onda T e transformar taquicardia com pulso em FV. O detalhe que mais causa acidente: <strong>a maioria dos desfibriladores desliga o SYNC depois de cada disparo</strong> — o segundo choque "rápido" sem reapertar a tecla é uma desfibrilação não intencional. O oposto também mata: na TV polimórfica o aparelho não acha QRS para sincronizar e <em>não dispara</em> enquanto o paciente deteriora — ali a conduta certa já era desfibrilar.</p>
+        <span class="ref">AHA — ACLS · ESC 2022 (arritmias ventriculares).</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">Sedoanalgesia — breve, titulada, com plano de via aérea</div>
+
+    <!-- 03 · Sedação -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Sedar conforme a hemodinâmica — não conforme o hábito</div>
+          <div class="rx-cond">objetivo: sedação leve e curta; material de via aérea e AMBU à mão</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose">Sem disfunção ventricular/choque: <b>propofol</b> 0,5–1 mg/kg EV lento, metade da dose primeiro, completar se preciso</div>
+        <div class="rx-dose">Disfunção ventricular ou hemodinâmica limítrofe: <b>etomidato</b> 0,1–0,15 mg/kg EV <em>ou</em> <b>midazolam</b> 0,5–2 mg EV titulados de 2 em 2 min</div>
+        <div class="rx-dose">Analgesia: <b>fentanil</b> 25–50 mcg EV lento (0,5–1 mcg/kg) — o choque dói</div>
+        <div class="alert-box warn"><div class="icon">!</div><div class="content"><strong>Propofol no coração falido derruba a pressão</strong> — em disfunção grave/choque, doses mínimas de etomidato ou midazolam. E instabilidade extrema não espera sedação perfeita: prioridade é o choque; seda-se o possível, com honestidade farmacológica, não com atraso.</div></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A sedação da CVE é um compromisso entre dois erros: o paciente acordado que lembra do choque (evitável com doses pequenas e analgesia) e o paciente instável que hipotensa de vez com indução generosa. Por isso a escolha é <strong>hemodinâmica</strong>: propofol é confortável e curto no coração bom; no ruim, etomidato ou midazolam em migalhas tituladas. Ventilar com bolsa-máscara entre a sedação e o retorno é parte do procedimento — apneia breve é esperada, pânico não.</p>
+        <span class="ref">AHA — ACLS (sedação para cardioversão) · protocolo institucional manda nas drogas disponíveis.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">Depois do choque — onde a folha costuma parar cedo</div>
+
+    <!-- 04 · Reverteu -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Reverteu: agora se trata o terreno</div>
+          <div class="rx-cond">o ritmo voltou; a causa que o gerou continua lá</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>ECG 12 derivações</b> pós-reversão · corrigir <b>K⁺ ≥ 4,0 e Mg²⁺ ≥ 2,0</b> · buscar causa (isquemia? droga? QT?) · <b>ecocardiograma</b> na internação</div>
+        <div class="rx-dose">Manutenção conforme o ritmo: <b>TV</b> → amiodarona 150 mg EV em 10 min se recorrendo, depois 1 mg/min 6 h → 0,5 mg/min 18 h · <b>FA/flutter</b> → anticoagular ≥ 4 semanas e seguir a <a class="text-link" href="fa-flutter.html">página da FA</a></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O choque trata o circuito, não o motivo do circuito. TV em coração isquêmico pede coronária investigada; FA cardiovertida na urgência pede o anticoagulante que ninguém lembra de prescrever no alívio pós-reversão — e amiodarona de manutenção não é automática para todo mundo: é para o ritmo que ameaça voltar, enquanto se corrige o que o alimenta. Potássio e magnésio são a manutenção mais barata que existe contra a recorrência.</p>
+        <span class="ref">ESC 2022 (arritmias ventriculares) · ESC 2024 (FA — anticoagulação pós-CVE).</span>
+      </div>
+    </div>
+
+    <!-- 05 · Não reverteu -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Não reverteu: método, não desespero</div>
+          <div class="rx-cond">entre um choque e outro há três verificações e uma droga</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose">Checar: <b>SYNC reapertado?</b> · <b>carga aumentada?</b> · <b>pás/posição</b> (trocar para anteroposterior, pressão firme) → novo choque</div>
+        <div class="rx-dose">Refratária: <b>amiodarona</b> 150 mg EV em 10 min antes do próximo choque · corrigir K⁺/Mg²⁺/acidose/hipóxia · reavaliar o diagnóstico (é sinusal? é pré-excitada? é a doença de base?)</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Arritmia que "não reverte" costuma ser uma de três coisas: técnica (sync desligado, carga baixa, pás mal posicionadas), terreno (K/Mg/acidose/hipóxia não corrigidos — o miocárdio reentra no circuito assim que o choque passa) ou diagnóstico (era sinusal compensatória, e a "falha" é o corpo insistindo no que precisa). O antiarrítmico entre choques aumenta a chance do próximo — mas nenhuma amiodarona compensa um potássio de 2,8.</p>
+        <span class="ref">AHA — ACLS.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">Situações que mudam o gesto</div>
+
+    <!-- 06 · Especiais -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Gestante, dispositivo, digital e criança</div>
+          <div class="rx-cond">quatro exceções que valem um segundo de pausa — não mais que isso</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Gestante:</b> CVE é segura para o feto — instável se choca sem demora, com desvio uterino à esquerda se 3º trimestre</div>
+        <div class="rx-dose"><b>Marca-passo/CDI:</b> pás anteroposteriores, ≥ 8–10 cm do gerador · interrogar o dispositivo depois</div>
+        <div class="rx-dose"><b>Suspeita de intoxicação digitálica:</b> CVE só em último caso e com carga baixa — risco de arritmia ventricular refratária; priorizar correção de K⁺/Mg²⁺ e antídoto conforme o caso</div>
+        <div class="rx-dose"><b>Criança:</b> 0,5–1 J/kg → 2 J/kg nas tentativas seguintes · pás pediátricas se ≤ 10 kg</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A gestante é a exceção que não é: adiar o choque "por causa do bebê" é o erro — o feto depende da perfusão materna. O dispositivo implantado não contraindica nada, só muda a geometria das pás. Já o coração digitalizado é o único que pede freio de verdade: o digital sensibiliza o miocárdio e o choque pode disparar arritmia pior que a original — é o cenário onde vale a pena o minuto extra pensando em alternativa.</p>
+        <span class="ref">AHA — ACLS · consensos de manejo de dispositivos.</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="nao-prescrever">
+  <div class="section-label">Tão importante quanto</div>
+  <h2 class="section-title">O que <em>não</em> prescrever</h2>
+  <div class="warn-box">
+    <strong>Erros que pioram o desfecho na taquiarritmia instável.</strong>
+    <p class="box-body"><strong>Chocar taquicardia sinusal</strong> compensatória. <strong>Choque não sincronizado em ritmo organizado</strong> (exceto TV polimórfica, que é desfibrilação mesmo). <strong>"Tentar uma medicação antes"</strong> no instável — adenosina, betabloqueador ou diltiazem aqui só compram deterioração. <strong>Sedação profunda e demorada</strong> que vira intubação não planejada. <strong>Esquecer o SYNC no segundo choque.</strong> <strong>Esquecer a analgesia.</strong> E <strong>encerrar o caso na reversão</strong>, sem K⁺/Mg²⁺, ECG, causa e — na FA — anticoagulação.</p>
+  </div>
+</section>
+
+<section class="section" id="fechamento">
+  <div class="tip-box" style="margin-top:32px;">
+    <strong>Prescreveu — e agora?</strong>
+    <p class="box-body">Se o ritmo era FA, o pós-choque continua na <a class="text-link" href="fa-flutter.html">página da FA</a> (anticoagulação é o item que salva). Se era TV, o terreno é isquemia até prova em contrário — <a class="text-link" href="sca-sem-supra.html">SCA sem supra</a> ou <a class="text-link" href="sca-com-supra.html">com supra</a>. Se o paciente segue instável apesar do ritmo sinusal, o problema mudou de página: <a class="text-link" href="choque-cardiogenico.html">choque cardiogênico</a>.</p>
+    <a class="link-cta" href="../index.html">Levar o caso ao assistente de conduta <span aria-hidden="true">&rarr;</span></a>
+  </div>
+
+  <div class="section-label">Referências</div>
+  <span class="ref">Panchal AR, et al. 2020 AHA Guidelines for CPR and ECC — Adult Basic and Advanced Life Support. <em>Circulation.</em> 2020;142(16 suppl 2):S366–S468 (algoritmo de taquicardia; atualizações ACLS 2025).</span>
+  <span class="ref">Zeppenfeld K, et al. 2022 ESC Guidelines for the management of patients with ventricular arrhythmias and the prevention of sudden cardiac death. <em>Eur Heart J.</em> 2022;43(40):3997–4126 (doi:10.1093/eurheartj/ehac262).</span>
+  <span class="ref">Van Gelder IC, et al. 2024 ESC Guidelines for the management of atrial fibrillation. <em>Eur Heart J.</em> 2024;45(36):3314–3414 — anticoagulação pós-cardioversão.</span>
+</section>
+
+</main>
+<script src="../../assets/app.js"></script>
+<script>
+function toggleCard(card,e){
+  if(e&&e.target.tagName&&e.target.tagName.toLowerCase()==='a')return;
+  card.classList.toggle('open');
+}
+document.addEventListener('keydown',function(e){
+  if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('card-toggle')){
+    e.preventDefault();toggleCard(e.target.parentNode,e);
+  }
+});
+</script>
+</body>
+</html>
