@@ -1935,6 +1935,18 @@
           "status": "rascunho",
           "ia": false,
           "hub": null
+        },
+        {
+          "id": "crise-epileptica",
+          "arquivo": "crise-epileptica.html",
+          "categoria": "Neuro",
+          "menu": "Crise epiléptica",
+          "titulo": "Prescrição comentada — Crise epiléptica e status",
+          "subtitulo": "Benzo pleno aos 5 min, segunda linha do ESETT aos 20 — e EEG em quem não acorda",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
         }
       ]
     },

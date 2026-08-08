@@ -311,6 +311,7 @@ const MODULE_PAGES = {
     {id:'avci',                file:'avci.html',                cat:'Neuro',          label:'AVC isquêmico',            title:'Prescrição comentada — AVC isquêmico',                        subtitle:'Trombólise e trombectomia contra o relógio — e a pressão que aqui se respeita'},
     {id:'avch',                file:'avch.html',                cat:'Neuro',          label:'AVC hemorrágico',          title:'Prescrição comentada — AVC hemorrágico',                      subtitle:'Reverter o anticoagulante, PA suave até 140, o telefonema do cerebelo'},
     {id:'hsa',                 file:'hsa.html',                 cat:'Neuro',          label:'Hemorragia subaracnóidea', title:'Prescrição comentada — Hemorragia subaracnóidea',             subtitle:'Aneurisma tratado cedo, PAS < 160, nimodipina 21 dias — e os três relógios'},
+    {id:'crise-epileptica',    file:'crise-epileptica.html',    cat:'Neuro',          label:'Crise epiléptica',         title:'Prescrição comentada — Crise epiléptica e status',            subtitle:'Benzo pleno aos 5 min, segunda linha do ESETT aos 20 — e EEG em quem não acorda'},
   ],
   institucional: [
     {id:'sobre',        file:'sobre.html',        cat:'Institucional', label:'A be·aside',      title:'Sobre o be·aside',                      subtitle:'Feito para pensar o paciente crítico — do mecanismo à decisão'},
