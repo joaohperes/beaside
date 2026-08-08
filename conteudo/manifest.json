@@ -1743,6 +1743,18 @@
           "status": "rascunho",
           "ia": false,
           "hub": null
+        },
+        {
+          "id": "choque-cardiogenico",
+          "arquivo": "choque-cardiogenico.html",
+          "categoria": "Cardiovascular",
+          "menu": "Choque cardiogênico",
+          "titulo": "Prescrição comentada — Choque cardiogênico",
+          "subtitulo": "Perfusão antes de pressão, mecanismo antes de bomba — e a escalada na hora certa",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
         }
       ]
     },

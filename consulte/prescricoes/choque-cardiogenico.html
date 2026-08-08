@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7K0CML04MR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7K0CML04MR');
+</script>
+<script src="../../assets/theme-boot.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Prescrição comentada — Choque cardiogênico | be·aside</title>
+<meta name="robots" content="noindex, nofollow" data-beaside="status">
+<link rel="canonical" href="https://beaside.com.br/consulte/prescricoes/choque-cardiogenico.html">
+<meta name="description" content="Prescrição comentada do choque cardiogênico: reconhecer pela perfusão (não só pela PAS), achar o mecanismo, noradrenalina antes de inotrópico, revascularizar o IAM e escalar cedo — ACC 2025, SCAI e os ensaios que mudaram a prática.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="be·aside">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Prescrição comentada — Choque cardiogênico | be·aside">
+<meta property="og:description" content="Pressão é só metade do diagnóstico: perfusão, mecanismo e a sequência certa das drogas — item por item.">
+<meta property="og:url" content="https://beaside.com.br/consulte/prescricoes/choque-cardiogenico.html">
+<meta property="og:image" content="https://beaside.com.br/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prescrição comentada — Choque cardiogênico | be·aside">
+<meta name="twitter:image" content="https://beaside.com.br/assets/og-image.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/styles.css">
+<style>
+  /* componente da prescrição comentada — usa só tokens; variante do .card.collapsible */
+  .rx-list{counter-reset:rx;display:flex;flex-direction:column;gap:14px;margin:26px 0 8px}
+  .rx-item{counter-increment:rx}
+  .rx-head{display:flex;gap:13px;align-items:flex-start;padding:16px 18px 0}
+  .rx-n{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--accent);background:rgba(var(--accent-rgb),.12);border-radius:6px;padding:3px 8px;margin-top:2px;flex-shrink:0}
+  .rx-n::before{content:counter(rx,decimal-leading-zero)}
+  .rx-title{font-size:15.5px;font-weight:600;color:var(--text);letter-spacing:-.01em;line-height:1.3}
+  .rx-cond{font-size:12.5px;color:var(--text2);margin-top:3px;line-height:1.5}
+  .rx-body{padding:2px 18px 6px}
+  .rx-dose{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;line-height:1.8;color:var(--text);background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:11px 14px;margin:12px 0 0}
+  .rx-dose+.rx-dose{margin-top:8px}
+  .rx-dose b{color:var(--accent);font-weight:600}
+  .rx-body .tag-row{margin:10px 0 0}
+  .rx-body .alert-box{margin:12px 0 0}
+  .rx-item .card-toggle{border-top:1px solid var(--border);margin-top:14px}
+  .rx-why{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);flex:1}
+  .rx-item .card-body p{font-size:13.5px;line-height:1.75;color:var(--text2);margin:0 0 10px}
+  .rx-item .card-body p strong{color:var(--text)}
+  .rx-item .card-body .ref{display:block;margin-top:10px}
+  @media(max-width:600px){.rx-head{padding:14px 14px 0}.rx-body{padding:2px 14px 6px}}
+</style>
+</head>
+<body data-module="prescricoes" data-page="choque-cardiogenico" data-root="../../">
+<main class="main">
+
+<section class="section" id="topo">
+  <header class="page-head">
+    <div class="hero-eyebrow">Consulte · Prescrições comentadas</div>
+    <h1 class="section-title">Choque cardiogênico</h1>
+    <p class="section-subtitle">Pressão baixa é só metade do diagnóstico — e nenhuma bomba de infusão trata a causa. Esta prescrição é: reconhecer pela perfusão, achar o mecanismo, sustentar com a sequência certa e escalar cedo.</p>
+  </header>
+
+  <p class="prose">Serve para o <strong>choque cardiogênico</strong> — hipoperfusão por falência da bomba, com IAM respondendo pela maioria dos casos. As <strong>doses e diluições das vasoativas não moram aqui</strong>: vivem revisadas na página de <a class="text-link" href="../../hemo/drogas.html">drogas vasoativas</a>, e os perfis de choque nos <a class="text-link" href="../../hemo/padroes.html">padrões hemodinâmicos</a> — esta página organiza a sequência e as decisões.</p>
+
+  <div class="warn-box">
+    <strong>Antes de prescrever qualquer item desta página.</strong>
+    <p class="box-body">As condutas seguem ACC 2025 (orientação de choque cardiogênico), AHA/ACC/HFSA 2022 e a classificação SCAI, e <strong>não substituem o protocolo do seu serviço</strong>. Choque cardiogênico é doença de equipe e de logística: metade da prescrição é o telefonema certo na hora certa.</p>
+  </div>
+
+  <div class="info-box">
+    <strong>Como usar.</strong>
+    <p class="box-body">A ordem é a do raciocínio: <strong>reconhecer e nomear</strong> (perfusão + mecanismo), <strong>sustentar a perfusão</strong> na sequência certa, <strong>tratar a causa</strong> e escalar cedo. Dose visível quando a dose é desta página; quando é da página do Hemo, o link leva até ela.</p>
+  </div>
+</section>
+
+<section class="section" id="prescricao">
+  <div class="section-label">A prescrição</div>
+  <h2 class="section-title">Item por item</h2>
+
+  <div class="rx-list">
+
+    <div class="section-label" style="margin-top:26px">Reconhecer e nomear — antes de qualquer bomba</div>
+
+    <!-- 01 · Reconhecer -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Diagnosticar pela perfusão — não só pela PAS</div>
+          <div class="rx-cond">e estadiar (SCAI A–E): o estágio muda a pressa e o destino</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Hipoperfusão</b> = lactato ↑, diurese &lt; 0,5 mL/kg/h, extremidades frias/moteadas, sensório lentificado — <em>com ou sem</em> PAS &lt; 90</div>
+        <div class="rx-dose"><b>SCAI:</b> B (hipotenso perfundindo) · C (hipoperfusão precisando de droga) · D (deteriorando/escalando) · E (colapso/PCR) — reavaliar o estágio a cada mudança</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Dividir o choque em "PAS maior ou menor que 90" perde os dois pacientes mais traiçoeiros: o <strong>normotenso hipoperfundido</strong> (vasoconstrito, lactato subindo, "pressão boa" no monitor) e o hipotenso crônico que perfunde bem. A pressão é um sinal; o diagnóstico é de <strong>perfusão</strong>. O estadiamento SCAI existe para a frase "ele está chocando" virar informação: um C que virou D em duas horas é o gatilho objetivo para escalar e transferir — antes do E.</p>
+        <span class="ref">SCAI SHOCK (2022) · ACC 2025 — Concise Clinical Guidance.</span>
+      </div>
+    </div>
+
+    <!-- 02 · Mecanismo -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Achar o mecanismo em minutos — ECG + POCUS</div>
+          <div class="rx-cond">o choque cardiogênico é um sintoma; a prescrição de verdade é a da causa</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>ECG imediato</b> — IAM? → a "droga" mais importante do choque é a <a class="text-link" href="sca-com-supra.html">reperfusão urgente</a> (cate independentemente de horário)</div>
+        <div class="rx-dose"><b>POCUS/eco</b> — VE difuso? VD (TEP? infarto de VD)? mecânica (IM aguda, CIV, tamponamento)? · <b>lactato + gasometria</b> de base para seguir resposta</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O único tratamento que já provou reduzir mortalidade no choque do IAM é <strong>revascularizar</strong> (SHOCK) — e da lesão culpada, não de tudo de uma vez (CULPRIT-SHOCK). Toda a farmacologia desta página é ponte para isso. E o POCUS é o que impede a prescrição de trocar de paciente: o VD falido do TEP, o tamponamento e a insuficiência mitral aguda "parecem" choque cardiogênico no monitor e se tratam de maneiras opostas — dois deles pioram com inotrópico dado às cegas.</p>
+        <span class="ref">SHOCK (NEJM 1999) · CULPRIT-SHOCK (NEJM 2017) · ACC 2025.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">Sustentar a perfusão — na sequência certa</div>
+
+    <!-- 03 · Nora -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Noradrenalina primeiro — restaurar a pressão de perfusão</div>
+          <div class="rx-cond">hipotensão com má perfusão; alvo inicial PAM ≥ 65 mmHg</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Noradrenalina</b> titulada para PAM ≥ 65 — dose, diluição-padrão e a conta de mL/h estão na página de <a class="text-link" href="../../hemo/drogas.html">drogas vasoativas</a> (uma fonte, sem cópia)</div>
+        <div class="rx-dose"><b>Dopamina não</b> é o padrão — mais arritmia e pior desfecho no choque cardiogênico (SOAP II)</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A ordem importa: primeiro a <strong>pressão que perfunde a coronária</strong> (nora), depois o débito (inotrópico). Inotrópico em coração isquêmico hipotenso é pedir mais trabalho a um músculo sem fluxo — taquicardiza, arritmiza e derruba o que restava. A nora restaura a diastólica que alimenta a coronária com menos taquicardia que qualquer alternativa; é por isso que ela é a primeira droga do choque cardiogênico moderno, não a dupla automática.</p>
+        <span class="ref">SOAP II (NEJM 2010) · ACC 2025 · AHA/ACC/HFSA 2022.</span>
+      </div>
+    </div>
+
+    <!-- 04 · Inotrópico -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Inotrópico depois — se o débito seguir baixo</div>
+          <div class="rx-cond">com PA restaurada e baixo débito documentado (clínica/POCUS/SvO₂) — não "sempre associado"</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Dobutamina</b> — primeira escolha; titulada pela perfusão (lactato, diurese, extremidades), não pela PA · dose/diluição nas <a class="text-link" href="../../hemo/drogas.html">drogas vasoativas</a></div>
+        <div class="rx-dose"><b>Milrinona</b> (betabloqueado crônico, hipertensão pulmonar) e <b>levosimendana</b> — nichos, mais hipotensão; mesmas ressalvas e doses na página do Hemo</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>"Nora sempre associada a dobutamina" é o automatismo que as diretrizes atuais desmontaram: nem todo choque cardiogênico tem débito baixo <em>depois</em> de restaurada a pressão, e dobutamina tem preço (taquiarritmia, consumo de O₂, hipotensão por β₂). A pergunta antes de ligar a segunda bomba é: <strong>restaurei a PAM — a perfusão melhorou?</strong> Se sim, não falta inotrópico. Se não, aí sim ele entra, com meta de perfusão explícita para poder ser desligado.</p>
+        <span class="ref">ACC 2025 · AHA/ACC/HFSA 2022 — inotrópico guiado por fenótipo/débito.</span>
+      </div>
+    </div>
+
+    <!-- 05 · Volume -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Volume: prova pequena, e só sem congestão</div>
+          <div class="rx-cond">o cardiogênico clássico é "frio e úmido" — já está cheio</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose">Se POCUS/clínica sem congestão (VCI pequena, pulmão seco): <b>cristaloide 250 mL EV</b> em prova, reavaliando perfusão e congestão após cada alíquota · congesto: volume <b>zero</b> — o item é diurético (08)</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O reflexo "hipotensão → soro aberto" pertence a outros choques. No cardiogênico o problema não é falta de volume, é bomba — e volume extra vira pressão de enchimento, congestão pulmonar e um VE ainda mais distendido. A exceção real existe (infarto de VD, paciente diurético-depletado) e é o POCUS quem a identifica; mesmo nela, volume é <strong>alíquota com reavaliação</strong>, nunca vazão livre.</p>
+        <span class="ref">ACC 2025 · ESC/AHA — fluido criterioso no choque cardiogênico.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">As decisões do time</div>
+
+    <!-- 06 · Escalada -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Escalar cedo — o telefonema é parte da prescrição</div>
+          <div class="rx-cond">SCAI C sem melhora, ou qualquer D: falar com centro com suporte mecânico AGORA</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose">Gatilhos objetivos: <b>lactato não cai</b> em 2–4 h · <b>escalando droga</b> sem meta atingida · <b>diurese parada</b> → contato com centro de referência (suporte circulatório mecânico, time de choque)</div>
+        <div class="rx-dose">O que a evidência diz do suporte mecânico: <b>BIA de rotina não</b> (IABP-SHOCK II) · <b>ECMO de rotina não</b> (ECLS-SHOCK) · <b>bomba microaxial</b> em IAM-choque selecionado reduziu mortalidade (DanGer Shock) — seleção é tudo, e é decisão do centro</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Choque cardiogênico mata em horas, e a droga vasoativa não é tratamento — é cronômetro: cada escalada de dose comprando pressão às custas de isquemia periférica é o sinal de que a janela de transferir está fechando. O erro de sistema clássico é ligar para o centro de referência quando o paciente já está em SCAI E com três drogas no teto. A hora do telefonema é quando o lactato <em>não cai</em>, não quando a PA não sobe mais.</p>
+        <span class="ref">DanGer Shock (NEJM 2024) · ECLS-SHOCK (NEJM 2023) · IABP-SHOCK II · ACC 2025.</span>
+      </div>
+    </div>
+
+    <!-- 07 · Remédios de casa -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Remédios de casa: suspender — e lembrar de devolver</div>
+          <div class="rx-cond">no choque, o cardioprotetor crônico vira depressor agudo</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Suspender</b> betabloqueador, IECA/BRA, espironolactona e demais anti-hipertensivos enquanto houver choque · <b>reintroduzir</b> gradualmente na recuperação, antes da alta — anotar na evolução para não esquecer</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Aqui, diferentemente do EAP compensado, a suspensão é regra: inotropismo negativo e vasodilatação são exatamente o que o choque não tolera. As duas armadilhas são as pontas: manter betabloqueador "porque ele usa há anos" no paciente em nora — e o oposto, dar alta semanas depois sem nunca ter devolvido as drogas que reduzem mortalidade. A prescrição de suspender só está completa com a data de reavaliar.</p>
+        <span class="ref">AHA/ACC/HFSA 2022 · ACC 2025.</span>
+      </div>
+    </div>
+
+    <!-- 08 · Diurético -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Furosemida — depois da perfusão, contra a congestão</div>
+          <div class="rx-cond">com PAM restaurada e congestão presente; não é droga de resgate de PA</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Sem uso prévio:</b> furosemida 20–40 mg EV · <b>usuário crônico:</b> 1–2,5× a dose diária domiciliar EV · reavaliar diurese em 30–60 min, dobrar se insuficiente · alvo: descongestionar com perfusão preservada · vigiar K⁺/Mg²⁺/creatinina</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A sequência engana: parece contraditório "dar volume zero, subir nora, e então tirar volume com diurético" — mas é exatamente o fluxo do frio-e-úmido: primeiro perfusão (nora ± inotrópico), depois descongestão, porque diurético em choque não perfundido só piora o rim que já estava isquêmico. Diurese que retorna, aliás, é o melhor sinal precoce de que a estratégia está funcionando.</p>
+        <span class="ref">AHA/ACC/HFSA 2022 · DOSE (dose no usuário crônico).</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">Suporte e vigilância</div>
+
+    <!-- 09 · VM -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Via aérea e sedação — o momento mais perigoso</div>
+          <div class="rx-cond">se IOT for necessária, ela se prepara como um procedimento de risco</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>IOT</b> só com vasopressor correndo e volume/indutor ajustados ao choque — indutor em dose reduzida, preferindo agentes hemodinamicamente estáveis conforme o protocolo do serviço · <b>sedação de manutenção</b> na menor dose que atinja o alvo (RASS 0 a −2), lembrando que propofol em disfunção grave derruba PA — titulação e diluições no módulo de <a class="text-link" href="../../vm/">Ventilação Mecânica</a></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Indução + pressão positiva no coração falido é a receita da parada peri-intubação: o simpático que sustentava o paciente desliga com o indutor, e o retorno venoso cai com a VPP. Preparar é prescrever: nora já correndo, dose de indutor reduzida, e alguém com a mão no vasopressor durante a laringoscopia. Depois, sedação é ferramenta de acoplamento à VM — não de "apagar" um paciente cujo cérebro é justamente o órgão que se quer perfundir.</p>
+        <span class="ref">Princípios de via aérea no choque — protocolo institucional manda na escolha do indutor.</span>
+      </div>
+    </div>
+
+    <!-- 10 · Kit -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Kit do crítico — medir para poder titular</div>
+          <div class="rx-cond">choque em vasopressor é paciente de UTI, com métricas de hora em hora</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>PA invasiva</b> (em vasopressor) · <b>diurese horária</b> (SVD) · <b>lactato seriado</b> 2–4 h · eletrólitos e função renal · <b>HGT 6/6 h</b> (alvo 140–180, protocolo do serviço) · <b>dieta zero</b> na instabilidade → enteral trófica quando perfusão estabilizar · <b>profilaxia de TEV</b> se sem anticoagulação plena · IBP se indicação do protocolo (VM, coagulopatia)</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Vasoativa sem métrica é chute contínuo: o trio <strong>lactato–diurese–extremidades</strong> é o painel que diz se a estratégia funciona, e é ele que alimenta a decisão de escalar do item 06. A dieta segue a perfusão: intestino chocado não absorve — zero na instabilidade, trófica cedo assim que estabiliza (não esperar "resolver tudo" para nutrir). E glicose EV de rotina "para dar caloria" não substitui nutrição — individualizar com a equipe.</p>
+        <span class="ref">ADA 2026 (glicemia) · ESPEN 2023 (nutrição no choque).</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="nao-prescrever">
+  <div class="section-label">Tão importante quanto</div>
+  <h2 class="section-title">O que <em>não</em> prescrever</h2>
+  <div class="warn-box">
+    <strong>Itens que pioram o desfecho no choque cardiogênico.</strong>
+    <p class="box-body"><strong>Dobutamina "sempre associada"</strong> sem baixo débito documentado após restaurar a PA. <strong>Dopamina como vasopressor padrão</strong> (SOAP II). <strong>Volume liberal</strong> no frio-e-úmido. <strong>Vasodilatador (nitroprussiato) como braço de rotina</strong> do "PAS &gt; 90" — nicho com PA invasiva, não padrão. <strong>Betabloqueador/IECA mantidos</strong> durante o choque. <strong>Diurético como droga de pressão.</strong> <strong>Intubar sem vasopressor preparado.</strong> E <strong>retardar o cateterismo do IAM</strong> ou <strong>o telefonema de escalada</strong> — os dois únicos "remédios" que mudam a história.</p>
+  </div>
+</section>
+
+<section class="section" id="fechamento">
+  <div class="tip-box" style="margin-top:32px;">
+    <strong>Prescreveu — e agora?</strong>
+    <p class="box-body">A execução mora no Hemo: <a class="text-link" href="../../hemo/drogas.html">doses e diluições das vasoativas</a>, <a class="text-link" href="../../hemo/padroes.html">os perfis de choque no POCUS</a> e as <a class="text-link" href="../../hemo/calc-hemo.html">calculadoras hemodinâmicas</a>. Se o mecanismo é coronariano, a reperfusão está na <a class="text-link" href="sca-com-supra.html">SCA com supra</a>; se o VD faliu por embolia, o caminho é o do <a class="text-link" href="tep.html">TEP</a>.</p>
+    <a class="link-cta" href="../index.html">Levar o caso ao assistente de conduta <span aria-hidden="true">&rarr;</span></a>
+  </div>
+
+  <div class="section-label">Referências</div>
+  <span class="ref">American College of Cardiology. 2025 Concise Clinical Guidance: Evaluation and Management of Cardiogenic Shock. <em>J Am Coll Cardiol.</em> 2025.</span>
+  <span class="ref">Naidu SS, et al. SCAI SHOCK Stage Classification Expert Consensus Update. <em>J Am Coll Cardiol.</em> 2022;79(9):933–946.</span>
+  <span class="ref">Hochman JS, et al. Early revascularization in acute myocardial infarction complicated by cardiogenic shock (SHOCK). <em>N Engl J Med.</em> 1999;341:625–634.</span>
+  <span class="ref">De Backer D, et al. Comparison of dopamine and norepinephrine in the treatment of shock (SOAP II). <em>N Engl J Med.</em> 2010;362:779–789.</span>
+  <span class="ref">Thiele H, et al. PCI strategies in cardiogenic shock (CULPRIT-SHOCK). <em>N Engl J Med.</em> 2017;377:2419–2432 · Thiele H, et al. Extracorporeal life support in infarct-related cardiogenic shock (ECLS-SHOCK). <em>N Engl J Med.</em> 2023;389:1286–1297.</span>
+  <span class="ref">Møller JE, et al. Microaxial flow pump in infarct-related cardiogenic shock (DanGer Shock). <em>N Engl J Med.</em> 2024;390:1382–1393.</span>
+  <span class="ref">Heidenreich PA, et al. 2022 AHA/ACC/HFSA Guideline for the Management of Heart Failure. <em>Circulation.</em> 2022;145(18):e895–e1032.</span>
+</section>
+
+</main>
+<script src="../../assets/app.js"></script>
+<script>
+function toggleCard(card,e){
+  if(e&&e.target.tagName&&e.target.tagName.toLowerCase()==='a')return;
+  card.classList.toggle('open');
+}
+document.addEventListener('keydown',function(e){
+  if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('card-toggle')){
+    e.preventDefault();toggleCard(e.target.parentNode,e);
+  }
+});
+</script>
+</body>
+</html>
