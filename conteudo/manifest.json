@@ -1719,6 +1719,18 @@
           "status": "rascunho",
           "ia": false,
           "hub": null
+        },
+        {
+          "id": "fa-flutter",
+          "arquivo": "fa-flutter.html",
+          "categoria": "Cardiovascular",
+          "menu": "FA e flutter atrial",
+          "titulo": "Prescrição comentada — Fibrilação e flutter atrial",
+          "subtitulo": "Instável? Quanto tempo? Anticoagular quem? — e as doses certas de DOAC",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
         }
       ]
     },
