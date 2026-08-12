@@ -133,7 +133,13 @@ async function userIdFromRequest(req) {
   }
 
   try {
-    // withLegacyReturn: lança se inválido, devolve JwtPayload se ok
+    /*
+     * Lança se inválido, devolve o JwtPayload se ok — por isso o try/catch.
+     *
+     * Com `secretKey`, o SDK não valida só a assinatura: ele consulta a API do
+     * Clerk para obter o JWKS. Isso significa que uma chave de OUTRA instância
+     * faz um token legítimo ser recusado — ver o tratamento no catch.
+     */
     const payload = await verifyToken(token, {
       secretKey,
       authorizedParties: AUTHORIZED_PARTIES,
@@ -149,6 +155,28 @@ async function userIdFromRequest(req) {
     return String(sub)
   } catch (e) {
     if (e.status) throw e
+
+    /*
+     * CHAVE ERRADA NO SERVIDOR NÃO É SESSÃO INVÁLIDA.
+     *
+     * Quando a `CLERK_SECRET_KEY` pertence a outra instância do Clerk, o SDK
+     * falha ao buscar o JWKS e o token — perfeitamente válido — é recusado. O
+     * `catch` genérico devolvia "Sessão inválida" para os dois casos, e o
+     * médico via uma mensagem que mandava investigar o próprio login, que não
+     * tinha problema nenhum. Custou uma sessão inteira de diagnóstico.
+     *
+     * 500 aqui é honesto: o defeito é de configuração do servidor, não da
+     * credencial de quem está usando.
+     */
+    if (/secret key/i.test(String(e?.message))) {
+      const err = new Error(
+        'Servidor mal configurado: CLERK_SECRET_KEY inválida ou de outra instância.',
+      )
+      err.status = 500
+      err.code = 'bad_clerk_secret'
+      throw err
+    }
+
     const err = new Error('Sessão inválida')
     err.status = 401
     err.code = 'bad_token'
