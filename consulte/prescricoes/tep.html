@@ -55,33 +55,16 @@
   .rx-item .card-body p strong{color:var(--text)}
   .rx-item .card-body .ref{display:block;margin-top:10px}
   @media(max-width:600px){.rx-head{padding:14px 14px 0}.rx-body{padding:2px 14px 6px}}
-  /* calculadoras embutidas — só tokens, mesma família do .rx-* */
-  .rxc{border:1px solid var(--border);border-radius:12px;background:var(--bg2);padding:14px 16px;margin:12px 0 0}
-  .rxc-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:4px}
-  .rxc-t{font-size:13px;font-weight:600;color:var(--text);letter-spacing:-.01em}
-  .rxc-badge{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--accent);
-    background:rgba(var(--accent-rgb),.12);border-radius:6px;padding:2px 8px;white-space:nowrap}
-  .rxc-sub{font-size:12px;color:var(--text2);line-height:1.55;margin:0 0 10px}
-  .rxc-list{display:flex;flex-direction:column;gap:2px;margin:0 0 10px}
-  .rxc-item{display:flex;gap:9px;align-items:flex-start;padding:5px 6px;border-radius:7px;cursor:pointer;
-    font-size:12.5px;line-height:1.5;color:var(--text)}
-  @media(hover:hover){.rxc-item:hover{background:var(--bg3)}}
-  .rxc-item input{margin:2px 0 0;flex-shrink:0;accent-color:var(--accent);width:15px;height:15px;cursor:pointer}
-  .rxc-item input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-  .rxc-pts{font-family:var(--mono);font-size:11px;color:var(--text2);margin-left:auto;padding-left:8px;flex-shrink:0}
-  .rxc-foot{display:flex;align-items:center;gap:12px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:10px}
-  .rxc-score{font-family:var(--mono);font-size:17px;font-weight:600;color:var(--accent)}
-  .rxc-score-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--text2)}
-  .rxc-reset{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--text2);background:none;
-    border:1px solid var(--border);border-radius:7px;padding:5px 10px;cursor:pointer}
-  @media(hover:hover){.rxc-reset:hover{color:var(--text);background:var(--bg3)}}
-  .rxc-reset:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-  .rxc-out{margin-top:10px;padding:10px 12px;border-radius:9px;border:1px solid var(--border);background:var(--bg3)}
-  .rxc-out-t{display:block;font-size:12.5px;font-weight:600;color:var(--text);margin-bottom:3px}
-  .rxc-out-d{display:block;font-size:12px;line-height:1.6;color:var(--text2)}
-  .rxc-out[data-estado="alto"]{border-color:rgba(var(--accent-rgb),.45)}
-  .rxc-out[data-estado="alto"] .rxc-out-t{color:var(--accent)}
-  .rxc-out[data-estado="limite"]{border-color:var(--border)}
+  /* botão que leva à calculadora — a conta mora em calculadoras.html */
+  .rxc-link{display:inline-flex;align-items:center;gap:7px;margin:12px 0 0;padding:9px 13px;border-radius:9px;
+    background:var(--bg2);border:1px solid var(--border);text-decoration:none;
+    font-size:12.5px;font-weight:600;color:var(--text);letter-spacing:-.005em;
+    transition:background .15s ease,border-color .15s ease}
+  .rxc-link::before{content:'';width:15px;height:15px;flex-shrink:0;border-radius:4px;
+    border:1.5px solid var(--accent);background:rgba(var(--accent-rgb),.12)}
+  .rxc-link span{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text2)}
+  @media(hover:hover){.rxc-link:hover{background:var(--bg3);border-color:rgba(var(--accent-rgb),.45)}}
+  .rxc-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 </style>
 </head>
 <body data-module="prescricoes" data-page="tep" data-root="../../">
@@ -126,7 +109,9 @@
       </div>
       <div class="rx-body">
         <div class="rx-dose"><b>A · assintomático</b> — TEP incidental achado em TC pedida por outro motivo, sem suspeita clínica prévia (A1 = subsegmentar) → <b>alta do PS</b>, não interna</div>
+        <a class="rxc-link" href="calculadoras.html#wells-tep">Wells para TEP <span>probabilidade pré-teste</span></a>
         <div class="rx-dose"><b>B · sintomático, escore baixo</b> — PESI ≤ 85 <em>ou</em> sPESI 0 <em>ou</em> Hestia &lt; 1 <em>ou</em> Bova ≤ 4 (B1 subsegmentar · B2 segmentar ou mais proximal) → <b>alta precoce</b> com DOAC</div>
+        <a class="rxc-link" href="calculadoras.html#spesi">sPESI <span>entra na categoria A–E</span></a>
         <div class="rx-dose"><b>C · sintomático, escore elevado</b> — PESI &gt; 85 <em>ou</em> sPESI ≥ 1 <em>ou</em> Hestia ≥ 1 <em>ou</em> Bova &gt; 4. As subcategorias sobem conforme aparece disfunção cardiopulmonar: <b>troponina/BNP</b> e <b>VD alterado</b> (eco ou TC) → internar</div>
         <div class="rx-dose"><b>D · pré-falência cardiopulmonar</b> — <b>D1</b>: hipotensão transitória ou recorrente que cede a volume, <em>sem</em> má perfusão · <b>D2</b>: a mesma hipotensão <b>+ um marcador de má perfusão</b> → UTI</div>
         <div class="rx-dose"><b>E · falência cardiopulmonar</b> — <b>E1</b>: hipotensão persistente com choque cardiogênico (SCAI C) · <b>E2</b>: choque refratário (SCAI D–E) <em>ou</em> PCR sem retorno de circulação após 30 min de reanimação</div>
@@ -471,30 +456,7 @@
         <div class="rx-dose"><b>Com indicação:</b> inibidor de bomba de prótons — <b>omeprazol ou pantoprazol 40 mg EV ou VO 1×/dia</b>, conforme padronização do serviço</div>
         <div class="rx-dose">Reavaliar a indicação <b>todo dia</b> — ela costuma sumir antes da alta da UTI, e a prescrição costuma continuar.</div>
         <div class="rx-dose"><b>O preço de prescrever sem indicação:</b> mais pneumonia associada à ventilação, mais <em>C. difficile</em>, e a prescrição crônica que sai junto na receita de alta</div>
-        <div class="rxc" data-rx-calc="ulcera">
-          <div class="rxc-h">
-            <span class="rxc-t">Profilaxia de úlcera de estresse — há indicação?</span>
-            <span class="rxc-badge">1 maior ou ≥ 2 menores</span>
-          </div>
-          <p class="rxc-sub">Não existe escore validado único. A regra prática dos consensos: <b>um fator maior</b> basta; <b>dois ou mais menores</b> costumam bastar. Sem fator, a profilaxia causa mais dano do que evita.</p>
-          <div class="rxc-list">
-            <label class="rxc-item"><input type="checkbox" data-peso="1" data-classe="maior"><span><b>Maior</b> — ventilação mecânica esperada por &gt; 48 h</span><span class="rxc-pts">maior</span></label>
-            <label class="rxc-item"><input type="checkbox" data-peso="1" data-classe="maior"><span><b>Maior</b> — coagulopatia (plaquetas &lt; 50.000, INR &gt; 1,5 ou TTPa &gt; 2× o controle)</span><span class="rxc-pts">maior</span></label>
-            <label class="rxc-item"><input type="checkbox" data-peso="1" data-classe="menor"><span>Choque, sepse ou vasopressor</span><span class="rxc-pts">menor</span></label>
-            <label class="rxc-item"><input type="checkbox" data-peso="1" data-classe="menor"><span>Úlcera péptica ou sangramento digestivo no último ano</span><span class="rxc-pts">menor</span></label>
-            <label class="rxc-item"><input type="checkbox" data-peso="1" data-classe="menor"><span>Traumatismo cranioencefálico, trauma raquimedular ou queimadura extensa</span><span class="rxc-pts">menor</span></label>
-            <label class="rxc-item"><input type="checkbox" data-peso="1" data-classe="menor"><span>Insuficiência hepática ou renal</span><span class="rxc-pts">menor</span></label>
-            <label class="rxc-item"><input type="checkbox" data-peso="1" data-classe="menor"><span>Corticoide em dose alta</span><span class="rxc-pts">menor</span></label>
-            <label class="rxc-item"><input type="checkbox" data-peso="1" data-classe="menor"><span>Permanência em UTI &gt; 1 semana</span><span class="rxc-pts">menor</span></label>
-          </div>
-          <div class="rxc-foot">
-            <span class="rxc-score-k">Fatores</span><span class="rxc-score">0M / 0m</span>
-            <button type="button" class="rxc-reset">Limpar</button>
-          </div>
-          <div class="rxc-out" data-estado="baixo">
-            <span class="rxc-out-t"></span><span class="rxc-out-d"></span>
-          </div>
-        </div>
+        <a class="rxc-link" href="calculadoras.html#ulcera">Há indicação de profilaxia? <span>fator maior ou 2 menores</span></a>
       </div>
       <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
         <span class="rx-why">Por quê &amp; armadilhas</span>
@@ -521,33 +483,7 @@
         <div class="rx-dose"><b>Mecânica</b> (compressão pneumática intermitente) quando a farmacológica está contraindicada — sangramento ativo, plaquetopenia grave, pós-operatório neurocirúrgico recente — ou <b>somada</b> a ela no altíssimo risco</div>
         <div class="rx-dose"><b>Não somar</b> profilaxia a quem já está em <b>anticoagulação plena</b> — é dose dupla sem ganho</div>
         <div class="rx-dose">Individualizar sempre: o escore diz se <em>há indicação</em>, não se <em>este</em> paciente deve receber.</div>
-        <div class="rxc" data-rx-calc="padua">
-          <div class="rxc-h">
-            <span class="rxc-t">Escore de Pádua — risco de TEV no paciente clínico internado</span>
-            <span class="rxc-badge">≥ 4 = alto risco</span>
-          </div>
-          <p class="rxc-sub">Marque o que se aplica. O escore indica se há <em>indicação</em>; quem decide se este paciente recebe é você, pesando sangramento, plaquetas, rim e procedimento previsto.</p>
-          <div class="rxc-list">
-            <label class="rxc-item"><input type="checkbox" data-peso="3"><span>Câncer ativo (metástase, ou quimio/radioterapia nos últimos 6 meses)</span><span class="rxc-pts">3</span></label>
-            <label class="rxc-item"><input type="checkbox" data-peso="3"><span>TEV prévio (exceto trombose venosa superficial)</span><span class="rxc-pts">3</span></label>
-            <label class="rxc-item"><input type="checkbox" data-peso="3"><span>Mobilidade reduzida — restrito ao leito, com banheiro, por ≥ 3 dias</span><span class="rxc-pts">3</span></label>
-            <label class="rxc-item"><input type="checkbox" data-peso="3"><span>Trombofilia conhecida</span><span class="rxc-pts">3</span></label>
-            <label class="rxc-item"><input type="checkbox" data-peso="2"><span>Trauma ou cirurgia no último mês</span><span class="rxc-pts">2</span></label>
-            <label class="rxc-item"><input type="checkbox" data-peso="1"><span>Idade ≥ 70 anos</span><span class="rxc-pts">1</span></label>
-            <label class="rxc-item"><input type="checkbox" data-peso="1"><span>Insuficiência cardíaca e/ou respiratória</span><span class="rxc-pts">1</span></label>
-            <label class="rxc-item"><input type="checkbox" data-peso="1"><span>Infarto agudo do miocárdio ou AVC isquêmico</span><span class="rxc-pts">1</span></label>
-            <label class="rxc-item"><input type="checkbox" data-peso="1"><span>Infecção aguda e/ou doença reumatológica</span><span class="rxc-pts">1</span></label>
-            <label class="rxc-item"><input type="checkbox" data-peso="1"><span>Obesidade (IMC ≥ 30)</span><span class="rxc-pts">1</span></label>
-            <label class="rxc-item"><input type="checkbox" data-peso="1"><span>Terapia hormonal em curso</span><span class="rxc-pts">1</span></label>
-          </div>
-          <div class="rxc-foot">
-            <span class="rxc-score-k">Pontos</span><span class="rxc-score">0</span>
-            <button type="button" class="rxc-reset">Limpar</button>
-          </div>
-          <div class="rxc-out" data-estado="baixo">
-            <span class="rxc-out-t"></span><span class="rxc-out-d"></span>
-          </div>
-        </div>
+        <a class="rxc-link" href="calculadoras.html#padua">Escore de Pádua <span>calcular o risco de TEV</span></a>
       </div>
       <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
         <span class="rx-why">Por quê &amp; armadilhas</span>
@@ -600,6 +536,5 @@ document.addEventListener('keydown',function(e){
   }
 });
 </script>
-<script src="../../assets/rx-scores.js"></script>
 </body>
 </html>

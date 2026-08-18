@@ -1828,6 +1828,18 @@
           "hub": null
         },
         {
+          "id": "calculadoras",
+          "arquivo": "calculadoras.html",
+          "categoria": "Prescrições",
+          "menu": "Calculadoras clínicas",
+          "titulo": "Calculadoras clínicas",
+          "subtitulo": "Escores e fórmulas que decidem conduta, com a leitura do resultado ao lado",
+          "tipo": "referencia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
           "id": "sca-sem-supra",
           "arquivo": "sca-sem-supra.html",
           "categoria": "Cardiovascular",

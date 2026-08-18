@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7K0CML04MR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7K0CML04MR');
+</script>
+<script src="../../assets/theme-boot.js"></script>
+<meta charset="UTF-8">
+<title>Calculadoras clínicas — Prescrições comentadas | be·aside</title>
+<meta name="robots" content="noindex, nofollow" data-beaside="status">
+<link rel="canonical" href="https://beaside.com.br/consulte/prescricoes/calculadoras.html">
+<meta name="description" content="Escores e fórmulas usados no dia a dia da UTI e da emergência, reunidos em um lugar: Pádua, CHA2DS2-VA, HAS-BLED, Wells, sPESI, Glasgow-Blatchford, Child-Pugh, BISAP, CURB-65, ClCr, ânion gap, déficit de água livre e mais.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="be·aside">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Calculadoras clínicas | be·aside">
+<meta property="og:description" content="Os escores e fórmulas que decidem conduta, reunidos — cada um com a leitura do resultado e a fonte.">
+<meta property="og:url" content="https://beaside.com.br/consulte/prescricoes/calculadoras.html">
+<meta property="og:image" content="https://beaside.com.br/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Calculadoras clínicas | be·aside">
+<meta name="twitter:image" content="https://beaside.com.br/assets/og-image.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/styles.css">
+<style>
+  /* componente da prescrição comentada — usa só tokens; variante do .card.collapsible */
+  .rx-list{counter-reset:rx;display:flex;flex-direction:column;gap:14px;margin:26px 0 8px}
+  .rx-item{counter-increment:rx}
+  .rx-head{display:flex;gap:13px;align-items:flex-start;padding:16px 18px 0}
+  .rx-n{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--accent);background:rgba(var(--accent-rgb),.12);border-radius:6px;padding:3px 8px;margin-top:2px;flex-shrink:0}
+  .rx-n::before{content:counter(rx,decimal-leading-zero)}
+  .rx-title{font-size:15.5px;font-weight:600;color:var(--text);letter-spacing:-.01em;line-height:1.3}
+  .rx-cond{font-size:12.5px;color:var(--text2);margin-top:3px;line-height:1.5}
+  .rx-body{padding:2px 18px 6px}
+  .rx-dose{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;line-height:1.8;color:var(--text);background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:11px 14px;margin:12px 0 0}
+  .rx-dose+.rx-dose{margin-top:8px}
+  .rx-dose b{color:var(--accent);font-weight:600}
+  .rx-body .tag-row{margin:10px 0 0}
+  .rx-body .alert-box{margin:12px 0 0}
+  .rx-item .card-toggle{border-top:1px solid var(--border);margin-top:14px}
+  .rx-why{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);flex:1}
+  .rx-item .card-body p{font-size:13.5px;line-height:1.75;color:var(--text2);margin:0 0 10px}
+  .rx-item .card-body p strong{color:var(--text)}
+  .rx-item .card-body .ref{display:block;margin-top:10px}
+  @media(max-width:600px){.rx-head{padding:14px 14px 0}.rx-body{padding:2px 14px 6px}}
+  /* calculadoras embutidas — só tokens, mesma família do .rx-* */
+  .rxc{border:1px solid var(--border);border-radius:12px;background:var(--bg2);padding:14px 16px;margin:12px 0 0}
+  .rxc-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+  .rxc-t{font-size:13px;font-weight:600;color:var(--text);letter-spacing:-.01em}
+  .rxc-badge{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--accent);
+    background:rgba(var(--accent-rgb),.12);border-radius:6px;padding:2px 8px;white-space:nowrap}
+  .rxc-sub{font-size:12px;color:var(--text2);line-height:1.55;margin:0 0 10px}
+  .rxc-list{display:flex;flex-direction:column;gap:2px;margin:0 0 10px}
+  .rxc-item{display:flex;gap:9px;align-items:flex-start;padding:5px 6px;border-radius:7px;cursor:pointer;
+    font-size:12.5px;line-height:1.5;color:var(--text)}
+  @media(hover:hover){.rxc-item:hover{background:var(--bg3)}}
+  .rxc-item input{margin:2px 0 0;flex-shrink:0;accent-color:var(--accent);width:15px;height:15px;cursor:pointer}
+  .rxc-item input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .rxc-pts{font-family:var(--mono);font-size:11px;color:var(--text2);margin-left:auto;padding-left:8px;flex-shrink:0}
+  .rxc-foot{display:flex;align-items:center;gap:12px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:10px}
+  .rxc-score{font-family:var(--mono);font-size:17px;font-weight:600;color:var(--accent)}
+  .rxc-score-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--text2)}
+  .rxc-reset{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--text2);background:none;
+    border:1px solid var(--border);border-radius:7px;padding:5px 10px;cursor:pointer}
+  @media(hover:hover){.rxc-reset:hover{color:var(--text);background:var(--bg3)}}
+  .rxc-reset:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .rxc-out{margin-top:10px;padding:10px 12px;border-radius:9px;border:1px solid var(--border);background:var(--bg3)}
+  .rxc-out-t{display:block;font-size:12.5px;font-weight:600;color:var(--text);margin-bottom:3px}
+  .rxc-out-d{display:block;font-size:12px;line-height:1.6;color:var(--text2)}
+  .rxc-out[data-estado="alto"]{border-color:rgba(var(--accent-rgb),.45)}
+  .rxc-out[data-estado="alto"] .rxc-out-t{color:var(--accent)}
+  .rxc-out[data-estado="limite"]{border-color:var(--border)}
+  /* campos, resultados e navegação da página de calculadoras */
+  .rxc-campos{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px;margin:0 0 12px}
+  .rxc-campo{display:flex;flex-direction:column;gap:4px}
+  .rxc-campo-l{font-size:11.5px;color:var(--text2);line-height:1.35}
+  .rxc-campo-h{font-size:10.5px;color:var(--text2);opacity:.8;line-height:1.3}
+  .rxc-campo input,.rxc-campo select{font-family:var(--mono);font-size:13px;color:var(--text);background:var(--bg3);
+    border:1px solid var(--border);border-radius:8px;padding:8px 10px;width:100%}
+  .rxc-campo input:focus-visible,.rxc-campo select:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+  .rxc-res{display:flex;flex-direction:column;gap:2px;margin:0 0 4px}
+  .rxc-res-row{display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding:6px 8px;
+    border-radius:7px;background:var(--bg3);font-size:12.5px}
+  .rxc-res-k{color:var(--text2);line-height:1.4}
+  .rxc-res-v{font-family:var(--mono);font-weight:600;color:var(--accent);white-space:nowrap}
+  .rxc-ref{font-size:11px;line-height:1.55;color:var(--text2);margin:10px 0 0;padding-top:9px;border-top:1px solid var(--border)}
+  .rxc-alvo{outline:2px solid var(--accent);outline-offset:3px}
+  .calc-grupo{margin:34px 0 0}
+  .calc-nav{position:sticky;top:var(--header-h,58px);z-index:5;margin:26px 0 4px;padding:8px 0;
+    background:var(--bg);border-bottom:1px solid var(--border)}
+  .calc-nav-in{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+  .calc-nav-in::-webkit-scrollbar{display:none}
+  .calc-nav a{flex:0 0 auto;font-size:12.5px;font-weight:600;color:var(--text);text-decoration:none;
+    padding:7px 11px;border-radius:8px;white-space:nowrap}
+  @media(hover:hover){.calc-nav a:hover{background:var(--bg3)}}
+  .calc-nav a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .rxc,.calc-grupo{scroll-margin-top:calc(var(--header-h,58px) + 70px)}
+</style>
+</head>
+<body data-module="prescricoes" data-page="calculadoras" data-root="../../">
+<main class="main">
+
+<section class="section" id="topo">
+  <header class="page-head">
+    <div class="hero-eyebrow">Consulte · Prescrições comentadas</div>
+    <h1 class="section-title">Calculadoras clínicas</h1>
+    <p class="section-subtitle">Os escores e as fórmulas que realmente mudam conduta, reunidos em um lugar — cada um com a leitura do resultado ao lado, não só o número.</p>
+  </header>
+
+  <p class="prose">Cada prescrição comentada traz um <strong>botão</strong> para a calculadora que ela usa, e o botão traz você direto para cá, no lugar certo. A ideia é manter a prescrição limpa e a conta acessível — sem ter uma calculadora atravessada no meio da dose.</p>
+
+  <div class="warn-box">
+    <strong>Escore não é conduta.</strong>
+    <p class="box-body">Todos os escores desta página dizem <strong>se há indicação</strong>, ou <strong>qual é o risco estimado</strong>. Nenhum deles decide se <em>este</em> paciente deve receber <em>este</em> tratamento — isso depende de sangramento, função renal, procedimento previsto, preferência do paciente e do protocolo do seu serviço. Os resultados são estimativas de população aplicadas a um indivíduo.</p>
+  </div>
+
+  <nav class="calc-nav" aria-label="Calculadoras por grupo">
+    <div class="calc-nav-in">
+    <a href="#universais">Universais</a>
+    <a href="#eletrolitos">Eletrólitos e metabólico</a>
+    <a href="#cardio">Cardiovascular</a>
+    <a href="#gastro">Gastroenterologia</a>
+    <a href="#infecto">Infecto e respiratório</a>
+    </div>
+  </nav>
+
+  <div class="calc-grupo" id="universais" tabindex="-1">
+    <div class="section-label">Universais</div>
+    <p class="prose" style="margin-top:6px">Servem em qualquer página: ajuste renal, peso da dose e as duas profilaxias que entram em toda prescrição.</p>
+    <div data-calc="clcr"></div>
+    <div data-calc="peso"></div>
+    <div data-calc="padua"></div>
+    <div data-calc="ulcera"></div>
+  </div>
+  <div class="calc-grupo" id="eletrolitos" tabindex="-1">
+    <div class="section-label">Eletrólitos e metabólico</div>
+    <p class="prose" style="margin-top:6px">As contas que decidem ritmo de correção — e que separam distúrbio verdadeiro de artefato de laboratório.</p>
+    <div data-calc="na-corrigido"></div>
+    <div data-calc="osm"></div>
+    <div data-calc="adrogue"></div>
+    <div data-calc="agua-livre"></div>
+    <div data-calc="ca-corrigido"></div>
+    <div data-calc="anion-gap"></div>
+  </div>
+  <div class="calc-grupo" id="cardio" tabindex="-1">
+    <div class="section-label">Cardiovascular</div>
+    <p class="prose" style="margin-top:6px">Risco embólico, risco de sangramento e estratificação do tromboembolismo pulmonar.</p>
+    <div data-calc="chads"></div>
+    <div data-calc="hasbled"></div>
+    <div data-calc="wells-tep"></div>
+    <div data-calc="spesi"></div>
+  </div>
+  <div class="calc-grupo" id="gastro" tabindex="-1">
+    <div class="section-label">Gastroenterologia</div>
+    <p class="prose" style="margin-top:6px">Quem pode ir para casa, quem tem cirrose grave e quem vai piorar na pancreatite.</p>
+    <div data-calc="blatchford"></div>
+    <div data-calc="child"></div>
+    <div data-calc="bisap"></div>
+  </div>
+  <div class="calc-grupo" id="infecto" tabindex="-1">
+    <div class="section-label">Infecto e respiratório</div>
+    <p class="prose" style="margin-top:6px">Onde tratar a pneumonia — e por que o qSOFA negativo não afasta sepse.</p>
+    <div data-calc="curb65"></div>
+    <div data-calc="qsofa"></div>
+  </div>
+</section>
+
+</main>
+
+</main>
+<script src="../../assets/app.js"></script>
+<script>
+function toggleCard(card,e){
+  if(e&&e.target.tagName&&e.target.tagName.toLowerCase()==='a')return;
+  card.classList.toggle('open');
+}
+document.addEventListener('keydown',function(e){
+  if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('card-toggle')){
+    e.preventDefault();toggleCard(e.target.parentNode,e);
+  }
+});
+</script>
+<script src="../../assets/rx-calc.js"></script>
+</body>
+</html>

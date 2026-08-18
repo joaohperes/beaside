@@ -307,6 +307,7 @@ const MODULE_PAGES = {
   ],
   prescricoes: [
     {id:'hub',                         file:'index.html',                       cat:'Prescrições',       label:'Todas as prescrições',               title:'Prescrições comentadas',                                      subtitle:'O que prescrever e por quê, cenário por cenário'},
+    {id:'calculadoras',                file:'calculadoras.html',                cat:'Prescrições',       label:'Calculadoras clínicas',              title:'Calculadoras clínicas',                                       subtitle:'Escores e fórmulas que decidem conduta, com a leitura do resultado ao lado'},
     {id:'sca-sem-supra',               file:'sca-sem-supra.html',               cat:'Cardiovascular',    label:'SCA sem supra',                      title:'Prescrição comentada — SCA sem supra de ST',                  subtitle:'Item por item, com dose, contraindicação e o porquê'},
     {id:'sca-com-supra',               file:'sca-com-supra.html',               cat:'Cardiovascular',    label:'SCA com supra',                      title:'Prescrição comentada — SCA com supra de ST',                  subtitle:'Reperfusão contra o relógio — ICP primária ou fibrinólise, e a prescrição em volta'},
     {id:'eap',                         file:'eap.html',                         cat:'Cardiovascular',    label:'Edema agudo de pulmão',              title:'Prescrição comentada — Edema agudo de pulmão',                subtitle:'VNI, vasodilatador e diurético na dose que resolve — fenótipo antes de inotrópico'},
