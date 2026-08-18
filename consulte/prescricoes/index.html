@@ -34,6 +34,28 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/styles.css">
+<style>
+  /* navegação por sistema do hub de prescrições — só tokens, variante leve do .lp-* */
+  .px-nav{position:sticky;top:var(--header-h,58px);z-index:5;margin:30px 0 4px;padding:8px 0;
+    background:var(--bg);border-bottom:1px solid var(--border)}
+  .px-nav-in{display:flex;gap:6px;align-items:center;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .px-nav-in::-webkit-scrollbar{display:none}
+  .px-nav-h,.px-nav-s{flex:0 0 auto;text-decoration:none;border-radius:8px;white-space:nowrap;
+    transition:background .15s ease,color .15s ease}
+  .px-nav-h{font-size:12.5px;font-weight:600;color:var(--text);padding:7px 11px;letter-spacing:-.01em}
+  .px-nav-s{font-family:var(--mono);font-size:10.5px;font-weight:500;color:var(--text2);padding:6px 9px;
+    letter-spacing:.02em}
+  .px-nav-n{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--accent);margin-left:5px}
+  @media(hover:hover){.px-nav-h:hover,.px-nav-s:hover{background:var(--bg3);color:var(--text)}}
+  .px-nav-h:focus-visible,.px-nav-s:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .px-sub{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.09em;
+    text-transform:uppercase;color:var(--text2);margin:24px 0 -6px}
+  .lp-section-label:focus-visible,.px-sub:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+  html{scroll-behavior:smooth}
+  .lp-section-label,.px-sub{scroll-margin-top:calc(var(--header-h,58px) + 62px)}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  @media(max-width:600px){.px-nav-h{font-size:12px;padding:6px 9px}}
+</style>
 </head>
 <body data-module="prescricoes" data-page="hub" data-root="../../">
 <main class="main">
@@ -44,7 +66,7 @@
       <div class="lp-eyebrow">Consulte · Prescrições comentadas</div>
       <h1 class="lp-title">O que prescrever — e por quê</h1>
       <p class="lp-desc">Cada cenário na ordem do raciocínio — o que muda desfecho primeiro: a dose sempre visível, a contraindicação ao lado, o porquê a um clique. Feitas em diretriz, para adaptar ao seu serviço — nunca para copiar sem pensar.</p>
-      <a class="lp-start" href="sca-sem-supra.html">Começar pela SCA sem supra <span class="lp-start-arrow">→</span></a>
+      <a class="lp-start" href="#cardiovascular">Navegar por sistema <span class="lp-start-arrow">→</span></a>
     </div>
     <div class="lp-panel">
       <div class="lp-panel-label">Prescrições <span>comentadas</span></div>
@@ -52,7 +74,7 @@
         <div class="lp-stat"><div class="lp-stat-k">Páginas</div><div class="lp-stat-v">22</div></div>
         <div class="lp-stat"><div class="lp-stat-k">Foco</div><div class="lp-stat-v">Plantão</div></div>
         <div class="lp-stat"><div class="lp-stat-k">Base</div><div class="lp-stat-v">Diretriz</div></div>
-        <div class="lp-stat"><div class="lp-stat-k">Início</div><div class="lp-stat-v">SCA</div></div>
+        <div class="lp-stat"><div class="lp-stat-k">Sistemas</div><div class="lp-stat-v">3</div></div>
       </div>
       <div class="lp-panel-foot"><span>Atualizado</span><span>2026</span></div>
     </div>
@@ -63,7 +85,21 @@
     <p class="box-body">Estas páginas reúnem as doses das diretrizes de referência com o raciocínio de cada item. Elas <strong>não substituem o protocolo institucional</strong>, a padronização da farmácia nem o julgamento de quem está com o paciente. Toda prescrição real é responsabilidade do médico que a assina.</p>
   </div>
 
-  <div class="lp-section-label">Cardiovascular</div>
+<nav class="px-nav" aria-label="Prescrições por sistema">
+  <div class="px-nav-in">
+    <a class="px-nav-h" href="#cardiovascular">Cardiovascular <span class="px-nav-n">17</span></a>
+    <a class="px-nav-s" href="#coronarias">Coronárias e miocárdio</a>
+    <a class="px-nav-s" href="#ic-choque">Insuficiência cardíaca, congestão e choque</a>
+    <a class="px-nav-s" href="#pressao-aorta">Pressão e aorta</a>
+    <a class="px-nav-s" href="#tev">Tromboembolismo venoso</a>
+    <a class="px-nav-s" href="#arritmias">Arritmias</a>
+    <a class="px-nav-h" href="#infectologia">Infectologia <span class="px-nav-n">1</span></a>
+    <a class="px-nav-h" href="#neurologia">Neurologia <span class="px-nav-n">4</span></a>
+  </div>
+</nav>
+
+  <div class="lp-section-label" id="cardiovascular" tabindex="-1">Cardiovascular</div>
+  <div class="px-sub" id="coronarias" tabindex="-1">Coronárias e miocárdio</div>
   <div class="lp-grid">
     <a class="lp-card" href="sca-sem-supra.html">
       <div class="lp-card-top"><div class="lp-card-cat">Coronariana</div><span class="lp-card-idx">01</span></div>
@@ -95,6 +131,9 @@
       <div class="lp-card-sub">Suporte com dose, fulminante com telefonema — e imunossupressão só depois da biópsia, nunca do reflexo</div>
       <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
+  </div>
+  <div class="px-sub" id="ic-choque" tabindex="-1">Insuficiência cardíaca, congestão e choque</div>
+  <div class="lp-grid">
     <a class="lp-card" href="eap.html">
       <div class="lp-card-top"><div class="lp-card-cat">Congestão</div><span class="lp-card-idx">06</span></div>
       <div class="lp-card-title">Edema agudo de pulmão</div>
@@ -107,6 +146,15 @@
       <div class="lp-card-sub">Quatro perfis, a descongestão que vai até o fim, e a alta com o quarteto — a internação inteira, não só a crise</div>
       <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
+    <a class="lp-card" href="choque-cardiogenico.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Choque</div><span class="lp-card-idx">13</span></div>
+      <div class="lp-card-title">Choque cardiogênico</div>
+      <div class="lp-card-sub">Perfusão antes de pressão, mecanismo antes de bomba: nora → inotrópico se precisar, e o telefonema de escalada na hora certa</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
+  </div>
+  <div class="px-sub" id="pressao-aorta" tabindex="-1">Pressão e aorta</div>
+  <div class="lp-grid">
     <a class="lp-card" href="pa-elevada.html">
       <div class="lp-card-top"><div class="lp-card-cat">Pressão</div><span class="lp-card-idx">08</span></div>
       <div class="lp-card-title">PA muito elevada</div>
@@ -119,12 +167,9 @@
       <div class="lp-card-sub">A única emergência com pressa de verdade: betabloqueador antes do vasodilatador, FC &lt; 60 em minutos — e o tipo A se opera, não se observa</div>
       <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
-    <a class="lp-card" href="fa-flutter.html">
-      <div class="lp-card-top"><div class="lp-card-cat">Arritmia</div><span class="lp-card-idx">10</span></div>
-      <div class="lp-card-title">Fibrilação e flutter atrial</div>
-      <div class="lp-card-sub">Instável? Quanto tempo? Anticoagular quem? — controle de frequência e DOAC nas doses certas</div>
-      <div class="lp-card-cta">Abrir <span>→</span></div>
-    </a>
+  </div>
+  <div class="px-sub" id="tev" tabindex="-1">Tromboembolismo venoso</div>
+  <div class="lp-grid">
     <a class="lp-card" href="tep.html">
       <div class="lp-card-top"><div class="lp-card-cat">Embolia</div><span class="lp-card-idx">11</span></div>
       <div class="lp-card-title">Tromboembolismo pulmonar</div>
@@ -137,40 +182,13 @@
       <div class="lp-card-sub">A maioria trata em casa com DOAC no bolso: quem interna, a escolha pelo paciente — câncer, gestante, rim, SAF — e a duração como prescrição</div>
       <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
-    <a class="lp-card" href="choque-cardiogenico.html">
-      <div class="lp-card-top"><div class="lp-card-cat">Choque</div><span class="lp-card-idx">13</span></div>
-      <div class="lp-card-title">Choque cardiogênico</div>
-      <div class="lp-card-sub">Perfusão antes de pressão, mecanismo antes de bomba: nora → inotrópico se precisar, e o telefonema de escalada na hora certa</div>
-      <div class="lp-card-cta">Abrir <span>→</span></div>
-    </a>
-    <a class="lp-card" href="sepse.html">
-      <div class="lp-card-top"><div class="lp-card-cat">Infecção</div><span class="lp-card-idx">14</span></div>
-      <div class="lp-card-title">Sepse e choque séptico</div>
-      <div class="lp-card-sub">Antibiótico na primeira hora pelo foco, volume com juízo, nora sem esperar o soro acabar — e o desescalonamento como prescrição</div>
-      <div class="lp-card-cta">Abrir <span>→</span></div>
-    </a>
-    <a class="lp-card" href="avci.html">
-      <div class="lp-card-top"><div class="lp-card-cat">Neuro</div><span class="lp-card-idx">15</span></div>
-      <div class="lp-card-title">AVC isquêmico</div>
-      <div class="lp-card-sub">Trombólise e trombectomia contra o relógio, a pressão que aqui se respeita — e a triagem de disfagia antes da primeira colher</div>
-      <div class="lp-card-cta">Abrir <span>→</span></div>
-    </a>
-    <a class="lp-card" href="avch.html">
-      <div class="lp-card-top"><div class="lp-card-cat">Neuro</div><span class="lp-card-idx">16</span></div>
-      <div class="lp-card-title">AVC hemorrágico</div>
-      <div class="lp-card-sub">A primeira hora disputa o hematoma: reverter o anticoagulante, PA suave até 140, o telefonema do cerebelo — e o prognóstico que espera 72 h</div>
-      <div class="lp-card-cta">Abrir <span>→</span></div>
-    </a>
-    <a class="lp-card" href="hsa.html">
-      <div class="lp-card-top"><div class="lp-card-cat">Neuro</div><span class="lp-card-idx">17</span></div>
-      <div class="lp-card-title">Hemorragia subaracnóidea</div>
-      <div class="lp-card-sub">Três relógios ao mesmo tempo: o aneurisma tratado cedo, a hidrocefalia com dreno — e o vasoespasmo que começa quando todos relaxaram</div>
-      <div class="lp-card-cta">Abrir <span>→</span></div>
-    </a>
-    <a class="lp-card" href="crise-epileptica.html">
-      <div class="lp-card-top"><div class="lp-card-cat">Neuro</div><span class="lp-card-idx">18</span></div>
-      <div class="lp-card-title">Crise epiléptica e status</div>
-      <div class="lp-card-sub">Relógio e dose cheia: benzo pleno aos 5 min, segunda linha do ESETT aos 20 — e o EEG em quem não acorda</div>
+  </div>
+  <div class="px-sub" id="arritmias" tabindex="-1">Arritmias</div>
+  <div class="lp-grid">
+    <a class="lp-card" href="fa-flutter.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Arritmia</div><span class="lp-card-idx">10</span></div>
+      <div class="lp-card-title">Fibrilação e flutter atrial</div>
+      <div class="lp-card-sub">Instável? Quanto tempo? Anticoagular quem? — controle de frequência e DOAC nas doses certas</div>
       <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
     <a class="lp-card" href="taqui-instavel.html">
@@ -198,10 +216,46 @@
       <div class="lp-card-cta">Abrir <span>→</span></div>
     </a>
   </div>
+  <div class="lp-section-label" id="infectologia" tabindex="-1">Infectologia</div>
+  <div class="lp-grid">
+    <a class="lp-card" href="sepse.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Infecção</div><span class="lp-card-idx">14</span></div>
+      <div class="lp-card-title">Sepse e choque séptico</div>
+      <div class="lp-card-sub">Antibiótico na primeira hora pelo foco, volume com juízo, nora sem esperar o soro acabar — e o desescalonamento como prescrição</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
+  </div>
+  <div class="lp-section-label" id="neurologia" tabindex="-1">Neurologia</div>
+  <div class="lp-grid">
+    <a class="lp-card" href="avci.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Neuro</div><span class="lp-card-idx">15</span></div>
+      <div class="lp-card-title">AVC isquêmico</div>
+      <div class="lp-card-sub">Trombólise e trombectomia contra o relógio, a pressão que aqui se respeita — e a triagem de disfagia antes da primeira colher</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
+    <a class="lp-card" href="avch.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Neuro</div><span class="lp-card-idx">16</span></div>
+      <div class="lp-card-title">AVC hemorrágico</div>
+      <div class="lp-card-sub">A primeira hora disputa o hematoma: reverter o anticoagulante, PA suave até 140, o telefonema do cerebelo — e o prognóstico que espera 72 h</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
+    <a class="lp-card" href="hsa.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Neuro</div><span class="lp-card-idx">17</span></div>
+      <div class="lp-card-title">Hemorragia subaracnóidea</div>
+      <div class="lp-card-sub">Três relógios ao mesmo tempo: o aneurisma tratado cedo, a hidrocefalia com dreno — e o vasoespasmo que começa quando todos relaxaram</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
+    <a class="lp-card" href="crise-epileptica.html">
+      <div class="lp-card-top"><div class="lp-card-cat">Neuro</div><span class="lp-card-idx">18</span></div>
+      <div class="lp-card-title">Crise epiléptica e status</div>
+      <div class="lp-card-sub">Relógio e dose cheia: benzo pleno aos 5 min, segunda linha do ESETT aos 20 — e o EEG em quem não acorda</div>
+      <div class="lp-card-cta">Abrir <span>→</span></div>
+    </a>
+  </div>
 
   <div class="tip-box" style="margin-top:30px">
     <strong>Uma fonte, vários acessos.</strong>
-    <p class="box-body">As doses que já vivem em outras páginas do site não são duplicadas aqui: vasoativas ficam em <a class="text-link" href="../../hemo/drogas.html">drogas vasoativas</a>, antimicrobianos em <a class="text-link" href="../../infecto/pkpd.html">PK/PD e dose</a>. Cenário com nuance que a página não cobre? Leve ao <a class="text-link" href="../index.html">assistente de conduta</a>.</p>
+    <p class="box-body">Cada prescrição traz na própria página o que é preciso para prescrever com segurança — dose, concentração, titulação, máximo e monitorização das infusões de alto risco. As páginas de <a class="text-link" href="../../hemo/drogas.html">drogas vasoativas</a> e de <a class="text-link" href="../../infecto/pkpd.html">PK/PD e dose</a> aprofundam tabela e farmacologia; são complemento, não pré-requisito. Cenário com nuance que a página não cobre? Leve ao <a class="text-link" href="../index.html">assistente de conduta</a>.</p>
   </div>
 </section>
 
