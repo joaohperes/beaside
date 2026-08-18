@@ -136,7 +136,7 @@ const MODULES = {
   },
   peri: {
     id: 'peri',
-    label: 'Perioperatório',
+    label: 'Surgery Guide',
     area: 'raciocine',
     subtitle: 'Paciente cirúrgico',
     root: 'peri/',
@@ -144,11 +144,19 @@ const MODULES = {
   },
   infecto: {
     id: 'infecto',
-    label: 'Antimicrobianos',
+    label: 'Infecto Guide',
     area: 'raciocine',
     subtitle: 'Antibioticoterapia no paciente crítico',
     root: 'infecto/',
     color: '#5b63e0',
+  },
+  nefro: {
+    id: 'nefro',
+    label: 'Nefro Guide',
+    area: 'raciocine',
+    subtitle: 'Distúrbios hidroeletrolíticos, LRA e DRC no paciente crítico',
+    root: 'nefro/',
+    color: '#dfa32b',
   },
   consulte: {
     id: 'consulte',
@@ -283,6 +291,15 @@ const MODULE_PAGES = {
     {id:'cdiff',       file:'cdiff.html',       cat:'Cenários por foco',            label:'C. difficile',                      title:'Colite por Clostridioides difficile',                            subtitle:'Diagnóstico, vancomicina oral versus fidaxomicina e o manejo do caso grave'},
     {id:'neutropenia', file:'neutropenia.html', cat:'Cenários por foco',            label:'Neutropenia febril',                title:'Neutropenia febril',                                             subtitle:'Emergência oncológica: cobertura antipseudomonas empírica e quando associar Gram-positivo'},
     {id:'idoso',       file:'idoso.html',       cat:'Populações',                   label:'Paciente idoso',                    title:'Antibioticoterapia no paciente idoso e frágil',                  subtitle:'Apresentação atípica, nefrotoxicidade e interações que mudam a escolha'},
+  ],
+  nefro: [
+    {id:'fluxograma',       file:'fluxograma.html',       cat:'Comece aqui',                   label:'Fluxograma',   title:'Fluxograma dos Distúrbios Hidroeletrolíticos', subtitle:'O que mata primeiro, o que é real e a que velocidade corrigir'},
+    {id:'sodio',            file:'sodio.html',            cat:'Distúrbios hidroeletrolíticos', label:'Sódio',        title:'Sódio — hiponatremia e hipernatremia',         subtitle:'Distúrbio da água, não do sal — e a velocidade de correção decide o desfecho'},
+    {id:'potassio',         file:'potassio.html',         cat:'Distúrbios hidroeletrolíticos', label:'Potássio',     title:'Potássio — hipocalemia e hipercalemia',        subtitle:'O eletrólito que mata primeiro — ECG, reposição segura por via e o escudo de cálcio'},
+    {id:'calcio',           file:'calcio.html',           cat:'Distúrbios hidroeletrolíticos', label:'Cálcio',       title:'Cálcio — hipocalcemia e hipercalcemia',        subtitle:'Ionizado antes de tratar — e a via certa para cada sal de cálcio'},
+    {id:'magnesio-fosforo', file:'magnesio-fosforo.html', cat:'Distúrbios hidroeletrolíticos', label:'Mg e Fósforo', title:'Magnésio e Fósforo',                           subtitle:'Os esquecidos que sustentam os outros — repor Mg antes de K e Ca refratários'},
+    {id:'lra',              file:'lra.html',              cat:'Rim agudo e crônico',           label:'LRA',          title:'Lesão Renal Aguda',                            subtitle:'KDIGO, causas e suporte — em desenvolvimento'},
+    {id:'drc',              file:'drc.html',              cat:'Rim agudo e crônico',           label:'DRC',          title:'Doença Renal Crônica no crítico',              subtitle:'Ajustes, eletrólitos e diálise crônica na UTI — em desenvolvimento'},
   ],
   consulte: [
     {id:'ferramentas', file:'ferramentas.html', cat:'Consulte',      label:'Ferramentas',           title:'Consulte — execução rápida', subtitle:'Doses, tabelas, calculadoras e metas do plantão'},

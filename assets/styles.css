@@ -38,6 +38,11 @@ body[data-module="peri"]{
 body[data-module="infecto"]{
   --accent:#5b63e0;--accent-d:#3f45b0;--accent-rgb:91,99,224;
 }
+/* Nefro: dourado — amarelo de marca do módulo, deliberadamente mais escuro e
+   dessaturado que o âmbar semântico de aviso (#f0a030) para não competir com ele. */
+body[data-module="nefro"]{
+  --accent:#dfa32b;--accent-d:#a87b14;--accent-rgb:223,163,43;
+}
 body[data-module="hemo"] .quad.ok{border-color:rgba(var(--accent-rgb),.25)}
 body[data-module="hemo"] .quad.ok .quad-header{color:var(--accent)}
 body[data-module="hemo"] .alert-box.info{background:rgba(var(--accent-rgb),.06);border-color:rgba(var(--accent-rgb),.2)}
@@ -163,7 +168,10 @@ h3{font-size:15px;font-weight:500;color:#e8ecf2;margin:28px 0 12px}
 .src{font-family:var(--mono);font-size:10px;color:var(--text3);margin-left:6px;vertical-align:middle}
 .share-link{display:inline-flex;align-items:center;color:var(--text3);margin-left:10px;vertical-align:middle;cursor:pointer;opacity:.45;transition:opacity .15s,color .15s;text-decoration:none}
 
-/* Links de conteúdo — sem roxo/sublinhado de browser */
+/* Links de conteúdo — sem roxo/sublinhado de browser.
+   a.text-link vale em toda .main: os fluxogramas não têm <section> e os links
+   dos boxes finais caíam no azul default do browser. */
+.main a.text-link,
 .section a.text-link,
 .section a:not([class]):not(.share-link){
   color:var(--accent);
@@ -173,12 +181,14 @@ h3{font-size:15px;font-weight:500;color:#e8ecf2;margin:28px 0 12px}
   transition:color .15s,border-color .15s,background .15s;
   border-radius:2px;
 }
+.main a.text-link:hover,
 .section a.text-link:hover,
 .section a:not([class]):not(.share-link):hover{
   color:var(--accent);
   border-bottom-color:var(--accent);
   background:rgba(var(--accent-rgb),.08);
 }
+.main a.text-link:focus-visible,
 .section a.text-link:focus-visible,
 .section a:not([class]):not(.share-link):focus-visible{
   outline:2px solid rgba(var(--accent-rgb),.45);
@@ -2650,6 +2660,9 @@ html[data-theme="light"] body[data-module="peri"]{
 html[data-theme="light"] body[data-module="infecto"]{
   --accent:#4a52d0;--accent-d:#383fb0;--accent-rgb:74,82,208;
 }
+html[data-theme="light"] body[data-module="nefro"]{
+  --accent:#a87d10;--accent-d:#8a660d;--accent-rgb:168,125,16;
+}
 
 /* shell */
 html[data-theme="light"] body{background:var(--bg);color:var(--text)}
@@ -2935,6 +2948,7 @@ html[data-theme="light"] .calc-panel .card-title{
 html[data-theme="light"] .nav-back{
   color:var(--text2);
 }
+html[data-theme="light"] .main a.text-link,
 html[data-theme="light"] .section a.text-link,
 html[data-theme="light"] .section a:not([class]):not(.share-link){
   color:var(--accent);

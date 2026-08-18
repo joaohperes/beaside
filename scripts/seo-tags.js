@@ -101,7 +101,7 @@ const ARTIGOS = new Map(manifesto.artigos.map((a) => ['artigos/' + a.arquivo, a]
 
 // Especialidade médica (vocabulário MedicalSpecialty do schema.org) por módulo.
 // Só os módulos clínicos entram: institucional e consulte não são MedicalWebPage.
-const ESPECIALIDADE = { vm: 'PulmonaryMedicine', hemo: 'Cardiovascular', neuro: 'Neurologic', proc: 'Emergency', peri: 'Surgical', infecto: 'Infectious' };
+const ESPECIALIDADE = { vm: 'PulmonaryMedicine', hemo: 'Cardiovascular', neuro: 'Neurologic', proc: 'Emergency', peri: 'Surgical', infecto: 'Infectious', nefro: 'Renal' };
 
 // Cartão social. A imagem é 1200×630 e vive em assets/og-image.png.
 const OG_IMAGE = BASE_URL + '/assets/og-image.png';

@@ -1245,12 +1245,12 @@
       "id": "peri",
       "area": "raciocine",
       "status": "publicado",
-      "label": "Perioperatório",
+      "label": "Surgery Guide",
       "subtitulo": "Paciente cirúrgico",
       "root": "peri/",
       "cor": "#d9569b",
       "llms": {
-        "nome": "Perioperatório",
+        "nome": "Surgery Guide",
         "desc": "risco pré-operatório, profilaxia antibiótica, manejo pós-operatório e POCUS à beira do leito."
       },
       "hubExtras": [
@@ -1354,12 +1354,12 @@
       "id": "infecto",
       "area": "raciocine",
       "status": "rascunho",
-      "label": "Antimicrobianos",
+      "label": "Infecto Guide",
       "subtitulo": "Antibioticoterapia no paciente crítico",
       "root": "infecto/",
       "cor": "#5b63e0",
       "llms": {
-        "nome": "Antimicrobianos",
+        "nome": "Infecto Guide",
         "desc": "escolha empírica do foco ao espectro, PK/PD e dose no paciente crítico, resistência (ESBL, AmpC, CRE), multirresistentes e antibioticoterapia por cenário na UTI (pneumonia, abdome, urinário, partes moles, SNC, corrente sanguínea, candidemia, C. difficile, neutropenia febril)."
       },
       "hubExtras": [
@@ -1625,6 +1625,149 @@
             "selo": "Fragilidade",
             "titulo": "Paciente idoso",
             "resumo": "Apresentação atípica, nefrotoxicidade e interações"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nefro",
+      "area": "raciocine",
+      "status": "rascunho",
+      "label": "Nefro Guide",
+      "subtitulo": "Distúrbios hidroeletrolíticos, LRA e DRC no paciente crítico",
+      "root": "nefro/",
+      "cor": "#dfa32b",
+      "llms": {
+        "nome": "Nefro Guide",
+        "desc": "distúrbios hidroeletrolíticos no paciente crítico — sódio (hipo e hipernatremia), potássio (hipo e hipercalemia), cálcio, magnésio e fósforo — do mecanismo à correção segura, com velocidades de correção, vias e concentrações; lesão renal aguda e doença renal crônica em desenvolvimento."
+      },
+      "hubExtras": [
+        {
+          "href": "../consulte/",
+          "selo": "Assistente IA",
+          "titulo": "Assistente de conduta",
+          "resumo": "Descreva o caso e receba a conduta estruturada, com as fontes internas",
+          "grupo": "Rim agudo e crônico"
+        }
+      ],
+      "paginas": [
+        {
+          "id": "fluxograma",
+          "arquivo": "fluxograma.html",
+          "categoria": "Comece aqui",
+          "menu": "Fluxograma",
+          "titulo": "Fluxograma dos Distúrbios Hidroeletrolíticos",
+          "subtitulo": "O que mata primeiro, o que é real e a que velocidade corrigir",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Comece aqui",
+            "selo": "Fluxograma",
+            "titulo": "Fluxograma dos Distúrbios Hidroeletrolíticos",
+            "resumo": "O que mata primeiro, o que é real e a que velocidade corrigir"
+          }
+        },
+        {
+          "id": "sodio",
+          "arquivo": "sodio.html",
+          "categoria": "Distúrbios hidroeletrolíticos",
+          "menu": "Sódio",
+          "titulo": "Sódio — hiponatremia e hipernatremia",
+          "subtitulo": "Distúrbio da água, não do sal — e a velocidade de correção decide o desfecho",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Distúrbios hidroeletrolíticos",
+            "selo": "Sódio",
+            "titulo": "Sódio — hipo e hipernatremia",
+            "resumo": "Distúrbio da água, não do sal — a velocidade de correção decide o desfecho"
+          }
+        },
+        {
+          "id": "potassio",
+          "arquivo": "potassio.html",
+          "categoria": "Distúrbios hidroeletrolíticos",
+          "menu": "Potássio",
+          "titulo": "Potássio — hipocalemia e hipercalemia",
+          "subtitulo": "O eletrólito que mata primeiro — ECG, reposição segura por via e o escudo de cálcio",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Distúrbios hidroeletrolíticos",
+            "selo": "Potássio",
+            "titulo": "Potássio — hipo e hipercalemia",
+            "resumo": "O eletrólito que mata primeiro — ECG, reposição segura por via e o escudo de cálcio"
+          }
+        },
+        {
+          "id": "calcio",
+          "arquivo": "calcio.html",
+          "categoria": "Distúrbios hidroeletrolíticos",
+          "menu": "Cálcio",
+          "titulo": "Cálcio — hipocalcemia e hipercalcemia",
+          "subtitulo": "Ionizado antes de tratar — e a via certa para cada sal de cálcio",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Distúrbios hidroeletrolíticos",
+            "selo": "Cálcio",
+            "titulo": "Cálcio — hipo e hipercalcemia",
+            "resumo": "Ionizado antes de tratar — e a via certa para cada sal de cálcio"
+          }
+        },
+        {
+          "id": "magnesio-fosforo",
+          "arquivo": "magnesio-fosforo.html",
+          "categoria": "Distúrbios hidroeletrolíticos",
+          "menu": "Mg e Fósforo",
+          "titulo": "Magnésio e Fósforo",
+          "subtitulo": "Os esquecidos que sustentam os outros — repor Mg antes de K e Ca refratários",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Distúrbios hidroeletrolíticos",
+            "selo": "Mg · P",
+            "titulo": "Magnésio e fósforo",
+            "resumo": "Os esquecidos que sustentam os outros — repor Mg antes de K e Ca refratários"
+          }
+        },
+        {
+          "id": "lra",
+          "arquivo": "lra.html",
+          "categoria": "Rim agudo e crônico",
+          "menu": "LRA",
+          "titulo": "Lesão Renal Aguda",
+          "subtitulo": "KDIGO, causas e suporte — em desenvolvimento",
+          "tipo": "guia",
+          "status": "em-breve",
+          "ia": true,
+          "hub": {
+            "grupo": "Rim agudo e crônico",
+            "selo": "LRA",
+            "titulo": "Lesão renal aguda",
+            "resumo": "KDIGO, causas, prevenção e quando dialisar — em desenvolvimento"
+          }
+        },
+        {
+          "id": "drc",
+          "arquivo": "drc.html",
+          "categoria": "Rim agudo e crônico",
+          "menu": "DRC",
+          "titulo": "Doença Renal Crônica no crítico",
+          "subtitulo": "Ajustes, eletrólitos e diálise crônica na UTI — em desenvolvimento",
+          "tipo": "guia",
+          "status": "em-breve",
+          "ia": true,
+          "hub": {
+            "grupo": "Rim agudo e crônico",
+            "selo": "DRC",
+            "titulo": "DRC no paciente crítico",
+            "resumo": "Ajustes de dose, eletrólitos e o paciente dialítico na UTI — em desenvolvimento"
           }
         }
       ]

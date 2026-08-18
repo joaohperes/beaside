@@ -43,7 +43,7 @@ const rgb = (hex) => {
 };
 const mods = (ids) => manifest.modulos.filter((m) => ids.includes(m.id));
 const modById = (id) => manifest.modulos.find((m) => m.id === id);
-const RACIOCINE = ['vm', 'hemo', 'neuro', 'proc', 'peri', 'infecto'];
+const RACIOCINE = ['vm', 'hemo', 'neuro', 'proc', 'peri', 'infecto', 'nefro'];
 
 function aplicar(relPath, gerado, marcadorInicio, marcadorFim) {
   const abs = join(root, relPath);
