@@ -1741,16 +1741,16 @@
           "arquivo": "lra.html",
           "categoria": "Rim agudo e crônico",
           "menu": "LRA",
-          "titulo": "Lesão Renal Aguda",
-          "subtitulo": "KDIGO, causas e suporte — em desenvolvimento",
+          "titulo": "Lesão Renal Aguda no crítico",
+          "subtitulo": "Definir e estadiar, achar a causa e dialisar pela indicação — não pelo número",
           "tipo": "guia",
-          "status": "em-breve",
+          "status": "rascunho",
           "ia": true,
           "hub": {
             "grupo": "Rim agudo e crônico",
             "selo": "LRA",
-            "titulo": "Lesão renal aguda",
-            "resumo": "KDIGO, causas, prevenção e quando dialisar — em desenvolvimento"
+            "titulo": "Lesão renal aguda no crítico",
+            "resumo": "KDIGO, pré-renal × NTA, prevenção e o timing da diálise (STARRT-AKI, AKIKI)"
           }
         },
         {
@@ -1759,15 +1759,15 @@
           "categoria": "Rim agudo e crônico",
           "menu": "DRC",
           "titulo": "Doença Renal Crônica no crítico",
-          "subtitulo": "Ajustes, eletrólitos e diálise crônica na UTI — em desenvolvimento",
+          "subtitulo": "Reserva estreita, dose ajustada por TFG e o paciente dialítico na UTI",
           "tipo": "guia",
-          "status": "em-breve",
+          "status": "rascunho",
           "ia": true,
           "hub": {
             "grupo": "Rim agudo e crônico",
             "selo": "DRC",
             "titulo": "DRC no paciente crítico",
-            "resumo": "Ajustes de dose, eletrólitos e o paciente dialítico na UTI — em desenvolvimento"
+            "resumo": "Estadiamento KDIGO 2024, ameaças da reserva estreita e o paciente em diálise"
           }
         }
       ]

@@ -298,8 +298,8 @@ const MODULE_PAGES = {
     {id:'potassio',         file:'potassio.html',         cat:'Distúrbios hidroeletrolíticos', label:'Potássio',     title:'Potássio — hipocalemia e hipercalemia',        subtitle:'O eletrólito que mata primeiro — ECG, reposição segura por via e o escudo de cálcio'},
     {id:'calcio',           file:'calcio.html',           cat:'Distúrbios hidroeletrolíticos', label:'Cálcio',       title:'Cálcio — hipocalcemia e hipercalcemia',        subtitle:'Ionizado antes de tratar — e a via certa para cada sal de cálcio'},
     {id:'magnesio-fosforo', file:'magnesio-fosforo.html', cat:'Distúrbios hidroeletrolíticos', label:'Mg e Fósforo', title:'Magnésio e Fósforo',                           subtitle:'Os esquecidos que sustentam os outros — repor Mg antes de K e Ca refratários'},
-    {id:'lra',              file:'lra.html',              cat:'Rim agudo e crônico',           label:'LRA',          title:'Lesão Renal Aguda',                            subtitle:'KDIGO, causas e suporte — em desenvolvimento'},
-    {id:'drc',              file:'drc.html',              cat:'Rim agudo e crônico',           label:'DRC',          title:'Doença Renal Crônica no crítico',              subtitle:'Ajustes, eletrólitos e diálise crônica na UTI — em desenvolvimento'},
+    {id:'lra',              file:'lra.html',              cat:'Rim agudo e crônico',           label:'LRA',          title:'Lesão Renal Aguda no crítico',                 subtitle:'Definir e estadiar, achar a causa e dialisar pela indicação — não pelo número'},
+    {id:'drc',              file:'drc.html',              cat:'Rim agudo e crônico',           label:'DRC',          title:'Doença Renal Crônica no crítico',              subtitle:'Reserva estreita, dose ajustada por TFG e o paciente dialítico na UTI'},
   ],
   consulte: [
     {id:'ferramentas', file:'ferramentas.html', cat:'Consulte',      label:'Ferramentas',           title:'Consulte — execução rápida', subtitle:'Doses, tabelas, calculadoras e metas do plantão'},
