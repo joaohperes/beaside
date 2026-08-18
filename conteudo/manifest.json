@@ -2090,6 +2090,90 @@
           "status": "rascunho",
           "ia": false,
           "hub": null
+        },
+        {
+          "id": "hiponatremia",
+          "arquivo": "hiponatremia.html",
+          "categoria": "Hidroeletrolítico",
+          "menu": "Hiponatremia",
+          "titulo": "Prescrição comentada — Hiponatremia",
+          "subtitulo": "Sintomático leva NaCl 3% em bolus; o resto é ritmo — e o teto de 8 mEq/L em 24 h",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "hipernatremia",
+          "arquivo": "hipernatremia.html",
+          "categoria": "Hidroeletrolítico",
+          "menu": "Hipernatremia",
+          "titulo": "Prescrição comentada — Hipernatremia",
+          "subtitulo": "Água livre calculada, déficit reposto devagar — e a causa quase sempre é acesso à água",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "hipocalemia",
+          "arquivo": "hipocalemia.html",
+          "categoria": "Hidroeletrolítico",
+          "menu": "Hipocalemia",
+          "titulo": "Prescrição comentada — Hipocalemia",
+          "subtitulo": "Reposição pela via certa: teto de 40 mEq/L e 10 mEq/h no periférico — e o magnésio junto",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "hipercalemia",
+          "arquivo": "hipercalemia.html",
+          "categoria": "Hidroeletrolítico",
+          "menu": "Hipercalemia",
+          "titulo": "Prescrição comentada — Hipercalemia",
+          "subtitulo": "Cálcio protege a membrana, insulina joga o K para dentro, e só a diálise tira do corpo",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "hipocalcemia",
+          "arquivo": "hipocalcemia.html",
+          "categoria": "Hidroeletrolítico",
+          "menu": "Hipocalcemia",
+          "titulo": "Prescrição comentada — Hipocalcemia",
+          "subtitulo": "Cálcio iônico antes de tratar, gluconato no periférico — e o magnésio que ninguém dosa",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "hipomagnesemia",
+          "arquivo": "hipomagnesemia.html",
+          "categoria": "Hidroeletrolítico",
+          "menu": "Hipomagnesemia",
+          "titulo": "Prescrição comentada — Hipomagnesemia",
+          "subtitulo": "A deficiência que sustenta hipocalemia e hipocalcemia refratárias — e o rim que joga fora",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "hipofosfatemia",
+          "arquivo": "hipofosfatemia.html",
+          "categoria": "Hidroeletrolítico",
+          "menu": "Hipofosfatemia",
+          "titulo": "Prescrição comentada — Hipofosfatemia",
+          "subtitulo": "Quando repor de verdade, e por que quem manda na velocidade é o potássio da ampola",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
         }
       ]
     },
