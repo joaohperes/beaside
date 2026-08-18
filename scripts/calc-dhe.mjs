@@ -159,6 +159,34 @@ console.log('\n  Mesmos 30 mmol com fosfato de SÓDIO (quando o K não pode subi
 const mLNa = 30 / fosfNa.P_mmol_mL;
 linha('  30 mmol de P', `${r(mLNa, 1)} mL  →  arrasta ${r(mLNa * fosfNa.Na_mEq_mL, 1)} mEq de Na`);
 
+/* ── 6. Neurocrítico — hipertônica concentrada como osmoterapia ───────── */
+titulo('6 · NEUROCRÍTICO — hipertônica concentrada (osmoterapia, NÃO correção de hiponatremia)');
+
+const naCl234_mEq_mL = (234 / PM.NaCl);           // 23,4 g/100 mL = 234 g/L
+linha('NaCl 23,4% — mEq Na/mL', r(naCl234_mEq_mL));
+linha('NaCl 20% — mEq Na/mL', r(naCl20_mEq_mL));
+
+const bolus234 = 30;                               // bolus clássico da literatura
+const mEq234 = bolus234 * naCl234_mEq_mL;
+linha(`bolus clássico de 23,4% — ${bolus234} mL`, `${r(mEq234, 1)} mEq de Na`);
+const equiv20 = mEq234 / naCl20_mEq_mL;
+linha('mesmo Na com NaCl 20% (equivalência)', `${r(equiv20, 1)} mL  ≈  ${Math.round(equiv20 / 10)} ampolas de 10 mL`);
+
+console.log('\n  Ampolas de NaCl 20% e o Na que cada uma entrega:');
+for (const amp of [2, 3, 4]) {
+  const mL = amp * 10;
+  linha(`  ${amp} ampolas (${mL} mL)`, `${r(mL * naCl20_mEq_mL, 1)} mEq de Na`);
+}
+
+console.log('\n  Salina 3% em bolus de osmoterapia (alternativa diluída):');
+for (const vol of [150, 250]) {
+  linha(`  ${vol} mL de NaCl 3,0%`, `${r(vol * naCl3_mEq_L / 1000, 1)} mEq de Na`);
+}
+
+console.log('\n  Manitol 20% — para comparar a carga osmótica:');
+linha('  frasco de 250 mL a 20%', '50 g');
+linha('  1 g/kg em 70 kg', `${r(70 / (200 / 1000), 0)} mL do frasco a 20%  (${70} g)`);
+
 console.log(`\n${'─'.repeat(72)}`);
 console.log('Conferir SEMPRE a apresentação da farmácia do serviço antes de prescrever.');
 console.log(`${'─'.repeat(72)}\n`);

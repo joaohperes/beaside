@@ -127,7 +127,7 @@
         <div class="rx-dose"><b>Preparo usual</b> (na falta da bolsa pronta): <b>SF 0,9% 440 mL + NaCl 20% 60 mL</b> → 273 mEq em 500 mL = <b>0,546 mEq/mL</b>. Atenção: isso é <b>NaCl 3,19%</b>, não 3,0%</div>
         <div class="rx-dose"><b>Preparo de 3,0% exato:</b> <b>SF 0,9% 445 mL + NaCl 20% 55 mL</b> → 513 mEq/L. Use um <em>ou</em> outro, e saiba qual está pendurado</div>
         <div class="rx-dose"><b>Quanto o bolus entrega:</b> 100 mL do preparo usual = <b>54,6 mEq</b> de Na · 100 mL de 3,0% = <b>51,3 mEq</b> · 150 mL = 81,9 e 77 mEq</div>
-        <div class="rx-dose"><b>NaCl 20%:</b> 3,42 mEq de Na/mL — ampola de 10 mL = <b>34,2 mEq</b>. <b>Nunca infundir puro</b></div>
+        <div class="rx-dose"><b>NaCl 20%:</b> 3,42 mEq de Na/mL — ampola de 10 mL = <b>34,2 mEq</b>. <b>Nunca infundir puro para corrigir hiponatremia</b> — sempre diluído. (A hipertônica concentrada em bolus existe, mas é <em>osmoterapia</em> no neurocrítico, outra indicação e outra via — item 05)</div>
       </div>
       <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
         <span class="rx-why">Por quê &amp; armadilhas</span>
@@ -194,6 +194,36 @@
       </div>
     </div>
 
+    <div class="section-label" style="margin-top:26px">O neurocrítico — onde o sódio muda de alvo</div>
+
+    <!-- 05 · Neurocrítico -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Hipertônica concentrada no neurocrítico — e por que aqui o alvo é outro</div>
+          <div class="rx-cond">no TCE, HSA, AVCh e AVC maligno o sódio deixa de ser um número de laboratório e vira ferramenta de PIC</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Duas indicações que não se confundem:</b> <b>corrigir hiponatremia</b> (itens 01–04, alvo é o teto de 8 mEq/L/24 h) e <b>osmoterapia</b> — baixar PIC e edema, onde o sódio alto é o <em>objetivo</em>, não o efeito colateral</div>
+        <div class="rx-dose"><b>Hiponatremia no neurocrítico não é tolerada como no clínico:</b> com a barreira lesada, cada mEq a menos vira água no parênquima. O alvo costuma ser <b>normonatremia alta a hipernatremia leve</b>, definido pelo protocolo de neuro do serviço — e a <b>restrição hídrica é proibida na HSA</b> (ver <a class="text-link" href="hsa.html">HSA</a>)</div>
+        <div class="rx-dose"><b>Bolus de osmoterapia — apresentação brasileira:</b> o bolus clássico da literatura é <b>NaCl 23,4% 30 mL</b> = <b>120 mEq</b>. Com <b>NaCl 20%</b>, o equivalente em sódio é <b>≈ 35 mL</b> (3–4 ampolas de 10 mL): <b>2 ampolas = 68 mEq · 3 = 103 mEq · 4 = 137 mEq</b></div>
+        <div class="rx-dose"><b>Via:</b> solução concentrada pede <b>acesso central</b> — é esclerosante e o extravasamento causa necrose. Sem central, a alternativa é o volume maior e diluído: <b>NaCl 3% 150–250 mL</b> (= 77 a 128 mEq) em 15–20 min</div>
+        <div class="rx-dose"><b>Alternativa osmótica:</b> <b>manitol 20% 1 g/kg</b> — em 70 kg são 350 mL do frasco a 20%. Manitol é diurético osmótico (cuidado com hipovolemia e rim); a hipertônica expande volume — no hipotenso, a hipertônica costuma ser preferida</div>
+        <div class="rx-dose"><b>Monitorizar:</b> sódio e osmolaridade seriados, <b>estado neurológico</b>, PIC quando houver, diurese e função renal · o alvo e o teto de sódio saem do <b>protocolo de neurointensivismo</b>, não desta página</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Este item existe porque o mesmo frasco resolve dois problemas opostos, e confundi-los é fácil. Na hiponatremia, o sódio alto é o risco e o teto é a regra. Na hipertensão intracraniana, o sódio alto é o <strong>tratamento</strong> — sobe-se o sódio de propósito para puxar água do parênquima, e o "teto de 8 mEq/L em 24 h" não governa essa decisão da mesma forma.</p>
+        <p>Mas há uma sobreposição real e perigosa: o paciente neurocrítico <em>hiponatrêmico</em>. HSA e TCE fazem hiponatremia com frequência — por SIADH ou por perda cerebral de sal — e ali a hiponatremia é duplamente ruim, porque agrava o edema num crânio que não tem para onde expandir. É o cenário em que corrigir é urgente e a restrição hídrica, reflexo do internista, faz mal: na HSA ela é contraindicada, porque hipovolemia alimenta a isquemia tardia.</p>
+        <p>Sobre a dose concentrada: a diretriz de edema cerebral da Neurocritical Care Society avalia manitol e salina hipertônica na HSA, no TCE, no AVC isquêmico, na hemorragia intracerebral e na encefalopatia hepática, e conclui que a osmoterapia <strong>reduz PIC e edema, sem que o desfecho neurológico pareça mudar</strong> — e que há diferenças de resposta e de segurança entre os dois agentes. Ou seja: é ponte para ganhar tempo até a medida definitiva (dreno, cirurgia, tratamento da causa), não tratamento em si. A equivalência de 20% para 23,4% acima foi <b>calculada</b>, não copiada de bula — confirme com a farmácia e com o protocolo do seu serviço antes de usar.</p>
+        <span class="ref">Cook AM, Morgan Jones G, Hawryluk GWJ, et al. Guidelines for the Acute Treatment of Cerebral Edema in Neurocritical Care Patients. <em>Neurocrit Care.</em> 2020;32(3):647–666 (doi:10.1007/s12028-020-00959-7) · equivalências de mEq entre NaCl 23,4%, 20% e 3% calculadas em <code>scripts/calc-dhe.mjs</code> · conduta de PIC e de sódio na <a class="text-link" href="avch.html">HIC</a> e na <a class="text-link" href="hsa.html">HSA</a>.</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -202,7 +232,7 @@
   <h2 class="section-title">O que <em>não</em> prescrever</h2>
   <div class="warn-box">
     <strong>Erros que pioram o desfecho.</strong>
-    <p class="box-body"><strong>Hipertônica no assintomático crônico</strong> — o risco de desmielinização supera o ganho. <strong>Correção acima de 8 mEq/L em 24 h.</strong> <strong>SF 0,9% no SIADH com urina concentrada</strong> — pode baixar ainda mais o sódio. <strong>Restrição hídrica na hiponatremia hipovolêmica</strong> — ali falta volume, não sobra água. <strong>Prescrever hipertônica sem controle seriado de sódio.</strong> <strong>NaCl 20% puro.</strong> E <strong>tratar o número sem dosar TSH e cortisol.</strong></p>
+    <p class="box-body"><strong>Hipertônica no assintomático crônico</strong> — o risco de desmielinização supera o ganho. <strong>Correção acima de 8 mEq/L em 24 h.</strong> <strong>SF 0,9% no SIADH com urina concentrada</strong> — pode baixar ainda mais o sódio. <strong>Restrição hídrica na hiponatremia hipovolêmica</strong> — ali falta volume, não sobra água. <strong>Prescrever hipertônica sem controle seriado de sódio.</strong> <strong>NaCl 20% puro.</strong> E <strong>tratar o número sem dosar TSH e cortisol.</strong> No neurocrítico, dois a mais: <strong>restrição hídrica na HSA</strong> — ali ela alimenta a isquemia tardia — e <strong>hipertônica concentrada em veia periférica</strong>, que é esclerosante e necrosa no extravasamento.</p>
   </div>
 </section>
 
