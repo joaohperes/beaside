@@ -55,6 +55,33 @@
   .rx-item .card-body p strong{color:var(--text)}
   .rx-item .card-body .ref{display:block;margin-top:10px}
   @media(max-width:600px){.rx-head{padding:14px 14px 0}.rx-body{padding:2px 14px 6px}}
+  /* calculadoras embutidas — só tokens, mesma família do .rx-* */
+  .rxc{border:1px solid var(--border);border-radius:12px;background:var(--bg2);padding:14px 16px;margin:12px 0 0}
+  .rxc-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+  .rxc-t{font-size:13px;font-weight:600;color:var(--text);letter-spacing:-.01em}
+  .rxc-badge{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--accent);
+    background:rgba(var(--accent-rgb),.12);border-radius:6px;padding:2px 8px;white-space:nowrap}
+  .rxc-sub{font-size:12px;color:var(--text2);line-height:1.55;margin:0 0 10px}
+  .rxc-list{display:flex;flex-direction:column;gap:2px;margin:0 0 10px}
+  .rxc-item{display:flex;gap:9px;align-items:flex-start;padding:5px 6px;border-radius:7px;cursor:pointer;
+    font-size:12.5px;line-height:1.5;color:var(--text)}
+  @media(hover:hover){.rxc-item:hover{background:var(--bg3)}}
+  .rxc-item input{margin:2px 0 0;flex-shrink:0;accent-color:var(--accent);width:15px;height:15px;cursor:pointer}
+  .rxc-item input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .rxc-pts{font-family:var(--mono);font-size:11px;color:var(--text2);margin-left:auto;padding-left:8px;flex-shrink:0}
+  .rxc-foot{display:flex;align-items:center;gap:12px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:10px}
+  .rxc-score{font-family:var(--mono);font-size:17px;font-weight:600;color:var(--accent)}
+  .rxc-score-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--text2)}
+  .rxc-reset{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--text2);background:none;
+    border:1px solid var(--border);border-radius:7px;padding:5px 10px;cursor:pointer}
+  @media(hover:hover){.rxc-reset:hover{color:var(--text);background:var(--bg3)}}
+  .rxc-reset:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .rxc-out{margin-top:10px;padding:10px 12px;border-radius:9px;border:1px solid var(--border);background:var(--bg3)}
+  .rxc-out-t{display:block;font-size:12.5px;font-weight:600;color:var(--text);margin-bottom:3px}
+  .rxc-out-d{display:block;font-size:12px;line-height:1.6;color:var(--text2)}
+  .rxc-out[data-estado="alto"]{border-color:rgba(var(--accent-rgb),.45)}
+  .rxc-out[data-estado="alto"] .rxc-out-t{color:var(--accent)}
+  .rxc-out[data-estado="limite"]{border-color:var(--border)}
 </style>
 </head>
 <body data-module="prescricoes" data-page="iam-vd" data-root="../../">
@@ -254,6 +281,159 @@
       </div>
     </div>
 
+    <div class="section-label" style="margin-top:26px">A rotina que sustenta o resto</div>
+
+    <!-- rotina 01 · Dieta -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Dieta</div>
+          <div class="rx-cond">a primeira linha da prescrição que todo mundo escreve no automático</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Dieta conforme o quadro</b> — via oral se desperta, deglute e não há procedimento previsto · <b>zero</b> se rebaixado, instável ou com via aérea em risco, reavaliando <b>cedo</b> · sonda enteral se o jejum passar de 48–72 h</div>
+        <div class="rx-dose"><b>Jejum tem data e hora</b> — escrever o motivo e quando reavaliar. "Jejum" sem prazo vira desnutrição de terceira semana</div>
+        <div class="rx-dose"><b>Disfagia:</b> triagem antes da primeira colher em qualquer rebaixamento, AVC ou pós-extubação — falhou, sonda; a medicação também passa por ela</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O jejum prolongado é a prescrição mais barata de escrever e uma das mais caras de sustentar: cada dia sem aporte custa massa muscular num paciente que vai precisar dela para desmamar, sentar e andar. A pergunta de visita não é "está em jejum?", é <strong>"por que ainda está, e até quando?"</strong>.</p>
+      </div>
+    </div>
+
+    <!-- rotina 02 · Cuidados de enfermagem -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Cuidados de enfermagem — a rotina que evita a segunda doença</div>
+          <div class="rx-cond">decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Sinais vitais e rotina de UTI 2/2 h</b> (espaçar conforme estabilidade) · <b>balanço hídrico</b> e <b>diurese</b> registrados</div>
+        <div class="rx-dose"><b>Cabeceira 30–45°</b> — reduz aspiração e pneumonia associada à ventilação · abaixar só com motivo escrito (choque, procedimento)</div>
+        <div class="rx-dose"><b>Mudança de decúbito 2/2 h</b> + <b>avaliação diária da pele</b> nas proeminências (sacro, calcâneo, occipital, trocânter) · colchão de redistribuição de pressão no imóvel</div>
+        <div class="rx-dose"><b>Curativos</b> inspecionados por turno; datar a troca · <b>higiene oral</b> com antisséptico no intubado · olhos lubrificados no sedado</div>
+        <div class="rx-dose"><b>Fisioterapia</b> — fisioterapia motora e respiratória desde o primeiro dia, conforme tolerância</div>
+        <div class="rx-dose"><b>Oxigênio conforme necessidade:</b> <b>SpO₂ 94–98%</b> na maioria dos adultos · <b>88–92%</b> se houver DPOC ou risco de hipercapnia. Oxigênio é droga: tem alvo, tem dose e tem excesso</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Estes itens não competem com a doença principal — eles decidem se o paciente sai da UTI com a doença resolvida e o corpo inteiro, ou resolvido e com uma lesão por pressão em sacro que vai custar meses. Lesão por pressão, pneumonia por aspiração e fraqueza adquirida na UTI são as três complicações que a prescrição previne com linhas que ninguém lê.</p>
+        <p>A cabeceira elevada é o exemplo perfeito: é gratuita, tem efeito documentado sobre pneumonia associada à ventilação, e é a primeira coisa que se perde quando o leito é abaixado para um procedimento e ninguém sobe de volta.</p>
+      </div>
+    </div>
+
+    <!-- rotina 03 · Profilaxia de úlcera de estresse -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Profilaxia de úlcera de estresse — só com indicação</div>
+          <div class="rx-cond">não é carimbo de internação: sem fator de risco, o dano supera o benefício</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Com indicação:</b> inibidor de bomba de prótons — <b>omeprazol ou pantoprazol 40 mg EV ou VO 1×/dia</b>, conforme padronização do serviço</div>
+        <div class="rx-dose">Reavaliar a indicação <b>todo dia</b> — ela costuma sumir antes da alta da UTI, e a prescrição costuma continuar.</div>
+        <div class="rx-dose"><b>O preço de prescrever sem indicação:</b> mais pneumonia associada à ventilação, mais <em>C. difficile</em>, e a prescrição crônica que sai junto na receita de alta</div>
+        <div class="rxc" data-rx-calc="ulcera">
+          <div class="rxc-h">
+            <span class="rxc-t">Profilaxia de úlcera de estresse — há indicação?</span>
+            <span class="rxc-badge">1 maior ou ≥ 2 menores</span>
+          </div>
+          <p class="rxc-sub">Não existe escore validado único. A regra prática dos consensos: <b>um fator maior</b> basta; <b>dois ou mais menores</b> costumam bastar. Sem fator, a profilaxia causa mais dano do que evita.</p>
+          <div class="rxc-list">
+            <label class="rxc-item"><input type="checkbox" data-peso="1" data-classe="maior"><span><b>Maior</b> — ventilação mecânica esperada por &gt; 48 h</span><span class="rxc-pts">maior</span></label>
+            <label class="rxc-item"><input type="checkbox" data-peso="1" data-classe="maior"><span><b>Maior</b> — coagulopatia (plaquetas &lt; 50.000, INR &gt; 1,5 ou TTPa &gt; 2× o controle)</span><span class="rxc-pts">maior</span></label>
+            <label class="rxc-item"><input type="checkbox" data-peso="1" data-classe="menor"><span>Choque, sepse ou vasopressor</span><span class="rxc-pts">menor</span></label>
+            <label class="rxc-item"><input type="checkbox" data-peso="1" data-classe="menor"><span>Úlcera péptica ou sangramento digestivo no último ano</span><span class="rxc-pts">menor</span></label>
+            <label class="rxc-item"><input type="checkbox" data-peso="1" data-classe="menor"><span>Traumatismo cranioencefálico, trauma raquimedular ou queimadura extensa</span><span class="rxc-pts">menor</span></label>
+            <label class="rxc-item"><input type="checkbox" data-peso="1" data-classe="menor"><span>Insuficiência hepática ou renal</span><span class="rxc-pts">menor</span></label>
+            <label class="rxc-item"><input type="checkbox" data-peso="1" data-classe="menor"><span>Corticoide em dose alta</span><span class="rxc-pts">menor</span></label>
+            <label class="rxc-item"><input type="checkbox" data-peso="1" data-classe="menor"><span>Permanência em UTI &gt; 1 semana</span><span class="rxc-pts">menor</span></label>
+          </div>
+          <div class="rxc-foot">
+            <span class="rxc-score-k">Fatores</span><span class="rxc-score">0M / 0m</span>
+            <button type="button" class="rxc-reset">Limpar</button>
+          </div>
+          <div class="rxc-out" data-estado="baixo">
+            <span class="rxc-out-t"></span><span class="rxc-out-d"></span>
+          </div>
+        </div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Os dois fatores de risco independentes clássicos vêm do estudo de Cook: <strong>ventilação mecânica prolongada</strong> e <strong>coagulopatia</strong>. Fora deles, o sangramento clinicamente importante é raro o suficiente para que o dano da supressão ácida — pneumonia e colite por <em>C. difficile</em> — comece a pesar mais.</p>
+        <p>A armadilha real não é começar, é <strong>não parar</strong>. A indicação some quando o paciente extuba e a coagulação normaliza; a prescrição, não. É assim que um inibidor de bomba iniciado numa UTI vira uso crônico de anos, com a hipomagnesemia que ele causa aparecendo lá na frente, sem que ninguém ligue os dois.</p>
+        <span class="ref">Cook DJ, Fuller HD, Guyatt GH, et al. Risk factors for gastrointestinal bleeding in critically ill patients. <em>N Engl J Med.</em> 1994;330(6):377–381 — os dois fatores independentes. Os fatores menores vêm de consensos posteriores; não há escore validado único.</span>
+      </div>
+    </div>
+
+    <!-- rotina 04 · Profilaxia de TEV -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Profilaxia de TEV — pelo risco, não pelo tempo de internação</div>
+          <div class="rx-cond">"internou, prescreve" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Farmacológica, com indicação e sem sangramento:</b> <b>enoxaparina 40 mg SC 1×/dia</b> · <b>ClCr &lt; 30:</b> enoxaparina 20 mg SC 1×/dia <em>ou</em> <b>HNF 5.000 UI SC 8/8–12/12 h</b>, conforme protocolo</div>
+        <div class="rx-dose"><b>Mecânica</b> (compressão pneumática intermitente) quando a farmacológica está contraindicada — sangramento ativo, plaquetopenia grave, pós-operatório neurocirúrgico recente — ou <b>somada</b> a ela no altíssimo risco</div>
+        <div class="rx-dose"><b>Não somar</b> profilaxia a quem já está em <b>anticoagulação plena</b> — é dose dupla sem ganho</div>
+        <div class="rx-dose">Individualizar sempre: o escore diz se <em>há indicação</em>, não se <em>este</em> paciente deve receber.</div>
+        <div class="rxc" data-rx-calc="padua">
+          <div class="rxc-h">
+            <span class="rxc-t">Escore de Pádua — risco de TEV no paciente clínico internado</span>
+            <span class="rxc-badge">≥ 4 = alto risco</span>
+          </div>
+          <p class="rxc-sub">Marque o que se aplica. O escore indica se há <em>indicação</em>; quem decide se este paciente recebe é você, pesando sangramento, plaquetas, rim e procedimento previsto.</p>
+          <div class="rxc-list">
+            <label class="rxc-item"><input type="checkbox" data-peso="3"><span>Câncer ativo (metástase, ou quimio/radioterapia nos últimos 6 meses)</span><span class="rxc-pts">3</span></label>
+            <label class="rxc-item"><input type="checkbox" data-peso="3"><span>TEV prévio (exceto trombose venosa superficial)</span><span class="rxc-pts">3</span></label>
+            <label class="rxc-item"><input type="checkbox" data-peso="3"><span>Mobilidade reduzida — restrito ao leito, com banheiro, por ≥ 3 dias</span><span class="rxc-pts">3</span></label>
+            <label class="rxc-item"><input type="checkbox" data-peso="3"><span>Trombofilia conhecida</span><span class="rxc-pts">3</span></label>
+            <label class="rxc-item"><input type="checkbox" data-peso="2"><span>Trauma ou cirurgia no último mês</span><span class="rxc-pts">2</span></label>
+            <label class="rxc-item"><input type="checkbox" data-peso="1"><span>Idade ≥ 70 anos</span><span class="rxc-pts">1</span></label>
+            <label class="rxc-item"><input type="checkbox" data-peso="1"><span>Insuficiência cardíaca e/ou respiratória</span><span class="rxc-pts">1</span></label>
+            <label class="rxc-item"><input type="checkbox" data-peso="1"><span>Infarto agudo do miocárdio ou AVC isquêmico</span><span class="rxc-pts">1</span></label>
+            <label class="rxc-item"><input type="checkbox" data-peso="1"><span>Infecção aguda e/ou doença reumatológica</span><span class="rxc-pts">1</span></label>
+            <label class="rxc-item"><input type="checkbox" data-peso="1"><span>Obesidade (IMC ≥ 30)</span><span class="rxc-pts">1</span></label>
+            <label class="rxc-item"><input type="checkbox" data-peso="1"><span>Terapia hormonal em curso</span><span class="rxc-pts">1</span></label>
+          </div>
+          <div class="rxc-foot">
+            <span class="rxc-score-k">Pontos</span><span class="rxc-score">0</span>
+            <button type="button" class="rxc-reset">Limpar</button>
+          </div>
+          <div class="rxc-out" data-estado="baixo">
+            <span class="rxc-out-t"></span><span class="rxc-out-d"></span>
+          </div>
+        </div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O escore de Pádua foi construído justamente para separar quem se beneficia de quem só recebe: no estudo original, os pacientes de alto risco sem profilaxia tiveram cerca de 11% de TEV, contra pouco mais de 2% nos de baixo risco. É essa diferença que justifica prescrever — e que explica por que prescrever para todo mundo dilui o benefício e soma sangramento.</p>
+        <p>Duas armadilhas de plantão. A primeira é a dose fixa em quem não a comporta: no ClCr abaixo de 30 a enoxaparina acumula, e a dose profilática vira quase terapêutica. A segunda é a soma silenciosa — o paciente que já recebe heparina plena por outro motivo e ganha mais 40 mg de enoxaparina porque "está internado".</p>
+        <span class="ref">Barbar S, Noventa F, Rossetto V, et al. A risk assessment model for the identification of hospitalized medical patients at risk for venous thromboembolism: the Padua Prediction Score. <em>J Thromb Haemost.</em> 2010;8(11):2450–2457.</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -293,5 +473,6 @@ document.addEventListener('keydown',function(e){
   }
 });
 </script>
+<script src="../../assets/rx-scores.js"></script>
 </body>
 </html>
