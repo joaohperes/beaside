@@ -13,7 +13,7 @@
 <title>Calculadoras clínicas — Prescrições comentadas | be·aside</title>
 <meta name="robots" content="noindex, nofollow" data-beaside="status">
 <link rel="canonical" href="https://beaside.com.br/consulte/prescricoes/calculadoras.html">
-<meta name="description" content="Escores e fórmulas usados no dia a dia da UTI e da emergência, reunidos em um lugar: Pádua, CHA2DS2-VA, HAS-BLED, Wells, sPESI, Glasgow-Blatchford, Child-Pugh, BISAP, CURB-65, ClCr, ânion gap, déficit de água livre e mais.">
+<meta name="description" content="Escores e fórmulas usados no dia a dia da UTI e da emergência, reunidos em um lugar: SOFA, NEWS2, PESI e sPESI, CHA2DS2-VA, HAS-BLED, Wells, Glasgow-Blatchford, Child-Pugh, MELD-Na, BISAP, CURB-65, ClCr e CKD-EPI, QTc, ânion gap, Winter, déficit de água livre, Pádua e mais.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="be·aside">
 <meta property="og:locale" content="pt_BR">
@@ -106,6 +106,12 @@
   @media(hover:hover){.calc-nav a:hover{background:var(--bg3)}}
   .calc-nav a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
   .rxc,.calc-grupo{scroll-margin-top:calc(var(--header-h,58px) + 70px)}
+  .calc-idx{display:flex;flex-wrap:wrap;gap:7px;margin:18px 0 4px}
+  .calc-idx a{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text);text-decoration:none;
+    background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:6px 10px;
+    transition:background .15s ease,border-color .15s ease}
+  @media(hover:hover){.calc-idx a:hover{background:var(--bg3);border-color:rgba(var(--accent-rgb),.45)}}
+  .calc-idx a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 </style>
 </head>
 <body data-module="prescricoes" data-page="calculadoras" data-root="../../">
@@ -125,9 +131,39 @@
     <p class="box-body">Todos os escores desta página dizem <strong>se há indicação</strong>, ou <strong>qual é o risco estimado</strong>. Nenhum deles decide se <em>este</em> paciente deve receber <em>este</em> tratamento — isso depende de sangramento, função renal, procedimento previsto, preferência do paciente e do protocolo do seu serviço. Os resultados são estimativas de população aplicadas a um indivíduo.</p>
   </div>
 
+  <div class="section-label" style="margin-top:26px">Acesso direto</div>
+  <div class="calc-idx">
+    <a href="#clcr">ClCr (Cockcroft–Gault)</a>
+    <a href="#ckdepi">CKD-EPI 2021</a>
+    <a href="#peso">Peso ideal/ajustado</a>
+    <a href="#qtc">QTc</a>
+    <a href="#padua">Pádua (TEV)</a>
+    <a href="#ulcera">Úlcera de estresse</a>
+    <a href="#sofa">SOFA</a>
+    <a href="#news2">NEWS2</a>
+    <a href="#na-corrigido">Na corrigido</a>
+    <a href="#osm">Osmolaridade</a>
+    <a href="#adrogue">Adrogué–Madias</a>
+    <a href="#agua-livre">Déficit de água livre</a>
+    <a href="#ca-corrigido">Ca corrigido</a>
+    <a href="#anion-gap">Ânion gap</a>
+    <a href="#winter">Winter</a>
+    <a href="#chads">CHA₂DS₂-VA</a>
+    <a href="#hasbled">HAS-BLED</a>
+    <a href="#wells-tep">Wells TEP</a>
+    <a href="#pesi">PESI</a>
+    <a href="#spesi">sPESI</a>
+    <a href="#blatchford">Glasgow-Blatchford</a>
+    <a href="#child">Child-Pugh</a>
+    <a href="#meldna">MELD-Na</a>
+    <a href="#bisap">BISAP</a>
+    <a href="#curb65">CURB-65</a>
+  </div>
+
   <nav class="calc-nav" aria-label="Calculadoras por grupo">
     <div class="calc-nav-in">
     <a href="#universais">Universais</a>
+    <a href="#gravidade">Gravidade e triagem</a>
     <a href="#eletrolitos">Eletrólitos e metabólico</a>
     <a href="#cardio">Cardiovascular</a>
     <a href="#gastro">Gastroenterologia</a>
@@ -140,8 +176,16 @@
     <p class="prose" style="margin-top:6px">Servem em qualquer página: ajuste renal, peso da dose e as duas profilaxias que entram em toda prescrição.</p>
     <div data-calc="clcr"></div>
     <div data-calc="peso"></div>
+    <div data-calc="ckdepi"></div>
+    <div data-calc="qtc"></div>
     <div data-calc="padua"></div>
     <div data-calc="ulcera"></div>
+  </div>
+  <div class="calc-grupo" id="gravidade" tabindex="-1">
+    <div class="section-label">Gravidade e triagem</div>
+    <p class="prose" style="margin-top:6px">O SOFA que define sepse pela variação, e o NEWS2 que a SSC 2026 recomenda para triar — no lugar do qSOFA, cuja sensibilidade é baixa demais para isso.</p>
+    <div data-calc="sofa"></div>
+    <div data-calc="news2"></div>
   </div>
   <div class="calc-grupo" id="eletrolitos" tabindex="-1">
     <div class="section-label">Eletrólitos e metabólico</div>
@@ -152,6 +196,7 @@
     <div data-calc="agua-livre"></div>
     <div data-calc="ca-corrigido"></div>
     <div data-calc="anion-gap"></div>
+    <div data-calc="winter"></div>
   </div>
   <div class="calc-grupo" id="cardio" tabindex="-1">
     <div class="section-label">Cardiovascular</div>
@@ -159,6 +204,7 @@
     <div data-calc="chads"></div>
     <div data-calc="hasbled"></div>
     <div data-calc="wells-tep"></div>
+    <div data-calc="pesi"></div>
     <div data-calc="spesi"></div>
   </div>
   <div class="calc-grupo" id="gastro" tabindex="-1">
@@ -166,13 +212,13 @@
     <p class="prose" style="margin-top:6px">Quem pode ir para casa, quem tem cirrose grave e quem vai piorar na pancreatite.</p>
     <div data-calc="blatchford"></div>
     <div data-calc="child"></div>
+    <div data-calc="meldna"></div>
     <div data-calc="bisap"></div>
   </div>
   <div class="calc-grupo" id="infecto" tabindex="-1">
     <div class="section-label">Infecto e respiratório</div>
-    <p class="prose" style="margin-top:6px">Onde tratar a pneumonia — e por que o qSOFA negativo não afasta sepse.</p>
+    <p class="prose" style="margin-top:6px">Onde tratar a pneumonia adquirida na comunidade.</p>
     <div data-calc="curb65"></div>
-    <div data-calc="qsofa"></div>
   </div>
 </section>
 

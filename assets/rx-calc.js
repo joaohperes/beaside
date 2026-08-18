@@ -412,19 +412,172 @@
       ref: 'Lim WS, van der Eerden MM, Laing R, et al. <em>Thorax.</em> 2003;58(5):377–382.'
     },
     {
-      id: 'qsofa', grupo: 'Infecto e respiratório', nome: 'qSOFA — e por que a SSC prefere outro',
-      badge: 'baixa sensibilidade', tipo: 'score',
-      sub: 'Está aqui porque ainda é muito usado — e para registrar que a SSC 2026 recomenda NEWS, NEWS2, MEWS ou SIRS SOBRE o qSOFA como ferramenta única de triagem.',
+      id: 'ckdepi', grupo: 'Universais', nome: 'CKD-EPI 2021 — taxa de filtração estimada',
+      badge: 'estadiar, não dosar', tipo: 'formula',
+      sub: 'Versão 2021, sem coeficiente racial. Serve para estadiar a doença renal; para ajuste de dose, as bulas usam o Cockcroft–Gault (acima).',
+      campos: [
+        { k: 'cr', l: 'Creatinina', u: 'mg/dL' },
+        { k: 'idade', l: 'Idade', u: 'anos' },
+        { k: 'sexo', l: 'Sexo', tipo: 'select', op: [['1', 'Masculino'], ['2', 'Feminino']] }
+      ],
+      calc: function (v) {
+        if (v.cr === null || v.idade === null || !v.cr) return null;
+        var fem = v.sexo === 2;
+        var k = fem ? 0.7 : 0.9, a = fem ? -0.241 : -0.302;
+        var e = 142 * Math.pow(Math.min(v.cr / k, 1), a) * Math.pow(Math.max(v.cr / k, 1), -1.2)
+              * Math.pow(0.9938, v.idade) * (fem ? 1.012 : 1);
+        var g = e >= 90 ? 'G1' : e >= 60 ? 'G2' : e >= 45 ? 'G3a' : e >= 30 ? 'G3b' : e >= 15 ? 'G4' : 'G5';
+        return {
+          linhas: [['TFG estimada', r(e, 0) + ' mL/min/1,73 m²'], ['Estágio (KDIGO)', g]],
+          nota: 'A CKD-EPI estadia a doença renal crônica em condição estável — na lesão renal AGUDA a creatinina ainda está subindo e a fórmula superestima a função. Para dose de fármaco, use o Cockcroft–Gault.'
+        };
+      },
+      ref: 'Inker LA, Eneanya ND, Coresh J, et al. New creatinine- and cystatin C–based equations to estimate GFR without race. <em>N Engl J Med.</em> 2021;385(19):1737–1749.'
+    },
+    {
+      id: 'qtc', grupo: 'Universais', nome: 'QT corrigido — Bazett e Fridericia',
+      badge: '≥ 500 ms = alto risco', tipo: 'formula',
+      sub: 'O QT que importa é o corrigido pela frequência. Em taquicardia, Bazett superestima — prefira Fridericia.',
+      campos: [{ k: 'qt', l: 'QT medido', u: 'ms' }, { k: 'fc', l: 'Frequência cardíaca', u: 'bpm' }],
+      calc: function (v) {
+        if (v.qt === null || v.fc === null || !v.fc) return null;
+        var rr = 60 / v.fc;
+        var b = v.qt / Math.sqrt(rr), f = v.qt / Math.cbrt(rr);
+        var pior = Math.max(b, f);
+        return {
+          linhas: [['QTc Bazett', r(b, 0) + ' ms'], ['QTc Fridericia', r(f, 0) + ' ms']],
+          nota: (pior >= 500
+            ? 'QTc ≥ 500 ms: alto risco de torsades. Revisar os prolongadores da prescrição — ondansetrona, amiodarona, macrolídeo, quinolona, antipsicótico — e corrigir K e Mg agora.'
+            : 'Abaixo de 500 ms. Vigiar também a VARIAÇÃO: aumento > 60 ms sobre o basal já é sinal de alerta.')
+            + ' Em FC > 100, Fridericia é o mais fiel.'
+        };
+      },
+      ref: 'Bazett HC. <em>Heart.</em> 1920;7:353–370 · Fridericia LS. <em>Acta Med Scand.</em> 1920;53:469–486.'
+    },
+    {
+      id: 'winter', grupo: 'Eletrólitos e metabólico', nome: 'Compensação esperada — fórmula de Winter',
+      badge: 'acidose metabólica', tipo: 'formula',
+      sub: 'Na acidose metabólica, o pulmão compensa numa faixa previsível. PaCO₂ fora dela = segundo distúrbio, respiratório, somado.',
+      campos: [{ k: 'hco3', l: 'Bicarbonato', u: 'mEq/L' }, { k: 'paco2', l: 'PaCO₂ medida', u: 'mmHg', opcional: true }],
+      calc: function (v) {
+        if (v.hco3 === null) return null;
+        var e = 1.5 * v.hco3 + 8;
+        var l = [['PaCO₂ esperada', r(e - 2, 0) + ' a ' + r(e + 2, 0) + ' mmHg']];
+        var nota = 'Válida para ACIDOSE metabólica. ';
+        if (v.paco2 !== null) {
+          nota += v.paco2 > e + 2
+            ? 'A PaCO₂ medida está ACIMA da esperada: há acidose respiratória associada — fadiga, sedação ou doença pulmonar. Na CAD, é sinal de exaustão.'
+            : v.paco2 < e - 2
+              ? 'A PaCO₂ medida está ABAIXO da esperada: há alcalose respiratória associada — dor, sepse, TEP, ansiedade.'
+              : 'Compensação adequada: distúrbio metabólico simples até aqui.';
+        } else {
+          nota += 'Informe a PaCO₂ da gasometria para comparar.';
+        }
+        return { linhas: l, nota: nota };
+      },
+      ref: 'Albert MS, Dell RB, Winters RW. Quantitative displacement of acid-base equilibrium in metabolic acidosis. <em>Ann Intern Med.</em> 1967;66(2):312–322.'
+    },
+    {
+      id: 'pesi', grupo: 'Cardiovascular', nome: 'PESI completo — gravidade do TEP',
+      badge: '≤ 85 = classes I–II', tipo: 'score',
+      sub: 'A versão completa: a idade soma direto, e as classes I–II (≤ 85 pontos) compõem — com o sPESI 0 — a categoria B da AHA/ACC 2026, candidata a alta precoce.',
+      campos: [{ k: 'idade', l: 'Idade (soma direto ao escore)', u: 'anos' }],
       itens: [
-        ['Frequência respiratória ≥ 22/min', 1],
-        ['Alteração do estado mental (Glasgow < 15)', 1],
-        ['PAS ≤ 100 mmHg', 1]
+        ['Sexo masculino', 10],
+        ['Câncer', 30],
+        ['Insuficiência cardíaca', 10],
+        ['Doença pulmonar crônica', 10],
+        ['Frequência cardíaca ≥ 110 bpm', 20],
+        ['PAS < 100 mmHg', 30],
+        ['Frequência respiratória ≥ 30/min', 20],
+        ['Temperatura < 36 °C', 20],
+        ['Alteração do estado mental', 60],
+        ['SpO₂ < 90%', 20]
       ],
       faixas: [
-        [2, 'alto', 'qSOFA ≥ 2 — risco aumentado', 'Positivo indica maior risco de desfecho ruim. Mas atenção: um qSOFA ≥ 2 já é sinal tardio — não espere por ele para agir.'],
-        [0, 'baixo', 'qSOFA < 2 — NÃO exclui sepse', 'Este é o ponto principal: a sensibilidade do qSOFA para sepse é baixa (em torno de 23% em coorte grande). Um qSOFA negativo NÃO afasta sepse. Use NEWS2, MEWS ou SIRS para triar.']
+        [126, 'alto', 'Classe V — risco muito alto', 'Mortalidade em 30 dias de ~10–25%. Internação com monitorização; posicionar na categoria C–E conforme biomarcadores e VD.'],
+        [106, 'alto', 'Classe IV — risco alto', 'Mortalidade ~4–11%. Internar e estratificar com troponina e função de VD.'],
+        [86, 'limite', 'Classe III — risco intermediário', 'Mortalidade ~3–7%. Internação; a subcategoria da AHA/ACC vem dos biomarcadores e do VD.'],
+        [66, 'baixo', 'Classe II — risco baixo', 'PESI ≤ 85: junto com o quadro clínico, compõe a categoria B — alta precoce com DOAC é possível se nada mais internar.'],
+        [0, 'baixo', 'Classe I — risco muito baixo', 'Mortalidade < 2%. Candidato forte a tratamento domiciliar, se contexto e suporte permitirem.']
       ],
-      ref: 'Prescott HC, Antonelli M, Alhazzani W, et al. Surviving Sepsis Campaign 2026. <em>Crit Care Med.</em> 2026;54(4):725–812 — recomendação forte de usar NEWS, NEWS2, MEWS ou SIRS sobre o qSOFA como ferramenta única de triagem.'
+      ref: 'Aujesky D, Obrosky DS, Stone RA, et al. Derivation and validation of a prognostic model for pulmonary embolism. <em>Am J Respir Crit Care Med.</em> 2005;172(8):1041–1046.'
+    },
+    {
+      id: 'meldna', grupo: 'Gastroenterologia', nome: 'MELD-Na — gravidade da hepatopatia',
+      badge: 'complementa o Child', tipo: 'formula',
+      sub: 'O escore que prioriza transplante — e que, na HDA do cirrótico, complementa o Child-Pugh na leitura de gravidade.',
+      campos: [
+        { k: 'bili', l: 'Bilirrubina', u: 'mg/dL' },
+        { k: 'inr', l: 'INR' },
+        { k: 'cr', l: 'Creatinina', u: 'mg/dL' },
+        { k: 'na', l: 'Sódio', u: 'mEq/L' },
+        { k: 'dial', l: 'Diálise (2× na última semana)?', tipo: 'select', op: [['0', 'Não'], ['1', 'Sim']] }
+      ],
+      calc: function (v) {
+        if (v.bili === null || v.inr === null || v.cr === null) return null;
+        var b = Math.max(v.bili, 1), i2 = Math.max(v.inr, 1);
+        var c = v.dial === 1 ? 4 : Math.min(Math.max(v.cr, 1), 4);
+        var meld = 9.57 * Math.log(c) + 3.78 * Math.log(b) + 11.2 * Math.log(i2) + 6.43;
+        meld = Math.min(Math.round(meld), 40);
+        var l = [['MELD', String(meld)]];
+        var mn = meld;
+        if (v.na !== null) {
+          var na = Math.min(Math.max(v.na, 125), 137);
+          mn = Math.min(Math.round(meld + 1.32 * (137 - na) - 0.033 * meld * (137 - na)), 40);
+          l.push(['MELD-Na', String(mn)]);
+        }
+        return {
+          linhas: l,
+          nota: (mn >= 21 ? 'MELD-Na ≥ 21: mortalidade em 90 dias substancial — hepatologia junto, e no sangramento varicoso pesa a favor de decisões agressivas (TIPS precoce onde o Child indicar).'
+            : 'Faixa de menor mortalidade em 90 dias. ') + ' Valores < 1 entram como 1; creatinina limitada a 4 (ou 4 se diálise); sódio limitado a 125–137.'
+        };
+      },
+      ref: 'Kim WR, Biggins SW, Kremers WK, et al. Hyponatremia and mortality among patients on the liver-transplant waiting list. <em>N Engl J Med.</em> 2008;359(10):1018–1026.'
+    },
+
+    /* ─── Gravidade e triagem ────────────────────────────────────── */
+    {
+      id: 'sofa', grupo: 'Gravidade e triagem', nome: 'SOFA — disfunção orgânica',
+      badge: 'Δ ≥ 2 define sepse', tipo: 'score',
+      sub: 'Seis órgãos, 0 a 4 cada. O número absoluto acompanha mortalidade; a VARIAÇÃO de 2 ou mais pontos na infecção é o que define sepse (Sepsis-3).',
+      selects: [
+        ['Respiratório — PaO₂/FiO₂', [['0', '≥ 400'], ['1', '< 400'], ['2', '< 300'], ['3', '< 200 com suporte ventilatório'], ['4', '< 100 com suporte ventilatório']]],
+        ['Coagulação — plaquetas (×10³/µL)', [['0', '≥ 150'], ['1', '< 150'], ['2', '< 100'], ['3', '< 50'], ['4', '< 20']]],
+        ['Fígado — bilirrubina (mg/dL)', [['0', '< 1,2'], ['1', '1,2–1,9'], ['2', '2,0–5,9'], ['3', '6,0–11,9'], ['4', '≥ 12']]],
+        ['Cardiovascular', [['0', 'PAM ≥ 70 mmHg'], ['1', 'PAM < 70 mmHg'], ['2', 'Dopamina ≤ 5 ou dobutamina (qualquer dose)'], ['3', 'Dopamina > 5 ou nora/adrenalina ≤ 0,1 µg/kg/min'], ['4', 'Dopamina > 15 ou nora/adrenalina > 0,1 µg/kg/min']]],
+        ['Neurológico — Glasgow', [['0', '15'], ['1', '13–14'], ['2', '10–12'], ['3', '6–9'], ['4', '< 6']]],
+        ['Renal — creatinina ou diurese', [['0', '< 1,2 mg/dL'], ['1', '1,2–1,9'], ['2', '2,0–3,4'], ['3', '3,5–4,9 ou diurese < 500 mL/dia'], ['4', '≥ 5,0 ou diurese < 200 mL/dia']]]
+      ],
+      faixas: [
+        [13, 'alto', 'SOFA ≥ 13', 'Mortalidade estimada acima de 50%. Falência multiorgânica estabelecida — reavaliar metas de cuidado junto com a família e a equipe.'],
+        [10, 'alto', 'SOFA 10–12', 'Mortalidade estimada em torno de 40–50%. UTI com suporte pleno e reavaliação diária do delta.'],
+        [7, 'limite', 'SOFA 7–9', 'Mortalidade estimada em torno de 15–25%. O delta diário informa trajetória melhor que o valor isolado.'],
+        [2, 'limite', 'SOFA 2–6', 'Na infecção suspeita, um AUMENTO de ≥ 2 pontos sobre o basal define sepse (Sepsis-3). Paciente sem doença prévia tem basal presumido de zero.'],
+        [0, 'baixo', 'SOFA 0–1', 'Sem disfunção orgânica relevante pelos critérios do escore. Não afasta doença — o SOFA mede consequência, não causa.']
+      ],
+      ref: 'Vincent JL, Moreno R, Takala J, et al. The SOFA score. <em>Intensive Care Med.</em> 1996;22(7):707–710 · Singer M, et al. Sepsis-3. <em>JAMA.</em> 2016;315(8):801–810.'
+    },
+    {
+      id: 'news2', grupo: 'Gravidade e triagem', nome: 'NEWS2 — deterioração clínica',
+      badge: 'o que a SSC recomenda', tipo: 'score',
+      sub: 'A ferramenta de triagem que a SSC 2026 recomenda (com MEWS e SIRS) SOBRE o qSOFA — cuja sensibilidade para sepse é baixa demais para triar sozinho. Escala 1 de SpO₂; no DPOC com alvo 88–92%, a pontuação de SpO₂ muda (escala 2).',
+      selects: [
+        ['Frequência respiratória (/min)', [['0', '12–20'], ['1', '9–11'], ['2', '21–24'], ['3', '≤ 8 ou ≥ 25']]],
+        ['SpO₂ — escala 1 (%)', [['0', '≥ 96'], ['1', '94–95'], ['2', '92–93'], ['3', '≤ 91']]],
+        ['Oxigênio suplementar', [['0', 'Não'], ['2', 'Sim']]],
+        ['Temperatura (°C)', [['0', '36,1–38,0'], ['1', '35,1–36,0 ou 38,1–39,0'], ['2', '≥ 39,1'], ['3', '≤ 35,0']]],
+        ['PAS (mmHg)', [['0', '111–219'], ['1', '101–110'], ['2', '91–100'], ['3', '≤ 90 ou ≥ 220']]],
+        ['Frequência cardíaca (bpm)', [['0', '51–90'], ['1', '41–50 ou 91–110'], ['2', '111–130'], ['3', '≤ 40 ou ≥ 131']]],
+        ['Nível de consciência', [['0', 'Alerta'], ['3', 'Confusão nova, resposta a voz/dor, ou irresponsivo']]]
+      ],
+      faixas: [
+        [7, 'alto', 'NEWS2 ≥ 7 — resposta de emergência', 'Avaliação imediata por equipe com competência de via aérea e cuidado crítico; considerar UTI. Monitorização contínua.'],
+        [5, 'limite', 'NEWS2 5–6 — revisão urgente', 'Gatilho-chave para pensar em sepse na infecção suspeita. Revisão médica urgente e aumento da frequência de sinais vitais.'],
+        [1, 'baixo', 'NEWS2 1–4 — vigilância', 'Reavaliar a frequência de aferição. Atenção: parâmetro isolado com 3 pontos já pede revisão urgente mesmo com total baixo.'],
+        [0, 'baixo', 'NEWS2 0 — rotina', 'Manter a monitorização de rotina.']
+      ],
+      ref: 'Royal College of Physicians. National Early Warning Score (NEWS) 2. Londres: RCP, 2017 · Prescott HC, et al. Surviving Sepsis Campaign 2026. <em>Crit Care Med.</em> 2026;54(4):725–812.'
     }
   ];
 
@@ -453,18 +606,50 @@
 
   function montarScore(box, c) {
     var body = box.querySelector('.rxc-body');
-    var lista = el('div', 'rxc-list');
-    c.itens.forEach(function (it, i) {
-      var lab = el('label', 'rxc-item');
-      var inp = document.createElement('input');
-      inp.type = 'checkbox'; inp.dataset.peso = it[1];
-      if (it[2]) inp.dataset.classe = it[2];
-      var sp = el('span'); sp.innerHTML = (it[2] ? '<b>' + (it[2] === 'maior' ? 'Maior' : 'Menor') + '</b> — ' : '') + it[0];
-      lab.appendChild(inp); lab.appendChild(sp);
-      lab.appendChild(el('span', 'rxc-pts', it[2] ? it[2] : String(it[1]).replace('.', ',')));
-      lista.appendChild(lab);
-    });
-    body.appendChild(lista);
+    if (c.campos) {
+      var grid = el('div', 'rxc-campos');
+      c.campos.forEach(function (f) {
+        var w = el('label', 'rxc-campo');
+        w.appendChild(el('span', 'rxc-campo-l', f.l + (f.u ? ' (' + f.u + ')' : '')));
+        var inp = document.createElement('input');
+        inp.type = 'number'; inp.step = 'any'; inp.inputMode = 'decimal'; inp.placeholder = '—';
+        inp.dataset.num = f.k;
+        w.appendChild(inp);
+        grid.appendChild(w);
+      });
+      body.appendChild(grid);
+    }
+    if (c.selects) {
+      var sg = el('div', 'rxc-campos rxc-campos-sel');
+      c.selects.forEach(function (sd) {
+        var w = el('label', 'rxc-campo');
+        w.appendChild(el('span', 'rxc-campo-l', sd[0]));
+        var sel = document.createElement('select');
+        sel.dataset.sel = '1';
+        sd[1].forEach(function (o) {
+          var op = document.createElement('option');
+          op.value = o[0]; op.textContent = (Number(o[0]) > 0 ? '+' + o[0] + ' · ' : '0 · ') + o[1];
+          sel.appendChild(op);
+        });
+        w.appendChild(sel);
+        sg.appendChild(w);
+      });
+      body.appendChild(sg);
+    }
+    if (c.itens) {
+      var lista = el('div', 'rxc-list');
+      c.itens.forEach(function (it) {
+        var lab = el('label', 'rxc-item');
+        var inp = document.createElement('input');
+        inp.type = 'checkbox'; inp.dataset.peso = it[1];
+        if (it[2]) inp.dataset.classe = it[2];
+        var sp = el('span'); sp.innerHTML = (it[2] ? '<b>' + (it[2] === 'maior' ? 'Maior' : 'Menor') + '</b> — ' : '') + it[0];
+        lab.appendChild(inp); lab.appendChild(sp);
+        lab.appendChild(el('span', 'rxc-pts', it[2] ? it[2] : String(it[1]).replace('.', ',')));
+        lista.appendChild(lab);
+      });
+      body.appendChild(lista);
+    }
 
     function calcular() {
       if (c.modo === 'maior-menor') {
@@ -477,16 +662,35 @@
         else saida(box, 'baixo', 'Sem indicação', 'Sem fator de risco, a profilaxia traz mais dano — pneumonia associada à ventilação e <em>C. difficile</em> — do que benefício.');
         return;
       }
-      var t = c.base || 0;
-      box.querySelectorAll('input:checked').forEach(function (i) { t += Number(i.dataset.peso); });
+      var t = c.base || 0, sel3 = false, faltaNum = false;
+      box.querySelectorAll('input[type=checkbox]:checked').forEach(function (i) { t += Number(i.dataset.peso); });
+      box.querySelectorAll('input[data-num]').forEach(function (i) {
+        var v = n(i.value);
+        if (v === null) faltaNum = true; else t += v;
+      });
+      box.querySelectorAll('select[data-sel]').forEach(function (s2) {
+        var v = Number(s2.value) || 0; t += v; if (v >= 3) sel3 = true;
+      });
       box.querySelector('.rxc-score').textContent = String(Math.round(t * 10) / 10).replace('.', ',');
-      for (var j = 0; j < c.faixas.length; j++) {
-        if (t >= c.faixas[j][0]) { saida(box, c.faixas[j][1], c.faixas[j][2] + ' (' + String(Math.round(t * 10) / 10).replace('.', ',') + ')', c.faixas[j][3]); return; }
+      if (c.campos && faltaNum) {
+        saida(box, 'baixo', 'Preencha os campos numéricos', 'O escore só fica completo com todos os campos preenchidos — no PESI, a idade soma direto ao total.');
+        return;
+      }
+      if (c.id === 'news2' && sel3 && t < 5) {
+        saida(box, 'limite', 'Parâmetro isolado com 3 pontos (' + String(t) + ')', 'Mesmo com total abaixo de 5, um único parâmetro pontuando 3 já pede revisão clínica urgente e aumento da frequência de monitorização.');
+        return;
+      }
+      for (var j2 = 0; j2 < c.faixas.length; j2++) {
+        if (t >= c.faixas[j2][0]) { saida(box, c.faixas[j2][1], c.faixas[j2][2] + ' (' + String(Math.round(t * 10) / 10).replace('.', ',') + ')', c.faixas[j2][3]); return; }
       }
     }
     box.addEventListener('change', calcular);
+    box.addEventListener('input', calcular);
     box.querySelector('.rxc-reset').addEventListener('click', function () {
-      box.querySelectorAll('input').forEach(function (i) { i.checked = false; }); calcular();
+      box.querySelectorAll('input[type=checkbox]').forEach(function (i) { i.checked = false; });
+      box.querySelectorAll('input[data-num]').forEach(function (i) { i.value = ''; });
+      box.querySelectorAll('select[data-sel]').forEach(function (s2) { s2.selectedIndex = 0; });
+      calcular();
     });
     calcular();
   }
