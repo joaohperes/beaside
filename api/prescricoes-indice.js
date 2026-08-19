@@ -1,0 +1,4195 @@
+// Auto-gerado por scripts/indice-prescricoes.mjs — não editar manualmente.
+// Para atualizar: npm run indice-prescricoes
+//
+// Duas camadas: PRESCRICOES_ROTEADOR cabe num prompt e serve para ESCOLHER a
+// prescrição; PRESCRICOES_MAPA acrescenta o índice interno de cada página.
+// Nenhum dos dois traz dose: eles dizem onde a dose está.
+
+export const PRESCRICOES_ROTEADOR = {
+ "_leia": "Roteador das prescrições comentadas do be·aside, para o aplicativo de IA próprio. GERADO por scripts/indice-prescricoes.mjs — não editar à mão. Uso: escolher QUAL prescrição responde ao caso (por escopo e gatilhos) e então carregar o HTML da url. Não contém conduta nem dose: ele diz ONDE a conduta está.",
+ "gerado": "2026-08-19",
+ "total": 38,
+ "sistemas": [
+  "Alergia",
+  "Cardiovascular",
+  "Endócrino",
+  "Gastro",
+  "Hidroeletrolítico",
+  "Infecção",
+  "Neuro",
+  "Pneumo"
+ ],
+ "referencias": [
+  {
+   "id": "hub",
+   "url": "/consulte/prescricoes/index.html",
+   "titulo": "Prescrições comentadas",
+   "subtitulo": "O que prescrever e por quê, cenário por cenário",
+   "papel": "índice do módulo"
+  },
+  {
+   "id": "calculadoras",
+   "url": "/consulte/prescricoes/calculadoras.html",
+   "titulo": "Calculadoras clínicas",
+   "subtitulo": "Escores e fórmulas que decidem conduta, com a leitura do resultado ao lado",
+   "papel": "escores e fórmulas usados pelas prescrições"
+  }
+ ],
+ "prescricoes": [
+  {
+   "id": "anafilaxia",
+   "url": "/consulte/prescricoes/anafilaxia.html",
+   "tema": "Anafilaxia",
+   "titulo": "Prescrição comentada — Anafilaxia",
+   "subtitulo": "Adrenalina IM primeiro e repetida cedo — anti-histamínico não trata via aérea nem choque",
+   "sistema": "Alergia",
+   "status": "rascunho",
+   "escopo": "Serve para a anafilaxia do adulto no pronto-socorro, na enfermaria e na UTI. Doses pediátricas são por peso e não estão nesta página . Gestação exige decúbito lateral e obstetrícia junto, mas não muda a indicação nem a dose da adrenalina.",
+   "gatilhos": [
+    "reconhecer e dar adrenalina im",
+    "posição",
+    "oxigênio e volume",
+    "refratária",
+    "infusão ev",
+    "só com experiência e monitorização",
+    "anti-histamínico e corticoide",
+    "quanto tempo observar",
+    "dieta",
+    "cuidados de enfermagem"
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "bradiarritmias",
+   "url": "/consulte/prescricoes/bradiarritmias.html",
+   "tema": "Bradiarritmias",
+   "titulo": "Prescrição comentada — Bradiarritmias",
+   "subtitulo": "Nodal × infranodal, a escada atropina → marca-passo → transvenoso, e as causas reversíveis",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para a bradiarritmia sintomática ou instável — bradicardia sinusal extrema, doença do nó sinusal, BAV de 2º e 3º grau.",
+   "gatilhos": [
+    "é instável",
+    "ler o bloqueio",
+    "nodal ou infranodal",
+    "degrau 1",
+    "atropina",
+    "degrau 2",
+    "marca-passo transcutâneo",
+    "prescrito de verdade",
+    "degrau 2 alternativo",
+    "cronotrópico em infusão"
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "choque-cardiogenico",
+   "url": "/consulte/prescricoes/choque-cardiogenico.html",
+   "tema": "Choque cardiogênico",
+   "titulo": "Prescrição comentada — Choque cardiogênico",
+   "subtitulo": "Perfusão antes de pressão, mecanismo antes de bomba — e a escalada na hora certa",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para o choque cardiogênico — hipoperfusão por falência da bomba, com IAM respondendo pela maioria dos casos. As doses e diluições das vasoativas não moram aqui : vivem revisadas na página de drogas vasoativas , e os perfis de choque nos padrões hemodinâmicos — esta página organiza a sequência e as decisões.",
+   "gatilhos": [
+    "diagnosticar pela perfusão",
+    "achar o mecanismo em minutos",
+    "ecg + pocus",
+    "noradrenalina primeiro",
+    "restaurar a pressão de perfusão",
+    "inotrópico depois",
+    "volume",
+    "prova pequena",
+    "escalar cedo",
+    "remédios de casa"
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "disseccao-aorta",
+   "url": "/consulte/prescricoes/disseccao-aorta.html",
+   "tema": "Dissecção de aorta",
+   "titulo": "Prescrição comentada — Dissecção de aorta",
+   "subtitulo": "Betabloqueador antes do vasodilatador, FC < 60 em minutos — tipo A se opera",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para a suspeita e o manejo inicial da dissecção aguda de aorta — da dor lancinante que irradia ao dorso na sala de emergência até a bomba de esmolol rodando na UTI à espera da transferência.",
+   "gatilhos": [
+    "angio-tc de aorta total",
+    "confirmar e classificar",
+    "tipo a",
+    "acionar a cirurgia cardíaca agora",
+    "morfina titulada",
+    "betabloqueador ev primeiro",
+    "sempre antes de qualquer vasodilatador",
+    "fc controlada e pas ainda > 120? agora sim",
+    "nitroprussiato",
+    "vigilância que detecta progressão"
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "eap",
+   "url": "/consulte/prescricoes/eap.html",
+   "tema": "Edema agudo de pulmão",
+   "titulo": "Prescrição comentada — Edema agudo de pulmão",
+   "subtitulo": "VNI, vasodilatador e diurético na dose que resolve — fenótipo antes de inotrópico",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para o EAP cardiogênico com pressão preservada ou elevada — o paciente congesto, taquidispneico, com estertores e história cardiológica.",
+   "gatilhos": [
+    "sentar o paciente + vni precoce",
+    "vasodilatador",
+    "nitrato em dose que funcione",
+    "furosemida ev",
+    "checar o fenótipo",
+    "este eap é mesmo \"quente e úmido\"",
+    "tratar o gatilho",
+    "betabloqueador e ieca",
+    "mexer com critério",
+    "dieta e líquidos"
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "fa-flutter",
+   "url": "/consulte/prescricoes/fa-flutter.html",
+   "tema": "Fibrilação e flutter atrial",
+   "titulo": "Prescrição comentada — Fibrilação e flutter atrial",
+   "subtitulo": "Instável? Quanto tempo? Anticoagular quem? — e as doses certas de DOAC",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para a FA e o flutter com alta resposta ventricular na emergência e na enfermaria — do paciente instável que precisa de choque agora ao estável em que a decisão importante é o anticoagulante que ele vai levar para casa.",
+   "gatilhos": [
+    "fa e flutter atrial",
+    "instável? cardioversão elétrica",
+    "agora",
+    "anticoagular quem? o escore",
+    "betabloqueador",
+    "primeira escolha na maioria",
+    "diltiazem ou verapamil",
+    "feve reduzida ou instabilidade limítrofe",
+    "amiodarona ou digital",
+    "doac"
+   ],
+   "calculadoras": [
+    "hasbled",
+    "chads",
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "ic-descompensada",
+   "url": "/consulte/prescricoes/ic-descompensada.html",
+   "tema": "IC descompensada",
+   "titulo": "Prescrição comentada — IC descompensada",
+   "subtitulo": "Os 4 perfis, a descongestão até o fim e a alta com o quarteto nas doses-alvo",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para a IC descompensada internada — o quente-úmido de enfermaria que chegou congesto sem estar se afogando, o frio-seco enganoso, e a alta de todos eles. As crises têm páginas próprias: dispneia dramática com congestão é edema agudo de pulmão ; má perfusão é choque cardiogênico .",
+   "gatilhos": [
+    "congesto? perfundindo",
+    "furosemida ev",
+    "dose de descongestão",
+    "metas de papel e balança",
+    "resistência diurética",
+    "perfil l",
+    "volume contado",
+    "alta com critérios",
+    "dose de início e dose-alvo",
+    "kit do internado"
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "iam-vd",
+   "url": "/consulte/prescricoes/iam-vd.html",
+   "tema": "Infarto de ventrículo direito",
+   "titulo": "Prescrição comentada — Infarto de ventrículo direito",
+   "subtitulo": "Pré-carga sagrada, volume por prova, ritmo como pressão — e nada de nitrato",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para o IAM com acometimento de VD — quase sempre um supra inferior (oclusão de coronária direita proximal) em que V3R/V4R confirmou o envolvimento. A reperfusão, os antitrombóticos e a prevenção secundária são os da SCA com supra ; esta página cuida do que o VD muda. Se o paciente já está em choque franco, o raciocínio soma com o do choque cardiogênico .",
+   "gatilhos": [
+    "infarto de vd",
+    "v4r em todo supra inferior",
+    "sempre",
+    "regra 1",
+    "regra 2",
+    "volume por prova",
+    "regra 3",
+    "ritmo é pressão",
+    "reperfusão e antitrombóticos",
+    "prevenção secundária"
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "minoca",
+   "url": "/consulte/prescricoes/minoca.html",
+   "tema": "MINOCA",
+   "titulo": "Prescrição comentada — MINOCA",
+   "subtitulo": "A RM dá o nome — placa, embolia, vasoespasmo, SCAD e ponte, cada um com sua prescrição",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para o infarto sem obstrução coronariana — critérios de IAM preenchidos, cateterismo com lesões < 50% e nenhuma causa alternativa evidente.",
+   "gatilhos": [
+    "minoca é diagnóstico provisório",
+    "rm cardíaca no centro",
+    "ruptura",
+    "erosão de placa < 50%",
+    "aterosclerose sem estenose",
+    "trombose",
+    "embolia coronária",
+    "anticoagular e achar a fonte",
+    "vasoespasmo coronariano",
+    "cálcio sim"
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "miocardite",
+   "url": "/consulte/prescricoes/miocardite.html",
+   "tema": "Miocardite",
+   "titulo": "Prescrição comentada — Miocardite",
+   "subtitulo": "Suporte com dose, fulminante com telefonema — imunossupressão só com biópsia",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para a miocardite aguda — do jovem com dor torácica e troponina pós-viral ao fulminante que choca em 48 horas. O diagnóstico costuma nascer no caminho do MINOCA (é o que a RM mais encontra); o suporte usa as páginas de IC , choque e arritmias. Aqui está o que a miocardite muda em cada uma — e onde ela exige freio.",
+   "gatilhos": [
+    "suspeitar",
+    "confirmar",
+    "fulminante",
+    "quarteto cedo",
+    "arritmia na fase aguda",
+    "tratar o episódio",
+    "adiar o definitivo",
+    "restrição de exercício",
+    "dor e febre",
+    "quem decide o aine é a imagem"
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "pa-elevada",
+   "url": "/consulte/prescricoes/pa-elevada.html",
+   "tema": "PA muito elevada",
+   "titulo": "Prescrição comentada — PA muito elevada",
+   "subtitulo": "Órgão-alvo define tudo — emergência na veia por órgão; assintomático sem derrubar",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para a pressão muito elevada na emergência e no internado — do paciente assintomático com 190×115 na triagem à emergência hipertensiva de verdade.",
+   "gatilhos": [
+    "há lesão de órgão-alvo aguda",
+    "tratar a pseudocrise",
+    "pa muito elevada assintomática",
+    "ajustar o longo prazo",
+    "emergência",
+    "ev titulável",
+    "monitorização",
+    "enfermaria",
+    "fazer y\"",
+    "ajustar o esquema"
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "sca-com-supra",
+   "url": "/consulte/prescricoes/sca-com-supra.html",
+   "tema": "SCA com supra de ST",
+   "titulo": "Prescrição comentada — SCA com supra de ST",
+   "subtitulo": "Reperfusão contra o relógio — ICP primária ou fibrinólise, e a prescrição em volta",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para o paciente com IAM com supradesnível de ST (ou BRE/BRD novo com clínica de infarto) dentro da janela de reperfusão — sintomas ≤ 12 h, ou até 24 h se dor e isquemia em curso.",
+   "gatilhos": [
+    "sca com supra",
+    "escolher o caminho",
+    "icp primária ou fibrinólise",
+    "fibrinolítico",
+    "antiagregação 1",
+    "antiagregação 2",
+    "p2y12 conforme o caminho",
+    "anticoagulação",
+    "também conforme o caminho",
+    "nitrato"
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "sca-sem-supra",
+   "url": "/consulte/prescricoes/sca-sem-supra.html",
+   "tema": "SCA sem supra de ST",
+   "titulo": "Prescrição comentada — SCA sem supra de ST",
+   "subtitulo": "Item por item, com dose, contraindicação e o porquê",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para o paciente com síndrome coronariana aguda sem supradesnível de ST (angina instável ou IAMSSST) já reconhecida — dor torácica típica com troponina alterada e/ou ECG isquêmico sem supra — internado em unidade monitorizada.",
+   "gatilhos": [
+    "sca sem supra",
+    "antiagregação 1",
+    "antiagregação 2",
+    "inibidor de p2y12",
+    "anticoagulação parenteral",
+    "controle da dor e da isquemia",
+    "nitrato",
+    "morfina",
+    "só a dor refratária",
+    "oxigênio"
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "taqui-instavel",
+   "url": "/consulte/prescricoes/taqui-instavel.html",
+   "tema": "Taquiarritmia instável",
+   "titulo": "Prescrição comentada — Taquiarritmia instável",
+   "subtitulo": "CVE sem improviso: carga por ritmo, sedação pela hemodinâmica, e o pós-choque",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para a taquiarritmia com instabilidade — supraventricular ou ventricular com pulso.",
+   "gatilhos": [
+    "é instável",
+    "sincronizar e escolher a carga pelo ritmo",
+    "sedar conforme a hemodinâmica",
+    "reverteu",
+    "agora se trata o terreno",
+    "método",
+    "gestante",
+    "dispositivo",
+    "digital e criança",
+    "dieta"
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "tsv-estavel",
+   "url": "/consulte/prescricoes/tsv-estavel.html",
+   "tema": "Taquicardia supraventricular estável",
+   "titulo": "Prescrição comentada — Taquicardia supraventricular estável",
+   "subtitulo": "Valsalva modificada, adenosina com os cuidados certos, a escada até a CVE — e a ablação que cura",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para a TSV com QRS estreito e paciente estável — do episódio clássico de TPSV (reentrada nodal ou por via acessória) às taquicardias atrial, multifocal e juncional.",
+   "gatilhos": [
+    "tsv estável",
+    "monitor",
+    "acesso",
+    "degrau 1",
+    "valsalva modificada",
+    "degrau 2",
+    "adenosina",
+    "rápida e avisada",
+    "degrau 3",
+    "bloqueador de nó em infusão lenta"
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "taqui-ventricular",
+   "url": "/consulte/prescricoes/taqui-ventricular.html",
+   "tema": "Taquicardia ventricular",
+   "titulo": "Prescrição comentada — Taquicardia ventricular",
+   "subtitulo": "QRS largo é TV até prova em contrário — monomórfica, polimórfica, torsades e FA pré-excitada",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para a taquicardia de QRS largo com pulso . Se o paciente está instável, o caminho já foi dado na taquiarritmia instável (monomórfica → CVE; polimórfica → desfibrilar). Esta página cuida do que vem antes e depois do choque no paciente que dá tempo: classificar, escolher droga, tratar a causa — e não cair na armadilha de \"TSV com aberrância\".",
+   "gatilhos": [
+    "qrs largo é tv até prova em contrário",
+    "primeira escolha",
+    "cardioversão eletiva",
+    "alternativa química",
+    "polimórfica com qt normal",
+    "pense isquemia",
+    "torsades de pointes",
+    "qt longo",
+    "magnésio e a nuance que muda tudo",
+    "fa pré-excitada"
+   ],
+   "calculadoras": [
+    "qtc",
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "tep",
+   "url": "/consulte/prescricoes/tep.html",
+   "tema": "Tromboembolismo pulmonar",
+   "titulo": "Prescrição comentada — Tromboembolismo pulmonar",
+   "subtitulo": "Estratificar primeiro — DOAC com ataque, heparina na dose de TEV, trombólise só no alto risco",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para o TEP agudo confirmado (ou com probabilidade alta o bastante para tratar enquanto se confirma). A primeira pergunta não é \"qual heparina\" — é \"em que categoria este paciente está?\" : é isso que decide alocação (casa, enfermaria, UTI), anticoagulante e se a terapia avançada entra em cena.",
+   "gatilhos": [
+    "classificar em categoria a–e",
+    "estável",
+    "doac",
+    "internado",
+    "hbpm é a preferida",
+    "inclusive no grave",
+    "populações que mudam a escolha",
+    "varfarina",
+    "sustentar o vd",
+    "vasopressor no choque"
+   ],
+   "calculadoras": [
+    "wells-tep",
+    "spesi",
+    "pesi",
+    "ulcera"
+   ]
+  },
+  {
+   "id": "tvp",
+   "url": "/consulte/prescricoes/tvp.html",
+   "tema": "Trombose venosa profunda",
+   "titulo": "Prescrição comentada — Trombose venosa profunda",
+   "subtitulo": "A maioria trata em casa com DOAC — quem interna, a escolha pelo paciente, a duração",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para a TVP de membro inferior confirmada — da panturrilha sintomática que vai para casa com a receita à phlegmasia que aciona a cirurgia vascular.",
+   "gatilhos": [
+    "confirmar antes de anticoagular",
+    "probabilidade",
+    "d-dímero",
+    "ultrassom",
+    "casa ou hospital",
+    "população geral",
+    "doac direto",
+    "atenção às duas fases",
+    "câncer",
+    "gestante"
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "cetoacidose-diabetica",
+   "url": "/consulte/prescricoes/cetoacidose-diabetica.html",
+   "tema": "Cetoacidose diabética",
+   "titulo": "Prescrição comentada — Cetoacidose diabética",
+   "subtitulo": "Fluido, potássio antes da insulina e cetose como alvo — a glicemia normaliza antes de a crise terminar",
+   "sistema": "Endócrino",
+   "status": "rascunho",
+   "escopo": "Serve para a cetoacidose diabética do adulto , do pronto-socorro à UTI. Não cobre pediatria, gestação e cenários toxicológicos, que exigem protocolo próprio — e a CAD da gestante tem alvos e riscos distintos.",
+   "gatilhos": [
+    "quem vai para a uti",
+    "cristaloide primeiro",
+    "potássio antes da insulina",
+    "insulina regular ev em bomba",
+    "glicose abaixo de 250",
+    "entra glicose",
+    "bicarbonato e fósforo",
+    "basal subcutânea antes de desligar a bomba",
+    "dieta",
+    "cuidados de enfermagem"
+   ],
+   "calculadoras": [
+    "anion-gap",
+    "winter",
+    "na-corrigido",
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "estado-hiperosmolar",
+   "url": "/consulte/prescricoes/estado-hiperosmolar.html",
+   "tema": "Estado hiperosmolar hiperglicêmico",
+   "titulo": "Prescrição comentada — Estado hiperosmolar hiperglicêmico",
+   "subtitulo": "Corrigir volume e osmolalidade sem pressa — o cérebro importa mais que o número da glicose",
+   "sistema": "Endócrino",
+   "status": "rascunho",
+   "escopo": "Serve para o estado hiperosmolar hiperglicêmico do adulto . Não cobre pediatria nem gestação. Se houver cetonemia com acidose, o paciente tem quadro misto e o fluxo correto é o da cetoacidose .",
+   "gatilhos": [
+    "glicose muito alta",
+    "osmolalidade alta",
+    "cristaloide isotônico",
+    "insulina em meia-dose",
+    "dieta",
+    "cuidados de enfermagem",
+    "profilaxia de úlcera de estresse",
+    "só com indicação",
+    "profilaxia de tev",
+    "pelo risco"
+   ],
+   "calculadoras": [
+    "osm",
+    "na-corrigido",
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "hda",
+   "url": "/consulte/prescricoes/hda.html",
+   "tema": "Hemorragia digestiva alta",
+   "titulo": "Prescrição comentada — Hemorragia digestiva alta",
+   "subtitulo": "Ressuscitar, reconhecer o ramo varicoso e chegar à endoscopia com a medicação certa",
+   "sistema": "Gastro",
+   "status": "rascunho",
+   "escopo": "Serve para a hemorragia digestiva alta do adulto . A página tem núcleo comum e dois ramos separados — não varicosa e varicosa/cirrose.",
+   "gatilhos": [
+    "ressuscitar",
+    "proteger via aérea quando preciso",
+    "estratégia restritiva",
+    "limiar de 7 g",
+    "inibidor de bomba",
+    "h. pylori",
+    "aine e o que fazer se ressangrar",
+    "vasoativo esplâncnico",
+    "octreotida ou terlipressina",
+    "nunca as duas"
+   ],
+   "calculadoras": [
+    "blatchford",
+    "child",
+    "meldna",
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "pancreatite-aguda",
+   "url": "/consulte/prescricoes/pancreatite-aguda.html",
+   "tema": "Pancreatite aguda",
+   "titulo": "Prescrição comentada — Pancreatite aguda",
+   "subtitulo": "Hidratação moderada, analgesia, alimentação precoce e nenhum antibiótico para necrose estéril",
+   "sistema": "Gastro",
+   "status": "rascunho",
+   "escopo": "Serve para a pancreatite aguda do adulto , da admissão à alta. Não cobre pancreatite crônica agudizada com anatomia alterada, pancreatite pós-transplante, nem o manejo endoscópico detalhado da necrose organizada — esse é de centro especializado.",
+   "gatilhos": [
+    "dois de três",
+    "hidratação moderada e reavaliada",
+    "analgesia multimodal",
+    "alimentar cedo",
+    "nenhum antibiótico para necrose estéril",
+    "colecistectomia na mesma internação",
+    "dieta",
+    "cuidados de enfermagem",
+    "profilaxia de úlcera de estresse",
+    "só com indicação"
+   ],
+   "calculadoras": [
+    "bisap",
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "hipercalemia",
+   "url": "/consulte/prescricoes/hipercalemia.html",
+   "tema": "Hipercalemia",
+   "titulo": "Prescrição comentada — Hipercalemia",
+   "subtitulo": "Cálcio protege a membrana, insulina joga o K para dentro, e só a diálise tira do corpo",
+   "sistema": "Hidroeletrolítico",
+   "status": "rascunho",
+   "escopo": "Serve para a hipercalemia do adulto — do K de 6,2 no laboratório de rotina ao QRS alargado no monitor. O raciocínio de mecanismo, pseudo-hipercalemia e causas vive na página de potássio do Nefro Guide ; aqui está a prescrição.",
+   "gatilhos": [
+    "ecg agora",
+    "insulina com glicose",
+    "beta-2 inalatório",
+    "somar",
+    "diálise",
+    "diurético e resina",
+    "dieta",
+    "cuidados de enfermagem",
+    "profilaxia de úlcera de estresse",
+    "só com indicação"
+   ],
+   "calculadoras": [
+    "clcr",
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "hipernatremia",
+   "url": "/consulte/prescricoes/hipernatremia.html",
+   "tema": "Hipernatremia",
+   "titulo": "Prescrição comentada — Hipernatremia",
+   "subtitulo": "Água livre calculada, déficit reposto devagar — e a causa quase sempre é acesso à água",
+   "sistema": "Hidroeletrolítico",
+   "status": "rascunho",
+   "escopo": "Serve para a hipernatremia do adulto internado — do idoso acamado que chega com 162 ao paciente de UTI que sobe o sódio na primeira semana.",
+   "gatilhos": [
+    "choque ou hipovolemia franca",
+    "cristaloide isotônico antes da água livre",
+    "calcular o déficit de água livre",
+    "baixar no máximo 10 meq",
+    "diabetes insípido",
+    "diurese osmótica e o copo fora de alcance",
+    "dieta",
+    "cuidados de enfermagem",
+    "profilaxia de úlcera de estresse",
+    "só com indicação"
+   ],
+   "calculadoras": [
+    "agua-livre",
+    "osm",
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "hipocalcemia",
+   "url": "/consulte/prescricoes/hipocalcemia.html",
+   "tema": "Hipocalcemia",
+   "titulo": "Prescrição comentada — Hipocalcemia",
+   "subtitulo": "Cálcio iônico antes de tratar, gluconato no periférico — e o magnésio que ninguém dosa",
+   "sistema": "Hidroeletrolítico",
+   "status": "rascunho",
+   "escopo": "Serve para a hipocalcemia do adulto internado — da tetania pós-tireoidectomia ao cálcio de 7,4 num paciente com albumina de 2,1.",
+   "gatilhos": [
+    "cálcio iônico",
+    "sintomático",
+    "gluconato ev diluído",
+    "assintomático",
+    "via oral",
+    "dieta",
+    "cuidados de enfermagem",
+    "profilaxia de úlcera de estresse",
+    "só com indicação",
+    "profilaxia de tev"
+   ],
+   "calculadoras": [
+    "ca-corrigido",
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "hipocalemia",
+   "url": "/consulte/prescricoes/hipocalemia.html",
+   "tema": "Hipocalemia",
+   "titulo": "Prescrição comentada — Hipocalemia",
+   "subtitulo": "Reposição pela via certa: teto de 40 mEq/L e 10 mEq/h no periférico — e o magnésio junto",
+   "sistema": "Hidroeletrolítico",
+   "status": "rascunho",
+   "escopo": "Serve para a hipocalemia do adulto internado — do K de 3,2 do usuário de diurético ao de 2,1 com extrassístoles no monitor.",
+   "gatilhos": [
+    "oral sempre que possível",
+    "periférica",
+    "teto de 40 meq",
+    "central",
+    "dá para concentrar e acelerar",
+    "magnésio junto",
+    "dieta",
+    "cuidados de enfermagem",
+    "profilaxia de úlcera de estresse",
+    "só com indicação"
+   ],
+   "calculadoras": [
+    "clcr",
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "hipofosfatemia",
+   "url": "/consulte/prescricoes/hipofosfatemia.html",
+   "tema": "Hipofosfatemia",
+   "titulo": "Prescrição comentada — Hipofosfatemia",
+   "subtitulo": "Quando repor de verdade, e por que quem manda na velocidade é o potássio da ampola",
+   "sistema": "Hidroeletrolítico",
+   "status": "rascunho",
+   "escopo": "Serve para a hipofosfatemia do adulto internado — do paciente que não desmama do ventilador à realimentação do desnutrido.",
+   "gatilhos": [
+    "fosfato de potássio",
+    "quem manda na velocidade é o potássio",
+    "dieta",
+    "cuidados de enfermagem",
+    "profilaxia de úlcera de estresse",
+    "só com indicação",
+    "profilaxia de tev",
+    "pelo risco"
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "hipomagnesemia",
+   "url": "/consulte/prescricoes/hipomagnesemia.html",
+   "tema": "Hipomagnesemia",
+   "titulo": "Prescrição comentada — Hipomagnesemia",
+   "subtitulo": "A deficiência que sustenta hipocalemia e hipocalcemia refratárias — e o rim que joga fora",
+   "sistema": "Hidroeletrolítico",
+   "status": "rascunho",
+   "escopo": "Serve para a hipomagnesemia do adulto internado — da torsades no monitor ao magnésio de 1,3 do etilista em realimentação.",
+   "gatilhos": [
+    "torsades",
+    "convulsão ou arritmia",
+    "fora da emergência",
+    "cerca de 1 g por hora",
+    "dieta",
+    "cuidados de enfermagem",
+    "profilaxia de úlcera de estresse",
+    "só com indicação",
+    "profilaxia de tev",
+    "pelo risco"
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "hiponatremia",
+   "url": "/consulte/prescricoes/hiponatremia.html",
+   "tema": "Hiponatremia",
+   "titulo": "Prescrição comentada — Hiponatremia",
+   "subtitulo": "Sintomático leva NaCl 3% em bolus; o resto é ritmo — e o teto de 8 mEq/L em 24 h",
+   "sistema": "Hidroeletrolítico",
+   "status": "rascunho",
+   "escopo": "Serve para a hiponatremia do adulto internado — da convulsão hiponatrêmica no PS ao sódio de 124 que aparece no exame de rotina.",
+   "gatilhos": [
+    "tem sintoma grave",
+    "é isso que decide bolus ou paciência",
+    "nacl 3% em bolus",
+    "repetível",
+    "hipertônica concentrada no neurocrítico",
+    "dieta",
+    "cuidados de enfermagem",
+    "profilaxia de úlcera de estresse",
+    "só com indicação",
+    "profilaxia de tev"
+   ],
+   "calculadoras": [
+    "osm",
+    "adrogue",
+    "na-corrigido",
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "meningite-bacteriana",
+   "url": "/consulte/prescricoes/meningite-bacteriana.html",
+   "tema": "Meningite bacteriana aguda",
+   "titulo": "Prescrição comentada — Meningite bacteriana aguda",
+   "subtitulo": "Antibiótico e dexametasona sem esperar a tomografia — dose meníngea e Listeria por risco",
+   "sistema": "Infecção",
+   "status": "rascunho",
+   "escopo": "Serve para a meningite bacteriana comunitária do adulto . Não cobre meningite neonatal, pós-neurocirúrgica ou de dispositivo (derivação, cateter), tuberculosa nem fúngica — todas com microbiologia, esquema e duração próprios.",
+   "gatilhos": [
+    "dexametasona junto com",
+    "ceftriaxona em dose meníngea",
+    "mais o que o risco exigir",
+    "descalonar pela cultura",
+    "durações orientativas",
+    "crise",
+    "hipertensão intracraniana e sódio",
+    "notificação",
+    "contatos e a audiometria que se esquece",
+    "dieta"
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "pneumonia-comunitaria-grave",
+   "url": "/consulte/prescricoes/pneumonia-comunitaria-grave.html",
+   "tema": "Pneumonia comunitária grave",
+   "titulo": "Prescrição comentada — Pneumonia comunitária grave",
+   "subtitulo": "Beta-lactâmico com atípicos, microbiologia para desescalar e ampliação só com risco validado",
+   "sistema": "Infecção",
+   "status": "rascunho",
+   "escopo": "Serve para o adulto imunocompetente com PAC grave . Não cobre pneumonia hospitalar ou associada à ventilação, imunossupressão profunda (neutropenia, transplante, HIV avançado), abscesso e empiema — todos exigem esquema e investigação próprios.",
+   "gatilhos": [
+    "pac grave pelos critérios ats",
+    "idsa",
+    "culturas sem atrasar a primeira dose",
+    "beta-lactâmico + macrolídeo",
+    "mrsa e pseudomonas",
+    "só com fator de risco validado",
+    "oseltamivir quando há influenza",
+    "mesmo depois de 48 h",
+    "corticoide na pac grave",
+    "descalonar"
+   ],
+   "calculadoras": [
+    "atsidsa",
+    "curb65",
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "sepse",
+   "url": "/consulte/prescricoes/sepse.html",
+   "tema": "Sepse e choque séptico",
+   "titulo": "Prescrição comentada — Sepse e choque séptico",
+   "subtitulo": "Antibiótico na 1ª hora pelo foco, volume com juízo, nora precoce — e desescalonar",
+   "sistema": "Infecção",
+   "status": "rascunho",
+   "escopo": "Serve para a sepse com disfunção orgânica e o choque séptico — do reconhecimento no pronto-socorro à prescrição da UTI.",
+   "gatilhos": [
+    "nomear a sepse",
+    "dosar o lactato",
+    "colher culturas",
+    "antibiótico na primeira hora",
+    "empírico pelo foco",
+    "cristaloide 30 ml",
+    "kg é a abertura",
+    "noradrenalina precoce",
+    "hidrocortisona quando a nora não desce",
+    "dose baixa"
+   ],
+   "calculadoras": [
+    "news2",
+    "sofa",
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "avch",
+   "url": "/consulte/prescricoes/avch.html",
+   "tema": "AVC hemorrágico",
+   "titulo": "Prescrição comentada — AVC hemorrágico",
+   "subtitulo": "Reverter o anticoagulante, PA suave até 140, o telefonema do cerebelo",
+   "sistema": "Neuro",
+   "status": "rascunho",
+   "escopo": "Serve para a hemorragia intraparenquimatosa espontânea — o \"AVCh hipertensivo\" do plantão — da TC positiva à UTI.",
+   "gatilhos": [
+    "anticoagulado? reverter agora",
+    "cada droga tem seu antídoto",
+    "pressão",
+    "suave até 140",
+    "começar cedo",
+    "cerebelo e hidrocefalia não esperam",
+    "hipertensão intracraniana",
+    "crise convulsiva",
+    "tratar quem tem",
+    "profilaxia para ninguém"
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "avci",
+   "url": "/consulte/prescricoes/avci.html",
+   "tema": "AVC isquêmico",
+   "titulo": "Prescrição comentada — AVC isquêmico",
+   "subtitulo": "Trombólise e trombectomia contra o relógio — e a pressão que aqui se respeita",
+   "sistema": "Neuro",
+   "status": "rascunho",
+   "escopo": "Serve para o AVC isquêmico do adulto, da porta do PS à enfermaria — o candidato à trombólise, o candidato à trombectomia (que o plantão não pode esquecer de procurar), e o que chegou fora de janela e precisa ser protegido.",
+   "gatilhos": [
+    "hora do último momento bem",
+    "glicemia",
+    "nesta ordem",
+    "trombólise até 4h30",
+    "tenecteplase pode substituir a alteplase",
+    "trombectomia",
+    "procurar a oclusão de grande vaso",
+    "dois regimes",
+    "nenhum reflexo",
+    "antitrombótico com calendário"
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "crise-epileptica",
+   "url": "/consulte/prescricoes/crise-epileptica.html",
+   "tema": "Crise epiléptica e status",
+   "titulo": "Prescrição comentada — Crise epiléptica e status",
+   "subtitulo": "Benzo pleno aos 5 min, segunda linha do ESETT aos 20 — e EEG em quem não acorda",
+   "sistema": "Neuro",
+   "status": "rascunho",
+   "escopo": "Serve para a crise tônico-clônica do adulto no PS e na enfermaria — da convulsão que cede sozinha ao status refratário que vai à UTI.",
+   "gatilhos": [
+    "crise epiléptica",
+    "proteger",
+    "cronometrar",
+    "medir a glicemia",
+    "diazepam 10 mg ev",
+    "segunda linha",
+    "escolha pelo paciente",
+    "dê a dose toda",
+    "caçar a causa em paralelo",
+    "três diagnósticos têm antídoto próprio"
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "hsa",
+   "url": "/consulte/prescricoes/hsa.html",
+   "tema": "Hemorragia subaracnóidea",
+   "titulo": "Prescrição comentada — Hemorragia subaracnóidea",
+   "subtitulo": "Aneurisma tratado cedo, PAS < 160, nimodipina 21 dias — e os três relógios",
+   "sistema": "Neuro",
+   "status": "rascunho",
+   "escopo": "Serve para a HSA aneurismática do adulto — da suspeita na emergência à UTI dos 14 dias. É doença de centro especializado: boa parte desta prescrição existe para chegar bem ao tratamento do aneurisma e para vigiar o que vem depois. O manejo neurocrítico profundo vive no módulo neuro ; o irmão intraparenquimatoso tem a página do AVCh .",
+   "gatilhos": [
+    "thunderclap = tc agora",
+    "tratar o aneurisma cedo",
+    "até o aneurisma tratado",
+    "pas < 160 suave",
+    "nimodipina 60 mg 4",
+    "hidrocefalia aguda",
+    "vasoespasmo e isquemia tardia",
+    "vigiar",
+    "euvolemia",
+    "hiponatremia se trata com sal"
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "dpoc-exacerbacao",
+   "url": "/consulte/prescricoes/dpoc-exacerbacao.html",
+   "tema": "Exacerbação aguda de DPOC",
+   "titulo": "Prescrição comentada — Exacerbação aguda de DPOC",
+   "subtitulo": "Oxigênio controlado, broncodilatadores, cinco dias de corticoide e antibiótico só quando indicado",
+   "sistema": "Pneumo",
+   "status": "rascunho",
+   "escopo": "Serve para a exacerbação aguda de DPOC no adulto . Não cobre DPOC estável, asma (que tem alvo de oxigênio e esquema de corticoide diferentes — ver asma ) nem bronquiectasia como doença de base, que tem microbiologia própria.",
+   "gatilhos": [
+    "oxigênio controlado",
+    "alvo de 88 a 92%",
+    "salbutamol e ipratrópio",
+    "prednisona 40 mg por 5 dias",
+    "antibiótico por cerca de 5 dias",
+    "laba",
+    "lama e corticoide inalatório",
+    "vni cedo",
+    "dieta",
+    "cuidados de enfermagem"
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ]
+  },
+  {
+   "id": "asma-aguda",
+   "url": "/consulte/prescricoes/asma-aguda.html",
+   "tema": "Exacerbação grave de asma",
+   "titulo": "Prescrição comentada — Exacerbação grave de asma",
+   "subtitulo": "Broncodilatador repetido, corticoide precoce e magnésio só no grave — alta nunca com SABA isolado",
+   "sistema": "Pneumo",
+   "status": "rascunho",
+   "escopo": "Serve para a exacerbação de asma no adulto , do PS à sala crítica. Doses pediátricas são por peso e não estão aqui . Gestante com crise de asma trata com as mesmas drogas — a hipoxemia materna é o risco maior —, com obstetrícia junto.",
+   "gatilhos": [
+    "avaliar e separar",
+    "moderada",
+    "grave ou ameaça à vida",
+    "oxigênio titulado",
+    "grave",
+    "salbutamol + ipratrópio",
+    "repetidos na primeira hora",
+    "dose menor",
+    "mesma lógica",
+    "corticoide sistêmico precoce"
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ]
+  }
+ ]
+};
+
+export const PRESCRICOES_MAPA = {
+ "_leia": "Mapa completo das prescrições comentadas — o roteador acrescido do índice interno de cada página (os itens da prescrição, com a condição de cada um) e das páginas relacionadas. GERADO por scripts/indice-prescricoes.mjs — não editar à mão.",
+ "gerado": "2026-08-19",
+ "total": 38,
+ "sistemas": [
+  "Alergia",
+  "Cardiovascular",
+  "Endócrino",
+  "Gastro",
+  "Hidroeletrolítico",
+  "Infecção",
+  "Neuro",
+  "Pneumo"
+ ],
+ "referencias": [
+  {
+   "id": "hub",
+   "url": "/consulte/prescricoes/index.html",
+   "titulo": "Prescrições comentadas",
+   "subtitulo": "O que prescrever e por quê, cenário por cenário",
+   "papel": "índice do módulo"
+  },
+  {
+   "id": "calculadoras",
+   "url": "/consulte/prescricoes/calculadoras.html",
+   "titulo": "Calculadoras clínicas",
+   "subtitulo": "Escores e fórmulas que decidem conduta, com a leitura do resultado ao lado",
+   "papel": "escores e fórmulas usados pelas prescrições"
+  }
+ ],
+ "prescricoes": [
+  {
+   "id": "anafilaxia",
+   "arquivo": "anafilaxia.html",
+   "url": "/consulte/prescricoes/anafilaxia.html",
+   "tema": "Anafilaxia",
+   "titulo": "Prescrição comentada — Anafilaxia",
+   "subtitulo": "Adrenalina IM primeiro e repetida cedo — anti-histamínico não trata via aérea nem choque",
+   "sistema": "Alergia",
+   "status": "rascunho",
+   "escopo": "Serve para a anafilaxia do adulto no pronto-socorro, na enfermaria e na UTI. Doses pediátricas são por peso e não estão nesta página . Gestação exige decúbito lateral e obstetrícia junto, mas não muda a indicação nem a dose da adrenalina.",
+   "gatilhos": [
+    "reconhecer e dar adrenalina im",
+    "posição",
+    "oxigênio e volume",
+    "refratária",
+    "infusão ev",
+    "só com experiência e monitorização",
+    "anti-histamínico e corticoide",
+    "quanto tempo observar",
+    "dieta",
+    "cuidados de enfermagem"
+   ],
+   "itens": [
+    {
+     "titulo": "Reconhecer e dar adrenalina IM — sem esperar a pele",
+     "quando": "comprometimento agudo de via aérea, respiração ou circulação, com ou sem urticária"
+    },
+    {
+     "titulo": "Posição, oxigênio e volume — e o perigo de levantar o paciente",
+     "quando": "sentar ou levantar abruptamente na anafilaxia já causou parada"
+    },
+    {
+     "titulo": "Refratária: infusão EV — só com experiência e monitorização",
+     "quando": "depois de duas doses IM adequadas sem melhora"
+    },
+    {
+     "titulo": "Anti-histamínico e corticoide — depois, e para menos do que se imagina",
+     "quando": "nenhum dos dois trata via aérea ou choque"
+    },
+    {
+     "titulo": "Quanto tempo observar — e o que sai com o paciente",
+     "quando": "a alta é estratificada, não por relógio único"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [],
+   "referencias": 9,
+   "caracteres": 16640
+  },
+  {
+   "id": "bradiarritmias",
+   "arquivo": "bradiarritmias.html",
+   "url": "/consulte/prescricoes/bradiarritmias.html",
+   "tema": "Bradiarritmias",
+   "titulo": "Prescrição comentada — Bradiarritmias",
+   "subtitulo": "Nodal × infranodal, a escada atropina → marca-passo → transvenoso, e as causas reversíveis",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para a bradiarritmia sintomática ou instável — bradicardia sinusal extrema, doença do nó sinusal, BAV de 2º e 3º grau.",
+   "gatilhos": [
+    "é instável",
+    "ler o bloqueio",
+    "nodal ou infranodal",
+    "degrau 1",
+    "atropina",
+    "degrau 2",
+    "marca-passo transcutâneo",
+    "prescrito de verdade",
+    "degrau 2 alternativo",
+    "cronotrópico em infusão"
+   ],
+   "itens": [
+    {
+     "titulo": "É instável — ou é só um número baixo?",
+     "quando": "monitor, O₂ se SpO₂ < 90%, acesso e ECG de 12 derivações desde o início"
+    },
+    {
+     "titulo": "Ler o bloqueio: nodal ou infranodal?",
+     "quando": "essa leitura prevê se a atropina funciona — e quanta pressa o marca-passo tem"
+    },
+    {
+     "titulo": "Degrau 1 — atropina, na dose que funciona",
+     "quando": "primeira medida no instável; não deixar que ela atrase os degraus seguintes"
+    },
+    {
+     "titulo": "Degrau 2 — marca-passo transcutâneo, prescrito de verdade",
+     "quando": "atropina falhou ou bloqueio infranodal: colar as pás é a prescrição"
+    },
+    {
+     "titulo": "Degrau 2 alternativo — cronotrópico em infusão",
+     "quando": "enquanto o marca-passo não chega, não captura ou não é tolerado"
+    },
+    {
+     "titulo": "Degrau 3 — marca-passo transvenoso: providenciar cedo",
+     "quando": "o transcutâneo e a infusão são pontes; esta é a margem segura"
+    },
+    {
+     "titulo": "Caçar o reversível — antes que o marca-passo vire definitivo à toa",
+     "quando": "meia dúzia de causas respondem a antídoto, não a eletrodo"
+    },
+    {
+     "titulo": "Kit do internado — com o monitor fazendo sentido",
+     "quando": "o padrão das outras páginas, ajustado à bradiarritmia"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "sca-com-supra.html",
+    "sca-sem-supra.html",
+    "choque-cardiogenico.html",
+    "taqui-instavel.html"
+   ],
+   "referencias": 15,
+   "caracteres": 18088
+  },
+  {
+   "id": "choque-cardiogenico",
+   "arquivo": "choque-cardiogenico.html",
+   "url": "/consulte/prescricoes/choque-cardiogenico.html",
+   "tema": "Choque cardiogênico",
+   "titulo": "Prescrição comentada — Choque cardiogênico",
+   "subtitulo": "Perfusão antes de pressão, mecanismo antes de bomba — e a escalada na hora certa",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para o choque cardiogênico — hipoperfusão por falência da bomba, com IAM respondendo pela maioria dos casos. As doses e diluições das vasoativas não moram aqui : vivem revisadas na página de drogas vasoativas , e os perfis de choque nos padrões hemodinâmicos — esta página organiza a sequência e as decisões.",
+   "gatilhos": [
+    "diagnosticar pela perfusão",
+    "achar o mecanismo em minutos",
+    "ecg + pocus",
+    "noradrenalina primeiro",
+    "restaurar a pressão de perfusão",
+    "inotrópico depois",
+    "volume",
+    "prova pequena",
+    "escalar cedo",
+    "remédios de casa"
+   ],
+   "itens": [
+    {
+     "titulo": "Diagnosticar pela perfusão — não só pela PAS",
+     "quando": "e estadiar (SCAI A–E): o estágio muda a pressa e o destino"
+    },
+    {
+     "titulo": "Achar o mecanismo em minutos — ECG + POCUS",
+     "quando": "o choque cardiogênico é um sintoma; a prescrição de verdade é a da causa"
+    },
+    {
+     "titulo": "Noradrenalina primeiro — restaurar a pressão de perfusão",
+     "quando": "hipotensão com má perfusão; alvo inicial PAM ≥ 65 mmHg"
+    },
+    {
+     "titulo": "Inotrópico depois — se o débito seguir baixo",
+     "quando": "com PA restaurada e baixo débito documentado (clínica/POCUS/SvO₂) — não \"sempre associado\""
+    },
+    {
+     "titulo": "Volume: prova pequena, e só sem congestão",
+     "quando": "o cardiogênico clássico é \"frio e úmido\" — já está cheio"
+    },
+    {
+     "titulo": "Escalar cedo — o telefonema é parte da prescrição",
+     "quando": "ajuste fino primeiro; persistiu — SCAI C sem melhora, ou qualquer D — falar com centro com suporte mecânico AGORA"
+    },
+    {
+     "titulo": "Remédios de casa: suspender — e lembrar de devolver",
+     "quando": "no choque, o cardioprotetor crônico vira depressor agudo"
+    },
+    {
+     "titulo": "Furosemida — depois da perfusão, contra a congestão",
+     "quando": "com PAM restaurada e congestão presente; não é droga de resgate de PA"
+    },
+    {
+     "titulo": "Via aérea e sedação — o momento mais perigoso",
+     "quando": "se IOT for necessária, ela se prepara como um procedimento de risco"
+    },
+    {
+     "titulo": "Kit do crítico — medir para poder titular",
+     "quando": "choque em vasopressor é paciente de UTI, com métricas de hora em hora"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "sca-com-supra.html",
+    "tep.html"
+   ],
+   "referencias": 21,
+   "caracteres": 19513
+  },
+  {
+   "id": "disseccao-aorta",
+   "arquivo": "disseccao-aorta.html",
+   "url": "/consulte/prescricoes/disseccao-aorta.html",
+   "tema": "Dissecção de aorta",
+   "titulo": "Prescrição comentada — Dissecção de aorta",
+   "subtitulo": "Betabloqueador antes do vasodilatador, FC < 60 em minutos — tipo A se opera",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para a suspeita e o manejo inicial da dissecção aguda de aorta — da dor lancinante que irradia ao dorso na sala de emergência até a bomba de esmolol rodando na UTI à espera da transferência.",
+   "gatilhos": [
+    "angio-tc de aorta total",
+    "confirmar e classificar",
+    "tipo a",
+    "acionar a cirurgia cardíaca agora",
+    "morfina titulada",
+    "betabloqueador ev primeiro",
+    "sempre antes de qualquer vasodilatador",
+    "fc controlada e pas ainda > 120? agora sim",
+    "nitroprussiato",
+    "vigilância que detecta progressão"
+   ],
+   "itens": [
+    {
+     "titulo": "Angio-TC de aorta total — confirmar e classificar, sem atrasar o controle",
+     "quando": "a imagem responde a única pergunta que muda o destino: a ascendente está envolvida?"
+    },
+    {
+     "titulo": "Tipo A: acionar a cirurgia cardíaca agora — a cirurgia é a prescrição",
+     "quando": "e o tipo B interna em UTI com a cirurgia vascular ciente desde a primeira hora"
+    },
+    {
+     "titulo": "Morfina titulada — a analgesia é parte da terapia anti-impulso",
+     "quando": "dor não tratada é catecolamina circulando: FC e PA que nenhuma bomba vence"
+    },
+    {
+     "titulo": "Betabloqueador EV primeiro — sempre antes de qualquer vasodilatador",
+     "quando": "meta operacional: FC ≤ 60 bpm — mas nunca à custa de perfusão"
+    },
+    {
+     "titulo": "Betabloqueador contraindicado? Depende de qual é a contraindicação",
+     "quando": "BCC não diidropiridínico só substitui quando o impedimento não é nodal — tipicamente broncoespasmo grave ativo"
+    },
+    {
+     "titulo": "FC controlada e PAS ainda > 120? Agora sim: nitroprussiato",
+     "quando": "meta: PAS < 120 mmHg em minutos, ou a menor que mantenha perfusão — com PA invasiva acompanhando"
+    },
+    {
+     "titulo": "O kit do crítico que pode virar cirúrgico a qualquer momento",
+     "quando": "dieta zero, proteção gástrica, náusea e glicemia — sem itens de reflexo"
+    },
+    {
+     "titulo": "Vigilância que detecta progressão — e o preparo para a próxima etapa",
+     "quando": "a dissecção é doença dinâmica: a reavaliação seriada é parte da prescrição"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "sca-sem-supra.html",
+    "pa-elevada.html"
+   ],
+   "referencias": 13,
+   "caracteres": 23425
+  },
+  {
+   "id": "eap",
+   "arquivo": "eap.html",
+   "url": "/consulte/prescricoes/eap.html",
+   "tema": "Edema agudo de pulmão",
+   "titulo": "Prescrição comentada — Edema agudo de pulmão",
+   "subtitulo": "VNI, vasodilatador e diurético na dose que resolve — fenótipo antes de inotrópico",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para o EAP cardiogênico com pressão preservada ou elevada — o paciente congesto, taquidispneico, com estertores e história cardiológica.",
+   "gatilhos": [
+    "sentar o paciente + vni precoce",
+    "vasodilatador",
+    "nitrato em dose que funcione",
+    "furosemida ev",
+    "checar o fenótipo",
+    "este eap é mesmo \"quente e úmido\"",
+    "tratar o gatilho",
+    "betabloqueador e ieca",
+    "mexer com critério",
+    "dieta e líquidos"
+   ],
+   "itens": [
+    {
+     "titulo": "Sentar o paciente + VNI precoce",
+     "quando": "começar já — a VNI trata o EAP, não só a saturação"
+    },
+    {
+     "titulo": "Vasodilatador — nitrato em dose que funcione",
+     "quando": "se PAS > 100–110 mmHg; é a droga do EAP hipertensivo"
+    },
+    {
+     "titulo": "Furosemida EV — na dose de quem congestiona",
+     "quando": "congestão é o alvo; a dose depende do que o rim já conhece"
+    },
+    {
+     "titulo": "Checar o fenótipo: este EAP é mesmo \"quente e úmido\"?",
+     "quando": "hipotensão ou má perfusão mudam a página — e proíbem metade dos itens acima"
+    },
+    {
+     "titulo": "Tratar o gatilho — o EAP veio de algum lugar",
+     "quando": "a prescrição do EAP inclui a prescrição da causa"
+    },
+    {
+     "titulo": "Betabloqueador e IECA/BRA — mexer com critério",
+     "quando": "suspender por reflexo também é erro"
+    },
+    {
+     "titulo": "Dieta e líquidos",
+     "quando": "na fase aguda, o paciente em VNI não come"
+    },
+    {
+     "titulo": "Profilaxia de TEV",
+     "quando": "todo paciente clínico acamado por descompensação"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é item universal de internação"
+    },
+    {
+     "titulo": "Antiemético se necessário",
+     "quando": "náusea ou vômitos — atenção redobrada em quem está de VNI"
+    },
+    {
+     "titulo": "Glicemia — controle sem hipoglicemia",
+     "quando": "HGT se diabetes, jejum, dieta enteral ou paciente crítico"
+    },
+    {
+     "titulo": "Monitorização — a resposta se mede em horas",
+     "quando": "quem prescreveu o tripé precisa ver se ele funcionou"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "sca-com-supra.html",
+    "sca-sem-supra.html"
+   ],
+   "referencias": 17,
+   "caracteres": 19917
+  },
+  {
+   "id": "fa-flutter",
+   "arquivo": "fa-flutter.html",
+   "url": "/consulte/prescricoes/fa-flutter.html",
+   "tema": "Fibrilação e flutter atrial",
+   "titulo": "Prescrição comentada — Fibrilação e flutter atrial",
+   "subtitulo": "Instável? Quanto tempo? Anticoagular quem? — e as doses certas de DOAC",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para a FA e o flutter com alta resposta ventricular na emergência e na enfermaria — do paciente instável que precisa de choque agora ao estável em que a decisão importante é o anticoagulante que ele vai levar para casa.",
+   "gatilhos": [
+    "fa e flutter atrial",
+    "instável? cardioversão elétrica",
+    "agora",
+    "anticoagular quem? o escore",
+    "betabloqueador",
+    "primeira escolha na maioria",
+    "diltiazem ou verapamil",
+    "feve reduzida ou instabilidade limítrofe",
+    "amiodarona ou digital",
+    "doac"
+   ],
+   "itens": [
+    {
+     "titulo": "Instável? Cardioversão elétrica — agora",
+     "quando": "hipotensão, rebaixamento, dor torácica isquêmica ou congestão grave atribuíveis à arritmia"
+    },
+    {
+     "titulo": "Há quanto tempo? A ESC 2024 baixou o corte para 24 horas",
+     "quando": "início > 24 h ou indeterminado muda o que é permitido fazer"
+    },
+    {
+     "titulo": "Anticoagular quem? O escore — e as exceções que não precisam dele",
+     "quando": "a decisão mais importante da página; independe de a FA \"ter revertido\""
+    },
+    {
+     "titulo": "Betabloqueador — primeira escolha na maioria",
+     "quando": "paciente estável, sem FEVE reduzida descompensada"
+    },
+    {
+     "titulo": "Diltiazem ou verapamil — a alternativa (com uma proibição)",
+     "quando": "quando betabloqueador não serve (broncoespasmo grave, intolerância) — nunca na FEVE reduzida"
+    },
+    {
+     "titulo": "FEVE reduzida ou instabilidade limítrofe — amiodarona ou digital",
+     "quando": "quando betabloqueador não cabe e BCC é proibido"
+    },
+    {
+     "titulo": "DOAC — primeira escolha na FA não valvar",
+     "quando": "doses e ajustes exatos; é aqui que mora o erro de dose mais comum"
+    },
+    {
+     "titulo": "Varfarina — quando DOAC é proibido",
+     "quando": "prótese mecânica e estenose mitral moderada/grave (a \"FA valvar\" de verdade)"
+    },
+    {
+     "titulo": "Na fase aguda internada — parenteral até definir",
+     "quando": "CVE de urgência feita, ou paciente que ainda vai definir o anticoagulante oral"
+    },
+    {
+     "titulo": "Tratar o gatilho — muita FA aguda é sintoma",
+     "quando": "FA secundária não se resolve no nó AV"
+    },
+    {
+     "titulo": "Se internar: o kit do internado",
+     "quando": "o de sempre — com uma exceção importante"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "hasbled",
+    "chads",
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "eap.html",
+    "sca-sem-supra.html"
+   ],
+   "referencias": 18,
+   "caracteres": 19351
+  },
+  {
+   "id": "ic-descompensada",
+   "arquivo": "ic-descompensada.html",
+   "url": "/consulte/prescricoes/ic-descompensada.html",
+   "tema": "IC descompensada",
+   "titulo": "Prescrição comentada — IC descompensada",
+   "subtitulo": "Os 4 perfis, a descongestão até o fim e a alta com o quarteto nas doses-alvo",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para a IC descompensada internada — o quente-úmido de enfermaria que chegou congesto sem estar se afogando, o frio-seco enganoso, e a alta de todos eles. As crises têm páginas próprias: dispneia dramática com congestão é edema agudo de pulmão ; má perfusão é choque cardiogênico .",
+   "gatilhos": [
+    "congesto? perfundindo",
+    "furosemida ev",
+    "dose de descongestão",
+    "metas de papel e balança",
+    "resistência diurética",
+    "perfil l",
+    "volume contado",
+    "alta com critérios",
+    "dose de início e dose-alvo",
+    "kit do internado"
+   ],
+   "itens": [
+    {
+     "titulo": "Congesto? Perfundindo? — o perfil escolhe a prescrição",
+     "quando": "exame físico + POCUS respondem em minutos (Stevenson A/B/C/L)"
+    },
+    {
+     "titulo": "Furosemida EV — dose de descongestão, metas de papel e balança",
+     "quando": "a internação existe para tirar litros; prescreva como quem vai conferir"
+    },
+    {
+     "titulo": "Resistência diurética — a escada antes de desistir",
+     "quando": "urina pouco apesar de dose adequada: há degraus antes do \"nefrologista amanhã\""
+    },
+    {
+     "titulo": "A terapia de sobrevida não espera a alta",
+     "quando": "manter o que dá, começar o que falta — ainda no hospital"
+    },
+    {
+     "titulo": "Perfil L — volume contado, e honestidade se não melhorar",
+     "quando": "mal perfundido sem congestão: às vezes é só diurético demais"
+    },
+    {
+     "titulo": "Alta com critérios — não com pressa",
+     "quando": "o dia da alta é o dia de maior risco da doença"
+    },
+    {
+     "titulo": "O quarteto da FE reduzida — dose de início e dose-alvo",
+     "quando": "FEVE ≤ 40%: quatro classes que mudam mortalidade, tituladas até o alvo dos ensaios"
+    },
+    {
+     "titulo": "Kit do internado — com balança no centro",
+     "quando": "o padrão das outras páginas, ajustado ao congesto"
+    },
+    {
+     "titulo": "A ordem de início — depois da estabilidade, sem esperar o ambulatório",
+     "quando": "não há ensaio comparando sequências; o que tem evidência forte é começar cedo e titular rápido com revisão precoce"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "eap.html",
+    "choque-cardiogenico.html",
+    "fa-flutter.html"
+   ],
+   "referencias": 21,
+   "caracteres": 21177
+  },
+  {
+   "id": "iam-vd",
+   "arquivo": "iam-vd.html",
+   "url": "/consulte/prescricoes/iam-vd.html",
+   "tema": "Infarto de ventrículo direito",
+   "titulo": "Prescrição comentada — Infarto de ventrículo direito",
+   "subtitulo": "Pré-carga sagrada, volume por prova, ritmo como pressão — e nada de nitrato",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para o IAM com acometimento de VD — quase sempre um supra inferior (oclusão de coronária direita proximal) em que V3R/V4R confirmou o envolvimento. A reperfusão, os antitrombóticos e a prevenção secundária são os da SCA com supra ; esta página cuida do que o VD muda. Se o paciente já está em choque franco, o raciocínio soma com o do choque cardiogênico .",
+   "gatilhos": [
+    "infarto de vd",
+    "v4r em todo supra inferior",
+    "sempre",
+    "regra 1",
+    "regra 2",
+    "volume por prova",
+    "regra 3",
+    "ritmo é pressão",
+    "reperfusão e antitrombóticos",
+    "prevenção secundária"
+   ],
+   "itens": [
+    {
+     "titulo": "V3R/V4R em todo supra inferior — antes do nitrato, sempre",
+     "quando": "um terço dos infartos inferiores acomete o VD; o ECG direito é a diferença entre tratar e derrubar"
+    },
+    {
+     "titulo": "Regra 1 — a pré-carga é sagrada",
+     "quando": "o VD isquêmico vira um conduto passivo: só enche quem o retorno venoso encher"
+    },
+    {
+     "titulo": "Regra 2 — volume por prova, com freio de mão",
+     "quando": "hipotensão com pré-carga baixa: soro é a primeira droga — em alíquotas, com freio, nunca em torneira"
+    },
+    {
+     "titulo": "Regra 3 — no VD, ritmo é pressão",
+     "quando": "bradicardia, BAV e FA custam mais caro aqui do que em qualquer outro infarto"
+    },
+    {
+     "titulo": "Reperfusão e antitrombóticos — a prescrição do supra, sem atraso",
+     "quando": "o melhor tratamento do VD falido é reabrir a coronária direita"
+    },
+    {
+     "titulo": "Prevenção secundária — com o calendário do VD",
+     "quando": "as mesmas drogas do supra, mas o VD dita quando cada uma entra"
+    },
+    {
+     "titulo": "Kit do internado — vigilância de ritmo estendida",
+     "quando": "o BAV do VD pode aparecer no segundo tempo"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "sca-com-supra.html",
+    "choque-cardiogenico.html",
+    "bradiarritmias.html",
+    "taqui-instavel.html"
+   ],
+   "referencias": 13,
+   "caracteres": 16883
+  },
+  {
+   "id": "minoca",
+   "arquivo": "minoca.html",
+   "url": "/consulte/prescricoes/minoca.html",
+   "tema": "MINOCA",
+   "titulo": "Prescrição comentada — MINOCA",
+   "subtitulo": "A RM dá o nome — placa, embolia, vasoespasmo, SCAD e ponte, cada um com sua prescrição",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para o infarto sem obstrução coronariana — critérios de IAM preenchidos, cateterismo com lesões < 50% e nenhuma causa alternativa evidente.",
+   "gatilhos": [
+    "minoca é diagnóstico provisório",
+    "rm cardíaca no centro",
+    "ruptura",
+    "erosão de placa < 50%",
+    "aterosclerose sem estenose",
+    "trombose",
+    "embolia coronária",
+    "anticoagular e achar a fonte",
+    "vasoespasmo coronariano",
+    "cálcio sim"
+   ],
+   "itens": [
+    {
+     "titulo": "MINOCA é diagnóstico provisório — não alta",
+     "quando": "critérios de IAM + coronárias < 50% + sem causa alternativa óbvia"
+    },
+    {
+     "titulo": "A investigação que dá o nome — RM cardíaca no centro",
+     "quando": "a prescrição mais importante da página não é um remédio"
+    },
+    {
+     "titulo": "Ruptura/erosão de placa < 50% — aterosclerose sem estenose",
+     "quando": "também é o caminho padrão quando a etiologia fica indefinida"
+    },
+    {
+     "titulo": "Trombose/embolia coronária — anticoagular e achar a fonte",
+     "quando": "trombo sem placa pede pergunta: de onde ele veio?"
+    },
+    {
+     "titulo": "Vasoespasmo coronariano — cálcio sim, betabloqueador não",
+     "quando": "angina em repouso, madrugada, supra transitório que some — e cate limpo"
+    },
+    {
+     "titulo": "Dissecção coronária espontânea (SCAD) — tratar é, sobretudo, desprescriver",
+     "quando": "mulher jovem, periparto ou pós-estresse: pensar antes de ver — e rever o filme"
+    },
+    {
+     "titulo": "Ponte miocárdica — diástole é o tratamento",
+     "quando": "a artéria que mergulha no músculo só perfunde quando o coração relaxa"
+    },
+    {
+     "titulo": "Quando a RM muda o nome — e o que todo MINOCA leva de alta",
+     "quando": "takotsubo e miocardite saem do rótulo; disfunção ventricular entra no quarteto"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "sca-sem-supra.html",
+    "sca-com-supra.html",
+    "fa-flutter.html",
+    "ic-descompensada.html"
+   ],
+   "referencias": 17,
+   "caracteres": 18343
+  },
+  {
+   "id": "miocardite",
+   "arquivo": "miocardite.html",
+   "url": "/consulte/prescricoes/miocardite.html",
+   "tema": "Miocardite",
+   "titulo": "Prescrição comentada — Miocardite",
+   "subtitulo": "Suporte com dose, fulminante com telefonema — imunossupressão só com biópsia",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para a miocardite aguda — do jovem com dor torácica e troponina pós-viral ao fulminante que choca em 48 horas. O diagnóstico costuma nascer no caminho do MINOCA (é o que a RM mais encontra); o suporte usa as páginas de IC , choque e arritmias. Aqui está o que a miocardite muda em cada uma — e onde ela exige freio.",
+   "gatilhos": [
+    "suspeitar",
+    "confirmar",
+    "fulminante",
+    "quarteto cedo",
+    "arritmia na fase aguda",
+    "tratar o episódio",
+    "adiar o definitivo",
+    "restrição de exercício",
+    "dor e febre",
+    "quem decide o aine é a imagem"
+   ],
+   "itens": [
+    {
+     "titulo": "Suspeitar, confirmar — e medir a gravidade certa",
+     "quando": "dor torácica + troponina no jovem pós-viral: a coronária sai, a RM entra"
+    },
+    {
+     "titulo": "Fulminante: o telefonema vem antes do colapso",
+     "quando": "choque + miocardite = a melhor indicação de suporte mecânico que existe"
+    },
+    {
+     "titulo": "A disfunção ventricular — quarteto cedo, e por mais tempo que a FE",
+     "quando": "FEVE reduzida: tratar como IC, com um calendário próprio"
+    },
+    {
+     "titulo": "Arritmia na fase aguda — tratar o episódio, adiar o definitivo",
+     "quando": "o miocárdio inflamado é eletricamente instável — e provisoriamente"
+    },
+    {
+     "titulo": "Restrição de exercício — a prescrição que não é remédio",
+     "quando": "para todos, atleta ou não: repouso na fase aguda e retorno guiado pela remissão"
+    },
+    {
+     "titulo": "Dor e febre — quem decide o AINE é a imagem, não a troponina",
+     "quando": "função ventricular normal libera o esquema da pericardite; disfunção veta"
+    },
+    {
+     "titulo": "Biópsia, imunossupressão e antivirais — nomear sem prescrever",
+     "quando": "o plantão indica a suspeita e o transporte; o regime é do centro"
+    },
+    {
+     "titulo": "Kit do internado — e a alta que agenda o futuro",
+     "quando": "a miocardite se resolve no seguimento, não na alta"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "minoca.html",
+    "ic-descompensada.html",
+    "choque-cardiogenico.html",
+    "taqui-instavel.html",
+    "taqui-ventricular.html",
+    "bradiarritmias.html"
+   ],
+   "referencias": 14,
+   "caracteres": 20219
+  },
+  {
+   "id": "pa-elevada",
+   "arquivo": "pa-elevada.html",
+   "url": "/consulte/prescricoes/pa-elevada.html",
+   "tema": "PA muito elevada",
+   "titulo": "Prescrição comentada — PA muito elevada",
+   "subtitulo": "Órgão-alvo define tudo — emergência na veia por órgão; assintomático sem derrubar",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para a pressão muito elevada na emergência e no internado — do paciente assintomático com 190×115 na triagem à emergência hipertensiva de verdade.",
+   "gatilhos": [
+    "há lesão de órgão-alvo aguda",
+    "tratar a pseudocrise",
+    "pa muito elevada assintomática",
+    "ajustar o longo prazo",
+    "emergência",
+    "ev titulável",
+    "monitorização",
+    "enfermaria",
+    "fazer y\"",
+    "ajustar o esquema"
+   ],
+   "itens": [
+    {
+     "titulo": "Há lesão de órgão-alvo aguda? — a busca dirigida",
+     "quando": "cinco perguntas e um exame físico valem mais que uma bateria de exames"
+    },
+    {
+     "titulo": "Tratar a pseudocrise — a causa do número, não o número",
+     "quando": "dor, ansiedade, bexiga cheia, abstinência: a \"crise\" mais comum do plantão"
+    },
+    {
+     "titulo": "PA muito elevada assintomática — ajustar o longo prazo, por via oral",
+     "quando": "o objetivo é a semana do paciente, não a próxima hora do plantão"
+    },
+    {
+     "titulo": "Emergência: EV titulável, monitorização — e um alvo numérico",
+     "quando": "a regra geral, antes das exceções por órgão"
+    },
+    {
+     "titulo": "O órgão escolhe o alvo e a droga — as exceções que mandam",
+     "quando": "a mesma pressão, cinco condutas diferentes"
+    },
+    {
+     "titulo": "Enfermaria: sem \"se PA > X, fazer Y\" — ajustar o esquema, não o episódio",
+     "quando": "o número assintomático do internado se trata na prescrição do dia, não no horário da madrugada"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "sca-sem-supra.html",
+    "disseccao-aorta.html",
+    "eap.html"
+   ],
+   "referencias": 13,
+   "caracteres": 21129
+  },
+  {
+   "id": "sca-com-supra",
+   "arquivo": "sca-com-supra.html",
+   "url": "/consulte/prescricoes/sca-com-supra.html",
+   "tema": "SCA com supra de ST",
+   "titulo": "Prescrição comentada — SCA com supra de ST",
+   "subtitulo": "Reperfusão contra o relógio — ICP primária ou fibrinólise, e a prescrição em volta",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para o paciente com IAM com supradesnível de ST (ou BRE/BRD novo com clínica de infarto) dentro da janela de reperfusão — sintomas ≤ 12 h, ou até 24 h se dor e isquemia em curso.",
+   "gatilhos": [
+    "sca com supra",
+    "escolher o caminho",
+    "icp primária ou fibrinólise",
+    "fibrinolítico",
+    "antiagregação 1",
+    "antiagregação 2",
+    "p2y12 conforme o caminho",
+    "anticoagulação",
+    "também conforme o caminho",
+    "nitrato"
+   ],
+   "itens": [
+    {
+     "titulo": "Escolher o caminho: ICP primária ou fibrinólise",
+     "quando": "a primeira \"prescrição\" do supra é um telefonema — e um relógio"
+    },
+    {
+     "titulo": "Fibrinolítico — se esse for o caminho",
+     "quando": "sintomas ≤ 12 h e ICP inalcançável em 120 min; checar contraindicações antes"
+    },
+    {
+     "titulo": "Antiagregação 1 — AAS",
+     "quando": "todos, na porta, salvo contraindicação"
+    },
+    {
+     "titulo": "Antiagregação 2 — P2Y12 conforme o caminho",
+     "quando": "a estratégia de reperfusão escolhe a droga e a dose"
+    },
+    {
+     "titulo": "Anticoagulação — também conforme o caminho",
+     "quando": "acompanha a reperfusão desde o diagnóstico; não é \"depois da sala\""
+    },
+    {
+     "titulo": "Nitrato — com uma contraindicação a mais",
+     "quando": "dor isquêmica, hipertensão ou congestão — nunca no infarto de VD"
+    },
+    {
+     "titulo": "Morfina — só a dor refratária",
+     "quando": "se dor persistir apesar do nitrato (quando o nitrato é permitido)"
+    },
+    {
+     "titulo": "Oxigênio — só se precisar",
+     "quando": "se SpO₂ < 90% ou desconforto respiratório"
+    },
+    {
+     "titulo": "Betabloqueador VO nas primeiras 24 h",
+     "quando": "se não houver sinais de IC nem risco de choque cardiogênico"
+    },
+    {
+     "titulo": "IECA (ou BRA se intolerância)",
+     "quando": "nas primeiras 24 h — prioridade se parede anterior, FEVE ≤ 40%, DM, HAS ou DRC"
+    },
+    {
+     "titulo": "Estatina de alta intensidade — já",
+     "quando": "todos, independentemente do LDL de chegada"
+    },
+    {
+     "titulo": "Espironolactona — em casos selecionados",
+     "quando": "se FEVE ≤ 40% com sintomas de IC ou diabetes, já em uso de IECA + betabloqueador"
+    },
+    {
+     "titulo": "Dieta e via",
+     "quando": "jejum enquanto a reperfusão está em curso; realimentar com o paciente definido"
+    },
+    {
+     "titulo": "Glicemia — controle sem hipoglicemia",
+     "quando": "HGT se diabetes, jejum, dieta enteral ou paciente crítico"
+    },
+    {
+     "titulo": "Antiemético se necessário",
+     "quando": "náusea ou vômitos — comuns no infarto inferior"
+    },
+    {
+     "titulo": "Monitorização — com desfibrilador ao alcance",
+     "quando": "o risco de FV é máximo nas primeiras horas"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "sca-sem-supra.html"
+   ],
+   "referencias": 29,
+   "caracteres": 23500
+  },
+  {
+   "id": "sca-sem-supra",
+   "arquivo": "sca-sem-supra.html",
+   "url": "/consulte/prescricoes/sca-sem-supra.html",
+   "tema": "SCA sem supra de ST",
+   "titulo": "Prescrição comentada — SCA sem supra de ST",
+   "subtitulo": "Item por item, com dose, contraindicação e o porquê",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para o paciente com síndrome coronariana aguda sem supradesnível de ST (angina instável ou IAMSSST) já reconhecida — dor torácica típica com troponina alterada e/ou ECG isquêmico sem supra — internado em unidade monitorizada.",
+   "gatilhos": [
+    "sca sem supra",
+    "antiagregação 1",
+    "antiagregação 2",
+    "inibidor de p2y12",
+    "anticoagulação parenteral",
+    "controle da dor e da isquemia",
+    "nitrato",
+    "morfina",
+    "só a dor refratária",
+    "oxigênio"
+   ],
+   "itens": [
+    {
+     "titulo": "Antiagregação 1 — AAS",
+     "quando": "todos os pacientes, salvo contraindicação"
+    },
+    {
+     "titulo": "Antiagregação 2 — inibidor de P2Y12",
+     "quando": "a escolha e o momento dependem da estratégia invasiva"
+    },
+    {
+     "titulo": "Anticoagulação parenteral",
+     "quando": "todos, desde o diagnóstico — manter até a ICP, por 8 dias ou até a alta"
+    },
+    {
+     "titulo": "Controle da dor e da isquemia — nitrato",
+     "quando": "dor isquêmica em curso; EV se dor persistente, hipertensão ou congestão"
+    },
+    {
+     "titulo": "Morfina — só a dor refratária",
+     "quando": "se dor persistir apesar do nitrato otimizado"
+    },
+    {
+     "titulo": "Oxigênio — só se precisar",
+     "quando": "se SpO₂ < 90% ou desconforto respiratório"
+    },
+    {
+     "titulo": "Betabloqueador VO nas primeiras 24 h",
+     "quando": "se não houver sinais de IC nem risco de choque cardiogênico"
+    },
+    {
+     "titulo": "IECA (ou BRA se intolerância)",
+     "quando": "nas primeiras 24 h se HAS, DM, DRC ou FEVE ≤ 40% — razoável nos demais"
+    },
+    {
+     "titulo": "Estatina de alta intensidade — já",
+     "quando": "todos, independentemente do LDL de chegada"
+    },
+    {
+     "titulo": "Espironolactona — em casos selecionados",
+     "quando": "se FEVE ≤ 40% com sintomas de IC ou diabetes, já em uso de IECA + betabloqueador"
+    },
+    {
+     "titulo": "Dieta e via",
+     "quando": "conforme estabilidade e programação do cateterismo"
+    },
+    {
+     "titulo": "Glicemia — controle sem hipoglicemia",
+     "quando": "HGT se diabetes, jejum, dieta enteral ou paciente crítico"
+    },
+    {
+     "titulo": "Antiemético se necessário",
+     "quando": "náusea ou vômitos"
+    },
+    {
+     "titulo": "Monitorização e vigilância",
+     "quando": "enquanto durar o risco arrítmico e isquêmico"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "sca-com-supra.html"
+   ],
+   "referencias": 22,
+   "caracteres": 21783
+  },
+  {
+   "id": "taqui-instavel",
+   "arquivo": "taqui-instavel.html",
+   "url": "/consulte/prescricoes/taqui-instavel.html",
+   "tema": "Taquiarritmia instável",
+   "titulo": "Prescrição comentada — Taquiarritmia instável",
+   "subtitulo": "CVE sem improviso: carga por ritmo, sedação pela hemodinâmica, e o pós-choque",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para a taquiarritmia com instabilidade — supraventricular ou ventricular com pulso.",
+   "gatilhos": [
+    "é instável",
+    "sincronizar e escolher a carga pelo ritmo",
+    "sedar conforme a hemodinâmica",
+    "reverteu",
+    "agora se trata o terreno",
+    "método",
+    "gestante",
+    "dispositivo",
+    "digital e criança",
+    "dieta"
+   ],
+   "itens": [
+    {
+     "titulo": "É instável — e é a arritmia a culpada?",
+     "quando": "monitor, O₂ se SpO₂ < 90%, acesso venoso e ECG andando juntos com a avaliação"
+    },
+    {
+     "titulo": "Sincronizar e escolher a carga pelo ritmo",
+     "quando": "tecla SYNC apertada — e reapertada antes de cada novo choque"
+    },
+    {
+     "titulo": "Sedar conforme a hemodinâmica — não conforme o hábito",
+     "quando": "objetivo: sedação leve e curta; material de via aérea e AMBU à mão"
+    },
+    {
+     "titulo": "Reverteu: agora se trata o terreno",
+     "quando": "o ritmo voltou; a causa que o gerou continua lá"
+    },
+    {
+     "titulo": "Não reverteu: método, não desespero",
+     "quando": "entre um choque e outro há três verificações e uma droga"
+    },
+    {
+     "titulo": "Gestante, dispositivo, digital e criança",
+     "quando": "quatro exceções que valem um segundo de pausa — não mais que isso"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "fa-flutter.html",
+    "sca-sem-supra.html",
+    "sca-com-supra.html",
+    "choque-cardiogenico.html"
+   ],
+   "referencias": 12,
+   "caracteres": 15058
+  },
+  {
+   "id": "tsv-estavel",
+   "arquivo": "tsv-estavel.html",
+   "url": "/consulte/prescricoes/tsv-estavel.html",
+   "tema": "Taquicardia supraventricular estável",
+   "titulo": "Prescrição comentada — Taquicardia supraventricular estável",
+   "subtitulo": "Valsalva modificada, adenosina com os cuidados certos, a escada até a CVE — e a ablação que cura",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para a TSV com QRS estreito e paciente estável — do episódio clássico de TPSV (reentrada nodal ou por via acessória) às taquicardias atrial, multifocal e juncional.",
+   "gatilhos": [
+    "tsv estável",
+    "monitor",
+    "acesso",
+    "degrau 1",
+    "valsalva modificada",
+    "degrau 2",
+    "adenosina",
+    "rápida e avisada",
+    "degrau 3",
+    "bloqueador de nó em infusão lenta"
+   ],
+   "itens": [
+    {
+     "titulo": "Monitor, acesso — e o ECG que vale ouro",
+     "quando": "estável é quem tem tempo de documentar; documente"
+    },
+    {
+     "titulo": "Que TSV é essa? Trinta segundos de leitura",
+     "quando": "RR regular ou não, P visível ou não — e cada resposta tem um caminho"
+    },
+    {
+     "titulo": "Degrau 1 — Valsalva modificada (a manobra que funciona)",
+     "quando": "custa zero, reverte quase metade — se feita do jeito do estudo"
+    },
+    {
+     "titulo": "Degrau 2 — adenosina, rápida e avisada",
+     "quando": "meia-vida de segundos: a técnica do bolus importa tanto quanto a dose"
+    },
+    {
+     "titulo": "Degrau 3 — bloqueador de nó em infusão lenta",
+     "quando": "TPSV que resistiu ou recorre logo após a adenosina"
+    },
+    {
+     "titulo": "Degrau 4 — rever o diagnóstico, depois cardioverter",
+     "quando": "a TPSV que venceu três degraus merece uma segunda olhada antes do choque"
+    },
+    {
+     "titulo": "Atrial, multifocal e juncional — tratar o dono da arritmia",
+     "quando": "três taquicardias em que a droga de nó é coadjuvante"
+    },
+    {
+     "titulo": "Alta da TPSV revertida — com o encaminhamento certo",
+     "quando": "o episódio acabou; a via de reentrada continua lá"
+    },
+    {
+     "titulo": "Se ficar em observação: o kit enxuto",
+     "quando": "a maioria não interna; quem fica, fica vigiado"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "taqui-instavel.html",
+    "fa-flutter.html"
+   ],
+   "referencias": 15,
+   "caracteres": 17681
+  },
+  {
+   "id": "taqui-ventricular",
+   "arquivo": "taqui-ventricular.html",
+   "url": "/consulte/prescricoes/taqui-ventricular.html",
+   "tema": "Taquicardia ventricular",
+   "titulo": "Prescrição comentada — Taquicardia ventricular",
+   "subtitulo": "QRS largo é TV até prova em contrário — monomórfica, polimórfica, torsades e FA pré-excitada",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para a taquicardia de QRS largo com pulso . Se o paciente está instável, o caminho já foi dado na taquiarritmia instável (monomórfica → CVE; polimórfica → desfibrilar). Esta página cuida do que vem antes e depois do choque no paciente que dá tempo: classificar, escolher droga, tratar a causa — e não cair na armadilha de \"TSV com aberrância\".",
+   "gatilhos": [
+    "qrs largo é tv até prova em contrário",
+    "primeira escolha",
+    "cardioversão eletiva",
+    "alternativa química",
+    "polimórfica com qt normal",
+    "pense isquemia",
+    "torsades de pointes",
+    "qt longo",
+    "magnésio e a nuance que muda tudo",
+    "fa pré-excitada"
+   ],
+   "itens": [
+    {
+     "titulo": "QRS largo é TV até prova em contrário",
+     "quando": "monitor, acesso, ECG 12 derivações — e a humildade de não apostar em \"aberrância\""
+    },
+    {
+     "titulo": "Primeira escolha: cardioversão eletiva, com calma de eletiva",
+     "quando": "estável é quem pode ser sedado direito antes do choque"
+    },
+    {
+     "titulo": "Alternativa química — e a manutenção que segue",
+     "quando": "quando a sedação é de alto risco, ou para prevenir recorrência após a reversão"
+    },
+    {
+     "titulo": "Polimórfica com QT normal — pense isquemia",
+     "quando": "ela raramente dá tempo: desfibrilar quando sustentada, investigar coronária sempre"
+    },
+    {
+     "titulo": "Torsades de pointes — QT longo, magnésio e a nuance que muda tudo",
+     "quando": "a polimórfica que \"torce\" sobre um QTc geralmente > 500 ms"
+    },
+    {
+     "titulo": "FA pré-excitada — irregular, largo e proibido de bloquear",
+     "quando": "QRS largo + RR irregular + morfologia variando batimento a batimento"
+    },
+    {
+     "titulo": "Caçar a causa — a TV é sintoma de um coração com história",
+     "quando": "o ECG sinusal pós-reversão vale tanto quanto o da crise"
+    },
+    {
+     "titulo": "Prevenção de morte súbita — e o kit da vigilância",
+     "quando": "a decisão do CDI não é do plantão, mas nasce do que o plantão documentar"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "qtc",
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "taqui-instavel.html",
+    "sca-com-supra.html",
+    "sca-sem-supra.html",
+    "tsv-estavel.html",
+    "fa-flutter.html",
+    "bradiarritmias.html"
+   ],
+   "referencias": 14,
+   "caracteres": 18945
+  },
+  {
+   "id": "tep",
+   "arquivo": "tep.html",
+   "url": "/consulte/prescricoes/tep.html",
+   "tema": "Tromboembolismo pulmonar",
+   "titulo": "Prescrição comentada — Tromboembolismo pulmonar",
+   "subtitulo": "Estratificar primeiro — DOAC com ataque, heparina na dose de TEV, trombólise só no alto risco",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para o TEP agudo confirmado (ou com probabilidade alta o bastante para tratar enquanto se confirma). A primeira pergunta não é \"qual heparina\" — é \"em que categoria este paciente está?\" : é isso que decide alocação (casa, enfermaria, UTI), anticoagulante e se a terapia avançada entra em cena.",
+   "gatilhos": [
+    "classificar em categoria a–e",
+    "estável",
+    "doac",
+    "internado",
+    "hbpm é a preferida",
+    "inclusive no grave",
+    "populações que mudam a escolha",
+    "varfarina",
+    "sustentar o vd",
+    "vasopressor no choque"
+   ],
+   "itens": [
+    {
+     "titulo": "Classificar em categoria A–E — a \"prescrição\" que aloca o paciente",
+     "quando": "a AHA/ACC 2026 aposentou massivo/submassivo e o quarteto da ESC; agora são 5 categorias com subcategorias"
+    },
+    {
+     "titulo": "Estável: DOAC — com a fase de ataque que não pode faltar",
+     "quando": "DOAC ganha da varfarina em todo mundo que pode tomar oral (Classe 1); categoria A vai para casa do PS, categoria B tem alta precoce"
+    },
+    {
+     "titulo": "Internado: HBPM é a preferida — inclusive no grave",
+     "quando": "a AHA/ACC 2026 inverteu o reflexo antigo: enoxaparina ganha da HNF nas categorias C1 a E1"
+    },
+    {
+     "titulo": "Populações que mudam a escolha",
+     "quando": "câncer, rim, gestação e SAF não seguem a regra geral"
+    },
+    {
+     "titulo": "Varfarina — quando for ela, com a ponte certa",
+     "quando": "rim falido, SAF, custo/acesso — sempre com sobreposição de heparina"
+    },
+    {
+     "titulo": "Sustentar o VD — vasopressor no choque, volume contado, sedação como ameaça",
+     "quando": "o ventrículo direito falindo é a causa da morte no TEP — e ele não perdoa excesso"
+    },
+    {
+     "titulo": "Acionar o time de TEP (PERT) — antes de escolher a terapia avançada",
+     "quando": "recomendação formal nas categorias C a E, e não é burocracia: é o que encurta o tempo até o tratamento certo"
+    },
+    {
+     "titulo": "Trombólise sistêmica — a indicação agora se lê pela categoria",
+     "quando": "razoável em E1–E2; considerável em D1–D2; incerta em C3; dano de A1 a C2"
+    },
+    {
+     "titulo": "Cateter, trombectomia e cirurgia — as alternativas de quem não pode sangrar",
+     "quando": "mesmas categorias da trombólise; a vantagem declarada é menos sangramento, não mais eficácia"
+    },
+    {
+     "titulo": "Dor pleurítica, febre e náusea",
+     "quando": "analgesia sem sabotar a anticoagulação"
+    },
+    {
+     "titulo": "Kit do internado — sem dupla heparina",
+     "quando": "o padrão das outras páginas, com as exceções do anticoagulado — e a alta que depende da categoria"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — aqui não: a anticoagulação plena É o tratamento",
+     "quando": "somar profilaxia à dose plena é dose dupla sem ganho — o que exige plano é a pausa"
+    }
+   ],
+   "calculadoras": [
+    "wells-tep",
+    "spesi",
+    "pesi",
+    "ulcera"
+   ],
+   "relacionadas": [],
+   "referencias": 18,
+   "caracteres": 29319
+  },
+  {
+   "id": "tvp",
+   "arquivo": "tvp.html",
+   "url": "/consulte/prescricoes/tvp.html",
+   "tema": "Trombose venosa profunda",
+   "titulo": "Prescrição comentada — Trombose venosa profunda",
+   "subtitulo": "A maioria trata em casa com DOAC — quem interna, a escolha pelo paciente, a duração",
+   "sistema": "Cardiovascular",
+   "status": "rascunho",
+   "escopo": "Serve para a TVP de membro inferior confirmada — da panturrilha sintomática que vai para casa com a receita à phlegmasia que aciona a cirurgia vascular.",
+   "gatilhos": [
+    "confirmar antes de anticoagular",
+    "probabilidade",
+    "d-dímero",
+    "ultrassom",
+    "casa ou hospital",
+    "população geral",
+    "doac direto",
+    "atenção às duas fases",
+    "câncer",
+    "gestante"
+   ],
+   "itens": [
+    {
+     "titulo": "Confirmar antes de anticoagular — probabilidade, D-dímero, ultrassom",
+     "quando": "a perna inchada tem dez diagnósticos; só um deles leva meses de anticoagulante"
+    },
+    {
+     "titulo": "Casa ou hospital? — a maioria vai para casa hoje",
+     "quando": "internar TVP é exceção com nome e sobrenome; o padrão é a receita e a orientação"
+    },
+    {
+     "titulo": "População geral: DOAC direto, sem heparina antes — atenção às duas fases",
+     "quando": "apixabana ou rivaroxabana começam sozinhas; a dose de ataque tem prazo de validade"
+    },
+    {
+     "titulo": "As quatro populações que mudam a escolha — câncer, gestante, rim, SAF",
+     "quando": "antes de repetir a receita do item 03, conferir se o paciente é um destes quatro"
+    },
+    {
+     "titulo": "Varfarina bem feita — a ponte tem regra dupla, não uma",
+     "quando": "quando ela é a escolha (item 04) ou a realidade (custo): fazer direito muda tudo"
+    },
+    {
+     "titulo": "Parenteral do internado: enoxaparina — e as duas exceções com nome",
+     "quando": "rim manda para HNF; HIT manda para fondaparinux"
+    },
+    {
+     "titulo": "Phlegmasia e a ílio-femoral maciça — a TVP que é emergência vascular",
+     "quando": "perna azul, tensa, dolorosa, pulso sumindo: aqui o telefonema vem antes da bomba"
+    },
+    {
+     "titulo": "O kit do internado — e a ordem mais importante: andar",
+     "quando": "deambulação precoce é prescrição; repouso absoluto é mito com data de validade vencida"
+    },
+    {
+     "titulo": "Rotular a TVP e dar prazo — provocada, não provocada, e o dia de reavaliar",
+     "quando": "a pergunta \"por que este paciente trombosou?\" vale mais que qualquer trombofilia de painel"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "tep.html",
+    "fa-flutter.html"
+   ],
+   "referencias": 19,
+   "caracteres": 28607
+  },
+  {
+   "id": "cetoacidose-diabetica",
+   "arquivo": "cetoacidose-diabetica.html",
+   "url": "/consulte/prescricoes/cetoacidose-diabetica.html",
+   "tema": "Cetoacidose diabética",
+   "titulo": "Prescrição comentada — Cetoacidose diabética",
+   "subtitulo": "Fluido, potássio antes da insulina e cetose como alvo — a glicemia normaliza antes de a crise terminar",
+   "sistema": "Endócrino",
+   "status": "rascunho",
+   "escopo": "Serve para a cetoacidose diabética do adulto , do pronto-socorro à UTI. Não cobre pediatria, gestação e cenários toxicológicos, que exigem protocolo próprio — e a CAD da gestante tem alvos e riscos distintos.",
+   "gatilhos": [
+    "quem vai para a uti",
+    "cristaloide primeiro",
+    "potássio antes da insulina",
+    "insulina regular ev em bomba",
+    "glicose abaixo de 250",
+    "entra glicose",
+    "bicarbonato e fósforo",
+    "basal subcutânea antes de desligar a bomba",
+    "dieta",
+    "cuidados de enfermagem"
+   ],
+   "itens": [
+    {
+     "titulo": "Os três componentes — e a CAD que não tem glicose alta",
+     "quando": "glicose ≥ 200 (ou diabetes conhecido) + cetonemia + acidose. Faltando um, não é CAD"
+    },
+    {
+     "titulo": "Quem vai para a UTI — e quando o protocolo subcutâneo cabe",
+     "quando": "CAD grave, alteração mental, choque, sepse ou K perigoso não ficam na enfermaria"
+    },
+    {
+     "titulo": "Cristaloide primeiro — e reavaliado, não em volume cego",
+     "quando": "o déficit costuma ser de vários litros; a velocidade é individual"
+    },
+    {
+     "titulo": "Potássio ANTES da insulina — o item que mais mata quando invertido",
+     "quando": "a insulina empurra K para dentro da célula; se ele já está baixo, isso é arritmia"
+    },
+    {
+     "titulo": "Insulina regular EV em bomba — 0,1 UI/kg/h, sem bolus obrigatório",
+     "quando": "depois do fluido e com K ≥ 3,5"
+    },
+    {
+     "titulo": "Glicose abaixo de 250: entra glicose, a insulina NÃO sai",
+     "quando": "a cetose acaba depois da hiperglicemia — desligar a bomba aqui é recair"
+    },
+    {
+     "titulo": "Bicarbonato e fósforo — a exceção, não a rotina",
+     "quando": "os dois têm indicação estreita e evidência limitada"
+    },
+    {
+     "titulo": "Basal subcutânea ANTES de desligar a bomba",
+     "quando": "a insulina EV dura minutos: sem sobreposição, a cetose volta"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "anion-gap",
+    "winter",
+    "na-corrigido",
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "hipocalemia.html",
+    "hipofosfatemia.html",
+    "crise-epileptica.html"
+   ],
+   "referencias": 12,
+   "caracteres": 22871
+  },
+  {
+   "id": "estado-hiperosmolar",
+   "arquivo": "estado-hiperosmolar.html",
+   "url": "/consulte/prescricoes/estado-hiperosmolar.html",
+   "tema": "Estado hiperosmolar hiperglicêmico",
+   "titulo": "Prescrição comentada — Estado hiperosmolar hiperglicêmico",
+   "subtitulo": "Corrigir volume e osmolalidade sem pressa — o cérebro importa mais que o número da glicose",
+   "sistema": "Endócrino",
+   "status": "rascunho",
+   "escopo": "Serve para o estado hiperosmolar hiperglicêmico do adulto . Não cobre pediatria nem gestação. Se houver cetonemia com acidose, o paciente tem quadro misto e o fluxo correto é o da cetoacidose .",
+   "gatilhos": [
+    "glicose muito alta",
+    "osmolalidade alta",
+    "cristaloide isotônico",
+    "insulina em meia-dose",
+    "dieta",
+    "cuidados de enfermagem",
+    "profilaxia de úlcera de estresse",
+    "só com indicação",
+    "profilaxia de tev",
+    "pelo risco"
+   ],
+   "itens": [
+    {
+     "titulo": "EHH: glicose muito alta, osmolalidade alta, sem acidose",
+     "quando": "se houver cetonemia e acidose, o fluxo é o da CAD — não este"
+    },
+    {
+     "titulo": "Cristaloide isotônico — o déficit aqui é maior que na CAD",
+     "quando": "e a reavaliação vale mais que a velocidade"
+    },
+    {
+     "titulo": "As três velocidades que não se ultrapassa",
+     "quando": "aqui o teto vale mais do que a meta — o cérebro se adaptou à osmolalidade alta"
+    },
+    {
+     "titulo": "Insulina em meia-dose — 0,05 UI/kg/h, e só depois do volume",
+     "quando": "no EHH puro; no misto, a dose é a da CAD"
+    },
+    {
+     "titulo": "Quando acabou — e a transição",
+     "quando": "o alvo é cognitivo e osmolar, não só glicêmico"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "osm",
+    "na-corrigido",
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "cetoacidose-diabetica.html",
+    "crise-epileptica.html"
+   ],
+   "referencias": 9,
+   "caracteres": 14018
+  },
+  {
+   "id": "hda",
+   "arquivo": "hda.html",
+   "url": "/consulte/prescricoes/hda.html",
+   "tema": "Hemorragia digestiva alta",
+   "titulo": "Prescrição comentada — Hemorragia digestiva alta",
+   "subtitulo": "Ressuscitar, reconhecer o ramo varicoso e chegar à endoscopia com a medicação certa",
+   "sistema": "Gastro",
+   "status": "rascunho",
+   "escopo": "Serve para a hemorragia digestiva alta do adulto . A página tem núcleo comum e dois ramos separados — não varicosa e varicosa/cirrose.",
+   "gatilhos": [
+    "ressuscitar",
+    "proteger via aérea quando preciso",
+    "estratégia restritiva",
+    "limiar de 7 g",
+    "inibidor de bomba",
+    "h. pylori",
+    "aine e o que fazer se ressangrar",
+    "vasoativo esplâncnico",
+    "octreotida ou terlipressina",
+    "nunca as duas"
+   ],
+   "itens": [
+    {
+     "titulo": "Ressuscitar, proteger via aérea quando preciso, e tipar",
+     "quando": "a endoscopia é depois da estabilização, não antes"
+    },
+    {
+     "titulo": "Estratégia restritiva — limiar de 7 g/dL",
+     "quando": "transfundir cedo demais piora desfecho no sangramento varicoso"
+    },
+    {
+     "titulo": "Quando endoscopar — e o que fazer com o antitrombótico",
+     "quando": "o tempo depende do ramo suspeito; o antitrombótico depende do motivo dele"
+    },
+    {
+     "titulo": "Inibidor de bomba — antes e depois da endoscopia",
+     "quando": "o pré-endoscopia é decisão local; o pós depende do achado"
+    },
+    {
+     "titulo": "H. pylori, AINE e o que fazer se ressangrar",
+     "quando": "a prevenção da recidiva começa na internação"
+    },
+    {
+     "titulo": "Vasoativo esplâncnico — octreotida ou terlipressina, nunca as duas",
+     "quando": "começar na suspeita, sem esperar a endoscopia confirmar"
+    },
+    {
+     "titulo": "Ceftriaxona desde a admissão — e ligadura em até 12 h",
+     "quando": "a profilaxia antibiótica no cirrótico que sangra muda mortalidade"
+    },
+    {
+     "titulo": "Profilaxia secundária — e o que não fazer no cirrótico",
+     "quando": "começar quando estabilizar, não no choque"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "blatchford",
+    "child",
+    "meldna",
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [],
+   "referencias": 12,
+   "caracteres": 26167
+  },
+  {
+   "id": "pancreatite-aguda",
+   "arquivo": "pancreatite-aguda.html",
+   "url": "/consulte/prescricoes/pancreatite-aguda.html",
+   "tema": "Pancreatite aguda",
+   "titulo": "Prescrição comentada — Pancreatite aguda",
+   "subtitulo": "Hidratação moderada, analgesia, alimentação precoce e nenhum antibiótico para necrose estéril",
+   "sistema": "Gastro",
+   "status": "rascunho",
+   "escopo": "Serve para a pancreatite aguda do adulto , da admissão à alta. Não cobre pancreatite crônica agudizada com anatomia alterada, pancreatite pós-transplante, nem o manejo endoscópico detalhado da necrose organizada — esse é de centro especializado.",
+   "gatilhos": [
+    "dois de três",
+    "hidratação moderada e reavaliada",
+    "analgesia multimodal",
+    "alimentar cedo",
+    "nenhum antibiótico para necrose estéril",
+    "colecistectomia na mesma internação",
+    "dieta",
+    "cuidados de enfermagem",
+    "profilaxia de úlcera de estresse",
+    "só com indicação"
+   ],
+   "itens": [
+    {
+     "titulo": "Dois de três — e a TC que não é para agora",
+     "quando": "dor típica, enzima três vezes o limite, ou imagem compatível"
+    },
+    {
+     "titulo": "Hidratação moderada e reavaliada — não agressiva",
+     "quando": "o WATERFALL mudou isto: volume agressivo causou sobrecarga sem benefício"
+    },
+    {
+     "titulo": "Analgesia multimodal — e sem mito sobre opioide",
+     "quando": "dor não controlada é o principal motivo de o paciente não comer"
+    },
+    {
+     "titulo": "Alimentar cedo — e não esperar a lipase cair",
+     "quando": "o jejum prolongado não repousa o pâncreas, atrofia o intestino"
+    },
+    {
+     "titulo": "Nenhum antibiótico para necrose estéril — e ERCP só com colangite",
+     "quando": "os dois excessos clássicos desta doença"
+    },
+    {
+     "titulo": "Colecistectomia na mesma internação — e a necrose que espera",
+     "quando": "a pressa aqui é da vesícula, não da coleção"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "bisap",
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [],
+   "referencias": 10,
+   "caracteres": 17383
+  },
+  {
+   "id": "hipercalemia",
+   "arquivo": "hipercalemia.html",
+   "url": "/consulte/prescricoes/hipercalemia.html",
+   "tema": "Hipercalemia",
+   "titulo": "Prescrição comentada — Hipercalemia",
+   "subtitulo": "Cálcio protege a membrana, insulina joga o K para dentro, e só a diálise tira do corpo",
+   "sistema": "Hidroeletrolítico",
+   "status": "rascunho",
+   "escopo": "Serve para a hipercalemia do adulto — do K de 6,2 no laboratório de rotina ao QRS alargado no monitor. O raciocínio de mecanismo, pseudo-hipercalemia e causas vive na página de potássio do Nefro Guide ; aqui está a prescrição.",
+   "gatilhos": [
+    "ecg agora",
+    "insulina com glicose",
+    "beta-2 inalatório",
+    "somar",
+    "diálise",
+    "diurético e resina",
+    "dieta",
+    "cuidados de enfermagem",
+    "profilaxia de úlcera de estresse",
+    "só com indicação"
+   ],
+   "itens": [
+    {
+     "titulo": "ECG agora — e o cálcio antes de qualquer outra coisa se houver alteração",
+     "quando": "a decisão não é pelo número do K, é pelo que ele fez com a membrana"
+    },
+    {
+     "titulo": "Insulina com glicose — o carro-chefe, e a hipoglicemia que vem depois",
+     "quando": "baixa o K em 15–30 min e dura horas; a hipoglicemia aparece quando ninguém olha"
+    },
+    {
+     "titulo": "Beta-2 inalatório — somar, não substituir",
+     "quando": "efeito aditivo ao da insulina; taquicardia é o preço"
+    },
+    {
+     "titulo": "Diálise, diurético e resina — o que de fato remove potássio",
+     "quando": "insulina e beta-2 escondem; só isto aqui tira"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "clcr",
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [],
+   "referencias": 9,
+   "caracteres": 24528
+  },
+  {
+   "id": "hipernatremia",
+   "arquivo": "hipernatremia.html",
+   "url": "/consulte/prescricoes/hipernatremia.html",
+   "tema": "Hipernatremia",
+   "titulo": "Prescrição comentada — Hipernatremia",
+   "subtitulo": "Água livre calculada, déficit reposto devagar — e a causa quase sempre é acesso à água",
+   "sistema": "Hidroeletrolítico",
+   "status": "rascunho",
+   "escopo": "Serve para a hipernatremia do adulto internado — do idoso acamado que chega com 162 ao paciente de UTI que sobe o sódio na primeira semana.",
+   "gatilhos": [
+    "choque ou hipovolemia franca",
+    "cristaloide isotônico antes da água livre",
+    "calcular o déficit de água livre",
+    "baixar no máximo 10 meq",
+    "diabetes insípido",
+    "diurese osmótica e o copo fora de alcance",
+    "dieta",
+    "cuidados de enfermagem",
+    "profilaxia de úlcera de estresse",
+    "só com indicação"
+   ],
+   "itens": [
+    {
+     "titulo": "Choque ou hipovolemia franca? — cristaloide isotônico antes da água livre",
+     "quando": "hipernatremia com má perfusão é problema de volume, não de tonicidade"
+    },
+    {
+     "titulo": "Calcular o déficit de água livre — e corrigir devagar",
+     "quando": "a conta é simples; o que erra é a velocidade"
+    },
+    {
+     "titulo": "Baixar no máximo 10 mEq/L em 24 h — o edema cerebral é o espelho da desmielinização",
+     "quando": "na crônica a pressa causa convulsão; na aguda documentada dá para correr mais"
+    },
+    {
+     "titulo": "Diabetes insípido, diurese osmótica e o copo fora de alcance",
+     "quando": "sem tratar a causa, o sódio volta a subir na semana seguinte"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "agua-livre",
+    "osm",
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [],
+   "referencias": 9,
+   "caracteres": 20337
+  },
+  {
+   "id": "hipocalcemia",
+   "arquivo": "hipocalcemia.html",
+   "url": "/consulte/prescricoes/hipocalcemia.html",
+   "tema": "Hipocalcemia",
+   "titulo": "Prescrição comentada — Hipocalcemia",
+   "subtitulo": "Cálcio iônico antes de tratar, gluconato no periférico — e o magnésio que ninguém dosa",
+   "sistema": "Hidroeletrolítico",
+   "status": "rascunho",
+   "escopo": "Serve para a hipocalcemia do adulto internado — da tetania pós-tireoidectomia ao cálcio de 7,4 num paciente com albumina de 2,1.",
+   "gatilhos": [
+    "cálcio iônico",
+    "sintomático",
+    "gluconato ev diluído",
+    "assintomático",
+    "via oral",
+    "dieta",
+    "cuidados de enfermagem",
+    "profilaxia de úlcera de estresse",
+    "só com indicação",
+    "profilaxia de tev"
+   ],
+   "itens": [
+    {
+     "titulo": "Cálcio iônico — o total mente quando a albumina está baixa",
+     "quando": "metade das \"hipocalcemias\" do internado é hipoalbuminemia"
+    },
+    {
+     "titulo": "Sintomático: gluconato EV diluído — e nunca em bolus rápido",
+     "quando": "tetania, laringoespasmo, convulsão, QT longo ou arritmia"
+    },
+    {
+     "titulo": "Assintomático: via oral, e tratar a causa",
+     "quando": "aqui a pressa não ajuda; o que resolve é a vitamina D e o magnésio"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "ca-corrigido",
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "hipomagnesemia.html"
+   ],
+   "referencias": 7,
+   "caracteres": 18166
+  },
+  {
+   "id": "hipocalemia",
+   "arquivo": "hipocalemia.html",
+   "url": "/consulte/prescricoes/hipocalemia.html",
+   "tema": "Hipocalemia",
+   "titulo": "Prescrição comentada — Hipocalemia",
+   "subtitulo": "Reposição pela via certa: teto de 40 mEq/L e 10 mEq/h no periférico — e o magnésio junto",
+   "sistema": "Hidroeletrolítico",
+   "status": "rascunho",
+   "escopo": "Serve para a hipocalemia do adulto internado — do K de 3,2 do usuário de diurético ao de 2,1 com extrassístoles no monitor.",
+   "gatilhos": [
+    "oral sempre que possível",
+    "periférica",
+    "teto de 40 meq",
+    "central",
+    "dá para concentrar e acelerar",
+    "magnésio junto",
+    "dieta",
+    "cuidados de enfermagem",
+    "profilaxia de úlcera de estresse",
+    "só com indicação"
+   ],
+   "itens": [
+    {
+     "titulo": "Oral sempre que possível — a EV existe para quem não pode esperar",
+     "quando": "a via oral repõe mais e mais seguro; a EV tem teto de velocidade"
+    },
+    {
+     "titulo": "Periférica: teto de 40 mEq/L e 10 mEq/h — e a conta pronta",
+     "quando": "concentração alta em veia periférica queima; velocidade alta para o coração"
+    },
+    {
+     "titulo": "Central: dá para concentrar e acelerar — com bomba e monitor",
+     "quando": "10 a 20 mEq/h, sempre em bomba, sempre com ECG contínuo"
+    },
+    {
+     "titulo": "Magnésio junto — sem ele o potássio não sobe",
+     "quando": "hipocalemia refratária é hipomagnesemia até prova em contrário"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "clcr",
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "cetoacidose-diabetica.html",
+    "hipomagnesemia.html"
+   ],
+   "referencias": 8,
+   "caracteres": 19075
+  },
+  {
+   "id": "hipofosfatemia",
+   "arquivo": "hipofosfatemia.html",
+   "url": "/consulte/prescricoes/hipofosfatemia.html",
+   "tema": "Hipofosfatemia",
+   "titulo": "Prescrição comentada — Hipofosfatemia",
+   "subtitulo": "Quando repor de verdade, e por que quem manda na velocidade é o potássio da ampola",
+   "sistema": "Hidroeletrolítico",
+   "status": "rascunho",
+   "escopo": "Serve para a hipofosfatemia do adulto internado — do paciente que não desmama do ventilador à realimentação do desnutrido.",
+   "gatilhos": [
+    "fosfato de potássio",
+    "quem manda na velocidade é o potássio",
+    "dieta",
+    "cuidados de enfermagem",
+    "profilaxia de úlcera de estresse",
+    "só com indicação",
+    "profilaxia de tev",
+    "pelo risco"
+   ],
+   "itens": [
+    {
+     "titulo": "Nem toda hipofosfatemia se repõe pela veia",
+     "quando": "o número sozinho não indica; o sintoma e o contexto sim"
+    },
+    {
+     "titulo": "Fosfato de potássio: quem manda na velocidade é o potássio",
+     "quando": "a ampola traz 4,4 mEq de K por mL — o teto do K vira o teto do fósforo"
+    },
+    {
+     "titulo": "Quando o potássio não pode subir — e quando a via oral basta",
+     "quando": "fosfato de sódio troca o problema de íon; o VO evita os dois"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "cetoacidose-diabetica.html",
+    "hipocalemia.html"
+   ],
+   "referencias": 7,
+   "caracteres": 17324
+  },
+  {
+   "id": "hipomagnesemia",
+   "arquivo": "hipomagnesemia.html",
+   "url": "/consulte/prescricoes/hipomagnesemia.html",
+   "tema": "Hipomagnesemia",
+   "titulo": "Prescrição comentada — Hipomagnesemia",
+   "subtitulo": "A deficiência que sustenta hipocalemia e hipocalcemia refratárias — e o rim que joga fora",
+   "sistema": "Hidroeletrolítico",
+   "status": "rascunho",
+   "escopo": "Serve para a hipomagnesemia do adulto internado — da torsades no monitor ao magnésio de 1,3 do etilista em realimentação.",
+   "gatilhos": [
+    "torsades",
+    "convulsão ou arritmia",
+    "fora da emergência",
+    "cerca de 1 g por hora",
+    "dieta",
+    "cuidados de enfermagem",
+    "profilaxia de úlcera de estresse",
+    "só com indicação",
+    "profilaxia de tev",
+    "pelo risco"
+   ],
+   "itens": [
+    {
+     "titulo": "Torsades, convulsão ou arritmia — 2 g agora",
+     "quando": "aqui não se espera dosagem; o magnésio é o tratamento"
+    },
+    {
+     "titulo": "Fora da emergência: cerca de 1 g por hora — e dose que corresponda ao déficit",
+     "quando": "o rim descarta o que chega rápido; e 1–2 g não repõem um magnésio de 0,9"
+    },
+    {
+     "titulo": "Ele sustenta a hipocalemia e a hipocalcemia refratárias",
+     "quando": "repor potássio ou cálcio sem magnésio é encher balde furado"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "hipocalemia.html",
+    "hipocalcemia.html",
+    "crise-epileptica.html"
+   ],
+   "referencias": 7,
+   "caracteres": 17442
+  },
+  {
+   "id": "hiponatremia",
+   "arquivo": "hiponatremia.html",
+   "url": "/consulte/prescricoes/hiponatremia.html",
+   "tema": "Hiponatremia",
+   "titulo": "Prescrição comentada — Hiponatremia",
+   "subtitulo": "Sintomático leva NaCl 3% em bolus; o resto é ritmo — e o teto de 8 mEq/L em 24 h",
+   "sistema": "Hidroeletrolítico",
+   "status": "rascunho",
+   "escopo": "Serve para a hiponatremia do adulto internado — da convulsão hiponatrêmica no PS ao sódio de 124 que aparece no exame de rotina.",
+   "gatilhos": [
+    "tem sintoma grave",
+    "é isso que decide bolus ou paciência",
+    "nacl 3% em bolus",
+    "repetível",
+    "hipertônica concentrada no neurocrítico",
+    "dieta",
+    "cuidados de enfermagem",
+    "profilaxia de úlcera de estresse",
+    "só com indicação",
+    "profilaxia de tev"
+   ],
+   "itens": [
+    {
+     "titulo": "Tem sintoma grave? — é isso que decide bolus ou paciência",
+     "quando": "convulsão, rebaixamento, vômito incoercível, parada: trata agora, sem esperar causa"
+    },
+    {
+     "titulo": "NaCl 3% em bolus — 100 a 150 mL, repetível",
+     "quando": "só no sintomático; o alvo do resgate é subir 4–6 mEq/L, não normalizar"
+    },
+    {
+     "titulo": "Não passar de 8 mEq/L em 24 h — e vigiar a autocorreção",
+     "quando": "o limite não é meta de subida; é o que você não pode ultrapassar mesmo sem querer"
+    },
+    {
+     "titulo": "A volemia escolhe o soro — e SIADH não se trata com fisiológico",
+     "quando": "hipovolêmica, euvolêmica ou hipervolêmica: três doenças com o mesmo número"
+    },
+    {
+     "titulo": "Hipertônica concentrada no neurocrítico — e por que aqui o alvo é outro",
+     "quando": "no TCE, HSA, AVCh e AVC maligno o sódio deixa de ser um número de laboratório e vira ferramenta de PIC"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "osm",
+    "adrogue",
+    "na-corrigido",
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "hsa.html",
+    "avch.html"
+   ],
+   "referencias": 12,
+   "caracteres": 24030
+  },
+  {
+   "id": "meningite-bacteriana",
+   "arquivo": "meningite-bacteriana.html",
+   "url": "/consulte/prescricoes/meningite-bacteriana.html",
+   "tema": "Meningite bacteriana aguda",
+   "titulo": "Prescrição comentada — Meningite bacteriana aguda",
+   "subtitulo": "Antibiótico e dexametasona sem esperar a tomografia — dose meníngea e Listeria por risco",
+   "sistema": "Infecção",
+   "status": "rascunho",
+   "escopo": "Serve para a meningite bacteriana comunitária do adulto . Não cobre meningite neonatal, pós-neurocirúrgica ou de dispositivo (derivação, cateter), tuberculosa nem fúngica — todas com microbiologia, esquema e duração próprios.",
+   "gatilhos": [
+    "dexametasona junto com",
+    "ceftriaxona em dose meníngea",
+    "mais o que o risco exigir",
+    "descalonar pela cultura",
+    "durações orientativas",
+    "crise",
+    "hipertensão intracraniana e sódio",
+    "notificação",
+    "contatos e a audiometria que se esquece",
+    "dieta"
+   ],
+   "itens": [
+    {
+     "titulo": "Antibiótico e dexametasona sem esperar TC ou punção",
+     "quando": "o atraso é o que muda mortalidade, não a ordem dos exames"
+    },
+    {
+     "titulo": "Dexametasona junto com — ou logo antes de — a primeira dose",
+     "quando": "depois que o antibiótico já correu por horas, a janela fecha"
+    },
+    {
+     "titulo": "Ceftriaxona em dose meníngea, mais o que o risco exigir",
+     "quando": "a dose da meningite é o dobro da dose habitual"
+    },
+    {
+     "titulo": "Descalonar pela cultura — durações orientativas",
+     "quando": "individualizar por complicação e resposta"
+    },
+    {
+     "titulo": "Crise, hipertensão intracraniana e sódio",
+     "quando": "as três coisas que pioram enquanto o antibiótico funciona"
+    },
+    {
+     "titulo": "Notificação, contatos e a audiometria que se esquece",
+     "quando": "a doença não termina na alta do paciente"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "crise-epileptica.html",
+    "hiponatremia.html"
+   ],
+   "referencias": 10,
+   "caracteres": 20963
+  },
+  {
+   "id": "pneumonia-comunitaria-grave",
+   "arquivo": "pneumonia-comunitaria-grave.html",
+   "url": "/consulte/prescricoes/pneumonia-comunitaria-grave.html",
+   "tema": "Pneumonia comunitária grave",
+   "titulo": "Prescrição comentada — Pneumonia comunitária grave",
+   "subtitulo": "Beta-lactâmico com atípicos, microbiologia para desescalar e ampliação só com risco validado",
+   "sistema": "Infecção",
+   "status": "rascunho",
+   "escopo": "Serve para o adulto imunocompetente com PAC grave . Não cobre pneumonia hospitalar ou associada à ventilação, imunossupressão profunda (neutropenia, transplante, HIV avançado), abscesso e empiema — todos exigem esquema e investigação próprios.",
+   "gatilhos": [
+    "pac grave pelos critérios ats",
+    "idsa",
+    "culturas sem atrasar a primeira dose",
+    "beta-lactâmico + macrolídeo",
+    "mrsa e pseudomonas",
+    "só com fator de risco validado",
+    "oseltamivir quando há influenza",
+    "mesmo depois de 48 h",
+    "corticoide na pac grave",
+    "descalonar"
+   ],
+   "itens": [
+    {
+     "titulo": "PAC grave pelos critérios ATS/IDSA",
+     "quando": "um critério maior, ou três ou mais menores"
+    },
+    {
+     "titulo": "Culturas sem atrasar a primeira dose",
+     "quando": "colher é o que permite descalonar depois"
+    },
+    {
+     "titulo": "Beta-lactâmico + macrolídeo — o regime preferido no grave",
+     "quando": "monoterapia com fluoroquinolona não é opção na PAC grave"
+    },
+    {
+     "titulo": "MRSA e Pseudomonas — só com fator de risco validado",
+     "quando": "ampliar sem risco é dano sem ganho"
+    },
+    {
+     "titulo": "Inalatórios no paciente sem DPOC e sem asma",
+     "quando": "a prescrição mais automática da enfermaria — e a que menos tem evidência"
+    },
+    {
+     "titulo": "Oseltamivir quando há influenza — mesmo depois de 48 h",
+     "quando": "no internado grave, a janela clássica não se aplica"
+    },
+    {
+     "titulo": "Corticoide na PAC grave — a evidência atual, com a discordância declarada",
+     "quando": "não há molécula nem dose universal nas diretrizes"
+    },
+    {
+     "titulo": "48 horas: descalonar, encurtar e trocar para VO",
+     "quando": "o antibiótico que não é reavaliado vira o problema seguinte"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "atsidsa",
+    "curb65",
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "asma-aguda.html",
+    "dpoc-exacerbacao.html",
+    "sepse.html"
+   ],
+   "referencias": 12,
+   "caracteres": 34156
+  },
+  {
+   "id": "sepse",
+   "arquivo": "sepse.html",
+   "url": "/consulte/prescricoes/sepse.html",
+   "tema": "Sepse e choque séptico",
+   "titulo": "Prescrição comentada — Sepse e choque séptico",
+   "subtitulo": "Antibiótico na 1ª hora pelo foco, volume com juízo, nora precoce — e desescalonar",
+   "sistema": "Infecção",
+   "status": "rascunho",
+   "escopo": "Serve para a sepse com disfunção orgânica e o choque séptico — do reconhecimento no pronto-socorro à prescrição da UTI.",
+   "gatilhos": [
+    "nomear a sepse",
+    "dosar o lactato",
+    "colher culturas",
+    "antibiótico na primeira hora",
+    "empírico pelo foco",
+    "cristaloide 30 ml",
+    "kg é a abertura",
+    "noradrenalina precoce",
+    "hidrocortisona quando a nora não desce",
+    "dose baixa"
+   ],
+   "itens": [
+    {
+     "titulo": "Nomear a sepse, dosar o lactato, colher culturas — sem atrasar o antibiótico",
+     "quando": "sepse é infecção + disfunção orgânica; febre é só um dos avisos (e pode faltar)"
+    },
+    {
+     "titulo": "Antibiótico na primeira hora — empírico pelo foco, na dose de sepse",
+     "quando": "é o item que mais muda mortalidade nesta página; tudo o mais acompanha"
+    },
+    {
+     "titulo": "Cristaloide 30 mL/kg é a abertura — o resto é expansão guiada por meta e volemia",
+     "quando": "hipotensão ou lactato ≥ 4: começar rápido · lactato 2–4 sem hipotensão: considerar, se não houver contraindicação — reavaliar a cada etapa, seguir só enquanto responder"
+    },
+    {
+     "titulo": "Noradrenalina precoce — sem esperar o soro acabar, sem esperar o central",
+     "quando": "alvo PAM ≥ 65 mmHg; a bomba começa em veia periférica calibrosa"
+    },
+    {
+     "titulo": "Hidrocortisona quando a nora não desce — dose baixa, sem desmame heroico",
+     "quando": "não há consenso firme — o gatilho prático é a nora ≥ 0,25 mcg/kg/min que não cede"
+    },
+    {
+     "titulo": "Controlar o foco — o antibiótico não drena abscesso",
+     "quando": "a pergunta das 6–12 h: existe pus, obstrução, tecido morto ou dispositivo para tirar?"
+    },
+    {
+     "titulo": "O kit do séptico crítico — nutrição precoce, profilaxias, glicemia com alvo",
+     "quando": "o suporte que não aparece no boletim mas decide a semana"
+    },
+    {
+     "titulo": "Reavaliar em 48–72 h: desescalonar, dar prazo — antibiótico também tem alta",
+     "quando": "o espectro largo foi empréstimo da primeira hora; a cultura veio para cobrá-lo"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "news2",
+    "sofa",
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "choque-cardiogenico.html"
+   ],
+   "referencias": 14,
+   "caracteres": 27052
+  },
+  {
+   "id": "avch",
+   "arquivo": "avch.html",
+   "url": "/consulte/prescricoes/avch.html",
+   "tema": "AVC hemorrágico",
+   "titulo": "Prescrição comentada — AVC hemorrágico",
+   "subtitulo": "Reverter o anticoagulante, PA suave até 140, o telefonema do cerebelo",
+   "sistema": "Neuro",
+   "status": "rascunho",
+   "escopo": "Serve para a hemorragia intraparenquimatosa espontânea — o \"AVCh hipertensivo\" do plantão — da TC positiva à UTI.",
+   "gatilhos": [
+    "anticoagulado? reverter agora",
+    "cada droga tem seu antídoto",
+    "pressão",
+    "suave até 140",
+    "começar cedo",
+    "cerebelo e hidrocefalia não esperam",
+    "hipertensão intracraniana",
+    "crise convulsiva",
+    "tratar quem tem",
+    "profilaxia para ninguém"
+   ],
+   "itens": [
+    {
+     "titulo": "A TC que muda tudo — e as três perguntas que ela dispara",
+     "quando": "anticoagulado? cerebelo? hidrocefalia? — cada sim é um relógio diferente"
+    },
+    {
+     "titulo": "Anticoagulado? Reverter AGORA — cada droga tem seu antídoto",
+     "quando": "o item mais urgente da página: sangramento cerebral + anticoagulante = emergência dentro da emergência"
+    },
+    {
+     "titulo": "Pressão: suave até 140 — começar cedo, não despencar, não oscilar",
+     "quando": "o alvo é uma faixa (130–150) e uma qualidade: queda limpa e sustentada"
+    },
+    {
+     "titulo": "O telefonema da neurocirurgia — cerebelo e hidrocefalia não esperam",
+     "quando": "a decisão é do especialista; o horário do telefonema é do plantão"
+    },
+    {
+     "titulo": "Hipertensão intracraniana — o básico bem feito, e o osmótico como ponte",
+     "quando": "o básico primeiro, salina hipertônica antes do manitol, e tudo isso é ponte"
+    },
+    {
+     "titulo": "Crise convulsiva: tratar quem tem — profilaxia para ninguém",
+     "quando": "e o rebaixado \"demais para o hematoma\" merece a pergunta do status não convulsivo"
+    },
+    {
+     "titulo": "O kit do crítico neuro — disfagia, TEV em duas fases, o \"normal em tudo\"",
+     "quando": "as mesmas regras da casa, com os relógios do hematoma"
+    },
+    {
+     "titulo": "O prognóstico espera 72 horas — e o depois se programa, não se improvisa",
+     "quando": "a decisão mais pesada da página não é de dose: é de tempo"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "pa-elevada.html",
+    "avci.html",
+    "disseccao-aorta.html",
+    "hiponatremia.html",
+    "crise-epileptica.html",
+    "hsa.html"
+   ],
+   "referencias": 15,
+   "caracteres": 32337
+  },
+  {
+   "id": "avci",
+   "arquivo": "avci.html",
+   "url": "/consulte/prescricoes/avci.html",
+   "tema": "AVC isquêmico",
+   "titulo": "Prescrição comentada — AVC isquêmico",
+   "subtitulo": "Trombólise e trombectomia contra o relógio — e a pressão que aqui se respeita",
+   "sistema": "Neuro",
+   "status": "rascunho",
+   "escopo": "Serve para o AVC isquêmico do adulto, da porta do PS à enfermaria — o candidato à trombólise, o candidato à trombectomia (que o plantão não pode esquecer de procurar), e o que chegou fora de janela e precisa ser protegido.",
+   "gatilhos": [
+    "hora do último momento bem",
+    "glicemia",
+    "nesta ordem",
+    "trombólise até 4h30",
+    "tenecteplase pode substituir a alteplase",
+    "trombectomia",
+    "procurar a oclusão de grande vaso",
+    "dois regimes",
+    "nenhum reflexo",
+    "antitrombótico com calendário"
+   ],
+   "itens": [
+    {
+     "titulo": "Hora do último momento bem, glicemia, TC — nesta ordem, em minutos",
+     "quando": "o \"last known well\" é o dado mais valioso da anamnese; a glicemia é o impostor mais barato de excluir"
+    },
+    {
+     "titulo": "Trombólise até 4h30 — tenecteplase pode substituir a alteplase, sem hesitação no elegível",
+     "quando": "déficit incapacitante + sem sangue na TC + sem contraindicação = a bomba corre"
+    },
+    {
+     "titulo": "Trombectomia: procurar a oclusão de grande vaso — a janela vai até 24 h",
+     "quando": "a pergunta que o plantão não pode esquecer; trombolisou não encerra o assunto"
+    },
+    {
+     "titulo": "A pressão a serviço da reperfusão — dois regimes, nenhum reflexo",
+     "quando": "candidato: < 185×110 para liberar a bomba · não candidato: respeitar até 220×120"
+    },
+    {
+     "titulo": "Antitrombótico com calendário — AAS, dupla curta no minor, FA sem pressa",
+     "quando": "cada cenário tem seu próprio primeiro dia; nenhum leva heparina plena \"para o AVC\""
+    },
+    {
+     "titulo": "Triagem de disfagia ANTES da primeira colher — de comida ou de comprimido",
+     "quando": "a pneumonia aspirativa mata mais AVC do que a recorrência precoce"
+    },
+    {
+     "titulo": "O \"normal em tudo\" — glicemia, temperatura, oxigênio, volume, vigilância",
+     "quando": "a penumbra não tolera nenhum extremo; a neuroproteção que funciona é o suporte bem feito"
+    },
+    {
+     "titulo": "A alta começa no D1 — estatina, etiologia, reabilitação",
+     "quando": "o AVC é a placa de um problema; a prevenção secundária é descobrir qual"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "pa-elevada.html",
+    "fa-flutter.html"
+   ],
+   "referencias": 18,
+   "caracteres": 30127
+  },
+  {
+   "id": "crise-epileptica",
+   "arquivo": "crise-epileptica.html",
+   "url": "/consulte/prescricoes/crise-epileptica.html",
+   "tema": "Crise epiléptica e status",
+   "titulo": "Prescrição comentada — Crise epiléptica e status",
+   "subtitulo": "Benzo pleno aos 5 min, segunda linha do ESETT aos 20 — e EEG em quem não acorda",
+   "sistema": "Neuro",
+   "status": "rascunho",
+   "escopo": "Serve para a crise tônico-clônica do adulto no PS e na enfermaria — da convulsão que cede sozinha ao status refratário que vai à UTI.",
+   "gatilhos": [
+    "crise epiléptica",
+    "proteger",
+    "cronometrar",
+    "medir a glicemia",
+    "diazepam 10 mg ev",
+    "segunda linha",
+    "escolha pelo paciente",
+    "dê a dose toda",
+    "caçar a causa em paralelo",
+    "três diagnósticos têm antídoto próprio"
+   ],
+   "itens": [
+    {
+     "titulo": "Proteger, cronometrar, medir a glicemia — e NÃO conter",
+     "quando": "a maioria das crises cede sozinha em menos de 5 minutos; o relógio decide tudo"
+    },
+    {
+     "titulo": "Diazepam 10 mg EV — ou midazolam 10 mg IM se não há acesso",
+     "quando": "a dose que funciona é a que assusta quem só conhece a meia ampola"
+    },
+    {
+     "titulo": "Segunda linha: os três do ESETT empatam — escolha pelo paciente, dê a dose toda",
+     "quando": "benzo pleno falhou (ou 2ª dose correndo): a segunda linha entra agora, não \"se persistir muito\""
+    },
+    {
+     "titulo": "Caçar a causa em paralelo — três diagnósticos têm antídoto próprio",
+     "quando": "a crise é sintoma; tratar o status sem procurar a causa é enxugar o EEG"
+    },
+    {
+     "titulo": "Falhou benzo + segunda linha: IOT e infusão contínua titulada — com EEG",
+     "quando": "o status refratário é doença de UTI; a meta agora se mede no traçado, não no braço"
+    },
+    {
+     "titulo": "Parou de convulsionar mas não acordou? — status não convulsivo até prova em contrário",
+     "quando": "o pós-ictal tem prazo; o que passa dele tem EEG"
+    },
+    {
+     "titulo": "Manutenção para quem precisa — e a primeira crise que vai embora sem remédio",
+     "quando": "a decisão de anticonvulsivante crônico é de indicação, não de susto"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "avch.html",
+    "hsa.html",
+    "sepse.html"
+   ],
+   "referencias": 15,
+   "caracteres": 24669
+  },
+  {
+   "id": "hsa",
+   "arquivo": "hsa.html",
+   "url": "/consulte/prescricoes/hsa.html",
+   "tema": "Hemorragia subaracnóidea",
+   "titulo": "Prescrição comentada — Hemorragia subaracnóidea",
+   "subtitulo": "Aneurisma tratado cedo, PAS < 160, nimodipina 21 dias — e os três relógios",
+   "sistema": "Neuro",
+   "status": "rascunho",
+   "escopo": "Serve para a HSA aneurismática do adulto — da suspeita na emergência à UTI dos 14 dias. É doença de centro especializado: boa parte desta prescrição existe para chegar bem ao tratamento do aneurisma e para vigiar o que vem depois. O manejo neurocrítico profundo vive no módulo neuro ; o irmão intraparenquimatoso tem a página do AVCh .",
+   "gatilhos": [
+    "thunderclap = tc agora",
+    "tratar o aneurisma cedo",
+    "até o aneurisma tratado",
+    "pas < 160 suave",
+    "nimodipina 60 mg 4",
+    "hidrocefalia aguda",
+    "vasoespasmo e isquemia tardia",
+    "vigiar",
+    "euvolemia",
+    "hiponatremia se trata com sal"
+   ],
+   "itens": [
+    {
+     "titulo": "Thunderclap = TC agora — e a angio-TC que dá nome ao aneurisma",
+     "quando": "cefaleia súbita máxima em minutos; a \"sentinela\" de dias antes conta a mesma história"
+    },
+    {
+     "titulo": "Tratar o aneurisma CEDO — o telefonema que desarma a bomba",
+     "quando": "embolização ou clipagem o quanto antes; tudo o mais desta página é ponte até lá"
+    },
+    {
+     "titulo": "Até o aneurisma tratado: PAS < 160 suave — e a analgesia é anti-hipertensivo",
+     "quando": "a dor 10/10 e o vômito são picos pressóricos sobre um aneurisma aberto"
+    },
+    {
+     "titulo": "Nimodipina 60 mg 4/4 h por 21 dias — o único comprimido com prova de desfecho",
+     "quando": "começa no dia 1, sobrevive a transferência, alta e preguiça — 21 dias são 21 dias"
+    },
+    {
+     "titulo": "Hidrocefalia aguda — o rebaixamento das primeiras horas tem dreno",
+     "quando": "sangue no liquor entope a drenagem; o Glasgow que cai pede DVE, não resignação"
+    },
+    {
+     "titulo": "Vasoespasmo e isquemia tardia (D3–D14) — vigiar, euvolemia, e subir a pressão",
+     "quando": "o déficit novo do 7º dia é a emergência que a equipe desavisada chama de \"sequela\""
+    },
+    {
+     "titulo": "O sódio da HSA — hiponatremia se trata com sal, nunca com restrição",
+     "quando": "cerebral salt wasting e SIADH parecem iguais no laboratório; a resposta certa é a mesma regra"
+    },
+    {
+     "titulo": "O kit da HSA — crise sem profilaxia universal, TEV em duas fases, disfagia",
+     "quando": "as regras da casa, com os relógios desta doença"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "avch.html",
+    "pa-elevada.html",
+    "hiponatremia.html"
+   ],
+   "referencias": 13,
+   "caracteres": 29097
+  },
+  {
+   "id": "dpoc-exacerbacao",
+   "arquivo": "dpoc-exacerbacao.html",
+   "url": "/consulte/prescricoes/dpoc-exacerbacao.html",
+   "tema": "Exacerbação aguda de DPOC",
+   "titulo": "Prescrição comentada — Exacerbação aguda de DPOC",
+   "subtitulo": "Oxigênio controlado, broncodilatadores, cinco dias de corticoide e antibiótico só quando indicado",
+   "sistema": "Pneumo",
+   "status": "rascunho",
+   "escopo": "Serve para a exacerbação aguda de DPOC no adulto . Não cobre DPOC estável, asma (que tem alvo de oxigênio e esquema de corticoide diferentes — ver asma ) nem bronquiectasia como doença de base, que tem microbiologia própria.",
+   "gatilhos": [
+    "oxigênio controlado",
+    "alvo de 88 a 92%",
+    "salbutamol e ipratrópio",
+    "prednisona 40 mg por 5 dias",
+    "antibiótico por cerca de 5 dias",
+    "laba",
+    "lama e corticoide inalatório",
+    "vni cedo",
+    "dieta",
+    "cuidados de enfermagem"
+   ],
+   "itens": [
+    {
+     "titulo": "Excluir os concorrentes antes de tratar como exacerbação",
+     "quando": "pneumonia, IC, TEP, pneumotórax, arritmia e SCA se parecem com isso"
+    },
+    {
+     "titulo": "Oxigênio controlado — alvo de 88 a 92%",
+     "quando": "aqui o alvo é mais baixo que no resto do hospital, e isso é proposital"
+    },
+    {
+     "titulo": "Salbutamol e ipratrópio — com escalonamento por resposta",
+     "quando": "a base do tratamento, em doses repetidas"
+    },
+    {
+     "titulo": "Prednisona 40 mg por 5 dias — e ponto",
+     "quando": "curso curto, via oral, sem desmame"
+    },
+    {
+     "titulo": "Antibiótico por cerca de 5 dias, e não para toda exacerbação",
+     "quando": "dispneia isolada não é indicação"
+    },
+    {
+     "titulo": "LABA, LAMA e corticoide inalatório — o que a alta precisa carregar",
+     "quando": "o ipratrópio da crise não é tratamento de manutenção; e o eosinófilo decide o corticoide"
+    },
+    {
+     "titulo": "VNI cedo — e a intubação que não pode atrasar",
+     "quando": "a VNI é o tratamento que mais reduz mortalidade nesta doença"
+    },
+    {
+     "titulo": "Antes da alta: o que evita a próxima exacerbação",
+     "quando": "a internação é a melhor oportunidade de mudar a trajetória"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "asma-aguda.html"
+   ],
+   "referencias": 12,
+   "caracteres": 27956
+  },
+  {
+   "id": "asma-aguda",
+   "arquivo": "asma-aguda.html",
+   "url": "/consulte/prescricoes/asma-aguda.html",
+   "tema": "Exacerbação grave de asma",
+   "titulo": "Prescrição comentada — Exacerbação grave de asma",
+   "subtitulo": "Broncodilatador repetido, corticoide precoce e magnésio só no grave — alta nunca com SABA isolado",
+   "sistema": "Pneumo",
+   "status": "rascunho",
+   "escopo": "Serve para a exacerbação de asma no adulto , do PS à sala crítica. Doses pediátricas são por peso e não estão aqui . Gestante com crise de asma trata com as mesmas drogas — a hipoxemia materna é o risco maior —, com obstetrícia junto.",
+   "gatilhos": [
+    "avaliar e separar",
+    "moderada",
+    "grave ou ameaça à vida",
+    "oxigênio titulado",
+    "grave",
+    "salbutamol + ipratrópio",
+    "repetidos na primeira hora",
+    "dose menor",
+    "mesma lógica",
+    "corticoide sistêmico precoce"
+   ],
+   "itens": [
+    {
+     "titulo": "Avaliar e separar: moderada, grave ou ameaça à vida",
+     "quando": "fala, posição, musculatura acessória, SpO₂ e sensório dizem mais que a ausculta"
+    },
+    {
+     "titulo": "Oxigênio titulado — 92 a 95%, não o máximo",
+     "quando": "na asma o alvo é normoxemia, não hiperóxia"
+    },
+    {
+     "titulo": "Grave: salbutamol + ipratrópio, repetidos na primeira hora",
+     "quando": "preferir espaçador se o paciente coopera; nebulizar se não"
+    },
+    {
+     "titulo": "Moderada: dose menor, mesma lógica",
+     "quando": "não aplicar o esquema da crise grave a todo mundo"
+    },
+    {
+     "titulo": "Corticoide sistêmico precoce — e por via oral quando possível",
+     "quando": "a via oral é tão eficaz quanto a venosa; o que importa é a precocidade"
+    },
+    {
+     "titulo": "Sulfato de magnésio — só no grave que não respondeu",
+     "quando": "dose única, não é item de rotina"
+    },
+    {
+     "titulo": "Alta: nunca com beta-agonista isolado",
+     "quando": "a crise trata sintoma; a alta trata a doença"
+    },
+    {
+     "titulo": "Dieta",
+     "quando": "a primeira linha da prescrição que todo mundo escreve no automático"
+    },
+    {
+     "titulo": "Cuidados de enfermagem — a rotina que evita a segunda doença",
+     "quando": "decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema"
+    },
+    {
+     "titulo": "Profilaxia de úlcera de estresse — só com indicação",
+     "quando": "não é carimbo de internação: sem fator de risco, o dano supera o benefício"
+    },
+    {
+     "titulo": "Profilaxia de TEV — pelo risco, não pelo tempo de internação",
+     "quando": "\"internou, prescreve\" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa"
+    }
+   ],
+   "calculadoras": [
+    "ulcera",
+    "padua"
+   ],
+   "relacionadas": [
+    "hipomagnesemia.html"
+   ],
+   "referencias": 11,
+   "caracteres": 22984
+  }
+ ]
+};

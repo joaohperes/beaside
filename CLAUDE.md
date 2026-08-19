@@ -28,6 +28,7 @@ some da memória no meio do trabalho. A regra é: **abrir o que a tarefa pede, e
 | qualquer coisa | este arquivo (`CLAUDE.md`) — arquitetura, design system, regras |
 | conteúdo clínico (página, dose, artigo) | `conteudo/manifest.json` e/ou `conteudo/farmacos.json` — **a fonte** |
 | rumo do produto, fases, decisões, SEO/GEO | `PROJECT_STATUS.md` — pela seção (`§14`, `§15`…), não inteiro |
+| **prescrições comentadas** (o que existe, qual página responde a quê) | `conteudo/prescricoes-indice.json` — o roteador, não as 40 páginas |
 | escolher o próximo artigo | `PERGUNTAS-DE-PLANTAO-BANCO.md` — pelo tema, não inteiro |
 | entender por que algo ficou assim | `docs/historico.md` — pela sessão, não inteiro |
 | referências do Hemodinâmica | `REFERENCIAS-HEMO.md` |
@@ -40,7 +41,8 @@ consomem uma fatia dela que a tarefa vai precisar depois:
 
 | Arquivo | Tamanho | Como consultar |
 |---|---|---|
-| `api/knowledge.js` | ~425 KB em 23 linhas (~100 mil tokens) | **nunca abrir.** É gerado por `npm run extract-knowledge` a partir das páginas. Precisa do conteúdo? Abra a página. Precisa saber se está atualizado? `npm run pre-commit` responde. |
+| `api/knowledge.js` | ~720 KB em poucas linhas (~180 mil tokens) | **nunca abrir.** É gerado por `npm run extract-knowledge` a partir das páginas. Precisa do conteúdo? Abra a página. Precisa saber se está atualizado? `npm run pre-commit` responde. |
+| `api/prescricoes-indice.js` · `conteudo/prescricoes-indice.json` | ~105 KB | gerados por `npm run indice-prescricoes`. Para saber o que existe, leia o **roteador** (`jq '.prescricoes[] | {id,sistema,escopo}'`), não o arquivo inteiro. |
 | `assets/styles.css` | ~123 KB, 2.943 linhas | `grep -n 'classe-provável' assets/styles.css` e leia o trecho |
 | `assets/app.js` | ~62 KB, 1.064 linhas | idem — procure a função, não role o arquivo |
 | `conteudo/manifest.json` | ~53 KB, 1.524 linhas | `grep`/`jq` pelo módulo ou slug |
@@ -94,6 +96,7 @@ está errada: existe um script, um grep ou uma fonte menor que responde melhor.
 | `api/sugerir*.js` | Assistentes do guia (senha compartilhada ainda) |
 | `api/clerk-config.js` | Expõe só a publishable key |
 | `api/knowledge.js` | Gerado — `npm run extract-knowledge` |
+| `api/prescricoes-indice.js` | Gerado — `npm run indice-prescricoes` (roteador + mapa das prescrições) |
 | `api/hub-plantao.js` | Sync do plantão Hub UTI (Clerk JWT; KV opcional) |
 | `hub-uti/` | **Bundle publicado** do segundo produto (não é fonte) |
 
@@ -304,6 +307,7 @@ O que o gerador reescreve automaticamente:
 | `artigos/index.html` | os cards da Central de Conhecimento |
 | `scripts/extract-knowledge.js` | `PAGES_BY_MODULE` — o que alimenta o assistente de IA |
 | `llms.txt` | a seção "Conteúdo completo" (mapa do site para robôs de IA) |
+| `conteudo/prescricoes-indice.json` e `api/prescricoes-indice.js` | o **roteador** e o **mapa** das prescrições — gerados à parte, por `npm run indice-prescricoes` |
 
 `sitemap.xml`, canonical, Open Graph e Twitter Card continuam vindo de `scripts/seo-tags.js`,
 que varre os arquivos do repositório — não precisa de manutenção manual.
@@ -441,6 +445,8 @@ Reindexar depois de mudança estrutural (arquivo novo, script novo, rota nova).
 - Não usar `--accent` do hemo (vermelho) para “sucesso”/Q1.
 - Não inventar anti-cópia como “segurança de venda”.
 - Não editar `api/knowledge.js` à mão.
+- Não editar `api/prescricoes-indice.js` nem `conteudo/prescricoes-indice.json` à mão — são gerados das páginas.
+- Não despejar o texto integral das prescrições no prompt do assistente: são ~820 KB. O caminho é o roteador (4% disso) para escolher a página, e só então carregar a página.
 - Não commitar `CLERK_SECRET_KEY` / `sk_*`.
 - Não trancar módulos do guia só com “estar logado” (gate = plano, quando existir).
 - Não deixar `.pill-list` sem estilo (usar checklist DS ou `ind-grid` / `mat-grid`).

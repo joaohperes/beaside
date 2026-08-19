@@ -91,6 +91,30 @@ const manifest = JSON.parse(ler('conteudo/manifest.json'));
   else if (avisos.length) alerta('Pendências conhecidas do manifest', [`${avisos.length} avisos, todos já mapeados (4 órfãs de proc + 3 assistentes)`]);
 }
 
+// ── 2b. índice das prescrições: gerado, tem que estar em dia ──────────
+{
+  // Mesmo contrato do knowledge.js: guardamos, rodamos, comparamos e devolvemos
+  // os bytes originais — a checagem não deixa rastro no repositório.
+  const alvos = ['conteudo/prescricoes-indice.json', 'api/prescricoes-indice.js'];
+  const antes = alvos.map((f) => (existe(f) ? ler(f) : ''));
+  const r = sh('node scripts/indice-prescricoes.mjs');
+  if (r.code !== 0) {
+    falha('Índice das prescrições não gerou', [r.out.trim().split('\n').slice(-3).join(' · ')]);
+  } else {
+    const mudou = alvos.filter((f, i) => antes[i] && ler(f) !== antes[i]);
+    if (mudou.length) {
+      falha('Índice das prescrições desatualizado', [
+        `${mudou.join(' e ')} não corresponde às páginas atuais.`,
+        'Rode `npm run indice-prescricoes` e commite o resultado junto.',
+      ]);
+      alvos.forEach((f, i) => { if (antes[i]) writeFileSync(join(root, f), antes[i]); });
+    } else {
+      const n = (r.out.match(/(\d+) páginas/) || [])[1] || '?';
+      ok('Índice das prescrições', `${n} páginas mapeadas para o app de IA`);
+    }
+  }
+}
+
 // ── 3. base da IA: nunca encolher, nunca conter página magra ───────────
 {
   // extract-knowledge.js escreve api/knowledge.js. Guardamos o conteúdo antes,

@@ -8,6 +8,7 @@
     "test:api": "node --test api/*.test.js",
     "build:content": "node scripts/build-content.js",
     "check:content": "node scripts/build-content.js --check",
+    "indice-prescricoes": "node scripts/indice-prescricoes.mjs",
     "nova-pagina": "node scripts/nova-pagina.js",
     "pre-commit": "node scripts/pre-commit-check.mjs"
   },

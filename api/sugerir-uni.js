@@ -21,7 +21,7 @@
 //   VMGUIDE_SENHA      — senha de acesso (a mesma dos assistentes anteriores)
 
 import Anthropic from '@anthropic-ai/sdk';
-import { KNOWLEDGE_VM, KNOWLEDGE_HEMO, KNOWLEDGE_NEURO, KNOWLEDGE_PROC, KNOWLEDGE_PERI, KNOWLEDGE_INFECTO, KNOWLEDGE_ARTIGOS } from './knowledge.js';
+import { KNOWLEDGE_VM, KNOWLEDGE_HEMO, KNOWLEDGE_NEURO, KNOWLEDGE_PROC, KNOWLEDGE_PERI, KNOWLEDGE_INFECTO, KNOWLEDGE_NEFRO, KNOWLEDGE_ARTIGOS } from './knowledge.js';
 import { KNOWLEDGE_FARMACOS } from './farmacos.js';
 
 const MODEL = 'claude-sonnet-4-6';
@@ -61,13 +61,17 @@ BASE DE CONHECIMENTO 6 — ANTIMICROBIANOS (infecto·guide, conteúdo curado do 
 ${KNOWLEDGE_INFECTO}
 
 ════════════════════════════════════════════
-BASE DE CONHECIMENTO 7 — CENTRAL DE CONHECIMENTO (artigos·be-aside, casos e perguntas de plantão):
+BASE DE CONHECIMENTO 7 — NEFRO E ELETRÓLITOS (nefro·guide, conteúdo curado do be·aside; módulo novo, ainda em revisão clínica — ao usá-lo, diga isso uma vez na resposta):
+${KNOWLEDGE_NEFRO}
+
+════════════════════════════════════════════
+BASE DE CONHECIMENTO 8 — CENTRAL DE CONHECIMENTO (artigos·be-aside, casos e perguntas de plantão):
 ${KNOWLEDGE_ARTIGOS}
 
 ════════════════════════════════════════════
 FONTE DAS RESPOSTAS — REGRA CENTRAL:
-A CAMADA 0 e as sete bases acima são sua referência PRIMÁRIA. Sempre que uma recomendação puder ser sustentada por elas, use-as e prefira-as ao seu conhecimento geral. Em número (dose, diluição, mL/h), a CAMADA 0 vence qualquer outra fonte, inclusive o texto das bases.
-- Sinalize a origem POR BLOCO, não por linha, indicando a base: ex. ao fim de uma seção "Fonte: vm·guide — DPOC & Asma", "Fonte: hemo·guide — Quadrantes", "Fonte: neuro·guide — TCE", "Fonte: proc·guide — CVC", "Fonte: peri·guide — Profilaxia ATB", "Fonte: infecto·guide — PK/PD e Dose", "Fonte: artigos·be-aside — Sepse 2026".
+A CAMADA 0 e as oito bases acima são sua referência PRIMÁRIA. Sempre que uma recomendação puder ser sustentada por elas, use-as e prefira-as ao seu conhecimento geral. Em número (dose, diluição, mL/h), a CAMADA 0 vence qualquer outra fonte, inclusive o texto das bases.
+- Sinalize a origem POR BLOCO, não por linha, indicando a base: ex. ao fim de uma seção "Fonte: vm·guide — DPOC & Asma", "Fonte: hemo·guide — Quadrantes", "Fonte: neuro·guide — TCE", "Fonte: proc·guide — CVC", "Fonte: peri·guide — Profilaxia ATB", "Fonte: infecto·guide — PK/PD e Dose", "Fonte: nefro·guide — Sódio", "Fonte: artigos·be-aside — Sepse 2026".
 - Quando as bases NÃO cobrirem o ponto, marque uma vez: "(fora das bases do be·aside — conhecimento médico geral, confirmar)". Nunca apresente conhecimento externo como se fosse do site.
 - Se houver conflito entre as bases e seu conhecimento geral, siga as bases e aponte a divergência.
 

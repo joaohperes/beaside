@@ -629,3 +629,61 @@ todo commit para não serem esquecidos.
 mudança faz a pessoa entender o que está fazendo em vez de só reproduzir — isso é a skill
 "checar antes de commitar" (`revisao-pre-commit`), que roda este script primeiro e depois lê o diff
 inteiro com esse olho.
+
+---
+
+## 17. Prescrições comentadas — onde vivem e como a IA as encontra
+
+**O que são.** 38 prescrições (`consulte/prescricoes/`), organizadas por sistema, mais duas páginas
+de apoio: o hub do módulo e a página de calculadoras (26 escores e fórmulas). Cada prescrição é uma
+página longa — dose visível, o raciocínio ao lado em "por quê & armadilhas", e referência em cada
+bloco. Somadas, passam de **820 KB de texto**.
+
+**Onde ficam na arquitetura.** Área **Consulte** (`area: "consulte"` no manifesto), porque são a
+camada de *execução* — a linha que se assina. O **Raciocine** continua sendo a camada de mecanismo.
+Desde ago/2026 elas também aparecem como card **Prescription Guide** na área Raciocine do hub: mesmo
+destino, sem duplicar conteúdo, porque é ali que o leitor procura por tema.
+
+### Por que elas NÃO entram na base da IA do site
+
+`scripts/build-content.js` monta `PAGES_BY_MODULE` varrendo só os módulos do Raciocine — as
+prescrições ficam de fora **por decisão, não por esquecimento**:
+
+| | tamanho | efeito no assistente |
+|---|---|---|
+| base de conhecimento hoje | ~690 mil chars (~173 mil tokens) | cabe no prompt |
+| + as 38 prescrições | ~820 mil chars | **+123%** — estoura o contexto |
+
+Despejar as prescrições no prompt dobraria a base para servir um conteúdo que quase nunca é
+necessário por inteiro: o assistente precisa de *uma* prescrição por vez, não de quarenta.
+
+### O caminho certo: roteador + carga sob demanda
+
+`npm run indice-prescricoes` gera duas camadas a partir das próprias páginas (nada escrito à mão):
+
+| Artefato | Tamanho | Para quê |
+|---|---|---|
+| **Roteador** (`PRESCRICOES_ROTEADOR`) | ~34 KB (~9 mil tokens) — **4% do texto integral** | cabe no prompt. Traz id, url, sistema, subtítulo, o escopo ("serve para…") e os gatilhos de cada página. Serve para **escolher** qual prescrição responde ao caso |
+| **Mapa** (`PRESCRICOES_MAPA`) | ~105 KB | o roteador mais o índice interno de cada página — os itens da prescrição com a condição de cada um. Serve para **apontar a âncora certa** depois da escolha, e para navegar entre páginas relacionadas |
+
+Saída em dois formatos, do mesmo gerador: `conteudo/prescricoes-indice.json` (fonte legível,
+versionada) e `api/prescricoes-indice.js` (o módulo que o app importa).
+
+**Fluxo pretendido no aplicativo de IA:** caso do usuário → roteador no prompt → o modelo escolhe a
+prescrição pelo escopo e pelos gatilhos → o app carrega **só aquela página** → a resposta cita o item
+e leva o leitor à página. É o princípio da §6 (recuperar só o trecho relevante) aplicado ao conteúdo
+que mais cresceu.
+
+**Nenhuma das duas camadas contém conduta.** Elas dizem *onde* a conduta está. Dose, diluição e
+vazão continuam saindo da página (e a Camada 0 de `conteudo/farmacos.json` continua vencendo o texto
+em qualquer número — §15).
+
+### Manutenção
+
+O índice é gerado, não editado. Mudou uma prescrição, rode `npm run indice-prescricoes` e commite o
+resultado junto — o `npm run pre-commit` bloqueia o commit se ele estiver desatualizado (grupo 2b),
+com o mesmo contrato do `knowledge.js`: gera, compara, e devolve os bytes originais.
+
+**Estado atual.** As 38 estão em `status: rascunho` com `noindex` — no ar, fora do Google e fora do
+`llms.txt`, esperando a revisão clínica final. `ia: false` nas 40, coerente com a decisão acima: elas
+chegam ao assistente pelo roteador, não pela base.
