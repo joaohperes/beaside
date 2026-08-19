@@ -43,7 +43,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Anafilaxia",
    "subtitulo": "Adrenalina IM primeiro e repetida cedo — anti-histamínico não trata via aérea nem choque",
    "sistema": "Alergia",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a anafilaxia do adulto no pronto-socorro, na enfermaria e na UTI. Doses pediátricas são por peso e não estão nesta página . Gestação exige decúbito lateral e obstetrícia junto, mas não muda a indicação nem a dose da adrenalina.",
    "gatilhos": [
     "reconhecer e dar adrenalina im",
@@ -69,7 +69,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Bradiarritmias",
    "subtitulo": "Nodal × infranodal, a escada atropina → marca-passo → transvenoso, e as causas reversíveis",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a bradiarritmia sintomática ou instável — bradicardia sinusal extrema, doença do nó sinusal, BAV de 2º e 3º grau.",
    "gatilhos": [
     "é instável",
@@ -95,7 +95,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Choque cardiogênico",
    "subtitulo": "Perfusão antes de pressão, mecanismo antes de bomba — e a escalada na hora certa",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para o choque cardiogênico — hipoperfusão por falência da bomba, com IAM respondendo pela maioria dos casos. As doses e diluições das vasoativas não moram aqui : vivem revisadas na página de drogas vasoativas , e os perfis de choque nos padrões hemodinâmicos — esta página organiza a sequência e as decisões.",
    "gatilhos": [
     "diagnosticar pela perfusão",
@@ -121,7 +121,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Dissecção de aorta",
    "subtitulo": "Betabloqueador antes do vasodilatador, FC < 60 em minutos — tipo A se opera",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a suspeita e o manejo inicial da dissecção aguda de aorta — da dor lancinante que irradia ao dorso na sala de emergência até a bomba de esmolol rodando na UTI à espera da transferência.",
    "gatilhos": [
     "angio-tc de aorta total",
@@ -147,7 +147,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Edema agudo de pulmão",
    "subtitulo": "VNI, vasodilatador e diurético na dose que resolve — fenótipo antes de inotrópico",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para o EAP cardiogênico com pressão preservada ou elevada — o paciente congesto, taquidispneico, com estertores e história cardiológica.",
    "gatilhos": [
     "sentar o paciente + vni precoce",
@@ -173,7 +173,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Fibrilação e flutter atrial",
    "subtitulo": "Instável? Quanto tempo? Anticoagular quem? — e as doses certas de DOAC",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a FA e o flutter com alta resposta ventricular na emergência e na enfermaria — do paciente instável que precisa de choque agora ao estável em que a decisão importante é o anticoagulante que ele vai levar para casa.",
    "gatilhos": [
     "fa e flutter atrial",
@@ -201,7 +201,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — IC descompensada",
    "subtitulo": "Os 4 perfis, a descongestão até o fim e a alta com o quarteto nas doses-alvo",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a IC descompensada internada — o quente-úmido de enfermaria que chegou congesto sem estar se afogando, o frio-seco enganoso, e a alta de todos eles. As crises têm páginas próprias: dispneia dramática com congestão é edema agudo de pulmão ; má perfusão é choque cardiogênico .",
    "gatilhos": [
     "congesto? perfundindo",
@@ -227,7 +227,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Infarto de ventrículo direito",
    "subtitulo": "Pré-carga sagrada, volume por prova, ritmo como pressão — e nada de nitrato",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para o IAM com acometimento de VD — quase sempre um supra inferior (oclusão de coronária direita proximal) em que V3R/V4R confirmou o envolvimento. A reperfusão, os antitrombóticos e a prevenção secundária são os da SCA com supra ; esta página cuida do que o VD muda. Se o paciente já está em choque franco, o raciocínio soma com o do choque cardiogênico .",
    "gatilhos": [
     "infarto de vd",
@@ -253,7 +253,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — MINOCA",
    "subtitulo": "A RM dá o nome — placa, embolia, vasoespasmo, SCAD e ponte, cada um com sua prescrição",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para o infarto sem obstrução coronariana — critérios de IAM preenchidos, cateterismo com lesões < 50% e nenhuma causa alternativa evidente.",
    "gatilhos": [
     "minoca é diagnóstico provisório",
@@ -279,7 +279,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Miocardite",
    "subtitulo": "Suporte com dose, fulminante com telefonema — imunossupressão só com biópsia",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a miocardite aguda — do jovem com dor torácica e troponina pós-viral ao fulminante que choca em 48 horas. O diagnóstico costuma nascer no caminho do MINOCA (é o que a RM mais encontra); o suporte usa as páginas de IC , choque e arritmias. Aqui está o que a miocardite muda em cada uma — e onde ela exige freio.",
    "gatilhos": [
     "suspeitar",
@@ -305,7 +305,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — PA muito elevada",
    "subtitulo": "Órgão-alvo define tudo — emergência na veia por órgão; assintomático sem derrubar",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a pressão muito elevada na emergência e no internado — do paciente assintomático com 190×115 na triagem à emergência hipertensiva de verdade.",
    "gatilhos": [
     "há lesão de órgão-alvo aguda",
@@ -331,7 +331,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — SCA com supra de ST",
    "subtitulo": "Reperfusão contra o relógio — ICP primária ou fibrinólise, e a prescrição em volta",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para o paciente com IAM com supradesnível de ST (ou BRE/BRD novo com clínica de infarto) dentro da janela de reperfusão — sintomas ≤ 12 h, ou até 24 h se dor e isquemia em curso.",
    "gatilhos": [
     "sca com supra",
@@ -357,7 +357,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — SCA sem supra de ST",
    "subtitulo": "Item por item, com dose, contraindicação e o porquê",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para o paciente com síndrome coronariana aguda sem supradesnível de ST (angina instável ou IAMSSST) já reconhecida — dor torácica típica com troponina alterada e/ou ECG isquêmico sem supra — internado em unidade monitorizada.",
    "gatilhos": [
     "sca sem supra",
@@ -383,7 +383,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Taquiarritmia instável",
    "subtitulo": "CVE sem improviso: carga por ritmo, sedação pela hemodinâmica, e o pós-choque",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a taquiarritmia com instabilidade — supraventricular ou ventricular com pulso.",
    "gatilhos": [
     "é instável",
@@ -409,7 +409,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Taquicardia supraventricular estável",
    "subtitulo": "Valsalva modificada, adenosina com os cuidados certos, a escada até a CVE — e a ablação que cura",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a TSV com QRS estreito e paciente estável — do episódio clássico de TPSV (reentrada nodal ou por via acessória) às taquicardias atrial, multifocal e juncional.",
    "gatilhos": [
     "tsv estável",
@@ -435,7 +435,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Taquicardia ventricular",
    "subtitulo": "QRS largo é TV até prova em contrário — monomórfica, polimórfica, torsades e FA pré-excitada",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a taquicardia de QRS largo com pulso . Se o paciente está instável, o caminho já foi dado na taquiarritmia instável (monomórfica → CVE; polimórfica → desfibrilar). Esta página cuida do que vem antes e depois do choque no paciente que dá tempo: classificar, escolher droga, tratar a causa — e não cair na armadilha de \"TSV com aberrância\".",
    "gatilhos": [
     "qrs largo é tv até prova em contrário",
@@ -462,7 +462,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Tromboembolismo pulmonar",
    "subtitulo": "Estratificar primeiro — DOAC com ataque, heparina na dose de TEV, trombólise só no alto risco",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para o TEP agudo confirmado (ou com probabilidade alta o bastante para tratar enquanto se confirma). A primeira pergunta não é \"qual heparina\" — é \"em que categoria este paciente está?\" : é isso que decide alocação (casa, enfermaria, UTI), anticoagulante e se a terapia avançada entra em cena.",
    "gatilhos": [
     "classificar em categoria a–e",
@@ -490,7 +490,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Trombose venosa profunda",
    "subtitulo": "A maioria trata em casa com DOAC — quem interna, a escolha pelo paciente, a duração",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a TVP de membro inferior confirmada — da panturrilha sintomática que vai para casa com a receita à phlegmasia que aciona a cirurgia vascular.",
    "gatilhos": [
     "confirmar antes de anticoagular",
@@ -516,7 +516,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Cetoacidose diabética",
    "subtitulo": "Fluido, potássio antes da insulina e cetose como alvo — a glicemia normaliza antes de a crise terminar",
    "sistema": "Endócrino",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a cetoacidose diabética do adulto , do pronto-socorro à UTI. Não cobre pediatria, gestação e cenários toxicológicos, que exigem protocolo próprio — e a CAD da gestante tem alvos e riscos distintos.",
    "gatilhos": [
     "quem vai para a uti",
@@ -545,7 +545,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Estado hiperosmolar hiperglicêmico",
    "subtitulo": "Corrigir volume e osmolalidade sem pressa — o cérebro importa mais que o número da glicose",
    "sistema": "Endócrino",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para o estado hiperosmolar hiperglicêmico do adulto . Não cobre pediatria nem gestação. Se houver cetonemia com acidose, o paciente tem quadro misto e o fluxo correto é o da cetoacidose .",
    "gatilhos": [
     "glicose muito alta",
@@ -573,7 +573,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Hemorragia digestiva alta",
    "subtitulo": "Ressuscitar, reconhecer o ramo varicoso e chegar à endoscopia com a medicação certa",
    "sistema": "Gastro",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a hemorragia digestiva alta do adulto . A página tem núcleo comum e dois ramos separados — não varicosa e varicosa/cirrose.",
    "gatilhos": [
     "ressuscitar",
@@ -602,7 +602,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Pancreatite aguda",
    "subtitulo": "Hidratação moderada, analgesia, alimentação precoce e nenhum antibiótico para necrose estéril",
    "sistema": "Gastro",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a pancreatite aguda do adulto , da admissão à alta. Não cobre pancreatite crônica agudizada com anatomia alterada, pancreatite pós-transplante, nem o manejo endoscópico detalhado da necrose organizada — esse é de centro especializado.",
    "gatilhos": [
     "dois de três",
@@ -629,7 +629,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Hipercalemia",
    "subtitulo": "Cálcio protege a membrana, insulina joga o K para dentro, e só a diálise tira do corpo",
    "sistema": "Hidroeletrolítico",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a hipercalemia do adulto — do K de 6,2 no laboratório de rotina ao QRS alargado no monitor. O raciocínio de mecanismo, pseudo-hipercalemia e causas vive na página de potássio do Nefro Guide ; aqui está a prescrição.",
    "gatilhos": [
     "ecg agora",
@@ -656,7 +656,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Hipernatremia",
    "subtitulo": "Água livre calculada, déficit reposto devagar — e a causa quase sempre é acesso à água",
    "sistema": "Hidroeletrolítico",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a hipernatremia do adulto internado — do idoso acamado que chega com 162 ao paciente de UTI que sobe o sódio na primeira semana.",
    "gatilhos": [
     "choque ou hipovolemia franca",
@@ -684,7 +684,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Hipocalcemia",
    "subtitulo": "Cálcio iônico antes de tratar, gluconato no periférico — e o magnésio que ninguém dosa",
    "sistema": "Hidroeletrolítico",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a hipocalcemia do adulto internado — da tetania pós-tireoidectomia ao cálcio de 7,4 num paciente com albumina de 2,1.",
    "gatilhos": [
     "cálcio iônico",
@@ -711,7 +711,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Hipocalemia",
    "subtitulo": "Reposição pela via certa: teto de 40 mEq/L e 10 mEq/h no periférico — e o magnésio junto",
    "sistema": "Hidroeletrolítico",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a hipocalemia do adulto internado — do K de 3,2 do usuário de diurético ao de 2,1 com extrassístoles no monitor.",
    "gatilhos": [
     "oral sempre que possível",
@@ -738,7 +738,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Hipofosfatemia",
    "subtitulo": "Quando repor de verdade, e por que quem manda na velocidade é o potássio da ampola",
    "sistema": "Hidroeletrolítico",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a hipofosfatemia do adulto internado — do paciente que não desmama do ventilador à realimentação do desnutrido.",
    "gatilhos": [
     "fosfato de potássio",
@@ -762,7 +762,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Hipomagnesemia",
    "subtitulo": "A deficiência que sustenta hipocalemia e hipocalcemia refratárias — e o rim que joga fora",
    "sistema": "Hidroeletrolítico",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a hipomagnesemia do adulto internado — da torsades no monitor ao magnésio de 1,3 do etilista em realimentação.",
    "gatilhos": [
     "torsades",
@@ -788,7 +788,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Hiponatremia",
    "subtitulo": "Sintomático leva NaCl 3% em bolus; o resto é ritmo — e o teto de 8 mEq/L em 24 h",
    "sistema": "Hidroeletrolítico",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a hiponatremia do adulto internado — da convulsão hiponatrêmica no PS ao sódio de 124 que aparece no exame de rotina.",
    "gatilhos": [
     "tem sintoma grave",
@@ -817,7 +817,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Meningite bacteriana aguda",
    "subtitulo": "Antibiótico e dexametasona sem esperar a tomografia — dose meníngea e Listeria por risco",
    "sistema": "Infecção",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a meningite bacteriana comunitária do adulto . Não cobre meningite neonatal, pós-neurocirúrgica ou de dispositivo (derivação, cateter), tuberculosa nem fúngica — todas com microbiologia, esquema e duração próprios.",
    "gatilhos": [
     "dexametasona junto com",
@@ -843,7 +843,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Pneumonia comunitária grave",
    "subtitulo": "Beta-lactâmico com atípicos, microbiologia para desescalar e ampliação só com risco validado",
    "sistema": "Infecção",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para o adulto imunocompetente com PAC grave . Não cobre pneumonia hospitalar ou associada à ventilação, imunossupressão profunda (neutropenia, transplante, HIV avançado), abscesso e empiema — todos exigem esquema e investigação próprios.",
    "gatilhos": [
     "pac grave pelos critérios ats",
@@ -871,7 +871,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Sepse e choque séptico",
    "subtitulo": "Antibiótico na 1ª hora pelo foco, volume com juízo, nora precoce — e desescalonar",
    "sistema": "Infecção",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a sepse com disfunção orgânica e o choque séptico — do reconhecimento no pronto-socorro à prescrição da UTI.",
    "gatilhos": [
     "nomear a sepse",
@@ -899,7 +899,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — AVC hemorrágico",
    "subtitulo": "Reverter o anticoagulante, PA suave até 140, o telefonema do cerebelo",
    "sistema": "Neuro",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a hemorragia intraparenquimatosa espontânea — o \"AVCh hipertensivo\" do plantão — da TC positiva à UTI.",
    "gatilhos": [
     "anticoagulado? reverter agora",
@@ -925,7 +925,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — AVC isquêmico",
    "subtitulo": "Trombólise e trombectomia contra o relógio — e a pressão que aqui se respeita",
    "sistema": "Neuro",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para o AVC isquêmico do adulto, da porta do PS à enfermaria — o candidato à trombólise, o candidato à trombectomia (que o plantão não pode esquecer de procurar), e o que chegou fora de janela e precisa ser protegido.",
    "gatilhos": [
     "hora do último momento bem",
@@ -951,7 +951,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Crise epiléptica e status",
    "subtitulo": "Benzo pleno aos 5 min, segunda linha do ESETT aos 20 — e EEG em quem não acorda",
    "sistema": "Neuro",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a crise tônico-clônica do adulto no PS e na enfermaria — da convulsão que cede sozinha ao status refratário que vai à UTI.",
    "gatilhos": [
     "crise epiléptica",
@@ -977,7 +977,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Hemorragia subaracnóidea",
    "subtitulo": "Aneurisma tratado cedo, PAS < 160, nimodipina 21 dias — e os três relógios",
    "sistema": "Neuro",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a HSA aneurismática do adulto — da suspeita na emergência à UTI dos 14 dias. É doença de centro especializado: boa parte desta prescrição existe para chegar bem ao tratamento do aneurisma e para vigiar o que vem depois. O manejo neurocrítico profundo vive no módulo neuro ; o irmão intraparenquimatoso tem a página do AVCh .",
    "gatilhos": [
     "thunderclap = tc agora",
@@ -1003,7 +1003,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Exacerbação aguda de DPOC",
    "subtitulo": "Oxigênio controlado, broncodilatadores, cinco dias de corticoide e antibiótico só quando indicado",
    "sistema": "Pneumo",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a exacerbação aguda de DPOC no adulto . Não cobre DPOC estável, asma (que tem alvo de oxigênio e esquema de corticoide diferentes — ver asma ) nem bronquiectasia como doença de base, que tem microbiologia própria.",
    "gatilhos": [
     "oxigênio controlado",
@@ -1029,7 +1029,7 @@ export const PRESCRICOES_ROTEADOR = {
    "titulo": "Prescrição comentada — Exacerbação grave de asma",
    "subtitulo": "Broncodilatador repetido, corticoide precoce e magnésio só no grave — alta nunca com SABA isolado",
    "sistema": "Pneumo",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a exacerbação de asma no adulto , do PS à sala crítica. Doses pediátricas são por peso e não estão aqui . Gestante com crise de asma trata com as mesmas drogas — a hipoxemia materna é o risco maior —, com obstetrícia junto.",
    "gatilhos": [
     "avaliar e separar",
@@ -1090,7 +1090,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Anafilaxia",
    "subtitulo": "Adrenalina IM primeiro e repetida cedo — anti-histamínico não trata via aérea nem choque",
    "sistema": "Alergia",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a anafilaxia do adulto no pronto-socorro, na enfermaria e na UTI. Doses pediátricas são por peso e não estão nesta página . Gestação exige decúbito lateral e obstetrícia junto, mas não muda a indicação nem a dose da adrenalina.",
    "gatilhos": [
     "reconhecer e dar adrenalina im",
@@ -1158,7 +1158,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Bradiarritmias",
    "subtitulo": "Nodal × infranodal, a escada atropina → marca-passo → transvenoso, e as causas reversíveis",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a bradiarritmia sintomática ou instável — bradicardia sinusal extrema, doença do nó sinusal, BAV de 2º e 3º grau.",
    "gatilhos": [
     "é instável",
@@ -1243,7 +1243,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Choque cardiogênico",
    "subtitulo": "Perfusão antes de pressão, mecanismo antes de bomba — e a escalada na hora certa",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para o choque cardiogênico — hipoperfusão por falência da bomba, com IAM respondendo pela maioria dos casos. As doses e diluições das vasoativas não moram aqui : vivem revisadas na página de drogas vasoativas , e os perfis de choque nos padrões hemodinâmicos — esta página organiza a sequência e as decisões.",
    "gatilhos": [
     "diagnosticar pela perfusão",
@@ -1334,7 +1334,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Dissecção de aorta",
    "subtitulo": "Betabloqueador antes do vasodilatador, FC < 60 em minutos — tipo A se opera",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a suspeita e o manejo inicial da dissecção aguda de aorta — da dor lancinante que irradia ao dorso na sala de emergência até a bomba de esmolol rodando na UTI à espera da transferência.",
    "gatilhos": [
     "angio-tc de aorta total",
@@ -1417,7 +1417,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Edema agudo de pulmão",
    "subtitulo": "VNI, vasodilatador e diurético na dose que resolve — fenótipo antes de inotrópico",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para o EAP cardiogênico com pressão preservada ou elevada — o paciente congesto, taquidispneico, com estertores e história cardiológica.",
    "gatilhos": [
     "sentar o paciente + vni precoce",
@@ -1516,7 +1516,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Fibrilação e flutter atrial",
    "subtitulo": "Instável? Quanto tempo? Anticoagular quem? — e as doses certas de DOAC",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a FA e o flutter com alta resposta ventricular na emergência e na enfermaria — do paciente instável que precisa de choque agora ao estável em que a decisão importante é o anticoagulante que ele vai levar para casa.",
    "gatilhos": [
     "fa e flutter atrial",
@@ -1613,7 +1613,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — IC descompensada",
    "subtitulo": "Os 4 perfis, a descongestão até o fim e a alta com o quarteto nas doses-alvo",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a IC descompensada internada — o quente-úmido de enfermaria que chegou congesto sem estar se afogando, o frio-seco enganoso, e a alta de todos eles. As crises têm páginas próprias: dispneia dramática com congestão é edema agudo de pulmão ; má perfusão é choque cardiogênico .",
    "gatilhos": [
     "congesto? perfundindo",
@@ -1701,7 +1701,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Infarto de ventrículo direito",
    "subtitulo": "Pré-carga sagrada, volume por prova, ritmo como pressão — e nada de nitrato",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para o IAM com acometimento de VD — quase sempre um supra inferior (oclusão de coronária direita proximal) em que V3R/V4R confirmou o envolvimento. A reperfusão, os antitrombóticos e a prevenção secundária são os da SCA com supra ; esta página cuida do que o VD muda. Se o paciente já está em choque franco, o raciocínio soma com o do choque cardiogênico .",
    "gatilhos": [
     "infarto de vd",
@@ -1782,7 +1782,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — MINOCA",
    "subtitulo": "A RM dá o nome — placa, embolia, vasoespasmo, SCAD e ponte, cada um com sua prescrição",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para o infarto sem obstrução coronariana — critérios de IAM preenchidos, cateterismo com lesões < 50% e nenhuma causa alternativa evidente.",
    "gatilhos": [
     "minoca é diagnóstico provisório",
@@ -1854,10 +1854,11 @@ export const PRESCRICOES_MAPA = {
     "sca-sem-supra.html",
     "sca-com-supra.html",
     "fa-flutter.html",
+    "miocardite.html",
     "ic-descompensada.html"
    ],
    "referencias": 17,
-   "caracteres": 18343
+   "caracteres": 18321
   },
   {
    "id": "miocardite",
@@ -1867,7 +1868,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Miocardite",
    "subtitulo": "Suporte com dose, fulminante com telefonema — imunossupressão só com biópsia",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a miocardite aguda — do jovem com dor torácica e troponina pós-viral ao fulminante que choca em 48 horas. O diagnóstico costuma nascer no caminho do MINOCA (é o que a RM mais encontra); o suporte usa as páginas de IC , choque e arritmias. Aqui está o que a miocardite muda em cada uma — e onde ela exige freio.",
    "gatilhos": [
     "suspeitar",
@@ -1954,7 +1955,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — PA muito elevada",
    "subtitulo": "Órgão-alvo define tudo — emergência na veia por órgão; assintomático sem derrubar",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a pressão muito elevada na emergência e no internado — do paciente assintomático com 190×115 na triagem à emergência hipertensiva de verdade.",
    "gatilhos": [
     "há lesão de órgão-alvo aguda",
@@ -2017,10 +2018,12 @@ export const PRESCRICOES_MAPA = {
    "relacionadas": [
     "sca-sem-supra.html",
     "disseccao-aorta.html",
-    "eap.html"
+    "eap.html",
+    "avci.html",
+    "avch.html"
    ],
    "referencias": 13,
-   "caracteres": 21129
+   "caracteres": 21117
   },
   {
    "id": "sca-com-supra",
@@ -2030,7 +2033,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — SCA com supra de ST",
    "subtitulo": "Reperfusão contra o relógio — ICP primária ou fibrinólise, e a prescrição em volta",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para o paciente com IAM com supradesnível de ST (ou BRE/BRD novo com clínica de infarto) dentro da janela de reperfusão — sintomas ≤ 12 h, ou até 24 h se dor e isquemia em curso.",
    "gatilhos": [
     "sca com supra",
@@ -2144,7 +2147,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — SCA sem supra de ST",
    "subtitulo": "Item por item, com dose, contraindicação e o porquê",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para o paciente com síndrome coronariana aguda sem supradesnível de ST (angina instável ou IAMSSST) já reconhecida — dor torácica típica com troponina alterada e/ou ECG isquêmico sem supra — internado em unidade monitorizada.",
    "gatilhos": [
     "sca sem supra",
@@ -2250,7 +2253,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Taquiarritmia instável",
    "subtitulo": "CVE sem improviso: carga por ritmo, sedação pela hemodinâmica, e o pós-choque",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a taquiarritmia com instabilidade — supraventricular ou ventricular com pulso.",
    "gatilhos": [
     "é instável",
@@ -2327,7 +2330,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Taquicardia supraventricular estável",
    "subtitulo": "Valsalva modificada, adenosina com os cuidados certos, a escada até a CVE — e a ablação que cura",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a TSV com QRS estreito e paciente estável — do episódio clássico de TPSV (reentrada nodal ou por via acessória) às taquicardias atrial, multifocal e juncional.",
    "gatilhos": [
     "tsv estável",
@@ -2401,10 +2404,11 @@ export const PRESCRICOES_MAPA = {
    ],
    "relacionadas": [
     "taqui-instavel.html",
-    "fa-flutter.html"
+    "fa-flutter.html",
+    "taqui-ventricular.html"
    ],
    "referencias": 15,
-   "caracteres": 17681
+   "caracteres": 17659
   },
   {
    "id": "taqui-ventricular",
@@ -2414,7 +2418,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Taquicardia ventricular",
    "subtitulo": "QRS largo é TV até prova em contrário — monomórfica, polimórfica, torsades e FA pré-excitada",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a taquicardia de QRS largo com pulso . Se o paciente está instável, o caminho já foi dado na taquiarritmia instável (monomórfica → CVE; polimórfica → desfibrilar). Esta página cuida do que vem antes e depois do choque no paciente que dá tempo: classificar, escolher droga, tratar a causa — e não cair na armadilha de \"TSV com aberrância\".",
    "gatilhos": [
     "qrs largo é tv até prova em contrário",
@@ -2502,7 +2506,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Tromboembolismo pulmonar",
    "subtitulo": "Estratificar primeiro — DOAC com ataque, heparina na dose de TEV, trombólise só no alto risco",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para o TEP agudo confirmado (ou com probabilidade alta o bastante para tratar enquanto se confirma). A primeira pergunta não é \"qual heparina\" — é \"em que categoria este paciente está?\" : é isso que decide alocação (casa, enfermaria, UTI), anticoagulante e se a terapia avançada entra em cena.",
    "gatilhos": [
     "classificar em categoria a–e",
@@ -2596,7 +2600,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Trombose venosa profunda",
    "subtitulo": "A maioria trata em casa com DOAC — quem interna, a escolha pelo paciente, a duração",
    "sistema": "Cardiovascular",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a TVP de membro inferior confirmada — da panturrilha sintomática que vai para casa com a receita à phlegmasia que aciona a cirurgia vascular.",
    "gatilhos": [
     "confirmar antes de anticoagular",
@@ -2683,7 +2687,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Cetoacidose diabética",
    "subtitulo": "Fluido, potássio antes da insulina e cetose como alvo — a glicemia normaliza antes de a crise terminar",
    "sistema": "Endócrino",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a cetoacidose diabética do adulto , do pronto-socorro à UTI. Não cobre pediatria, gestação e cenários toxicológicos, que exigem protocolo próprio — e a CAD da gestante tem alvos e riscos distintos.",
    "gatilhos": [
     "quem vai para a uti",
@@ -2770,7 +2774,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Estado hiperosmolar hiperglicêmico",
    "subtitulo": "Corrigir volume e osmolalidade sem pressa — o cérebro importa mais que o número da glicose",
    "sistema": "Endócrino",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para o estado hiperosmolar hiperglicêmico do adulto . Não cobre pediatria nem gestação. Se houver cetonemia com acidose, o paciente tem quadro misto e o fluxo correto é o da cetoacidose .",
    "gatilhos": [
     "glicose muito alta",
@@ -2843,7 +2847,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Hemorragia digestiva alta",
    "subtitulo": "Ressuscitar, reconhecer o ramo varicoso e chegar à endoscopia com a medicação certa",
    "sistema": "Gastro",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a hemorragia digestiva alta do adulto . A página tem núcleo comum e dois ramos separados — não varicosa e varicosa/cirrose.",
    "gatilhos": [
     "ressuscitar",
@@ -2926,7 +2930,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Pancreatite aguda",
    "subtitulo": "Hidratação moderada, analgesia, alimentação precoce e nenhum antibiótico para necrose estéril",
    "sistema": "Gastro",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a pancreatite aguda do adulto , da admissão à alta. Não cobre pancreatite crônica agudizada com anatomia alterada, pancreatite pós-transplante, nem o manejo endoscópico detalhado da necrose organizada — esse é de centro especializado.",
    "gatilhos": [
     "dois de três",
@@ -2999,7 +3003,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Hipercalemia",
    "subtitulo": "Cálcio protege a membrana, insulina joga o K para dentro, e só a diálise tira do corpo",
    "sistema": "Hidroeletrolítico",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a hipercalemia do adulto — do K de 6,2 no laboratório de rotina ao QRS alargado no monitor. O raciocínio de mecanismo, pseudo-hipercalemia e causas vive na página de potássio do Nefro Guide ; aqui está a prescrição.",
    "gatilhos": [
     "ecg agora",
@@ -3064,7 +3068,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Hipernatremia",
    "subtitulo": "Água livre calculada, déficit reposto devagar — e a causa quase sempre é acesso à água",
    "sistema": "Hidroeletrolítico",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a hipernatremia do adulto internado — do idoso acamado que chega com 162 ao paciente de UTI que sobe o sódio na primeira semana.",
    "gatilhos": [
     "choque ou hipovolemia franca",
@@ -3130,7 +3134,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Hipocalcemia",
    "subtitulo": "Cálcio iônico antes de tratar, gluconato no periférico — e o magnésio que ninguém dosa",
    "sistema": "Hidroeletrolítico",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a hipocalcemia do adulto internado — da tetania pós-tireoidectomia ao cálcio de 7,4 num paciente com albumina de 2,1.",
    "gatilhos": [
     "cálcio iônico",
@@ -3193,7 +3197,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Hipocalemia",
    "subtitulo": "Reposição pela via certa: teto de 40 mEq/L e 10 mEq/h no periférico — e o magnésio junto",
    "sistema": "Hidroeletrolítico",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a hipocalemia do adulto internado — do K de 3,2 do usuário de diurético ao de 2,1 com extrassístoles no monitor.",
    "gatilhos": [
     "oral sempre que possível",
@@ -3261,7 +3265,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Hipofosfatemia",
    "subtitulo": "Quando repor de verdade, e por que quem manda na velocidade é o potássio da ampola",
    "sistema": "Hidroeletrolítico",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a hipofosfatemia do adulto internado — do paciente que não desmama do ventilador à realimentação do desnutrido.",
    "gatilhos": [
     "fosfato de potássio",
@@ -3322,7 +3326,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Hipomagnesemia",
    "subtitulo": "A deficiência que sustenta hipocalemia e hipocalcemia refratárias — e o rim que joga fora",
    "sistema": "Hidroeletrolítico",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a hipomagnesemia do adulto internado — da torsades no monitor ao magnésio de 1,3 do etilista em realimentação.",
    "gatilhos": [
     "torsades",
@@ -3386,7 +3390,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Hiponatremia",
    "subtitulo": "Sintomático leva NaCl 3% em bolus; o resto é ritmo — e o teto de 8 mEq/L em 24 h",
    "sistema": "Hidroeletrolítico",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a hiponatremia do adulto internado — da convulsão hiponatrêmica no PS ao sódio de 124 que aparece no exame de rotina.",
    "gatilhos": [
     "tem sintoma grave",
@@ -3460,7 +3464,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Meningite bacteriana aguda",
    "subtitulo": "Antibiótico e dexametasona sem esperar a tomografia — dose meníngea e Listeria por risco",
    "sistema": "Infecção",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a meningite bacteriana comunitária do adulto . Não cobre meningite neonatal, pós-neurocirúrgica ou de dispositivo (derivação, cateter), tuberculosa nem fúngica — todas com microbiologia, esquema e duração próprios.",
    "gatilhos": [
     "dexametasona junto com",
@@ -3535,7 +3539,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Pneumonia comunitária grave",
    "subtitulo": "Beta-lactâmico com atípicos, microbiologia para desescalar e ampliação só com risco validado",
    "sistema": "Infecção",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para o adulto imunocompetente com PAC grave . Não cobre pneumonia hospitalar ou associada à ventilação, imunossupressão profunda (neutropenia, transplante, HIV avançado), abscesso e empiema — todos exigem esquema e investigação próprios.",
    "gatilhos": [
     "pac grave pelos critérios ats",
@@ -3621,7 +3625,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Sepse e choque séptico",
    "subtitulo": "Antibiótico na 1ª hora pelo foco, volume com juízo, nora precoce — e desescalonar",
    "sistema": "Infecção",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a sepse com disfunção orgânica e o choque séptico — do reconhecimento no pronto-socorro à prescrição da UTI.",
    "gatilhos": [
     "nomear a sepse",
@@ -3705,7 +3709,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — AVC hemorrágico",
    "subtitulo": "Reverter o anticoagulante, PA suave até 140, o telefonema do cerebelo",
    "sistema": "Neuro",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a hemorragia intraparenquimatosa espontânea — o \"AVCh hipertensivo\" do plantão — da TC positiva à UTI.",
    "gatilhos": [
     "anticoagulado? reverter agora",
@@ -3792,7 +3796,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — AVC isquêmico",
    "subtitulo": "Trombólise e trombectomia contra o relógio — e a pressão que aqui se respeita",
    "sistema": "Neuro",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para o AVC isquêmico do adulto, da porta do PS à enfermaria — o candidato à trombólise, o candidato à trombectomia (que o plantão não pode esquecer de procurar), e o que chegou fora de janela e precisa ser protegido.",
    "gatilhos": [
     "hora do último momento bem",
@@ -3875,7 +3879,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Crise epiléptica e status",
    "subtitulo": "Benzo pleno aos 5 min, segunda linha do ESETT aos 20 — e EEG em quem não acorda",
    "sistema": "Neuro",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a crise tônico-clônica do adulto no PS e na enfermaria — da convulsão que cede sozinha ao status refratário que vai à UTI.",
    "gatilhos": [
     "crise epiléptica",
@@ -3955,7 +3959,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Hemorragia subaracnóidea",
    "subtitulo": "Aneurisma tratado cedo, PAS < 160, nimodipina 21 dias — e os três relógios",
    "sistema": "Neuro",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a HSA aneurismática do adulto — da suspeita na emergência à UTI dos 14 dias. É doença de centro especializado: boa parte desta prescrição existe para chegar bem ao tratamento do aneurisma e para vigiar o que vem depois. O manejo neurocrítico profundo vive no módulo neuro ; o irmão intraparenquimatoso tem a página do AVCh .",
    "gatilhos": [
     "thunderclap = tc agora",
@@ -4039,7 +4043,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Exacerbação aguda de DPOC",
    "subtitulo": "Oxigênio controlado, broncodilatadores, cinco dias de corticoide e antibiótico só quando indicado",
    "sistema": "Pneumo",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a exacerbação aguda de DPOC no adulto . Não cobre DPOC estável, asma (que tem alvo de oxigênio e esquema de corticoide diferentes — ver asma ) nem bronquiectasia como doença de base, que tem microbiologia própria.",
    "gatilhos": [
     "oxigênio controlado",
@@ -4121,7 +4125,7 @@ export const PRESCRICOES_MAPA = {
    "titulo": "Prescrição comentada — Exacerbação grave de asma",
    "subtitulo": "Broncodilatador repetido, corticoide precoce e magnésio só no grave — alta nunca com SABA isolado",
    "sistema": "Pneumo",
-   "status": "rascunho",
+   "status": "publicado",
    "escopo": "Serve para a exacerbação de asma no adulto , do PS à sala crítica. Doses pediátricas são por peso e não estão aqui . Gestante com crise de asma trata com as mesmas drogas — a hipoxemia materna é o risco maior —, com obstetrícia junto.",
    "gatilhos": [
     "avaliar e separar",

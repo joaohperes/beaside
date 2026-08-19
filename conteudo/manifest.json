@@ -1826,9 +1826,13 @@
     {
       "id": "prescricoes",
       "area": "consulte",
-      "status": "rascunho",
+      "status": "publicado",
       "label": "Prescrições",
       "subtitulo": "Prescrições comentadas",
+      "llms": {
+        "nome": "Prescrições comentadas",
+        "desc": "a camada de execução do be·aside — 38 prescrições de beira-leito por cenário (cardiovascular, neurológico, infeccioso, hidroeletrolítico, endócrino, gastro, pneumo e alergia), cada uma com a dose visível, o raciocínio que a sustenta em 'por quê & armadilhas' e a referência primária em cada bloco; acompanha uma página de calculadoras com 26 escores e fórmulas usados pelas prescrições."
+      },
       "root": "consulte/prescricoes/",
       "cor": "#1db88a",
       "paginas": [
@@ -1840,7 +1844,7 @@
           "titulo": "Prescrições comentadas",
           "subtitulo": "O que prescrever e por quê, cenário por cenário",
           "tipo": "referencia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -1852,7 +1856,7 @@
           "titulo": "Calculadoras clínicas",
           "subtitulo": "Escores e fórmulas que decidem conduta, com a leitura do resultado ao lado",
           "tipo": "referencia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -1864,7 +1868,7 @@
           "titulo": "Prescrição comentada — SCA sem supra de ST",
           "subtitulo": "Item por item, com dose, contraindicação e o porquê",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -1876,7 +1880,7 @@
           "titulo": "Prescrição comentada — SCA com supra de ST",
           "subtitulo": "Reperfusão contra o relógio — ICP primária ou fibrinólise, e a prescrição em volta",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -1888,7 +1892,7 @@
           "titulo": "Prescrição comentada — Edema agudo de pulmão",
           "subtitulo": "VNI, vasodilatador e diurético na dose que resolve — fenótipo antes de inotrópico",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -1900,7 +1904,7 @@
           "titulo": "Prescrição comentada — Fibrilação e flutter atrial",
           "subtitulo": "Instável? Quanto tempo? Anticoagular quem? — e as doses certas de DOAC",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -1912,7 +1916,7 @@
           "titulo": "Prescrição comentada — Tromboembolismo pulmonar",
           "subtitulo": "Estratificar primeiro — DOAC com ataque, heparina na dose de TEV, trombólise só no alto risco",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -1924,7 +1928,7 @@
           "titulo": "Prescrição comentada — Choque cardiogênico",
           "subtitulo": "Perfusão antes de pressão, mecanismo antes de bomba — e a escalada na hora certa",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -1936,7 +1940,7 @@
           "titulo": "Prescrição comentada — Taquiarritmia instável",
           "subtitulo": "CVE sem improviso: carga por ritmo, sedação pela hemodinâmica, e o pós-choque",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -1948,7 +1952,7 @@
           "titulo": "Prescrição comentada — Bradiarritmias",
           "subtitulo": "Nodal × infranodal, a escada atropina → marca-passo → transvenoso, e as causas reversíveis",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -1960,7 +1964,7 @@
           "titulo": "Prescrição comentada — Taquicardia supraventricular estável",
           "subtitulo": "Valsalva modificada, adenosina com os cuidados certos, a escada até a CVE — e a ablação que cura",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -1972,7 +1976,7 @@
           "titulo": "Prescrição comentada — Taquicardia ventricular",
           "subtitulo": "QRS largo é TV até prova em contrário — monomórfica, polimórfica, torsades e FA pré-excitada",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -1984,7 +1988,7 @@
           "titulo": "Prescrição comentada — IC descompensada",
           "subtitulo": "Os 4 perfis, a descongestão até o fim e a alta com o quarteto nas doses-alvo",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -1996,7 +2000,7 @@
           "titulo": "Prescrição comentada — Infarto de ventrículo direito",
           "subtitulo": "Pré-carga sagrada, volume por prova, ritmo como pressão — e nada de nitrato",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -2008,7 +2012,7 @@
           "titulo": "Prescrição comentada — MINOCA",
           "subtitulo": "A RM dá o nome — placa, embolia, vasoespasmo, SCAD e ponte, cada um com sua prescrição",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -2020,7 +2024,7 @@
           "titulo": "Prescrição comentada — Miocardite",
           "subtitulo": "Suporte com dose, fulminante com telefonema — imunossupressão só com biópsia",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -2032,7 +2036,7 @@
           "titulo": "Prescrição comentada — PA muito elevada",
           "subtitulo": "Órgão-alvo define tudo — emergência na veia por órgão; assintomático sem derrubar",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -2044,7 +2048,7 @@
           "titulo": "Prescrição comentada — Dissecção de aorta",
           "subtitulo": "Betabloqueador antes do vasodilatador, FC < 60 em minutos — tipo A se opera",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -2056,7 +2060,7 @@
           "titulo": "Prescrição comentada — Trombose venosa profunda",
           "subtitulo": "A maioria trata em casa com DOAC — quem interna, a escolha pelo paciente, a duração",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -2068,7 +2072,7 @@
           "titulo": "Prescrição comentada — Sepse e choque séptico",
           "subtitulo": "Antibiótico na 1ª hora pelo foco, volume com juízo, nora precoce — e desescalonar",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -2080,7 +2084,7 @@
           "titulo": "Prescrição comentada — AVC isquêmico",
           "subtitulo": "Trombólise e trombectomia contra o relógio — e a pressão que aqui se respeita",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -2092,7 +2096,7 @@
           "titulo": "Prescrição comentada — AVC hemorrágico",
           "subtitulo": "Reverter o anticoagulante, PA suave até 140, o telefonema do cerebelo",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -2104,7 +2108,7 @@
           "titulo": "Prescrição comentada — Hemorragia subaracnóidea",
           "subtitulo": "Aneurisma tratado cedo, PAS < 160, nimodipina 21 dias — e os três relógios",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -2116,7 +2120,7 @@
           "titulo": "Prescrição comentada — Crise epiléptica e status",
           "subtitulo": "Benzo pleno aos 5 min, segunda linha do ESETT aos 20 — e EEG em quem não acorda",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -2128,7 +2132,7 @@
           "titulo": "Prescrição comentada — Hiponatremia",
           "subtitulo": "Sintomático leva NaCl 3% em bolus; o resto é ritmo — e o teto de 8 mEq/L em 24 h",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -2140,7 +2144,7 @@
           "titulo": "Prescrição comentada — Hipernatremia",
           "subtitulo": "Água livre calculada, déficit reposto devagar — e a causa quase sempre é acesso à água",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -2152,7 +2156,7 @@
           "titulo": "Prescrição comentada — Hipocalemia",
           "subtitulo": "Reposição pela via certa: teto de 40 mEq/L e 10 mEq/h no periférico — e o magnésio junto",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -2164,7 +2168,7 @@
           "titulo": "Prescrição comentada — Hipercalemia",
           "subtitulo": "Cálcio protege a membrana, insulina joga o K para dentro, e só a diálise tira do corpo",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -2176,7 +2180,7 @@
           "titulo": "Prescrição comentada — Hipocalcemia",
           "subtitulo": "Cálcio iônico antes de tratar, gluconato no periférico — e o magnésio que ninguém dosa",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -2188,7 +2192,7 @@
           "titulo": "Prescrição comentada — Hipomagnesemia",
           "subtitulo": "A deficiência que sustenta hipocalemia e hipocalcemia refratárias — e o rim que joga fora",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -2200,7 +2204,7 @@
           "titulo": "Prescrição comentada — Hipofosfatemia",
           "subtitulo": "Quando repor de verdade, e por que quem manda na velocidade é o potássio da ampola",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -2212,7 +2216,7 @@
           "titulo": "Prescrição comentada — Cetoacidose diabética",
           "subtitulo": "Fluido, potássio antes da insulina e cetose como alvo — a glicemia normaliza antes de a crise terminar",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -2224,7 +2228,7 @@
           "titulo": "Prescrição comentada — Estado hiperosmolar hiperglicêmico",
           "subtitulo": "Corrigir volume e osmolalidade sem pressa — o cérebro importa mais que o número da glicose",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -2236,7 +2240,7 @@
           "titulo": "Prescrição comentada — Hemorragia digestiva alta",
           "subtitulo": "Ressuscitar, reconhecer o ramo varicoso e chegar à endoscopia com a medicação certa",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -2248,7 +2252,7 @@
           "titulo": "Prescrição comentada — Pancreatite aguda",
           "subtitulo": "Hidratação moderada, analgesia, alimentação precoce e nenhum antibiótico para necrose estéril",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -2260,7 +2264,7 @@
           "titulo": "Prescrição comentada — Exacerbação grave de asma",
           "subtitulo": "Broncodilatador repetido, corticoide precoce e magnésio só no grave — alta nunca com SABA isolado",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -2272,7 +2276,7 @@
           "titulo": "Prescrição comentada — Exacerbação aguda de DPOC",
           "subtitulo": "Oxigênio controlado, broncodilatadores, cinco dias de corticoide e antibiótico só quando indicado",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -2284,7 +2288,7 @@
           "titulo": "Prescrição comentada — Anafilaxia",
           "subtitulo": "Adrenalina IM primeiro e repetida cedo — anti-histamínico não trata via aérea nem choque",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -2296,7 +2300,7 @@
           "titulo": "Prescrição comentada — Pneumonia comunitária grave",
           "subtitulo": "Beta-lactâmico com atípicos, microbiologia para desescalar e ampliação só com risco validado",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         },
@@ -2308,7 +2312,7 @@
           "titulo": "Prescrição comentada — Meningite bacteriana aguda",
           "subtitulo": "Antibiótico e dexametasona sem esperar a tomografia — dose meníngea e Listeria por risco",
           "tipo": "guia",
-          "status": "rascunho",
+          "status": "publicado",
           "ia": false,
           "hub": null
         }

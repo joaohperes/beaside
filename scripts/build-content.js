@@ -44,6 +44,11 @@ const rgb = (hex) => {
 const mods = (ids) => manifest.modulos.filter((m) => ids.includes(m.id));
 const modById = (id) => manifest.modulos.find((m) => m.id === id);
 const RACIOCINE = ['vm', 'hemo', 'neuro', 'proc', 'peri', 'infecto', 'nefro'];
+// O llms.txt mapeia o SITE publicado, não só a área de raciocínio: quem lê esse
+// arquivo quer saber tudo que existe. As prescrições entram aqui quando saem do
+// rascunho — não entram na base da IA (ver PROJECT_STATUS §17: elas chegam ao
+// assistente pelo roteador, que é outro caminho e outro arquivo).
+const NO_LLMS = [...RACIOCINE, 'prescricoes'];
 
 function aplicar(relPath, gerado, marcadorInicio, marcadorFim) {
   const abs = join(root, relPath);
@@ -217,14 +222,15 @@ function quebrar(itens) {
 function gerarLlmsAreas() {
   const base = manifest.site.url;
   let out = '\n';
-  for (const m of mods(RACIOCINE)) {
+  for (const m of mods(NO_LLMS)) {
     if (m.semHub) continue;
     // Módulo em rascunho não entra na lista que os robôs de IA leem primeiro,
     // pelo mesmo motivo que não entra no sitemap: o conteúdo ainda não passou
     // pela revisão clínica do Cesar.
     if (m.status && m.status !== 'publicado') continue;
     if (!m.llms) { avisos.push(`llms.txt: módulo "${m.id}" não tem o campo "llms" no manifesto — ficou fora da lista de áreas.`); continue; }
-    out += `- [Raciocine — ${m.llms.nome}](${base}/${m.root}): ${m.llms.desc}\n`;
+    const area = m.area === 'consulte' ? 'Consulte' : 'Raciocine';
+    out += `- [${area} — ${m.llms.nome}](${base}/${m.root}): ${m.llms.desc}\n`;
   }
   aplicar('llms.txt', out, '<!-- AUTO:areas -->', '<!-- /AUTO:areas -->');
 }
@@ -232,7 +238,7 @@ function gerarLlmsAreas() {
 function gerarLlms() {
   const base = manifest.site.url;
   let out = '\n\n## Conteúdo completo\n';
-  for (const m of mods(RACIOCINE)) {
+  for (const m of mods(NO_LLMS)) {
     // Módulo inteiro em rascunho não vira seção vazia: um título sem nada embaixo
     // faz o robô achar que o conteúdo sumiu, não que ainda não saiu.
     const pubs = m.paginas.filter((p) => p.status === 'publicado' && p.tipo !== 'quiz');

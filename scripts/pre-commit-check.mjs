@@ -216,9 +216,16 @@ const manifest = JSON.parse(ler('conteudo/manifest.json'));
     if (!existe(rel)) erros.push(`sitemap aponta para arquivo inexistente: ${u}`);
     else if (noindex.has(rel)) erros.push(`sitemap lista página marcada noindex: ${u}`);
   }
+  // O hub de um módulo tem canonical de DIRETÓRIO (…/prescricoes/), não do
+  // arquivo — então é assim que ele entra no sitemap. Procurar só por
+  // "…/index.html" daria falso positivo. Mesma normalização do grupo 8.
+  const noSitemapUrls = (rel) =>
+    rel.endsWith('/index.html')
+      ? !urls.some((u) => u.endsWith('/' + rel) || u.endsWith('/' + rel.slice(0, -10)))
+      : !urls.some((u) => u.endsWith('/' + rel));
   for (const m of manifest.modulos) for (const p of m.paginas) {
     const rel = m.root + p.arquivo;
-    if (p.status === 'publicado' && existe(rel) && !noindex.has(rel) && !urls.some((u) => u.endsWith('/' + rel))) {
+    if (p.status === 'publicado' && existe(rel) && !noindex.has(rel) && noSitemapUrls(rel)) {
       erros.push(`publicada e indexável mas fora do sitemap: ${rel}`);
     }
     if (p.status === 'em-breve' && existe(rel) && !noindex.has(rel)) erros.push(`status em-breve sem noindex: ${rel} — rode \`node scripts/seo-tags.js\``);

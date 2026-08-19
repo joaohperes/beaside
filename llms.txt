@@ -13,6 +13,7 @@ be·aside reúne guias clínicos, algoritmos, calculadoras, casos práticos e um
 - [Raciocine — Neurocrítico](https://beaside.com.br/neuro/): TCE, AVC, status epiléptico, encefalopatias, pressão de perfusão cerebral.
 - [Raciocine — Procedimentos](https://beaside.com.br/proc/): procedimentos de UTI e dúvidas reais de plantão.
 - [Raciocine — Surgery Guide](https://beaside.com.br/peri/): risco pré-operatório, profilaxia antibiótica, manejo pós-operatório e POCUS à beira do leito.
+- [Consulte — Prescrições comentadas](https://beaside.com.br/consulte/prescricoes/): a camada de execução do be·aside — 38 prescrições de beira-leito por cenário (cardiovascular, neurológico, infeccioso, hidroeletrolítico, endócrino, gastro, pneumo e alergia), cada uma com a dose visível, o raciocínio que a sustenta em 'por quê & armadilhas' e a referência primária em cada bloco; acompanha uma página de calculadoras com 26 escores e fórmulas usados pelas prescrições.
 <!-- /AUTO:areas -->
 - [Consulte e Resolva](https://beaside.com.br/consulte/): assistente de IA que discute casos com base no conteúdo validado do site (acesso restrito).
 
@@ -110,5 +111,48 @@ be·aside reúne guias clínicos, algoritmos, calculadoras, casos práticos e um
 ### Infecto Guide
 
 - [Resistência que muda a conduta: ESBL, AmpC e CRE](https://beaside.com.br/infecto/resistencia.html): Ler o mecanismo de resistência antes do resultado e escolher a droga que não falha
+
+### Prescrições
+
+- [Prescrições comentadas](https://beaside.com.br/consulte/prescricoes/index.html): O que prescrever e por quê, cenário por cenário
+- [Calculadoras clínicas](https://beaside.com.br/consulte/prescricoes/calculadoras.html): Escores e fórmulas que decidem conduta, com a leitura do resultado ao lado
+- [Prescrição comentada — SCA sem supra de ST](https://beaside.com.br/consulte/prescricoes/sca-sem-supra.html): Item por item, com dose, contraindicação e o porquê
+- [Prescrição comentada — SCA com supra de ST](https://beaside.com.br/consulte/prescricoes/sca-com-supra.html): Reperfusão contra o relógio — ICP primária ou fibrinólise, e a prescrição em volta
+- [Prescrição comentada — Edema agudo de pulmão](https://beaside.com.br/consulte/prescricoes/eap.html): VNI, vasodilatador e diurético na dose que resolve — fenótipo antes de inotrópico
+- [Prescrição comentada — Fibrilação e flutter atrial](https://beaside.com.br/consulte/prescricoes/fa-flutter.html): Instável? Quanto tempo? Anticoagular quem? — e as doses certas de DOAC
+- [Prescrição comentada — Tromboembolismo pulmonar](https://beaside.com.br/consulte/prescricoes/tep.html): Estratificar primeiro — DOAC com ataque, heparina na dose de TEV, trombólise só no alto risco
+- [Prescrição comentada — Choque cardiogênico](https://beaside.com.br/consulte/prescricoes/choque-cardiogenico.html): Perfusão antes de pressão, mecanismo antes de bomba — e a escalada na hora certa
+- [Prescrição comentada — Taquiarritmia instável](https://beaside.com.br/consulte/prescricoes/taqui-instavel.html): CVE sem improviso: carga por ritmo, sedação pela hemodinâmica, e o pós-choque
+- [Prescrição comentada — Bradiarritmias](https://beaside.com.br/consulte/prescricoes/bradiarritmias.html): Nodal × infranodal, a escada atropina → marca-passo → transvenoso, e as causas reversíveis
+- [Prescrição comentada — Taquicardia supraventricular estável](https://beaside.com.br/consulte/prescricoes/tsv-estavel.html): Valsalva modificada, adenosina com os cuidados certos, a escada até a CVE — e a ablação que cura
+- [Prescrição comentada — Taquicardia ventricular](https://beaside.com.br/consulte/prescricoes/taqui-ventricular.html): QRS largo é TV até prova em contrário — monomórfica, polimórfica, torsades e FA pré-excitada
+- [Prescrição comentada — IC descompensada](https://beaside.com.br/consulte/prescricoes/ic-descompensada.html): Os 4 perfis, a descongestão até o fim e a alta com o quarteto nas doses-alvo
+- [Prescrição comentada — Infarto de ventrículo direito](https://beaside.com.br/consulte/prescricoes/iam-vd.html): Pré-carga sagrada, volume por prova, ritmo como pressão — e nada de nitrato
+- [Prescrição comentada — MINOCA](https://beaside.com.br/consulte/prescricoes/minoca.html): A RM dá o nome — placa, embolia, vasoespasmo, SCAD e ponte, cada um com sua prescrição
+- [Prescrição comentada — Miocardite](https://beaside.com.br/consulte/prescricoes/miocardite.html): Suporte com dose, fulminante com telefonema — imunossupressão só com biópsia
+- [Prescrição comentada — PA muito elevada](https://beaside.com.br/consulte/prescricoes/pa-elevada.html): Órgão-alvo define tudo — emergência na veia por órgão; assintomático sem derrubar
+- [Prescrição comentada — Dissecção de aorta](https://beaside.com.br/consulte/prescricoes/disseccao-aorta.html): Betabloqueador antes do vasodilatador, FC < 60 em minutos — tipo A se opera
+- [Prescrição comentada — Trombose venosa profunda](https://beaside.com.br/consulte/prescricoes/tvp.html): A maioria trata em casa com DOAC — quem interna, a escolha pelo paciente, a duração
+- [Prescrição comentada — Sepse e choque séptico](https://beaside.com.br/consulte/prescricoes/sepse.html): Antibiótico na 1ª hora pelo foco, volume com juízo, nora precoce — e desescalonar
+- [Prescrição comentada — AVC isquêmico](https://beaside.com.br/consulte/prescricoes/avci.html): Trombólise e trombectomia contra o relógio — e a pressão que aqui se respeita
+- [Prescrição comentada — AVC hemorrágico](https://beaside.com.br/consulte/prescricoes/avch.html): Reverter o anticoagulante, PA suave até 140, o telefonema do cerebelo
+- [Prescrição comentada — Hemorragia subaracnóidea](https://beaside.com.br/consulte/prescricoes/hsa.html): Aneurisma tratado cedo, PAS < 160, nimodipina 21 dias — e os três relógios
+- [Prescrição comentada — Crise epiléptica e status](https://beaside.com.br/consulte/prescricoes/crise-epileptica.html): Benzo pleno aos 5 min, segunda linha do ESETT aos 20 — e EEG em quem não acorda
+- [Prescrição comentada — Hiponatremia](https://beaside.com.br/consulte/prescricoes/hiponatremia.html): Sintomático leva NaCl 3% em bolus; o resto é ritmo — e o teto de 8 mEq/L em 24 h
+- [Prescrição comentada — Hipernatremia](https://beaside.com.br/consulte/prescricoes/hipernatremia.html): Água livre calculada, déficit reposto devagar — e a causa quase sempre é acesso à água
+- [Prescrição comentada — Hipocalemia](https://beaside.com.br/consulte/prescricoes/hipocalemia.html): Reposição pela via certa: teto de 40 mEq/L e 10 mEq/h no periférico — e o magnésio junto
+- [Prescrição comentada — Hipercalemia](https://beaside.com.br/consulte/prescricoes/hipercalemia.html): Cálcio protege a membrana, insulina joga o K para dentro, e só a diálise tira do corpo
+- [Prescrição comentada — Hipocalcemia](https://beaside.com.br/consulte/prescricoes/hipocalcemia.html): Cálcio iônico antes de tratar, gluconato no periférico — e o magnésio que ninguém dosa
+- [Prescrição comentada — Hipomagnesemia](https://beaside.com.br/consulte/prescricoes/hipomagnesemia.html): A deficiência que sustenta hipocalemia e hipocalcemia refratárias — e o rim que joga fora
+- [Prescrição comentada — Hipofosfatemia](https://beaside.com.br/consulte/prescricoes/hipofosfatemia.html): Quando repor de verdade, e por que quem manda na velocidade é o potássio da ampola
+- [Prescrição comentada — Cetoacidose diabética](https://beaside.com.br/consulte/prescricoes/cetoacidose-diabetica.html): Fluido, potássio antes da insulina e cetose como alvo — a glicemia normaliza antes de a crise terminar
+- [Prescrição comentada — Estado hiperosmolar hiperglicêmico](https://beaside.com.br/consulte/prescricoes/estado-hiperosmolar.html): Corrigir volume e osmolalidade sem pressa — o cérebro importa mais que o número da glicose
+- [Prescrição comentada — Hemorragia digestiva alta](https://beaside.com.br/consulte/prescricoes/hda.html): Ressuscitar, reconhecer o ramo varicoso e chegar à endoscopia com a medicação certa
+- [Prescrição comentada — Pancreatite aguda](https://beaside.com.br/consulte/prescricoes/pancreatite-aguda.html): Hidratação moderada, analgesia, alimentação precoce e nenhum antibiótico para necrose estéril
+- [Prescrição comentada — Exacerbação grave de asma](https://beaside.com.br/consulte/prescricoes/asma-aguda.html): Broncodilatador repetido, corticoide precoce e magnésio só no grave — alta nunca com SABA isolado
+- [Prescrição comentada — Exacerbação aguda de DPOC](https://beaside.com.br/consulte/prescricoes/dpoc-exacerbacao.html): Oxigênio controlado, broncodilatadores, cinco dias de corticoide e antibiótico só quando indicado
+- [Prescrição comentada — Anafilaxia](https://beaside.com.br/consulte/prescricoes/anafilaxia.html): Adrenalina IM primeiro e repetida cedo — anti-histamínico não trata via aérea nem choque
+- [Prescrição comentada — Pneumonia comunitária grave](https://beaside.com.br/consulte/prescricoes/pneumonia-comunitaria-grave.html): Beta-lactâmico com atípicos, microbiologia para desescalar e ampliação só com risco validado
+- [Prescrição comentada — Meningite bacteriana aguda](https://beaside.com.br/consulte/prescricoes/meningite-bacteriana.html): Antibiótico e dexametasona sem esperar a tomografia — dose meníngea e Listeria por risco
 
 <!-- /AUTO:conteudo -->
