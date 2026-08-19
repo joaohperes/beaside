@@ -191,6 +191,13 @@
       <tr><td><strong>Alcalose respiratória — crônica</strong></td><td class="td-mono">HCO₃ cai ~4–5 por 10 de ↓PCO₂</td><td>pode normalizar o pH</td></tr>
     </tbody>
   </table></div>
+  <div class="tip-box">
+    <strong>Qual "esperado" calcular — e quando</strong>
+    <p class="box-body">A regra é direta e resolve o passo 3: <strong>calcule sempre a resposta do <em>outro</em> sistema e compare com o medido</strong>.
+    <br>· Distúrbio <strong>metabólico</strong> (o HCO₃ mudou primeiro) → calcule o <strong>PCO₂ esperado</strong>. Bateu com o medido = compensação adequada (simples); PCO₂ medido <em>mais alto</em> = acidose respiratória somada; <em>mais baixo</em> = alcalose respiratória somada.
+    <br>· Distúrbio <strong>respiratório</strong> (o PCO₂ mudou primeiro) → calcule o <strong>HCO₃ esperado</strong>, nas versões <strong>aguda e crônica</strong>. A comparação com o medido diz se é agudo, crônico, agudo-sobre-crônico — ou se há um distúrbio metabólico somado (HCO₃ fora das duas faixas).
+    <br>Regra de ouro: <strong>igual ao esperado = simples; diferente = misto</strong>. A calculadora abaixo faz essas contas e mostra o valor esperado ao lado do medido.</p>
+  </div>
   <p class="prose">
     O <strong>ânion gap</strong> mede os ânions "não medidos": AG = Na − (Cl + HCO₃), normal ~8–12 mEq/L (varia com o analisador). O ajuste mais importante é pela <strong>albumina</strong> — ela é o maior ânion não medido, então a hipoalbuminemia do crítico <em>mascara</em> um AG alto: some <strong>2,5 ao AG para cada 1 g/dL de albumina abaixo de 4,0</strong>. Na acidose de AG alto, o <strong>delta-delta</strong> (quanto o AG subiu ÷ quanto o HCO₃ caiu) denuncia um distúrbio metabólico somado.
   </p>
@@ -201,7 +208,7 @@
         <div class="calc-panel-h">
           <div class="calc-panel-title">Calculadora ácido-base <span class="calc-panel-src">Winters · ânion gap corrigido · delta-delta</span></div>
         </div>
-        <p class="calc-hint">Informe <strong>pH, PCO₂ e HCO₃</strong> (obrigatórios) para o distúrbio primário e a compensação. Acrescente <strong>Na, Cl e albumina</strong> para o ânion gap corrigido e o delta-delta. Unidades: PCO₂ em mmHg; HCO₃, Na, Cl em mEq/L; albumina em g/dL.</p>
+        <p class="calc-hint">Informe <strong>pH, PCO₂ e HCO₃</strong> (obrigatórios): a calculadora identifica o distúrbio primário e mostra o <strong>PCO₂ esperado</strong> (nos distúrbios metabólicos) ou o <strong>HCO₃ esperado</strong> (nos respiratórios, agudo × crônico) — comparado com o medido para flagrar um distúrbio misto. Acrescente <strong>Na, Cl e albumina</strong> para o ânion gap corrigido e o delta-delta. Unidades: PCO₂ em mmHg; HCO₃, Na, Cl em mEq/L; albumina em g/dL.</p>
         <div class="calc-fields">
           <div class="calc-field">
             <label class="calc-label" for="ab_ph">pH</label>
@@ -230,6 +237,10 @@
         </div>
         <div class="calc-result is-idle" id="ab_result" data-tone="neutral">
           <div class="res-values">
+            <div class="res-item">
+              <span class="res-val" id="ab_expVal">—</span>
+              <span class="res-unit" id="ab_expLbl">esperado</span>
+            </div>
             <div class="res-item">
               <span class="res-val" id="ab_agVal">—</span>
               <span class="res-unit">ânion gap (corr.)</span>
@@ -271,6 +282,11 @@
   <div class="tip-box">
     <strong>Bicarbonato de sódio — quando (e a controvérsia)</strong>
     <p class="box-body">Na acidose metabólica <em>orgânica</em> (lactato, cetoácidos), o bicarbonato não é rotina — os ensaios em UTI (<strong>BICAR-ICU</strong>, BICAR-ICU2, SODa-BIC) <strong>não mostraram benefício de mortalidade</strong>, embora o BICAR-ICU tenha reduzido necessidade de diálise e, no subgrupo com LRA moderada-grave, a mortalidade. Uso mais aceito: <strong>acidemia grave com pH &lt; 7,1 e HCO₃ ≤ 6 mEq/L</strong> (e considerar entre pH 7,1–7,2 / HCO₃ 6–13, sobretudo com LRA). Solução típica: bicarbonato de sódio a 4,2–5% (500–600 mEq/L) IV, mirando pH ≥ 7,2. <strong>Cuidados:</strong> se pH &lt; 7,1 com HCO₃ &gt; 6, o PCO₂ está &gt; 20 (ventilação inadequada — componente respiratório): infusão rápida (&gt; 15 mEq/min) piora a acidose respiratória; pode precisar de ventilação. Na acidose <em>hiperclorêmica</em> e na acidose da DRC, o álcali (inclusive oral) tem papel maior. <strong>Confirme dose e indicação no protocolo do serviço.</strong></p>
+  </div>
+
+  <div class="tip-box">
+    <strong>Álcool tóxico? Calcule o gap osmolar</strong>
+    <p class="box-body">Diante de acidose de AG alto <em>sem</em> causa óbvia (sem lactato, sem cetoácidos, sem uremia), pense em <strong>metanol / etilenoglicol</strong> e calcule o <strong>gap osmolar</strong> = osmolaridade <em>medida</em> − <em>calculada</em>, com calculada = <span style="font-family:var(--mono)">2 × Na + glicose⁄18 + ureia⁄2,8</span> (mg/dL). Gap &gt; 10 mOsm/kg sugere osmóis não medidos (os álcoois). Conduta: <strong>fomepizol</strong> (ou etanol), <strong>hemodiálise</strong> e cofatores — sem esperar o nível sérico. Cuidado: um gap osmolar já <strong>normal não exclui</strong> — ele cai conforme o álcool vira ácido (e o AG sobe). <strong>Confirme no protocolo do serviço.</strong></p>
   </div>
 
   <div class="sec-h"><span class="sec-num">05</span><h2>Alcalose metabólica — cloreto-responsiva × resistente</h2></div>
@@ -378,6 +394,7 @@
   var el={}; ids.forEach(function(i){el[i]=document.getElementById(i);});
   var result=document.getElementById('ab_result');
   var agVal=document.getElementById('ab_agVal'), ddVal=document.getElementById('ab_ddVal'), interp=document.getElementById('ab_interp');
+  var expVal=document.getElementById('ab_expVal'), expLbl=document.getElementById('ab_expLbl');
   if(!result||!el.ab_ph){return;}
   function num(x){var v=parseFloat(x); return isFinite(v)?v:null;}
   function near(a,b,t){return Math.abs(a-b)<=t;}
@@ -387,7 +404,7 @@
     var na=num(el.ab_na.value), cl=num(el.ab_cl.value), alb=num(el.ab_alb.value);
     if(pH===null||pco2===null||hco3===null){
       result.classList.add('is-idle'); result.classList.remove('is-ready'); result.setAttribute('data-tone','neutral');
-      agVal.textContent='—'; ddVal.textContent='—';
+      agVal.textContent='—'; ddVal.textContent='—'; expVal.textContent='—'; expLbl.textContent='esperado';
       interp.innerHTML='Preencha pH, PCO₂ e HCO₃ para começar.';
       return;
     }
@@ -412,9 +429,11 @@
       tone='neutral';
     }
     lines.push('<strong>'+primary+'</strong>');
+    expVal.textContent='—'; expLbl.textContent='esperado';
     // compensation
     if(primary==='Acidose metabólica' || primary.indexOf('acidose metabólica + alcalose respiratória')>-1){
       var exp=1.5*hco3+8;
+      expVal.textContent=exp.toFixed(0); expLbl.textContent='PCO₂ esperado (Winters)';
       var comp='Winters: PCO₂ esperado ≈ '+exp.toFixed(0)+' ± 2 (atual '+pco2+').';
       if(pco2>exp+2) comp+=' PCO₂ alto demais → <strong>acidose respiratória associada</strong>.';
       else if(pco2<exp-2) comp+=' PCO₂ baixo demais → <strong>alcalose respiratória associada</strong>.';
@@ -422,6 +441,7 @@
       lines.push(comp);
     } else if(primary==='Alcalose metabólica' || primary.indexOf('alcalose metabólica + acidose respiratória')>-1){
       var expa=40+0.7*(hco3-24);
+      expVal.textContent=expa.toFixed(0); expLbl.textContent='PCO₂ esperado';
       var compa='PCO₂ esperado ≈ '+expa.toFixed(0)+' ± 2 (atual '+pco2+').';
       if(pco2>expa+2) compa+=' PCO₂ alto demais → <strong>acidose respiratória associada</strong>.';
       else if(pco2<expa-2) compa+=' PCO₂ baixo demais → <strong>alcalose respiratória associada</strong>.';
@@ -429,6 +449,7 @@
       lines.push(compa);
     } else if(primary==='Acidose respiratória'){
       var ac=24+0.1*(pco2-40), ch=24+0.35*(pco2-40);
+      expVal.textContent=ac.toFixed(0)+' / '+ch.toFixed(0); expLbl.textContent='HCO₃ esp. agudo/crônico';
       var cr='HCO₃ esperado — agudo ≈ '+ac.toFixed(0)+' | crônico ≈ '+ch.toFixed(0)+' (atual '+hco3+').';
       if(near(hco3,ac,2)) cr+=' Padrão <strong>agudo</strong>.';
       else if(near(hco3,ch,2)) cr+=' Padrão <strong>crônico</strong>.';
@@ -438,6 +459,7 @@
       lines.push(cr);
     } else if(primary==='Alcalose respiratória'){
       var aca=24-0.2*(40-pco2), cha=24-0.4*(40-pco2);
+      expVal.textContent=aca.toFixed(0)+' / '+cha.toFixed(0); expLbl.textContent='HCO₃ esp. agudo/crônico';
       var cra='HCO₃ esperado — agudo ≈ '+aca.toFixed(0)+' | crônico ≈ '+cha.toFixed(0)+' (atual '+hco3+').';
       if(near(hco3,aca,2)) cra+=' Padrão <strong>agudo</strong>.';
       else if(near(hco3,cha,2)) cra+=' Padrão <strong>crônico</strong>.';
