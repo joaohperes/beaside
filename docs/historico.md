@@ -392,9 +392,9 @@ invariantes de cor e de grade abaixo.
 
 #### Clerk Production — standby
 
-19. O Hub rejeita `pk_test_` fora de localhost e não possui fallback hardcoded; SDK Clerk está fixado em `6.25.6`.
-20. Migração para `pk_live_`/`sk_live_` estava em standby por falta de domínio próprio. **O bloqueio caiu em ago/2026** (`beaside.com.br` com DNS no Cloudflare), mas a migração **não foi feita** — segue pendente, e não é urgente enquanto não houver assinatura.
-21. Ao retomar: criar/ativar a instância Production no Clerk, adicionar os CNAME (`clerk.beaside.com.br` etc.) no Cloudflare **com proxy desligado**, refazer OAuth, atualizar as duas envs a partir da mesma instância e redeployar. **Atenção:** dev e prod são bases de usuário separadas — as contas da instância dev **não migram**.
+19. O Hub rejeita `pk_test_` fora de localhost e não possui fallback hardcoded; SDK Clerk está fixado em `6.25.6`. **O beaside TINHA fallback hardcoded** (`assets/auth-config.js`), e era ele que vencia a env var — removido em 19/08/2026.
+20. ~~Migração para `pk_live_`/`sk_live_` em standby.~~ **FEITA em 19/08/2026.** Instância Production em `clerk.beaside.com.br`, DNS via Domain Connect (5 CNAMEs, todos `DNS only`), Google OAuth com credenciais próprias, Apple desligado, integração Supabase ativada. Roteiro e armadilhas em `hub-uti/REVISAO-19-08-2026.md`.
+21. *(Histórico — executado em 19/08/2026.)* Ao retomar: criar/ativar a instância Production no Clerk, adicionar os CNAME (`clerk.beaside.com.br` etc.) no Cloudflare **com proxy desligado**, refazer OAuth, atualizar as duas envs a partir da mesma instância e redeployar. **Atenção:** dev e prod são bases de usuário separadas — as contas da instância dev **não migram**.
 
 ### Sessão 28/jul/2026 — barra de navegação fixa e demo do assistente
 

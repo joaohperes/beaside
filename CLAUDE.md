@@ -404,9 +404,14 @@ Reindexar depois de mudança estrutural (arquivo novo, script novo, rota nova).
    sync do plantão bloqueia na origem assim que alguém abre `/hub-uti/` pelo domínio novo.
 7. **`seo-tags.js` passou a ignorar diretórios ocultos** no walk: worktrees de agente
    (`.kilo/`) entravam no sitemap com URLs que não existem em produção.
-8. **Clerk não precisou de nada.** A instância é Development: detecta o host em runtime,
-   sem lista de origins. Login funcionou no domínio novo sem configuração. Production
-   (`pk_live_`) segue pendente — ver seção própria.
+8. **Clerk não precisou de nada** *(na época)*. A instância era Development.
+   **Superado em 19/08/2026:** a virada para Production foi feita
+   (`clerk.beaside.com.br`, `pk_live_`). Ver `hub-uti/REVISAO-19-08-2026.md`.
+   Dois bloqueios que não estavam documentados em lugar nenhum e custaram caro:
+   a Publishable Key **hardcoded** em `assets/auth-config.js` vencia a env var
+   da Vercel e mandava todo login para a instância de dev; e o CSP de
+   `/hub-uti/*` liberava só `*.clerk.accounts.dev` — e nunca teve o Supabase em
+   `connect-src`, então o Hub em produção jamais falou com o Postgres.
 9. **Página VTI** (`hemo/vti.html`) publicada junto. **Pendente: corrigir os esquemáticos.**
 10. **Search Console ainda não configurado.** Sem ele não há como verificar se o Google
     absorveu a troca de canonical.
