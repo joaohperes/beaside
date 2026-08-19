@@ -193,13 +193,16 @@
   <div class="table-wrap">
 <table>
       <tr><th>Via</th><th>Preparo</th><th>Concentração</th><th>Vazão</th><th>Entrega</th></tr>
-      <tr><td><b>Periférica</b></td><td>SF 0,9% 500 mL + KCl 19,1% 7,8 mL</td><td>40 mEq/L (teto)</td><td>250 mL/h</td><td>10 mEq/h (teto) — a bolsa corre em 2 h</td></tr>
-      <tr><td>Periférica, mais lenta</td><td>o mesmo</td><td>40 mEq/L</td><td>125 mL/h</td><td>5 mEq/h</td></tr>
+      <tr><td><b>Periférica — dentro do teto clássico</b></td><td><span>SF 0,9% 500 mL + <b>1 ampola</b> (10 mL)</span></td><td>50 mEq/L</td><td>128 mL/h</td><td>≈ 5 mEq/h — a bolsa corre em 4 h</td></tr>
+      <tr><td>Periférica, no limite exato</td><td>SF 0,9% 500 mL + KCl 19,1% 7,8 mL</td><td>40 mEq/L (teto)</td><td>250 mL/h</td><td>10 mEq/h (teto) — corre em 2 h</td></tr>
+      <tr><td><span><b>Periférica concentrada</b> <span class="pill pill-amber">acima do teto — ver alerta</span></span></td><td><span>SF 0,9% 500 mL + <b>2 ampolas</b> (20 mL) = 51 mEq</span></td><td>99 mEq/L</td><td>104 mL/h (5 h) · 87 mL/h (6 h)</td><td>10,2 mEq/h · 8,5 mEq/h</td></tr>
       <tr><td><b>Central</b></td><td>SF 0,9% 100 mL + KCl 19,1% 7,8 mL</td><td>200 mEq/L</td><td>50 mL/h</td><td>10 mEq/h</td></tr>
-      <tr><td>Central, no grave</td><td>o mesmo</td><td>200 mEq/L</td><td>100 mL/h</td><td>20 mEq/h (teto)</td></tr>
+      <tr><td><b>Central, no grave</b></td><td><span>SF 0,9% 250 mL + <b>4 ampolas</b> (40 mL) = 102 mEq</span></td><td>353 mEq/L</td><td>58 mL/h (5 h) · 48 mL/h (6 h)</td><td>20,5 mEq/h (teto) · 17 mEq/h</td></tr>
 </table>
 </div>
-  <p class="prose" style="font-size:13px;margin-top:10px">KCl 19,1% = 2,56 mEq/mL; ampola de 10 mL = 25,6 mEq. Os dois tetos protegem coisas diferentes: <b>concentração</b> protege a veia, <b>velocidade</b> protege o coração. <b>Nunca em bolus.</b></p>
+  <p class="prose" style="font-size:13px;margin-top:10px">KCl 19,1% = 2,56 mEq/mL; ampola de 10 mL = <b>25,6 mEq</b> (na prática, "25 mEq por ampola" é a conta de cabeceira). Os dois tetos protegem coisas diferentes: <b>concentração</b> protege a veia, <b>velocidade</b> protege o coração. <b>Nunca em bolus.</b></p>
+
+  <div class="alert-box warn" style="margin-top:14px"><div class="icon">!</div><div class="content"><strong>Sobre a bolsa periférica concentrada (2 ampolas em 500 mL), que muitos serviços usam:</strong> a <strong>velocidade</strong> está correta — 10,2 mEq/h em 5 h, ou 8,5 mEq/h em 6 h, ambas dentro do teto de 10 mEq/h. O problema é a <strong>concentração</strong>: 99 mEq/L é cerca de <strong>2,5 vezes</strong> o limite periférico clássico de 40 mEq/L, e é a concentração — não a velocidade — que causa dor no trajeto, flebite química e, em relatos, <strong>necrose cutânea</strong> por extravasamento. Não é proibição: em UTI, com veia calibrosa, monitorização e inspeção do sítio, soluções concentradas são usadas em periférico com segurança relatada. Mas é uma <strong>troca consciente</strong>: você compra menos volume e menos tempo de enfermagem pagando com risco de veia. Se o paciente tem acesso central, use o central; se vai repor por vários dias, alterne o sítio, prefira veia proximal e inspecione a cada troca de bolsa. E se a hipocalemia não é grave, a bolsa de <strong>1 ampola em 500 mL</strong> (50 mEq/L) resolve com quase nenhum risco de veia.</div></div>
   <div class="section-label" style="margin-top:30px">Déficit estimado — para dimensionar, não para prescrever de uma vez</div>
   <div class="table-wrap">
 <table>
@@ -451,7 +454,7 @@
 
   <div class="section-label">Referências</div>
   <span class="ref">Concentrações, mEq por ampola e vazões calculados em <code>scripts/calc-dhe.mjs</code> a partir das apresentações brasileiras usuais — conferir a da sua farmácia.</span>
-  <span class="ref">UpToDate — Clinical manifestations and treatment of hypokalemia in adults (revisão de referência; usar junto da fonte primária do serviço).</span>
+  <span class="ref">UpToDate — Clinical manifestations and treatment of hypokalemia in adults (revisão de referência; usar junto da fonte primária do serviço) · <b>Tetos de via:</b> a recomendação clássica limita a via periférica a <b>≤ 40 mEq/L</b> e <b>≤ 10 mEq/h</b>, reservando concentrações maiores ao acesso central, justamente porque dor e flebite aparecem a partir de ~40 mEq/L; soluções concentradas (200 mEq/L, 20 mEq em 100 mL) já foram administradas em veia periférica a 20 mEq/h em ambiente de terapia intensiva com monitorização contínua, o que mostra que o limite de 40 mEq/L é de <b>tolerância da veia</b>, não de segurança cardíaca. O dano do extravasamento concentrado está documentado em relato de flebite grave com necrose cutânea após administração periférica de cloreto de potássio em alta concentração — motivo do alerta desta página.</span>
 
 </section>
 

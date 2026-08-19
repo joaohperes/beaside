@@ -231,7 +231,7 @@
       <div class="card-body">
         <p>Na torsades o magnésio não é reposição, é antiarrítmico: ele estabiliza a membrana e interrompe a arritmia mesmo com magnésio sérico normal. Esperar o resultado do laboratório para dar é perder o motivo de dar.</p>
         <p>Fora da emergência a lógica se inverte completamente — o magnésio infundido rápido é excretado rápido, e o que sobe o estoque corporal é a infusão lenta. Correr 2 g em dez minutos num paciente estável basicamente enche a bolsa de urina.</p>
-        <span class="ref">Concentrações, mEq por ampola e vazões calculados em <code>scripts/calc-dhe.mjs</code> a partir das apresentações brasileiras usuais — conferir a da sua farmácia.</span>
+        <span class="ref">Concentrações, mEq por ampola e vazões calculados em <code>scripts/calc-dhe.mjs</code> a partir das apresentações brasileiras usuais — conferir a da sua farmácia. · <b>Doses e velocidade:</b> a reposição não emergencial do adulto é de <b>4 a 8 g de sulfato de magnésio em 12–24 h</b>; com magnésio ≤ 1,25 mg/dL e sintomas menos graves, infusão de <b>1 g/hora</b> por até 10 horas; 1–2 g em 1 hora no sintomático e 1–2 g em cerca de 15 min no instável. Como aproximadamente <b>metade do magnésio administrado é excretada na urina</b>, recomenda-se repor <b>cerca do dobro do déficit estimado</b> em quem tem função renal preservada; na insuficiência renal grave o teto é de 20 g em 48 h, com dosagens frequentes.</span>
       </div>
     </div>
     <div class="section-label" style="margin-top:26px">A reposição de rotina</div>
@@ -240,13 +240,22 @@
       <div class="rx-head">
         <span class="rx-n" aria-hidden="true"></span>
         <div>
-          <div class="rx-title">Fora da emergência: diluído e lento — senão vai tudo para a urina</div>
-          <div class="rx-cond">o rim descarta o que chega rápido; reposição é maratona</div>
+          <div class="rx-title">Fora da emergência: cerca de 1 g por hora — e dose que corresponda ao déficit</div>
+          <div class="rx-cond">o rim descarta o que chega rápido; e 1–2 g não repõem um magnésio de 0,9</div>
         </div>
       </div>
       <div class="rx-body">
-        <div class="rx-dose"><b>Sintomático ou Mg &lt; 1,0 mg/dL:</b> <b>1–2 g (2–4 mL) em 100 mL</b>, EV em <b>1 h</b> = <b>100 mL/h</b> — repetir conforme controle</div>
-        <div class="rx-dose"><b>1 g em 100 mL correndo em 20 min</b> = <b>300 mL/h</b> (quando há pressa moderada)</div>
+        <div class="rx-dose"><b>A regra que organiza tudo aqui: cerca de 1 g por hora.</b> É a velocidade em que o rim ainda retém o que você infunde — acima dela, o excedente vai para a urina; abaixo, você só demora mais. Toda a tabela abaixo é a mesma regra em dois tamanhos de dose</div>
+        <div class="rx-dose" style="padding:0;background:none;border:none"><div class="table-wrap"><table>
+          <thead><tr><th>Situação</th><th>Dose</th><th>Preparo</th><th>Tempo</th><th>Vazão</th></tr></thead>
+          <tbody>
+            <tr><td><span><b>Mg &lt; 1,3 mg/dL</b> — reposição de verdade</span></td><td><span><b>5 g</b> (1 ampola de MgSO4 <b>50%</b>, 10 mL)</span></td><td>em 250–500 mL de SG 5% ou SF</td><td><b>5–6 h</b></td><td><span><b>50 mL/h</b> (250 mL em 5 h) · 42 mL/h em 6 h</span></td></tr>
+            <tr><td>Mg entre 1,3 e 1,7 — individualizar</td><td><span><b>1 a 3 g</b> (1–3 ampolas de MgSO4 <b>10%</b>, de 10 mL)</span></td><td>em 100–250 mL</td><td><b>1 h por grama</b></td><td>100 mL/h por grama (em 100 mL)</td></tr>
+            <tr><td>Sintomático sem instabilidade</td><td>1–2 g</td><td>em 100 mL</td><td>1 h</td><td>100 mL/h</td></tr>
+            <tr><td><span><b>Torsades / arritmia</b> <span class="pill pill-red">emergência</span></span></td><td>2 g</td><td>em 100 mL</td><td><b>10 min</b></td><td>600 mL/h — aqui a pressa é o tratamento</td></tr>
+          </tbody>
+        </table></div></div>
+        <div class="rx-dose">⚠ <b>Por que 1–2 g não resolvem o magnésio de 0,9:</b> a reposição de rotina do adulto é de <b>4 a 8 g</b> distribuídos em 12–24 h, e ainda assim se repõe <b>cerca do dobro do déficit estimado</b>, porque <b>metade do que se infunde é excretada</b>. Dar 1 ou 2 gramas e pedir controle é o erro que faz o magnésio "não subir nunca" — não é refratariedade, é <b>subdose</b>. Reavalie <b>após</b> a infusão completa e repita: a depleção corporal leva <b>dias</b> a repor</div>
         <div class="rx-dose"><b>Assintomático leve:</b> preferir <b>via oral</b> — sais de magnésio VO, fracionados; a <b>diarreia</b> é o fator que limita a dose</div>
         <div class="rx-dose"><b>Reposição prolongada:</b> a depleção corporal leva <b>dias</b> a repor — não espere corrigir num plantão</div>
         <div class="rx-dose"><b>Disfunção renal:</b> <b>metade da dose</b>, intervalo maior e controle mais frequente — o magnésio acumula e a intoxicação é real</div>
@@ -259,6 +268,7 @@
       <div class="card-body">
         <p>O magnésio tem uma farmacocinética que frustra: o limiar renal é baixo e o rim excreta agressivamente o que chega em pico. Uma infusão rápida sobe o sérico por algumas horas e vai embora; a lenta permite que o íon se distribua para o compartimento intracelular, que é onde a depleção realmente está.</p>
         <p>Isso também explica por que o magnésio sérico é um marcador ruim: menos de 1% do magnésio corporal está no soro. Um paciente pode ter magnésio "normal" e estar profundamente depletado — e é por isso que hipocalemia e hipocalcemia refratárias justificam repor mesmo com sérico limítrofe.</p>
+        <p>E explica a armadilha da dose. Como cerca de <strong>metade do magnésio infundido é perdida na urina</strong> mesmo com rim normal, a recomendação clássica é repor <em>o dobro</em> do déficit estimado — o que transforma "1 grama e pede controle" numa conduta que quase nunca corrige. O paciente com magnésio de 0,9 precisa de <strong>gramas</strong>, entregues devagar, ao longo de horas e às vezes de dias. A pressa só troca de lugar: em vez de perder tempo, perde-se o magnésio na urina.</p>
         <span class="ref">Concentrações, mEq por ampola e vazões calculados em <code>scripts/calc-dhe.mjs</code> a partir das apresentações brasileiras usuais — conferir a da sua farmácia.</span>
       </div>
     </div>

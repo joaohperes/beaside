@@ -202,7 +202,19 @@
       <tr><td>30 mmol</td><td>10 mL</td><td>44 mEq</td><td>4,4 h</td><td>2,2 h</td></tr>
 </table>
 </div>
-  <p class="prose" style="font-size:13px;margin-top:10px">Esquema usual: 15–30 mmol em 250 mL de SF em 6 h = 42 mL/h → 3,7–7,3 mEq de K/h. <b>Nunca em bolus</b> e <b>nunca na mesma via do cálcio</b> — precipita. Quem prescreve 30 mmol de fosfato de potássio prescreveu 44 mEq de potássio, saiba ou não.</p>
+  <p class="prose" style="font-size:13px;margin-top:10px"><b>Nunca em bolus</b> e <b>nunca na mesma via do cálcio</b> — precipita. Quem prescreve 30 mmol de fosfato de potássio prescreveu 44 mEq de potássio, saiba ou não.</p>
+
+  <div class="section-label" style="margin-top:26px">O esquema pronto — sem via oral no serviço</div>
+  <div class="table-wrap">
+<table>
+      <tr><th>Gravidade</th><th>Dose de P</th><th>Ampola</th><th>Preparo</th><th>Tempo</th><th>Vazão</th><th>K entregue</th></tr>
+      <tr><td><span><b>Grave</b> (P &lt; 1,0 mg/dL) ou sintomático</span></td><td><b>30 mmol</b></td><td><span><b>1 ampola inteira</b> (10 mL)</span></td><td><span>em <b>250 mL</b> de SF 0,9% — <b>via central</b> (a concentração de K fica em ~169 mEq/L)</span></td><td><b>5–6 h</b></td><td><span><b>50 mL/h</b> (5 h) · <b>42 mL/h</b> (6 h)</span></td><td><span>8,8 · 7,3 mEq/h — <b>dentro do teto</b></span></td></tr>
+      <tr><td><span>Grave, só com acesso <b>periférico</b></span></td><td>30 mmol</td><td>1 ampola</td><td><span>em <b>500 mL</b> de SF (K a ~86 mEq/L — ainda acima do teto periférico de 40; ver <a class="text-link" href="hipocalemia.html">hipocalemia</a>)</span></td><td>6 h</td><td>85 mL/h</td><td>7,3 mEq/h</td></tr>
+      <tr><td><span><b>Moderada</b> (P 1,0–1,9) sem sintoma</span></td><td><b>15 mmol</b></td><td><span><b>meia ampola</b> (5 mL)</span></td><td>em 250 mL de SF</td><td><b>3–4 h</b></td><td>62–83 mL/h</td><td>5,5–7,3 mEq/h</td></tr>
+      <tr><td><span><b>K sérico ≥ 4,0</b> ou disfunção renal</span></td><td colspan="6"><span><b>Trocar para fosfato de SÓDIO</b> — mesma dose de P, sem a carga de potássio (mas 4 mEq de Na por mL: cuidado no congesto e na hipernatremia)</span></td></tr>
+</table>
+</div>
+  <p class="prose" style="font-size:13px;margin-top:10px"><b>Quem manda no relógio é o potássio, não o fósforo.</b> Uma ampola inteira arrasta <b>44 mEq de K</b> — em 5 h isso dá 8,8 mEq/h, logo abaixo do teto de 10 mEq/h; correr mais rápido que 4,4 h estoura o teto. Por isso a regra prática do serviço: <b>1 ampola em 5–6 h</b>, e nunca mais rápido. <b>Dose por peso, se preferir calcular:</b> 0,16 mmol/kg na grave (≈ 11 mmol para 70 kg) até 0,32 mmol/kg, infundidos a 1–3 mmol/h — os esquemas fixos acima ficam dentro dessa faixa. <b>Rechecar P (e K, e Ca) ao fim da infusão</b>, não durante: o fósforo sérico oscila com a redistribuição e dosar no meio confunde.</p>
 </section>
 
 <section class="section" id="prescricao">
@@ -235,7 +247,7 @@
       <div class="card-body">
         <p>O fósforo é o eletrólito da falha de desmame: ele é essencial ao ATP e ao 2,3-DPG, e a hipofosfatemia grave enfraquece o diafragma de um jeito que nenhuma pressão de suporte compensa. Num paciente que não sai do ventilador sem causa aparente, ele merece ser dosado antes de se culpar a sedação.</p>
         <p>A síndrome de realimentação é o cenário em que a queda é previsível e evitável: ao reintroduzir carboidrato num paciente desnutrido, a insulina empurra fósforo, potássio e magnésio para dentro da célula ao mesmo tempo. Ali a prescrição é dosar antes, repor junto e progredir a dieta devagar.</p>
-        <span class="ref">Concentrações, mEq por ampola e vazões calculados em <code>scripts/calc-dhe.mjs</code> a partir das apresentações brasileiras usuais — conferir a da sua farmácia.</span>
+        <span class="ref">Concentrações, mEq por ampola e vazões calculados em <code>scripts/calc-dhe.mjs</code> a partir das apresentações brasileiras usuais — conferir a da sua farmácia. · <b>Doses EV:</b> na hipofosfatemia grave (P &lt; 1,0 mg/dL) usa-se <b>0,16 mmol/kg</b> (até 0,32 mmol/kg) infundidos a <b>1–3 mmol/h</b> até o fósforo passar de 2,0 mg/dL; esquemas fixos de <b>15 mmol</b> e de <b>9 mmol a cada 12 h</b> mostraram-se seguros e eficazes com função renal normal. A velocidade máxima é ditada pelo <b>potássio</b> — cada mmol de fósforo como fosfato de potássio carrega <b>1,47 mEq de K</b>, e o teto periférico é de <b>10 mEq de K por hora</b>; com potássio sérico ≥ 4,0 mEq/L, a recomendação é trocar para <b>fosfato de sódio</b>.</span>
       </div>
     </div>
     <div class="section-label" style="margin-top:26px">A reposição — e o potássio escondido na ampola</div>
