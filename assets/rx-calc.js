@@ -134,12 +134,13 @@
       sub: 'A osmolaridade efetiva (tonicidade) é a que move água através da membrana — é ela que importa no estado hiperosmolar e na hiponatremia.',
       campos: [
         { k: 'na', l: 'Sódio', u: 'mEq/L' }, { k: 'gli', l: 'Glicemia', u: 'mg/dL' },
-        { k: 'ur', l: 'Ureia', u: 'mg/dL' }, { k: 'med', l: 'Osmolalidade medida', u: 'mOsm/kg', opcional: true }
+        { k: 'ur', l: 'Ureia', u: 'mg/dL', h: 'ureia, não nitrogênio ureico (BUN) — se o laudo trouxer BUN, multiplique por 2,14' }, { k: 'med', l: 'Osmolalidade medida', u: 'mOsm/kg', opcional: true }
       ],
       calc: function (v) {
         if (v.na === null || v.gli === null) return null;
         var ef = 2 * v.na + v.gli / 18;
-        var tot = ef + (v.ur !== null ? v.ur / 2.8 : 0);
+        /* ureia (PM 60) → mOsm = ureia ÷ 6. O divisor 2,8 vale para BUN. */
+        var tot = ef + (v.ur !== null ? v.ur / 6 : 0);
         var l = [['Osmolaridade efetiva (tonicidade)', r(ef, 1) + ' mOsm/L']];
         if (v.ur !== null) l.push(['Osmolaridade total calculada', r(tot, 1) + ' mOsm/L']);
         var nota = ef > 320 ? 'Osmolaridade efetiva > 320: faixa do estado hiperosmolar. Correção lenta — 3 a 8 mOsm/kg/h.'
