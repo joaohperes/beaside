@@ -12,7 +12,7 @@ be·aside reúne guias clínicos, algoritmos, calculadoras, casos práticos e um
 - [Raciocine — Hemodinâmica & Choque](https://beaside.com.br/hemo/): fisiologia, avaliação à beira do leito, drogas vasoativas, choque.
 - [Raciocine — Neurocrítico](https://beaside.com.br/neuro/): TCE, AVC, status epiléptico, encefalopatias, pressão de perfusão cerebral.
 - [Raciocine — Procedimentos](https://beaside.com.br/proc/): procedimentos de UTI e dúvidas reais de plantão.
-- [Raciocine — Perioperatório](https://beaside.com.br/peri/): risco pré-operatório, profilaxia antibiótica, manejo pós-operatório e POCUS à beira do leito.
+- [Raciocine — Surgery Guide](https://beaside.com.br/peri/): risco pré-operatório, profilaxia antibiótica, manejo pós-operatório e POCUS à beira do leito.
 <!-- /AUTO:areas -->
 - [Consulte e Resolva](https://beaside.com.br/consulte/): assistente de IA que discute casos com base no conteúdo validado do site (acesso restrito).
 
@@ -100,14 +100,14 @@ be·aside reúne guias clínicos, algoritmos, calculadoras, casos práticos e um
 - [Cardioversão, Desfibrilação & Marca-passo](https://beaside.com.br/proc/ritmo.html): Choque sincronizado, desfibrilação e marca-passo transcutâneo/transvenoso
 - [Dúvidas de Plantão](https://beaside.com.br/proc/pearls.html): As perguntas que ninguém responde no guia clássico
 
-### Perioperatório
+### Surgery Guide
 
 - [Avaliação e Preparo Pré-Operatório](https://beaside.com.br/peri/pre-op.html): ASA, capacidade funcional, fragilidade e o que realmente adia uma cirurgia
 - [Profilaxia Antibiótica Cirúrgica](https://beaside.com.br/peri/atb.html): Timing, dose por peso, repique e a hora de suspender
 - [Manejo Perioperatório do Paciente Crítico](https://beaside.com.br/peri/manejo.html): Coração, cérebro, glicemia e hemostasia nas primeiras horas depois da sala
 - [POCUS no Pós-Operatório](https://beaside.com.br/peri/pocus.html): FOCUS e RUSH para dar nome à hipotensão e à hipoxemia da primeira noite
 
-### Antimicrobianos
+### Infecto Guide
 
 - [Resistência que muda a conduta: ESBL, AmpC e CRE](https://beaside.com.br/infecto/resistencia.html): Ler o mecanismo de resistência antes do resultado e escolher a droga que não falha
 

@@ -1245,12 +1245,12 @@
       "id": "peri",
       "area": "raciocine",
       "status": "publicado",
-      "label": "Perioperatório",
+      "label": "Surgery Guide",
       "subtitulo": "Paciente cirúrgico",
       "root": "peri/",
       "cor": "#d9569b",
       "llms": {
-        "nome": "Perioperatório",
+        "nome": "Surgery Guide",
         "desc": "risco pré-operatório, profilaxia antibiótica, manejo pós-operatório e POCUS à beira do leito."
       },
       "hubExtras": [
@@ -1354,12 +1354,12 @@
       "id": "infecto",
       "area": "raciocine",
       "status": "rascunho",
-      "label": "Antimicrobianos",
+      "label": "Infecto Guide",
       "subtitulo": "Antibioticoterapia no paciente crítico",
       "root": "infecto/",
       "cor": "#5b63e0",
       "llms": {
-        "nome": "Antimicrobianos",
+        "nome": "Infecto Guide",
         "desc": "escolha empírica do foco ao espectro, PK/PD e dose no paciente crítico, resistência (ESBL, AmpC, CRE), multirresistentes e antibioticoterapia por cenário na UTI (pneumonia, abdome, urinário, partes moles, SNC, corrente sanguínea, candidemia, C. difficile, neutropenia febril)."
       },
       "hubExtras": [
@@ -1630,6 +1630,166 @@
       ]
     },
     {
+      "id": "nefro",
+      "area": "raciocine",
+      "status": "rascunho",
+      "label": "Nefro Guide",
+      "subtitulo": "Distúrbios hidroeletrolíticos, LRA e DRC no paciente crítico",
+      "root": "nefro/",
+      "cor": "#dfa32b",
+      "llms": {
+        "nome": "Nefro Guide",
+        "desc": "distúrbios hidroeletrolíticos no paciente crítico — sódio (hipo e hipernatremia), potássio (hipo e hipercalemia), cálcio, magnésio e fósforo — do mecanismo à correção segura, com velocidades de correção, vias e concentrações; lesão renal aguda e doença renal crônica em desenvolvimento."
+      },
+      "hubExtras": [
+        {
+          "href": "../consulte/",
+          "selo": "Assistente IA",
+          "titulo": "Assistente de conduta",
+          "resumo": "Descreva o caso e receba a conduta estruturada, com as fontes internas",
+          "grupo": "Rim agudo e crônico"
+        }
+      ],
+      "paginas": [
+        {
+          "id": "fluxograma",
+          "arquivo": "fluxograma.html",
+          "categoria": "Comece aqui",
+          "menu": "Fluxograma",
+          "titulo": "Fluxograma dos Distúrbios Hidroeletrolíticos",
+          "subtitulo": "O que mata primeiro, o que é real e a que velocidade corrigir",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Comece aqui",
+            "selo": "Fluxograma",
+            "titulo": "Fluxograma dos Distúrbios Hidroeletrolíticos",
+            "resumo": "O que mata primeiro, o que é real e a que velocidade corrigir"
+          }
+        },
+        {
+          "id": "sodio",
+          "arquivo": "sodio.html",
+          "categoria": "Distúrbios hidroeletrolíticos",
+          "menu": "Sódio",
+          "titulo": "Sódio — hiponatremia e hipernatremia",
+          "subtitulo": "Distúrbio da água, não do sal — e a velocidade de correção decide o desfecho",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Distúrbios hidroeletrolíticos",
+            "selo": "Sódio",
+            "titulo": "Sódio — hipo e hipernatremia",
+            "resumo": "Distúrbio da água, não do sal — a velocidade de correção decide o desfecho"
+          }
+        },
+        {
+          "id": "potassio",
+          "arquivo": "potassio.html",
+          "categoria": "Distúrbios hidroeletrolíticos",
+          "menu": "Potássio",
+          "titulo": "Potássio — hipocalemia e hipercalemia",
+          "subtitulo": "O eletrólito que mata primeiro — ECG, reposição segura por via e o escudo de cálcio",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Distúrbios hidroeletrolíticos",
+            "selo": "Potássio",
+            "titulo": "Potássio — hipo e hipercalemia",
+            "resumo": "O eletrólito que mata primeiro — ECG, reposição segura por via e o escudo de cálcio"
+          }
+        },
+        {
+          "id": "calcio",
+          "arquivo": "calcio.html",
+          "categoria": "Distúrbios hidroeletrolíticos",
+          "menu": "Cálcio",
+          "titulo": "Cálcio — hipocalcemia e hipercalcemia",
+          "subtitulo": "Ionizado antes de tratar — e a via certa para cada sal de cálcio",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Distúrbios hidroeletrolíticos",
+            "selo": "Cálcio",
+            "titulo": "Cálcio — hipo e hipercalcemia",
+            "resumo": "Ionizado antes de tratar — e a via certa para cada sal de cálcio"
+          }
+        },
+        {
+          "id": "magnesio-fosforo",
+          "arquivo": "magnesio-fosforo.html",
+          "categoria": "Distúrbios hidroeletrolíticos",
+          "menu": "Mg e Fósforo",
+          "titulo": "Magnésio e Fósforo",
+          "subtitulo": "Os esquecidos que sustentam os outros — repor Mg antes de K e Ca refratários",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Distúrbios hidroeletrolíticos",
+            "selo": "Mg · P",
+            "titulo": "Magnésio e fósforo",
+            "resumo": "Os esquecidos que sustentam os outros — repor Mg antes de K e Ca refratários"
+          }
+        },
+        {
+          "id": "lra",
+          "arquivo": "lra.html",
+          "categoria": "Rim agudo e crônico",
+          "menu": "LRA",
+          "titulo": "Lesão Renal Aguda no crítico",
+          "subtitulo": "Definir e estadiar, achar a causa e dialisar pela indicação — não pelo número",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Rim agudo e crônico",
+            "selo": "LRA",
+            "titulo": "Lesão renal aguda no crítico",
+            "resumo": "KDIGO, pré-renal × NTA, prevenção e o timing da diálise (STARRT-AKI, AKIKI)"
+          }
+        },
+        {
+          "id": "drc",
+          "arquivo": "drc.html",
+          "categoria": "Rim agudo e crônico",
+          "menu": "DRC",
+          "titulo": "Doença Renal Crônica no crítico",
+          "subtitulo": "Reserva estreita, dose ajustada por TFG e o paciente dialítico na UTI",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Rim agudo e crônico",
+            "selo": "DRC",
+            "titulo": "DRC no paciente crítico",
+            "resumo": "Estadiamento KDIGO 2024, ameaças da reserva estreita e o paciente em diálise"
+          }
+        },
+        {
+          "id": "acido-base",
+          "arquivo": "acido-base.html",
+          "categoria": "Ácido-base",
+          "menu": "Ácido-base",
+          "titulo": "Distúrbios ácido-base no crítico",
+          "subtitulo": "Ler a gasometria em passos, achar o distúrbio (e o segundo escondido) e chegar à conduta",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Ácido-base",
+            "selo": "Ácido-base",
+            "titulo": "Distúrbios ácido-base",
+            "resumo": "Gasometria em 5 passos, os 4 distúrbios e os mistos — com calculadora"
+          }
+        }
+      ]
+    },
+    {
       "id": "consulte",
       "area": "consulte",
       "label": "Consulte e Resolva",
@@ -1658,6 +1818,497 @@
           "subtitulo": "VM, hemodinâmica e neurocrítico em um só chat",
           "tipo": "guia",
           "status": "publicado",
+          "ia": false,
+          "hub": null
+        }
+      ]
+    },
+    {
+      "id": "prescricoes",
+      "area": "consulte",
+      "status": "rascunho",
+      "label": "Prescrições",
+      "subtitulo": "Prescrições comentadas",
+      "root": "consulte/prescricoes/",
+      "cor": "#1db88a",
+      "paginas": [
+        {
+          "id": "hub",
+          "arquivo": "index.html",
+          "categoria": "Prescrições",
+          "menu": "Todas as prescrições",
+          "titulo": "Prescrições comentadas",
+          "subtitulo": "O que prescrever e por quê, cenário por cenário",
+          "tipo": "referencia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "calculadoras",
+          "arquivo": "calculadoras.html",
+          "categoria": "Prescrições",
+          "menu": "Calculadoras clínicas",
+          "titulo": "Calculadoras clínicas",
+          "subtitulo": "Escores e fórmulas que decidem conduta, com a leitura do resultado ao lado",
+          "tipo": "referencia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "sca-sem-supra",
+          "arquivo": "sca-sem-supra.html",
+          "categoria": "Cardiovascular",
+          "menu": "SCA sem supra",
+          "titulo": "Prescrição comentada — SCA sem supra de ST",
+          "subtitulo": "Item por item, com dose, contraindicação e o porquê",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "sca-com-supra",
+          "arquivo": "sca-com-supra.html",
+          "categoria": "Cardiovascular",
+          "menu": "SCA com supra",
+          "titulo": "Prescrição comentada — SCA com supra de ST",
+          "subtitulo": "Reperfusão contra o relógio — ICP primária ou fibrinólise, e a prescrição em volta",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "eap",
+          "arquivo": "eap.html",
+          "categoria": "Cardiovascular",
+          "menu": "Edema agudo de pulmão",
+          "titulo": "Prescrição comentada — Edema agudo de pulmão",
+          "subtitulo": "VNI, vasodilatador e diurético na dose que resolve — fenótipo antes de inotrópico",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "fa-flutter",
+          "arquivo": "fa-flutter.html",
+          "categoria": "Cardiovascular",
+          "menu": "FA e flutter atrial",
+          "titulo": "Prescrição comentada — Fibrilação e flutter atrial",
+          "subtitulo": "Instável? Quanto tempo? Anticoagular quem? — e as doses certas de DOAC",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "tep",
+          "arquivo": "tep.html",
+          "categoria": "Cardiovascular",
+          "menu": "TEP",
+          "titulo": "Prescrição comentada — Tromboembolismo pulmonar",
+          "subtitulo": "Estratificar primeiro — DOAC com ataque, heparina na dose de TEV, trombólise só no alto risco",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "choque-cardiogenico",
+          "arquivo": "choque-cardiogenico.html",
+          "categoria": "Cardiovascular",
+          "menu": "Choque cardiogênico",
+          "titulo": "Prescrição comentada — Choque cardiogênico",
+          "subtitulo": "Perfusão antes de pressão, mecanismo antes de bomba — e a escalada na hora certa",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "taqui-instavel",
+          "arquivo": "taqui-instavel.html",
+          "categoria": "Cardiovascular",
+          "menu": "Taquiarritmia instável",
+          "titulo": "Prescrição comentada — Taquiarritmia instável",
+          "subtitulo": "CVE sem improviso: carga por ritmo, sedação pela hemodinâmica, e o pós-choque",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "bradiarritmias",
+          "arquivo": "bradiarritmias.html",
+          "categoria": "Cardiovascular",
+          "menu": "Bradiarritmias",
+          "titulo": "Prescrição comentada — Bradiarritmias",
+          "subtitulo": "Nodal × infranodal, a escada atropina → marca-passo → transvenoso, e as causas reversíveis",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "tsv-estavel",
+          "arquivo": "tsv-estavel.html",
+          "categoria": "Cardiovascular",
+          "menu": "TSV estável",
+          "titulo": "Prescrição comentada — Taquicardia supraventricular estável",
+          "subtitulo": "Valsalva modificada, adenosina com os cuidados certos, a escada até a CVE — e a ablação que cura",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "taqui-ventricular",
+          "arquivo": "taqui-ventricular.html",
+          "categoria": "Cardiovascular",
+          "menu": "Taquicardia ventricular",
+          "titulo": "Prescrição comentada — Taquicardia ventricular",
+          "subtitulo": "QRS largo é TV até prova em contrário — monomórfica, polimórfica, torsades e FA pré-excitada",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "ic-descompensada",
+          "arquivo": "ic-descompensada.html",
+          "categoria": "Cardiovascular",
+          "menu": "IC descompensada",
+          "titulo": "Prescrição comentada — IC descompensada",
+          "subtitulo": "Os 4 perfis, a descongestão até o fim e a alta com o quarteto nas doses-alvo",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "iam-vd",
+          "arquivo": "iam-vd.html",
+          "categoria": "Cardiovascular",
+          "menu": "Infarto de VD",
+          "titulo": "Prescrição comentada — Infarto de ventrículo direito",
+          "subtitulo": "Pré-carga sagrada, volume por prova, ritmo como pressão — e nada de nitrato",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "minoca",
+          "arquivo": "minoca.html",
+          "categoria": "Cardiovascular",
+          "menu": "MINOCA",
+          "titulo": "Prescrição comentada — MINOCA",
+          "subtitulo": "A RM dá o nome — placa, embolia, vasoespasmo, SCAD e ponte, cada um com sua prescrição",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "miocardite",
+          "arquivo": "miocardite.html",
+          "categoria": "Cardiovascular",
+          "menu": "Miocardite",
+          "titulo": "Prescrição comentada — Miocardite",
+          "subtitulo": "Suporte com dose, fulminante com telefonema — imunossupressão só com biópsia",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "pa-elevada",
+          "arquivo": "pa-elevada.html",
+          "categoria": "Cardiovascular",
+          "menu": "PA muito elevada",
+          "titulo": "Prescrição comentada — PA muito elevada",
+          "subtitulo": "Órgão-alvo define tudo — emergência na veia por órgão; assintomático sem derrubar",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "disseccao-aorta",
+          "arquivo": "disseccao-aorta.html",
+          "categoria": "Cardiovascular",
+          "menu": "Dissecção de aorta",
+          "titulo": "Prescrição comentada — Dissecção de aorta",
+          "subtitulo": "Betabloqueador antes do vasodilatador, FC < 60 em minutos — tipo A se opera",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "tvp",
+          "arquivo": "tvp.html",
+          "categoria": "Cardiovascular",
+          "menu": "TVP",
+          "titulo": "Prescrição comentada — Trombose venosa profunda",
+          "subtitulo": "A maioria trata em casa com DOAC — quem interna, a escolha pelo paciente, a duração",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "sepse",
+          "arquivo": "sepse.html",
+          "categoria": "Infecção",
+          "menu": "Sepse e choque séptico",
+          "titulo": "Prescrição comentada — Sepse e choque séptico",
+          "subtitulo": "Antibiótico na 1ª hora pelo foco, volume com juízo, nora precoce — e desescalonar",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "avci",
+          "arquivo": "avci.html",
+          "categoria": "Neuro",
+          "menu": "AVC isquêmico",
+          "titulo": "Prescrição comentada — AVC isquêmico",
+          "subtitulo": "Trombólise e trombectomia contra o relógio — e a pressão que aqui se respeita",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "avch",
+          "arquivo": "avch.html",
+          "categoria": "Neuro",
+          "menu": "AVC hemorrágico",
+          "titulo": "Prescrição comentada — AVC hemorrágico",
+          "subtitulo": "Reverter o anticoagulante, PA suave até 140, o telefonema do cerebelo",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "hsa",
+          "arquivo": "hsa.html",
+          "categoria": "Neuro",
+          "menu": "Hemorragia subaracnóidea",
+          "titulo": "Prescrição comentada — Hemorragia subaracnóidea",
+          "subtitulo": "Aneurisma tratado cedo, PAS < 160, nimodipina 21 dias — e os três relógios",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "crise-epileptica",
+          "arquivo": "crise-epileptica.html",
+          "categoria": "Neuro",
+          "menu": "Crise epiléptica",
+          "titulo": "Prescrição comentada — Crise epiléptica e status",
+          "subtitulo": "Benzo pleno aos 5 min, segunda linha do ESETT aos 20 — e EEG em quem não acorda",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "hiponatremia",
+          "arquivo": "hiponatremia.html",
+          "categoria": "Hidroeletrolítico",
+          "menu": "Hiponatremia",
+          "titulo": "Prescrição comentada — Hiponatremia",
+          "subtitulo": "Sintomático leva NaCl 3% em bolus; o resto é ritmo — e o teto de 8 mEq/L em 24 h",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "hipernatremia",
+          "arquivo": "hipernatremia.html",
+          "categoria": "Hidroeletrolítico",
+          "menu": "Hipernatremia",
+          "titulo": "Prescrição comentada — Hipernatremia",
+          "subtitulo": "Água livre calculada, déficit reposto devagar — e a causa quase sempre é acesso à água",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "hipocalemia",
+          "arquivo": "hipocalemia.html",
+          "categoria": "Hidroeletrolítico",
+          "menu": "Hipocalemia",
+          "titulo": "Prescrição comentada — Hipocalemia",
+          "subtitulo": "Reposição pela via certa: teto de 40 mEq/L e 10 mEq/h no periférico — e o magnésio junto",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "hipercalemia",
+          "arquivo": "hipercalemia.html",
+          "categoria": "Hidroeletrolítico",
+          "menu": "Hipercalemia",
+          "titulo": "Prescrição comentada — Hipercalemia",
+          "subtitulo": "Cálcio protege a membrana, insulina joga o K para dentro, e só a diálise tira do corpo",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "hipocalcemia",
+          "arquivo": "hipocalcemia.html",
+          "categoria": "Hidroeletrolítico",
+          "menu": "Hipocalcemia",
+          "titulo": "Prescrição comentada — Hipocalcemia",
+          "subtitulo": "Cálcio iônico antes de tratar, gluconato no periférico — e o magnésio que ninguém dosa",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "hipomagnesemia",
+          "arquivo": "hipomagnesemia.html",
+          "categoria": "Hidroeletrolítico",
+          "menu": "Hipomagnesemia",
+          "titulo": "Prescrição comentada — Hipomagnesemia",
+          "subtitulo": "A deficiência que sustenta hipocalemia e hipocalcemia refratárias — e o rim que joga fora",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "hipofosfatemia",
+          "arquivo": "hipofosfatemia.html",
+          "categoria": "Hidroeletrolítico",
+          "menu": "Hipofosfatemia",
+          "titulo": "Prescrição comentada — Hipofosfatemia",
+          "subtitulo": "Quando repor de verdade, e por que quem manda na velocidade é o potássio da ampola",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "cetoacidose-diabetica",
+          "arquivo": "cetoacidose-diabetica.html",
+          "categoria": "Endócrino",
+          "menu": "Cetoacidose diabética",
+          "titulo": "Prescrição comentada — Cetoacidose diabética",
+          "subtitulo": "Fluido, potássio antes da insulina e cetose como alvo — a glicemia normaliza antes de a crise terminar",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "estado-hiperosmolar",
+          "arquivo": "estado-hiperosmolar.html",
+          "categoria": "Endócrino",
+          "menu": "Estado hiperosmolar hiperglicêmico",
+          "titulo": "Prescrição comentada — Estado hiperosmolar hiperglicêmico",
+          "subtitulo": "Corrigir volume e osmolalidade sem pressa — o cérebro importa mais que o número da glicose",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "hda",
+          "arquivo": "hda.html",
+          "categoria": "Gastro",
+          "menu": "Hemorragia digestiva alta",
+          "titulo": "Prescrição comentada — Hemorragia digestiva alta",
+          "subtitulo": "Ressuscitar, reconhecer o ramo varicoso e chegar à endoscopia com a medicação certa",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "pancreatite-aguda",
+          "arquivo": "pancreatite-aguda.html",
+          "categoria": "Gastro",
+          "menu": "Pancreatite aguda",
+          "titulo": "Prescrição comentada — Pancreatite aguda",
+          "subtitulo": "Hidratação moderada, analgesia, alimentação precoce e nenhum antibiótico para necrose estéril",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "asma-aguda",
+          "arquivo": "asma-aguda.html",
+          "categoria": "Pneumo",
+          "menu": "Exacerbação grave de asma",
+          "titulo": "Prescrição comentada — Exacerbação grave de asma",
+          "subtitulo": "Broncodilatador repetido, corticoide precoce e magnésio só no grave — alta nunca com SABA isolado",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "dpoc-exacerbacao",
+          "arquivo": "dpoc-exacerbacao.html",
+          "categoria": "Pneumo",
+          "menu": "Exacerbação aguda de DPOC",
+          "titulo": "Prescrição comentada — Exacerbação aguda de DPOC",
+          "subtitulo": "Oxigênio controlado, broncodilatadores, cinco dias de corticoide e antibiótico só quando indicado",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "anafilaxia",
+          "arquivo": "anafilaxia.html",
+          "categoria": "Alergia",
+          "menu": "Anafilaxia",
+          "titulo": "Prescrição comentada — Anafilaxia",
+          "subtitulo": "Adrenalina IM primeiro e repetida cedo — anti-histamínico não trata via aérea nem choque",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "pneumonia-comunitaria-grave",
+          "arquivo": "pneumonia-comunitaria-grave.html",
+          "categoria": "Infecção",
+          "menu": "Pneumonia comunitária grave",
+          "titulo": "Prescrição comentada — Pneumonia comunitária grave",
+          "subtitulo": "Beta-lactâmico com atípicos, microbiologia para desescalar e ampliação só com risco validado",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": false,
+          "hub": null
+        },
+        {
+          "id": "meningite-bacteriana",
+          "arquivo": "meningite-bacteriana.html",
+          "categoria": "Infecção",
+          "menu": "Meningite bacteriana aguda",
+          "titulo": "Prescrição comentada — Meningite bacteriana aguda",
+          "subtitulo": "Antibiótico e dexametasona sem esperar a tomografia — dose meníngea e Listeria por risco",
+          "tipo": "guia",
+          "status": "rascunho",
           "ia": false,
           "hub": null
         }

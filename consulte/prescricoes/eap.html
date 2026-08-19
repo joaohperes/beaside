@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7K0CML04MR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7K0CML04MR');
+</script>
+<script src="../../assets/theme-boot.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Prescrição comentada — Edema agudo de pulmão | be·aside</title>
+<meta name="robots" content="noindex, nofollow" data-beaside="status">
+<link rel="canonical" href="https://beaside.com.br/consulte/prescricoes/eap.html">
+<meta name="description" content="Prescrição comentada do edema agudo de pulmão cardiogênico: VNI precoce, nitrato e furosemida na dose certa, fenótipo antes de inotrópico e as armadilhas de cada item — diretrizes de IC AHA/ACC/HFSA 2022, ESC 2021 e SBC.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="be·aside">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Prescrição comentada — Edema agudo de pulmão | be·aside">
+<meta property="og:description" content="VNI, vasodilatador e diurético na ordem certa — e o que não prescrever no paciente afogado.">
+<meta property="og:url" content="https://beaside.com.br/consulte/prescricoes/eap.html">
+<meta property="og:image" content="https://beaside.com.br/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prescrição comentada — Edema agudo de pulmão | be·aside">
+<meta name="twitter:image" content="https://beaside.com.br/assets/og-image.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/styles.css">
+<style>
+  /* componente da prescrição comentada — usa só tokens; variante do .card.collapsible */
+  .rx-list{counter-reset:rx;display:flex;flex-direction:column;gap:14px;margin:26px 0 8px}
+  .rx-item{counter-increment:rx}
+  .rx-head{display:flex;gap:13px;align-items:flex-start;padding:16px 18px 0}
+  .rx-n{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--accent);background:rgba(var(--accent-rgb),.12);border-radius:6px;padding:3px 8px;margin-top:2px;flex-shrink:0}
+  .rx-n::before{content:counter(rx,decimal-leading-zero)}
+  .rx-title{font-size:15.5px;font-weight:600;color:var(--text);letter-spacing:-.01em;line-height:1.3}
+  .rx-cond{font-size:12.5px;color:var(--text2);margin-top:3px;line-height:1.5}
+  .rx-body{padding:2px 18px 6px}
+  .rx-dose{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;line-height:1.8;color:var(--text);background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:11px 14px;margin:12px 0 0}
+  .rx-dose+.rx-dose{margin-top:8px}
+  .rx-dose b{color:var(--accent);font-weight:600}
+  .rx-sub{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);margin:18px 0 -2px;padding-left:2px}
+  .rx-body .tag-row{margin:10px 0 0}
+  .rx-body .alert-box{margin:12px 0 0}
+  .rx-item .card-toggle{border-top:1px solid var(--border);margin-top:14px}
+  .rx-why{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);flex:1}
+  .rx-item .card-body p{font-size:13.5px;line-height:1.75;color:var(--text2);margin:0 0 10px}
+  .rx-item .card-body p strong{color:var(--text)}
+  .rx-item .card-body .ref{display:block;margin-top:10px}
+  @media(max-width:600px){.rx-head{padding:14px 14px 0}.rx-body{padding:2px 14px 6px}}
+  /* botão que leva à calculadora — a conta mora em calculadoras.html */
+  .rxc-link{display:inline-flex;align-items:center;gap:7px;margin:12px 0 0;padding:9px 13px;border-radius:9px;
+    background:var(--bg2);border:1px solid var(--border);text-decoration:none;
+    font-size:12.5px;font-weight:600;color:var(--text);letter-spacing:-.005em;
+    transition:background .15s ease,border-color .15s ease}
+  .rxc-link::before{content:'';width:15px;height:15px;flex-shrink:0;border-radius:4px;
+    border:1.5px solid var(--accent);background:rgba(var(--accent-rgb),.12)}
+  .rxc-link span{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text2)}
+  @media(hover:hover){.rxc-link:hover{background:var(--bg3);border-color:rgba(var(--accent-rgb),.45)}}
+  .rxc-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+</head>
+<body data-module="prescricoes" data-page="eap" data-root="../../">
+<main class="main">
+
+<section class="section" id="topo">
+  <header class="page-head">
+    <div class="hero-eyebrow">Consulte · Prescrições comentadas</div>
+    <h1 class="section-title">Edema agudo de pulmão</h1>
+    <p class="section-subtitle">O paciente está se afogando: os três primeiros itens valem mais que todos os outros juntos — VNI, vasodilatador e diurético, começados em minutos, na dose que resolve.</p>
+  </header>
+
+  <p class="prose">Serve para o <strong>EAP cardiogênico</strong> com pressão preservada ou elevada — o paciente congesto, taquidispneico, com estertores e história cardiológica. Se há <strong>hipotensão ou má perfusão</strong>, o problema mudou de nome (choque cardiogênico) e mudou de página: o raciocínio está no módulo de <a class="text-link" href="../../hemo/">Hemodinâmica</a>. E o EAP quase sempre tem um gatilho — achá-lo é metade da prescrição.</p>
+
+  <div class="warn-box">
+    <strong>Antes de prescrever qualquer item desta página.</strong>
+    <p class="box-body">As doses seguem as diretrizes de insuficiência cardíaca (AHA/ACC/HFSA 2022, ESC 2021, SBC 2021) e <strong>não substituem o protocolo do seu serviço</strong> nem a padronização da farmácia — diluição de vasodilatador e biblioteca de bomba são locais por natureza. Confirme apresentação e concentração antes de cada prescrição.</p>
+  </div>
+
+  <div class="info-box">
+    <strong>Como usar.</strong>
+    <p class="box-body">A ordem é a do raciocínio: primeiro o <strong>tripé que tira o paciente do afogamento</strong> (VNI + vasodilatador + diurético), depois as decisões que definem o rumo (fenótipo e gatilho), o manejo dos remédios de casa e o suporte. Dose sempre visível; o porquê em <em>"por quê &amp; armadilhas"</em>.</p>
+  </div>
+</section>
+
+<section class="section" id="prescricao">
+  <div class="section-label">A prescrição</div>
+  <h2 class="section-title">Item por item</h2>
+
+  <div class="rx-list">
+
+    <div class="section-label" style="margin-top:26px">O tripé dos primeiros minutos</div>
+
+    <!-- 01 · VNI -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Sentar o paciente + VNI precoce</div>
+          <div class="rx-cond">começar já — a VNI trata o EAP, não só a saturação</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Cabeceira elevada</b>, com as pernas pendentes se o paciente tolerar — medida transitória de <b>evidência limitada</b>, útil enquanto a VNI e o vasodilatador são montados. Não substitui nenhum dos dois</div>
+        <div class="rx-dose"><b>VNI</b> — CPAP 8–10 cmH₂O (ou BiPAP se hipercapnia/fadiga), titulando conforme tolerância · FiO₂ mínima para SpO₂ ≥ 90% · reavaliar em 30–60 min: sem melhora ou piorando → considerar IOT sem retardo</div>
+        <div class="alert-box warn"><div class="icon">!</div><div class="content"><strong>VNI não vai em:</strong> rebaixamento do nível de consciência, vômitos/incapacidade de proteger via aérea, instabilidade franca, pneumotórax não drenado ou recusa do paciente. Nesses, a conversa é intubação.</div></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A pressão positiva faz duas coisas ao mesmo tempo: recruta alvéolo inundado (melhora a troca) e reduz pré e pós-carga do VE (melhora a hemodinâmica) — por isso a VNI no EAP <strong>reduz necessidade de intubação e mortalidade</strong>, e é terapia de primeira linha, não último recurso. A armadilha é a fisionomia enganosa: o paciente "brigando com a máscara" nos primeiros minutos costuma melhorar quando a pressão faz efeito; o que não pode é confundir agitação de hipoxemia com intolerância e desistir cedo — nem o contrário, insistir em VNI num paciente que já falhou.</p>
+        <span class="ref">ESC 2021 · AHA/ACC/HFSA 2022 — VNI precoce no EAP.</span>
+      </div>
+    </div>
+
+    <!-- 02 · Nitrato -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Vasodilatador — nitrato em dose que funcione</div>
+          <div class="rx-cond">se PAS &gt; 100–110 mmHg; é a droga do EAP hipertensivo</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Dinitrato de isossorbida</b> 5 mg SL enquanto a bomba é montada — pode repetir a cada 5 min se PA permitir</div>
+        <div class="rx-dose"><b>Nitroglicerina EV</b> — iniciar 10–20 mcg/min e subir rápido (a cada 3–5 min) guiado por PA e dispneia; no EAP hipertensivo as doses eficazes são altas (frequentemente &gt; 100 mcg/min; máx. usual 200)<br>ex. de preparo: 50 mg em SG 5% qsp 250 mL = 200 mcg/mL → 20 mcg/min = 6 mL/h</div>
+        <div class="rx-dose"><b>Nitroprussiato</b> — alternativa quando a pós-carga domina e não há resposta ao nitrato, com <b>experiência do serviço</b>: início <b>0,3 μg/kg/min</b> em bomba, titulando a cada poucos minutos · <b>máximo 8 μg/kg/min</b> pela bula brasileira do Nitroprus® (a americana admite 10 — não misturar os tetos), pelo <b>menor tempo possível</b></div>
+        <div class="rx-dose"><b>Preparo e segurança:</b> reconstituir com o diluente de SG 5% da embalagem e diluir em SG 5% 250/500/1.000 mL → 200/100/50 μg/mL · <b>proteger frasco e equipo da luz</b> · <b>PA contínua, de preferência invasiva</b> · eGFR &lt; 30 → média &lt; 3 μg/kg/min; anúria → 1 μg/kg/min · vigiar <b>cianeto/tiocianato</b> (acidose com lactato subindo, confusão)</div>
+        <div class="alert-box danger"><div class="icon">!</div><div class="content"><strong>Não usar vasodilatador se:</strong> PAS &lt; 90–100 mmHg, sinais de má perfusão, suspeita de VD dependente de pré-carga, estenose aórtica grave ou inibidor de PDE-5 recente.</div></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O EAP hipertensivo é, antes de tudo, uma crise de <strong>pós-carga</strong>: o volume total muitas vezes está normal, só está no lugar errado — redistribuído para o pulmão. Por isso o vasodilatador vem junto (ou antes) do diurético, e por isso dose homeopática de nitrato não trata: 10 mcg/min aliviam a consciência de quem prescreve, não o pulmão de quem afoga. Titule pela PA de verdade. O nitroprussiato tem seu lugar — insuficiência mitral aguda, pós-carga refratária — mas exige o aparato que o teu serviço tiver: é decisão institucional, não item de rotina.</p>
+        <span class="ref">ESC 2021 · AHA/ACC/HFSA 2022 · SBC — vasodilatador no EAP com PA preservada/elevada.</span>
+      </div>
+    </div>
+
+    <!-- 03 · Furosemida -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Furosemida EV — na dose de quem congestiona</div>
+          <div class="rx-cond">congestão é o alvo; a dose depende do que o rim já conhece</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Sem uso prévio de diurético:</b> furosemida 20–40 mg EV em bolus</div>
+        <div class="rx-dose"><b>Usuário crônico:</b> 1–2,5× a dose diária domiciliar, EV (ex.: usa 40 mg/dia VO → 40–100 mg EV)</div>
+        <div class="rx-dose"><b>Reavaliar em 30–60 min</b> pela <b>diurese</b> (e pelo <b>sódio urinário</b>, onde houver): resposta insuficiente → dobrar a dose · manter 2–4×/dia ou infusão contínua conforme resposta · alvo: balanço negativo guiado pela congestão · vigiar K⁺, Mg²⁺, função renal</div>
+        <div class="rx-dose">Em <b>doses altas</b>, respeitar a velocidade máxima de infusão da bula (risco de ototoxicidade na infusão rápida)</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O erro mais comum com furosemida no congesto não é excesso — é <strong>timidez</strong>: 20 mg em quem toma 80 por dia em casa é dose que o néfron nem percebe (o DOSE testou justamente 2,5× a dose domiciliar, com mais descongestão e sem dano renal relevante). A segunda armadilha é prescrever e não olhar: diurético se titula pela <strong>diurese das próximas horas</strong>, não pela do dia seguinte. E no EAP hipertensivo puro, redistributivo, o diurético é coadjuvante do vasodilatador — o paciente pode nem estar hipervolêmico.</p>
+        <span class="ref">DOSE (Felker GM, et al. <em>N Engl J Med.</em> 2011;364(9):797–805) — os braços foram <b>1×</b> e <b>2,5× a dose oral prévia</b>, não mg/kg · ESC 2021 — 20–40 mg EV no virgem de diurético e ao menos a dose oral equivalente no usuário crônico · AHA/ACC/HFSA 2022.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">As decisões que definem o rumo</div>
+
+    <!-- 04 · Fenótipo -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Checar o fenótipo: este EAP é mesmo "quente e úmido"?</div>
+          <div class="rx-cond">hipotensão ou má perfusão mudam a página — e proíbem metade dos itens acima</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Perfusão</b> (extremidades, lactato, sensório, diurese) + <b>PA</b> + <b>POCUS</b> quando disponível (VE, VD, VCI, linhas B) — antes de escalar qualquer droga</div>
+        <div class="rx-dose">Se <b>frio e úmido</b> (PAS &lt; 90 ou má perfusão): suspender vasodilatador, repensar tudo — é choque cardiogênico: fenotipagem e drogas no módulo <b>Hemodinâmica</b></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A prescrição automática "hipotensão = noradrenalina + dobutamina" é exatamente o reflexo que as diretrizes atuais pedem para abandonar: inotrópico se escolhe pelo <strong>fenótipo</strong> (baixo débito confirmado, não pressão baixa isolada), depois de olhar mecanismo — VD falhando? valva aguda? tamponamento? A dose e a diluição da noradrenalina e da dobutamina vivem numa página só, revisada, em <a class="text-link" href="../../hemo/drogas.html">drogas vasoativas</a> — aqui não se duplica dose. O que esta página exige é o gesto anterior: <strong>perceber</strong> que o paciente saiu do EAP "quente" e entrou no choque.</p>
+        <span class="ref">AHA/ACC/HFSA 2022 · ESC 2021 — inotrópico por fenótipo, não por PA isolada.</span>
+      </div>
+    </div>
+
+    <!-- 05 · Gatilho -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Tratar o gatilho — o EAP veio de algum lugar</div>
+          <div class="rx-cond">a prescrição do EAP inclui a prescrição da causa</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>ECG + troponina</b> em todos: SCA → <a class="text-link" href="sca-com-supra.html">reperfusão</a> / <a class="text-link" href="sca-sem-supra.html">SCA sem supra</a> · <b>FA de alta resposta</b> → controle conforme estabilidade · <b>emergência hipertensiva</b> → o nitrato já é o tratamento · <b>infecção/anemia/tireoide/má adesão</b> → investigar e tratar</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>EAP tratado sem gatilho identificado volta — às vezes na mesma noite. O ECG na chegada não é burocracia: isquemia e arritmia são os dois gatilhos que mudam a prescrição inteira nas próximas horas. E a insuficiência mitral aguda (cordoalha rota, endocardite) é o gatilho traiçoeiro: EAP fulminante com coração "pequeno" no raio-X — é o POCUS que denuncia.</p>
+        <span class="ref">ESC 2021 · AHA/ACC/HFSA 2022 — busca ativa do precipitante.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">Os remédios de casa</div>
+
+    <!-- 06 · BB/IECA -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Betabloqueador e IECA/BRA — mexer com critério</div>
+          <div class="rx-cond">suspender por reflexo também é erro</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Betabloqueador de uso crônico: congestão NÃO é motivo de suspender</b> — manter a dose na descompensação sem choque · <b>reduzir ~50%</b> se baixo débito ou congestão grave com PA limítrofe · <b>suspender</b> apenas se choque/necessidade de vasopressor, bradicardia sintomática ou BAV — e reintroduzir antes da alta</div>
+        <div class="rx-dose"><b>IECA/BRA:</b> segurar na fase aguda se hipotensão ou piora renal; reintroduzir/iniciar cedo, ainda na internação, quando estável</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Suspender o betabloqueador de todo EAP é reflexo antigo com dado contra: a retirada abrupta em quem usa cronicamente piora desfecho, e a descompensação "quente" tolera a manutenção. A régua é perfusão, não a existência do edema. Já a alta hospitalar é o momento-chave dos dois: paciente que sai sem betabloqueador e IECA reintroduzidos tende a nunca mais recebê-los — a internação é a janela de otimizar, não só de secar.</p>
+        <span class="ref">Jondeau G, et al. B-CONVINCED: beta-blocker continuation vs. interruption in patients hospitalized for a decompensation episode. <em>Eur Heart J.</em> 2009;30(18):2186–2192 — manter foi tão seguro quanto e preservou o uso em 3 meses · ESC 2021 · AHA/ACC/HFSA 2022.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">Suporte e vigilância</div>
+
+    <!-- 07 · Dieta -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Dieta e líquidos</div>
+          <div class="rx-cond">na fase aguda, o paciente em VNI não come</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Jejum</b> enquanto em VNI/instável → <b>dieta VO hipossódica</b> quando estabilizar · <b>restrição hídrica</b> (ex.: 1.000–1.500 mL/dia) <b>não é para todo congesto</b> — reservar para hiponatremia significativa, congestão refratária ou plano individual · enteral se IOT, com progressão pela nutrição</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Comer de máscara é broncoaspirar. E a restrição hídrica é ferramenta, não dogma: no paciente descongestionando bem com diurético, restrição agressiva acrescenta sede e pouco mais — individualize com o balanço na mão. Aporte calórico fixo "de rotina" segue sendo decisão da nutrição, não da folha pronta.</p>
+        <span class="ref">ESPEN 2023 · diretrizes de IC — manejo individualizado.</span>
+      </div>
+    </div>
+
+    <!-- 08 · TEV -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Profilaxia de TEV</div>
+          <div class="rx-cond">todo paciente clínico acamado por descompensação</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Enoxaparina</b> 40 mg SC 1×/dia · se ClCr &lt; 30: <b>HNF</b> 5.000 UI SC 8/8–12/12 h · suspender se anticoagulação plena por outro motivo</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>IC descompensada é fator de risco maior para TEV — a profilaxia é rotina do paciente clínico internado. O detalhe que escapa: se o gatilho do EAP pediu anticoagulação plena (FA, SCA), a profilaxia sai — dupla heparina é sangramento de graça.</p>
+        <span class="ref">Diretrizes de tromboprofilaxia do paciente clínico internado.</span>
+      </div>
+    </div>
+
+    <!-- 09 · Úlcera -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Profilaxia de úlcera de estresse — só com indicação</div>
+          <div class="rx-cond">não é item universal de internação</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Omeprazol</b> 40 mg EV ou VO 1×/dia — se VM &gt; 48 h, coagulopatia, ou outro fator de risco maior do protocolo do serviço</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Profilaxia de úlcera virou item de kit — e IBP sem indicação tem custo (interações, infecção, prescrição que nunca mais é suspensa). A indicação clássica é o paciente grave com fator de risco: ventilação mecânica prolongada e coagulopatia à frente. EAP que resolve em VNI e sobe para enfermaria em 24 h não precisa levar omeprazol de lembrança.</p>
+      </div>
+    </div>
+
+    <!-- 10 · Antiemético -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Antiemético se necessário</div>
+          <div class="rx-cond">náusea ou vômitos — atenção redobrada em quem está de VNI</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Ondansetrona</b> 4–8 mg EV até 8/8 h SN <em>ou</em> <b>metoclopramida</b> 10 mg EV 8/8 h SN · <b>metoclopramida</b> não é automática: distonia, acatisia, parkinsonismo, sonolência e discinesia tardia — reduzir dose repetida no idoso e na disfunção renal/hepática</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Vômito dentro da máscara de VNI é emergência de via aérea — trate a náusea cedo e mantenha a equipe avisada. Ondansetrona prolonga QT; metoclopramida pede cautela no idoso.</p>
+      </div>
+    </div>
+
+    <!-- 11 · Glicemia -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Glicemia — controle sem hipoglicemia</div>
+          <div class="rx-cond">HGT se diabetes, jejum, dieta enteral ou paciente crítico</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>HGT</b> (glicemia capilar) 6/6 h · alvo hospitalar <b>140–180 mg/dL</b> · correção com insulina regular conforme o protocolo do serviço</div>
+        <div class="rx-dose">se HGT &lt; 70 mg/dL: <b>glicose 50%</b> EV (ex.: 40 mL = 20 g) → repetir HGT em 15 min</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Mesma regra das outras páginas: 140–180 mg/dL, correção pelo protocolo institucional (escala fixa universal não), e hipoglicemia tratada com rechecagem obrigatória em 15 min. A dose de glicose depende da ampola da tua farmácia — a conta do exemplo é transparente de propósito.</p>
+        <span class="ref">ADA 2026 — Standards of Care, cap. 16.</span>
+      </div>
+    </div>
+
+    <!-- 12 · Monitorização -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Monitorização — a resposta se mede em horas</div>
+          <div class="rx-cond">quem prescreveu o tripé precisa ver se ele funcionou</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Monitorização contínua + oximetria</b> · PA de horário (invasiva se difícil controle ou se a medida não invasiva parecer pouco confiável) · <b>diurese horária</b> e balanço hídrico · <b>peso diário</b> · K⁺/Mg²⁺/creatinina com o diurético · gasometria se VNI ou dúvida de fadiga · reavaliação clínica em 30–60 min de cada mudança</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O EAP é das poucas emergências em que a prescrição certa muda o paciente <em>na primeira hora</em> — e isso só é útil se alguém estiver medindo. Diurese horária é o feedback do diurético; a PA, do vasodilatador; a frequência respiratória e a gasometria, da VNI. Paciente que não melhora em 60 minutos não precisa de mais uma dose do mesmo: precisa de reavaliação do fenótipo, do gatilho e da via aérea.</p>
+        <span class="ref">ESC 2021 · AHA/ACC/HFSA 2022.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">A rotina que sustenta o resto</div>
+
+    <!-- rotina 01 · Dieta -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Dieta</div>
+          <div class="rx-cond">a primeira linha da prescrição que todo mundo escreve no automático</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Dieta conforme o quadro</b> — via oral se desperta, deglute e não há procedimento previsto · <b>zero</b> se rebaixado, instável ou com via aérea em risco, reavaliando <b>cedo</b> · sonda enteral se o jejum passar de 48–72 h</div>
+        <div class="rx-dose"><b>Jejum tem data e hora</b> — escrever o motivo e quando reavaliar. "Jejum" sem prazo vira desnutrição de terceira semana</div>
+        <div class="rx-dose"><b>Disfagia:</b> triagem antes da primeira colher em qualquer rebaixamento, AVC ou pós-extubação — falhou, sonda; a medicação também passa por ela</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O jejum prolongado é a prescrição mais barata de escrever e uma das mais caras de sustentar: cada dia sem aporte custa massa muscular num paciente que vai precisar dela para desmamar, sentar e andar. A pergunta de visita não é "está em jejum?", é <strong>"por que ainda está, e até quando?"</strong>.</p>
+      </div>
+    </div>
+
+    <!-- rotina 02 · Cuidados de enfermagem -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Cuidados de enfermagem — a rotina que evita a segunda doença</div>
+          <div class="rx-cond">decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Sinais vitais e rotina de UTI 2/2 h</b> (espaçar conforme estabilidade) · <b>balanço hídrico</b> e <b>diurese</b> registrados</div>
+        <div class="rx-dose"><b>Cabeceira 30–45°</b> — reduz aspiração e pneumonia associada à ventilação · abaixar só com motivo escrito (choque, procedimento)</div>
+        <div class="rx-dose"><b>Mudança de decúbito 2/2 h</b> + <b>avaliação diária da pele</b> nas proeminências (sacro, calcâneo, occipital, trocânter) · colchão de redistribuição de pressão no imóvel</div>
+        <div class="rx-dose"><b>Curativos</b> inspecionados por turno; datar a troca · <b>higiene oral</b> com antisséptico no intubado · olhos lubrificados no sedado</div>
+        <div class="rx-dose"><b>Fisioterapia</b> — fisioterapia motora e respiratória desde o primeiro dia, conforme tolerância</div>
+        <div class="rx-dose"><b>Oxigênio conforme necessidade:</b> <b>SpO₂ ≥ 90%</b> — VNI antes de subir FiO₂. Oxigênio é droga: tem alvo, tem dose e tem excesso</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Estes itens não competem com a doença principal — eles decidem se o paciente sai da UTI com a doença resolvida e o corpo inteiro, ou resolvido e com uma lesão por pressão em sacro que vai custar meses. Lesão por pressão, pneumonia por aspiração e fraqueza adquirida na UTI são as três complicações que a prescrição previne com linhas que ninguém lê.</p>
+        <p>A cabeceira elevada é o exemplo perfeito: é gratuita, tem efeito documentado sobre pneumonia associada à ventilação, e é a primeira coisa que se perde quando o leito é abaixado para um procedimento e ninguém sobe de volta.</p>
+      </div>
+    </div>
+
+    <!-- rotina 03 · Profilaxia de úlcera de estresse -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Profilaxia de úlcera de estresse — só com indicação</div>
+          <div class="rx-cond">não é carimbo de internação: sem fator de risco, o dano supera o benefício</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Com indicação:</b> inibidor de bomba de prótons — <b>omeprazol ou pantoprazol 40 mg EV ou VO 1×/dia</b>, conforme padronização do serviço</div>
+        <div class="rx-dose">Reavaliar a indicação <b>todo dia</b> — ela costuma sumir antes da alta da UTI, e a prescrição costuma continuar.</div>
+        <div class="rx-dose"><b>O preço de prescrever sem indicação:</b> mais pneumonia associada à ventilação, mais <em>C. difficile</em>, e a prescrição crônica que sai junto na receita de alta</div>
+        <a class="rxc-link" href="calculadoras.html#ulcera">Há indicação de profilaxia? <span>fator maior ou 2 menores</span></a>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Os dois fatores de risco independentes clássicos vêm do estudo de Cook: <strong>ventilação mecânica prolongada</strong> e <strong>coagulopatia</strong>. Fora deles, o sangramento clinicamente importante é raro o suficiente para que o dano da supressão ácida — pneumonia e colite por <em>C. difficile</em> — comece a pesar mais.</p>
+        <p>A armadilha real não é começar, é <strong>não parar</strong>. A indicação some quando o paciente extuba e a coagulação normaliza; a prescrição, não. É assim que um inibidor de bomba iniciado numa UTI vira uso crônico de anos, com a hipomagnesemia que ele causa aparecendo lá na frente, sem que ninguém ligue os dois.</p>
+        <span class="ref">Cook DJ, Fuller HD, Guyatt GH, et al. Risk factors for gastrointestinal bleeding in critically ill patients. <em>N Engl J Med.</em> 1994;330(6):377–381 — os dois fatores independentes. Os fatores menores vêm de consensos posteriores; não há escore validado único.</span>
+      </div>
+    </div>
+
+    <!-- rotina 04 · Profilaxia de TEV -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Profilaxia de TEV — pelo risco, não pelo tempo de internação</div>
+          <div class="rx-cond">"internou, prescreve" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Farmacológica, com indicação e sem sangramento:</b> <b>enoxaparina 40 mg SC 1×/dia</b> · <b>ClCr &lt; 30:</b> enoxaparina 20 mg SC 1×/dia <em>ou</em> <b>HNF 5.000 UI SC 8/8–12/12 h</b>, conforme protocolo</div>
+        <div class="rx-dose"><b>Mecânica</b> (compressão pneumática intermitente) quando a farmacológica está contraindicada — sangramento ativo, plaquetopenia grave, pós-operatório neurocirúrgico recente — ou <b>somada</b> a ela no altíssimo risco</div>
+        <div class="rx-dose"><b>Não somar</b> profilaxia a quem já está em <b>anticoagulação plena</b> — é dose dupla sem ganho</div>
+        <div class="rx-dose">Individualizar sempre: o escore diz se <em>há indicação</em>, não se <em>este</em> paciente deve receber.</div>
+        <a class="rxc-link" href="calculadoras.html#padua">Escore de Pádua <span>calcular o risco de TEV</span></a>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O escore de Pádua foi construído justamente para separar quem se beneficia de quem só recebe: no estudo original, os pacientes de alto risco sem profilaxia tiveram cerca de 11% de TEV, contra pouco mais de 2% nos de baixo risco. É essa diferença que justifica prescrever — e que explica por que prescrever para todo mundo dilui o benefício e soma sangramento.</p>
+        <p>Duas armadilhas de plantão. A primeira é a dose fixa em quem não a comporta: no ClCr abaixo de 30 a enoxaparina acumula, e a dose profilática vira quase terapêutica. A segunda é a soma silenciosa — o paciente que já recebe heparina plena por outro motivo e ganha mais 40 mg de enoxaparina porque "está internado".</p>
+        <span class="ref">Barbar S, Noventa F, Rossetto V, et al. A risk assessment model for the identification of hospitalized medical patients at risk for venous thromboembolism: the Padua Prediction Score. <em>J Thromb Haemost.</em> 2010;8(11):2450–2457.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="nao-prescrever">
+  <div class="section-label">Tão importante quanto</div>
+  <h2 class="section-title">O que <em>não</em> prescrever</h2>
+  <div class="warn-box">
+    <strong>Itens que pioram o desfecho no EAP.</strong>
+    <p class="box-body"><strong>Morfina de rotina</strong> — associada a mais intubação e mortalidade; ansiedade do afogamento se trata com VNI e vasodilatador. <strong>Dobutamina automática</strong> por pressão baixa isolada, sem fenótipo. <strong>Furosemida tímida</strong> no usuário crônico. <strong>Vasodilatador</strong> no hipotenso/má perfusão. <strong>Volume EV "de rotina"</strong> no paciente congesto. E <strong>suspender betabloqueador por reflexo</strong> em quem está quente e perfundido.</p>
+  </div>
+</section>
+
+<section class="section" id="fechamento">
+  <div class="tip-box" style="margin-top:32px;">
+    <strong>Prescreveu — e agora?</strong>
+    <p class="box-body">Se o paciente esfriou — PAS caindo, lactato subindo, extremidades frias — a página mudou: o raciocínio do choque está nos <a class="text-link" href="../../hemo/padroes.html">padrões hemodinâmicos</a> e as doses na página de <a class="text-link" href="../../hemo/drogas.html">drogas vasoativas</a>. Se o gatilho foi coronariano, a prescrição continua na <a class="text-link" href="sca-com-supra.html">SCA com supra</a> ou <a class="text-link" href="sca-sem-supra.html">sem supra</a>. E se a VNI está falhando, os parâmetros do ventilador estão no módulo de <a class="text-link" href="../../vm/parametros.html">Ventilação Mecânica</a>.</p>
+    <a class="link-cta" href="../index.html">Levar o caso ao assistente de conduta <span aria-hidden="true">&rarr;</span></a>
+  </div>
+
+  <div class="section-label">Referências</div>
+  <span class="ref">Heidenreich PA, et al. 2022 AHA/ACC/HFSA Guideline for the Management of Heart Failure. <em>Circulation.</em> 2022;145(18):e895–e1032.</span>
+  <span class="ref">McDonagh TA, et al. 2021 ESC Guidelines for the diagnosis and treatment of acute and chronic heart failure. <em>Eur Heart J.</em> 2021;42(36):3599–3726 (doi:10.1093/eurheartj/ehab368).</span>
+  <span class="ref">Marcondes-Braga FG, et al. Atualização de Tópicos Emergentes da Diretriz Brasileira de Insuficiência Cardíaca — 2021. <em>Arq Bras Cardiol.</em> 2021;116(6):1174–1212 (doi:10.36660/abc.20210367).</span>
+  <span class="ref">Felker GM, et al. Diuretic strategies in patients with acute decompensated heart failure (DOSE). <em>N Engl J Med.</em> 2011;364:797–805.</span>
+  <span class="ref">American Diabetes Association. Diabetes Care in the Hospital — Standards of Care in Diabetes. <em>Diabetes Care.</em> 2026;49(Suppl 1).</span>
+</section>
+
+</main>
+<script src="../../assets/app.js"></script>
+<script>
+function toggleCard(card,e){
+  if(e&&e.target.tagName&&e.target.tagName.toLowerCase()==='a')return;
+  card.classList.toggle('open');
+}
+document.addEventListener('keydown',function(e){
+  if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('card-toggle')){
+    e.preventDefault();toggleCard(e.target.parentNode,e);
+  }
+});
+</script>
+</body>
+</html>

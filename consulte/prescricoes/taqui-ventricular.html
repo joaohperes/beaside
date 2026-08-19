@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7K0CML04MR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7K0CML04MR');
+</script>
+<script src="../../assets/theme-boot.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Prescrição comentada — Taquicardia ventricular | be·aside</title>
+<meta name="robots" content="noindex, nofollow" data-beaside="status">
+<link rel="canonical" href="https://beaside.com.br/consulte/prescricoes/taqui-ventricular.html">
+<meta name="description" content="Prescrição comentada da taquicardia ventricular: QRS largo é TV até prova em contrário, monomórfica estável (CVE ou amiodarona), torsades com magnésio e a nuance congênito × adquirido, FA pré-excitada — ESC 2022 e ACLS.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="be·aside">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Prescrição comentada — Taquicardia ventricular | be·aside">
+<meta property="og:description" content="Monomórfica, polimórfica, torsades e o impostor pré-excitado — cada uma com a conduta certa e as armadilhas.">
+<meta property="og:url" content="https://beaside.com.br/consulte/prescricoes/taqui-ventricular.html">
+<meta property="og:image" content="https://beaside.com.br/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prescrição comentada — Taquicardia ventricular | be·aside">
+<meta name="twitter:image" content="https://beaside.com.br/assets/og-image.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/styles.css">
+<style>
+  /* componente da prescrição comentada — usa só tokens; variante do .card.collapsible */
+  .rx-list{counter-reset:rx;display:flex;flex-direction:column;gap:14px;margin:26px 0 8px}
+  .rx-item{counter-increment:rx}
+  .rx-head{display:flex;gap:13px;align-items:flex-start;padding:16px 18px 0}
+  .rx-n{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--accent);background:rgba(var(--accent-rgb),.12);border-radius:6px;padding:3px 8px;margin-top:2px;flex-shrink:0}
+  .rx-n::before{content:counter(rx,decimal-leading-zero)}
+  .rx-title{font-size:15.5px;font-weight:600;color:var(--text);letter-spacing:-.01em;line-height:1.3}
+  .rx-cond{font-size:12.5px;color:var(--text2);margin-top:3px;line-height:1.5}
+  .rx-body{padding:2px 18px 6px}
+  .rx-dose{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;line-height:1.8;color:var(--text);background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:11px 14px;margin:12px 0 0}
+  .rx-dose+.rx-dose{margin-top:8px}
+  .rx-dose b{color:var(--accent);font-weight:600}
+  .rx-sub{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);margin:18px 0 -2px;padding-left:2px}
+  .rx-body .tag-row{margin:10px 0 0}
+  .rx-body .alert-box{margin:12px 0 0}
+  .rx-item .card-toggle{border-top:1px solid var(--border);margin-top:14px}
+  .rx-why{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);flex:1}
+  .rx-item .card-body p{font-size:13.5px;line-height:1.75;color:var(--text2);margin:0 0 10px}
+  .rx-item .card-body p strong{color:var(--text)}
+  .rx-item .card-body .ref{display:block;margin-top:10px}
+  @media(max-width:600px){.rx-head{padding:14px 14px 0}.rx-body{padding:2px 14px 6px}}
+  /* botão que leva à calculadora — a conta mora em calculadoras.html */
+  .rxc-link{display:inline-flex;align-items:center;gap:7px;margin:12px 0 0;padding:9px 13px;border-radius:9px;
+    background:var(--bg2);border:1px solid var(--border);text-decoration:none;
+    font-size:12.5px;font-weight:600;color:var(--text);letter-spacing:-.005em;
+    transition:background .15s ease,border-color .15s ease}
+  .rxc-link::before{content:'';width:15px;height:15px;flex-shrink:0;border-radius:4px;
+    border:1.5px solid var(--accent);background:rgba(var(--accent-rgb),.12)}
+  .rxc-link span{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text2)}
+  @media(hover:hover){.rxc-link:hover{background:var(--bg3);border-color:rgba(var(--accent-rgb),.45)}}
+  .rxc-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+</head>
+<body data-module="prescricoes" data-page="taqui-ventricular" data-root="../../">
+<main class="main">
+
+<section class="section" id="topo">
+  <header class="page-head">
+    <div class="hero-eyebrow">Consulte · Prescrições comentadas</div>
+    <h1 class="section-title">Taquicardia ventricular</h1>
+    <p class="section-subtitle">Quatro cenários com o mesmo QRS largo e condutas opostas: monomórfica, polimórfica, torsades e o impostor pré-excitado. Errar a classificação é errar tudo — a página começa por ela.</p>
+  </header>
+
+  <p class="prose">Serve para a <strong>taquicardia de QRS largo com pulso</strong>. Se o paciente está instável, o caminho já foi dado na <a class="text-link" href="taqui-instavel.html">taquiarritmia instável</a> (monomórfica → CVE; polimórfica → desfibrilar). Esta página cuida do que vem antes e depois do choque no paciente que dá tempo: classificar, escolher droga, tratar a causa — e não cair na armadilha de "TSV com aberrância".</p>
+
+  <div class="warn-box">
+    <strong>Antes de prescrever qualquer item desta página.</strong>
+    <p class="box-body">Doses seguem ESC 2022 (arritmias ventriculares), AHA/ACC/HRS 2017 e o ACLS, e <strong>não substituem o protocolo do seu serviço</strong>. Atenção às apresentações do sulfato de magnésio (10% × 50%) e à disponibilidade real de procainamida — a farmácia local decide parte desta página.</p>
+  </div>
+
+  <div class="info-box">
+    <strong>Como usar.</strong>
+    <p class="box-body">A ordem é a do raciocínio: <strong>a regra do QRS largo</strong>, a monomórfica estável, a polimórfica dividida pelo QT, o impostor pré-excitado — e a causa, que é onde a TV se resolve de verdade. Dose sempre visível; o porquê em <em>"por quê &amp; armadilhas"</em>.</p>
+  </div>
+</section>
+
+<section class="section" id="prescricao">
+  <div class="section-label">A prescrição</div>
+  <h2 class="section-title">Item por item</h2>
+
+  <div class="rx-list">
+
+    <div class="section-label" style="margin-top:26px">Primeiro, a regra que salva</div>
+
+    <!-- 01 · QRS largo -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">QRS largo é TV até prova em contrário</div>
+          <div class="rx-cond">monitor, acesso, ECG 12 derivações — e a humildade de não apostar em "aberrância"</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose">Taquicardia regular de QRS largo em adulto: <b>~80% é TV</b> — e sobe para &gt; 90% se há cardiopatia estrutural/infarto prévio · na dúvida, <b>tratar como TV</b></div>
+        <div class="rx-dose">Classificar em segundos: <b>monomórfica</b> (QRS iguais) · <b>polimórfica</b> (QRS mudando) · <b>irregular + largo + morfologia variável</b> = pensar FA pré-excitada (item 06)</div>
+        <div class="alert-box danger"><div class="icon">!</div><div class="content"><strong>Verapamil/diltiazem no QRS largo "apostando em TSV com aberrância"</strong> é o erro clássico e letal desta página: na TV, o bloqueador de cálcio tira o inotropismo e derruba o paciente em choque/FV. Se não tem certeza absoluta de que é supraventricular, não bloqueie o nó.</div></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A estatística é a proteção: apostar em aberrância para "poder dar verapamil" é apostar contra 4 em 5 — com a vida do paciente na mesa. Tratar TSV como TV custa pouco (amiodarona e choque funcionam nas duas); tratar TV como TSV pode custar tudo. Dissociação AV, batimentos de captura/fusão e concordância precordial confirmam TV quando presentes — mas a ausência deles não autoriza a aposta contrária.</p>
+        <span class="ref">ESC 2022 (ehac262) · AHA — ACLS.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">TV monomórfica com pulso — estável</div>
+
+    <!-- 02 · CVE -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Primeira escolha: cardioversão eletiva, com calma de eletiva</div>
+          <div class="rx-cond">estável é quem pode ser sedado direito antes do choque</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>CVE sincronizada</b> 100 J bifásico (escalonar se falhar), com sedoanalgesia escolhida pela hemodinâmica — técnica, cargas e drogas na <a class="text-link" href="taqui-instavel.html">página da taqui instável</a></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Na TV monomórfica sustentada com cardiopatia, o choque sincronizado é a terapia mais eficaz e mais previsível que existe — reverte em segundos o que a droga reverte em dezenas de minutos (ou não reverte). "Estável" aqui é um estado provisório: aproveite-o para sedar bem, sincronizar e resolver — não para acumular antiarrítmico esperando o instável chegar.</p>
+        <span class="ref">ESC 2022 · AHA — ACLS.</span>
+      </div>
+    </div>
+
+    <!-- 03 · Química -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Alternativa química — e a manutenção que segue</div>
+          <div class="rx-cond">quando a sedação é de alto risco, ou para prevenir recorrência após a reversão</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Amiodarona: ataque 300 mg</b> em SG 5% 100–250 mL EV em <b>20–30 min</b> → <b>manutenção 900 mg em 24 h</b> (1 mg/min por 6 h → 0,5 mg/min por 18 h) · recorrência: bolus adicional de 150 mg conforme protocolo · o total costuma ser limitado a <b>2,2 g/24 h</b> · preferir acesso central se infusão prolongada · na parada, o esquema é outro (300 mg em bolus — ACLS)</div>
+        <div class="rx-dose">Vigiar <b>hipotensão</b> (mais com infusão rápida), <b>bradicardia</b>, <b>prolongamento do QT</b> e função hepática · corrigir K e Mg</div>
+        <a class="rxc-link" href="calculadoras.html#qtc">QTc — Bazett e Fridericia <span>≥ 500 ms = risco de torsades</span></a>
+        <div class="rx-dose"><b>Procainamida</b>, onde disponível — reversão mais rápida e menos hipotensão que amiodarona na TV estável (PROCAMIO): <b>20–50 mg/min EV</b> até suprimir a arritmia, surgir hipotensão, o <b>QRS alargar &gt; 50%</b> ou atingir o total de <b>17 mg/kg</b> → manutenção <b>1–4 mg/min</b></div>
+        <div class="rx-dose"><b>Evitar procainamida</b> em QT longo e em IC · <b>reduzir a manutenção</b> na doença renal crônica e no idoso · <b>ECG e PA contínuos</b> durante toda a infusão; preparo conforme padronização da farmácia</div>
+        <div class="rx-dose">Após 24–48 h de EV, a <b>transição para amiodarona VO</b> (impregnação cumulativa) e a decisão de mantê-la são conduta de cardiologia/eletrofisiologia — não item de folha pronta</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O PROCAMIO fez a pergunta direta — procainamida ou amiodarona na TV estável? — e a procainamida venceu em reversão e em eventos adversos. O problema é de prateleira: ela sumiu de boa parte das farmácias brasileiras, e a amiodarona virou o padrão prático. Funciona, mas devagar — e é aqui que mora a armadilha da "estabilidade química": três ampolas empilhadas em uma hora derrubam pressão sem reverter ritmo. Duas tentativas sem sucesso = voltar ao item 02.</p>
+        <span class="ref">PROCAMIO — Ortiz M, et al. <em>Eur Heart J.</em> 2017;38(17):1329–1335 · ESC 2022.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">TV polimórfica — dividida pelo QT</div>
+
+    <!-- 04 · Polimórfica sem QT longo -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Polimórfica com QT normal — pense isquemia</div>
+          <div class="rx-cond">ela raramente dá tempo: desfibrilar quando sustentada, investigar coronária sempre</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose">Sustentada/degenerando: <b>desfibrilar</b> (não sincroniza — o aparelho não acha QRS) · salvas autolimitadas recorrentes: <b>amiodarona</b> (doses do item 03) + corrigir <b>K⁺ ≥ 4,0 / Mg²⁺ ≥ 2,0</b></div>
+        <div class="rx-dose"><b>Tempestade elétrica / polimórfica recorrente: bloqueio simpático</b> — <b>betabloqueador</b> (o ensaio randomizado favorece <b>propranolol 40 mg VO 6/6 h</b> sobre metoprolol, associado à amiodarona) + sedação · a evidência forte de betabloqueador na TV é <b>esta</b> — tempestade e QT longo — não a TV monomórfica estável isolada</div>
+        <div class="rx-dose"><b>Isquemia é a causa até prova em contrário:</b> ECG seriado, troponina, e discutir <a class="text-link" href="sca-com-supra.html">cateterismo urgente</a> — TV polimórfica recorrente pode ser o único sinal do vaso fechando</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Polimórfica com QT de base normal é, na prática da emergência, <strong>isquemia até que a coronária prove o contrário</strong> — e nesse cenário o melhor antiarrítmico chama-se reperfusão. O betabloqueador tem papel na tempestade elétrica isquêmica (reduz o drive simpático que alimenta as salvas), sempre com a hemodinâmica vigiada. O que não pode acontecer é tratar salva após salva com choque e amiodarona sem ninguém pedir o cateterismo.</p>
+        <span class="ref">ESC 2022 — bloqueio antiadrenérgico na tempestade elétrica · Chatzidou S, et al. Propranolol versus metoprolol for treatment of electrical storm. <em>J Am Coll Cardiol.</em> 2018;71(17):1897–1906 — propranolol + amiodarona encerrou a tempestade mais rápido e com menos recorrência · AHA/ACC/HRS 2017.</span>
+      </div>
+    </div>
+
+    <!-- 05 · Torsades -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Torsades de pointes — QT longo, magnésio e a nuance que muda tudo</div>
+          <div class="rx-cond">a polimórfica que "torce" sobre um QTc geralmente &gt; 500 ms</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Sulfato de magnésio</b> 1–2 g EV em 10–15 min, mesmo com magnésio sérico normal — pode repetir; infusão contínua conforme protocolo · <em>atenção à ampola:</em> MgSO₄ 10% (1 g/10 mL) × 50% (5 g/10 mL) — conferir antes de correr</div>
+        <div class="rx-dose"><b>Suspender todo prolongador de QT</b> (a lista rápida: antiarrítmicos Ia/III, macrolídeos, quinolonas, azólicos, antipsicóticos, antieméticos em dose alta, metadona) + repor <b>K⁺ para 4,5–5,0</b></div>
+        <div class="rx-dose">Recorrente e <b>bradicardia-dependente</b> (QT longo adquirido): encurtar o QT acelerando — <b>isoproterenol</b> onde houver, ou <b>marca-passo</b> (transcutâneo → transvenoso) com FC 90–110 · <b>QT longo congênito:</b> o caminho é oposto — betabloqueador e especialista, isoproterenol não</div>
+        <div class="alert-box danger"><div class="icon">!</div><div class="content"><strong>Amiodarona não vai na torsades</strong> — ela prolonga QT e alimenta a arritmia que você quer apagar. Se precisar de antiarrítmico além do magnésio, a opção é <b>lidocaína</b> 1–1,5 mg/kg EV em bolus lento (2–3 min), repetível 0,5–0,75 mg/kg a cada 5–10 min (máx. 3 mg/kg) → infusão 1–4 mg/min.</div></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A torsades é a arritmia em que o reflexo padrão erra duas vezes: amiodarona (prolonga o QT que a causou) e "só chocar" (ela volta, porque o terreno — QT longo, hipoK, hipoMg, bradicardia com pausas — continua lá). O magnésio estabiliza mesmo com nível sérico normal; o potássio alto-normal encurta a repolarização; e a frequência é antiarrítmico: cada pausa longa arma a próxima salva, por isso acelerar (isoproterenol ou marca-passo) trata o adquirido. O congênito inverte a lógica — o gatilho é adrenérgico, e betabloqueio é a base. Distinguir os dois é anamnese: droga nova e bradicardia contam uma história; síncope de esforço na família conta outra.</p>
+        <span class="ref">ESC 2022 · AHA/ACC/HRS 2017 — torsades e síndromes de QT longo.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">O impostor</div>
+
+    <!-- 06 · FA pré-excitada -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">FA pré-excitada — irregular, largo e proibido de bloquear</div>
+          <div class="rx-cond">QRS largo + RR irregular + morfologia variando batimento a batimento</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>CVE sincronizada</b> (carga alta, ex.: 200 J bifásico) é a conduta de escolha — mesmo relativamente estável, a janela pode fechar rápido</div>
+        <div class="rx-dose"><b>Depois:</b> encaminhar para <b>ablação da via acessória</b> — é curativa e encerra o risco</div>
+        <div class="alert-box danger"><div class="icon">!</div><div class="content"><strong>Contraindicados:</strong> adenosina, betabloqueador, verapamil/diltiazem, digital <em>e amiodarona EV</em>. Bloquear o nó AV deixa a via acessória sozinha conduzindo a FA — a resposta ventricular dispara e degenera em FV.</div></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>É o ritmo que pune o reflexo certo do cenário errado: tudo que funciona na FA comum (frear o nó) aqui abre caminho para a FV. A assinatura no monitor é única — irregular como FA, largo como TV, e com QRS que muda de cara a cada batimento porque a fração conduzida pela via muda. A amiodarona EV entra na lista de proibidos por um motivo específico: o efeito betabloqueador/bloqueador de nó da infusão aguda chega antes do efeito antiarrítmico. Choque resolve; ablação cura.</p>
+        <span class="ref">ESC 2022 · ESC 2019 (TSV/WPW) — FA pré-excitada.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">Depois do ritmo — onde a TV se resolve</div>
+
+    <!-- 07 · Causa -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Caçar a causa — a TV é sintoma de um coração com história</div>
+          <div class="rx-cond">o ECG sinusal pós-reversão vale tanto quanto o da crise</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Isquemia</b> (ECG seriado + troponina → <a class="text-link" href="sca-sem-supra.html">SCA</a>) · <b>K⁺/Mg²⁺</b> (e as drogas que os derrubam: furosemida, HCTZ) · <b>ECG de base:</b> QTc, sinais de Brugada, ondas épsilon (displasia de VD), cicatriz · <b>ecocardiograma</b> na internação · <b>Chagas</b> — no Brasil, causa clássica de TV com cicatriz em quem viveu em área endêmica · revisar drogas pró-arrítmicas</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>TV sustentada em coração adulto quase sempre tem substrato — cicatriz isquêmica, chagásica, displasia, canalopatia — e o substrato é o que define o risco de a próxima ser fatal. O ECG sinusal pós-reversão é a radiografia desse substrato: QT, pré-excitação, Brugada e cicatriz aparecem nele, não na crise. E vale o registro brasileiro pela segunda página seguida: a cardiopatia chagásica é das causas mais arritmogênicas que existem — sorologia em quem tem epidemiologia.</p>
+        <span class="ref">ESC 2022 · AHA/ACC/HRS 2017 · diretrizes brasileiras de doença de Chagas.</span>
+      </div>
+    </div>
+
+    <!-- 08 · CDI + kit -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Prevenção de morte súbita — e o kit da vigilância</div>
+          <div class="rx-cond">a decisão do CDI não é do plantão, mas nasce do que o plantão documentar</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>CDI</b> (prevenção secundária) é avaliação de eletrofisiologia — o papel do plantão é internar monitorizado, documentar (ECGs da crise e sinusal, eco, eletrólitos) e <em>não dar alta</em> da TV sustentada sem esse caminho traçado</div>
+        <div class="rx-dose">Kit: <b>monitorização contínua</b> · <b>dipirona</b> 1 g EV/VO 6/6 h SN ou paracetamol · antiemético SN · <b>profilaxia de TEV</b> se houver <b>risco trombótico e mobilidade reduzida</b> — decidir por risco, não por tempo de internação: pesar sangramento, plaquetas, função renal, procedimento previsto e anticoagulação já plena · <b>HGT 6/6 h</b> se DM/jejum/crítico (alvo 140–180, protocolo do serviço) · dieta zero até definir conduta → liberar conforme estabilidade</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>TV sustentada revertida não é caso encerrado — é morte súbita adiada até que alguém decida o contrário, e quem decide (CDI? ablação? só a revascularização?) precisa do dossiê que o plantão monta: os traçados, o eco, a causa. A amiodarona de manutenção alivia a recorrência, mas não substitui essa decisão — o erro de sistema é o paciente sair "estável, com amiodarona" e sem o encaminhamento que muda a sobrevida.</p>
+        <span class="ref">ESC 2022 · AHA/ACC/HRS 2017 — prevenção secundária de morte súbita.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">A rotina que sustenta o resto</div>
+
+    <!-- rotina 01 · Dieta -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Dieta</div>
+          <div class="rx-cond">a primeira linha da prescrição que todo mundo escreve no automático</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Dieta conforme o quadro</b> — via oral se desperta, deglute e não há procedimento previsto · <b>zero</b> se rebaixado, instável ou com via aérea em risco, reavaliando <b>cedo</b> · sonda enteral se o jejum passar de 48–72 h</div>
+        <div class="rx-dose"><b>Jejum tem data e hora</b> — escrever o motivo e quando reavaliar. "Jejum" sem prazo vira desnutrição de terceira semana</div>
+        <div class="rx-dose"><b>Disfagia:</b> triagem antes da primeira colher em qualquer rebaixamento, AVC ou pós-extubação — falhou, sonda; a medicação também passa por ela</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O jejum prolongado é a prescrição mais barata de escrever e uma das mais caras de sustentar: cada dia sem aporte custa massa muscular num paciente que vai precisar dela para desmamar, sentar e andar. A pergunta de visita não é "está em jejum?", é <strong>"por que ainda está, e até quando?"</strong>.</p>
+      </div>
+    </div>
+
+    <!-- rotina 02 · Cuidados de enfermagem -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Cuidados de enfermagem — a rotina que evita a segunda doença</div>
+          <div class="rx-cond">decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Sinais vitais e rotina de UTI 2/2 h</b> (espaçar conforme estabilidade) · <b>balanço hídrico</b> e <b>diurese</b> registrados</div>
+        <div class="rx-dose"><b>Cabeceira 30–45°</b> — reduz aspiração e pneumonia associada à ventilação · abaixar só com motivo escrito (choque, procedimento)</div>
+        <div class="rx-dose"><b>Mudança de decúbito 2/2 h</b> + <b>avaliação diária da pele</b> nas proeminências (sacro, calcâneo, occipital, trocânter) · colchão de redistribuição de pressão no imóvel</div>
+        <div class="rx-dose"><b>Curativos</b> inspecionados por turno; datar a troca · <b>higiene oral</b> com antisséptico no intubado · olhos lubrificados no sedado</div>
+        <div class="rx-dose"><b>Fisioterapia</b> — fisioterapia motora e respiratória desde o primeiro dia, conforme tolerância</div>
+        <div class="rx-dose"><b>Oxigênio conforme necessidade:</b> <b>SpO₂ 90–96%</b> na maioria dos adultos · <b>88–92%</b> se houver DPOC ou risco de hipercapnia. Oxigênio é droga: tem alvo, tem dose e tem excesso</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Estes itens não competem com a doença principal — eles decidem se o paciente sai da UTI com a doença resolvida e o corpo inteiro, ou resolvido e com uma lesão por pressão em sacro que vai custar meses. Lesão por pressão, pneumonia por aspiração e fraqueza adquirida na UTI são as três complicações que a prescrição previne com linhas que ninguém lê.</p>
+        <p>A cabeceira elevada é o exemplo perfeito: é gratuita, tem efeito documentado sobre pneumonia associada à ventilação, e é a primeira coisa que se perde quando o leito é abaixado para um procedimento e ninguém sobe de volta.</p>
+      </div>
+    </div>
+
+    <!-- rotina 03 · Profilaxia de úlcera de estresse -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Profilaxia de úlcera de estresse — só com indicação</div>
+          <div class="rx-cond">não é carimbo de internação: sem fator de risco, o dano supera o benefício</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Com indicação:</b> inibidor de bomba de prótons — <b>omeprazol ou pantoprazol 40 mg EV ou VO 1×/dia</b>, conforme padronização do serviço</div>
+        <div class="rx-dose">Reavaliar a indicação <b>todo dia</b> — ela costuma sumir antes da alta da UTI, e a prescrição costuma continuar.</div>
+        <div class="rx-dose"><b>O preço de prescrever sem indicação:</b> mais pneumonia associada à ventilação, mais <em>C. difficile</em>, e a prescrição crônica que sai junto na receita de alta</div>
+        <a class="rxc-link" href="calculadoras.html#ulcera">Há indicação de profilaxia? <span>fator maior ou 2 menores</span></a>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Os dois fatores de risco independentes clássicos vêm do estudo de Cook: <strong>ventilação mecânica prolongada</strong> e <strong>coagulopatia</strong>. Fora deles, o sangramento clinicamente importante é raro o suficiente para que o dano da supressão ácida — pneumonia e colite por <em>C. difficile</em> — comece a pesar mais.</p>
+        <p>A armadilha real não é começar, é <strong>não parar</strong>. A indicação some quando o paciente extuba e a coagulação normaliza; a prescrição, não. É assim que um inibidor de bomba iniciado numa UTI vira uso crônico de anos, com a hipomagnesemia que ele causa aparecendo lá na frente, sem que ninguém ligue os dois.</p>
+        <span class="ref">Cook DJ, Fuller HD, Guyatt GH, et al. Risk factors for gastrointestinal bleeding in critically ill patients. <em>N Engl J Med.</em> 1994;330(6):377–381 — os dois fatores independentes. Os fatores menores vêm de consensos posteriores; não há escore validado único.</span>
+      </div>
+    </div>
+
+    <!-- rotina 04 · Profilaxia de TEV -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Profilaxia de TEV — pelo risco, não pelo tempo de internação</div>
+          <div class="rx-cond">"internou, prescreve" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Farmacológica, com indicação e sem sangramento:</b> <b>enoxaparina 40 mg SC 1×/dia</b> · <b>ClCr &lt; 30:</b> enoxaparina 20 mg SC 1×/dia <em>ou</em> <b>HNF 5.000 UI SC 8/8–12/12 h</b>, conforme protocolo</div>
+        <div class="rx-dose"><b>Mecânica</b> (compressão pneumática intermitente) quando a farmacológica está contraindicada — sangramento ativo, plaquetopenia grave, pós-operatório neurocirúrgico recente — ou <b>somada</b> a ela no altíssimo risco</div>
+        <div class="rx-dose"><b>Não somar</b> profilaxia a quem já está em <b>anticoagulação plena</b> — é dose dupla sem ganho</div>
+        <div class="rx-dose">Individualizar sempre: o escore diz se <em>há indicação</em>, não se <em>este</em> paciente deve receber.</div>
+        <a class="rxc-link" href="calculadoras.html#padua">Escore de Pádua <span>calcular o risco de TEV</span></a>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O escore de Pádua foi construído justamente para separar quem se beneficia de quem só recebe: no estudo original, os pacientes de alto risco sem profilaxia tiveram cerca de 11% de TEV, contra pouco mais de 2% nos de baixo risco. É essa diferença que justifica prescrever — e que explica por que prescrever para todo mundo dilui o benefício e soma sangramento.</p>
+        <p>Duas armadilhas de plantão. A primeira é a dose fixa em quem não a comporta: no ClCr abaixo de 30 a enoxaparina acumula, e a dose profilática vira quase terapêutica. A segunda é a soma silenciosa — o paciente que já recebe heparina plena por outro motivo e ganha mais 40 mg de enoxaparina porque "está internado".</p>
+        <span class="ref">Barbar S, Noventa F, Rossetto V, et al. A risk assessment model for the identification of hospitalized medical patients at risk for venous thromboembolism: the Padua Prediction Score. <em>J Thromb Haemost.</em> 2010;8(11):2450–2457.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="nao-prescrever">
+  <div class="section-label">Tão importante quanto</div>
+  <h2 class="section-title">O que <em>não</em> prescrever</h2>
+  <div class="warn-box">
+    <strong>Erros que pioram o desfecho na taquicardia ventricular.</strong>
+    <p class="box-body"><strong>Verapamil/diltiazem no QRS largo</strong> apostando em aberrância. <strong>Qualquer bloqueador de nó (incluindo amiodarona EV) na FA pré-excitada.</strong> <strong>Amiodarona na torsades.</strong> <strong>Sincronizar a polimórfica</strong> (o aparelho não dispara — desfibrile). <strong>Chocar em série sem corrigir K⁺/Mg²⁺ nem suspender os prolongadores de QT.</strong> <strong>Lidocaína profilática</strong> pós-IAM sem arritmia. E <strong>alta da TV sustentada sem investigação e sem encaminhamento</strong> — amiodarona no receituário não é plano de prevenção de morte súbita.</p>
+  </div>
+</section>
+
+<section class="section" id="fechamento">
+  <div class="tip-box" style="margin-top:32px;">
+    <strong>Prescreveu — e agora?</strong>
+    <p class="box-body">Instabilizou em qualquer ponto, o gesto está na <a class="text-link" href="taqui-instavel.html">taquiarritmia instável</a>. Se a causa é coronariana, a prescrição continua na <a class="text-link" href="sca-com-supra.html">SCA com supra</a> ou <a class="text-link" href="sca-sem-supra.html">sem supra</a>. Se o QRS largo era pré-excitação, o pós-choque é encaminhar a ablação. E com esta página, o bloco de arritmias fecha: <a class="text-link" href="tsv-estavel.html">TSV estável</a>, <a class="text-link" href="fa-flutter.html">FA/flutter</a>, <a class="text-link" href="bradiarritmias.html">bradiarritmias</a> e a instável estão a um clique.</p>
+    <a class="link-cta" href="../index.html">Levar o caso ao assistente de conduta <span aria-hidden="true">&rarr;</span></a>
+  </div>
+
+  <div class="section-label">Referências</div>
+  <span class="ref">Zeppenfeld K, et al. 2022 ESC Guidelines for the management of patients with ventricular arrhythmias and the prevention of sudden cardiac death. <em>Eur Heart J.</em> 2022;43(40):3997–4126 (doi:10.1093/eurheartj/ehac262).</span>
+  <span class="ref">Al-Khatib SM, et al. 2017 AHA/ACC/HRS Guideline for Management of Patients With Ventricular Arrhythmias and the Prevention of Sudden Cardiac Death. <em>Circulation.</em> 2018;138(13):e272–e391.</span>
+  <span class="ref">Ortiz M, et al. Randomized comparison of intravenous procainamide vs. intravenous amiodarone for the acute treatment of tolerated wide QRS tachycardia (PROCAMIO). <em>Eur Heart J.</em> 2017;38(17):1329–1335 (doi:10.1093/eurheartj/ehw230).</span>
+  <span class="ref">Panchal AR, et al. 2020 AHA Guidelines for CPR and ECC — Adult Basic and Advanced Life Support. <em>Circulation.</em> 2020;142(16 suppl 2):S366–S468.</span>
+</section>
+
+</main>
+<script src="../../assets/app.js"></script>
+<script>
+function toggleCard(card,e){
+  if(e&&e.target.tagName&&e.target.tagName.toLowerCase()==='a')return;
+  card.classList.toggle('open');
+}
+document.addEventListener('keydown',function(e){
+  if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('card-toggle')){
+    e.preventDefault();toggleCard(e.target.parentNode,e);
+  }
+});
+</script>
+</body>
+</html>

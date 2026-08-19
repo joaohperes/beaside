@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7K0CML04MR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7K0CML04MR');
+</script>
+<script src="../../assets/theme-boot.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Prescrição comentada — Trombose venosa profunda | be·aside</title>
+<meta name="robots" content="noindex, nofollow" data-beaside="status">
+<link rel="canonical" href="https://beaside.com.br/consulte/prescricoes/tvp.html">
+<meta name="description" content="Prescrição comentada da TVP: a maioria trata em casa com DOAC — as perguntas que definem quem interna, a escolha do anticoagulante pelo paciente (câncer, gestante, rim, SAF), varfarina bem feita e a duração que vira prescrição. CHEST 2021 e ASH 2020.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="be·aside">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Prescrição comentada — Trombose venosa profunda | be·aside">
+<meta property="og:description" content="A maioria trata em casa: DOAC no bolso, as duas perguntas certas — e a gestante, o câncer e o rim que mudam a escolha.">
+<meta property="og:url" content="https://beaside.com.br/consulte/prescricoes/tvp.html">
+<meta property="og:image" content="https://beaside.com.br/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prescrição comentada — Trombose venosa profunda | be·aside">
+<meta name="twitter:image" content="https://beaside.com.br/assets/og-image.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/styles.css">
+<style>
+  /* componente da prescrição comentada — usa só tokens; variante do .card.collapsible */
+  .rx-list{counter-reset:rx;display:flex;flex-direction:column;gap:14px;margin:26px 0 8px}
+  .rx-item{counter-increment:rx}
+  .rx-head{display:flex;gap:13px;align-items:flex-start;padding:16px 18px 0}
+  .rx-n{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--accent);background:rgba(var(--accent-rgb),.12);border-radius:6px;padding:3px 8px;margin-top:2px;flex-shrink:0}
+  .rx-n::before{content:counter(rx,decimal-leading-zero)}
+  .rx-title{font-size:15.5px;font-weight:600;color:var(--text);letter-spacing:-.01em;line-height:1.3}
+  .rx-cond{font-size:12.5px;color:var(--text2);margin-top:3px;line-height:1.5}
+  .rx-body{padding:2px 18px 6px}
+  .rx-dose{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;line-height:1.8;color:var(--text);background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:11px 14px;margin:12px 0 0}
+  .rx-dose+.rx-dose{margin-top:8px}
+  .rx-dose b{color:var(--accent);font-weight:600}
+  .rx-sub{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);margin:18px 0 -2px;padding-left:2px}
+  .rx-body .tag-row{margin:10px 0 0}
+  .rx-body .alert-box{margin:12px 0 0}
+  .rx-item .card-toggle{border-top:1px solid var(--border);margin-top:14px}
+  .rx-why{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);flex:1}
+  .rx-item .card-body p{font-size:13.5px;line-height:1.75;color:var(--text2);margin:0 0 10px}
+  .rx-item .card-body p strong{color:var(--text)}
+  .rx-item .card-body .ref{display:block;margin-top:10px}
+  @media(max-width:600px){.rx-head{padding:14px 14px 0}.rx-body{padding:2px 14px 6px}}
+  /* botão que leva à calculadora — a conta mora em calculadoras.html */
+  .rxc-link{display:inline-flex;align-items:center;gap:7px;margin:12px 0 0;padding:9px 13px;border-radius:9px;
+    background:var(--bg2);border:1px solid var(--border);text-decoration:none;
+    font-size:12.5px;font-weight:600;color:var(--text);letter-spacing:-.005em;
+    transition:background .15s ease,border-color .15s ease}
+  .rxc-link::before{content:'';width:15px;height:15px;flex-shrink:0;border-radius:4px;
+    border:1.5px solid var(--accent);background:rgba(var(--accent-rgb),.12)}
+  .rxc-link span{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text2)}
+  @media(hover:hover){.rxc-link:hover{background:var(--bg3);border-color:rgba(var(--accent-rgb),.45)}}
+  .rxc-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+</head>
+<body data-module="prescricoes" data-page="tvp" data-root="../../">
+<main class="main">
+
+<section class="section" id="topo">
+  <header class="page-head">
+    <div class="hero-eyebrow">Consulte · Prescrições comentadas</div>
+    <h1 class="section-title">Trombose venosa profunda</h1>
+    <p class="section-subtitle">A prescrição mais moderna da TVP cabe no bolso do paciente: a imensa maioria trata <em>em casa</em>, com DOAC, andando. O trabalho do plantão é responder duas perguntas — quem não pode ir — e escolher o anticoagulante <em>pelo paciente</em>, não pelo hábito.</p>
+  </header>
+
+  <p class="prose">Serve para a <strong>TVP de membro inferior confirmada</strong> — da panturrilha sintomática que vai para casa com a receita à phlegmasia que aciona a cirurgia vascular. O tratamento é um só (anticoagular); a arte está em <strong>onde</strong> tratar e <strong>com o quê</strong> — e é isso que esta página organiza. O irmão embólico tem <a class="text-link" href="tep.html">página própria</a>: TEP sintomático associado muda a estratificação, não esta prescrição.</p>
+
+  <div class="warn-box">
+    <strong>Antes de prescrever qualquer item desta página.</strong>
+    <p class="box-body">Condutas seguem CHEST 2021 (2ª atualização de TEV) e ASH 2020, e <strong>não substituem o protocolo do seu serviço</strong>. O preço do DOAC ainda decide condutas no SUS — a página traz o caminho com varfarina bem feito exatamente para esse cenário, sem tratá-lo como segunda classe.</p>
+  </div>
+
+  <div class="info-box">
+    <strong>Como usar.</strong>
+    <p class="box-body">A ordem é a do raciocínio: <strong>confirmar</strong>, decidir <strong>casa ou hospital</strong> (a pergunta que define o caso), escolher o anticoagulante <strong>pelo paciente</strong> — geral, câncer, gestante, rim, SAF —, o internado e suas exceções, e a <strong>duração</strong>, que é prescrição tanto quanto a dose. Dose sempre visível; o porquê em <em>"por quê &amp; armadilhas"</em>.</p>
+  </div>
+</section>
+
+<section class="section" id="prescricao">
+  <div class="section-label">A prescrição</div>
+  <h2 class="section-title">Item por item</h2>
+
+  <div class="rx-list">
+
+    <div class="section-label" style="margin-top:26px">As perguntas que definem o caso</div>
+
+    <!-- 01 · Confirmar -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Confirmar antes de anticoagular — probabilidade, D-dímero, ultrassom</div>
+          <div class="rx-cond">a perna inchada tem dez diagnósticos; só um deles leva meses de anticoagulante</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Escore de Wells (TVP)</b> primeiro · probabilidade baixa → <b>D-dímero</b>: negativo exclui, sem imagem · probabilidade moderada/alta ou D-dímero positivo → <b>USG com compressão</b> do membro</div>
+        <div class="rx-dose">Sintoma respiratório junto (dispneia, dor pleurítica, taquicardia)? → estratificar como <a class="text-link" href="tep.html">TEP</a> — é a mesma doença em outro endereço, e é o TEP que define gravidade</div>
+        <div class="rx-dose">USG indisponível agora + probabilidade alta + sangramento improvável → <b>1ª dose de anticoagulante antes da imagem</b> é legítima — documentar o raciocínio</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A TVP é diagnóstico que <strong>compromete meses</strong>: quem sai desta página sai com 3 a 6 meses de anticoagulação e um rótulo que influencia o resto da vida (item 09) — celulite, cisto de Baker roto e ruptura de fibras não merecem esse pacote. O D-dímero só serve para <em>excluir</em> em probabilidade baixa: positivo não confirma nada (sobe com infecção, pós-operatório, gestação, idade). E a exceção do fim é deliberada: com probabilidade alta, atrasar a primeira dose até o ultrassom de segunda-feira é o erro maior — uma dose de anticoagulante custa menos que uma noite de trombo crescendo.</p>
+        <span class="ref">CHEST 2021 · ASH 2020 — diagnóstico dirigido por probabilidade.</span>
+      </div>
+    </div>
+
+    <!-- 02 · Casa ou hospital -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Casa ou hospital? — a maioria vai para casa hoje</div>
+          <div class="rx-cond">internar TVP é exceção com nome e sobrenome; o padrão é a receita e a orientação</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Tratamento ambulatorial = padrão</b> (DOAC, item 03) se: sem TEP de risco, sem sangramento ativo/alto risco, função renal conhecida e adequada, e paciente que entende e consegue seguir o tratamento</div>
+        <div class="rx-sub">TVP distal isolada (panturrilha) — vigiar ou anticoagular?</div>
+        <div class="rx-dose"><b>A vigilância existe, mas é a exceção.</b> A diretriz permite <b>ultrassom seriado por 2 semanas</b> (≈ D0, D7 e D14) <b>no lugar</b> da anticoagulação — recomendação <b>fraca</b> — e <b>só</b> para quem tem, ao mesmo tempo: <b>sintomas leves</b>, <b>nenhum</b> fator de extensão da lista abaixo e <b>garantia de que volta</b> para os exames</div>
+        <div class="rx-dose"><b>Anticoagule</b> — não vigie — se houver qualquer um: <b>câncer ativo</b> · <b>TEV prévio</b> · <b>não provocada</b> · <b>paciente internado</b> · <b>D-dímero muito elevado</b> · trombo <b>extenso</b> (&gt; 5 cm de comprimento, &gt; 7 mm de diâmetro ou múltiplas veias) · trombo <b>encostando na trifurcação poplítea</b> · trombofilia · imobilidade persistente · <b>sintomas intensos</b></div>
+        <div class="rx-dose"><b>Se optar por vigiar:</b> não estendeu em 2 semanas → <b>não</b> anticoagular (recomendação <b>forte</b>) · estendeu dentro das veias distais → anticoagular · <b>estendeu para proximal → anticoagular</b> (recomendação <b>forte</b>)</div>
+        <div class="rx-dose"><b>Se optar por tratar:</b> mesmo regime da proximal e — este é o dado novo — por <b>3 meses, não 6 semanas</b>: encurtar o curso dobrou a recorrência no ensaio que comparou os dois</div>
+        <div class="alert-box warn"><div class="icon">!</div><div class="content">Na prática de beira-leito, <strong>a maioria dos pacientes de UTI e de enfermaria já está fora</strong> da janela da vigilância — internado, com câncer, imóvel ou com trombo extenso são todos critérios de anticoagular. Vigilância seriada é conduta de <strong>ambulatorial de baixo risco que você tem certeza de que volta</strong>: sem essa certeza, o "seriado" vira um único ultrassom feito e nenhum controle — que é pior que qualquer uma das duas condutas.</div></div>
+        <div class="rx-dose"><b>Interna quem tem:</b> TEP associado com critério de internação (<a class="text-link" href="tep.html">estratificação</a>) · <b>phlegmasia / TVP ílio-femoral maciça</b> (item 07) · alto risco de sangramento (plaquetopenia, coagulopatia, hepatopatia, cirurgia recente) · <b>ClCr &lt; 30 mL/min somado a outro risco</b> · dor incapacitante · contexto social que inviabiliza tratar em casa</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A pergunta que essa vigilância levanta é justa: trocar anticoagulante por ultrassom parece deixar um trombo sem tratamento. O raciocínio por trás é que a TVP distal isolada de <em>baixo risco</em> tem história natural benigna — no ensaio que randomizou justamente esses pacientes, a heparina de baixo peso não reduziu extensão nem embolia em comparação com placebo, e <strong>aumentou sangramento</strong>. Ou seja, não é "vigiar em vez de tratar por economia": é não expor a sangramento quem não ganha nada com a droga. O que torna a estratégia perigosa não é o conceito, é o cenário errado — paciente de risco, ou paciente que não volta para o segundo exame. Fora dessa janela estreita, anticoagular é a conduta certa, e se você anticoagular, o curso é de 3 meses.</p>
+        <p>Este é o item que mais mudou em vinte anos e o que o plantão menos atualizou: a TVP não complicada tratada em casa tem o <strong>mesmo desfecho</strong> da internada — com menos infecção hospitalar, menos custo e o paciente na própria cama. A internação "para observar" não observa nada que a receita não faça; o que ela faz é expor um paciente anticoagulado ao hospital. A armadilha inversa também existe: mandar para casa a phlegmasia ("é só uma TVP grande") ou o ClCr de 22 com rivaroxabana no bolso. A lista de exceções é curta de propósito — é para conferir, não para decorar.</p>
+        <span class="ref">Domicílio: Stevens SM, Woller SC, Baumann Kreuziger L, et al. <em>Chest.</em> 2021;160(6):e545–e608 · ASH 2020 · <b>TVP distal isolada:</b> CHEST 2021 (mantido na atualização de 2024) — ultrassom seriado por 2 semanas <em>em vez de</em> anticoagulação na ausência de sintomas graves e de fatores de risco de extensão (recomendação fraca, certeza moderada); sem extensão, não anticoagular (forte, moderada); extensão para proximal, anticoagular (forte, moderada) · Ensaio que sustenta não tratar o baixo risco: Righini M, et al. CACTUS. <em>Lancet Haematol.</em> 2016;3(12):e556–e562 — nadroparina não reduziu extensão nem TEP e aumentou sangramento · Duração quando se opta por tratar: Ageno W, et al. RIDTS. <em>BMJ.</em> 2022;379:e072623 — 3 meses superiores a 6 semanas de rivaroxabana na recorrência.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">Anticoagular — a escolha é pelo paciente</div>
+
+    <!-- 03 · DOAC geral -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">População geral: DOAC direto, sem heparina antes — atenção às duas fases</div>
+          <div class="rx-cond">apixabana ou rivaroxabana começam sozinhas; a dose de ataque tem prazo de validade</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Apixabana</b> 10 mg VO 12/12 h por <b>7 dias</b> → 5 mg VO 12/12 h · ou <b>rivaroxabana</b> 15 mg VO 12/12 h por <b>21 dias</b> → 20 mg VO 1×/dia (com alimento) — duração no item 09</div>
+        <div class="rx-dose">Dabigatrana e edoxabana existem, mas exigem <b>5 dias de heparina/enoxaparina antes</b> — na prática, ficam para quem já saiu do parenteral, não para começar no PS</div>
+        <div class="rx-dose">Na receita, escrever as <b>duas fases com datas</b> ("15 mg 12/12 h até __/__, depois 20 mg 1×/dia") — a transição é o ponto onde o tratamento ambulatorial quebra</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Os DOACs venceram a varfarina no TEV por praticidade com a mesma eficácia e menos sangramento maior — e apixabana e rivaroxabana têm o desenho que o PS precisa: começam <strong>sem parenteral</strong>. Mas o preço da conveniência é a fase de ataque: os primeiros dias pedem dose dobrada porque é quando o trombo mais recorre, e o erro clássico do ambulatório é o paciente que "continuou os 15 mg de 12/12" por três meses (anticoagulação dupla crônica) ou que "já passou direto para 20" na primeira semana (subtratamento no período mais perigoso). A receita com datas escritas não é zelo burocrático — é a prescrição inteira. Atenção às doses daqui: são as <strong>do TEV</strong>, diferentes das da <a class="text-link" href="fa-flutter.html">FA</a>.</p>
+        <span class="ref">CHEST 2021 — DOAC preferido sobre varfarina no TEV · EINSTEIN · AMPLIFY.</span>
+      </div>
+    </div>
+
+    <!-- 04 · Populações especiais -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">As quatro populações que mudam a escolha — câncer, gestante, rim, SAF</div>
+          <div class="rx-cond">antes de repetir a receita do item 03, conferir se o paciente é um destes quatro</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Câncer ativo:</b> apixabana 10 → 5 mg 12/12 (menor sangramento com eficácia igual) ou <b>enoxaparina 1 mg/kg SC 12/12 h</b> — a <b>varfarina não está proibida</b>: segue como alternativa quando acesso, interação, rim ou contraindicação inviabilizam as duas primeiras — preferir enoxaparina se tumor gastrointestinal/geniturinário não ressecado (DOAC sangra mais nesses sítios) · varfarina não é opção aqui</div>
+        <div class="rx-dose"><b>Gestante:</b> <b>enoxaparina 1 mg/kg SC 12/12 h</b> — a HBPM é a <b>preferida</b>; a <b>HNF</b> também serve em situações selecionadas (rim muito ruim, parto iminente, necessidade de reversão rápida). <b>DOAC e varfarina não se usam no anteparto</b>; no <b>pós-parto e na amamentação</b>, a varfarina é compatível conforme protocolo · seguimento conjunto com obstetrícia; o manejo periparto é planejado, não improvisado</div>
+        <div class="rx-dose"><b>ClCr &lt; 30 mL/min:</b> rivaroxabana e dabigatrana fora · apixabana/edoxabana fora se ClCr &lt; 25 · o caminho seguro: <b>HNF ou varfarina</b> (item 05) — o rim muda <b>agente e dose</b>; a internação se decide com os outros riscos juntos, não pelo ClCr sozinho</div>
+        <div class="rx-dose"><b>SAF (antifosfolípide), prótese valvar mecânica, estenose mitral reumática:</b> <b>varfarina</b> — DOACs falharam ou não foram testados nesses três; não é preferência, é veto</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O item 03 cobre a maioria — este cobre quem o item 03 machucaria. A <strong>gestante</strong> é a lacuna mais perigosa do plantão (rivaroxabana atravessa a placenta; varfarina é teratogênica — a enoxaparina não atravessa e por isso reina sozinha). No <strong>câncer</strong>, o detalhe é o sítio: o tumor de trato digestivo sangra sob DOAC de um jeito que a enoxaparina poupa. Na <strong>SAF</strong>, o ensaio que comparou rivaroxabana com varfarina foi interrompido por excesso de trombose arterial no braço do DOAC — é dos raros lugares onde a droga velha é comprovadamente melhor. E o rim lembra o óbvio esquecido: DOAC é droga de eliminação renal prescrita, muitas vezes, sem ninguém olhar a creatinina.</p>
+        <span class="ref">CHEST 2021 — TEV e câncer, populações especiais · ASH 2020 · CARAVAGGIO · TRAPS (SAF).</span>
+      </div>
+    </div>
+
+    <!-- 05 · Varfarina -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Varfarina bem feita — a ponte tem regra dupla, não uma</div>
+          <div class="rx-cond">quando ela é a escolha (item 04) ou a realidade (custo): fazer direito muda tudo</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Iniciar juntos:</b> varfarina 5 mg VO 1×/dia <b>+ enoxaparina 1 mg/kg SC 12/12 h</b> · começar com 2,5 mg se: &gt; 70 anos, amiodarona em uso, hepatopatia, desnutrição</div>
+        <div class="rx-dose"><b>Suspender a enoxaparina só com AS DUAS condições:</b> mínimo <b>5 dias de sobreposição</b> <em>E</em> INR ≥ 2 em duas medidas com ~24 h de intervalo — uma sem a outra não basta</div>
+        <div class="rx-dose">Alvo <b>INR 2–3</b> · dosar INR a partir do 3º dia · após estabilizar: controle mensal, com plano escrito de para onde o paciente leva o resultado</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A regra dupla existe porque o INR mente no início: a varfarina derruba primeiro o fator VII (meia-vida curta), que sobe o INR <em>antes</em> de a anticoagulação real existir — e derruba junto as proteínas C e S, criando uma janela <strong>pró-trombótica</strong> nos primeiros dias. O INR de 2,4 no terceiro dia é cosmético: suspender a enoxaparina nessa hora, como o hábito manda, deixa o paciente descoberto exatamente quando o trombo mais cresce. Os 5 dias são o tempo de os fatores II e X caírem de verdade. É a parte da varfarina que não está no INR — e é a que evita a "TVP que progrediu apesar do INR terapêutico".</p>
+        <span class="ref">CHEST 2021 · ASH 2020 — sobreposição mínima de 5 dias + INR ≥ 2.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">Quem internou</div>
+
+    <!-- 06 · Parenteral -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Parenteral do internado: enoxaparina — e as duas exceções com nome</div>
+          <div class="rx-cond">rim manda para HNF; HIT manda para fondaparinux</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>1ª escolha: enoxaparina 1 mg/kg SC 12/12 h</b> — sem bolus, sem "dose de ataque": a dose de TEV é esta e completa</div>
+        <div class="rx-dose"><b>ClCr &lt; 30 → HNF EV</b>, nomograma de TEV: bolus <b>80 UI/kg</b> → infusão <b>18 UI/kg/h</b>, TTPa 6/6 h até o alvo (1,5–2,5× o basal) — preparo, tabela de ajuste e armadilhas na <a class="text-link" href="tep.html">página do TEP</a>, que é a fonte única do nomograma</div>
+        <div class="rx-dose"><b>HIT (plaquetopenia por heparina, atual ou prévia) → <b>fondaparinux</b> SC 1×/dia — uso <b>off-label</b> nessa indicação em algumas jurisdições, com <b>hematologia e protocolo institucional</b> junto:</b> &lt; 50 kg → 5 mg · 50–100 kg → 7,5 mg · &gt; 100 kg → 10 mg — e NENHUMA heparina, nem no flush do cateter</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Dois esclarecimentos que evitam erro de dose. Primeiro: o nomograma de HNF do TEV é <strong>80/18</strong> — mais agressivo que o da SCA (60/12) — e as tabelas que misturam os dois produzem pacientes subanticoagulados; na dúvida, a página do TEP tem o esquema completo, e esta página não o duplica de propósito. Segundo: a HIT é o cenário em que a resposta reflexa ("troca por enoxaparina") mata — a enoxaparina cruza-reage com o anticorpo da HIT; o fondaparinux não. E a suspeita de HIT tem gatilho simples: plaquetas caindo &gt; 50% entre o 5º e o 10º dia de qualquer heparina — contar plaquetas é parte da prescrição de heparina, não exame de rotina dispensável.</p>
+        <span class="ref">CHEST 2021 · Raschke 1993 (nomograma por peso) — TEV 80/18.</span>
+      </div>
+    </div>
+
+    <!-- 07 · Phlegmasia -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Phlegmasia e a ílio-femoral maciça — a TVP que é emergência vascular</div>
+          <div class="rx-cond">perna azul, tensa, dolorosa, pulso sumindo: aqui o telefonema vem antes da bomba</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Reconhecer:</b> phlegmasia cerulea dolens = membro cianótico + edema tenso + dor intensa ± comprometimento arterial — é <b>isquemia por congestão venosa</b>, com membro (e vida) em risco</div>
+        <div class="rx-dose"><b>Fazer agora:</b> acionar <b>cirurgia vascular</b> · anticoagulação plena com <b>HNF EV</b> (80/18 — desligável se o paciente for para procedimento) · membro <b>elevado</b> · analgesia real (opioide se preciso) · volume se hipotenso (o membro sequestra litros)</div>
+        <div class="rx-dose">Com a vascular: <b>trombólise dirigida por cateter / trombectomia</b> é decisão do especialista para phlegmasia e ílio-femoral extensa selecionada — não é conduta de plantão isolado</div>
+
+        <div class="rx-sub">Depois do procedimento — quando entram AAS e clopidogrel</div>
+        <div class="rx-dose"><b>Só anticoagulação</b> (sem antiagregante) é o padrão de quem <b>não</b> recebeu stent: trombectomia ou trombólise isoladas não criam, por si, indicação de antiplaquetário</div>
+        <div class="rx-dose"><b>Com stent venoso</b> (ílio-femoral, May-Thurner, oclusão crônica recanalizada): a prática mais usada é <b>anticoagulação plena + antiagregante</b> — <b>AAS 100 mg/dia</b> isolado, ou <b>AAS + clopidogrel 75 mg/dia</b> por <b>1–3 meses</b> nos casos de maior risco de trombose do stent (extensão até a VCI, oclusão crônica, mau influxo, stent longo), seguidos de AAS isolado</div>
+        <div class="rx-dose"><b>Anticoagulação</b>: mantida por <b>6–12 meses</b> após o stent na maioria dos serviços — indefinida se TEV recorrente, trombofilia ou câncer ativo · a duração da <b>TVP</b> em si segue o item 09; o stent só a prolonga, nunca a encurta</div>
+        <div class="rx-dose">⚠ <b>Some o risco antes de somar as drogas:</b> anticoagulante + duplo antiagregante é sangramento de verdade. Escreva no prontuário a <b>data de parada</b> do clopidogrel no dia em que o prescreve — o esquema que ninguém revisa é o que sangra em três meses</div>
+        <div class="alert-box warn"><div class="icon">!</div><div class="content">Este é o ponto mais frágil da página, e ele vai declarado: <strong>não existe diretriz de sociedade que estabeleça o esquema antitrombótico após stent venoso</strong>. O que existe são séries retrospectivas — nas quais a patência do stent foi melhor com antiagregante somado à anticoagulação do que com anticoagulação isolada — registros internacionais e revisão de painel de especialistas. Trate como <strong>prática consensual de baixa evidência</strong>: a escolha é do cirurgião vascular que implantou, e a prescrição de enfermaria só a reproduz.</div></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Sobre o antiagregante: a lógica é a mesma do stent arterial, mas transplantada para um leito de baixa pressão e fluxo lento, onde a fibrina pesa mais que a plaqueta — por isso a anticoagulação continua sendo a base e o antiplaquetário é <em>adjuvante da patência</em>, não substituto. E é por isso também que ele não se justifica em quem não tem corpo estranho na veia: sem stent, o antiagregante só adiciona sangramento.</p>
+        <p>A phlegmasia é a única TVP em que "anticoagular e observar" pode custar o membro: a oclusão venosa total sobe a pressão no compartimento até estrangular o influxo <em>arterial</em> — gangrena venosa, choque pelo sequestro de volume, amputação. É rara o bastante para nunca ter sido vista e grave o bastante para não poder ser perdida. A HNF entra no lugar da enoxaparina pela mesma lógica da dissecção: paciente que pode estar no centro cirúrgico em duas horas precisa de anticoagulante que desliga. E a trombólise dirigida, que na TVP comum <strong>não</strong> se indica (o ATTRACT enterrou o uso rotineiro), aqui vira ferramenta de salvamento — a exceção que confirma a regra do item seguinte.</p>
+        <span class="ref">Antitrombótico após stent venoso: Kishore S, Khaja MS, Thornburg B, et al. Antithrombotic Therapy After Venous Interventions — AJR Expert Panel Narrative Review. <em>AJR Am J Roentgenol.</em> 2022;219(2):175–187 — inexistência de diretriz de sociedade, AAS/clopidogrel como agentes preferidos e prática de 6–12 meses de anticoagulação · Endo M, Jahangiri Y, Horikawa M, et al. Antiplatelet Therapy is Associated with Stent Patency After Iliocaval Venous Stenting. <em>Cardiovasc Intervent Radiol.</em> 2018;41(11):1691–1698 — patência superior com antiagregante somado à anticoagulação (retrospectivo) · Stevens SM, et al. <em>Chest.</em> 2021;160(6):e545–e608 — trombólise dirigida reservada a TVP com ameaça de membro.</span>
+      </div>
+    </div>
+
+    <!-- 08 · Kit internado -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">O kit do internado — e a ordem mais importante: andar</div>
+          <div class="rx-cond">deambulação precoce é prescrição; repouso absoluto é mito com data de validade vencida</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Deambulação precoce</b> assim que anticoagulado e a dor permitir — escrever na prescrição, porque a enfermaria ainda prescreve o contrário · membro elevado quando sentado/deitado ajuda o edema</div>
+        <div class="rx-dose">Dieta conforme quadro · <b>analgesia:</b> dipirona 1 g VO/EV 6/6 h se dor — <b>AINE não</b> (sangramento somado ao anticoagulante) · antiemético se náusea: ondansetrona 4–8 mg EV — <b>ondansetrona prolonga QT</b>: corrigir K e Mg, e considerar ECG em cardiopata, bradiarritmia, QT longo ou uso de outro prolongador (amiodarona)</div>
+        <div class="rx-dose"><b>Omeprazol 40 mg 1×/dia só com indicação</b> (não é carimbo de internação) · glicemia se diabético/crítico: alvo <b>140–180 mg/dL</b> · <b>NÃO somar profilaxia de TEV</b> — anticoagulação plena já é toda a proteção</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O repouso absoluto "para o trombo não soltar" é a prescrição zumbi desta doença: morreu na evidência há vinte anos (deambular anticoagulado <strong>não</strong> aumenta embolia — e a imobilidade que a prescrição impõe é literalmente o fator de risco que causou a TVP) e continua aparecendo em papeleta. O resto do kit segue as regras da casa: dipirona no lugar do AINE que sangraria sobre o DOAC, omeprazol com indicação em vez de reflexo, insulina com alvo em vez de escadinha cega. E a dupla proibida de sempre: paciente em dose plena com enoxaparina 40 mg "profilática" por cima é erro de conciliação que a farmácia deveria devolver — mas é o prescritor que não pode escrever.</p>
+        <span class="ref">CHEST — deambulação precoce · consenso de cuidado do internado anticoagulado.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">Depois da fase aguda — a duração é prescrição</div>
+
+    <!-- 09 · Duração e alta -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Rotular a TVP e dar prazo — provocada, não provocada, e o dia de reavaliar</div>
+          <div class="rx-cond">a pergunta "por que este paciente trombosou?" vale mais que qualquer trombofilia de painel</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Provocada por fator transitório maior</b> (cirurgia, imobilização, trauma): anticoagular <b>3 meses</b> e parar — prolongar só adiciona sangramento</div>
+        <div class="rx-dose"><b>Não provocada (ou fator persistente):</b> mínimo 3–6 meses e <b>reavaliação formal</b> — candidata a extensão com dose reduzida: <b>apixabana 2,5 mg 12/12 h</b> ou <b>rivaroxabana 10 mg 1×/dia</b> após os 6 meses iniciais · câncer ativo: enquanto o câncer estiver ativo</div>
+        <div class="rx-dose"><b>Alta com:</b> receita com fases e datas (item 03) · sinais de alarme escritos (dispneia súbita = <a class="text-link" href="tep.html">TEP</a>; sangramento) · <b>retorno ambulatorial marcado</b> — a decisão dos 3 meses precisa de um dono · painel de trombofilia: <em>não</em> no evento agudo</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O rótulo <strong>provocada/não provocada</strong> é a decisão mais barata e mais consequente da doença: define se o anticoagulante dura 3 meses ou anos, e se escreve no dia do diagnóstico, quando a história está fresca — não na consulta de revisão, quando "acho que ele tinha operado" vira chute. A TVP não provocada recorre ~10% ao ano sem tratamento; a dose estendida reduzida corta essa recorrência com sangramento próximo do placebo — mas só se alguém <em>reavaliar</em>: a receita sem retorno marcado vira anticoagulação eterna por inércia ou interrupção por conta própria. E o painel de trombofilia no agudo é duplamente inútil — o trombo e a heparina falseiam os resultados, e o resultado raramente muda a conduta dos primeiros meses.</p>
+        <span class="ref">CHEST 2021 — duração por fator provocador; extensão com dose reduzida · AMPLIFY-EXT · EINSTEIN-CHOICE.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">A rotina que sustenta o resto</div>
+
+    <!-- rotina 01 · Dieta -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Dieta</div>
+          <div class="rx-cond">a primeira linha da prescrição que todo mundo escreve no automático</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Dieta conforme o quadro</b> — via oral se desperta, deglute e não há procedimento previsto · <b>zero</b> se rebaixado, instável ou com via aérea em risco, reavaliando <b>cedo</b> · sonda enteral se o jejum passar de 48–72 h</div>
+        <div class="rx-dose"><b>Jejum tem data e hora</b> — escrever o motivo e quando reavaliar. "Jejum" sem prazo vira desnutrição de terceira semana</div>
+        <div class="rx-dose"><b>Disfagia:</b> triagem antes da primeira colher em qualquer rebaixamento, AVC ou pós-extubação — falhou, sonda; a medicação também passa por ela</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O jejum prolongado é a prescrição mais barata de escrever e uma das mais caras de sustentar: cada dia sem aporte custa massa muscular num paciente que vai precisar dela para desmamar, sentar e andar. A pergunta de visita não é "está em jejum?", é <strong>"por que ainda está, e até quando?"</strong>.</p>
+      </div>
+    </div>
+
+    <!-- rotina 02 · Cuidados de enfermagem -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Cuidados de enfermagem — a rotina que evita a segunda doença</div>
+          <div class="rx-cond">decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Sinais vitais e rotina de UTI 2/2 h</b> (espaçar conforme estabilidade) · <b>balanço hídrico</b> e <b>diurese</b> registrados</div>
+        <div class="rx-dose"><b>Cabeceira 30–45°</b> — reduz aspiração e pneumonia associada à ventilação · abaixar só com motivo escrito (choque, procedimento)</div>
+        <div class="rx-dose"><b>Mudança de decúbito 2/2 h</b> + <b>avaliação diária da pele</b> nas proeminências (sacro, calcâneo, occipital, trocânter) · colchão de redistribuição de pressão no imóvel</div>
+        <div class="rx-dose"><b>Curativos</b> inspecionados por turno; datar a troca · <b>higiene oral</b> com antisséptico no intubado · olhos lubrificados no sedado</div>
+        <div class="rx-dose"><b>Fisioterapia</b> — fisioterapia motora e respiratória desde o primeiro dia, conforme tolerância</div>
+        <div class="rx-dose"><b>Oxigênio conforme necessidade:</b> <b>SpO₂ 90–96%</b> na maioria dos adultos · <b>88–92%</b> se houver DPOC ou risco de hipercapnia. Oxigênio é droga: tem alvo, tem dose e tem excesso</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Estes itens não competem com a doença principal — eles decidem se o paciente sai da UTI com a doença resolvida e o corpo inteiro, ou resolvido e com uma lesão por pressão em sacro que vai custar meses. Lesão por pressão, pneumonia por aspiração e fraqueza adquirida na UTI são as três complicações que a prescrição previne com linhas que ninguém lê.</p>
+        <p>A cabeceira elevada é o exemplo perfeito: é gratuita, tem efeito documentado sobre pneumonia associada à ventilação, e é a primeira coisa que se perde quando o leito é abaixado para um procedimento e ninguém sobe de volta.</p>
+      </div>
+    </div>
+
+    <!-- rotina 03 · Profilaxia de úlcera de estresse -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Profilaxia de úlcera de estresse — só com indicação</div>
+          <div class="rx-cond">não é carimbo de internação: sem fator de risco, o dano supera o benefício</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Com indicação:</b> inibidor de bomba de prótons — <b>omeprazol ou pantoprazol 40 mg EV ou VO 1×/dia</b>, conforme padronização do serviço</div>
+        <div class="rx-dose">Reavaliar a indicação <b>todo dia</b> — ela costuma sumir antes da alta da UTI, e a prescrição costuma continuar.</div>
+        <div class="rx-dose"><b>O preço de prescrever sem indicação:</b> mais pneumonia associada à ventilação, mais <em>C. difficile</em>, e a prescrição crônica que sai junto na receita de alta</div>
+        <a class="rxc-link" href="calculadoras.html#ulcera">Há indicação de profilaxia? <span>fator maior ou 2 menores</span></a>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Os dois fatores de risco independentes clássicos vêm do estudo de Cook: <strong>ventilação mecânica prolongada</strong> e <strong>coagulopatia</strong>. Fora deles, o sangramento clinicamente importante é raro o suficiente para que o dano da supressão ácida — pneumonia e colite por <em>C. difficile</em> — comece a pesar mais.</p>
+        <p>A armadilha real não é começar, é <strong>não parar</strong>. A indicação some quando o paciente extuba e a coagulação normaliza; a prescrição, não. É assim que um inibidor de bomba iniciado numa UTI vira uso crônico de anos, com a hipomagnesemia que ele causa aparecendo lá na frente, sem que ninguém ligue os dois.</p>
+        <span class="ref">Cook DJ, Fuller HD, Guyatt GH, et al. Risk factors for gastrointestinal bleeding in critically ill patients. <em>N Engl J Med.</em> 1994;330(6):377–381 — os dois fatores independentes. Os fatores menores vêm de consensos posteriores; não há escore validado único.</span>
+      </div>
+    </div>
+
+    <!-- rotina 04 · Profilaxia de TEV -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Profilaxia de TEV — pelo risco, não pelo tempo de internação</div>
+          <div class="rx-cond">"internou, prescreve" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Farmacológica, com indicação e sem sangramento:</b> <b>enoxaparina 40 mg SC 1×/dia</b> · <b>ClCr &lt; 30:</b> enoxaparina 20 mg SC 1×/dia <em>ou</em> <b>HNF 5.000 UI SC 8/8–12/12 h</b>, conforme protocolo</div>
+        <div class="rx-dose"><b>Mecânica</b> (compressão pneumática intermitente) quando a farmacológica está contraindicada — sangramento ativo, plaquetopenia grave, pós-operatório neurocirúrgico recente — ou <b>somada</b> a ela no altíssimo risco</div>
+        <div class="rx-dose"><b>Não somar</b> profilaxia a quem já está em <b>anticoagulação plena</b> — é dose dupla sem ganho</div>
+        <div class="rx-dose">Individualizar sempre: o escore diz se <em>há indicação</em>, não se <em>este</em> paciente deve receber.</div>
+        <a class="rxc-link" href="calculadoras.html#padua">Escore de Pádua <span>calcular o risco de TEV</span></a>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O escore de Pádua foi construído justamente para separar quem se beneficia de quem só recebe: no estudo original, os pacientes de alto risco sem profilaxia tiveram cerca de 11% de TEV, contra pouco mais de 2% nos de baixo risco. É essa diferença que justifica prescrever — e que explica por que prescrever para todo mundo dilui o benefício e soma sangramento.</p>
+        <p>Duas armadilhas de plantão. A primeira é a dose fixa em quem não a comporta: no ClCr abaixo de 30 a enoxaparina acumula, e a dose profilática vira quase terapêutica. A segunda é a soma silenciosa — o paciente que já recebe heparina plena por outro motivo e ganha mais 40 mg de enoxaparina porque "está internado".</p>
+        <span class="ref">Barbar S, Noventa F, Rossetto V, et al. A risk assessment model for the identification of hospitalized medical patients at risk for venous thromboembolism: the Padua Prediction Score. <em>J Thromb Haemost.</em> 2010;8(11):2450–2457.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="nao-prescrever">
+  <div class="section-label">Tão importante quanto</div>
+  <h2 class="section-title">O que <em>não</em> prescrever</h2>
+  <div class="warn-box">
+    <strong>Erros que pioram o desfecho na TVP.</strong>
+    <p class="box-body"><strong>Repouso absoluto no leito</strong> — imobilidade é causa de TVP, não tratamento. <strong>Internação "para observar"</strong> a TVP não complicada. <strong>AINE</strong> por cima do anticoagulante. <strong>Profilaxia de TEV somada à dose plena.</strong> <strong>Trombólise (sistêmica ou dirigida) na TVP comum</strong> — reservada à ameaça de membro, com a vascular. <strong>Filtro de veia cava</strong> em quem pode ser anticoagulado. <strong>DOAC sem olhar a creatinina</strong> — e qualquer DOAC ou varfarina na <strong>gestante</strong>. <strong>Meia elástica "de rotina" para prevenir síndrome pós-trombótica</strong> — não previne (SOX); trate o edema sintomático, não o protocolo. <strong>D-dímero de controle</strong> para "ver se curou". E <strong>suspender a enoxaparina no primeiro INR ≥ 2</strong> — a regra é dupla (item 05).</p>
+  </div>
+</section>
+
+<section class="section" id="fechamento">
+  <div class="tip-box" style="margin-top:32px;">
+    <strong>Prescreveu — e agora?</strong>
+    <p class="box-body">O paciente de casa sai com receita datada, alarmes escritos e retorno marcado — a prescrição só termina na reavaliação dos 3 meses. Dispneia no meio do caminho é a <a class="text-link" href="tep.html">página do TEP</a>. E a phlegmasia que você reconheceu no item 07 é o telefonema mais importante desta página.</p>
+    <a class="link-cta" href="../index.html">Levar o caso ao assistente de conduta <span aria-hidden="true">&rarr;</span></a>
+  </div>
+
+  <div class="section-label">Referências</div>
+  <span class="ref">Stevens SM, Woller SC, Kreuziger LB, et al. Antithrombotic Therapy for VTE Disease: Second Update of the CHEST Guideline and Expert Panel Report. <em>Chest.</em> 2021;160(6):e545–e608.</span>
+  <span class="ref">Ortel TL, Neumann I, Ageno W, et al. American Society of Hematology 2020 guidelines for management of venous thromboembolism: treatment of deep vein thrombosis and pulmonary embolism. <em>Blood Adv.</em> 2020;4(19):4693–4738.</span>
+  <span class="ref">Raschke RA, Reilly BM, Guidry JR, et al. The weight-based heparin dosing nomogram compared with a "standard care" nomogram. <em>Ann Intern Med.</em> 1993;119(9):874–881.</span>
+  <span class="ref">Agnelli G, Buller HR, Cohen A, et al. Oral apixaban for the treatment of acute venous thromboembolism (AMPLIFY). <em>N Engl J Med.</em> 2013;369(9):799–808 (doi:10.1056/NEJMoa1302507).</span>
+  <span class="ref">Agnelli G, Buller HR, Cohen A, et al. Apixaban for extended treatment of venous thromboembolism (AMPLIFY-EXT). <em>N Engl J Med.</em> 2013;368(8):699–708 (doi:10.1056/NEJMoa1207541).</span>
+  <span class="ref">Weitz JI, Lensing AWA, Prins MH, et al. Rivaroxaban or aspirin for extended treatment of venous thromboembolism (EINSTEIN-CHOICE). <em>N Engl J Med.</em> 2017;376(13):1211–1222 (doi:10.1056/NEJMoa1700518).</span>
+  <span class="ref">Vedantham S, Goldhaber SZ, Julian JA, et al. Pharmacomechanical Catheter-Directed Thrombolysis for Deep-Vein Thrombosis (ATTRACT). <em>N Engl J Med.</em> 2017;377(23):2240–2252 (doi:10.1056/NEJMoa1615066).</span>
+  <span class="ref">Stevens SM, Woller SC, Baumann Kreuziger L, et al. Antithrombotic Therapy for VTE Disease: Compendium and Review of CHEST Guidelines 2012-2021. <em>Chest.</em> 2024;166(2):388–404 (doi:10.1016/j.chest.2024.03.003).</span>
+</section>
+
+</main>
+<script src="../../assets/app.js"></script>
+<script>
+function toggleCard(card,e){
+  if(e&&e.target.tagName&&e.target.tagName.toLowerCase()==='a')return;
+  card.classList.toggle('open');
+}
+document.addEventListener('keydown',function(e){
+  if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('card-toggle')){
+    e.preventDefault();toggleCard(e.target.parentNode,e);
+  }
+});
+</script>
+</body>
+</html>

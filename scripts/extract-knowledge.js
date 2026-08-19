@@ -59,6 +59,10 @@ const PAGES_BY_MODULE = {
     'partesmoles.html', 'snc.html', 'bacteremia.html', 'candidemia.html',
     'cdiff.html', 'neutropenia.html',
   ],
+  nefro: [
+    'fluxograma.html', 'sodio.html', 'potassio.html', 'calcio.html',
+    'magnesio-fosforo.html', 'lra.html', 'drc.html', 'acido-base.html',
+  ],
   artigos: [
     'perguntas-plantao-hemodinamica.html', 'medidas-gerais-neurocritico.html',
     'hipotensao-pos-intubacao.html', 'peep-alta-queda-pressao.html',
@@ -78,6 +82,7 @@ const EXPORT_NAME = {
   proc: 'KNOWLEDGE_PROC',
   peri: 'KNOWLEDGE_PERI',
   infecto: 'KNOWLEDGE_INFECTO',
+  nefro: 'KNOWLEDGE_NEFRO',
   artigos: 'KNOWLEDGE_ARTIGOS',
 };
 

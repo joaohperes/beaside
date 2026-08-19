@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7K0CML04MR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7K0CML04MR');
+</script>
+<script src="../../assets/theme-boot.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Prescrição comentada — IC descompensada | be·aside</title>
+<meta name="robots" content="noindex, nofollow" data-beaside="status">
+<link rel="canonical" href="https://beaside.com.br/consulte/prescricoes/ic-descompensada.html">
+<meta name="description" content="Prescrição comentada da insuficiência cardíaca descompensada: os 4 perfis de Stevenson, a estratégia diurética que descongestiona de verdade, GDMT na internação e a alta com o quarteto nas doses-alvo — AHA/ACC/HFSA 2022, ESC e SBC.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="be·aside">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Prescrição comentada — IC descompensada | be·aside">
+<meta property="og:description" content="Quente ou frio, úmido ou seco: o perfil escolhe a página — e a alta com o quarteto evita a próxima internação.">
+<meta property="og:url" content="https://beaside.com.br/consulte/prescricoes/ic-descompensada.html">
+<meta property="og:image" content="https://beaside.com.br/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prescrição comentada — IC descompensada | be·aside">
+<meta name="twitter:image" content="https://beaside.com.br/assets/og-image.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/styles.css">
+<style>
+  /* componente da prescrição comentada — usa só tokens; variante do .card.collapsible */
+  .rx-list{counter-reset:rx;display:flex;flex-direction:column;gap:14px;margin:26px 0 8px}
+  .rx-item{counter-increment:rx}
+  .rx-head{display:flex;gap:13px;align-items:flex-start;padding:16px 18px 0}
+  .rx-n{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--accent);background:rgba(var(--accent-rgb),.12);border-radius:6px;padding:3px 8px;margin-top:2px;flex-shrink:0}
+  .rx-n::before{content:counter(rx,decimal-leading-zero)}
+  .rx-title{font-size:15.5px;font-weight:600;color:var(--text);letter-spacing:-.01em;line-height:1.3}
+  .rx-cond{font-size:12.5px;color:var(--text2);margin-top:3px;line-height:1.5}
+  .rx-body{padding:2px 18px 6px}
+  .rx-dose{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;line-height:1.8;color:var(--text);background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:11px 14px;margin:12px 0 0}
+  .rx-dose+.rx-dose{margin-top:8px}
+  .rx-dose b{color:var(--accent);font-weight:600}
+  .rx-sub{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);margin:18px 0 -2px;padding-left:2px}
+  .rx-body .tag-row{margin:10px 0 0}
+  .rx-body .alert-box{margin:12px 0 0}
+  .rx-item .card-toggle{border-top:1px solid var(--border);margin-top:14px}
+  .rx-why{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);flex:1}
+  .rx-item .card-body p{font-size:13.5px;line-height:1.75;color:var(--text2);margin:0 0 10px}
+  .rx-item .card-body p strong{color:var(--text)}
+  .rx-item .card-body .ref{display:block;margin-top:10px}
+  @media(max-width:600px){.rx-head{padding:14px 14px 0}.rx-body{padding:2px 14px 6px}}
+  /* botão que leva à calculadora — a conta mora em calculadoras.html */
+  .rxc-link{display:inline-flex;align-items:center;gap:7px;margin:12px 0 0;padding:9px 13px;border-radius:9px;
+    background:var(--bg2);border:1px solid var(--border);text-decoration:none;
+    font-size:12.5px;font-weight:600;color:var(--text);letter-spacing:-.005em;
+    transition:background .15s ease,border-color .15s ease}
+  .rxc-link::before{content:'';width:15px;height:15px;flex-shrink:0;border-radius:4px;
+    border:1.5px solid var(--accent);background:rgba(var(--accent-rgb),.12)}
+  .rxc-link span{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text2)}
+  @media(hover:hover){.rxc-link:hover{background:var(--bg3);border-color:rgba(var(--accent-rgb),.45)}}
+  .rxc-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+</head>
+<body data-module="prescricoes" data-page="ic-descompensada" data-root="../../">
+<main class="main">
+
+<section class="section" id="topo">
+  <header class="page-head">
+    <div class="hero-eyebrow">Consulte · Prescrições comentadas</div>
+    <h1 class="section-title">IC descompensada</h1>
+    <p class="section-subtitle">Duas perguntas de beira de leito — está congesto? está perfundindo? — dividem a IC descompensada em quatro perfis, e cada perfil tem uma prescrição. Esta página cuida da internação inteira: do diurético certo até a alta que evita a volta.</p>
+  </header>
+
+  <p class="prose">Serve para a <strong>IC descompensada internada</strong> — o quente-úmido de enfermaria que chegou congesto sem estar se afogando, o frio-seco enganoso, e a alta de todos eles. As crises têm páginas próprias: dispneia dramática com congestão é <a class="text-link" href="eap.html">edema agudo de pulmão</a>; má perfusão é <a class="text-link" href="choque-cardiogenico.html">choque cardiogênico</a>.</p>
+
+  <div class="warn-box">
+    <strong>Antes de prescrever qualquer item desta página.</strong>
+    <p class="box-body">Doses seguem AHA/ACC/HFSA 2022, ESC 2021 e SBC 2021, e <strong>não substituem o protocolo do seu serviço</strong>. Na titulação do quarteto, as doses-alvo são as dos ensaios — chegar nelas é trabalho de semanas, entre internação e ambulatório, não de uma folha.</p>
+  </div>
+
+  <div class="info-box">
+    <strong>Como usar.</strong>
+    <p class="box-body">A ordem é a do raciocínio: <strong>classificar o perfil</strong> (que escolhe a página), descongestionar o quente-úmido <strong>de verdade</strong>, manejar o frio-seco, e montar a alta com o quarteto. Dose sempre visível; o porquê em <em>"por quê &amp; armadilhas"</em>.</p>
+  </div>
+</section>
+
+<section class="section" id="prescricao">
+  <div class="section-label">A prescrição</div>
+  <h2 class="section-title">Item por item</h2>
+
+  <div class="rx-list">
+
+    <div class="section-label" style="margin-top:26px">Classificar — duas perguntas, quatro perfis</div>
+
+    <!-- 01 · Perfis -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Congesto? Perfundindo? — o perfil escolhe a prescrição</div>
+          <div class="rx-cond">exame físico + POCUS respondem em minutos (Stevenson A/B/C/L)</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Quente e seco (A):</b> não é a doença desta internação — otimizar terapia oral (itens 06–07) e caçar por que o paciente veio</div>
+        <div class="rx-dose"><b>Quente e úmido (B):</b> o mais comum — descongestionar (itens 02–04) · se a forma é EAP dramático → <a class="text-link" href="eap.html">página do EAP</a></div>
+        <div class="rx-dose"><b>Frio e úmido (C):</b> má perfusão + congestão → <a class="text-link" href="choque-cardiogenico.html">choque cardiogênico</a> · <b>Frio e seco (L):</b> item 05</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Os perfis de Stevenson sobrevivem há décadas porque cabem em duas perguntas de beira de leito e mudam a droga inteira: o úmido precisa perder volume, o frio precisa de perfusão, e confundi-los inverte o tratamento (diurético no frio-seco piora; volume no quente-úmido afoga). O POCUS aposentou a dúvida: linhas B, VCI e a cara do VE respondem em três janelas o que o estetoscópio sugeria. E vale reclassificar todo dia — perfil é fotografia, não certidão.</p>
+        <span class="ref">AHA/ACC/HFSA 2022 · ESC 2021 · perfis clínicos de Stevenson.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">O quente-úmido de enfermaria — descongestionar de verdade</div>
+
+    <!-- 02 · Furosemida -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Furosemida EV — dose de descongestão, metas de papel e balança</div>
+          <div class="rx-cond">a internação existe para tirar litros; prescreva como quem vai conferir</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Sem uso prévio:</b> furosemida 20–40 mg EV · <b>usuário crônico:</b> 1–2,5× a dose diária domiciliar, EV, dividida 2–3×/dia (DOSE)</div>
+        <div class="rx-dose"><b>Reavaliar em 2–6 h</b> pela diurese: resposta insuficiente → <b>dobrar</b> a dose (não repetir a mesma) · metas diárias: <b>peso</b> (mesma balança, mesmo horário), <b>balanço negativo</b> guiado pela congestão, diurese medida · <b>K⁺/Mg²⁺/creatinina diários</b> (repor K ≥ 4,0, Mg ≥ 2,0)</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O diurético tem limiar: dose abaixo dele é zero, não "metade" — por isso resposta ruim se trata <strong>dobrando</strong>, nunca repetindo. E a creatinina que sobe 0,3 durante descongestão eficaz não é ordem de parada: hemoconcentração com paciente urinando e desinchando costuma marcar sucesso, não lesão — o erro histórico das enfermarias é frear o diurético no meio do caminho e dar alta a um paciente "melhorzinho" e ainda cheio. Congestão residual na alta é o maior preditor de reinternação que existe.</p>
+        <span class="ref">DOSE (Felker GM, et al. <em>N Engl J Med.</em> 2011;364(9):797–805) — os braços foram <b>1×</b> e <b>2,5× a dose oral prévia</b>, não mg/kg · ESC 2021 — 20–40 mg EV no virgem e ao menos a dose oral equivalente no usuário crônico · Mullens W, et al. HFA position statement sobre diuréticos. <em>Eur J Heart Fail.</em> 2019;21(2):137–155 (doi:10.1002/ejhf.1369) · AHA/ACC/HFSA 2022.</span>
+      </div>
+    </div>
+
+    <!-- 03 · Resistência -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Resistência diurética — a escada antes de desistir</div>
+          <div class="rx-cond">urina pouco apesar de dose adequada: há degraus antes do "nefrologista amanhã"</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>1º</b> dobrar e fracionar (furosemida 2–3×/dia EV) ou <b>infusão contínua</b> (ex.: bolus + 5–20 mg/h) · <b>2º</b> <b>bloqueio sequencial do néfron:</b> associar <b>hidroclorotiazida</b> 25–50 mg VO (dar 30–60 min antes da furosemida é <b>estratégia local</b>, não requisito — o essencial é o bloqueio sequencial com Na, K, Mg, PA e função renal vigiados) · <b>3º</b> reavaliar o diagnóstico: perfil ainda é quente? PA? albumina? rim?</div>
+        <div class="alert-box warn"><div class="icon">!</div><div class="content"><strong>O combo furosemida + tiazídico despenca potássio e magnésio</strong> — eletrólitos 1–2×/dia enquanto durar, reposição agressiva, e atenção à hiponatremia. É escada de dias contados, não esquema de manutenção.</div></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O néfron cronicamente exposto à furosemida hipertrofia o túbulo distal e passa a reabsorver ali o sódio que escapou da alça — o tiazídico bloqueia exatamente esse escape, e a dupla destrava diureses surpreendentes. O preço é eletrolítico e cobra vigilância. Se nem a escada resolve, a pergunta muda: é resistência diurética ou é <strong>perfil errado</strong> — um frio-úmido disfarçado, rim sem pressão de perfusão, que precisa da página do <a class="text-link" href="choque-cardiogenico.html">choque</a> antes de mais alça.</p>
+        <span class="ref">AHA/ACC/HFSA 2022 · ESC 2021 — congestão refratária.</span>
+      </div>
+    </div>
+
+    <!-- 04 · GDMT internação -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">A terapia de sobrevida não espera a alta</div>
+          <div class="rx-cond">manter o que dá, começar o que falta — ainda no hospital</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Manter</b> betabloqueador e IECA/BRA/INRA do paciente compensado que descongestiona bem (reduzir/segurar só por hipotensão, choque ou rim piorando)</div>
+        <div class="rx-dose"><b>Iniciar SGLT2i ainda internado</b>, estabilizado: dapagliflozina 10 mg ou empagliflozina 10 mg VO 1×/dia (EMPULSE) — vale para FE reduzida <em>e</em> preservada · segurar se cetoacidose prévia, jejum prolongado ou DM1</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A internação é a maior janela terapêutica da vida do paciente com IC — e o hábito de "suspender tudo e deixar o ambulatório resolver" desperdiça-a duas vezes: a retirada do betabloqueador em quem tolerava piora desfecho, e o remédio não iniciado no hospital tem chance enorme de nunca ser iniciado. O EMPULSE mostrou que o SGLT2i começado na internação já traz benefício em 90 dias — e de quebra ajuda a diurese. Paciente que sai do hospital com o esquema andando chega vivo à consulta que o titula.</p>
+        <span class="ref">EMPULSE (Nat Med 2022) · AHA/ACC/HFSA 2022 · ESC 2021.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">O frio e seco — o perfil enganoso</div>
+
+    <!-- 05 · Perfil L -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Perfil L — volume contado, e honestidade se não melhorar</div>
+          <div class="rx-cond">mal perfundido sem congestão: às vezes é só diurético demais</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Prova de volume:</b> Ringer lactato ou SF 250 mL EV, reavaliando perfusão E congestão após cada alíquota · frequentemente o gatilho é <b>excesso de diurético/vasodilatador</b> — reduzir e reavaliar</div>
+        <div class="rx-dose">Congestionou sem perfundir → parar volume: o paciente se declarou <b>frio-úmido</b> — inotrópico por fenótipo e o resto na página do <a class="text-link" href="choque-cardiogenico.html">choque cardiogênico</a></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O frio-seco verdadeiro é raro — e muitas vezes iatrogênico: o paciente aderente que secou demais na furosemida do mês passado. Por isso a prova de volume pequena tem dupla função: tratar o depletado e <em>desmascarar</em> o falso-seco, que congestiona na segunda alíquota e revela que o problema sempre foi bomba. A honestidade de parar o soro nesse momento — em vez de "completar os 500" — é o que separa a prova terapêutica do afogamento iatrogênico.</p>
+        <span class="ref">AHA/ACC/HFSA 2022 · perfis de Stevenson.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">A alta que evita a próxima internação</div>
+
+    <!-- 06 · Critérios de alta -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Alta com critérios — não com pressa</div>
+          <div class="rx-cond">o dia da alta é o dia de maior risco da doença</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose">Antes de assinar: <b>congestão resolvida na leitura conjunta</b> — sintomas, exame, peso, diurese, necessidade de O₂, função renal e eletrólitos, e resposta à dose oral. <b>VCI normal sozinha não é critério de alta</b> · <b>estabilidade em diurético VO</b> na dose que vai para casa (as 24 h de observação são protocolo local, não regra universal) · função renal/eletrólitos estáveis · quarteto iniciado · <b>consulta de retorno em 7–14 dias</b> marcada, não sugerida</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Um quarto das reinternações de IC acontece em 30 dias, e a maioria carrega a mesma etiqueta: saiu congesto, saiu sem o retorno marcado, ou saiu com a transição EV→VO feita na porta. As 24 h em diurético oral são o teste de estrada; o peso seco anotado na alta é o instrumento que o próprio paciente vai usar em casa ("ganhou 2 kg em 3 dias → ligar"); e a consulta precoce é a intervenção com melhor custo-benefício da doença — é nela que o quarteto sobe de dose.</p>
+        <span class="ref">AHA/ACC/HFSA 2022 · ESC 2021 — transição de cuidado.</span>
+      </div>
+    </div>
+
+    <!-- 07 · Quarteto -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">O quarteto da FE reduzida — dose de início e dose-alvo</div>
+          <div class="rx-cond">FEVE ≤ 40%: quatro classes que mudam mortalidade, tituladas até o alvo dos ensaios</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Betabloqueador:</b> carvedilol 3,125 mg 12/12 h → alvo 25 mg 12/12 h (50 se ≥ 85 kg) · succinato de metoprolol 12,5–25 mg/dia → alvo 200 mg/dia · bisoprolol 1,25 mg/dia → alvo 10 mg/dia</div>
+        <div class="rx-dose"><b>IECA ou BRA primeiro</b> (acesso e prática): <b>enalapril 2,5–5 mg → 10–20 mg VO 12/12 h</b> · <b>losartana 25–50 → 100–150 mg/dia</b> se tosse/intolerância a IECA · captopril 12,5 → 50 mg 8/8 h quando se quer titulação rápida na internação</div>
+        <div class="rx-dose"><b>Trocar para sacubitril/valsartana</b> quando persistem sintomas apesar de IECA/BRA otimizado na <b>ICFEr (FEVE ≤ 40%</b> — o PARADIGM-HF incluiu ≤ 40% e emendou para ≤ 35%<b>)</b>: iniciar <b>49/51 mg 12/12 h</b> → alvo 97/103 · <b>24/26 mg 12/12 h</b> se PA limítrofe, eGFR &lt; 30 ou Child-Pugh B (C: não recomendado) · <b>washout de 36 h do IECA</b> · contraindicado com angioedema prévio</div>
+        <div class="rx-dose">Divergência declarada: a <b>ACC/AHA 2022</b> admite o INRA já de início (classe 1); a <b>ESC 2021</b> o coloca como substituto do IECA no sintomático. Esta página segue a sequência de acesso brasileiro — IECA/BRA primeiro, INRA na persistência</div>
+        <div class="rx-dose"><b>Espironolactona</b> 25 mg/dia (eplerenona 25→50 mg se ginecomastia) — iniciar com <b>eGFR &gt; 30</b> e <b>K &lt; 5,0</b>, com K e creatinina programados no início e após cada titulação · <b>SGLT2i:</b> dapagliflozina ou empagliflozina 10 mg/dia</div>
+        <div class="rx-dose"><b>FE preservada (≥ 50%):</b> SGLT2i é a opção prognóstica mais forte — mas <b>não literalmente "para todos"</b>: rever eGFR, risco de cetoacidose, jejum ou doença aguda, infecção genital/urinária e hemodinâmica + diurético conforme congestão; espironolactona/INRA considerados na faixa &lt; 55–60%</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Cada classe do quarteto reduz mortalidade por caminho próprio, e o benefício soma — por isso a estratégia moderna é <strong>as quatro cedo em dose baixa</strong>, titulando depois, em vez de esgotar uma antes de abrir a próxima. Dois detalhes de segurança que a pressa engole: valsartana na IC é de 12/12 h (a dose única diária é regime de hipertensão), e a troca IECA→sacubitril/valsartana exige as 36 horas de intervalo — angioedema pela soma de bradicinina é raro e desastroso. Betabloqueador não se <em>inicia</em> em dose cheia no recém-congesto: começa homeopático e sobe a cada 2 semanas.</p>
+        <span class="ref">AHA/ACC/HFSA 2022 · ESC 2021 · SBC 2021 · PARADIGM-HF · EMPEROR/DELIVER (FE preservada).</span>
+      </div>
+    </div>
+
+    <!-- 08 · Kit -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Kit do internado — com balança no centro</div>
+          <div class="rx-cond">o padrão das outras páginas, ajustado ao congesto</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Dieta hipossódica</b> · restrição hídrica individualizada (ex.: 1.000–1.500 mL/dia se hiponatremia/congestão refratária — não é dogma universal) · <b>peso diário + balanço hídrico</b> como sinais vitais · <b>profilaxia de TEV</b> (enoxaparina 40 mg SC 1×/dia; ClCr &lt; 30: HNF 5.000 UI 8/8–12/12 h) se sem anticoagulação plena · <b>HGT 6/6 h</b> se DM/jejum/crítico (alvo 140–180, protocolo do serviço) · monitorização conforme gravidade</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Na IC internada, a balança é o monitor mais barato do hospital — e o mais sabotado: horário diferente, roupa diferente, balança diferente, e o "perdeu 1 kg" vira ruído. Prescreva o ritual, não só a pesagem. E o detalhe de farmácia que descompensa gente: <strong>soro de manutenção "de rotina"</strong> correndo a 100 mL/h devolve à veia o que a furosemida tirou — paciente congesto não tem soro de manutenção, tem balanço vigiado.</p>
+        <span class="ref">ADA 2026 (glicemia hospitalar) · ESPEN 2023 · rotina do internado clínico.</span>
+      </div>
+    </div>
+
+    <!-- ordem de início -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">A ordem de início — depois da estabilidade, sem esperar o ambulatório</div>
+          <div class="rx-cond">não há ensaio comparando sequências; o que tem evidência forte é começar cedo e titular rápido com revisão precoce</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Sequência prática na internação</b>, estabilizado (sem vasopressor, descongestionando): <b>1)</b> manter/retomar o <b>betabloqueador</b> que a descompensação não contraindicou · <b>2)</b> <b>SGLT2i</b> ainda internado (EMPULSE) · <b>3)</b> <b>IECA/BRA</b> quando PA e rim permitirem · <b>4)</b> <b>espironolactona</b> antes da alta, com K e creatinina programados</div>
+        <div class="rx-dose"><b>Titulação rápida com revisão precoce:</b> subir as doses nas primeiras <b>2–6 semanas</b>, com consulta e laboratório na <b>1ª–2ª semana</b> pós-alta — é o desenho do STRONG-HF, que reduziu reinternação e morte em 180 dias com estratégia de alta intensidade</div>
+        <div class="rx-dose">A ordem exata entre as classes é <b>consenso, não ensaio</b> — o que o dado sustenta é: <b>as quatro cedo em dose baixa &gt; uma no alvo</b>, e revisão marcada antes da alta</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O STRONG-HF é a melhor evidência disponível sobre <em>como</em> sair da internação: titulação intensiva precoce com quatro revisões em seis semanas foi interrompido por benefício — menos morte e reinternação — contra o cuidado usual. Ele não testou uma ordem específica de classes; testou a <strong>pressa organizada</strong>. A ordem sugerida acima é operacional: começa pelo que o paciente já usava, soma o que não mexe em PA (SGLT2i), e deixa por último o que exige laboratório de controle.</p>
+        <span class="ref">Mebazaa A, Davison B, Chioncel O, et al. Safety, tolerability and efficacy of up-titration of guideline-directed medical therapies for acute heart failure (STRONG-HF). <em>Lancet.</em> 2022;400(10367):1938–1952 · Voors AA, et al. EMPULSE. <em>Nat Med.</em> 2022;28:568–574.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">A rotina que sustenta o resto</div>
+
+    <!-- rotina 01 · Dieta -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Dieta</div>
+          <div class="rx-cond">a primeira linha da prescrição que todo mundo escreve no automático</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Dieta conforme o quadro</b> — via oral se desperta, deglute e não há procedimento previsto · <b>zero</b> se rebaixado, instável ou com via aérea em risco, reavaliando <b>cedo</b> · sonda enteral se o jejum passar de 48–72 h</div>
+        <div class="rx-dose"><b>Jejum tem data e hora</b> — escrever o motivo e quando reavaliar. "Jejum" sem prazo vira desnutrição de terceira semana</div>
+        <div class="rx-dose"><b>Disfagia:</b> triagem antes da primeira colher em qualquer rebaixamento, AVC ou pós-extubação — falhou, sonda; a medicação também passa por ela</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O jejum prolongado é a prescrição mais barata de escrever e uma das mais caras de sustentar: cada dia sem aporte custa massa muscular num paciente que vai precisar dela para desmamar, sentar e andar. A pergunta de visita não é "está em jejum?", é <strong>"por que ainda está, e até quando?"</strong>.</p>
+      </div>
+    </div>
+
+    <!-- rotina 02 · Cuidados de enfermagem -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Cuidados de enfermagem — a rotina que evita a segunda doença</div>
+          <div class="rx-cond">decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Sinais vitais e rotina de UTI 2/2 h</b> (espaçar conforme estabilidade) · <b>balanço hídrico</b> e <b>diurese</b> registrados</div>
+        <div class="rx-dose"><b>Cabeceira 30–45°</b> — reduz aspiração e pneumonia associada à ventilação · abaixar só com motivo escrito (choque, procedimento)</div>
+        <div class="rx-dose"><b>Mudança de decúbito 2/2 h</b> + <b>avaliação diária da pele</b> nas proeminências (sacro, calcâneo, occipital, trocânter) · colchão de redistribuição de pressão no imóvel</div>
+        <div class="rx-dose"><b>Curativos</b> inspecionados por turno; datar a troca · <b>higiene oral</b> com antisséptico no intubado · olhos lubrificados no sedado</div>
+        <div class="rx-dose"><b>Fisioterapia</b> — fisioterapia motora e respiratória desde o primeiro dia, conforme tolerância</div>
+        <div class="rx-dose"><b>Oxigênio conforme necessidade:</b> <b>SpO₂ 90–96%</b> na maioria dos adultos · <b>88–92%</b> se houver DPOC ou risco de hipercapnia. Oxigênio é droga: tem alvo, tem dose e tem excesso</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Estes itens não competem com a doença principal — eles decidem se o paciente sai da UTI com a doença resolvida e o corpo inteiro, ou resolvido e com uma lesão por pressão em sacro que vai custar meses. Lesão por pressão, pneumonia por aspiração e fraqueza adquirida na UTI são as três complicações que a prescrição previne com linhas que ninguém lê.</p>
+        <p>A cabeceira elevada é o exemplo perfeito: é gratuita, tem efeito documentado sobre pneumonia associada à ventilação, e é a primeira coisa que se perde quando o leito é abaixado para um procedimento e ninguém sobe de volta.</p>
+      </div>
+    </div>
+
+    <!-- rotina 03 · Profilaxia de úlcera de estresse -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Profilaxia de úlcera de estresse — só com indicação</div>
+          <div class="rx-cond">não é carimbo de internação: sem fator de risco, o dano supera o benefício</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Com indicação:</b> inibidor de bomba de prótons — <b>omeprazol ou pantoprazol 40 mg EV ou VO 1×/dia</b>, conforme padronização do serviço</div>
+        <div class="rx-dose">Reavaliar a indicação <b>todo dia</b> — ela costuma sumir antes da alta da UTI, e a prescrição costuma continuar.</div>
+        <div class="rx-dose"><b>O preço de prescrever sem indicação:</b> mais pneumonia associada à ventilação, mais <em>C. difficile</em>, e a prescrição crônica que sai junto na receita de alta</div>
+        <a class="rxc-link" href="calculadoras.html#ulcera">Há indicação de profilaxia? <span>fator maior ou 2 menores</span></a>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Os dois fatores de risco independentes clássicos vêm do estudo de Cook: <strong>ventilação mecânica prolongada</strong> e <strong>coagulopatia</strong>. Fora deles, o sangramento clinicamente importante é raro o suficiente para que o dano da supressão ácida — pneumonia e colite por <em>C. difficile</em> — comece a pesar mais.</p>
+        <p>A armadilha real não é começar, é <strong>não parar</strong>. A indicação some quando o paciente extuba e a coagulação normaliza; a prescrição, não. É assim que um inibidor de bomba iniciado numa UTI vira uso crônico de anos, com a hipomagnesemia que ele causa aparecendo lá na frente, sem que ninguém ligue os dois.</p>
+        <span class="ref">Cook DJ, Fuller HD, Guyatt GH, et al. Risk factors for gastrointestinal bleeding in critically ill patients. <em>N Engl J Med.</em> 1994;330(6):377–381 — os dois fatores independentes. Os fatores menores vêm de consensos posteriores; não há escore validado único.</span>
+      </div>
+    </div>
+
+    <!-- rotina 04 · Profilaxia de TEV -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Profilaxia de TEV — pelo risco, não pelo tempo de internação</div>
+          <div class="rx-cond">"internou, prescreve" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Farmacológica, com indicação e sem sangramento:</b> <b>enoxaparina 40 mg SC 1×/dia</b> · <b>ClCr &lt; 30:</b> enoxaparina 20 mg SC 1×/dia <em>ou</em> <b>HNF 5.000 UI SC 8/8–12/12 h</b>, conforme protocolo</div>
+        <div class="rx-dose"><b>Mecânica</b> (compressão pneumática intermitente) quando a farmacológica está contraindicada — sangramento ativo, plaquetopenia grave, pós-operatório neurocirúrgico recente — ou <b>somada</b> a ela no altíssimo risco</div>
+        <div class="rx-dose"><b>Não somar</b> profilaxia a quem já está em <b>anticoagulação plena</b> — é dose dupla sem ganho</div>
+        <div class="rx-dose">Individualizar sempre: o escore diz se <em>há indicação</em>, não se <em>este</em> paciente deve receber.</div>
+        <a class="rxc-link" href="calculadoras.html#padua">Escore de Pádua <span>calcular o risco de TEV</span></a>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O escore de Pádua foi construído justamente para separar quem se beneficia de quem só recebe: no estudo original, os pacientes de alto risco sem profilaxia tiveram cerca de 11% de TEV, contra pouco mais de 2% nos de baixo risco. É essa diferença que justifica prescrever — e que explica por que prescrever para todo mundo dilui o benefício e soma sangramento.</p>
+        <p>Duas armadilhas de plantão. A primeira é a dose fixa em quem não a comporta: no ClCr abaixo de 30 a enoxaparina acumula, e a dose profilática vira quase terapêutica. A segunda é a soma silenciosa — o paciente que já recebe heparina plena por outro motivo e ganha mais 40 mg de enoxaparina porque "está internado".</p>
+        <span class="ref">Barbar S, Noventa F, Rossetto V, et al. A risk assessment model for the identification of hospitalized medical patients at risk for venous thromboembolism: the Padua Prediction Score. <em>J Thromb Haemost.</em> 2010;8(11):2450–2457.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="nao-prescrever">
+  <div class="section-label">Tão importante quanto</div>
+  <h2 class="section-title">O que <em>não</em> prescrever</h2>
+  <div class="warn-box">
+    <strong>Erros que pioram o desfecho na IC descompensada.</strong>
+    <p class="box-body"><strong>Soro de manutenção de rotina</strong> no congesto. <strong>Furosemida repetida na mesma dose</strong> que não funcionou (dobra-se). <strong>Suspender o quarteto por reflexo</strong> no paciente que o tolerava. <strong>Parar a descongestão pela creatinina</strong> que subiu 0,3 em quem urina e desincha. <strong>Alta com congestão residual</strong> e sem retorno marcado. <strong>Valsartana 1×/dia na IC.</strong> <strong>Sacubitril/valsartana sem as 36 h de washout do IECA.</strong> <strong>AINEs.</strong> E <strong>diurético no frio-seco</strong> — o perfil errado inverte a droga.</p>
+  </div>
+</section>
+
+<section class="section" id="fechamento">
+  <div class="tip-box" style="margin-top:32px;">
+    <strong>Prescreveu — e agora?</strong>
+    <p class="box-body">Se o quadro escalar para o afogamento agudo, a conduta é a do <a class="text-link" href="eap.html">EAP</a>; se esfriar, a do <a class="text-link" href="choque-cardiogenico.html">choque cardiogênico</a>. FA descompensando a IC cruza com a <a class="text-link" href="fa-flutter.html">página da FA</a> (lembrando: diltiazem/verapamil proibidos na FE reduzida). E a causa da descompensação — infecção, isquemia, má adesão, arritmia — merece nome na evolução: IC que descompensa "do nada" é investigação incompleta.</p>
+    <a class="link-cta" href="../index.html">Levar o caso ao assistente de conduta <span aria-hidden="true">&rarr;</span></a>
+  </div>
+
+  <div class="section-label">Referências</div>
+  <span class="ref">Heidenreich PA, et al. 2022 AHA/ACC/HFSA Guideline for the Management of Heart Failure. <em>Circulation.</em> 2022;145(18):e895–e1032.</span>
+  <span class="ref">McDonagh TA, et al. 2021 ESC Guidelines for the diagnosis and treatment of acute and chronic heart failure. <em>Eur Heart J.</em> 2021;42(36):3599–3726 (doi:10.1093/eurheartj/ehab368) — e atualização focada 2023.</span>
+  <span class="ref">Marcondes-Braga FG, et al. Atualização de Tópicos Emergentes da Diretriz Brasileira de Insuficiência Cardíaca — 2021. <em>Arq Bras Cardiol.</em> 2021;116(6):1174–1212 (doi:10.36660/abc.20210367).</span>
+  <span class="ref">Felker GM, et al. Diuretic strategies in patients with acute decompensated heart failure (DOSE). <em>N Engl J Med.</em> 2011;364:797–805.</span>
+  <span class="ref">Voors AA, et al. The SGLT2 inhibitor empagliflozin in patients hospitalized for acute heart failure (EMPULSE). <em>Nat Med.</em> 2022;28:568–574.</span>
+  <span class="ref">Kittleson MM, et al. 2023 ACC Expert Consensus Decision Pathway on Management of Heart Failure With Preserved Ejection Fraction. <em>J Am Coll Cardiol.</em> 2023;81(18):1835–1878.</span>
+  <span class="ref">McMurray JJV, Packer M, Desai AS, et al. Angiotensin–neprilysin inhibition versus enalapril in heart failure (PARADIGM-HF). <em>N Engl J Med.</em> 2014;371(11):993–1004 (doi:10.1056/NEJMoa1409077).</span>
+  <span class="ref">Anker SD, Butler J, Filippatos G, et al. Empagliflozin in Heart Failure with a Preserved Ejection Fraction (EMPEROR-Preserved). <em>N Engl J Med.</em> 2021;385(16):1451–1461 (doi:10.1056/NEJMoa2107038).</span>
+  <span class="ref">Solomon SD, McMurray JJV, Claggett B, et al. Dapagliflozin in Heart Failure with Mildly Reduced or Preserved Ejection Fraction (DELIVER). <em>N Engl J Med.</em> 2022;387(12):1089–1098 (doi:10.1056/NEJMoa2206286).</span>
+  <span class="ref">McDonagh TA, Metra M, Adamo M, et al. 2023 Focused Update of the 2021 ESC Guidelines for the diagnosis and treatment of acute and chronic heart failure. <em>Eur Heart J.</em> 2023;44(37):3627–3639 (doi:10.1093/eurheartj/ehad195).</span>
+</section>
+
+</main>
+<script src="../../assets/app.js"></script>
+<script>
+function toggleCard(card,e){
+  if(e&&e.target.tagName&&e.target.tagName.toLowerCase()==='a')return;
+  card.classList.toggle('open');
+}
+document.addEventListener('keydown',function(e){
+  if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('card-toggle')){
+    e.preventDefault();toggleCard(e.target.parentNode,e);
+  }
+});
+</script>
+</body>
+</html>

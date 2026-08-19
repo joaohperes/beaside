@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7K0CML04MR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7K0CML04MR');
+</script>
+<script src="../../assets/theme-boot.js"></script>
+<meta charset="UTF-8">
+<title>Prescrição comentada — Exacerbação aguda de DPOC | be·aside</title>
+<meta name="robots" content="noindex, nofollow" data-beaside="status">
+<link rel="canonical" href="https://beaside.com.br/consulte/prescricoes/dpoc-exacerbacao.html">
+<meta name="description" content="Prescrição comentada da exacerbação de DPOC: oxigênio 88–92%, broncodilatadores, prednisona 40 mg por 5 dias, antibiótico por indicação e VNI precoce.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="be·aside">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Prescrição comentada — Exacerbação aguda de DPOC | be·aside">
+<meta property="og:description" content="Oxigênio controlado, broncodilatadores, cinco dias de corticoide e antibiótico somente quando indicado.">
+<meta property="og:url" content="https://beaside.com.br/consulte/prescricoes/dpoc-exacerbacao.html">
+<meta property="og:image" content="https://beaside.com.br/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prescrição comentada — Exacerbação aguda de DPOC | be·aside">
+<meta name="twitter:image" content="https://beaside.com.br/assets/og-image.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/styles.css">
+<style>
+  /* componente da prescrição comentada — usa só tokens; variante do .card.collapsible */
+  .rx-list{counter-reset:rx;display:flex;flex-direction:column;gap:14px;margin:26px 0 8px}
+  .rx-item{counter-increment:rx}
+  .rx-head{display:flex;gap:13px;align-items:flex-start;padding:16px 18px 0}
+  .rx-n{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--accent);background:rgba(var(--accent-rgb),.12);border-radius:6px;padding:3px 8px;margin-top:2px;flex-shrink:0}
+  .rx-n::before{content:counter(rx,decimal-leading-zero)}
+  .rx-title{font-size:15.5px;font-weight:600;color:var(--text);letter-spacing:-.01em;line-height:1.3}
+  .rx-cond{font-size:12.5px;color:var(--text2);margin-top:3px;line-height:1.5}
+  .rx-body{padding:2px 18px 6px}
+  .rx-dose{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;line-height:1.8;color:var(--text);background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:11px 14px;margin:12px 0 0}
+  .rx-dose+.rx-dose{margin-top:8px}
+  .rx-dose b{color:var(--accent);font-weight:600}
+  .rx-sub{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);margin:18px 0 -2px;padding-left:2px}
+  .rx-body .tag-row{margin:10px 0 0}
+  .rx-body .alert-box{margin:12px 0 0}
+  .rx-item .card-toggle{border-top:1px solid var(--border);margin-top:14px}
+  .rx-why{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);flex:1}
+  .rx-item .card-body p{font-size:13.5px;line-height:1.75;color:var(--text2);margin:0 0 10px}
+  .rx-item .card-body p strong{color:var(--text)}
+  .rx-item .card-body .ref{display:block;margin-top:10px}
+  @media(max-width:600px){.rx-head{padding:14px 14px 0}.rx-body{padding:2px 14px 6px}}
+  /* botão que leva à calculadora — a conta mora em calculadoras.html */
+  .rxc-link{display:inline-flex;align-items:center;gap:7px;margin:12px 0 0;padding:9px 13px;border-radius:9px;
+    background:var(--bg2);border:1px solid var(--border);text-decoration:none;
+    font-size:12.5px;font-weight:600;color:var(--text);letter-spacing:-.005em;
+    transition:background .15s ease,border-color .15s ease}
+  .rxc-link::before{content:'';width:15px;height:15px;flex-shrink:0;border-radius:4px;
+    border:1.5px solid var(--accent);background:rgba(var(--accent-rgb),.12)}
+  .rxc-link span{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text2)}
+  @media(hover:hover){.rxc-link:hover{background:var(--bg3);border-color:rgba(var(--accent-rgb),.45)}}
+  .rxc-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+</head>
+<body data-module="prescricoes" data-page="dpoc-exacerbacao" data-root="../../">
+<main class="main">
+
+<section class="section" id="topo">
+  <header class="page-head">
+    <div class="hero-eyebrow">Consulte · Prescrições comentadas</div>
+    <h1 class="section-title">Exacerbação aguda de DPOC</h1>
+    <p class="section-subtitle">O alvo de oxigênio aqui é deliberadamente mais baixo, o corticoide dura cinco dias e o antibiótico depende do escarro — não da dispneia. E a VNI é o que mais muda mortalidade.</p>
+  </header>
+
+  <p class="prose">Serve para a <strong>exacerbação aguda de DPOC no adulto</strong>. <strong>Não cobre</strong> DPOC estável, asma (que tem alvo de oxigênio e esquema de corticoide diferentes — ver <a class="text-link" href="asma-aguda.html">asma</a>) nem bronquiectasia como doença de base, que tem microbiologia própria.</p>
+
+  <div class="warn-box">
+    <strong>Antes de prescrever qualquer item desta página.</strong>
+    <p class="box-body">Confira antes de copiar qualquer item: <strong>idade, peso aferido e o peso usado na dose</strong>, alergias, gestação/lactação, comorbidades, <strong>medicamentos prévios e a última dose</strong>, creatinina e ClCr, função hepática, ECG/QTc, eletrólitos, glicemia, acesso disponível, <strong>a apresentação padronizada na sua farmácia</strong> e o destino/nível de monitorização. Nada aqui substitui o protocolo institucional nem o julgamento de quem está com o paciente.</p>
+  </div>
+
+  <div class="info-box">
+    <strong>Como usar.</strong>
+    <p class="box-body">A ordem é a da prescrição real: <strong>confirmar e estratificar</strong>, o que muda desfecho primeiro, as condutas condicionais, e a rotina que sustenta o resto — dieta, cuidados, profilaxias. Dose sempre visível; o porquê, a evidência e as controvérsias em <em>"por quê &amp; armadilhas"</em>.</p>
+  </div>
+</section>
+
+<section class="section" id="prescricao">
+  <div class="section-label">A prescrição</div>
+  <h2 class="section-title">Item por item</h2>
+
+  <div class="rx-list">
+
+    <div class="section-label" style="margin-top:26px">Confirmar que é exacerbação — e não outra coisa</div>
+    <!-- 01 · Diagnóstico -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Excluir os concorrentes antes de tratar como exacerbação</div>
+          <div class="rx-cond">pneumonia, IC, TEP, pneumotórax, arritmia e SCA se parecem com isso</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Exacerbação:</b> piora aguda de dispneia, tosse e/ou escarro além da variação habitual</div>
+        <div class="rx-dose"><b>Descartar ativamente:</b> pneumonia (radiografia), insuficiência cardíaca, <b>TEP</b>, pneumotórax, arritmia e síndrome coronariana</div>
+        <div class="rx-dose"><b>Gasometria arterial</b> na exacerbação grave ou em risco de hipercapnia</div>
+
+        <div class="rx-sub">O que conta como exacerbação — a definição atual</div>
+        <div class="rx-dose"><b>Piora da dispneia e/ou da tosse e do escarro instalada em até 14 dias</b>, podendo vir com taquipneia ou taquicardia, associada a inflamação local e sistêmica por infecção, poluição ou outra agressão pulmonar. <b>Não</b> é qualquer piora do sintoma crônico: é <b>aguda</b>, <b>sustentada</b> e sai da variação do dia a dia</div>
+        <div class="rx-dose"><b>A gravidade é graduada em leve, moderada e grave</b> pelas características clínicas — dispneia, frequência respiratória, frequência cardíaca, saturação e gasometria (proposta de Roma). Na prática de plantão: <b>leve</b> resolve com broncodilatador; <b>moderada</b> exige corticoide e/ou antibiótico; <b>grave</b> cursa com insuficiência respiratória e é a que interna</div>
+        <div class="rx-dose">⚠ <b>Antes de rotular:</b> pneumonia, <b>TEP</b>, insuficiência cardíaca aguda e pneumotórax <b>imitam ou agravam</b> a exacerbação — e em boa parte dos casos a causa exata nunca é identificada. É por isso que este item vem antes de todos os outros</div>
+        <div class="rx-dose"><b>ECG</b> e marcadores conforme suspeita — o DPOC descompensa por causa cardíaca com frequência</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A exacerbação de DPOC é diagnóstico de exclusão parcial: a mesma dispneia com sibilos pode ser edema agudo, TEP ou pneumotórax num pulmão já hiperinsuflado. Tratar tudo como broncoespasmo atrasa o que realmente importa.</p>
+        <span class="ref">Global Initiative for Chronic Obstructive Lung Disease — GOLD 2026 Report (goldcopd.org). Conteúdo parafraseado; conferir a versão vigente antes de publicar.</span>
+      </div>
+    </div>
+    <div class="section-label" style="margin-top:26px">Oxigênio, broncodilatador, corticoide</div>
+    <!-- 02 · Oxigênio -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Oxigênio controlado — alvo de 88 a 92%</div>
+          <div class="rx-cond">aqui o alvo é mais baixo que no resto do hospital, e isso é proposital</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Titular para SpO₂ 88–92%</b> — individualizar quando houver motivo documentado</div>
+        <div class="rx-dose"><b>Gasometria em 30–60 min</b> se houver risco de hipercapnia ou quadro grave</div>
+        <div class="rx-dose">⚠ <b>Oxigênio liberal piora a hipercapnia</b> no DPOC — o mecanismo principal é a piora da relação ventilação-perfusão e o efeito Haldane, não simplesmente "perda do drive hipóxico"</div>
+        <div class="rx-dose"><b>Ao nebulizar</b>, preferir <b>ar comprimido</b> e ofertar o oxigênio separadamente, para não perder o controle da FiO₂</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O alvo mais baixo tem base em desfecho: oxigênio titulado reduziu mortalidade comparado ao oxigênio liberal no transporte de pacientes com DPOC exacerbado. E vale corrigir a explicação que ainda circula: a retenção de CO₂ com oxigênio alto se deve principalmente à redistribuição da perfusão pulmonar e ao efeito Haldane — a supressão do drive é parte menor.</p>
+        <span class="ref">Global Initiative for Chronic Obstructive Lung Disease — GOLD 2026 Report (goldcopd.org). Conteúdo parafraseado; conferir a versão vigente antes de publicar.</span>
+      </div>
+    </div>
+    <!-- 03 · Broncodilatadores -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Salbutamol e ipratrópio — com escalonamento por resposta</div>
+          <div class="rx-cond">a base do tratamento, em doses repetidas</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-sub">1ª hora — o ataque</div>
+        <div class="rx-dose"><b>Salbutamol pMDI 100 mcg, 4–8 jatos com espaçador</b> (ou <b>10–20 gotas</b> da solução 5 mg/mL nebulizadas), <b>repetindo a cada 20 min por até 3 ciclos</b> · <b>espaçador tem eficácia igual à do nebulizador</b> — e, na doença respiratória transmissível, evita o aerossol</div>
+        <div class="rx-dose"><b>Jatos um de cada vez</b>, agitando o frasco entre eles — o DPOC grave tem fluxo inspiratório ruim, e é o espaçador (não a força do jato) que entrega a droga</div>
+
+        <div class="rx-sub">Depois da 1ª hora — a prescrição de horário, e como ajustá-la</div>
+        <div class="rx-dose"><b>O esquema padrão da enfermaria:</b> <b>salbutamol 4–8 jatos de 4/4 h</b> + <b>SN a cada 1–2 h</b> nos intervalos · <b>ipratrópio 40 gotas de 6/6 h</b> associado enquanto durar a fase aguda</div>
+        <div class="rx-dose"><b>Escalone</b> — para <b>4–8 jatos de 2/2 h</b>, ou nebulização contínua sob supervisão — quando: o SN está sendo usado <b>em quase todo intervalo</b> · o esforço respiratório aumenta · a PaCO₂ sobe · a SpO₂ cai dentro do alvo de 88–92% com a mesma FiO₂. <b>E escale junto o que muda desfecho:</b> VNI, corticoide e a busca do diagnóstico concorrente — TEP, pneumonia, IC</div>
+        <div class="rx-dose">⚠ <b>Escalonar broncodilatador não é escalonar cuidado.</b> No DPOC, a obstrução tem um componente <b>fixo</b> que nenhuma dose reverte — se o paciente piora, a resposta certa costuma ser <b>VNI</b>, não o quarto ciclo de salbutamol. Broncodilatador em dose crescente sem melhora entrega taquicardia, tremor, arritmia e <b>hipocalemia</b>, e adia a decisão que importa</div>
+
+        <div class="rx-sub">O desmame</div>
+        <div class="rx-dose"><b>A régua é o resgate:</b> passou <b>um intervalo inteiro sem SN</b>, sem aumento de esforço e com gasometria estável → <b>espace um degrau</b>: 4/4 h → 6/6 h → SN · normalmente entre o 2º e o 4º dia</div>
+        <div class="rx-dose"><b>Suspenda o ipratrópio</b> assim que o broncodilatador de longa duração entrar (item seguinte) — são a mesma classe · o <b>salbutamol permanece como resgate</b>, nunca de horário na alta</div>
+        <div class="rx-dose"><b>Antes de cada degrau, cheque:</b> corticoide correndo há tempo suficiente · a <b>técnica inalatória</b> (o motivo mais comum de "não responde") · se o oxigênio está no alvo <b>88–92%</b> e não acima · se o paciente já começou a <b>manutenção de longa duração</b></div>
+        <div class="rx-dose"><b>Critério de alta pelo inalatório:</b> estável em <b>SN a cada 4 h ou menos</b>, já em manutenção de longa duração, com técnica conferida e uma noite sem escalonamento</div>
+        <div class="rx-dose"><b>Associar ipratrópio</b> no moderado a grave — <b>0,5 mg por nebulização</b>, que na apresentação em gotas (0,25 mg/mL, 20 gotas ≈ 1 mL) são <b>40 gotas</b>, completando com <b>SF 0,9% até 3 mL</b>, a cada <b>6/6 h</b> (até 4/4 h na crise, e 6/6–8/8 h na manutenção) — ou o pMDI equivalente local</div>
+        <div class="rx-dose"><b>Na primeira hora da crise</b>, salbutamol e ipratrópio podem ir <b>no mesmo copo</b>, repetidos a cada 20 min por até 3 ciclos · <b>confira o rótulo</b>: há apresentações a 0,02% e conta-gotas diferentes, e "20 gotas por mL" não vale para todas</div>
+        <div class="rx-dose"><b>Monitorar</b> FC, ritmo, tremor e <b>potássio</b> em doses repetidas</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O ipratrópio agrega mais no DPOC do que na asma, pelo componente colinérgico da obstrução. E a apresentação varia muito entre serviços — por isso a dose nebulizada aparece aqui como "a padronizada", não como número único.</p>
+        <span class="ref">Global Initiative for Chronic Obstructive Lung Disease — GOLD 2026 Report (goldcopd.org). Conteúdo parafraseado; conferir a versão vigente antes de publicar.</span>
+      </div>
+    </div>
+    <!-- 04 · Corticoide -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Prednisona 40 mg por 5 dias — e ponto</div>
+          <div class="rx-cond">curso curto, via oral, sem desmame</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Prednisona ou prednisolona 40 mg VO 1×/dia por 5 dias</b></div>
+        <div class="rx-dose"><b>A via oral é tão eficaz quanto a EV</b> — e a evidência aqui é direta: ensaio randomizado duplo-cego comparou <b>prednisolona 60 mg VO e EV</b> na exacerbação internada e a via oral <b>não foi inferior</b>; um estudo de 414 hospitais mostrou que <b>corticoide EV em dose alta não trouxe benefício detectável</b> sobre o oral em dose baixa</div>
+
+        <div class="rx-sub">Quando o venoso é necessário — hidrocortisona ou metilprednisolona</div>
+        <div class="rx-dose"><b>Reserve o venoso para:</b> <b>incapacidade de engolir</b> ou de absorver (vômito, rebaixamento, íleo) · <b>ventilação mecânica</b> ou <b>VNI</b> que impeça a via oral · dúvida sobre absorção no paciente chocado</div>
+        <div class="rx-dose"><b>Metilprednisolona 40 mg EV 1×/dia</b> — a conversão mais direta dos 40 mg de prednisona, e sem efeito mineralocorticoide (melhor no congesto) · <b>ou hidrocortisona 200 mg/dia = 50 mg EV 6/6 h</b>, que precisa ser fracionada e retém sódio e água</div>
+        <div class="rx-dose"><b>Passe para VO assim que possível</b> e complete os <b>5 dias no total</b>, contando os dias de venoso — não recomece a contagem na troca de via</div>
+        <div class="rx-dose">⚠ <b>Nada de "pulso" aqui.</b> O esquema histórico de <b>metilprednisolona 125 mg 6/6 h</b> vem de ensaio dos anos 1990 e <b>não</b> se mostrou superior a 40 mg de prednisona por via oral — o que ele adiciona com segurança é <b>hiperglicemia, insônia, delirium, miopatia e infecção</b>, num paciente que já vai receber antibiótico e beta-2</div>
+        <div class="rx-dose">⚠ <b>Não prolongar</b> sem razão: curso longo não melhora desfecho e adiciona hiperglicemia, insônia, miopatia e infecção</div>
+        <div class="rx-dose"><b>Vigiar glicemia</b>, sobretudo no diabético</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Cinco dias bastam — os estudos que compararam curso curto com prolongado não mostraram diferença de recaída. O corticoide de duas ou três semanas que ainda aparece em prescrição é herança, e cobra em glicemia e miopatia num paciente que já tem fraqueza muscular.</p>
+        <span class="ref">Global Initiative for Chronic Obstructive Lung Disease — GOLD 2026 Report (goldcopd.org). Conteúdo parafraseado; conferir a versão vigente antes de publicar. · <b>Via oral × venosa:</b> de Jong YP, Uil SM, Grotjohan HP, et al. Oral or IV Prednisolone in the Treatment of COPD Exacerbations: a randomized, controlled, double-blind study. <em>Chest.</em> 2007;132(6):1741–1747 — prednisolona 60 mg VO <b>não inferior</b> à mesma dose EV, com preferência pela oral por custo · Lindenauer PK, Pekow PS, Lahti MC, et al. Association of Corticosteroid Dose and Route of Administration With Risk of Treatment Failure in Acute Exacerbation of COPD. <em>JAMA.</em> 2010;303(23):2359–2367 — em 414 hospitais, corticoide EV em dose alta <b>sem benefício detectável</b> sobre o oral em dose baixa · <b>Dose e duração:</b> Leuppi JD, et al. REDUCE. <em>JAMA.</em> 2013;309(21):2223–2231 — 5 dias não inferiores a 14 · O esquema histórico de metilprednisolona 125 mg 6/6 h vem de Niewoehner DE, et al. <em>N Engl J Med.</em> 1999;340(25):1941–1947 (SCCOPE), e não se mostrou superior às doses baixas orais nos estudos posteriores · Equivalências de potência conforme tabela farmacológica clássica.</span>
+      </div>
+    </div>
+    <div class="section-label" style="margin-top:26px">Antibiótico — só com indicação</div>
+    <!-- 05 · Antibiótico -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Antibiótico por cerca de 5 dias, e não para toda exacerbação</div>
+          <div class="rx-cond">dispneia isolada não é indicação</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-sub">Quem recebe antibiótico</div>
+        <div class="rx-dose"><b>A regra dos dois de três (critérios de Anthonisen), com uma condição:</b> pelo menos <b>2 dos 3</b> — aumento da <b>dispneia</b>, aumento do <b>volume</b> do escarro, aumento da <b>purulência</b> — e <b>a purulência tem de ser um deles</b>. Dispneia + volume, sem escarro purulento, <b>não</b> indica antibiótico</div>
+        <div class="rx-dose"><b>Indicado também quando:</b> os <b>três</b> critérios estão presentes · <b>necessidade de VNI ou ventilação invasiva</b> (aqui o antibiótico reduz mortalidade, independentemente do escarro) · história prévia de infecções pulmonares ou cultura prévia relevante</div>
+        <div class="rx-dose">⚠ <b>Dispneia isolada não é indicação.</b> Metade das exacerbações não é bacteriana, e tratar todas expõe a resistência sem ganho</div>
+
+        <div class="rx-sub">Qual antibiótico — e onde entra a azitromicina</div>
+        <div class="rx-dose"><b>Sem fator de risco, ambulatorial:</b> <b>amoxicilina/clavulanato 875/125 mg VO 12/12 h</b> · <b>doxiciclina 100 mg VO 12/12 h</b> · <b>ou macrolídeo — azitromicina 500 mg VO no 1º dia e 250 mg/dia por mais 4</b>, ou 500 mg/dia por 3 dias</div>
+        <div class="rx-dose"><b>Quando preferir a azitromicina (ou outro macrolídeo):</b> <b>alergia a beta-lactâmico</b> · suspeita de <b>germe atípico</b> (quadro arrastado, contactantes, epidemiologia local) · <b>intolerância</b> ao clavulanato (diarreia é o motivo mais frequente de troca) · esquema de <b>menos comprimidos</b> em quem tem adesão ruim. ⚠ Onde a resistência local do <em>pneumococo</em> a macrolídeo é alta, <b>não</b> use azitromicina isolada</div>
+        <div class="rx-dose">⚠ <b>Azitromicina não é sinônimo de "cobrir mais":</b> ela cobre atípicos e cobre <b>pior</b> o <em>H. influenzae</em> e o pneumococo resistente do que a amoxicilina/clavulanato — que são justamente os germes da exacerbação. E ela <b>prolonga o QT</b>: cheque ECG, potássio e magnésio no cardiopata e em quem usa outro prolongador</div>
+        <div class="rx-dose">✱ <b>Não confunda com a azitromicina profilática</b> — o esquema de 250 mg/dia ou 500 mg 3×/semana <b>por meses</b>, usado para <b>reduzir exacerbações futuras</b> no paciente estável e exacerbador frequente. É outra indicação, outra decisão, e é do pneumologista: pesa resistência bacteriana, QT e ototoxicidade</div>
+        <div class="rx-dose"><b>Internado / exacerbação grave:</b> beta-lactâmico EV pelo protocolo local e antibiograma — ceftriaxona 1–2 g/dia ou ampicilina/sulbactam são as escolhas usuais, com macrolídeo associado apenas se houver suspeita de atípico ou se o protocolo de pneumonia do serviço o exigir</div>
+        <div class="rx-dose"><b>Risco de <em>Pseudomonas</em></b> (colonização ou cultura prévia, bronquiectasia/doença estrutural avançada, uso recente e repetido de antibiótico): cobertura antipseudomonas — <b>não</b> para toda exacerbação grave</div>
+        <div class="rx-dose">⚠ <b>Ajuste renal:</b> a apresentação de <b>amoxicilina/clavulanato 875 mg não deve ser usada com ClCr &lt; 30</b> segundo várias bulas · doxiciclina em geral dispensa ajuste renal, com cautela hepática</div>
+        <div class="rx-dose"><b>Duração: 5 dias</b> — é o que a diretriz recomenda, e cursos mais longos não agregam · limitar a ≤ 5 dias no tratamento ambulatorial reduz pressão de resistência</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A regra dos escarros purulentos vem dos estudos clássicos de Anthonisen e continua sendo o melhor discriminador de bancada: purulência é o marcador que se correlaciona com carga bacteriana. Prescrever por dispneia isolada <span class="ref">Global Initiative for Chronic Obstructive Lung Disease — GOLD 2026 Report e Pocket Guide 2026 (goldcopd.org) — exacerbação definida como piora da dispneia e/ou tosse e escarro instalada em até 14 dias, graduada em leve, moderada e grave pela proposta de Roma; <b>antibióticos recomendados por 5 dias</b> em pacientes com <b>escarro purulento</b> e história prévia de infecção pulmonar; corticoide sistêmico por <b>até 5 dias</b> na exacerbação moderada/grave; SABA com ou sem anticolinérgico de curta duração como broncodilatador inicial; metilxantinas não recomendadas; VNI e alto fluxo indicados na insuficiência respiratória aguda. Conteúdo <b>parafraseado</b>; conferir a versão vigente antes de publicar · <b>Critérios de Anthonisen</b> (dois de três, com purulência obrigatória) — base histórica da indicação de antibiótico, mantida na diretriz atual.</span>
+      </div>
+    </div>
+    <div class="section-label" style="margin-top:26px">Os inalatórios de manutenção — o que sai na receita de alta</div>
+    <!-- 05b · Inalatórios -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">LABA, LAMA e corticoide inalatório — o que a alta precisa carregar</div>
+          <div class="rx-cond">o ipratrópio da crise não é tratamento de manutenção; e o eosinófilo decide o corticoide</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>A regra que organiza tudo:</b> na crise usa-se <b>curta duração</b> (salbutamol + ipratrópio); a manutenção é de <b>longa duração</b>, e ela deve ser <b>iniciada o quanto antes</b> — idealmente <b>antes da alta</b>, não "no retorno com o pneumo". A exacerbação é o momento de maior risco de repetição, e a alta sem broncodilatador de longa duração é a causa mais evitável da próxima internação</div>
+
+        <div class="rx-sub">1º · Broncodilatador de longa duração — para todos</div>
+        <div class="rx-dose"><b>LABA + LAMA (dupla broncodilatação)</b> é o padrão de quem exacerbou · quem já usava monoterapia <b>sobe para a dupla</b> · prefira <b>combinação em dispositivo único</b>: menos erro de técnica e melhor aderência</div>
+        <div class="rx-dose" style="padding:0;background:none;border:none"><div class="table-wrap"><table>
+          <thead><tr><th>Combinação LABA + LAMA</th><th>Apresentação usual</th><th>Posologia</th></tr></thead>
+          <tbody>
+            <tr><td><b>Indacaterol + glicopirrônio</b></td><td>110/50 mcg (DPI)</td><td><b>1 inalação 1×/dia</b></td></tr>
+            <tr><td><b>Umeclidínio + vilanterol</b></td><td>62,5/25 mcg (DPI)</td><td><b>1 inalação 1×/dia</b></td></tr>
+            <tr><td><b>Olodaterol + tiotrópio</b></td><td>2,5/2,5 mcg por jato (névoa suave)</td><td><b>2 jatos 1×/dia</b></td></tr>
+            <tr><td><b>Formoterol + aclidínio</b></td><td>12/400 mcg (DPI)</td><td><span>1 inalação <b>12/12 h</b></span></td></tr>
+            <tr><td colspan="3"><span>Sem combinação disponível: <b>tiotrópio 18 mcg 1×/dia</b> (ou 2,5 mcg × 2 jatos) <b>+ formoterol 12 mcg 12/12 h</b> ou salmeterol 50 mcg 12/12 h, em dispositivos separados</span></td></tr>
+          </tbody>
+        </table></div></div>
+        <div class="rx-dose">⚠ <b>Suspenda o ipratrópio quando entrar o LAMA</b> — são a mesma classe (anticolinérgico), e mantê-los juntos só soma boca seca e retenção urinária. O salbutamol permanece como <b>resgate</b>, não de horário</div>
+
+        <div class="rx-sub">2º · Corticoide inalatório — aqui o eosinófilo decide</div>
+        <div class="rx-dose"><b>Adicionar ICS à dupla broncodilatação (tripla terapia)</b> quando houver <b>≥ 1 exacerbação moderada ou grave</b> — que é exatamente o paciente desta página — <b>somada a eosinófilo sanguíneo elevado</b>. A diretriz coloca essa decisão explicitamente como <b>a considerar na alta</b></div>
+        <div class="rx-dose" style="padding:0;background:none;border:none"><div class="table-wrap"><table>
+          <thead><tr><th>Eosinófilos no sangue</th><th>O que fazer com o ICS</th><th>Por quê</th></tr></thead>
+          <tbody>
+            <tr><td><b>≥ 300 células/µL</b></td><td><span><b>Favorece adicionar</b> — é onde o benefício em reduzir exacerbação é maior</span></td><td>inflamação tipo 2, responsiva a corticoide</td></tr>
+            <tr><td><b>100 a 300 células/µL</b></td><td><span><b>Zona intermediária</b> — considerar se houver exacerbações repetidas apesar da dupla</span></td><td>benefício menor, mas presente</td></tr>
+            <tr><td><b>&lt; 100 células/µL</b></td><td><span><b>Desfavorece</b> — o ganho é pequeno e o risco de <b>pneumonia</b> pesa mais</span></td><td>pouca inflamação eosinofílica para tratar</td></tr>
+          </tbody>
+        </table></div></div>
+        <div class="rx-dose"><b>Peça o hemograma com contagem absoluta de eosinófilos</b> antes da alta — a maioria dos pacientes já tem um colhido na internação, e ele muda a receita</div>
+        <div class="rx-dose" style="padding:0;background:none;border:none"><div class="table-wrap"><table>
+          <thead><tr><th>Tripla em dispositivo único (ICS + LABA + LAMA)</th><th>Apresentação usual</th><th>Posologia</th></tr></thead>
+          <tbody>
+            <tr><td><b>Budesonida + glicopirrônio + formoterol</b></td><td>160/9/4,8 mcg por jato (pMDI)</td><td><b>2 jatos 12/12 h</b></td></tr>
+            <tr><td><b>Beclometasona + glicopirrônio + formoterol</b></td><td>87/9/5 mcg por jato (partícula extrafina)</td><td><b>2 jatos 12/12 h</b></td></tr>
+            <tr><td><b>Fluticasona furoato + umeclidínio + vilanterol</b></td><td>100/62,5/25 mcg (DPI)</td><td><b>1 inalação 1×/dia</b></td></tr>
+            <tr><td colspan="3"><span>Sem tripla disponível: <b>ICS-LABA + LAMA</b> em dois dispositivos — budesonida-formoterol 160/4,5 (2 jatos 12/12 h) ou fluticasona-salmeterol 250/50 (1 inalação 12/12 h), somados ao tiotrópio</span></td></tr>
+          </tbody>
+        </table></div></div>
+        <div class="rx-dose"><b>No DPOC, a dose de ICS é média — não alta.</b> Diferente da asma, aqui subir a dose de corticoide inalatório não melhora desfecho e aumenta pneumonia: use a dose da apresentação combinada e pare por aí</div>
+        <div class="rx-dose">⚠ <b>ICS isolado, sem broncodilatador de longa duração, não tem lugar na DPOC</b> — e o preço da tripla é <b>pneumonia</b>, sobretudo em quem tem eosinófilo baixo, história de pneumonia prévia ou bronquiectasia</div>
+        <div class="rx-dose">✱ <b>Exacerbando apesar da tripla, com eosinófilo ≥ 300:</b> é hora do pneumologista — a diretriz passa a considerar <b>biológicos</b> (dupilumabe, mepolizumabe) nesse cenário</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Vale entender por que o eosinófilo virou o critério, porque isso muda como se lê o exame. O corticoide inalatório não trata obstrução — ele trata <strong>inflamação eosinofílica</strong>. Num DPOC neutrofílico clássico, o ICS entrega pouco benefício e cobra um preço concreto: aumento de pneumonia. Nos pacientes com eosinofilia, a mesma droga reduz exacerbação de forma consistente. O exame, então, não está medindo gravidade — está identificando <em>quem tem o alvo do remédio</em>.</p>
+        <p>A armadilha oposta é igualmente comum e mais silenciosa: o paciente que sai da internação com corticoide inalatório iniciado "porque exacerbou", sem eosinófilo nenhum documentado, e o mantém por anos. Se o número não foi olhado, a decisão não foi tomada — foi herdada. E o outro erro clássico é de classe: manter <strong>ipratrópio de horário</strong> junto do tiotrópio, o que é a mesma droga duas vezes.</p>
+        <span class="ref">Global Initiative for Chronic Obstructive Lung Disease — GOLD 2026 Report e Pocket Guide 2026 (goldcopd.org) — manutenção com broncodilatador de longa duração iniciada o quanto antes, e <b>adição de corticoide inalatório à dupla broncodilatação a considerar na alta em pacientes com ≥ 1 exacerbação moderada ou grave e eosinófilos sanguíneos elevados</b>; limiar de <b>≥ 300 células/µL</b> favorecendo o ICS, faixa intermediária de 100–300 e <b>&lt; 100</b> desfavorecendo, conforme as categorias adotadas pela diretriz; consideração de biológicos (dupilumabe, mepolizumabe) em quem segue exacerbando sob tripla terapia com eosinófilos ≥ 300. Conteúdo <b>parafraseado</b> — conferir a versão vigente.</span>
+      </div>
+    </div>
+
+    <!-- 06 · Suporte ventilatório -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">VNI cedo — e a intubação que não pode atrasar</div>
+          <div class="rx-cond">a VNI é o tratamento que mais reduz mortalidade nesta doença</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>VNI indicada</b> quando há <b>acidose respiratória hipercápnica</b>, trabalho respiratório intenso ou hipoxemia persistente, sem contraindicação</div>
+        <div class="rx-dose"><b>Contraindicações:</b> parada, instabilidade grave, incapacidade de proteger a via aérea, vômito, secreção incontrolável, agitação não colaborativa, trauma/cirurgia facial</div>
+        <div class="rx-dose">⚠ <b>Não atrasar a intubação</b> diante de falha da VNI, piora do sensório, instabilidade ou secreções incontroláveis</div>
+        <div class="rx-dose"><b>Reavaliar em 1–2 h</b> com gasometria: pH e PaCO₂ que não melhoram indicam falha</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A VNI no DPOC hipercápnico é uma das intervenções com melhor efeito em mortalidade da terapia intensiva — e o erro não costuma ser indicá-la, é insistir nela. A janela para intubar com segurança fecha enquanto a equipe espera "mais um pouquinho".</p>
+        <span class="ref">Global Initiative for Chronic Obstructive Lung Disease — GOLD 2026 Report (goldcopd.org). Conteúdo parafraseado; conferir a versão vigente antes de publicar.</span>
+      </div>
+    </div>
+    <!-- 07 · Alta -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Antes da alta: o que evita a próxima exacerbação</div>
+          <div class="rx-cond">a internação é a melhor oportunidade de mudar a trajetória</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Reiniciar ou otimizar</b> broncodilatador de longa ação · <b>conferir a técnica inalatória</b> e a adesão</div>
+        <div class="rx-dose"><b>Cessação do tabagismo</b> abordada e registrada · <b>reabilitação pulmonar</b> encaminhada</div>
+        <div class="rx-dose"><b>Necessidade de oxigênio domiciliar</b> avaliada <b>em estabilidade</b>, não na alta da crise</div>
+        <div class="rx-dose"><b>Corticoide inalatório</b> depende de exacerbações, eosinófilos e asma associada — <b>não é automático</b></div>
+        <div class="rx-dose"><b>Vacinação</b> revisada e retorno marcado</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A exacerbação que interna é marcador de mortalidade nos meses seguintes, e a alta é o único momento em que a equipe tem a atenção do paciente. Técnica inalatória conferida e reabilitação encaminhada mudam mais o próximo ano do que qualquer ajuste de dose da crise.</p>
+        <span class="ref">Global Initiative for Chronic Obstructive Lung Disease — GOLD 2026 Report (goldcopd.org). Conteúdo parafraseado; conferir a versão vigente antes de publicar.</span>
+      </div>
+    </div>
+    <div class="section-label" style="margin-top:26px">A rotina que sustenta o resto</div>
+
+    <!-- rotina 01 · Dieta -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Dieta</div>
+          <div class="rx-cond">a primeira linha da prescrição que todo mundo escreve no automático</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Via oral conforme tolerância</b> · atenção ao paciente em VNI: pausas programadas para alimentação, ou sonda se a VNI for contínua e prolongada</div>
+        <div class="rx-dose"><b>Jejum tem data e hora</b> — escrever o motivo e quando reavaliar. "Jejum" sem prazo vira desnutrição de terceira semana</div>
+        <div class="rx-dose"><b>Disfagia:</b> triagem antes da primeira colher em qualquer rebaixamento, AVC ou pós-extubação — falhou, sonda; a medicação também passa por ela</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O jejum prolongado é a prescrição mais barata de escrever e uma das mais caras de sustentar: cada dia sem aporte custa massa muscular num paciente que vai precisar dela para desmamar, sentar e andar. A pergunta de visita não é "está em jejum?", é <strong>"por que ainda está, e até quando?"</strong>.</p>
+      </div>
+    </div>
+
+    <!-- rotina 02 · Cuidados de enfermagem -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Cuidados de enfermagem — a rotina que evita a segunda doença</div>
+          <div class="rx-cond">decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Sinais vitais e rotina de UTI 2/2 h</b> (espaçar conforme estabilidade) · <b>balanço hídrico</b> e <b>diurese</b> registrados</div>
+        <div class="rx-dose"><b>Cabeceira 30–45°</b> — reduz aspiração e pneumonia associada à ventilação · abaixar só com motivo escrito (choque, procedimento)</div>
+        <div class="rx-dose"><b>Mudança de decúbito 2/2 h</b> + <b>avaliação diária da pele</b> nas proeminências (sacro, calcâneo, occipital, trocânter) · colchão de redistribuição de pressão no imóvel</div>
+        <div class="rx-dose"><b>Curativos</b> inspecionados por turno; datar a troca · <b>higiene oral</b> com antisséptico no intubado · olhos lubrificados no sedado</div>
+        <div class="rx-dose"><b>Fisioterapia</b> — fisioterapia respiratória com foco em <b>higiene brônquica</b> e mobilização precoce — no DPOC ela tem papel maior que na asma</div>
+        <div class="rx-dose"><b>Oxigênio conforme necessidade:</b> <b>SpO₂ 88–92%</b> no DPOC — alvo deliberadamente mais baixo, pelo risco de hipercapnia. Oxigênio é droga: tem alvo, tem dose e tem excesso</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Estes itens não competem com a doença principal — eles decidem se o paciente sai da UTI com a doença resolvida e o corpo inteiro, ou resolvido e com uma lesão por pressão em sacro que vai custar meses. Lesão por pressão, pneumonia por aspiração e fraqueza adquirida na UTI são as três complicações que a prescrição previne com linhas que ninguém lê.</p>
+        <p>A cabeceira elevada é o exemplo perfeito: é gratuita, tem efeito documentado sobre pneumonia associada à ventilação, e é a primeira coisa que se perde quando o leito é abaixado para um procedimento e ninguém sobe de volta.</p>
+      </div>
+    </div>
+
+    <!-- rotina 03 · Profilaxia de úlcera de estresse -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Profilaxia de úlcera de estresse — só com indicação</div>
+          <div class="rx-cond">não é carimbo de internação: sem fator de risco, o dano supera o benefício</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Com indicação:</b> inibidor de bomba de prótons — <b>omeprazol ou pantoprazol 40 mg EV ou VO 1×/dia</b>, conforme padronização do serviço</div>
+        <div class="rx-dose">Reavaliar a indicação <b>todo dia</b> — ela costuma sumir antes da alta da UTI, e a prescrição costuma continuar.</div>
+        <div class="rx-dose"><b>O preço de prescrever sem indicação:</b> mais pneumonia associada à ventilação, mais <em>C. difficile</em>, e a prescrição crônica que sai junto na receita de alta</div>
+        <a class="rxc-link" href="calculadoras.html#ulcera">Há indicação de profilaxia? <span>fator maior ou 2 menores</span></a>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Os dois fatores de risco independentes clássicos vêm do estudo de Cook: <strong>ventilação mecânica prolongada</strong> e <strong>coagulopatia</strong>. Fora deles, o sangramento clinicamente importante é raro o suficiente para que o dano da supressão ácida — pneumonia e colite por <em>C. difficile</em> — comece a pesar mais.</p>
+        <p>A armadilha real não é começar, é <strong>não parar</strong>. A indicação some quando o paciente extuba e a coagulação normaliza; a prescrição, não. É assim que um inibidor de bomba iniciado numa UTI vira uso crônico de anos, com a hipomagnesemia que ele causa aparecendo lá na frente, sem que ninguém ligue os dois.</p>
+        <span class="ref">Cook DJ, Fuller HD, Guyatt GH, et al. Risk factors for gastrointestinal bleeding in critically ill patients. <em>N Engl J Med.</em> 1994;330(6):377–381 — os dois fatores independentes. Os fatores menores vêm de consensos posteriores; não há escore validado único.</span>
+      </div>
+    </div>
+
+    <!-- rotina 04 · Profilaxia de TEV -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Profilaxia de TEV — pelo risco, não pelo tempo de internação</div>
+          <div class="rx-cond">"internou, prescreve" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Farmacológica, com indicação e sem sangramento:</b> <b>enoxaparina 40 mg SC 1×/dia</b> · <b>ClCr &lt; 30:</b> enoxaparina 20 mg SC 1×/dia <em>ou</em> <b>HNF 5.000 UI SC 8/8–12/12 h</b>, conforme protocolo</div>
+        <div class="rx-dose"><b>Mecânica</b> (compressão pneumática intermitente) quando a farmacológica está contraindicada — sangramento ativo, plaquetopenia grave, pós-operatório neurocirúrgico recente — ou <b>somada</b> a ela no altíssimo risco</div>
+        <div class="rx-dose"><b>Não somar</b> profilaxia a quem já está em <b>anticoagulação plena</b> — é dose dupla sem ganho</div>
+        <div class="rx-dose">DPOC exacerbado internado costuma pontuar no escore (insuficiência respiratória, infecção aguda, mobilidade reduzida) — <b>mas confira</b>, não presuma.</div>
+        <a class="rxc-link" href="calculadoras.html#padua">Escore de Pádua <span>calcular o risco de TEV</span></a>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O escore de Pádua foi construído justamente para separar quem se beneficia de quem só recebe: no estudo original, os pacientes de alto risco sem profilaxia tiveram cerca de 11% de TEV, contra pouco mais de 2% nos de baixo risco. É essa diferença que justifica prescrever — e que explica por que prescrever para todo mundo dilui o benefício e soma sangramento.</p>
+        <p>Duas armadilhas de plantão. A primeira é a dose fixa em quem não a comporta: no ClCr abaixo de 30 a enoxaparina acumula, e a dose profilática vira quase terapêutica. A segunda é a soma silenciosa — o paciente que já recebe heparina plena por outro motivo e ganha mais 40 mg de enoxaparina porque "está internado".</p>
+        <span class="ref">Barbar S, Noventa F, Rossetto V, et al. A risk assessment model for the identification of hospitalized medical patients at risk for venous thromboembolism: the Padua Prediction Score. <em>J Thromb Haemost.</em> 2010;8(11):2450–2457.</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="nao-prescrever">
+  <div class="section-label">Tão importante quanto</div>
+  <h2 class="section-title">O que <em>não</em> prescrever</h2>
+  <div class="warn-box">
+    <strong>Erros que pioram o desfecho.</strong>
+    <p class="box-body"><strong>Aminofilina ou teofilina EV</strong> — saíram por dano e falta de benefício. <strong>Oxigênio liberal</strong> — a hipercapnia é iatrogênica. <strong>Antibiótico por dispneia isolada.</strong> <strong>Corticoide prolongado</strong> além dos 5 dias sem razão. <strong>Mucolítico, opioide ou sedativo</strong> como prescrição padrão. <strong>Amoxicilina/clavulanato 875 mg com ClCr abaixo de 30.</strong> E <strong>insistir na VNI</strong> enquanto o paciente se esgota.</p>
+  </div>
+</section>
+
+<section class="section" id="fechamento">
+  <div class="tip-box" style="margin-top:32px;">
+    <strong>Prescreveu — e agora?</strong>
+    <p class="box-body">Reavaliar com <b>gasometria em 30–60 min</b> se houver risco de hipercapnia, e em <b>1–2 h</b> após iniciar VNI. A alta é o item de maior alavanca: técnica inalatória, adesão, cessação do tabagismo, reabilitação e oxigênio domiciliar avaliado <em>em estabilidade</em>. Se a exacerbação foi grave o bastante para VNI, o antibiótico entra — essa é uma das indicações formais.</p>
+    <a class="link-cta" href="../index.html">Levar o caso ao assistente de conduta <span aria-hidden="true">&rarr;</span></a>
+  </div>
+
+  <div class="section-label">Referências</div>
+  <span class="ref">Global Initiative for Chronic Obstructive Lung Disease — GOLD 2026 Report (goldcopd.org). Conteúdo parafraseado; conferir a versão vigente antes de publicar.</span>
+  <span class="ref">Fatores de risco de sangramento digestivo: Cook DJ, et al. <em>N Engl J Med.</em> 1994;330(6):377–381 · Escore de Pádua: Barbar S, et al. <em>J Thromb Haemost.</em> 2010;8(11):2450–2457.</span>
+
+</section>
+
+</main>
+
+</main>
+<script src="../../assets/app.js"></script>
+<script>
+function toggleCard(card,e){
+  if(e&&e.target.tagName&&e.target.tagName.toLowerCase()==='a')return;
+  card.classList.toggle('open');
+}
+document.addEventListener('keydown',function(e){
+  if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('card-toggle')){
+    e.preventDefault();toggleCard(e.target.parentNode,e);
+  }
+});
+</script>
+</body>
+</html>

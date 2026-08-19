@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7K0CML04MR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7K0CML04MR');
+</script>
+<script src="../assets/theme-boot.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Distúrbios ácido-base no crítico — gasometria, os 4 distúrbios e mistos — be·aside</title>
+<meta name="robots" content="noindex, follow" data-beaside="status">
+<link rel="canonical" href="https://beaside.com.br/nefro/acido-base.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="be·aside">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Distúrbios ácido-base no crítico — be·aside">
+<meta property="og:description" content="Ler a gasometria em 5 passos: distúrbio primário, compensação esperada, ânion gap e delta-delta, distúrbios mistos. Causas e conduta com posologia para acidose e alcalose, metabólica e respiratória. Calculadora ácido-base.">
+<meta property="og:url" content="https://beaside.com.br/nefro/acido-base.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Distúrbios ácido-base no crítico — be·aside">
+<meta name="twitter:description" content="Ler a gasometria em 5 passos: distúrbio primário, compensação, ânion gap e delta-delta, mistos. Causas e conduta com posologia. Calculadora ácido-base.">
+<meta property="og:image" content="https://beaside.com.br/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="be·aside — raciocínio clínico à beira do leito">
+<meta name="twitter:image" content="https://beaside.com.br/assets/og-image.png">
+<meta name="description" content="Distúrbios ácido-base no paciente crítico: ler a gasometria em 5 passos (distúrbio primário, compensação esperada, ânion gap corrigido e delta-delta, mistos). Causas e conduta com posologia para acidose e alcalose, metabólica e respiratória. Calculadora ácido-base validada.">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body data-module="nefro" data-page="acido-base">
+<main class="main">
+<section class="section" id="acido-base">
+  <header class="page-head">
+    <div class="hero-eyebrow">Nefro Guide · Ácido-base</div>
+      <h1 class="section-title">Distúrbios ácido-base no crítico</h1>
+      <p class="section-subtitle">Ler a gasometria em passos, achar o distúrbio (e o segundo escondido) e chegar à conduta</p>
+  </header>
+
+  <div class="hero-meta cols-3">
+    <div class="hm-item"><span class="hm-k">Passo 1</span><span class="hm-v">pH: acidemia ou alcalemia?</span></div>
+    <div class="hm-item"><span class="hm-k">Sempre</span><span class="hm-v">Ânion gap (corrigir albumina)</span></div>
+    <div class="hm-item"><span class="hm-k">Cuidado</span><span class="hm-v">Compensação ≠ 2º distúrbio</span></div>
+  </div>
+
+  <div class="anatomy-note">
+    <strong>Conceito:</strong> o pH do sangue é governado por um único par — <strong>bicarbonato e gás carbônico</strong> — na equação de Henderson-Hasselbalch. O que determina o pH não é o valor de nenhum dos dois isolado, e sim a <strong>razão entre eles</strong>: pH ∝ HCO₃ ⁄ PCO₂. O <strong>pulmão</strong> controla o PCO₂ (minuto a minuto) e o <strong>rim</strong> controla o HCO₃ (em horas a dias). Um distúrbio <em>metabólico</em> mexe primeiro no HCO₃; um distúrbio <em>respiratório</em> mexe primeiro no PCO₂. E cada distúrbio primário desencadeia uma <strong>compensação</strong> — que empurra o outro componente <em>na mesma direção</em> para atenuar a variação do pH, <strong>mas nunca corrige o pH totalmente</strong> (exceto na alcalose respiratória crônica). Guardar isso resolve quase toda a leitura de gasometria: a compensação é <em>esperada</em>, não é um segundo distúrbio — e quando ela foge do esperado, aí sim há um distúrbio misto.
+  </div>
+
+  <div class="info-box">
+    <strong>Como usar esta página</strong>
+    <p class="box-body">O <strong>fluxograma</strong> (seção 01) e a <strong>abordagem em 5 passos</strong> com a <strong>calculadora</strong> (seção 03) são o método. As seções 04 a 07 destrincham cada um dos quatro distúrbios — causas na prática e conduta com posologia — e a seção 08 fecha com os <strong>mistos</strong>. Conteúdo de apoio ao raciocínio: <strong>confirme sempre doses e condutas no protocolo do seu serviço</strong>.</p>
+  </div>
+
+  <div class="sec-h"><span class="sec-num">01</span><h2>Fluxograma — lendo a gasometria</h2></div>
+
+  <div class="fx">
+    <div class="fx-step entry">
+      <div class="fx-head"><span class="fx-num">·</span><span class="fx-title">pH, PCO₂ e HCO₃ em mãos</span></div>
+      <div class="fx-sub">Duas das três variáveis bastam (a terceira se calcula). A pergunta de largada é sempre o <strong style="color:var(--text);">pH</strong>: para que lado o sangue foi?</div>
+    </div>
+    <div class="fx-arrow"></div>
+    <div class="fx-step">
+      <div class="fx-head"><span class="fx-num">1</span><span class="fx-title">pH — acidemia ou alcalemia?</span></div>
+      <div class="fx-grid cols-3">
+        <div class="fx-box red">
+          <div class="fx-box-title">pH &lt; 7,35 — acidemia</div>
+          <div class="fx-box-detail">O distúrbio dominante é uma acidose. Ver quem a explica: HCO₃ baixo (metabólica) ou PCO₂ alto (respiratória).</div>
+        </div>
+        <div class="fx-box blue">
+          <div class="fx-box-title">pH &gt; 7,45 — alcalemia</div>
+          <div class="fx-box-detail">O distúrbio dominante é uma alcalose. HCO₃ alto (metabólica) ou PCO₂ baixo (respiratória).</div>
+        </div>
+        <div class="fx-box amber">
+          <div class="fx-box-title">pH normal (7,35–7,45)</div>
+          <div class="fx-box-detail">Não relaxe: se HCO₃ <em>e</em> PCO₂ estão ambos alterados, há <strong>distúrbio misto</strong> com pH "falsamente" normal. Calcular o ânion gap sempre.</div>
+        </div>
+      </div>
+    </div>
+    <div class="fx-arrow"></div>
+    <div class="fx-step">
+      <div class="fx-head"><span class="fx-num">2</span><span class="fx-title">Quem explica o pH? — o distúrbio primário</span></div>
+      <div class="fx-grid cols-2">
+        <div class="fx-box coral">
+          <div class="fx-box-title">Acidose metabólica</div>
+          <span class="fx-box-criteria">HCO₃ ↓ · pH ↓</span>
+          <div class="fx-box-detail">Compensa baixando o PCO₂ (hiperventila).</div>
+        </div>
+        <div class="fx-box purple">
+          <div class="fx-box-title">Alcalose metabólica</div>
+          <span class="fx-box-criteria">HCO₃ ↑ · pH ↑</span>
+          <div class="fx-box-detail">Compensa subindo o PCO₂ (hipoventila).</div>
+        </div>
+        <div class="fx-box coral">
+          <div class="fx-box-title">Acidose respiratória</div>
+          <span class="fx-box-criteria">PCO₂ ↑ · pH ↓</span>
+          <div class="fx-box-detail">Compensa subindo o HCO₃ (rim, dias). Agudo × crônico.</div>
+        </div>
+        <div class="fx-box purple">
+          <div class="fx-box-title">Alcalose respiratória</div>
+          <span class="fx-box-criteria">PCO₂ ↓ · pH ↑</span>
+          <div class="fx-box-detail">Compensa baixando o HCO₃ (rim, dias). Agudo × crônico.</div>
+        </div>
+      </div>
+    </div>
+    <div class="fx-arrow"></div>
+    <div class="fx-step golden">
+      <div class="fx-title">A compensação bate com o esperado?</div>
+      <div class="fx-sub">Calcule a compensação esperada (seção 03). Compensação <strong style="color:var(--text);">é esperada, não é um 2º distúrbio</strong> — mas se ela for <strong style="color:var(--text);">insuficiente ou exagerada</strong>, existe um segundo distúrbio escondido.</div>
+      <div class="fx-decision" style="margin-top:12px;">
+        <div class="fx-box green">
+          <div class="fx-box-title">Dentro do esperado</div>
+          <div class="fx-box-action">Distúrbio simples</div>
+          <div class="fx-box-detail">Um distúrbio primário com a compensação apropriada. Seguir para a causa.</div>
+        </div>
+        <div class="fx-box red">
+          <div class="fx-box-title">Fora do esperado</div>
+          <div class="fx-box-action">Distúrbio misto</div>
+          <div class="fx-box-detail">Compensação a menos ou a mais = 2º distúrbio. Ex.: PCO₂ mais baixo que o de Winters na acidose metabólica = alcalose respiratória associada.</div>
+        </div>
+      </div>
+    </div>
+    <div class="fx-arrow"></div>
+    <div class="fx-step">
+      <div class="fx-head"><span class="fx-num">3</span><span class="fx-title">Ânion gap — e o delta-delta</span></div>
+      <div class="fx-sub">Se há acidose metabólica, calcular o <strong style="color:var(--text);">ânion gap corrigido pela albumina</strong>. Se o AG está alto, comparar o quanto ele subiu com o quanto o HCO₃ caiu (delta-delta) — é como se acha um <strong>terceiro</strong> distúrbio.</div>
+      <div class="fx-grid cols-3">
+        <div class="fx-box amber">
+          <div class="fx-box-title">AG alto</div>
+          <span class="fx-box-criteria">&gt; 12 (corrigido)</span>
+          <div class="fx-box-detail">Ácidos retidos: lactato, cetoácidos, uremia, toxinas (GOLDMARK). Ver seção 04.</div>
+        </div>
+        <div class="fx-box blue">
+          <div class="fx-box-title">AG normal</div>
+          <span class="fx-box-criteria">hiperclorêmica</span>
+          <div class="fx-box-detail">Perda de bicarbonato (diarreia), ATR, salina. Ânion gap urinário separa GI × renal.</div>
+        </div>
+        <div class="fx-box purple">
+          <div class="fx-box-title">Delta-delta</div>
+          <span class="fx-box-criteria">ΔAG ⁄ ΔHCO₃</span>
+          <div class="fx-box-detail">&lt; 0,8: soma acidose hiperclorêmica · 0,8–2: AG alto pura · &gt; 2: soma alcalose metabólica (ou resp. crônica).</div>
+        </div>
+      </div>
+    </div>
+    <div class="fx-arrow"></div>
+    <div class="fx-step">
+      <div class="fx-head"><span class="fx-num">4</span><span class="fx-title">Fechar o diagnóstico clínico — e a causa</span></div>
+      <div class="fx-sub">Identificado(s) o(s) distúrbio(s), a última etapa é <strong style="color:var(--text);">achar e tratar a causa de cada um</strong> — a gasometria diz o "quê", a história diz o "porquê".</div>
+      <div class="fx-loop">↻ A história e o exame desempatam o que a gasometria deixa ambíguo (agudo × crônico; misto) — reavaliar a cada gasometria nova</div>
+    </div>
+  </div>
+
+  <div class="sec-h"><span class="sec-num">02</span><h2>A gasometria — o que medir e os valores normais</h2></div>
+  <p class="sec-lead">
+    A gasometria mede diretamente <strong>pH</strong> e <strong>PCO₂</strong>; o bicarbonato é calculado. A arterial é o padrão para firmar o diagnóstico e avaliar a troca gasosa; a <strong>venosa</strong> serve bem para acompanhar pH e bicarbonato à beira do leito, com as devidas correções.
+  </p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Amostra</th><th>pH</th><th>PCO₂</th><th>HCO₃ / "CO₂ total"</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Arterial</strong></td><td class="td-mono">7,35–7,45</td><td class="td-mono">35–45 mmHg</td><td class="td-mono">21–27 mEq/L</td></tr>
+      <tr><td><strong>Venosa periférica</strong></td><td class="td-mono">~0,03–0,04 menor</td><td class="td-mono">~3–8 mmHg maior</td><td class="td-mono">~2–3 mEq/L maior</td></tr>
+      <tr><td><strong>Venosa central</strong></td><td class="td-mono">~0,03–0,05 menor</td><td class="td-mono">~4–5 mmHg maior</td><td class="td-mono">≈ igual</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tip-box">
+    <strong>Arterial ou venosa?</strong>
+    <p class="box-body">Para <strong>rastrear e acompanhar</strong> acidose/alcalose (pH e HCO₃), a <strong>venosa</strong> costuma bastar e poupa punção arterial. Para <strong>definir com precisão</strong> um distúrbio respiratório (o PCO₂ exato) ou avaliar <strong>oxigenação</strong>, a <strong>arterial</strong> é necessária. Uma venosa com pH e HCO₃ normais praticamente exclui distúrbio ácido-base relevante; se alterada, confirmar com arterial quando o PCO₂ importa.</p>
+  </div>
+
+  <div class="sec-h"><span class="sec-num">03</span><h2>A abordagem em 5 passos — e a calculadora</h2></div>
+  <p class="sec-lead">
+    Um método fixo evita erro: <strong>(1)</strong> o pH aponta o lado; <strong>(2)</strong> HCO₃ e PCO₂ apontam o distúrbio primário; <strong>(3)</strong> a compensação esperada confirma se é simples ou misto; <strong>(4)</strong> o ânion gap (e o delta-delta) revela acidoses somadas; <strong>(5)</strong> a clínica fecha a causa. Os passos 3 e 4 dependem de contas — é o que a calculadora faz.
+  </p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Distúrbio primário</th><th>Compensação esperada</th><th>Limite</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Acidose metabólica</strong></td><td class="td-mono">PCO₂ = 1,5 × HCO₃ + 8 ± 2 (Winters)</td><td>PCO₂ não cai abaixo de ~8–12 mmHg</td></tr>
+      <tr><td><strong>Alcalose metabólica</strong></td><td class="td-mono">PCO₂ sobe ~0,7 por mEq de HCO₃ acima de 24</td><td>PCO₂ raramente &gt; 55 mmHg</td></tr>
+      <tr><td><strong>Acidose respiratória — aguda</strong></td><td class="td-mono">HCO₃ sobe ~1 por 10 de ↑PCO₂</td><td>—</td></tr>
+      <tr><td><strong>Acidose respiratória — crônica</strong></td><td class="td-mono">HCO₃ sobe ~3,5–4 por 10 de ↑PCO₂</td><td>3–5 dias para se completar</td></tr>
+      <tr><td><strong>Alcalose respiratória — aguda</strong></td><td class="td-mono">HCO₃ cai ~2 por 10 de ↓PCO₂</td><td>—</td></tr>
+      <tr><td><strong>Alcalose respiratória — crônica</strong></td><td class="td-mono">HCO₃ cai ~4–5 por 10 de ↓PCO₂</td><td>pode normalizar o pH</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tip-box">
+    <strong>Qual "esperado" calcular — e quando</strong>
+    <p class="box-body">A regra é direta e resolve o passo 3: <strong>calcule sempre a resposta do <em>outro</em> sistema e compare com o medido</strong>.
+    <br>· Distúrbio <strong>metabólico</strong> (o HCO₃ mudou primeiro) → calcule o <strong>PCO₂ esperado</strong>. Bateu com o medido = compensação adequada (simples); PCO₂ medido <em>mais alto</em> = acidose respiratória somada; <em>mais baixo</em> = alcalose respiratória somada.
+    <br>· Distúrbio <strong>respiratório</strong> (o PCO₂ mudou primeiro) → calcule o <strong>HCO₃ esperado</strong>, nas versões <strong>aguda e crônica</strong>. A comparação com o medido diz se é agudo, crônico, agudo-sobre-crônico — ou se há um distúrbio metabólico somado (HCO₃ fora das duas faixas).
+    <br>Regra de ouro: <strong>igual ao esperado = simples; diferente = misto</strong>. A calculadora abaixo faz essas contas e mostra o valor esperado ao lado do medido.</p>
+  </div>
+  <p class="prose">
+    O <strong>ânion gap</strong> mede os ânions "não medidos": AG = Na − (Cl + HCO₃), normal ~8–12 mEq/L (varia com o analisador). O ajuste mais importante é pela <strong>albumina</strong> — ela é o maior ânion não medido, então a hipoalbuminemia do crítico <em>mascara</em> um AG alto: some <strong>2,5 ao AG para cada 1 g/dL de albumina abaixo de 4,0</strong>. Na acidose de AG alto, o <strong>delta-delta</strong> (quanto o AG subiu ÷ quanto o HCO₃ caiu) denuncia um distúrbio metabólico somado.
+  </p>
+
+  <div class="calc-stack" style="margin-top:22px;">
+    <div class="calc-panel">
+      <div class="calc-panel-body">
+        <div class="calc-panel-h">
+          <div class="calc-panel-title">Calculadora ácido-base <span class="calc-panel-src">Winters · ânion gap corrigido · delta-delta</span></div>
+        </div>
+        <p class="calc-hint">Informe <strong>pH, PCO₂ e HCO₃</strong> (obrigatórios): a calculadora identifica o distúrbio primário e mostra o <strong>PCO₂ esperado</strong> (nos distúrbios metabólicos) ou o <strong>HCO₃ esperado</strong> (nos respiratórios, agudo × crônico) — comparado com o medido para flagrar um distúrbio misto. Acrescente <strong>Na, Cl e albumina</strong> para o ânion gap corrigido e o delta-delta. Unidades: PCO₂ em mmHg; HCO₃, Na, Cl em mEq/L; albumina em g/dL.</p>
+        <div class="calc-fields">
+          <div class="calc-field">
+            <label class="calc-label" for="ab_ph">pH</label>
+            <input class="calc-input" id="ab_ph" type="number" inputmode="decimal" step="any" placeholder="7.25">
+          </div>
+          <div class="calc-field">
+            <label class="calc-label" for="ab_pco2">PCO₂ (mmHg)</label>
+            <input class="calc-input" id="ab_pco2" type="number" inputmode="decimal" step="any" placeholder="25">
+          </div>
+          <div class="calc-field">
+            <label class="calc-label" for="ab_hco3">HCO₃ (mEq/L)</label>
+            <input class="calc-input" id="ab_hco3" type="number" inputmode="decimal" step="any" placeholder="11">
+          </div>
+          <div class="calc-field">
+            <label class="calc-label" for="ab_na">Sódio (mEq/L) — opcional</label>
+            <input class="calc-input" id="ab_na" type="number" inputmode="decimal" step="any" placeholder="140">
+          </div>
+          <div class="calc-field">
+            <label class="calc-label" for="ab_cl">Cloro (mEq/L) — opcional</label>
+            <input class="calc-input" id="ab_cl" type="number" inputmode="decimal" step="any" placeholder="100">
+          </div>
+          <div class="calc-field">
+            <label class="calc-label" for="ab_alb">Albumina (g/dL) — opcional</label>
+            <input class="calc-input" id="ab_alb" type="number" inputmode="decimal" step="any" placeholder="4.0">
+          </div>
+        </div>
+        <div class="calc-result is-idle" id="ab_result" data-tone="neutral">
+          <div class="res-values">
+            <div class="res-item">
+              <span class="res-val" id="ab_expVal">—</span>
+              <span class="res-unit" id="ab_expLbl">esperado</span>
+            </div>
+            <div class="res-item">
+              <span class="res-val" id="ab_agVal">—</span>
+              <span class="res-unit">ânion gap (corr.)</span>
+            </div>
+            <div class="res-item">
+              <span class="res-val" id="ab_ddVal">—</span>
+              <span class="res-unit">ΔAG ⁄ ΔHCO₃</span>
+            </div>
+          </div>
+          <p class="res-meta" id="ab_interp">Preencha pH, PCO₂ e HCO₃ para começar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="warn-box">
+    <strong>A calculadora orienta — a história decide</strong>
+    <p class="box-body">As fórmulas de compensação assumem valores prévios normais e um único distúrbio primário; em quem já tinha DRC, DPOC ou disnatremia, elas erram. O agudo × crônico do distúrbio respiratório <strong>não se lê na gasometria isolada</strong> — precisa da história. Use a calculadora para não errar conta, mas feche o diagnóstico com o quadro clínico. <strong>Confirme condutas no protocolo do seu serviço.</strong></p>
+  </div>
+
+  <div class="sec-h"><span class="sec-num">04</span><h2>Acidose metabólica — do ânion gap à conduta</h2></div>
+  <p class="sec-lead">
+    Acidose metabólica é queda do bicarbonato. O primeiro corte é o <strong>ânion gap</strong>: acidose de <strong>AG alto</strong> (ácido acumulado) ou de <strong>AG normal / hiperclorêmica</strong> (bicarbonato perdido). O corte muda a investigação e a conduta.
+  </p>
+  <p class="prose">
+    Na <strong>AG alto</strong>, o mnemônico moderno é o <strong>GOLDMARK</strong>: <strong>G</strong>licóis (etilenoglicol, propilenoglicol), <strong>O</strong>xoprolina (5-oxoprolina — paracetamol crônico em desnutrido), <strong>L</strong>-lactato (a mais comum na UTI: choque, hipoperfusão, "choque críptico", metformina, disfunção mitocondrial), <strong>D</strong>-lactato (síndrome do intestino curto), <strong>M</strong>etanol, <strong>A</strong>spirina (salicilato), <strong>R</strong>enal (uremia — sulfato, fosfato), <strong>K</strong>etoacidose (diabética, alcoólica, jejum). Na <strong>AG normal</strong>, é perda de bicarbonato (<strong>diarreia</strong>, fístula, derivação urinária) ou falha renal em excretar ácido (<strong>ATR</strong> tipos 1, 2 e 4) — e o <strong>ânion gap urinário</strong> [(Na + K) − Cl na urina] separa: <strong>negativo</strong> = perda GI / amônio apropriado; <strong>positivo</strong> = defeito renal (ATR).
+  </p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>AG alto (GOLDMARK)</th><th>AG normal (hiperclorêmica)</th></tr></thead>
+    <tbody>
+      <tr><td>Lactato (choque, sepse, metformina, mitocondrial)</td><td>Diarreia, fístula, derivação urinária</td></tr>
+      <tr><td>Cetoacidose (diabética, alcoólica, jejum)</td><td>ATR distal (tipo 1), proximal (tipo 2), tipo 4 (hipoaldo)</td></tr>
+      <tr><td>Uremia (LRA/DRC avançada)</td><td>Salina 0,9% em excesso (acidose dilucional)</td></tr>
+      <tr><td>Toxinas: metanol, etilenoglicol, salicilato, paracetamol crônico</td><td>Geradores de HCl (NH₄Cl); DRC inicial</td></tr>
+    </tbody>
+  </table></div>
+  <p class="prose">
+    A conduta primeira é sempre <strong>tratar a causa</strong> — restaurar perfusão (lactato), insulina e volume (cetoacidose), antídoto e diálise (metanol/etilenoglicol), diálise na uremia refratária. Os ânions de lactato e cetoácidos são <strong>"bicarbonato em potencial"</strong>: revertida a causa, o fígado os metaboliza e regenera bicarbonato — repor álcali demais aí gera alcalose de rebote.
+  </p>
+  <div class="tip-box">
+    <strong>Bicarbonato de sódio — quando (e a controvérsia)</strong>
+    <p class="box-body">Na acidose metabólica <em>orgânica</em> (lactato, cetoácidos), o bicarbonato não é rotina — os ensaios em UTI (<strong>BICAR-ICU</strong>, BICAR-ICU2, SODa-BIC) <strong>não mostraram benefício de mortalidade</strong>, embora o BICAR-ICU tenha reduzido necessidade de diálise e, no subgrupo com LRA moderada-grave, a mortalidade. Uso mais aceito: <strong>acidemia grave com pH &lt; 7,1 e HCO₃ ≤ 6 mEq/L</strong> (e considerar entre pH 7,1–7,2 / HCO₃ 6–13, sobretudo com LRA). Solução típica: bicarbonato de sódio a 4,2–5% (500–600 mEq/L) IV, mirando pH ≥ 7,2. <strong>Cuidados:</strong> se pH &lt; 7,1 com HCO₃ &gt; 6, o PCO₂ está &gt; 20 (ventilação inadequada — componente respiratório): infusão rápida (&gt; 15 mEq/min) piora a acidose respiratória; pode precisar de ventilação. Na acidose <em>hiperclorêmica</em> e na acidose da DRC, o álcali (inclusive oral) tem papel maior. <strong>Confirme dose e indicação no protocolo do serviço.</strong></p>
+  </div>
+
+  <div class="tip-box">
+    <strong>Álcool tóxico? Calcule o gap osmolar</strong>
+    <p class="box-body">Diante de acidose de AG alto <em>sem</em> causa óbvia (sem lactato, sem cetoácidos, sem uremia), pense em <strong>metanol / etilenoglicol</strong> e calcule o <strong>gap osmolar</strong> = osmolaridade <em>medida</em> − <em>calculada</em>, com calculada = <span style="font-family:var(--mono)">2 × Na + glicose⁄18 + ureia⁄6</span> (mg/dL). Gap &gt; 10 mOsm/kg sugere osmóis não medidos (os álcoois). Conduta: <strong>fomepizol</strong> (ou etanol), <strong>hemodiálise</strong> e cofatores — sem esperar o nível sérico. Cuidado: um gap osmolar já <strong>normal não exclui</strong> — ele cai conforme o álcool vira ácido (e o AG sobe). <strong>Confirme no protocolo do serviço.</strong></p>
+  </div>
+
+
+  <a class="link-cta" href="../consulte/prescricoes/cetoacidose-diabetica.html" style="margin-top:22px">Prescrição comentada da cetoacidose diabética <span aria-hidden="true">&rarr;</span></a>
+  <div class="sec-h"><span class="sec-num">05</span><h2>Alcalose metabólica — cloreto-responsiva × resistente</h2></div>
+  <p class="sec-lead">
+    Alcalose metabólica é elevação do bicarbonato. Ela precisa de duas coisas: algo que <em>gera</em> o bicarbonato (perda de H⁺/Cl⁻, diurético, mineralocorticoide) e algo que <em>impede o rim de excretá-lo</em> (hipovolemia, depleção de cloreto, hipocalemia, TFG baixa). Por isso o divisor prático é o <strong>cloreto urinário</strong>.
+  </p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Cloreto-responsiva (Cl urinário &lt; 25)</th><th>Cloreto-resistente (Cl urinário &gt; 40)</th></tr></thead>
+    <tbody>
+      <tr><td>Vômito / aspiração nasogástrica (perda de HCl)</td><td>Hiperaldosteronismo primário, Cushing</td></tr>
+      <tr><td>Diuréticos (efeito remoto), alcalose de contração</td><td>Alcaçuz, síndrome de Liddle</td></tr>
+      <tr><td>Pós-hipercapnia; adenoma viloso</td><td>Bartter / Gitelman; hipocalemia grave</td></tr>
+      <tr><td><strong>Costuma haver hipovolemia + hipocloremia</strong></td><td><strong>Costuma haver hipertensão (mineralocorticoide)</strong></td></tr>
+    </tbody>
+  </table></div>
+  <p class="prose">
+    A <strong>cloreto-responsiva</strong> é a do plantão: vômito, sonda nasogástrica, diurético. Trata-se restaurando volume e cloreto com <strong>soro fisiológico 0,9%</strong> (que corrige a volemia e o déficit de cloreto e "libera" o rim para excretar o bicarbonato) e repondo <strong>potássio como KCl</strong> — nunca como citrato/acetato, que viram bicarbonato e perpetuam a alcalose. Somar medidas contra a fonte: <strong>antiemético, IBP ou bloqueador H2</strong> para reduzir a perda de HCl gástrico; suspender/reduzir o diurético. A <strong>cloreto-resistente</strong> (hipertensa, por mineralocorticoide) não responde a salina: trata-se a causa (espironolactona/eplerenona, retirar alcaçuz) e corrige-se o potássio.
+  </p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Conduta na alcalose metabólica</th><th>Posologia / observação</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Volume + cloreto</strong> (cloreto-responsiva)</td><td>SF 0,9% ~100 mL/h acima das perdas, até euvolemia/Cl urinário subir</td></tr>
+      <tr><td><strong>Potássio (KCl)</strong></td><td>10–20 mEq 2–4×/dia (20–80 mEq/dia); IV se grave/sintomática. Sempre KCl (não citrato/acetato)</td></tr>
+      <tr><td><strong>Reduzir a fonte</strong></td><td>Antiemético; IBP/bloqueador H2 na perda gástrica; suspender diurético</td></tr>
+      <tr><td><strong>Edemaciado (IC/cirrose)</strong>, salina contraindicada</td><td>KCl + poupador de potássio (espironolactona/eplerenona/amilorida); <strong>acetazolamida 250–500 mg 1–2×/dia</strong> se precisa de diurese (vigiar K; evitar em alergia a sulfa, DPOC grave, hipocalemia)</td></tr>
+      <tr><td><strong>Grave e refratária</strong> (HCO₃ &gt; 50 ou pH &gt; 7,55) com rim que não excreta</td><td>HCl 0,1 N em cateter central (raro); diálise com banho de baixo bicarbonato / ajuste do efluente na CRRT</td></tr>
+    </tbody>
+  </table></div>
+
+
+  <a class="link-cta" href="../consulte/prescricoes/hipocalemia.html" style="margin-top:22px">Prescrição comentada da hipocalemia — o K que sustenta a alcalose <span aria-hidden="true">&rarr;</span></a>
+  <div class="sec-h"><span class="sec-num">06</span><h2>Acidose respiratória — hipoventilação</h2></div>
+  <p class="sec-lead">
+    Acidose respiratória é <strong>PCO₂ alto</strong> por ventilação alveolar insuficiente. A pergunta que organiza as causas: o paciente <strong>não respira</strong> (queda do drive), <strong>não consegue respirar</strong> (bomba: nervo, músculo, caixa torácica) ou tem <strong>espaço morto alto</strong> (doença pulmonar)? E é <strong>aguda ou crônica</strong> — porque a compensação renal (dias) muda a leitura.
+  </p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Mecanismo</th><th>Causas na prática</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Não respira</strong> (drive ↓)</td><td>Opioides, benzodiazepínicos, AVC/lesão de tronco, encefalite; apneia do sono, hipoventilação da obesidade</td></tr>
+      <tr><td><strong>Não consegue</strong> (bomba)</td><td>Guillain-Barré, miastenia, ELA, lesão medular alta (&gt; C3), miopatia do doente crítico; hipofosfatemia/hipomagnesemia graves; cifoescoliose, tórax instável</td></tr>
+      <tr><td><strong>Espaço morto ↑</strong> (pulmão)</td><td><strong>DPOC</strong> (a clássica crônica), asma grave, pneumonia extensa, fibrose, doença vascular pulmonar</td></tr>
+      <tr><td><strong>Produção de CO₂ ↑</strong></td><td>Febre, sepse, tireotoxicose, hiperalimentação — só causa hipercapnia se a ventilação não pode subir</td></tr>
+    </tbody>
+  </table></div>
+  <p class="prose">
+    A conduta é <strong>garantir ventilação e tratar a causa</strong>. A <strong>ventilação não invasiva (VNI/BiPAP)</strong> é primeira linha na exacerbação de DPOC com acidose respiratória (pH ~7,25–7,35) e no edema agudo cardiogênico; a intubação entra quando a VNI falha ou é contraindicada. Reverter o reversível: <strong>naloxona</strong> no opioide, broncodilatador e corticoide na DPOC/asma, corrigir hipofosfatemia/hipomagnesemia. No paciente ventilado com ARDS ou asma grave, aceita-se <strong>hipercapnia permissiva</strong> (deixar o CO₂ subir para poupar o pulmão), mantendo o <strong>pH acima de ~7,20</strong>.
+  </p>
+  <div class="warn-box">
+    <strong>Oxigênio no DPOC — nem de menos, nem de mais</strong>
+    <p class="box-body">O oxigênio pode <em>piorar</em> a hipercapnia no DPOC (perda da vasoconstrição pulmonar hipóxica → mais desperdício V/Q; efeito Haldane; pequena queda do drive) — mas <strong>não se nega O₂ ao hipoxêmico</strong>: hipóxia mata mais rápido. A saída é O₂ <strong>controlado</strong>, com alvo de <strong>SpO₂ 88–92%</strong>, titulado. E não corrigir o PCO₂ crônico rápido demais: derrubar o CO₂ bruscamente com um bicarbonato "compensatório" ainda alto gera <strong>alcalose pós-hipercápnica</strong> e alcalinização abrupta do SNC.</p>
+  </div>
+
+
+  <a class="link-cta" href="../consulte/prescricoes/dpoc-exacerbacao.html" style="margin-top:22px">Prescrição comentada da exacerbação de DPOC <span aria-hidden="true">&rarr;</span></a>
+  <div class="sec-h"><span class="sec-num">07</span><h2>Alcalose respiratória — hiperventilação</h2></div>
+  <p class="sec-lead">
+    Alcalose respiratória é <strong>PCO₂ baixo</strong> por hiperventilação. Raramente perigosa por si — mas é a <strong>alteração ácido-base mais comum no crítico</strong> e, muitas vezes, o <em>primeiro aviso</em> de algo grave (sepse, embolia pulmonar, salicilato). Tratá-la é tratar a causa.
+  </p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Grupo</th><th>Causas</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Hipoxemia</strong></td><td>Pneumonia, embolia pulmonar, edema, asma, altitude — o pulmão hiperventila para oxigenar</td></tr>
+      <tr><td><strong>Estímulo central</strong></td><td>Dor, ansiedade (síndrome de hiperventilação), febre, AVC, tumor/lesão do SNC</td></tr>
+      <tr><td><strong>Sistêmico / drogas</strong></td><td><strong>Sepse</strong> (precoce), insuficiência hepática, gravidez (progesterona), <strong>salicilato</strong>, catecolaminas, teofilina</td></tr>
+      <tr><td><strong>Iatrogênica</strong></td><td>Hiperventilação no ventilador</td></tr>
+    </tbody>
+  </table></div>
+  <p class="prose">
+    A conduta é <strong>identificar e tratar a causa</strong>: analgesia na dor, oxigênio e tratamento da hipoxemia, antibiótico e ressuscitação na sepse, anticoagulação na embolia. Na <strong>síndrome de hiperventilação</strong> por ansiedade (diagnóstico de exclusão), tranquilizar e orientar a respiração; a técnica do saco de papel é <strong>desencorajada</strong> (risco de hipóxia). Atenção redobrada ao <strong>salicilato</strong>, em que a alcalose respiratória vem <em>misturada</em> com acidose metabólica de AG alto (seção 08) — e à alcalose respiratória <em>de novo</em> no crítico, que exige buscar sepse ou embolia antes de considerá-la benigna.
+  </p>
+
+  <div class="sec-h"><span class="sec-num">08</span><h2>Distúrbios mistos — quando há mais de um</h2></div>
+  <p class="sec-lead">
+    O crítico raramente tem um distúrbio só. O misto se anuncia de três formas: <strong>compensação fora do esperado</strong>, <strong>delta-delta desviado</strong> e um <strong>pH normal com HCO₃ e PCO₂ ambos muito alterados</strong>. Reconhecer o segundo (ou terceiro) distúrbio muda a conduta.
+  </p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Pista</th><th>O que significa</th></tr></thead>
+    <tbody>
+      <tr><td>PCO₂ acima do Winters na acidose metabólica</td><td>Acidose respiratória associada (ventilação inadequada) — pode precisar de VM</td></tr>
+      <tr><td>PCO₂ abaixo do Winters na acidose metabólica</td><td>Alcalose respiratória associada (dor, sepse, salicilato)</td></tr>
+      <tr><td>ΔAG ⁄ ΔHCO₃ &lt; 0,8</td><td>Acidose de AG alto + acidose hiperclorêmica</td></tr>
+      <tr><td>ΔAG ⁄ ΔHCO₃ &gt; 2</td><td>Acidose de AG alto + alcalose metabólica (ou resp. crônica prévia)</td></tr>
+      <tr><td>pH ~7,40 com HCO₃ e PCO₂ muito alterados</td><td>Distúrbio triplo ou dois opostos se "cancelando" — não relaxar</td></tr>
+    </tbody>
+  </table></div>
+  <p class="prose">
+    Três combinações merecem estar na ponta da língua. <strong>Salicilato</strong>: acidose metabólica de AG alto <em>somada</em> a alcalose respiratória — pH que pode ser normal com PCO₂ e HCO₃ baixos. <strong>Cetoacidose diabética com vômito</strong>: acidose de AG alto (cetoácidos) + alcalose metabólica (perda de HCl) — o HCO₃ pode estar "enganosamente" normal e o delta-delta &gt; 2 entrega o segundo distúrbio. <strong>DPOC descompensado em uso de diurético</strong>: acidose respiratória crônica + alcalose metabólica de contração — o pH quase normal esconde os dois. Em todos, a regra é a mesma: <strong>a compensação e o delta-delta apontam o distúrbio escondido; a história confirma; trata-se cada componente</strong>.
+  </p>
+  <div class="tip-box">
+    <strong>Fechou a gasometria — e agora?</strong>
+    <p class="box-body">A acidose e a alcalose conversam direto com o <a class="text-link" href="potassio.html">potássio</a> (pH ↔ K) e com o <a class="text-link" href="sodio.html">sódio</a>; a acidose da <a class="text-link" href="lra.html">LRA</a> e a acidose crônica da <a class="text-link" href="drc.html">DRC</a> têm suas próprias páginas. O <a class="text-link" href="fluxograma.html">fluxograma do módulo</a> amarra o raciocínio dos eletrólitos. A camada de prescrição (soluções, diluições, vazões) está em construção no Consulte.</p>
+    <a class="link-cta" href="index.html">Voltar ao Nefro Guide <span aria-hidden="true">&rarr;</span></a>
+  </div>
+
+  <div class="section-label">Referências</div>
+  <span class="ref">Berend K, de Vries APJ, Gans ROB. Physiological approach to assessment of acid-base disturbances. <em>N Engl J Med.</em> 2014;371(15):1434&ndash;1445 (abordagem sistemática, compensações e mistos).</span>
+  <span class="ref">Rose BD, Post TW. Clinical Physiology of Acid-Base and Electrolyte Disorders. 5ª ed. Nova York: McGraw-Hill; 2001 (referência de base para definições, compensação e ânion gap).</span>
+  <span class="ref">Albert MS, Dell RB, Winters RW. Quantitative displacement of acid-base equilibrium in metabolic acidosis. <em>Ann Intern Med.</em> 1967;66(2):312&ndash;322 (equação de Winters).</span>
+  <span class="ref">Mehta AN, Emmett JB, Emmett M. GOLD MARK: an anion gap mnemonic for the 21st century. <em>Lancet.</em> 2008;372(9642):892. · Emmett M, Narins RG. Clinical use of the anion gap. <em>Medicine (Baltimore).</em> 1977;56(1):38&ndash;54.</span>
+  <span class="ref">Kraut JA, Madias NE. Metabolic acidosis: pathophysiology, diagnosis and management. <em>Nat Rev Nephrol.</em> 2010;6(5):274&ndash;285.</span>
+  <span class="ref">Jaber S, Paugam C, Futier E, et al. Sodium bicarbonate therapy for patients with severe metabolic acidaemia in the intensive care unit (BICAR-ICU). <em>Lancet.</em> 2018;392(10141):31&ndash;40.</span>
+  <span class="ref">Weinberger SE, Schwartzstein RM, Weiss JW. Hypercapnia. <em>N Engl J Med.</em> 1989;321(18):1223&ndash;1231. · West JB. Causes of carbon dioxide retention in lung disease. <em>N Engl J Med.</em> 1971;284(22):1232&ndash;1236. · Malhotra A, Schwartz DR, Ayas N, et al. Treatment of oxygen-induced hypercapnia. <em>Lancet.</em> 2001;357(9259):884&ndash;885.</span>
+</section>
+</main>
+<script src="../assets/app.js"></script>
+<script>
+(function(){
+  var ids=['ab_ph','ab_pco2','ab_hco3','ab_na','ab_cl','ab_alb'];
+  var el={}; ids.forEach(function(i){el[i]=document.getElementById(i);});
+  var result=document.getElementById('ab_result');
+  var agVal=document.getElementById('ab_agVal'), ddVal=document.getElementById('ab_ddVal'), interp=document.getElementById('ab_interp');
+  var expVal=document.getElementById('ab_expVal'), expLbl=document.getElementById('ab_expLbl');
+  if(!result||!el.ab_ph){return;}
+  function num(x){var v=parseFloat(x); return isFinite(v)?v:null;}
+  function near(a,b,t){return Math.abs(a-b)<=t;}
+  function esc(s){return s;}
+  function recalc(){
+    var pH=num(el.ab_ph.value), pco2=num(el.ab_pco2.value), hco3=num(el.ab_hco3.value);
+    var na=num(el.ab_na.value), cl=num(el.ab_cl.value), alb=num(el.ab_alb.value);
+    if(pH===null||pco2===null||hco3===null){
+      result.classList.add('is-idle'); result.classList.remove('is-ready'); result.setAttribute('data-tone','neutral');
+      agVal.textContent='—'; ddVal.textContent='—'; expVal.textContent='—'; expLbl.textContent='esperado';
+      interp.innerHTML='Preencha pH, PCO₂ e HCO₃ para começar.';
+      return;
+    }
+    var lines=[]; var tone='neutral'; var primary=null;
+    var acidemia=pH<7.35, alkalemia=pH>7.45;
+    if(acidemia){
+      if(hco3<22 && pco2>45) primary='Distúrbio misto: acidose metabólica + acidose respiratória';
+      else if(hco3<22) primary='Acidose metabólica';
+      else if(pco2>45) primary='Acidose respiratória';
+      else primary='Acidemia (padrão atípico — rever valores)';
+      tone='bad';
+    } else if(alkalemia){
+      if(hco3>26 && pco2<35) primary='Distúrbio misto: alcalose metabólica + alcalose respiratória';
+      else if(hco3>26) primary='Alcalose metabólica';
+      else if(pco2<35) primary='Alcalose respiratória';
+      else primary='Alcalemia (padrão atípico — rever valores)';
+      tone='warn';
+    } else {
+      if(hco3<22 && pco2<35) primary='pH normal — distúrbio misto: acidose metabólica + alcalose respiratória';
+      else if(hco3>26 && pco2>45) primary='pH normal — distúrbio misto: alcalose metabólica + acidose respiratória';
+      else primary='pH normal — sem distúrbio evidente (calcular ânion gap mesmo assim)';
+      tone='neutral';
+    }
+    lines.push('<strong>'+primary+'</strong>');
+    expVal.textContent='—'; expLbl.textContent='esperado';
+    // compensation
+    if(primary==='Acidose metabólica' || primary.indexOf('acidose metabólica + alcalose respiratória')>-1){
+      var exp=1.5*hco3+8;
+      expVal.textContent=exp.toFixed(0); expLbl.textContent='PCO₂ esperado (Winters)';
+      var comp='Winters: PCO₂ esperado ≈ '+exp.toFixed(0)+' ± 2 (atual '+pco2+').';
+      if(pco2>exp+2) comp+=' PCO₂ alto demais → <strong>acidose respiratória associada</strong>.';
+      else if(pco2<exp-2) comp+=' PCO₂ baixo demais → <strong>alcalose respiratória associada</strong>.';
+      else comp+=' Compensação respiratória adequada.';
+      lines.push(comp);
+    } else if(primary==='Alcalose metabólica' || primary.indexOf('alcalose metabólica + acidose respiratória')>-1){
+      var expa=40+0.7*(hco3-24);
+      expVal.textContent=expa.toFixed(0); expLbl.textContent='PCO₂ esperado';
+      var compa='PCO₂ esperado ≈ '+expa.toFixed(0)+' ± 2 (atual '+pco2+').';
+      if(pco2>expa+2) compa+=' PCO₂ alto demais → <strong>acidose respiratória associada</strong>.';
+      else if(pco2<expa-2) compa+=' PCO₂ baixo demais → <strong>alcalose respiratória associada</strong>.';
+      else compa+=' Compensação respiratória adequada.';
+      lines.push(compa);
+    } else if(primary==='Acidose respiratória'){
+      var ac=24+0.1*(pco2-40), ch=24+0.35*(pco2-40);
+      expVal.textContent=ac.toFixed(0)+' / '+ch.toFixed(0); expLbl.textContent='HCO₃ esp. agudo/crônico';
+      var cr='HCO₃ esperado — agudo ≈ '+ac.toFixed(0)+' | crônico ≈ '+ch.toFixed(0)+' (atual '+hco3+').';
+      if(near(hco3,ac,2)) cr+=' Padrão <strong>agudo</strong>.';
+      else if(near(hco3,ch,2)) cr+=' Padrão <strong>crônico</strong>.';
+      else if(hco3>ch+2) cr+=' HCO₃ acima do crônico → <strong>alcalose metabólica associada</strong>.';
+      else if(hco3<ac-2) cr+=' HCO₃ abaixo do agudo → <strong>acidose metabólica associada</strong>.';
+      else cr+=' Entre agudo e crônico (agudo sobre crônico?).';
+      lines.push(cr);
+    } else if(primary==='Alcalose respiratória'){
+      var aca=24-0.2*(40-pco2), cha=24-0.4*(40-pco2);
+      expVal.textContent=aca.toFixed(0)+' / '+cha.toFixed(0); expLbl.textContent='HCO₃ esp. agudo/crônico';
+      var cra='HCO₃ esperado — agudo ≈ '+aca.toFixed(0)+' | crônico ≈ '+cha.toFixed(0)+' (atual '+hco3+').';
+      if(near(hco3,aca,2)) cra+=' Padrão <strong>agudo</strong>.';
+      else if(near(hco3,cha,2)) cra+=' Padrão <strong>crônico</strong>.';
+      else if(hco3<cha-2) cra+=' HCO₃ abaixo do crônico → <strong>acidose metabólica associada</strong>.';
+      else if(hco3>aca+2) cra+=' HCO₃ acima do agudo → <strong>alcalose metabólica associada</strong>.';
+      lines.push(cra);
+    }
+    // anion gap
+    if(na!==null && cl!==null){
+      var ag=na-(cl+hco3);
+      var agc=ag; if(alb!==null) agc=ag+2.5*(4.0-alb);
+      agVal.textContent=agc.toFixed(0);
+      var agtxt='Ânion gap = '+ag.toFixed(0)+(alb!==null?(' | corrigido p/ albumina = '+agc.toFixed(0)):'');
+      var high=agc>12;
+      agtxt+= high?' → <strong>AG alto</strong> (acidose de AG alto).':' → AG normal (≤12).';
+      lines.push(agtxt);
+      if(high && hco3<24){
+        var dd=(agc-12)/(24-hco3);
+        ddVal.textContent=dd.toFixed(1);
+        var ddt='ΔAG ⁄ ΔHCO₃ = '+dd.toFixed(1)+' → ';
+        if(dd<0.8) ddt+='soma <strong>acidose hiperclorêmica</strong>.';
+        else if(dd>2) ddt+='soma <strong>alcalose metabólica</strong> (ou resp. crônica prévia).';
+        else ddt+='acidose de AG alto <strong>pura</strong>.';
+        lines.push(ddt);
+      } else { ddVal.textContent='—'; }
+    } else { agVal.textContent='—'; ddVal.textContent='—'; lines.push('<span style="color:var(--text3)">Informe Na, Cl e albumina para o ânion gap e o delta-delta.</span>'); }
+    result.classList.remove('is-idle'); result.classList.add('is-ready'); result.setAttribute('data-tone',tone);
+    interp.innerHTML=lines.join('<br>');
+  }
+  ids.forEach(function(i){ el[i].addEventListener('input',recalc); });
+  recalc();
+})();
+</script>
+</body>
+</html>

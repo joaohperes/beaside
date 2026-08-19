@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7K0CML04MR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7K0CML04MR');
+</script>
+<script src="../../assets/theme-boot.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Prescrição comentada — Fibrilação e flutter atrial | be·aside</title>
+<meta name="robots" content="noindex, nofollow" data-beaside="status">
+<link rel="canonical" href="https://beaside.com.br/consulte/prescricoes/fa-flutter.html">
+<meta name="description" content="Prescrição comentada da FA e do flutter na emergência: as três perguntas que definem a conduta, controle de frequência com dose EV, anticoagulação com DOAC nas doses certas (apixabana 5 mg 12/12 h) — ESC 2024 e ACC/AHA 2023.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="be·aside">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Prescrição comentada — Fibrilação e flutter atrial | be·aside">
+<meta property="og:description" content="Instável? Quanto tempo? Anticoagular quem? — a prescrição da FA item por item, com as armadilhas.">
+<meta property="og:url" content="https://beaside.com.br/consulte/prescricoes/fa-flutter.html">
+<meta property="og:image" content="https://beaside.com.br/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prescrição comentada — FA e flutter atrial | be·aside">
+<meta name="twitter:image" content="https://beaside.com.br/assets/og-image.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/styles.css">
+<style>
+  /* componente da prescrição comentada — usa só tokens; variante do .card.collapsible */
+  .rx-list{counter-reset:rx;display:flex;flex-direction:column;gap:14px;margin:26px 0 8px}
+  .rx-item{counter-increment:rx}
+  .rx-head{display:flex;gap:13px;align-items:flex-start;padding:16px 18px 0}
+  .rx-n{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--accent);background:rgba(var(--accent-rgb),.12);border-radius:6px;padding:3px 8px;margin-top:2px;flex-shrink:0}
+  .rx-n::before{content:counter(rx,decimal-leading-zero)}
+  .rx-title{font-size:15.5px;font-weight:600;color:var(--text);letter-spacing:-.01em;line-height:1.3}
+  .rx-cond{font-size:12.5px;color:var(--text2);margin-top:3px;line-height:1.5}
+  .rx-body{padding:2px 18px 6px}
+  .rx-dose{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;line-height:1.8;color:var(--text);background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:11px 14px;margin:12px 0 0}
+  .rx-dose+.rx-dose{margin-top:8px}
+  .rx-dose b{color:var(--accent);font-weight:600}
+  .rx-sub{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);margin:18px 0 -2px;padding-left:2px}
+  .rx-body .tag-row{margin:10px 0 0}
+  .rx-body .alert-box{margin:12px 0 0}
+  .rx-item .card-toggle{border-top:1px solid var(--border);margin-top:14px}
+  .rx-why{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);flex:1}
+  .rx-item .card-body p{font-size:13.5px;line-height:1.75;color:var(--text2);margin:0 0 10px}
+  .rx-item .card-body p strong{color:var(--text)}
+  .rx-item .card-body .ref{display:block;margin-top:10px}
+  @media(max-width:600px){.rx-head{padding:14px 14px 0}.rx-body{padding:2px 14px 6px}}
+  /* botão que leva à calculadora — a conta mora em calculadoras.html */
+  .rxc-link{display:inline-flex;align-items:center;gap:7px;margin:12px 0 0;padding:9px 13px;border-radius:9px;
+    background:var(--bg2);border:1px solid var(--border);text-decoration:none;
+    font-size:12.5px;font-weight:600;color:var(--text);letter-spacing:-.005em;
+    transition:background .15s ease,border-color .15s ease}
+  .rxc-link::before{content:'';width:15px;height:15px;flex-shrink:0;border-radius:4px;
+    border:1.5px solid var(--accent);background:rgba(var(--accent-rgb),.12)}
+  .rxc-link span{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text2)}
+  @media(hover:hover){.rxc-link:hover{background:var(--bg3);border-color:rgba(var(--accent-rgb),.45)}}
+  .rxc-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+</head>
+<body data-module="prescricoes" data-page="fa-flutter" data-root="../../">
+<main class="main">
+
+<section class="section" id="topo">
+  <header class="page-head">
+    <div class="hero-eyebrow">Consulte · Prescrições comentadas</div>
+    <h1 class="section-title">Fibrilação e flutter atrial</h1>
+    <p class="section-subtitle">Três perguntas antes de qualquer droga: está instável? há quanto tempo fibrila? quem precisa de anticoagulação? A prescrição inteira deriva dessas respostas.</p>
+  </header>
+
+  <p class="prose">Serve para a <strong>FA e o flutter com alta resposta ventricular</strong> na emergência e na enfermaria — do paciente instável que precisa de choque agora ao estável em que a decisão importante é o anticoagulante que ele vai levar para casa. O flutter segue o mesmo raciocínio da FA (anticoagulação inclusive); a diferença prática é que ele responde melhor à cardioversão e pior ao controle de frequência.</p>
+
+  <div class="warn-box">
+    <strong>Antes de prescrever qualquer item desta página.</strong>
+    <p class="box-body">As doses seguem as diretrizes de FA (ESC 2024, ACC/AHA 2023) e <strong>não substituem o protocolo do seu serviço</strong> nem a padronização da farmácia. Anticoagulante tem dose errada circulando por aí — inclusive impressa em material de bolso; confira cada dose antes de assinar.</p>
+  </div>
+
+  <div class="info-box">
+    <strong>Como usar.</strong>
+    <p class="box-body">A ordem é a do raciocínio: primeiro as <strong>três perguntas que definem a conduta</strong>, depois o controle de frequência, a anticoagulação (o item que evita o AVC) e o resto. Dose sempre visível; o porquê em <em>"por quê &amp; armadilhas"</em>.</p>
+  </div>
+</section>
+
+<section class="section" id="prescricao">
+  <div class="section-label">A prescrição</div>
+  <h2 class="section-title">Item por item</h2>
+
+  <div class="rx-list">
+
+    <div class="section-label" style="margin-top:26px">As três perguntas que definem a conduta</div>
+
+    <!-- 01 · Instável -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Instável? Cardioversão elétrica — agora</div>
+          <div class="rx-cond">hipotensão, rebaixamento, dor torácica isquêmica ou congestão grave atribuíveis à arritmia</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>CVE sincronizada</b>, carga máxima do desfibrilador bifásico (ex.: 200 J), sob sedoanalgesia breve — repetir se necessário · pás em posição anteroposterior ajudam na FA</div>
+        <div class="rx-dose"><b>Anticoagular junto</b> (heparina plena ou DOAC na chegada) e manter por ≥ 4 semanas após a cardioversão — a urgência não dispensa o anticoagulante, só a espera</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Instabilidade <em>pela arritmia</em> não se trata com bomba de infusão — se trata com energia sincronizada. A armadilha está no diagnóstico reverso: na sepse, na hipovolemia e no TEP, a FA rápida é <strong>consequência</strong> da doença, e chocar o ritmo de um paciente séptico taquicárdico costuma devolver a FA em minutos — o tratamento ali é da causa. Pergunte sempre: a FA está causando a instabilidade, ou a instabilidade está causando a FA?</p>
+        <span class="ref">ESC 2024 · ACC/AHA 2023 — CVE imediata na instabilidade.</span>
+      </div>
+    </div>
+
+    <!-- 02 · Tempo -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Há quanto tempo? A ESC 2024 baixou o corte para 24 horas</div>
+          <div class="rx-cond">início &gt; 24 h ou indeterminado muda o que é permitido fazer</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose">FA &gt; <b>24 h</b> (ou não se sabe): <b>sem cardioversão eletiva</b> — elétrica <em>ou química</em> — antes de <b>3 semanas</b> de anticoagulação eficaz <em>ou</em> estratégia guiada por imagem (ETE excluindo trombo em apêndice atrial) · enquanto isso: controlar frequência + anticoagular · <b>instabilidade não espera</b> nada disso</div>
+        <div class="rx-dose">⚠ O corte clássico eram <b>48 h</b>; a ESC 2024 desceu para <b>24 h</b>. Material antigo do serviço ainda vai dizer 48</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O átrio que fibrila há dias pode abrigar trombo no apêndice — e é a <strong>volta do ritmo sinusal</strong> que o arremessa. Por isso a regra vale para qualquer cardioversão, inclusive a "química" acidental: <strong>amiodarona prescrita "só para controlar frequência" cardioverte</strong>, e cardioverter sem anticoagulação em FA de tempo indeterminado é prescrever um AVC evitável. Se a intenção é só frequência, use droga que não cardioverte; se é ritmo, cumpra o rito (3 semanas de ACO ou ETE).</p>
+        <span class="ref">ESC 2024 — corte de 24 h (antes 48 h) para cardioversão eletiva sem imagem; instabilidade cardioverte já · ACC/AHA 2023.</span>
+      </div>
+    </div>
+
+    <!-- 03 · Quem anticoagula -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Anticoagular quem? O escore — e as exceções que não precisam dele</div>
+          <div class="rx-cond">a decisão mais importante da página; independe de a FA "ter revertido"</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>CHA₂DS₂-VA ≥ 2</b> → anticoagular · <b>= 1</b> → considerar, decisão compartilhada · (ESC 2024 aposentou o critério de sexo; pela ACC/AHA 2023 o CHA₂DS₂-VASc segue: ≥ 2 homens, ≥ 3 mulheres)</div>
+        <div class="rx-dose"><b>Anticoagular independentemente do escore:</b> estenose mitral moderada/grave e prótese valvar mecânica (→ <em>varfarina</em>, nunca DOAC) · cardiomiopatia hipertrófica · amiloidose cardíaca</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O AVC da FA não pergunta se o episódio durou vinte minutos ou vinte dias — o risco é do <strong>paciente</strong>, não do eletrocardiograma do momento. Por isso "reverteu, então não precisa anticoagular" é o raciocínio errado mais comum da emergência. Risco de sangramento alto (HAS-BLED) serve para corrigir fatores modificáveis (PA, AINE, álcool), não para negar anticoagulação a quem tem indicação. E AAS <strong>não é</strong> anticoagulação na FA: sangra quase igual e protege muito menos.</p>
+        <span class="ref">ESC 2024 (CHA₂DS₂-VA) · ACC/AHA 2023.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">Controlar a frequência — alvo inicial FC &lt; 110</div>
+
+    <!-- 04 · BB -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Betabloqueador — primeira escolha na maioria</div>
+          <div class="rx-cond">paciente estável, sem FEVE reduzida descompensada</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Metoprolol</b> 2,5–5 mg EV lento (1 mg/min), repetir a cada 5–10 min até controle — máx. 15 mg · seguir com <b>VO</b>: metoprolol 25–100 mg 12/12 h (ou bisoprolol 2,5–10 mg/dia, carvedilol 3,125–25 mg 12/12 h)</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O alvo leniente (FC &lt; 110 em repouso, do RACE II) existe para lembrar que o objetivo é sintoma e hemodinâmica, não estética de monitor — perseguir FC de 70 com doses empilhadas na emergência é receita de bradicardia e hipotensão iatrogênicas. Titule com calma e reavalie: FA que "não controla" com dose adequada costuma ter gatilho por trás (febre, dor, hipovolemia, hipoxemia).</p>
+        <span class="ref">ESC 2024 · RACE II (NEJM 2010) — alvo leniente inicial.</span>
+      </div>
+    </div>
+
+    <!-- 05 · BCC -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Diltiazem ou verapamil — a alternativa (com uma proibição)</div>
+          <div class="rx-cond">quando betabloqueador não serve (broncoespasmo grave, intolerância) — nunca na FEVE reduzida</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Diltiazem</b> 0,25 mg/kg EV em 2 min → se preciso, 2ª dose 0,35 mg/kg após 15 min → manutenção 5–15 mg/h EV (conforme disponibilidade na sua farmácia)</div>
+        <div class="rx-dose"><b>Verapamil</b> 5–10 mg EV em 2–5 min → pode repetir após 15–30 min (máx. 20 mg) → manutenção VO 160–480 mg/dia</div>
+        <div class="alert-box danger"><div class="icon">!</div><div class="content"><strong>Não usar diltiazem/verapamil se</strong> FEVE reduzida ou sinais de IC descompensada — inotropismo negativo que precipita choque. Também não usar (nem betabloqueador, nem digital) na <strong>FA pré-excitada</strong> (WPW, QRS largo e irregular): ali a conduta é cardioversão.</div></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Bloqueador de canal de cálcio na FA exige saber a fração de ejeção antes — no VE ruim ele tira o inotropismo que sustentava o débito. Na dúvida, sem eco e com qualquer sinal de congestão: trate como FEVE reduzida (item seguinte). E a FA pré-excitada é o caso em que bloquear o nó AV <em>piora</em>: o estímulo desce livre pela via acessória e o ritmo pode degenerar em FV — QRS largo, irregular e muito rápido pede choque, não bomba.</p>
+        <span class="ref">ESC 2024 · ACC/AHA 2023.</span>
+      </div>
+    </div>
+
+    <!-- 06 · FEVE reduzida -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">FEVE reduzida ou instabilidade limítrofe — amiodarona ou digital</div>
+          <div class="rx-cond">quando betabloqueador não cabe e BCC é proibido</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Amiodarona</b> 150 mg + SG 5% 100 mL EV em 10 min → 1 mg/min por 6 h → 0,5 mg/min por 18 h (≈ 1 g/24 h) · preferir acesso central se infusão prolongada (flebite)</div>
+        <div class="rx-dose"><b>Digitálico</b> — deslanosídeo 0,4 mg EV lento, podendo fracionar doses adicionais em 24 h até controle (ou digoxina conforme disponibilidade) · útil como associação; início de ação lento · cuidado na disfunção renal</div>
+        <div class="alert-box warn"><div class="icon">!</div><div class="content"><strong>Amiodarona cardioverte.</strong> Em FA &gt; 48 h sem anticoagulação, usá-la "só para frequência" é cardioversão química não programada — com o risco embólico da regra das 48 h. Decida antes o que você quer da droga.</div></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>No VE ruim as opções seguras encolhem: amiodarona controla (e eventualmente reverte) com pouco efeito inotrópico negativo; o digital soma controle sem derrubar pressão — mas é lento e estreito de janela terapêutica. A combinação clássica no descompensado é digital + amiodarona em vez de empurrar betabloqueador em quem está congesto. E vale repetir: se o plano era só frequência, a amiodarona pode entregar mais do que se pediu.</p>
+        <span class="ref">ESC 2024 · ACC/AHA 2023 — FA na IC descompensada.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">Anticoagulação — a prescrição que evita o AVC</div>
+
+    <!-- 07 · DOAC -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">DOAC — primeira escolha na FA não valvar</div>
+          <div class="rx-cond">doses e ajustes exatos; é aqui que mora o erro de dose mais comum</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Apixabana</b> 5 mg VO <b>12/12 h</b> · reduzir para 2,5 mg 12/12 h só se 2 de 3: idade ≥ 80 a, peso ≤ 60 kg, creatinina ≥ 1,5 mg/dL</div>
+        <div class="rx-dose"><b>Rivaroxabana</b> 20 mg VO 1×/dia, com alimento · ClCr 15–49: 15 mg 1×/dia</div>
+        <div class="rx-dose"><b>Dabigatrana</b> 150 mg VO 12/12 h · 110 mg 12/12 h se ≥ 80 a, alto risco de sangramento ou verapamil concomitante</div>
+        <div class="rx-dose"><b>Edoxabana</b> 60 mg VO 1×/dia · 30 mg se ClCr 15–50, peso ≤ 60 kg ou inibidor potente de P-gp (dronedarona, ciclosporina, eritromicina, cetoconazol)</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O erro clássico — impresso até em guia de bolso — é <strong>apixabana 5 mg 1×/dia</strong>: essa é dose subterapêutica que deixa o paciente "anticoagulado" só no papel. Na FA, apixabana é <strong>sempre 12/12 h</strong>; a redução é de dose (2,5 mg), nunca de frequência, e só com 2 dos 3 critérios. Segunda armadilha: reduzir dose "por precaução" em idoso que não fecha critério — subdose de DOAC troca sangramento imaginário por AVC real. Terceira: rivaroxabana em jejum absorve mal; é com comida.</p>
+        <span class="ref">ESC 2024 · ACC/AHA 2023 · bulas ARISTOTLE/ROCKET-AF/RE-LY/ENGAGE.</span>
+      </div>
+    </div>
+
+    <!-- 08 · Varfarina -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Varfarina — quando DOAC é proibido</div>
+          <div class="rx-cond">prótese mecânica e estenose mitral moderada/grave (a "FA valvar" de verdade)</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Varfarina</b> VO 1×/dia, alvo <b>INR 2–3</b> (prótese mecânica: alvo conforme a prótese e posição, frequentemente 2,5–3,5) · início 5 mg/dia na maioria, ajuste por INR seriado</div>
+        <div class="alert-box danger"><div class="icon">!</div><div class="content"><strong>DOAC é contraindicado</strong> em prótese valvar mecânica (RE-ALIGN: mais trombose E mais sangramento) e na estenose mitral moderada/grave. Nesses dois, é varfarina — sem exceção.</div></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>"FA valvar" virou termo escorregadio: doença valvar comum (insuficiência mitral, estenose aórtica, plastia) <strong>não</strong> proíbe DOAC — as duas exceções reais são a prótese mecânica e a estenose mitral significativa, onde o trombo se forma por mecanismo que os DOACs não cobriram nos estudos (e no RE-ALIGN, a dabigatrana perdeu feio da varfarina). Todo o resto da FA é território de DOAC.</p>
+        <span class="ref">ESC 2024 · RE-ALIGN (NEJM 2013).</span>
+      </div>
+    </div>
+
+    <!-- 09 · Heparina aguda -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Na fase aguda internada — parenteral até definir</div>
+          <div class="rx-cond">CVE de urgência feita, ou paciente que ainda vai definir o anticoagulante oral</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Enoxaparina</b> <b>1 mg/kg SC 12/12 h</b> — <b>sem redução por idade</b> nesta indicação (os 0,75 mg/kg são do esquema de fibrinólise no supra, não daqui) · ClCr 15–29: 1 mg/kg 24/24 h · ClCr &lt; 15: não usar</div>
+        <a class="rxc-link" href="calculadoras.html#hasbled">HAS-BLED <span>o que dá para corrigir</span></a>
+        <a class="rxc-link" href="calculadoras.html#chads">CHA₂DS₂-VA <span>indicar anticoagulação</span></a>
+        <div class="rx-dose"><em>ou</em> <b>HNF EV</b> no <b>nomograma terapêutico do serviço</b> — em TEV/cardioversão é comumente <b>80 U/kg em bolus → 18 U/kg/h</b>, com TTPa ou anti-Xa. <b>Não</b> use o esquema de 60 U/kg + 12 U/kg/h aqui: aquele é o da SCA, onde anda junto com trombolítico e antiagregante duplo</div>
+        <div class="rx-dose">Alternativa direta: começar já o <b>DOAC</b> (doses do item 07) — na maioria dos estáveis dispensa a heparina de "ponte"</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>DOAC não precisa de ponte de heparina — anticoagula em horas. A heparina plena guarda seu lugar quando o rim proíbe DOAC, quando há procedimento no horizonte (ETE, cardioversão programada, cirurgia) ou quando a via oral não existe. E um lembrete de dupla contagem: paciente em anticoagulação plena <strong>não recebe também profilaxia de TEV</strong> — heparina duas vezes é sangramento de graça.</p>
+        <span class="ref">ESC 2024 — janela de 24 h para cardioversão eletiva sem imagem · dose plena de enoxaparina por peso e ClCr conforme bula; o nomograma de HNF é o do serviço.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">O resto da folha</div>
+
+    <!-- 10 · Gatilho -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Tratar o gatilho — muita FA aguda é sintoma</div>
+          <div class="rx-cond">FA secundária não se resolve no nó AV</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose">Investigar e tratar: <b>sepse/infecção</b> · <b>TEP</b> · <b>tireotoxicose</b> (TSH em todos) · <b>isquemia</b> · <b>álcool</b> ("holiday heart") · distúrbio de <b>K⁺/Mg²⁺</b> (repor: alvo K ≥ 4,0 · Mg ≥ 2,0)</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A FA do paciente séptico, hipoxêmico ou tireotóxico é um sintoma com eletrocardiograma. Empilhar bloqueador de nó AV nesses casos rende hipotensão, não controle — a frequência cai quando a causa é tratada. O TSH da chegada é o exame mais barato que muda conduta em FA nova; e a hipomagnesemia é o gatilho silencioso que ninguém dosa.</p>
+        <span class="ref">ESC 2024 — FA secundária e precipitantes.</span>
+      </div>
+    </div>
+
+    <!-- 11 · Kit internado -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Se internar: o kit do internado</div>
+          <div class="rx-cond">o de sempre — com uma exceção importante</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Monitorização contínua</b> enquanto titula droga de nó AV · ECG de controle · <b>dieta</b> conforme o caso · <b>HGT 6/6 h</b> se DM/jejum/crítico (alvo 140–180, protocolo do serviço) · <b>profilaxia de TEV só se NÃO houver anticoagulação plena</b></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O detalhe que diferencia esta página das outras: aqui a maioria dos pacientes sai <strong>plenamente anticoagulada</strong> — então a enoxaparina 40 mg "de rotina" do kit não entra. Fora isso, vale o padrão das outras prescrições: glicemia com alvo 140–180 e correção pelo protocolo institucional, monitor ligado enquanto houver droga EV de nó AV correndo.</p>
+        <span class="ref">ADA 2026 — cap. 16 (glicemia hospitalar).</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">A rotina que sustenta o resto</div>
+
+    <!-- rotina 01 · Dieta -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Dieta</div>
+          <div class="rx-cond">a primeira linha da prescrição que todo mundo escreve no automático</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Dieta conforme o quadro</b> — via oral se desperta, deglute e não há procedimento previsto · <b>zero</b> se rebaixado, instável ou com via aérea em risco, reavaliando <b>cedo</b> · sonda enteral se o jejum passar de 48–72 h</div>
+        <div class="rx-dose"><b>Jejum tem data e hora</b> — escrever o motivo e quando reavaliar. "Jejum" sem prazo vira desnutrição de terceira semana</div>
+        <div class="rx-dose"><b>Disfagia:</b> triagem antes da primeira colher em qualquer rebaixamento, AVC ou pós-extubação — falhou, sonda; a medicação também passa por ela</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O jejum prolongado é a prescrição mais barata de escrever e uma das mais caras de sustentar: cada dia sem aporte custa massa muscular num paciente que vai precisar dela para desmamar, sentar e andar. A pergunta de visita não é "está em jejum?", é <strong>"por que ainda está, e até quando?"</strong>.</p>
+      </div>
+    </div>
+
+    <!-- rotina 02 · Cuidados de enfermagem -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Cuidados de enfermagem — a rotina que evita a segunda doença</div>
+          <div class="rx-cond">decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Sinais vitais e rotina de UTI 2/2 h</b> (espaçar conforme estabilidade) · <b>balanço hídrico</b> e <b>diurese</b> registrados</div>
+        <div class="rx-dose"><b>Cabeceira 30–45°</b> — reduz aspiração e pneumonia associada à ventilação · abaixar só com motivo escrito (choque, procedimento)</div>
+        <div class="rx-dose"><b>Mudança de decúbito 2/2 h</b> + <b>avaliação diária da pele</b> nas proeminências (sacro, calcâneo, occipital, trocânter) · colchão de redistribuição de pressão no imóvel</div>
+        <div class="rx-dose"><b>Curativos</b> inspecionados por turno; datar a troca · <b>higiene oral</b> com antisséptico no intubado · olhos lubrificados no sedado</div>
+        <div class="rx-dose"><b>Fisioterapia</b> — fisioterapia motora e respiratória desde o primeiro dia, conforme tolerância</div>
+        <div class="rx-dose"><b>Oxigênio conforme necessidade:</b> <b>SpO₂ 90–96%</b> na maioria dos adultos · <b>88–92%</b> se houver DPOC ou risco de hipercapnia. Oxigênio é droga: tem alvo, tem dose e tem excesso</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Estes itens não competem com a doença principal — eles decidem se o paciente sai da UTI com a doença resolvida e o corpo inteiro, ou resolvido e com uma lesão por pressão em sacro que vai custar meses. Lesão por pressão, pneumonia por aspiração e fraqueza adquirida na UTI são as três complicações que a prescrição previne com linhas que ninguém lê.</p>
+        <p>A cabeceira elevada é o exemplo perfeito: é gratuita, tem efeito documentado sobre pneumonia associada à ventilação, e é a primeira coisa que se perde quando o leito é abaixado para um procedimento e ninguém sobe de volta.</p>
+      </div>
+    </div>
+
+    <!-- rotina 03 · Profilaxia de úlcera de estresse -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Profilaxia de úlcera de estresse — só com indicação</div>
+          <div class="rx-cond">não é carimbo de internação: sem fator de risco, o dano supera o benefício</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Com indicação:</b> inibidor de bomba de prótons — <b>omeprazol ou pantoprazol 40 mg EV ou VO 1×/dia</b>, conforme padronização do serviço</div>
+        <div class="rx-dose">Reavaliar a indicação <b>todo dia</b> — ela costuma sumir antes da alta da UTI, e a prescrição costuma continuar.</div>
+        <div class="rx-dose"><b>O preço de prescrever sem indicação:</b> mais pneumonia associada à ventilação, mais <em>C. difficile</em>, e a prescrição crônica que sai junto na receita de alta</div>
+        <a class="rxc-link" href="calculadoras.html#ulcera">Há indicação de profilaxia? <span>fator maior ou 2 menores</span></a>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Os dois fatores de risco independentes clássicos vêm do estudo de Cook: <strong>ventilação mecânica prolongada</strong> e <strong>coagulopatia</strong>. Fora deles, o sangramento clinicamente importante é raro o suficiente para que o dano da supressão ácida — pneumonia e colite por <em>C. difficile</em> — comece a pesar mais.</p>
+        <p>A armadilha real não é começar, é <strong>não parar</strong>. A indicação some quando o paciente extuba e a coagulação normaliza; a prescrição, não. É assim que um inibidor de bomba iniciado numa UTI vira uso crônico de anos, com a hipomagnesemia que ele causa aparecendo lá na frente, sem que ninguém ligue os dois.</p>
+        <span class="ref">Cook DJ, Fuller HD, Guyatt GH, et al. Risk factors for gastrointestinal bleeding in critically ill patients. <em>N Engl J Med.</em> 1994;330(6):377–381 — os dois fatores independentes. Os fatores menores vêm de consensos posteriores; não há escore validado único.</span>
+      </div>
+    </div>
+
+    <!-- rotina 04 · Profilaxia de TEV -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Profilaxia de TEV — pelo risco, não pelo tempo de internação</div>
+          <div class="rx-cond">"internou, prescreve" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Farmacológica, com indicação e sem sangramento:</b> <b>enoxaparina 40 mg SC 1×/dia</b> · <b>ClCr &lt; 30:</b> enoxaparina 20 mg SC 1×/dia <em>ou</em> <b>HNF 5.000 UI SC 8/8–12/12 h</b>, conforme protocolo</div>
+        <div class="rx-dose"><b>Mecânica</b> (compressão pneumática intermitente) quando a farmacológica está contraindicada — sangramento ativo, plaquetopenia grave, pós-operatório neurocirúrgico recente — ou <b>somada</b> a ela no altíssimo risco</div>
+        <div class="rx-dose"><b>Não somar</b> profilaxia a quem já está em <b>anticoagulação plena</b> — é dose dupla sem ganho</div>
+        <div class="rx-dose">Individualizar sempre: o escore diz se <em>há indicação</em>, não se <em>este</em> paciente deve receber.</div>
+        <a class="rxc-link" href="calculadoras.html#padua">Escore de Pádua <span>calcular o risco de TEV</span></a>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O escore de Pádua foi construído justamente para separar quem se beneficia de quem só recebe: no estudo original, os pacientes de alto risco sem profilaxia tiveram cerca de 11% de TEV, contra pouco mais de 2% nos de baixo risco. É essa diferença que justifica prescrever — e que explica por que prescrever para todo mundo dilui o benefício e soma sangramento.</p>
+        <p>Duas armadilhas de plantão. A primeira é a dose fixa em quem não a comporta: no ClCr abaixo de 30 a enoxaparina acumula, e a dose profilática vira quase terapêutica. A segunda é a soma silenciosa — o paciente que já recebe heparina plena por outro motivo e ganha mais 40 mg de enoxaparina porque "está internado".</p>
+        <span class="ref">Barbar S, Noventa F, Rossetto V, et al. A risk assessment model for the identification of hospitalized medical patients at risk for venous thromboembolism: the Padua Prediction Score. <em>J Thromb Haemost.</em> 2010;8(11):2450–2457.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="nao-prescrever">
+  <div class="section-label">Tão importante quanto</div>
+  <h2 class="section-title">O que <em>não</em> prescrever</h2>
+  <div class="warn-box">
+    <strong>Itens que pioram o desfecho na FA.</strong>
+    <p class="box-body"><strong>Apixabana 1×/dia</strong> — o erro de dose clássico; na FA é 5 mg 12/12 h. <strong>Cardioversão (elétrica ou amiodarona) em FA &gt; 48 h sem anticoagulação/ETE.</strong> <strong>Diltiazem/verapamil na FEVE reduzida.</strong> <strong>Bloqueio de nó AV na FA pré-excitada</strong> (WPW → choque). <strong>AAS como "anticoagulação".</strong> <strong>Subdose de DOAC "por precaução"</strong> em quem não fecha critério de ajuste. E <strong>heparina profilática somada à anticoagulação plena</strong>.</p>
+  </div>
+</section>
+
+<section class="section" id="fechamento">
+  <div class="tip-box" style="margin-top:32px;">
+    <strong>Prescreveu — e agora?</strong>
+    <p class="box-body">Controlada a frequência e decidida a anticoagulação, sobram as perguntas de médio prazo — ritmo × frequência, ablação, ecocardiograma — que são de consultório, não de plantão. Se a FA veio com congestão, o caminho cruza com o <a class="text-link" href="eap.html">edema agudo de pulmão</a>; se veio com troponina e dor, com a <a class="text-link" href="sca-sem-supra.html">SCA sem supra</a>. Instabilidade franca e sedação para CVE terão página própria (taquiarritmia instável).</p>
+    <a class="link-cta" href="../index.html">Levar o caso ao assistente de conduta <span aria-hidden="true">&rarr;</span></a>
+  </div>
+
+  <div class="section-label">Referências</div>
+  <span class="ref">Van Gelder IC, Rienstra M, Bunting KV, et al. 2024 ESC Guidelines for the management of atrial fibrillation. <em>Eur Heart J.</em> 2024;45(36):3314–3414 (doi:10.1093/eurheartj/ehae176).</span>
+  <span class="ref">Joglar JA, Chung MK, Armbruster AL, et al. 2023 ACC/AHA/ACCP/HRS Guideline for the Diagnosis and Management of Atrial Fibrillation. <em>Circulation.</em> 2024;149(1):e1–e156.</span>
+  <span class="ref">Van Gelder IC, et al. Lenient versus strict rate control in patients with atrial fibrillation (RACE II). <em>N Engl J Med.</em> 2010;362:1363–1373.</span>
+  <span class="ref">Eikelboom JW, et al. Dabigatran versus warfarin in patients with mechanical heart valves (RE-ALIGN). <em>N Engl J Med.</em> 2013;369:1206–1214.</span>
+  <span class="ref">American Diabetes Association. Diabetes Care in the Hospital — Standards of Care in Diabetes. <em>Diabetes Care.</em> 2026;49(Suppl 1).</span>
+</section>
+
+</main>
+<script src="../../assets/app.js"></script>
+<script>
+function toggleCard(card,e){
+  if(e&&e.target.tagName&&e.target.tagName.toLowerCase()==='a')return;
+  card.classList.toggle('open');
+}
+document.addEventListener('keydown',function(e){
+  if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('card-toggle')){
+    e.preventDefault();toggleCard(e.target.parentNode,e);
+  }
+});
+</script>
+</body>
+</html>

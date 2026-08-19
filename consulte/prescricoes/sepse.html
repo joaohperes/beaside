@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7K0CML04MR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7K0CML04MR');
+</script>
+<script src="../../assets/theme-boot.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Prescrição comentada — Sepse e choque séptico | be·aside</title>
+<meta name="robots" content="noindex, nofollow" data-beaside="status">
+<link rel="canonical" href="https://beaside.com.br/consulte/prescricoes/sepse.html">
+<meta name="description" content="Prescrição comentada da sepse e do choque séptico: culturas sem atrasar o antibiótico, antibiótico na primeira hora pelo foco, volume com juízo, noradrenalina precoce, controle de foco e o desescalonamento como parte da prescrição. SSC 2026 e ILAS.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="be·aside">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Prescrição comentada — Sepse e choque séptico | be·aside">
+<meta property="og:description" content="A sepse se trata com relógio: antibiótico na primeira hora, volume com juízo, nora sem esperar o soro acabar — e o foco controlado.">
+<meta property="og:url" content="https://beaside.com.br/consulte/prescricoes/sepse.html">
+<meta property="og:image" content="https://beaside.com.br/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prescrição comentada — Sepse e choque séptico | be·aside">
+<meta name="twitter:image" content="https://beaside.com.br/assets/og-image.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/styles.css">
+<style>
+  /* componente da prescrição comentada — usa só tokens; variante do .card.collapsible */
+  .rx-list{counter-reset:rx;display:flex;flex-direction:column;gap:14px;margin:26px 0 8px}
+  .rx-item{counter-increment:rx}
+  .rx-head{display:flex;gap:13px;align-items:flex-start;padding:16px 18px 0}
+  .rx-n{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--accent);background:rgba(var(--accent-rgb),.12);border-radius:6px;padding:3px 8px;margin-top:2px;flex-shrink:0}
+  .rx-n::before{content:counter(rx,decimal-leading-zero)}
+  .rx-title{font-size:15.5px;font-weight:600;color:var(--text);letter-spacing:-.01em;line-height:1.3}
+  .rx-cond{font-size:12.5px;color:var(--text2);margin-top:3px;line-height:1.5}
+  .rx-body{padding:2px 18px 6px}
+  .rx-dose{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;line-height:1.8;color:var(--text);background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:11px 14px;margin:12px 0 0}
+  .rx-dose+.rx-dose{margin-top:8px}
+  .rx-dose b{color:var(--accent);font-weight:600}
+  .rx-sub{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);margin:18px 0 -2px;padding-left:2px}
+  .rx-body .tag-row{margin:10px 0 0}
+  .rx-body .alert-box{margin:12px 0 0}
+  .rx-item .card-toggle{border-top:1px solid var(--border);margin-top:14px}
+  .rx-why{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);flex:1}
+  .rx-item .card-body p{font-size:13.5px;line-height:1.75;color:var(--text2);margin:0 0 10px}
+  .rx-item .card-body p strong{color:var(--text)}
+  .rx-item .card-body .ref{display:block;margin-top:10px}
+  @media(max-width:600px){.rx-head{padding:14px 14px 0}.rx-body{padding:2px 14px 6px}}
+  /* botão que leva à calculadora — a conta mora em calculadoras.html */
+  .rxc-link{display:inline-flex;align-items:center;gap:7px;margin:12px 0 0;padding:9px 13px;border-radius:9px;
+    background:var(--bg2);border:1px solid var(--border);text-decoration:none;
+    font-size:12.5px;font-weight:600;color:var(--text);letter-spacing:-.005em;
+    transition:background .15s ease,border-color .15s ease}
+  .rxc-link::before{content:'';width:15px;height:15px;flex-shrink:0;border-radius:4px;
+    border:1.5px solid var(--accent);background:rgba(var(--accent-rgb),.12)}
+  .rxc-link span{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text2)}
+  @media(hover:hover){.rxc-link:hover{background:var(--bg3);border-color:rgba(var(--accent-rgb),.45)}}
+  .rxc-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+</head>
+<body data-module="prescricoes" data-page="sepse" data-root="../../">
+<main class="main">
+
+<section class="section" id="topo">
+  <header class="page-head">
+    <div class="hero-eyebrow">Consulte · Prescrições comentadas</div>
+    <h1 class="section-title">Sepse e choque séptico</h1>
+    <p class="section-subtitle">A sepse se trata com relógio: antibiótico na primeira hora, volume com juízo, noradrenalina sem esperar o soro acabar — e um foco que alguém precisa <em>controlar</em>, não só cobrir. A prescrição boa é a que corre nas primeiras horas e emagrece nos dias seguintes.</p>
+  </header>
+
+  <p class="prose">Serve para a <strong>sepse com disfunção orgânica e o choque séptico</strong> — do reconhecimento no pronto-socorro à prescrição da UTI. Esta página organiza a sequência e as decisões; as ferramentas profundas do site fazem o resto: os <strong>esquemas empíricos por foco</strong> vivem no <a class="text-link" href="../../infecto/empirico.html">infecto</a>, as <strong>doses com PK/PD</strong> (ataque, infusão estendida, ajuste renal) no <a class="text-link" href="../../infecto/pkpd.html">PK/PD e dose</a>, e as <strong>diluições de vasoativas</strong> nas <a class="text-link" href="../../hemo/drogas.html">drogas vasoativas</a>. Aqui nada disso se duplica — se linka.</p>
+
+  <div class="warn-box">
+    <strong>Antes de prescrever qualquer item desta página.</strong>
+    <p class="box-body">Condutas seguem a Surviving Sepsis Campaign 2026 e o ILAS, e <strong>não substituem o protocolo de sepse do seu serviço</strong> — se o hospital tem protocolo gerenciado com gatilho e horário, ele manda. A epidemiologia local (CCIH) decide o empírico melhor do que qualquer tabela nacional.</p>
+  </div>
+
+  <div class="info-box">
+    <strong>Como usar.</strong>
+    <p class="box-body">A ordem é a do relógio: <strong>reconhecer e colher sem atrasar</strong>, o pacote da <strong>primeira hora</strong> (antibiótico pelo foco, volume com juízo, nora precoce), o <strong>choque que não resolve</strong> (hidrocortisona, foco, inotrópico) e a <strong>internação inteira</strong> — do kit do crítico ao desescalonamento, que também é prescrição. Dose sempre visível; o porquê em <em>"por quê &amp; armadilhas"</em>.</p>
+  </div>
+</section>
+
+<section class="section" id="prescricao">
+  <div class="section-label">A prescrição</div>
+  <h2 class="section-title">Item por item</h2>
+
+  <div class="rx-list">
+
+    <div class="section-label" style="margin-top:26px">Reconhecer — e disparar o relógio</div>
+
+    <!-- 01 · Reconhecer + culturas -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Nomear a sepse, dosar o lactato, colher culturas — sem atrasar o antibiótico</div>
+          <div class="rx-cond">sepse é infecção + disfunção orgânica; febre é só um dos avisos (e pode faltar)</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Reconhecer:</b> infecção suspeita + disfunção nova — hipotensão, rebaixamento, oligúria, dispneia/SpO2 caindo, plaquetas caindo, icterícia (SOFA como linguagem) · <b>lactato arterial</b> já na entrada; repetir em 2–4 h se &gt; 2</div>
+        <a class="rxc-link" href="calculadoras.html#news2">NEWS2 <span>a triagem que a SSC recomenda</span></a>
+        <a class="rxc-link" href="calculadoras.html#sofa">SOFA <span>Δ ≥ 2 na infecção define sepse</span></a>
+        <div class="rx-dose"><b>2 pares de hemocultura</b> (sítios diferentes) + culturas do foco provável (urina, secreção, líquor se indicado) — <b>antes do antibiótico, desde que não atrase</b> a 1ª dose além de ~45 min</div>
+        <div class="rx-dose">Registrar o <b>horário do diagnóstico</b> na prescrição/evolução — o pacote da 1ª hora conta a partir dele, e o que não tem horário não tem relógio</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A sepse mata pelo tempo que leva para ser nomeada: o idoso "confuso, afebril, com pressão boa" que na verdade está hipotenso <em>para ele</em> é o diagnóstico perdido clássico — disfunção orgânica nova em quem tem infecção suspeita <strong>é</strong> sepse até prova em contrário, com ou sem febre. A cultura antes do antibiótico dobra a chance de identificar o germe (e é o que permite desescalonar no item 08) — mas a hierarquia é explícita: se a coleta vai atrasar a primeira dose, a dose vence. O lactato não é enfeite de gasometria: é o triagem-de-gravidade mais barato do hospital, e a sua <em>queda</em> nas primeiras horas é a melhor prova de que a ressuscitação está funcionando.</p>
+        <span class="ref">SSC 2026 — sepse é diagnóstico clínico, sem biomarcador isolado; NEWS/NEWS2/MEWS/SIRS sobre qSOFA na triagem; hemocultura antes do antibiótico, sem atrasá-lo · ILAS.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">A primeira hora</div>
+
+    <!-- 02 · Antibiótico -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Antibiótico na primeira hora — empírico pelo foco, na dose de sepse</div>
+          <div class="rx-cond">é o item que mais muda mortalidade nesta página; tudo o mais acompanha</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Choque séptico ou alta probabilidade → 1ª dose em até 1 h</b> · sepse possível sem choque → investigar rápido, decidir em até 3 h — mas não deixar o "vou esperar a tomografia" comer o relógio</div>
+        <div class="rx-dose"><b>A escolha é pelo foco + risco de resistência</b> (uso recente de ATB, internação, dispositivo, colonização prévia): os esquemas por foco — urinário, pulmonar, abdominal, partes moles, SNC, corrente sanguínea — vivem no <a class="text-link" href="../../infecto/empirico.html">empírico por foco</a>, com a epidemiologia que esta página não deve congelar</div>
+        <div class="rx-dose"><b>Dose de sepse:</b> ataque CHEIO mesmo com rim ruim (o ajuste renal é da manutenção, nunca da 1ª dose) + infusão estendida dos betalactâmicos onde couber — doses, diluições e ajustes no <a class="text-link" href="../../infecto/pkpd.html">PK/PD e dose</a></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Cada hora de atraso do antibiótico no choque séptico custa mortalidade — é dos poucos números da UTI que sobreviveram a todas as reanálises. Os dois erros de dose são espelhados: o <strong>subtratamento renal da primeira dose</strong> (ajustar o ataque pela creatinina é dar dose de manutenção a um paciente com volume de distribuição inchado — a primeira dose é sempre cheia) e a <strong>vancomicina sem ataque</strong> por peso. E um erro de sistema: prescrever "ceftriaxona" sem pensar o foco é jogar dados — o abdome precisa de anaeróbio coberto, o pulmão hospitalar de antipseudomonas, o cateter de cobertura para MRSA. O empírico por foco do infecto existe exatamente para essa decisão; esta página não o repete porque tabela duplicada é tabela desatualizada.</p>
+        <span class="ref">SSC 2026 — choque, sepse provável ou definida: 1 h (forte); sepse possível sem choque: investigação limitada no tempo e antibiótico em até 3 h · ILAS.</span>
+      </div>
+    </div>
+
+    <!-- 03 · Volume -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Cristaloide 30 mL/kg é a abertura — o resto é expansão guiada por meta e volemia</div>
+          <div class="rx-cond">hipotensão ou lactato ≥ 4: começar rápido · lactato 2–4 sem hipotensão: considerar, se não houver contraindicação — reavaliar a cada etapa, seguir só enquanto responder</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Cristaloide balanceado</b> (Ringer lactato preferido) <b>30 mL/kg nas primeiras 3 h</b> como <b>ponto de partida</b> — em etapas de <b>500 mL</b> com reavaliação entre elas (PA, FC, perfusão, ausculta)</div>
+        <div class="rx-dose"><b>Peso a usar:</b> peso real — ou peso ajustado/ideal se <b>IMC &gt; 30</b>. No caquético, peso real também, para não sobre-ressuscitar</div>
+        <div class="rx-dose"><b>A partir daí, volume é guiado, não prescrito em bloco:</b> avaliar volemia com <b>medida dinâmica</b> — elevação passiva de pernas ou prova de fluido, lendo <b>volume sistólico, variação do volume sistólico, pressão de pulso ou variação da pressão de pulso</b>. Medida dinâmica ganha do exame físico e das estáticas (PVC) isoladas</div>
+        <div class="rx-dose"><b>Cardiopata, renal crônico, já congesto:</b> alíquotas menores (250 mL) com freio explícito — os 30 mL/kg são orientação para o paciente médio, não sentença para todos</div>
+        <div class="rx-dose"><b>Perfusão persistindo ruim depois dos 30 mL/kg:</b> não existe resposta única — estratégia liberal ou restritiva se decide pelo paciente (cardiopatia, IC prévia) e pelo serviço (leito monitorizado disponível para segurar com vasopressor)</div>
+        <div class="rx-dose"><b>Enchimento capilar</b> entra como <b>adjunto</b> das outras medidas de perfusão, não como alvo isolado</div>
+        <div class="rx-dose"><b>Passada a fase aguda do choque:</b> considerar <b>remoção ativa de fluido</b> — soro "de manutenção" no séptico que parou de responder é edema prescrito</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O volume da sepse tem duas mortes possíveis: a de menos (hipoperfusão mantida por timidez) e a de mais (o pulmão branco do 3º dia, construído bolsa a bolsa no 1º). A saída é tratar os 30 mL/kg como <em>abertura</em>, não como meta cega — dados em etapas, com alguém olhando o paciente entre elas.</p>
+        <p>Vale saber o tamanho da recomendação antes de tratá-la como lei: os 30 mL/kg são <strong>recomendação condicional, com evidência de baixa certeza</strong>, e vêm de estudos observacionais — não existe ensaio comparando volumes de abertura. Tanto que a SSC e a ESICM discordam na preposição: a SSC sugere <em>pelo menos</em> 30 mL/kg, a ESICM sugere <em>até</em> 30 mL/kg. O que as duas concordam é no que vem depois — reavaliação frequente para não errar nem por falta nem por excesso. Por isso a segunda metade da ressuscitação não se prescreve em bloco: <strong>mede-se a volemia</strong>. Elevação passiva de pernas ou prova de fluido, lendo volume sistólico e suas variações, ganha do exame físico e da PVC isolados — e o dano do excesso não é teórico: ventilação prolongada, progressão de lesão renal e mais mortalidade.</p>
+        <p>O balanceado ganhou do SF 0,9% por menos acidose hiperclorêmica e sinal de menos lesão renal nos grandes ensaios. E a armadilha mais brasileira: o "SF 0,9% 2000 mL correr em 24 h" que sobrevive na prescrição depois que a ressuscitação acabou — no séptico de 48 h, positivar balanço sem indicação é prescrever o edema que a fisioterapia vai passar a semana drenando. A SSC 2026 foi além e passou a sugerir <strong>remoção ativa de fluido</strong> depois da fase aguda: não basta parar de dar, às vezes é preciso tirar.</p>
+        <span class="ref">SSC 2026 — cristaloide balanceado; medida dinâmica sobre exame físico e estáticas; liberal ou restritiva por paciente e serviço; remoção ativa de fluido pós-ressuscitação.</span>
+      </div>
+    </div>
+
+    <!-- 04 · Noradrenalina -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Noradrenalina precoce — sem esperar o soro acabar, sem esperar o central</div>
+          <div class="rx-cond">alvo PAM ≥ 65 mmHg; a bomba começa em veia periférica calibrosa</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Noradrenalina</b> se PAM &lt; 65 persistir durante a expansão (não "depois dela") — titular pela PAM · diluição, conversão mcg/kg/min ⇄ mL/h e tabela completa nas <a class="text-link" href="../../hemo/drogas.html">drogas vasoativas</a>, fonte única do site</div>
+        <div class="rx-dose"><b>Pode (e deve) começar em acesso periférico calibroso</b> em fossa antecubital ou acima, com vigilância do sítio — providenciar o central em seguida, sem que ele atrase a droga</div>
+        <div class="rx-dose">Refratário com nora subindo: <b>associar vasopressina</b> quando a nora passa de ~<b>0,25–0,5 mcg/kg/min</b> — associar, <b>não</b> escalar a nora indefinidamente · <b>adrenalina</b> é a 3ª linha · alvo de PAM maior que 65 só com motivo escrito (ex.: hipertenso crônico com LRA)</div>
+
+        <div class="rx-sub">Vasopressina — diluição da casa e a régua da bomba</div>
+        <div class="rx-dose"><b>Diluição padrão:</b> <b>20 UI em 100 mL</b> de SF 0,9% ou SG 5% = <b>0,2 UI/mL</b> · confira a apresentação da sua farmácia (ampolas de 20 UI/mL são as usuais) antes de usar a coluna de mL/h</div>
+        <div class="rx-dose" style="padding:0;background:none;border:none"><div class="table-wrap"><table>
+          <thead><tr><th>Dose</th><th>Por hora</th><th>Bomba a 0,2 UI/mL</th><th>Quando</th></tr></thead>
+          <tbody>
+            <tr><td>0,01 UI/min</td><td>0,6 UI/h</td><td><b>3 mL/h</b></td><td>início possível em quem tem PA limítrofe</td></tr>
+            <tr><td>0,02 UI/min</td><td>1,2 UI/h</td><td><b>6 mL/h</b></td><td>degrau intermediário</td></tr>
+            <tr><td><b>0,03 UI/min</b></td><td>1,8 UI/h</td><td><b>9 mL/h</b></td><td><span><b>a dose das diretrizes</b> — entra e fica</span></td></tr>
+            <tr><td>0,04 UI/min</td><td>2,4 UI/h</td><td><b>12 mL/h</b></td><td><span><b>teto</b> — acima disso é resgate, não rotina</span></td></tr>
+          </tbody>
+        </table></div></div>
+        <div class="rx-dose"><b>Não titula pelo peso</b> — a dose é fixa em UI/min, igual para 50 e para 120 kg · <b>não desmama primeiro</b>: ao sair do choque, retire a <b>noradrenalina</b> antes; tirar a vasopressina primeiro costuma derrubar a PAM e custar mais nora</div>
+        <div class="alert-box warn"><div class="icon">!</div><div class="content">Acima de <strong>0,04 UI/min</strong> (12 mL/h nesta diluição) você saiu da faixa estudada e entrou em <strong>terapia de resgate</strong> — a vasoconstrição esplâncnica, digital e coronariana passa a cobrar preço (isquemia mesentérica e necrose de extremidade), sem ganho demonstrado. Chegou no teto e a PAM não sobe: a pergunta certa não é "mais vasopressina?", é <strong>foco não controlado, volemia, corticoide e disfunção miocárdica</strong> — itens 05, 06 e 07.</div></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>As duas esperas que matam no choque séptico são a do soro ("vamos ver se responde aos 30 mL/kg primeiro") e a do cateter ("nora só com central"). As duas caíram: hipotensão prolongada é dano de órgão por minuto, a nora periférica diluída em veia boa é segura por horas nos estudos — e o paciente que "estabilizou" com PAM 58 não estabilizou, acostumou a equipe. A vasopressina entra <em>cedo</em> no refratário não por ser mais potente, mas por atacar outro receptor (o séptico tem deficiência relativa dela) e poupar a escalada adrenérgica. E a dopamina não aparece nesta página por decisão: mais arritmia, nenhuma vantagem — a regra da casa desde a página do <a class="text-link" href="choque-cardiogenico.html">choque cardiogênico</a>.</p>
+        <span class="ref">SSC 2026 — nora 1ª linha (forte); vasopressina ao escalonar em vez de subir a nora; adrenalina se PAM inadequada apesar das duas; início periférico; PAM 65 com faixa de ±5 mmHg, e 60–65 nos ≥ 65 anos · <b>Dose da vasopressina:</b> Surviving Sepsis Campaign 2021 — 0,03 UI/min, dose fixa, associada quando a noradrenalina está entre 0,25 e 0,5 mcg/kg/min; doses acima de 0,03–0,04 UI/min são explicitamente reservadas a resgate no choque refratário a múltiplos vasopressores · Faixa de segurança (&lt; 0,04 UI/min) e ausência de ajuste por peso conforme os ensaios de referência (VASST) · <b>As colunas em mL/h são calculadas para 20 UI/100 mL (0,2 UI/mL)</b> — refazer para a diluição do seu serviço.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">O choque que não resolve</div>
+
+    <!-- 05 · Hidrocortisona -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Hidrocortisona quando a nora não desce — dose baixa, sem desmame heroico</div>
+          <div class="rx-cond">não há consenso firme — o gatilho prático é a nora ≥ 0,25 mcg/kg/min que não cede</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="alert-box info"><div class="icon">i</div><div class="content"><strong>Aqui não existe consenso claro, e a página não vai fingir que existe.</strong> A recomendação das diretrizes é <strong>fraca (sugestão), com baixa certeza de evidência</strong>: os grandes ensaios divergem, o benefício consistente é <strong>encurtar o tempo de choque</strong> e o efeito em mortalidade permanece discutível. Traduzindo para a beira do leito: corticoide no choque séptico é decisão <strong>ponderada</strong>, não automática — nem protocolo cego, nem proibição.</div></div>
+        <div class="rx-dose"><b>Quando ponderar de verdade:</b> <b>vasopressor em ascensão</b> com <b>noradrenalina acima de ~0,25 mcg/kg/min</b> que não faz menção de descer, mantida <b>pelo menos 4 h</b> depois de iniciada, com volemia já corrigida e foco tratado. É o cenário em que o corticoide tem a melhor chance de mudar alguma coisa — e é o que o gatilho das diretrizes descreve</div>
+        <div class="rx-dose"><b>Se decidir dar:</b> <b>hidrocortisona 50 mg EV 6/6 h</b> (200 mg/dia) — ou infusão contínua de 200 mg/24 h — enquanto o choque durar · retirar quando o vasopressor sair, sem necessidade de desmame lento na maioria</div>
+        <div class="rx-dose"><b>Sem cortisol sérico, sem teste de estímulo</b> para decidir: a indicação é hemodinâmica, não laboratorial · <b>não é dose de pulso</b>: metilprednisolona 1 g aqui é erro de classe, não potência · vigiar <b>hiperglicemia</b> e hipernatremia, os efeitos que aparecem primeiro</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Vale ser explícito sobre a incerteza, porque ela muda o modo de prescrever. Os dois maiores ensaios saíram em direções diferentes — um mostrou redução de mortalidade com hidrocortisona associada a fludrocortisona, o outro não mostrou diferença em 90 dias com hidrocortisona isolada — e o que sobrevive às metanálises é a <strong>reversão mais rápida do choque</strong>, não a sobrevida. Por isso a recomendação é uma <em>sugestão</em> de baixa certeza, e por isso a pergunta certa na visita não é "está no protocolo?", e sim <strong>"este paciente está escalando vasopressor apesar de volemia e foco resolvidos?"</strong>. Se está, o corticoide é razoável e barato. Se a nora está estável em 0,08 e caindo, ele só adiciona hiperglicemia.</p>
+        <p>O corticoide do choque séptico é tratamento de <strong>choque</strong>, não de infecção: a dose baixa restaura a resposta vascular às catecolaminas no paciente cuja suprarrenal não acompanha a demanda — e os ensaios convergem em encurtar o tempo de choque, com efeito em mortalidade discutível mas custo baixo. As armadilhas são duas: a dose (200 mg/dia de hidrocortisona não é "pulso" — metilprednisolona 1 g aqui é erro, não potência) e o gatilho (dar na entrada "para ajudar" trata quem não precisa; guardar para "quando estiver morrendo" chega tarde — o gatilho é a nora que passa de 0,25 e não faz menção de descer).</p>
+        <span class="ref">SSC 2026 — corticoide EV no choque séptico: recomendação <b>condicional, baixa certeza de evidência</b> (é o que sustenta o "não há consenso claro" desta página) · <b>Gatilho:</b> Surviving Sepsis Campaign 2021 — noradrenalina ou adrenalina ≥ 0,25 mcg/kg/min mantida por pelo menos 4 h após o início · <b>Os dois ensaios que divergem:</b> Annane D, et al. APROCCHSS — hidrocortisona + fludrocortisona, mortalidade em 90 dias 43,0% vs 49,1%. <em>N Engl J Med.</em> 2018;378(9):809–818 · Venkatesh B, et al. ADRENAL — hidrocortisona em infusão contínua, sem diferença de mortalidade em 90 dias, com reversão mais rápida do choque. <em>N Engl J Med.</em> 2018;378(9):797–808.</span>
+      </div>
+    </div>
+
+    <!-- 06 · Foco + reavaliação -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Controlar o foco — o antibiótico não drena abscesso</div>
+          <div class="rx-cond">a pergunta das 6–12 h: existe pus, obstrução, tecido morto ou dispositivo para tirar?</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Procurar ativamente foco drenável:</b> abscesso (imagem dirigida), colangite com obstrução (via biliar), pielonefrite obstrutiva (duplo J/nefrostomia), fasceíte (desbridamento), empiema, <b>cateter suspeito → retirar</b> — meta: controle em <b>6–12 h</b>, não "amanhã com a equipe da vez"</div>
+        <div class="rx-dose">Sem melhora (lactato não cai, nora não desce, diurese parada): reavaliar as 4 hipóteses — <b>foco não controlado · empírico errado · segunda infecção · outro choque junto</b> (disfunção miocárdica da sepse → eco à beira do leito; dobutamina só com baixo débito documentado, como na página do <a class="text-link" href="choque-cardiogenico.html">choque</a>)</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>A sepse que "não responde a antibiótico de amplo espectro" quase nunca é germe exótico — é <strong>foco não controlado</strong>: a coleção que ninguém puncionou, o rim obstruído que ninguém desobstruiu, o cateter de três semanas que ninguém quis tirar "porque o acesso é difícil". Nenhum carbapenêmico esteriliza pus com pressão dentro. O item existe como pergunta de horário porque o controle de foco tem o mesmo relógio do antibiótico — cada hora de colangite obstruída sob "cobertura" é cultura crescendo em meio fechado. E a reavaliação estruturada das 4 hipóteses evita o reflexo mais caro da UTI: escalar o antibiótico como resposta a qualquer piora, quando o problema era mecânico.</p>
+        <span class="ref">SSC 2026 — avaliação rápida do foco (boa prática) e controle precoce, idealmente em até 6 h do diagnóstico.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">A internação inteira</div>
+
+    <!-- 07 · Kit do crítico -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">O kit do séptico crítico — nutrição precoce, profilaxias, glicemia com alvo</div>
+          <div class="rx-cond">o suporte que não aparece no boletim mas decide a semana</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Nutrição enteral precoce</b> (24–48 h, trófica e progredindo) mesmo com vasopressor em dose estável — dieta zero é para o choque em <b>escalada</b> de droga, não para todo paciente com bomba correndo · via e meta com a nutrição</div>
+        <div class="rx-dose"><b>Profilaxia de TEV:</b> enoxaparina 40 mg SC 1×/dia (HNF 5.000 UI 8/8 h se ClCr &lt; 30) · <b>omeprazol</b> 40 mg 1×/dia com indicação (VM &gt; 48 h, coagulopatia, choque) · cabeceira 30–45° se VM</div>
+        <div class="rx-dose"><b>Glicemia:</b> alvo <b>140–180 mg/dL</b> com insulina — protocolo do serviço, sem perseguir normoglicemia · <b>febre:</b> antitérmico para conforto (dipirona 1 g); febre em si não é emergência a "zerar" · sedoanalgesia se VM: analgesia primeiro, <b>alvo leve</b> (RASS 0/−1), reavaliada todo dia</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Depois que o drama hemodinâmico passa, é este item que separa a UTI que devolve o paciente andando da que devolve a fraqueza adquirida: intestino alimentado cedo é barreira que não transloca; sedação leve com despertar diário é dias a menos de tubo; o alvo 140–180 existe porque o controle "intensivo" (80–110) matou por hipoglicemia no NICE-SUGAR — a escadinha de insulina sem alvo escrito continua sendo prescrição de suporte sem projeto. E a sedação profunda "para descansar" é o mito mais caro da VM: o paciente não descansa — acumula delirium, miopatia e dias de ventilador.</p>
+        <span class="ref">SSC 2026 — nutrição enteral precoce (&lt; 72 h); IBP em quem tem risco de sangramento GI; insulina a partir de ≥ 180 mg/dL (forte); transfusão restritiva (forte) · Adigbli 2024 (metanálise de dados individuais).</span>
+      </div>
+    </div>
+
+    <!-- 08 · Desescalonamento -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Reavaliar em 48–72 h: desescalonar, dar prazo — antibiótico também tem alta</div>
+          <div class="rx-cond">o espectro largo foi empréstimo da primeira hora; a cultura veio para cobrá-lo</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Rodada de 48–72 h com as culturas na mão:</b> germe identificado → <b>estreitar</b> para o alvo · culturas negativas + evolução boa → descer do espectro máximo · diagnóstico alternativo confirmado → <b>suspender</b> (a coragem que mais falta)</div>
+        <div class="rx-dose"><b>Duração com data na prescrição:</b> com <b>foco controlado</b>, preferir o <b>curso mais curto</b> — escrever "D3/7" na prescrição diária torna a data uma decisão, não um esquecimento</div>
+        <div class="rx-dose">⚠ <b>Não existe "7 dias para a maioria".</b> A duração sai do <b>foco</b>, do <b>microrganismo</b>, do <b>hospedeiro</b> e da <b>resposta</b> — endocardite, osteomielite, abscesso não drenado e <em>S. aureus</em> em corrente sanguínea não cabem em uma semana · procalcitonina ajuda a encurtar onde disponível, como apoio e não juiz</div>
+        <div class="rx-dose">Detalhes por droga e foco — tempo, via oral sequencial, monitorização de vanco — no <a class="text-link" href="../../infecto/pkpd.html">PK/PD e dose</a> e no <a class="text-link" href="../../infecto/empirico.html">empírico por foco</a></div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O empírico largo da primeira hora é um empréstimo tomado contra a microbiota do paciente e do hospital — e empréstimo se paga: o meropenem que ninguém reavaliou vira a KPC do mês que vem, na mesma UTI, às vezes no mesmo paciente. O desescalonamento não é ato de economia, é o segundo tempo do mesmo tratamento — e os ensaios de duração são unânimes: cursos curtos curam igual com menos resistência, menos <em>C. difficile</em>, menos flebite. A armadilha cultural é tratar o espectro largo como "segurança" e o estreitamento como "risco": é o contrário, e a prescrição diária sem "D_/_" é o jeito mais seguro de um antibiótico de 7 dias durar 14.</p>
+        <span class="ref">SSC 2026 — desescalonar com cultura e sensibilidade (forte) ou com cultura final negativa; duração mais curta com foco controlado · ILAS.</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:26px">A rotina que sustenta o resto</div>
+
+    <!-- rotina 01 · Dieta -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Dieta</div>
+          <div class="rx-cond">a primeira linha da prescrição que todo mundo escreve no automático</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Dieta conforme o quadro</b> — via oral se desperta, deglute e não há procedimento previsto · <b>zero</b> se rebaixado, instável ou com via aérea em risco, reavaliando <b>cedo</b> · sonda enteral se o jejum passar de 48–72 h</div>
+        <div class="rx-dose"><b>Jejum tem data e hora</b> — escrever o motivo e quando reavaliar. "Jejum" sem prazo vira desnutrição de terceira semana</div>
+        <div class="rx-dose"><b>Disfagia:</b> triagem antes da primeira colher em qualquer rebaixamento, AVC ou pós-extubação — falhou, sonda; a medicação também passa por ela</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O jejum prolongado é a prescrição mais barata de escrever e uma das mais caras de sustentar: cada dia sem aporte custa massa muscular num paciente que vai precisar dela para desmamar, sentar e andar. A pergunta de visita não é "está em jejum?", é <strong>"por que ainda está, e até quando?"</strong>.</p>
+      </div>
+    </div>
+
+    <!-- rotina 02 · Cuidados de enfermagem -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Cuidados de enfermagem — a rotina que evita a segunda doença</div>
+          <div class="rx-cond">decúbito, pele, cabeceira e oxigênio: o que não aparece na evolução até virar problema</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Sinais vitais e rotina de UTI 2/2 h</b> (espaçar conforme estabilidade) · <b>balanço hídrico</b> e <b>diurese</b> registrados</div>
+        <div class="rx-dose"><b>Cabeceira 30–45°</b> — reduz aspiração e pneumonia associada à ventilação · abaixar só com motivo escrito (choque, procedimento)</div>
+        <div class="rx-dose"><b>Mudança de decúbito 2/2 h</b> + <b>avaliação diária da pele</b> nas proeminências (sacro, calcâneo, occipital, trocânter) · colchão de redistribuição de pressão no imóvel</div>
+        <div class="rx-dose"><b>Curativos</b> inspecionados por turno; datar a troca · <b>higiene oral</b> com antisséptico no intubado · olhos lubrificados no sedado</div>
+        <div class="rx-dose"><b>Fisioterapia</b> — fisioterapia motora e respiratória desde o primeiro dia, conforme tolerância</div>
+        <div class="rx-dose"><b>Oxigênio conforme necessidade:</b> <b>SpO₂ 90–96%</b> na maioria dos adultos · <b>88–92%</b> se houver DPOC ou risco de hipercapnia. Oxigênio é droga: tem alvo, tem dose e tem excesso</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Estes itens não competem com a doença principal — eles decidem se o paciente sai da UTI com a doença resolvida e o corpo inteiro, ou resolvido e com uma lesão por pressão em sacro que vai custar meses. Lesão por pressão, pneumonia por aspiração e fraqueza adquirida na UTI são as três complicações que a prescrição previne com linhas que ninguém lê.</p>
+        <p>A cabeceira elevada é o exemplo perfeito: é gratuita, tem efeito documentado sobre pneumonia associada à ventilação, e é a primeira coisa que se perde quando o leito é abaixado para um procedimento e ninguém sobe de volta.</p>
+      </div>
+    </div>
+
+    <!-- rotina 03 · Profilaxia de úlcera de estresse -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Profilaxia de úlcera de estresse — só com indicação</div>
+          <div class="rx-cond">não é carimbo de internação: sem fator de risco, o dano supera o benefício</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Com indicação:</b> inibidor de bomba de prótons — <b>omeprazol ou pantoprazol 40 mg EV ou VO 1×/dia</b>, conforme padronização do serviço</div>
+        <div class="rx-dose">Reavaliar a indicação <b>todo dia</b> — ela costuma sumir antes da alta da UTI, e a prescrição costuma continuar.</div>
+        <div class="rx-dose"><b>O preço de prescrever sem indicação:</b> mais pneumonia associada à ventilação, mais <em>C. difficile</em>, e a prescrição crônica que sai junto na receita de alta</div>
+        <a class="rxc-link" href="calculadoras.html#ulcera">Há indicação de profilaxia? <span>fator maior ou 2 menores</span></a>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Os dois fatores de risco independentes clássicos vêm do estudo de Cook: <strong>ventilação mecânica prolongada</strong> e <strong>coagulopatia</strong>. Fora deles, o sangramento clinicamente importante é raro o suficiente para que o dano da supressão ácida — pneumonia e colite por <em>C. difficile</em> — comece a pesar mais.</p>
+        <p>A armadilha real não é começar, é <strong>não parar</strong>. A indicação some quando o paciente extuba e a coagulação normaliza; a prescrição, não. É assim que um inibidor de bomba iniciado numa UTI vira uso crônico de anos, com a hipomagnesemia que ele causa aparecendo lá na frente, sem que ninguém ligue os dois.</p>
+        <span class="ref">Cook DJ, Fuller HD, Guyatt GH, et al. Risk factors for gastrointestinal bleeding in critically ill patients. <em>N Engl J Med.</em> 1994;330(6):377–381 — os dois fatores independentes. Os fatores menores vêm de consensos posteriores; não há escore validado único.</span>
+      </div>
+    </div>
+
+    <!-- rotina 04 · Profilaxia de TEV -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Profilaxia de TEV — pelo risco, não pelo tempo de internação</div>
+          <div class="rx-cond">"internou, prescreve" é o erro nos dois sentidos: sobra em quem não precisa e falta em quem precisa</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Farmacológica, com indicação e sem sangramento:</b> <b>enoxaparina 40 mg SC 1×/dia</b> · <b>ClCr &lt; 30:</b> enoxaparina 20 mg SC 1×/dia <em>ou</em> <b>HNF 5.000 UI SC 8/8–12/12 h</b>, conforme protocolo</div>
+        <div class="rx-dose"><b>Mecânica</b> (compressão pneumática intermitente) quando a farmacológica está contraindicada — sangramento ativo, plaquetopenia grave, pós-operatório neurocirúrgico recente — ou <b>somada</b> a ela no altíssimo risco</div>
+        <div class="rx-dose"><b>Não somar</b> profilaxia a quem já está em <b>anticoagulação plena</b> — é dose dupla sem ganho</div>
+        <div class="rx-dose">Individualizar sempre: o escore diz se <em>há indicação</em>, não se <em>este</em> paciente deve receber.</div>
+        <a class="rxc-link" href="calculadoras.html#padua">Escore de Pádua <span>calcular o risco de TEV</span></a>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>O escore de Pádua foi construído justamente para separar quem se beneficia de quem só recebe: no estudo original, os pacientes de alto risco sem profilaxia tiveram cerca de 11% de TEV, contra pouco mais de 2% nos de baixo risco. É essa diferença que justifica prescrever — e que explica por que prescrever para todo mundo dilui o benefício e soma sangramento.</p>
+        <p>Duas armadilhas de plantão. A primeira é a dose fixa em quem não a comporta: no ClCr abaixo de 30 a enoxaparina acumula, e a dose profilática vira quase terapêutica. A segunda é a soma silenciosa — o paciente que já recebe heparina plena por outro motivo e ganha mais 40 mg de enoxaparina porque "está internado".</p>
+        <span class="ref">Barbar S, Noventa F, Rossetto V, et al. A risk assessment model for the identification of hospitalized medical patients at risk for venous thromboembolism: the Padua Prediction Score. <em>J Thromb Haemost.</em> 2010;8(11):2450–2457.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="nao-prescrever">
+  <div class="section-label">Tão importante quanto</div>
+  <h2 class="section-title">O que <em>não</em> prescrever</h2>
+  <div class="warn-box">
+    <strong>Erros que pioram o desfecho na sepse.</strong>
+    <p class="box-body"><strong>Atrasar o antibiótico</strong> esperando cultura, imagem ou vaga de UTI. <strong>Ajustar a primeira dose pela creatinina</strong> — o ataque é sempre cheio. <strong>Dopamina.</strong> <strong>Amido (HES)</strong> — nefrotóxico, enterrado. <strong>Esperar o central para começar noradrenalina.</strong> <strong>30 mL/kg cegos no cardiopata/renal</strong> — e soro de manutenção depois que a ressuscitação acabou. <strong>Controle glicêmico intensivo</strong> (alvo &lt; 110). <strong>Bicarbonato para embelezar o pH</strong> — reservado ao pH &lt; 7,2 com LRA, tratando a causa. <strong>Corticoide em dose de pulso</strong> — a dose é 200 mg/dia de hidrocortisona, com gatilho. <strong>Sedação profunda "para descansar".</strong> <strong>Transfundir acima de Hb 7</strong> sem sangramento/isquemia ativa. E <strong>manter o espectro máximo sem reavaliação com data</strong> — o item 08 é prescrição, não sugestão.</p>
+  </div>
+</section>
+
+<section class="section" id="fechamento">
+  <div class="tip-box" style="margin-top:32px;">
+    <strong>Prescreveu — e agora?</strong>
+    <p class="box-body">As primeiras horas desta página são metade do tratamento; a outra metade está nas ferramentas profundas: <a class="text-link" href="../../infecto/empirico.html">empírico por foco</a> para acertar o esquema, <a class="text-link" href="../../infecto/pkpd.html">PK/PD</a> para acertar a dose, <a class="text-link" href="../../hemo/drogas.html">drogas vasoativas</a> para a bomba, e o módulo de <a class="text-link" href="../../hemo/index.html">hemodinâmica</a> quando o choque não se comportar como séptico puro.</p>
+    <a class="link-cta" href="../index.html">Levar o caso ao assistente de conduta <span aria-hidden="true">&rarr;</span></a>
+  </div>
+
+  <div class="section-label">Referências</div>
+  <span class="ref">Prescott HC, Antonelli M, Alhazzani W, et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. <em>Crit Care Med.</em> 2026;54(4):725–812 (doi:10.1097/CCM.0000000000007075) · publicação simultânea em <em>Intensive Care Med.</em> 2026;52(5):863–936 (doi:10.1007/s00134-026-08361-1).</span>
+  <span class="ref">Adigbli D, Li Y, Hammond N, et al. A Patient-Level Meta-Analysis of Intensive Glucose Control in Critically Ill Adults. <em>NEJM Evid.</em> 2024;3(8):EVIDoa2400082 (doi:10.1056/EVIDoa2400082).</span>
+  <span class="ref">Instituto Latino-Americano de Sepse (ILAS). Guia Prático de Terapia Antimicrobiana na Sepse. 2022.</span>
+  <span class="ref">NICE-SUGAR Study Investigators. Intensive versus conventional glucose control in critically ill patients. <em>N Engl J Med.</em> 2009;360(13):1283–1297.</span>
+</section>
+
+</main>
+<script src="../../assets/app.js"></script>
+<script>
+function toggleCard(card,e){
+  if(e&&e.target.tagName&&e.target.tagName.toLowerCase()==='a')return;
+  card.classList.toggle('open');
+}
+document.addEventListener('keydown',function(e){
+  if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('card-toggle')){
+    e.preventDefault();toggleCard(e.target.parentNode,e);
+  }
+});
+</script>
+</body>
+</html>
