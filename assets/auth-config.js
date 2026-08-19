@@ -4,10 +4,25 @@
  * A Publishable Key (pk_*) é pública por design — pode ir no front.
  * Secret Key (sk_*) NUNCA entra aqui.
  *
- * Preencha PUBLISHABLE_KEY ou defina CLERK_PUBLISHABLE_KEY na Vercel
- * (a API /api/clerk-config devolve a key em runtime).
+ * ═══ NÃO PREENCHA `PUBLISHABLE_KEY` AQUI ═══
  *
- * Dashboard (app arriving-seasnail-55) — checklist ponta a ponta:
+ * A chave vem da Vercel, por `CLERK_PUBLISHABLE_KEY`, servida em runtime por
+ * `/api/clerk-config`. Deixe o campo abaixo VAZIO.
+ *
+ * `resolvePublishableKey` em `auth.js` prefere o valor deste arquivo e só
+ * consulta a API quando ele está vazio. Com uma chave escrita aqui, existem
+ * DUAS fontes da verdade — e a de dentro do arquivo sempre vence.
+ *
+ * Isso mordeu na virada para produção (19/08/2026): a env var da Vercel já
+ * servia a `pk_live_`, o hub-uti já falava com a instância nova, e o login do
+ * beaside continuava mandando todo mundo para a instância de DESENVOLVIMENTO
+ * — em silêncio, porque logar funcionava. O sintoma foi a lista de usuários de
+ * produção seguir vazia depois de vários logins bem-sucedidos.
+ *
+ * Trocar de instância é mudar UMA variável de ambiente. Se um dia isto voltar
+ * a ser preenchido, volta junto o dia inteiro de confusão.
+ *
+ * Dashboard — checklist ponta a ponta:
  * - Paths: Home / Sign-in / Sign-up → https://be-aside.vercel.app (+ /login.html)
  * - Allowed redirect URLs: https://be-aside.vercel.app/* , http://localhost:* , http://127.0.0.1:*
  * - Allowed origins: mesmas origens
@@ -15,8 +30,11 @@
  * - Attack protection: Bot sign-up = Smart CAPTCHA (UI tem #clerk-captcha)
  */
 window.BEASIDE_AUTH = {
-  /** Cole a pk_test_… ou pk_live_… do Clerk Dashboard → API Keys */
-  PUBLISHABLE_KEY: 'pk_test_YXJyaXZpbmctc2Vhc25haWwtNTUuY2xlcmsuYWNjb3VudHMuZGV2JA',
+  /**
+   * VAZIO DE PROPÓSITO — a chave vem de `/api/clerk-config` (env da Vercel).
+   * Preencher aqui sobrepõe a env var em silêncio. Ver o cabeçalho.
+   */
+  PUBLISHABLE_KEY: '',
 
   /** URLs após auth (relativas à origem) */
   AFTER_SIGN_IN: 'index.html',
