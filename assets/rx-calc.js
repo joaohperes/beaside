@@ -394,6 +394,31 @@
 
     /* ─── Infecto e respiratório ─────────────────────────────────── */
     {
+      id: 'atsidsa', grupo: 'Infecto e respiratório', nome: 'Critérios ATS/IDSA — PAC grave',
+      badge: '1 maior ou ≥ 3 menores', tipo: 'score', modo: 'maior-menor', minMenor: 3,
+      sub: 'Decide quem vai para a UTI — e é outra pergunta que a do CURB-65 e a do PSI, que decidem quem interna. A gravidade aqui é medida por falência de órgão, não por extensão do infiltrado.',
+      itens: [
+        ['Ventilação mecânica invasiva', 1, 'maior'],
+        ['Choque séptico com necessidade de vasopressor', 1, 'maior'],
+        ['Frequência respiratória ≥ 30 irpm', 1, 'menor'],
+        ['PaO₂/FiO₂ ≤ 250', 1, 'menor'],
+        ['Infiltrado multilobar', 1, 'menor'],
+        ['Confusão ou desorientação', 1, 'menor'],
+        ['Ureia ≥ 42 mg/dL (ureia nitrogenada ≥ 20 mg/dL)', 1, 'menor'],
+        ['Leucócitos < 4.000/mm³', 1, 'menor'],
+        ['Plaquetas < 100.000/mm³', 1, 'menor'],
+        ['Hipotermia — temperatura central < 36 °C', 1, 'menor'],
+        ['Hipotensão exigindo reposição volêmica agressiva', 1, 'menor']
+      ],
+      textos: {
+        maior: ['alto', 'PAC grave — critério maior presente', 'Um critério maior basta: é <b>UTI</b>. Antibiótico na primeira hora, culturas antes da primeira dose (sem atrasá-la) e cobertura de atípico associada ao beta-lactâmico.'],
+        menor: ['alto', 'PAC grave — três ou mais critérios menores', 'Atinge o limiar de <b>UTI</b> mesmo sem ventilação ou vasopressor. É o grupo que mais se subestima na sala de emergência, porque o paciente ainda "conversa".'],
+        limite: ['limite', 'Não atinge o limiar — mas vigie de perto', 'Um ou dois critérios menores não fecham PAC grave, e não autorizam relaxar: reavalie em horas, porque a trajetória vale mais que o corte. Deterioração progressiva indica UTI independentemente da contagem.'],
+        baixo: ['baixo', 'Sem critérios de gravidade', 'Não preenche PAC grave. Decidir <b>internação</b> é outra pergunta — para ela, CURB-65 ou PSI, sempre somados ao julgamento clínico e ao contexto social.']
+      },
+      ref: 'Metlay JP, Waterer GW, Long AC, et al. Diagnosis and Treatment of Adults with Community-acquired Pneumonia. An Official Clinical Practice Guideline of the American Thoracic Society and Infectious Diseases Society of America. <em>Am J Respir Crit Care Med.</em> 2019;200(7):e45–e67 — critérios maiores e menores de PAC grave, mantidos na atualização de 2025 da ATS.'
+    },
+    {
       id: 'curb65', grupo: 'Infecto e respiratório', nome: 'CURB-65 — pneumonia comunitária',
       badge: 'decide internação', tipo: 'score',
       sub: 'Decide local de tratamento. Não identifica quem vai para a UTI — para isso, use os critérios maiores e menores da ATS/IDSA.',
@@ -656,10 +681,16 @@
         var M = 0, m = 0;
         box.querySelectorAll('input:checked').forEach(function (i) { i.dataset.classe === 'maior' ? M++ : m++; });
         box.querySelector('.rxc-score').textContent = M + 'M / ' + m + 'm';
-        if (M >= 1) saida(box, 'alto', 'Indicação presente — fator maior', 'Ventilação mecânica prolongada e coagulopatia são os dois fatores independentes clássicos. Prescrever inibidor de bomba e <b>reavaliar todo dia</b> — a indicação some antes da alta da UTI, a prescrição não.');
-        else if (m >= 2) saida(box, 'alto', 'Indicação provável — dois ou mais fatores menores', 'A combinação justifica profilaxia na maioria dos protocolos. Reavaliar diariamente e suspender quando os fatores saírem.');
-        else if (m === 1) saida(box, 'limite', 'Zona cinzenta — um fator menor', 'Um fator menor isolado não sustenta profilaxia na maior parte dos protocolos. Decidir pelo conjunto e pelo protocolo do serviço.');
-        else saida(box, 'baixo', 'Sem indicação', 'Sem fator de risco, a profilaxia traz mais dano — pneumonia associada à ventilação e <em>C. difficile</em> — do que benefício.');
+        /* quantos menores bastam; e os textos de saída, sobrescrevíveis por calculadora */
+        var alvoM = c.minMenor || 2;
+        var T = c.textos || {
+          maior: ['alto', 'Indicação presente — fator maior', 'Ventilação mecânica prolongada e coagulopatia são os dois fatores independentes clássicos. Prescrever inibidor de bomba e <b>reavaliar todo dia</b> — a indicação some antes da alta da UTI, a prescrição não.'],
+          menor: ['alto', 'Indicação provável — dois ou mais fatores menores', 'A combinação justifica profilaxia na maioria dos protocolos. Reavaliar diariamente e suspender quando os fatores saírem.'],
+          limite: ['limite', 'Zona cinzenta — um fator menor', 'Um fator menor isolado não sustenta profilaxia na maior parte dos protocolos. Decidir pelo conjunto e pelo protocolo do serviço.'],
+          baixo: ['baixo', 'Sem indicação', 'Sem fator de risco, a profilaxia traz mais dano — pneumonia associada à ventilação e <em>C. difficile</em> — do que benefício.']
+        };
+        var r = M >= 1 ? T.maior : m >= alvoM ? T.menor : m >= 1 ? T.limite : T.baixo;
+        saida(box, r[0], r[1] + (r === T.limite || r === T.menor ? ' (' + m + ')' : ''), r[2]);
         return;
       }
       var t = c.base || 0, sel3 = false, faltaNum = false;

@@ -46,6 +46,7 @@
   .rx-dose{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;line-height:1.8;color:var(--text);background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:11px 14px;margin:12px 0 0}
   .rx-dose+.rx-dose{margin-top:8px}
   .rx-dose b{color:var(--accent);font-weight:600}
+  .rx-sub{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);margin:18px 0 -2px;padding-left:2px}
   .rx-body .tag-row{margin:10px 0 0}
   .rx-body .alert-box{margin:12px 0 0}
   .rx-item .card-toggle{border-top:1px solid var(--border);margin-top:14px}
@@ -106,18 +107,18 @@
         </div>
       </div>
       <div class="rx-body">
-        <div class="rx-dose"><b>Critérios maiores</b> (um basta): <b>ventilação mecânica invasiva</b> · <b>choque com vasopressor</b></div>
-        <a class="rxc-link" href="calculadoras.html#curb65">CURB-65 <span>decide onde tratar</span></a>
-        <div class="rx-dose"><b>Critérios menores</b> (três ou mais): FR ≥ 30 · PaO₂/FiO₂ ≤ 250 · infiltrado multilobar · confusão/desorientação · ureia elevada · leucopenia &lt; 4.000 · plaquetas &lt; 100.000 · hipotermia &lt; 36 °C · hipotensão exigindo reposição volêmica agressiva</div>
-        <div class="rx-dose"><b>Destino:</b> critério maior, ≥ 3 menores ou deterioração → <b>UTI</b></div>
+        <div class="rx-dose"><b>A conta é simples e a calculadora a faz por você:</b> <b>1 critério maior</b> (ventilação mecânica invasiva ou choque com vasopressor) <b>ou ≥ 3 critérios menores</b> → <b>UTI</b> · deterioração progressiva indica UTI mesmo sem fechar a conta</div>
+        <a class="rxc-link" href="calculadoras.html#atsidsa">Critérios ATS/IDSA <span>marcar e ver se é UTI</span></a>
+        <a class="rxc-link" href="calculadoras.html#curb65">CURB-65 <span>outra pergunta: se interna</span></a>
       </div>
       <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
         <span class="rx-why">Por quê &amp; armadilhas</span>
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
       </div>
       <div class="card-body">
-        <p>Os escores de gravidade (CURB-65, PSI) foram feitos para decidir internação, não para identificar quem vai para a UTI. Os critérios ATS/IDSA existem porque a mortalidade da PAC grave é dirigida por falência de órgão, não por extensão radiológica.</p>
-        <span class="ref">Metlay JP, Waterer GW, Long AC, et al. Diagnosis and Treatment of Adults with Community-acquired Pneumonia — ATS/IDSA. <em>Am J Respir Crit Care Med.</em> 2019;200(7):e45–e67 · Martin-Loeches I, et al. ERS/ESICM/ESCMID/ALAT guidelines for severe CAP. <em>Eur Respir J.</em> 2023;61(4):2200735 · Dequin PF, et al. Hydrocortisone in Severe Community-Acquired Pneumonia (CAPE COD). <em>N Engl J Med.</em> 2023;388(21):1931–1941.</span>
+        <p>Os escores de gravidade (CURB-65, PSI) foram feitos para decidir internação, não para identificar quem vai para a UTI. Os critérios ATS/IDSA existem porque a mortalidade da PAC grave é dirigida por falência de órgão, não por extensão radiológica — e é por isso que um paciente com infiltrado modesto, PaO₂/FiO₂ de 200, ureia alta e confusão é mais grave que outro com "pneumonia extensa" na radiografia e nenhum órgão falhando.</p>
+        <p>O grupo que mais se perde é o dos <strong>três menores sem nenhum maior</strong>: sem tubo e sem vasopressor, o paciente ainda conversa, ainda parece "estável para enfermaria" — e é justamente o que descompensa de madrugada. Marcar os critérios na calculadora leva vinte segundos e transforma uma impressão em contagem, que é o que sustenta o pedido de vaga.</p>
+        <span class="ref">Metlay JP, Waterer GW, Long AC, et al. Diagnosis and Treatment of Adults with Community-acquired Pneumonia. An Official Clinical Practice Guideline of the American Thoracic Society and Infectious Diseases Society of America. <em>Am J Respir Crit Care Med.</em> 2019;200(7):e45–e67 · Jones BE, Ramirez JA, Oren E, et al. Diagnosis and Management of Community-acquired Pneumonia. An Official American Thoracic Society Clinical Practice Guideline. <em>Am J Respir Crit Care Med.</em> 2025;212(1):24–44 — atualização da ATS <b>sem endosso da IDSA</b> (Klompas M, et al. IDSA Position Statement. <em>Clin Infect Dis.</em> 2025;82(4):622–624) · Martin-Loeches I, et al. ERS/ESICM/ESCMID/ALAT guidelines for severe CAP. <em>Eur Respir J.</em> 2023;61(4):2200735 · Dequin PF, et al. Hydrocortisone in Severe Community-Acquired Pneumonia (CAPE COD). <em>N Engl J Med.</em> 2023;388(21):1931–1941.</span>
       </div>
     </div>
     <!-- 02 · Microbiologia -->
@@ -141,7 +142,7 @@
       </div>
       <div class="card-body">
         <p>A microbiologia na PAC grave serve menos para acertar o empírico e mais para <strong>desescalonar</strong> — e é por isso que ela precisa ser colhida antes da primeira dose, mesmo sabendo que a maioria virá negativa. O swab de MRSA é o exemplo mais prático: um resultado negativo retira vancomicina em 48 h.</p>
-        <span class="ref">Metlay JP, Waterer GW, Long AC, et al. Diagnosis and Treatment of Adults with Community-acquired Pneumonia — ATS/IDSA. <em>Am J Respir Crit Care Med.</em> 2019;200(7):e45–e67 · Martin-Loeches I, et al. ERS/ESICM/ESCMID/ALAT guidelines for severe CAP. <em>Eur Respir J.</em> 2023;61(4):2200735 · Dequin PF, et al. Hydrocortisone in Severe Community-Acquired Pneumonia (CAPE COD). <em>N Engl J Med.</em> 2023;388(21):1931–1941.</span>
+        <span class="ref">Metlay JP, Waterer GW, Long AC, et al. Diagnosis and Treatment of Adults with Community-acquired Pneumonia. An Official Clinical Practice Guideline of the American Thoracic Society and Infectious Diseases Society of America. <em>Am J Respir Crit Care Med.</em> 2019;200(7):e45–e67 · Jones BE, Ramirez JA, Oren E, et al. Diagnosis and Management of Community-acquired Pneumonia. An Official American Thoracic Society Clinical Practice Guideline. <em>Am J Respir Crit Care Med.</em> 2025;212(1):24–44 — atualização da ATS <b>sem endosso da IDSA</b> (Klompas M, et al. IDSA Position Statement. <em>Clin Infect Dis.</em> 2025;82(4):622–624) · Martin-Loeches I, et al. ERS/ESICM/ESCMID/ALAT guidelines for severe CAP. <em>Eur Respir J.</em> 2023;61(4):2200735 · Dequin PF, et al. Hydrocortisone in Severe Community-Acquired Pneumonia (CAPE COD). <em>N Engl J Med.</em> 2023;388(21):1931–1941.</span>
       </div>
     </div>
     <div class="section-label" style="margin-top:26px">O esquema empírico</div>
@@ -160,6 +161,12 @@
         <div class="rx-dose"><b>Alternativa ao macrolídeo:</b> beta-lactâmico + <b>fluoroquinolona respiratória</b> — <b>não</b> fluoroquinolona isolada</div>
         <div class="rx-dose">⚠ <b>Cobertura de atípicos é obrigatória</b> na PAC grave, inclusive quando o beta-lactâmico for ampliado</div>
         <div class="rx-dose"><b>Monitorar:</b> azitromicina — <b>QT</b> e função hepática; ceftriaxona — cautela na disfunção renal <em>somada</em> à hepática</div>
+
+        <div class="rx-sub">O que a atualização de 2025 mudou (e o que não mudou)</div>
+        <div class="rx-dose"><b>Teste viral positivo não retira o antibiótico no grave:</b> no internado com <b>PAC grave</b>, manter o antibiótico empírico mesmo com influenza, SARS-CoV-2 ou VSR detectado — recomendação <b>forte</b> · no internado <b>não grave</b> e no ambulatorial <b>com</b> comorbidade, a sugestão também é manter · só o ambulatorial <b>sem</b> comorbidade tem sugestão de <b>não</b> prescrever</div>
+        <div class="rx-dose"><b>Duração:</b> na PAC grave, <b>5 dias ou mais</b> contados a partir da <b>estabilidade clínica</b> — recomendação <b>forte</b> · o encurtamento para menos de 5 dias vale para o <b>não grave</b> e o ambulatorial (mínimo de 3), <b>não</b> para o paciente de UTI</div>
+        <div class="rx-dose"><b>Não mudou:</b> beta-lactâmico + macrolídeo no grave, cobertura obrigatória de atípico, e MRSA/<em>Pseudomonas</em> só com fator de risco — a atualização de 2025 <b>remete explicitamente</b> à diretriz de 2019 para a escolha dos agentes</div>
+        <div class="alert-box info"><div class="icon">i</div><div class="content"><strong>Uma ressalva de governança, porque muda como ler a diretriz:</strong> a atualização de 2025 é da <strong>ATS isolada</strong>. A IDSA <strong>não a endossou</strong> — a divergência foi justamente sobre como conduzir o paciente com teste viral positivo — e publicou posicionamento próprio anunciando diretriz separada. Ou seja: onde esta página escreve "ATS 2025", leia <em>uma</em> sociedade, não as duas. Nos pontos em que as duas concordam (esquema empírico, atípicos, MRSA/<em>Pseudomonas</em>), a base segue sendo a de 2019.</div></div>
       </div>
       <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
         <span class="rx-why">Por quê &amp; armadilhas</span>
@@ -167,7 +174,8 @@
       </div>
       <div class="card-body">
         <p>A combinação beta-lactâmico + macrolídeo tem sinal consistente de benefício na PAC grave, e a hipótese que melhor explica não é só cobrir atípicos: é o efeito imunomodulador do macrolídeo. Por isso ele não é dispensável quando o beta-lactâmico é ampliado — trocar ceftriaxona por piperacilina/tazobactam não cobre <em>Legionella</em>.</p>
-        <span class="ref">Metlay JP, Waterer GW, Long AC, et al. Diagnosis and Treatment of Adults with Community-acquired Pneumonia — ATS/IDSA. <em>Am J Respir Crit Care Med.</em> 2019;200(7):e45–e67 · Martin-Loeches I, et al. ERS/ESICM/ESCMID/ALAT guidelines for severe CAP. <em>Eur Respir J.</em> 2023;61(4):2200735 · Dequin PF, et al. Hydrocortisone in Severe Community-Acquired Pneumonia (CAPE COD). <em>N Engl J Med.</em> 2023;388(21):1931–1941.</span>
+        <p>Sobre duração, o erro de leitura mais comum agora é importar para a UTI a manchete do "curso mais curto". O encurtamento validado é do paciente <strong>não grave</strong>; na PAC grave a recomendação é forte para <strong>5 dias ou mais</strong>, e — a parte que mais se perde — a contagem começa na <strong>estabilidade clínica</strong>, não na primeira dose. Contar cinco dias num paciente ainda febril, taquipneico e dependente de oxigênio é subtratar com aval de diretriz.</p>
+        <span class="ref">Metlay JP, Waterer GW, Long AC, et al. Diagnosis and Treatment of Adults with Community-acquired Pneumonia. An Official Clinical Practice Guideline of the American Thoracic Society and Infectious Diseases Society of America. <em>Am J Respir Crit Care Med.</em> 2019;200(7):e45–e67 · Jones BE, Ramirez JA, Oren E, et al. Diagnosis and Management of Community-acquired Pneumonia. An Official American Thoracic Society Clinical Practice Guideline. <em>Am J Respir Crit Care Med.</em> 2025;212(1):24–44 — atualização da ATS <b>sem endosso da IDSA</b> (Klompas M, et al. IDSA Position Statement. <em>Clin Infect Dis.</em> 2025;82(4):622–624) · Martin-Loeches I, et al. ERS/ESICM/ESCMID/ALAT guidelines for severe CAP. <em>Eur Respir J.</em> 2023;61(4):2200735 · Dequin PF, et al. Hydrocortisone in Severe Community-Acquired Pneumonia (CAPE COD). <em>N Engl J Med.</em> 2023;388(21):1931–1941.</span>
       </div>
     </div>
     <!-- 04 · Ampliar ou não -->
@@ -182,7 +190,11 @@
       <div class="rx-body">
         <div class="rx-dose"><b>MRSA — só com risco validado</b> (colonização/infecção prévia, teste compatível, epidemiologia local): <b>vancomicina</b> com <b>dose de ataque por peso</b> e manutenção por <b>AUC 400–600</b> e função renal, <em>ou</em> <b>linezolida 600 mg EV/VO 12/12 h</b></div>
         <div class="rx-dose"><b><em>Pseudomonas</em> — só com risco validado:</b> <b>piperacilina/tazobactam 4,5 g EV 6/6 h</b>, <b>cefepima 2 g EV 8/8 h</b> ou <b>meropenem 1 g EV 8/8 h</b> (função renal normal; infusão e ajuste conforme farmácia)</div>
-        <div class="rx-dose">⚠ <b>Residir em instituição de longa permanência, sozinho, não justifica ampliar</b> — o conceito de "pneumonia associada a cuidados de saúde" foi abandonado</div>
+        <div class="rx-sub">O que conta como "fator de risco validado"</div>
+        <div class="rx-dose"><b>O mais forte:</b> <b>isolamento prévio do próprio germe em via respiratória</b> — MRSA ou <em>Pseudomonas</em> já cultivados nesse paciente</div>
+        <div class="rx-dose"><b>Secundário, e só na PAC grave:</b> <b>internação com antibiótico endovenoso nos últimos 90 dias</b> — a ser pesado contra a <b>epidemiologia local</b>, não aplicado como regra automática</div>
+        <div class="rx-dose"><b>Ampliou?</b> Colha cultura e <b>swab nasal para MRSA</b> na mesma hora — é o que permite <b>desescalar em 48 h</b>. Ampliação sem plano de retirada é ampliação permanente</div>
+        <div class="rx-dose">⚠ <b>Residir em instituição de longa permanência, sozinho, não justifica ampliar.</b> A diretriz de 2019 recomenda <b>abandonar</b> a categoria "pneumonia associada a cuidados de saúde" (HCAP) — recomendação <b>forte</b> — e a atualização de 2025 <b>não a ressuscitou</b>: quem mora em ILPI, faz hemodiálise ou teve internação recente é tratado como PAC comum, salvo os fatores acima</div>
         <div class="rx-dose"><b>Alergia grave a beta-lactâmico</b> documentada: definir com infectologia — levofloxacino 750 mg 24/24 h ± aztreonam 2 g 8/8 h é uma possibilidade, conforme perfil, função renal, QT e epidemiologia</div>
         <div class="rx-dose"><b>Retirar cedo</b> quando cultura e swab permitirem</div>
       </div>
@@ -191,10 +203,40 @@
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
       </div>
       <div class="card-body">
-        <p>A retirada do conceito de HCAP foi uma das correções mais úteis da diretriz de 2019: ele levava a ampliar espectro em uma população que, na maioria, tinha pneumonia comunitária comum — com mais toxicidade, mais resistência e sem ganho de mortalidade.</p>
-        <span class="ref">Metlay JP, Waterer GW, Long AC, et al. Diagnosis and Treatment of Adults with Community-acquired Pneumonia — ATS/IDSA. <em>Am J Respir Crit Care Med.</em> 2019;200(7):e45–e67 · Martin-Loeches I, et al. ERS/ESICM/ESCMID/ALAT guidelines for severe CAP. <em>Eur Respir J.</em> 2023;61(4):2200735 · Dequin PF, et al. Hydrocortisone in Severe Community-Acquired Pneumonia (CAPE COD). <em>N Engl J Med.</em> 2023;388(21):1931–1941.</span>
+        <p>A retirada do conceito de HCAP foi uma das correções mais úteis da diretriz de 2019: ele levava a ampliar espectro em uma população que, na maioria, tinha pneumonia comunitária comum — com mais toxicidade, mais resistência e sem ganho de mortalidade. O erro que ele institucionalizava era de raciocínio: transformar <em>contato com o sistema de saúde</em> em <em>presença de germe resistente</em>, quando o que prediz resistência é ter tido o germe, não ter frequentado o hospital.</p>
+        <p>Vale registrar que essa retirada resistiu à revisão de 2025 — que voltou a mexer em duração, corticoide, imagem e antibiótico no paciente com teste viral positivo, e <strong>deixou HCAP enterrado</strong>. A conduta correta no idoso da ILPI com pneumonia continua sendo ceftriaxona com macrolídeo, e não piperacilina/tazobactam com vancomicina "porque veio de casa de repouso".</p>
+        <span class="ref">Metlay JP, Waterer GW, Long AC, et al. Diagnosis and Treatment of Adults with Community-acquired Pneumonia. An Official Clinical Practice Guideline of the American Thoracic Society and Infectious Diseases Society of America. <em>Am J Respir Crit Care Med.</em> 2019;200(7):e45–e67 · Jones BE, Ramirez JA, Oren E, et al. Diagnosis and Management of Community-acquired Pneumonia. An Official American Thoracic Society Clinical Practice Guideline. <em>Am J Respir Crit Care Med.</em> 2025;212(1):24–44 — atualização da ATS <b>sem endosso da IDSA</b> (Klompas M, et al. IDSA Position Statement. <em>Clin Infect Dis.</em> 2025;82(4):622–624) · Martin-Loeches I, et al. ERS/ESICM/ESCMID/ALAT guidelines for severe CAP. <em>Eur Respir J.</em> 2023;61(4):2200735 · Dequin PF, et al. Hydrocortisone in Severe Community-Acquired Pneumonia (CAPE COD). <em>N Engl J Med.</em> 2023;388(21):1931–1941.</span>
       </div>
     </div>
+    <!-- 04b · Inalatórios -->
+    <div class="card collapsible rx-item">
+      <div class="rx-head">
+        <span class="rx-n" aria-hidden="true"></span>
+        <div>
+          <div class="rx-title">Inalatórios no paciente sem DPOC e sem asma</div>
+          <div class="rx-cond">a prescrição mais automática da enfermaria — e a que menos tem evidência</div>
+        </div>
+      </div>
+      <div class="rx-body">
+        <div class="rx-dose"><b>Não é conduta de rotina.</b> Sem doença obstrutiva de base, o broncodilatador inalatório <b>não</b> tem ensaio que mostre benefício em pneumonia — não acelera a resolução, não melhora oxigenação de forma sustentada e não reduz tempo de internação</div>
+        <div class="rx-dose"><b>Quando é razoável usar</b> — sempre como <b>teste</b>, não como horário fixo: <b>broncoespasmo audível</b> (sibilos difusos) · <b>tempo expiratório prolongado</b> com trabalho respiratório · <b>obstrução demonstrada</b> em quem tem doença de base ainda não diagnosticada · pneumonia deflagrando <b>hiper-reatividade</b> pós-viral</div>
+        <div class="rx-dose"><b>Como usar quando indicado:</b> <b>salbutamol 4–8 jatos</b> por espaçador (equivale a 2,5 mg nebulizado, com menos taquicardia e menos aerossol) 4/4–6/6 h · ± <b>ipratrópio 0,5 mg</b> · <b>reavaliar em 1 h</b> — melhorou o sibilo e o trabalho respiratório? mantém e reavalia todo dia. Não melhorou? <b>suspende</b></div>
+        <div class="rx-dose"><b>Prefira espaçador à nebulização</b> em doença respiratória transmissível: nebulizar gera aerossol e obriga precaução adicional, sem ganhar eficácia</div>
+        <div class="rx-dose">⚠ <b>Preço do "por via das dúvidas":</b> taquicardia e arritmia num paciente séptico, <b>hipocalemia</b> somada à do estresse e à do beta-agonista, tremor que atrapalha a fisioterapia e <b>piora transitória da relação V/Q</b> por vasodilatação em área consolidada — a saturação pode <em>cair</em> depois da inalação</div>
+        <div class="rx-dose">✱ <b>Mucolítico e "inalação para soltar secreção" não substituem fisioterapia</b> — não há evidência que sustente nebulização de rotina com esse fim; o que mobiliza secreção é umidificação adequada, hidratação, mobilização e fisioterapia respiratória</div>
+      </div>
+      <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
+        <span class="rx-why">Por quê &amp; armadilhas</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="card-body">
+        <p>Vale entender por que o reflexo é tão forte e ainda assim errado. Pneumonia faz falta de ar, e falta de ar no hospital chama nebulização — só que o mecanismo é diferente: no broncoespasmo o problema é <em>fluxo</em>, e o beta-agonista resolve; na pneumonia o problema é <strong>alvéolo cheio e <em>shunt</em></strong>, e nenhuma dose de salbutamol abre alvéolo consolidado. O paciente sente alívio subjetivo pelo fluxo frio no rosto e pela sensação de estar sendo tratado, e o serviço lê isso como resposta.</p>
+        <p>O dado que mais informa a decisão não vem da pneumonia, vem da lesão pulmonar aguda, onde a hipótese de que o beta-agonista aceleraria a reabsorção de edema alveolar foi testada duas vezes e falhou nas duas: o ensaio com salbutamol <strong>inalatório</strong> não melhorou dias livres de ventilação nem mortalidade, e o ensaio com salbutamol <strong>endovenoso</strong> foi <em>interrompido por segurança</em> — mortalidade em 28 dias de 34% contra 23% no placebo. Nenhum dos dois é pneumonia, mas juntos desmontam o raciocínio fisiopatológico que sustentava a prescrição em alvéolo inundado.</p>
+        <p>A regra prática, então: inalatório em pneumonia é <strong>tratamento de sibilo</strong>, e sibilo se ausculta. Existe? Trate e reavalie em uma hora. Não existe? A inalação não é neutra — ela taquicardiza, derruba potássio e ocupa a equipe de enfermagem seis vezes ao dia com uma prescrição que ninguém revisa até a alta.</p>
+        <span class="ref">Ausência de indicação de rotina: Metlay JP, Waterer GW, Long AC, et al. Diagnosis and Treatment of Adults with Community-acquired Pneumonia. An Official Clinical Practice Guideline of the American Thoracic Society and Infectious Diseases Society of America. <em>Am J Respir Crit Care Med.</em> 2019;200(7):e45–e67 — broncodilatador reservado a doença obstrutiva com broncoespasmo; a atualização de 2025 não introduziu recomendação de inalatório na PAC · Falha do beta-agonista em alvéolo inundado: National Heart, Lung, and Blood Institute ARDS Clinical Trials Network. Randomized, Placebo-controlled Clinical Trial of an Aerosolized β2-Agonist for Treatment of Acute Lung Injury (ALTA). <em>Am J Respir Crit Care Med.</em> 2011;184(5):561–568 — sem benefício em dias livres de ventilação ou mortalidade · Smith FG, Perkins GD, Gates S, et al. BALTI-2. <em>Lancet.</em> 2012;379(9812):229–235 — salbutamol EV interrompido por excesso de mortalidade (34% vs 23%) · <b>Nota de evidência:</b> não existe ensaio randomizado de broncodilatador inalatório especificamente em PAC sem doença obstrutiva; a conduta acima é extrapolação declarada, e por isso a página a trata como teste terapêutico com reavaliação, não como prescrição fixa.</span>
+      </div>
+    </div>
+
     <!-- 05 · Influenza -->
     <div class="card collapsible rx-item">
       <div class="rx-head">
@@ -215,7 +257,7 @@
       </div>
       <div class="card-body">
         <p>O corte de 48 horas vem dos estudos em ambulatório. No internado grave a replicação viral persiste e o benefício se mantém — por isso a recomendação separa os dois cenários.</p>
-        <span class="ref">Metlay JP, Waterer GW, Long AC, et al. Diagnosis and Treatment of Adults with Community-acquired Pneumonia — ATS/IDSA. <em>Am J Respir Crit Care Med.</em> 2019;200(7):e45–e67 · Martin-Loeches I, et al. ERS/ESICM/ESCMID/ALAT guidelines for severe CAP. <em>Eur Respir J.</em> 2023;61(4):2200735 · Dequin PF, et al. Hydrocortisone in Severe Community-Acquired Pneumonia (CAPE COD). <em>N Engl J Med.</em> 2023;388(21):1931–1941.</span>
+        <span class="ref">Metlay JP, Waterer GW, Long AC, et al. Diagnosis and Treatment of Adults with Community-acquired Pneumonia. An Official Clinical Practice Guideline of the American Thoracic Society and Infectious Diseases Society of America. <em>Am J Respir Crit Care Med.</em> 2019;200(7):e45–e67 · Jones BE, Ramirez JA, Oren E, et al. Diagnosis and Management of Community-acquired Pneumonia. An Official American Thoracic Society Clinical Practice Guideline. <em>Am J Respir Crit Care Med.</em> 2025;212(1):24–44 — atualização da ATS <b>sem endosso da IDSA</b> (Klompas M, et al. IDSA Position Statement. <em>Clin Infect Dis.</em> 2025;82(4):622–624) · Martin-Loeches I, et al. ERS/ESICM/ESCMID/ALAT guidelines for severe CAP. <em>Eur Respir J.</em> 2023;61(4):2200735 · Dequin PF, et al. Hydrocortisone in Severe Community-Acquired Pneumonia (CAPE COD). <em>N Engl J Med.</em> 2023;388(21):1931–1941.</span>
       </div>
     </div>
     <!-- 06 · Corticoide -->
@@ -229,6 +271,7 @@
       </div>
       <div class="rx-body">
         <div class="rx-dose"><b>ATS 2025:</b> <b>sugere</b> corticoide sistêmico na <b>PAC grave</b> — recomendação <b>condicional</b>, <b>baixa certeza</b>, <b>excluindo influenza</b></div>
+        <div class="rx-dose"><b>E recomenda o contrário na PAC não grave:</b> <b>não</b> administrar corticoide sistêmico — recomendação <b>forte</b>. É a metade da recomendação que costuma ser esquecida, e a que mais evita dano</div>
         <div class="rx-dose"><b>SCCM 2024</b> é mais favorável na PAC bacteriana grave — as duas <b>não</b> coincidem plenamente</div>
         <div class="rx-dose"><b>Se o serviço adotar</b>, reproduzir um protocolo validado — o esquema de <b>hidrocortisona do CAPE COD</b> é o mais usado — com critérios de inclusão, exclusões e plano de duração escritos. <b>Não criar esquema solto</b></div>
         <div class="rx-dose">⚠ <b>Não usar</b> automaticamente em <b>influenza</b>, pneumonia viral, diabetes descontrolado ou sangramento digestivo recente</div>
@@ -239,7 +282,7 @@
       </div>
       <div class="card-body">
         <p>Esta é a recomendação mais instável da página, e a página diz isso em vez de escolher um lado. O CAPE COD mostrou redução de mortalidade em PAC grave, mas a população era selecionada e a exclusão de influenza importa — em pneumonia por influenza o corticoide tem sinal de dano.</p>
-        <span class="ref">Metlay JP, Waterer GW, Long AC, et al. Diagnosis and Treatment of Adults with Community-acquired Pneumonia — ATS/IDSA. <em>Am J Respir Crit Care Med.</em> 2019;200(7):e45–e67 · Martin-Loeches I, et al. ERS/ESICM/ESCMID/ALAT guidelines for severe CAP. <em>Eur Respir J.</em> 2023;61(4):2200735 · Dequin PF, et al. Hydrocortisone in Severe Community-Acquired Pneumonia (CAPE COD). <em>N Engl J Med.</em> 2023;388(21):1931–1941.</span>
+        <span class="ref">Metlay JP, Waterer GW, Long AC, et al. Diagnosis and Treatment of Adults with Community-acquired Pneumonia. An Official Clinical Practice Guideline of the American Thoracic Society and Infectious Diseases Society of America. <em>Am J Respir Crit Care Med.</em> 2019;200(7):e45–e67 · Jones BE, Ramirez JA, Oren E, et al. Diagnosis and Management of Community-acquired Pneumonia. An Official American Thoracic Society Clinical Practice Guideline. <em>Am J Respir Crit Care Med.</em> 2025;212(1):24–44 — atualização da ATS <b>sem endosso da IDSA</b> (Klompas M, et al. IDSA Position Statement. <em>Clin Infect Dis.</em> 2025;82(4):622–624) · Martin-Loeches I, et al. ERS/ESICM/ESCMID/ALAT guidelines for severe CAP. <em>Eur Respir J.</em> 2023;61(4):2200735 · Dequin PF, et al. Hydrocortisone in Severe Community-Acquired Pneumonia (CAPE COD). <em>N Engl J Med.</em> 2023;388(21):1931–1941.</span>
       </div>
     </div>
     <!-- 07 · Reavaliar e descalonar -->
@@ -263,7 +306,7 @@
       </div>
       <div class="card-body">
         <p>Cinco dias com estabilidade sustentada é o padrão moderno, e a maior parte dos cursos longos vem de inércia, não de indicação. Mas "estabilidade sustentada" é a parte que se esquece: contar cinco dias num paciente que ainda está taquipneico e febril é subtratar.</p>
-        <span class="ref">Metlay JP, Waterer GW, Long AC, et al. Diagnosis and Treatment of Adults with Community-acquired Pneumonia — ATS/IDSA. <em>Am J Respir Crit Care Med.</em> 2019;200(7):e45–e67 · Martin-Loeches I, et al. ERS/ESICM/ESCMID/ALAT guidelines for severe CAP. <em>Eur Respir J.</em> 2023;61(4):2200735 · Dequin PF, et al. Hydrocortisone in Severe Community-Acquired Pneumonia (CAPE COD). <em>N Engl J Med.</em> 2023;388(21):1931–1941.</span>
+        <span class="ref">Metlay JP, Waterer GW, Long AC, et al. Diagnosis and Treatment of Adults with Community-acquired Pneumonia. An Official Clinical Practice Guideline of the American Thoracic Society and Infectious Diseases Society of America. <em>Am J Respir Crit Care Med.</em> 2019;200(7):e45–e67 · Jones BE, Ramirez JA, Oren E, et al. Diagnosis and Management of Community-acquired Pneumonia. An Official American Thoracic Society Clinical Practice Guideline. <em>Am J Respir Crit Care Med.</em> 2025;212(1):24–44 — atualização da ATS <b>sem endosso da IDSA</b> (Klompas M, et al. IDSA Position Statement. <em>Clin Infect Dis.</em> 2025;82(4):622–624) · Martin-Loeches I, et al. ERS/ESICM/ESCMID/ALAT guidelines for severe CAP. <em>Eur Respir J.</em> 2023;61(4):2200735 · Dequin PF, et al. Hydrocortisone in Severe Community-Acquired Pneumonia (CAPE COD). <em>N Engl J Med.</em> 2023;388(21):1931–1941.</span>
       </div>
     </div>
     <div class="section-label" style="margin-top:26px">A rotina que sustenta o resto</div>
@@ -306,7 +349,7 @@
         <div class="rx-dose"><b>Mudança de decúbito 2/2 h</b> + <b>avaliação diária da pele</b> nas proeminências (sacro, calcâneo, occipital, trocânter) · colchão de redistribuição de pressão no imóvel</div>
         <div class="rx-dose"><b>Curativos</b> inspecionados por turno; datar a troca · <b>higiene oral</b> com antisséptico no intubado · olhos lubrificados no sedado</div>
         <div class="rx-dose"><b>Fisioterapia</b> — fisioterapia respiratória e mobilização precoce — a PAC grave é causa clássica de fraqueza adquirida na UTI</div>
-        <div class="rx-dose"><b>Oxigênio conforme necessidade:</b> <b>SpO₂ 92–96%</b> na maioria · <b>88–92%</b> se houver DPOC associado — o alvo segue a doença de base. Oxigênio é droga: tem alvo, tem dose e tem excesso</div>
+        <div class="rx-dose"><b>Oxigênio conforme necessidade:</b> <b>SpO₂ 90–96%</b> na maioria · <b>88–92%</b> se houver DPOC associado — o alvo segue a doença de base. Oxigênio é droga: tem alvo, tem dose e tem excesso</div>
       </div>
       <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
         <span class="rx-why">Por quê &amp; armadilhas</span>
@@ -391,7 +434,7 @@
   </div>
 
   <div class="section-label">Referências</div>
-  <span class="ref">Metlay JP, Waterer GW, Long AC, et al. Diagnosis and Treatment of Adults with Community-acquired Pneumonia — ATS/IDSA. <em>Am J Respir Crit Care Med.</em> 2019;200(7):e45–e67 · Martin-Loeches I, et al. ERS/ESICM/ESCMID/ALAT guidelines for severe CAP. <em>Eur Respir J.</em> 2023;61(4):2200735 · Dequin PF, et al. Hydrocortisone in Severe Community-Acquired Pneumonia (CAPE COD). <em>N Engl J Med.</em> 2023;388(21):1931–1941.</span>
+  <span class="ref">Metlay JP, Waterer GW, Long AC, et al. Diagnosis and Treatment of Adults with Community-acquired Pneumonia. An Official Clinical Practice Guideline of the American Thoracic Society and Infectious Diseases Society of America. <em>Am J Respir Crit Care Med.</em> 2019;200(7):e45–e67 · Jones BE, Ramirez JA, Oren E, et al. Diagnosis and Management of Community-acquired Pneumonia. An Official American Thoracic Society Clinical Practice Guideline. <em>Am J Respir Crit Care Med.</em> 2025;212(1):24–44 — atualização da ATS <b>sem endosso da IDSA</b> (Klompas M, et al. IDSA Position Statement. <em>Clin Infect Dis.</em> 2025;82(4):622–624) · Martin-Loeches I, et al. ERS/ESICM/ESCMID/ALAT guidelines for severe CAP. <em>Eur Respir J.</em> 2023;61(4):2200735 · Dequin PF, et al. Hydrocortisone in Severe Community-Acquired Pneumonia (CAPE COD). <em>N Engl J Med.</em> 2023;388(21):1931–1941.</span>
   <span class="ref">Fatores de risco de sangramento digestivo: Cook DJ, et al. <em>N Engl J Med.</em> 1994;330(6):377–381 · Escore de Pádua: Barbar S, et al. <em>J Thromb Haemost.</em> 2010;8(11):2450–2457.</span>
 
 </section>

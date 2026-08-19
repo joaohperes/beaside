@@ -46,6 +46,7 @@
   .rx-dose{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;line-height:1.8;color:var(--text);background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:11px 14px;margin:12px 0 0}
   .rx-dose+.rx-dose{margin-top:8px}
   .rx-dose b{color:var(--accent);font-weight:600}
+  .rx-sub{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);margin:18px 0 -2px;padding-left:2px}
   .rx-body .tag-row{margin:10px 0 0}
   .rx-body .alert-box{margin:12px 0 0}
   .rx-item .card-toggle{border-top:1px solid var(--border);margin-top:14px}
@@ -108,17 +109,23 @@
       <div class="rx-body">
         <div class="rx-dose"><b>Antibiótico idealmente dentro de 1 h da chegada</b> — <b>não</b> aguardar TC nem punção lombar</div>
         <div class="rx-dose"><b>Colher duas hemoculturas</b> antes, se isso não atrasar</div>
-        <div class="rx-dose"><b>Punção lombar precoce</b> quando segura — a TC antes é indicada apenas em situações selecionadas (rebaixamento importante, déficit focal, crise nova, imunossupressão, papiledema)</div>
+        <div class="rx-sub">TC de crânio antes da punção — não é obrigatória</div>
+    <div class="rx-dose"><b>Punção lombar precoce quando segura.</b> <b>Não existe evidência</b> que sustente TC de crânio universal antes da punção: o estudo que definiu a regra mostrou que, na <b>ausência</b> das características de risco abaixo, o valor preditivo negativo para achado que contraindique a punção é de <b>~97%</b> — a TC nesses pacientes só custa tempo</div>
+    <div class="rx-dose"><b>Peça a TC antes apenas se houver</b>: <b>imunossupressão</b> · <b>doença do SNC prévia</b> (lesão de massa, AVC, infecção focal) · <b>crise convulsiva na última semana</b> · <b>rebaixamento importante do nível de consciência</b> · <b>déficit neurológico focal</b> (incluindo paresia de olhar, campo visual, disfasia, paresia de membro) · <b>papiledema</b></div>
+    <div class="rx-dose">⚠ <b>Nada disso adia o antibiótico.</b> Se vai fazer TC: <b>hemocultura → antibiótico + dexametasona → TC → punção</b>, nessa ordem. TC pedida "para liberar a punção" com o antibiótico esperando na bancada é o erro que a diretriz existe para impedir</div>
+    <div class="alert-box info"><div class="icon">i</div><div class="content"><strong>Sobre o protocolo do seu serviço:</strong> muitas instituições exigem TC antes de <em>toda</em> punção, por cultura local e receio médico-legal, e há divergência real entre diretrizes — as europeias e britânicas são <strong>mais restritivas</strong> que as americanas na indicação de imagem, de modo que a mesma paciente é "indicação de TC" por um critério e não por outro. Siga o protocolo da casa se ele existir; o que não se negocia é a <strong>ordem</strong>: antibiótico primeiro, imagem depois.</div></div>
         <div class="rx-dose"><b>Precaução por gotículas</b> se meningococo for possível — manter até <b>24 h</b> de tratamento efetivo</div>
-        <div class="rx-dose"><b>Exames:</b> hemograma, eletrólitos, função renal e hepática, glicose, lactato, coagulograma</div>
+        <div class="rx-dose"><b>Exames:</b> hemograma, eletrólitos, função renal e hepática, glicose, lactato, coagulograma · <b>gasometria venosa</b> — pH, bicarbonato e lactato em uma punção só, sem arterial: identifica a <b>acidose metabólica</b> da sepse meningocócica, orienta reposição e serve de linha de base para a reavaliação</div>
+        <div class="rx-dose"><b>Glicemia capilar no mesmo momento da punção</b> — sem ela a relação glicose liquórica/glicemia, que é o achado mais discriminante do líquor bacteriano, não pode ser calculada</div>
       </div>
       <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
         <span class="rx-why">Por quê &amp; armadilhas</span>
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
       </div>
       <div class="card-body">
+        <p>A ordem dos exames é a única coisa que importa aqui, e a TC é onde ela costuma se perder: o exame demora, o transporte demora mais, e o paciente volta do tomógrafo tendo perdido a hora em que o antibiótico mudaria o desfecho. Daí a regra ser negativa em vez de positiva — não é "quem precisa de TC", é <em>quem pode puncionar direto</em>, que é a maioria. A gasometria venosa entra pela mesma lógica de economia: responde pH, bicarbonato e lactato numa punção que a enfermagem já vai fazer, sem esperar o gasômetro arterial.</p>
         <p>A punção lombar depois do antibiótico ainda é útil: a celularidade, a proteína, a glicose e a PCR permanecem informativas por horas, e a PCR não depende de bactéria viável. O que não se recupera é o tempo — e a mortalidade da meningite bacteriana escala com ele.</p>
-        <span class="ref">World Health Organization — Guidelines on Meningitis Diagnosis, Treatment and Care. Genebra: OMS, 2025 · NICE NG240 — Meningitis (bacterial) and meningococcal disease: recognition, diagnosis and management. 2024 · ACEP Clinical Policy: Seizures. 2024.</span>
+        <span class="ref">Regra de imagem: Hasbun R, Abrahams J, Jekel J, Quagliarello VJ. Computed Tomography of the Head before Lumbar Puncture in Adults with Suspected Meningitis. <em>N Engl J Med.</em> 2001;345(24):1727–1733 — as seis características clínicas e o valor preditivo negativo de ~97% na ausência delas · Tunkel AR, Hartman BJ, Kaplan SL, et al. Practice Guidelines for the Management of Bacterial Meningitis (IDSA). <em>Clin Infect Dis.</em> 2004;39(9):1267–1284 — critérios adotados acima · van de Beek D, Cabellos C, Dzupova O, et al. ESCMID guideline: diagnosis and treatment of acute bacterial meningitis. <em>Clin Microbiol Infect.</em> 2016;22(Suppl 3):S37–S62 — critérios mais restritivos que os da IDSA; divergência declarada · World Health Organization — Guidelines on Meningitis Diagnosis, Treatment and Care. Genebra: OMS, 2025 · NICE NG240 — Meningitis (bacterial) and meningococcal disease: recognition, diagnosis and management. 2024 · ACEP Clinical Policy: Seizures. 2024.</span>
       </div>
     </div>
     <!-- 02 · Dexametasona -->
@@ -186,15 +193,21 @@
         <div class="rx-dose"><b>Meningococo:</b> 5–7 dias · <b><em>H. influenzae</em>:</b> 7–10 dias · <b>Pneumococo:</b> 10–14 dias</div>
         <div class="rx-dose"><b><em>S. agalactiae</em>:</b> 14–21 dias · <b><em>Listeria</em>:</b> 21 dias</div>
         <div class="rx-dose"><b>Descalonar</b> por cultura e PCR assim que disponíveis</div>
-        <div class="rx-dose">⚠ <b>Aciclovir só se houver suspeita de encefalite herpética</b> — com dose e ajuste renal completos. <b>Não</b> é parte universal do esquema de meningite bacteriana</div>
+        <div class="rx-sub">Aciclovir — quando cobrir herpes, e quando não</div>
+        <div class="rx-dose">⚠ <b>Não</b> é parte universal do esquema de meningite bacteriana. O gatilho não é "meningite"; é <b>encefalite</b> — e a diferença está no <b>parênquima</b></div>
+        <div class="rx-dose"><b>Cubra empiricamente</b> (aciclovir junto do antibiótico, antes da PCR) quando houver <b>encefalite</b>: <b>alteração do nível ou do conteúdo da consciência por ≥ 24 h</b> sem outra causa, somada a <b>febre</b> e a qualquer um destes — <b>crise convulsiva</b> (sobretudo focal), <b>déficit focal</b>, alteração de comportamento/personalidade, <b>líquor com pleocitose linfocítica</b>, <b>EEG</b> ou <b>RM com padrão temporal</b></div>
+        <div class="rx-dose"><b>Dose:</b> <b>aciclovir 10 mg/kg EV 8/8 h</b> (peso ideal no obeso), infundido em <b>1 h</b>, com <b>hidratação generosa</b> — a nefrotoxicidade é por cristalúria e é dose e velocidade dependente · <b>ajuste renal obrigatório</b> · vigiar creatinina a cada 24–48 h e neurotoxicidade (mioclonia, confusão) na disfunção renal</div>
+        <div class="rx-dose"><b>Quando suspender:</b> <b>PCR para HSV negativa no líquor</b> em quadro de baixa suspeita e alternativa diagnóstica estabelecida · PCR colhida <b>muito precocemente</b> (&lt; 72 h) pode ser falso-negativa: em suspeita alta, repetir em 3–7 dias antes de retirar</div>
+        <div class="rx-dose">⚠ <b>Meningite linfocítica benigna do jovem, sem encefalopatia, não é indicação</b> — nessa, o aciclovir só adiciona nefrotoxicidade a quem já vai receber vancomicina</div>
       </div>
       <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
         <span class="rx-why">Por quê &amp; armadilhas</span>
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
       </div>
       <div class="card-body">
-        <p>As durações são orientativas e individualizadas: complicação (empiema subdural, abscesso, ventriculite), resposta lenta ou imunossupressão prolongam. O aciclovir "por segurança" adiciona nefrotoxicidade a um paciente que já vai receber vancomicina — a suspeita precisa ser clínica.</p>
-        <span class="ref">World Health Organization — Guidelines on Meningitis Diagnosis, Treatment and Care. Genebra: OMS, 2025 · NICE NG240 — Meningitis (bacterial) and meningococcal disease: recognition, diagnosis and management. 2024 · ACEP Clinical Policy: Seizures. 2024.</span>
+        <p>As durações são orientativas e individualizadas: complicação (empiema subdural, abscesso, ventriculite), resposta lenta ou imunossupressão prolongam.</p>
+        <p>O aciclovir é a decisão de maior assimetria da página, e por isso ela merece regra explícita nas duas direções. Errar para menos custa caro: na encefalite herpética não tratada a mortalidade passa de 70%, e o atraso <strong>importa em dias</strong> — na série clássica, começar o aciclovir mais de 2 dias após a admissão triplicou a chance de desfecho ruim em 6 meses. Errar para mais também cobra: nefrotoxicidade somada à vancomicina num paciente que já tem sepse e hipoperfusão renal. A saída não é coragem nem cautela, é <strong>critério</strong> — o gatilho é encefalopatia, não meningite, e a diretriz manda começar <em>antes</em> da PCR em quem preenche o quadro.</p>
+        <span class="ref">Aciclovir: Tunkel AR, Glaser CA, Bloch KC, et al. The Management of Encephalitis: Clinical Practice Guidelines by the Infectious Diseases Society of America. <em>Clin Infect Dis.</em> 2008;47(3):303–327 — definição de encefalite, início empírico antes da PCR e dose de 10 mg/kg 8/8 h · Raschilas F, Wolff M, Delatour F, et al. Outcome of and Prognostic Factors for Herpes Simplex Encephalitis in Adult Patients. <em>Clin Infect Dis.</em> 2002;35(3):254–260 — atraso &gt; 2 dias associado a triplicar o risco de desfecho ruim em 6 meses · World Health Organization — Guidelines on Meningitis Diagnosis, Treatment and Care. Genebra: OMS, 2025 · NICE NG240 — Meningitis (bacterial) and meningococcal disease: recognition, diagnosis and management. 2024 · ACEP Clinical Policy: Seizures. 2024.</span>
       </div>
     </div>
     <!-- 05 · Complicações -->
@@ -207,7 +220,8 @@
         </div>
       </div>
       <div class="rx-body">
-        <div class="rx-dose"><b>Crise convulsiva:</b> benzodiazepínico em dose plena · persistindo ou em status, <b>levetiracetam 60 mg/kg EV</b> (máx. <b>4.500 mg</b>) em 10–15 min — sequência completa na <a class="text-link" href="crise-epileptica.html">crise epiléptica</a></div>
+        <div class="rx-dose"><b>Crise convulsiva:</b> benzodiazepínico em dose plena · persistindo ou em status, <b>levetiracetam 60 mg/kg EV</b> em 10–15 min — <b>máximo de 4.500 mg</b>, que é o teto do ensaio que validou a dose (peso acima de 75 kg já bate no teto) — sequência completa na <a class="text-link" href="crise-epileptica.html">crise epiléptica</a></div>
+        <div class="rx-dose"><b>Manutenção depois do ataque:</b> <b>levetiracetam 1.000–1.500 mg EV/VO 12/12 h</b>, iniciada <b>10–12 h após a dose de ataque</b> — não antes, sob risco de somar pico com pico · <b>ajuste renal</b>: reduzir a partir de ClCr &lt; 50 e dose suplementar após hemodiálise · manter enquanto durar a fase aguda e reavaliar a necessidade com o neurologista</div>
         <div class="rx-dose">⚠ <b>Sem anticonvulsivante profilático universal</b> só porque o quadro é grave</div>
         <div class="rx-dose"><b>Hipertensão intracraniana/herniação:</b> osmoterapia <b>sob protocolo</b> (ver <a class="text-link" href="hiponatremia.html">hipertônica no neurocrítico</a>) — <b>não</b> de horário fixo</div>
         <div class="rx-dose">⚠ <b>Não restringir fluidos</b> rotineiramente abaixo da manutenção — a hiponatremia se trata pelo mecanismo (ver <a class="text-link" href="hiponatremia.html">hiponatremia</a>)</div>
@@ -219,7 +233,7 @@
       </div>
       <div class="card-body">
         <p>A restrição hídrica na meningite é uma herança que causou dano: reduzir volume num paciente com pressão de perfusão cerebral limítrofe troca edema por isquemia. A hiponatremia aqui se investiga e se trata pelo mecanismo, como em qualquer lugar.</p>
-        <span class="ref">World Health Organization — Guidelines on Meningitis Diagnosis, Treatment and Care. Genebra: OMS, 2025 · NICE NG240 — Meningitis (bacterial) and meningococcal disease: recognition, diagnosis and management. 2024 · ACEP Clinical Policy: Seizures. 2024.</span>
+        <span class="ref">Levetiracetam: Kapur J, Elm J, Chamberlain JM, et al. Randomized Trial of Three Anticonvulsant Medications for Status Epilepticus (ESETT). <em>N Engl J Med.</em> 2019;381(22):2103–2113 — ataque de 60 mg/kg com <b>teto de 4.500 mg</b>, o esquema testado · <b>Manutenção:</b> a dose de 1.000–1.500 mg 12/12 h iniciada 10–12 h após o ataque vem de protocolos institucionais e da prática neurointensivista, <b>não</b> de ensaio randomizado — declarado como tal · World Health Organization — Guidelines on Meningitis Diagnosis, Treatment and Care. Genebra: OMS, 2025 · NICE NG240 — Meningitis (bacterial) and meningococcal disease: recognition, diagnosis and management. 2024 · ACEP Clinical Policy: Seizures. 2024.</span>
       </div>
     </div>
     <!-- 06 · Saúde pública e alta -->

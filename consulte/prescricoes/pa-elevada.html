@@ -47,6 +47,7 @@
   .rx-dose{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;line-height:1.8;color:var(--text);background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:11px 14px;margin:12px 0 0}
   .rx-dose+.rx-dose{margin-top:8px}
   .rx-dose b{color:var(--accent);font-weight:600}
+  .rx-sub{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);margin:18px 0 -2px;padding-left:2px}
   .rx-body .tag-row{margin:10px 0 0}
   .rx-body .alert-box{margin:12px 0 0}
   .rx-item .card-toggle{border-top:1px solid var(--border);margin-top:14px}
@@ -134,7 +135,19 @@
       </div>
       <div class="rx-body">
         <div class="rx-dose"><b>Repouso em ambiente calmo + remedir em 30–60 min</b> (manguito certo, braço apoiado) — boa parte "trata" sozinha</div>
-        <div class="rx-dose">Causa na frente: <b>dor</b> → dipirona 1 g / analgesia adequada · <b>retenção urinária</b> → sondagem de alívio · <b>ansiedade</b> → abordagem + benzodiazepínico se indicado · <b>abstinência</b> (álcool/cocaína) → protocolo próprio · <b>esqueceu o remédio</b> → retomar o esquema dele</div>
+        <div class="rx-dose">Causa na frente: <b>dor</b> → dipirona 1 g / analgesia adequada · <b>retenção urinária</b> → sondagem de alívio · <b>esqueceu o remédio</b> → retomar o esquema dele · <b>ansiedade, abstinência e agitação</b> → abaixo, porque é onde mais se erra a droga</div>
+
+        <div class="rx-sub">Abstinência alcoólica — o benzodiazepínico <em>é</em> o tratamento</div>
+        <div class="rx-dose"><b>Dose guiada por sintoma</b> (escala tipo CIWA-Ar), não horário fixo: reavaliar e repetir conforme a escala consome cerca de <b>metade</b> do benzodiazepínico total e encurta o tratamento, com a mesma segurança</div>
+        <div class="rx-dose"><b>Diazepam</b> 10 mg VO ou EV lento, repetindo a cada 1–2 h conforme escala (meia-vida longa faz autodesmame) — a opção padrão em <b>fígado preservado</b></div>
+        <div class="rx-dose"><b>Lorazepam 1–2 mg</b> VO/EV 6/6–8/8 h SN — a escolha no <b>hepatopata</b>, no <b>idoso</b> e em quem tem risco de acúmulo: ele é conjugado direto por <b>glicuronidação</b>, sem metabólito ativo e sem depender das reações de fase I do citocromo P450, que são justamente as que a cirrose derruba. Diazepam e clordiazepóxido acumulam metabólitos ativos e podem precipitar encefalopatia</div>
+        <div class="rx-dose"><b>Tiamina 300 mg EV antes de qualquer glicose</b> · corrigir Mg²⁺ e K⁺ · a pressão alta aqui é sintoma adrenérgico: cede com o benzodiazepínico, não com captopril</div>
+
+        <div class="rx-sub">Agitação psicomotora sem abstinência</div>
+        <div class="rx-dose"><b>Aceita via oral:</b> <b>risperidona 2 mg VO</b> — entre os antipsicóticos orais é o de melhor evidência de eficácia e segurança na agitação aguda · alternativa: olanzapina 10 mg VO</div>
+        <div class="rx-dose"><b>Recusa a via oral / agitação grave:</b> haloperidol 2,5–5 mg IM (± prometazina) ou olanzapina 10 mg IM — <b>não associar olanzapina IM a benzodiazepínico EV</b> (depressão respiratória e hipotensão)</div>
+        <div class="rx-dose"><b>Antes de qualquer antipsicótico:</b> HGT, ECG se possível (QT), K⁺ e Mg²⁺ · <b>idoso</b> — risperidona hipotensa mais nessa faixa; comece por 0,5–1 mg · delirium hipoativo não se trata com antipsicótico</div>
+        <div class="alert-box warn"><div class="icon">!</div><div class="content"><strong>Antipsicótico não substitui benzodiazepínico na abstinência alcoólica.</strong> Ele não age no receptor GABA que está órfão, <strong>abaixa o limiar convulsivo</strong> e mascara a progressão para <em>delirium tremens</em>. Na abstinência ele é, no máximo, adjuvante da alucinação — com o benzodiazepínico correndo por baixo.</div></div>
       </div>
       <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
         <span class="rx-why">Por quê &amp; armadilhas</span>
@@ -142,7 +155,9 @@
       </div>
       <div class="card-body">
         <p>A pseudocrise é o cenário em que o anti-hipertensivo "funciona" por coincidência: a pressão ia cair de qualquer jeito quando a dor passasse, a bexiga esvaziasse ou o pânico cedesse — e o captopril leva o crédito, ensinando o serviço a repetir o erro. Tratar a causa não é etapa educada antes do remédio: <em>é</em> o remédio. O corolário: pressão que só cede com a causa tratada confirma que nunca foi doença da pressão.</p>
-        <span class="ref">AHA 2024 · SBC 2020 — pseudocrise hipertensiva.</span>
+        <p>Na abstinência isso fica literal. A hipertensão, a taquicardia, o tremor e a sudorese são <strong>uma síndrome adrenérgica só</strong>, e o benzodiazepínico trata todos de uma vez porque repõe o tônus GABAérgico que o álcool sustentava. Anti-hipertensivo isolado aqui é pior que inútil: derruba o número, deixa a síndrome correndo por baixo e tira o sinal que avisaria a progressão para <em>delirium tremens</em>. A escolha entre diazepam e lorazepam não é preferência de serviço — é farmacocinética: em fígado ruim, o diazepam vira sedação prolongada e encefalopatia, enquanto o lorazepam segue previsível por não precisar da fase I hepática.</p>
+        <p>Já a escolha entre benzodiazepínico e antipsicótico depende inteiramente da <strong>causa</strong> da agitação. Agitação por abstinência é falta de GABA e pede benzodiazepínico; agitação psicótica, por delirium hiperativo ou por intoxicação por estimulante costuma responder ao antipsicótico — e nela a risperidona oral tem a melhor evidência entre os orais, com a vantagem prática de o paciente que aceita comprimido não precisar de contenção. Trocar os dois de lugar é o erro clássico: antipsicótico no abstinente convulsiona, benzodiazepínico no idoso delirante piora o delirium.</p>
+        <span class="ref">Abstinência: The ASAM Clinical Practice Guideline on Alcohol Withdrawal Management. <em>J Addict Med.</em> 2020;14(3S Suppl 1):1–72 — dose guiada por sintoma e ajuste/escolha de agente na disfunção hepática · Agitação: Wilson MP, Pepper D, Currier GW, Holloman GH Jr, Feifel D. The psychopharmacology of agitation — consenso do Project BETA, American Association for Emergency Psychiatry. <em>West J Emerg Med.</em> 2012;13(1):26–34 — risperidona oral como a de melhor evidência entre os antipsicóticos orais · AHA 2024 · SBC 2020 — pseudocrise hipertensiva.</span>
       </div>
     </div>
 

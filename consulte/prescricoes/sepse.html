@@ -47,6 +47,7 @@
   .rx-dose{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;line-height:1.8;color:var(--text);background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:11px 14px;margin:12px 0 0}
   .rx-dose+.rx-dose{margin-top:8px}
   .rx-dose b{color:var(--accent);font-weight:600}
+  .rx-sub{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);margin:18px 0 -2px;padding-left:2px}
   .rx-body .tag-row{margin:10px 0 0}
   .rx-body .alert-box{margin:12px 0 0}
   .rx-item .card-toggle{border-top:1px solid var(--border);margin-top:14px}
@@ -192,7 +193,21 @@
       <div class="rx-body">
         <div class="rx-dose"><b>Noradrenalina</b> se PAM &lt; 65 persistir durante a expansão (não "depois dela") — titular pela PAM · diluição, conversão mcg/kg/min ⇄ mL/h e tabela completa nas <a class="text-link" href="../../hemo/drogas.html">drogas vasoativas</a>, fonte única do site</div>
         <div class="rx-dose"><b>Pode (e deve) começar em acesso periférico calibroso</b> em fossa antecubital ou acima, com vigilância do sítio — providenciar o central em seguida, sem que ele atrase a droga</div>
-        <div class="rx-dose">Refratário com nora subindo: <b>vasopressina 0,03 UI/min</b> (dose fixa, sem titular) associada quando a nora passa de ~<b>0,25–0,5 mcg/kg/min</b> · <b>adrenalina</b> é a 3ª linha · alvo de PAM maior que 65 só com motivo escrito (ex.: hipertenso crônico com LRA)</div>
+        <div class="rx-dose">Refratário com nora subindo: <b>associar vasopressina</b> quando a nora passa de ~<b>0,25–0,5 mcg/kg/min</b> — associar, <b>não</b> escalar a nora indefinidamente · <b>adrenalina</b> é a 3ª linha · alvo de PAM maior que 65 só com motivo escrito (ex.: hipertenso crônico com LRA)</div>
+
+        <div class="rx-sub">Vasopressina — diluição da casa e a régua da bomba</div>
+        <div class="rx-dose"><b>Diluição padrão:</b> <b>20 UI em 100 mL</b> de SF 0,9% ou SG 5% = <b>0,2 UI/mL</b> · confira a apresentação da sua farmácia (ampolas de 20 UI/mL são as usuais) antes de usar a coluna de mL/h</div>
+        <div class="rx-dose" style="padding:0;background:none;border:none"><div class="table-wrap"><table>
+          <thead><tr><th>Dose</th><th>Por hora</th><th>Bomba a 0,2 UI/mL</th><th>Quando</th></tr></thead>
+          <tbody>
+            <tr><td>0,01 UI/min</td><td>0,6 UI/h</td><td><b>3 mL/h</b></td><td>início possível em quem tem PA limítrofe</td></tr>
+            <tr><td>0,02 UI/min</td><td>1,2 UI/h</td><td><b>6 mL/h</b></td><td>degrau intermediário</td></tr>
+            <tr><td><b>0,03 UI/min</b></td><td>1,8 UI/h</td><td><b>9 mL/h</b></td><td><b>a dose das diretrizes</b> — entra e fica</td></tr>
+            <tr><td>0,04 UI/min</td><td>2,4 UI/h</td><td><b>12 mL/h</b></td><td><b>teto</b> — acima disso é resgate, não rotina</td></tr>
+          </tbody>
+        </table></div></div>
+        <div class="rx-dose"><b>Não titula pelo peso</b> — a dose é fixa em UI/min, igual para 50 e para 120 kg · <b>não desmama primeiro</b>: ao sair do choque, retire a <b>noradrenalina</b> antes; tirar a vasopressina primeiro costuma derrubar a PAM e custar mais nora</div>
+        <div class="alert-box warn"><div class="icon">!</div><div class="content">Acima de <strong>0,04 UI/min</strong> (12 mL/h nesta diluição) você saiu da faixa estudada e entrou em <strong>terapia de resgate</strong> — a vasoconstrição esplâncnica, digital e coronariana passa a cobrar preço (isquemia mesentérica e necrose de extremidade), sem ganho demonstrado. Chegou no teto e a PAM não sobe: a pergunta certa não é "mais vasopressina?", é <strong>foco não controlado, volemia, corticoide e disfunção miocárdica</strong> — itens 05, 06 e 07.</div></div>
       </div>
       <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
         <span class="rx-why">Por quê &amp; armadilhas</span>
@@ -200,7 +215,7 @@
       </div>
       <div class="card-body">
         <p>As duas esperas que matam no choque séptico são a do soro ("vamos ver se responde aos 30 mL/kg primeiro") e a do cateter ("nora só com central"). As duas caíram: hipotensão prolongada é dano de órgão por minuto, a nora periférica diluída em veia boa é segura por horas nos estudos — e o paciente que "estabilizou" com PAM 58 não estabilizou, acostumou a equipe. A vasopressina entra <em>cedo</em> no refratário não por ser mais potente, mas por atacar outro receptor (o séptico tem deficiência relativa dela) e poupar a escalada adrenérgica. E a dopamina não aparece nesta página por decisão: mais arritmia, nenhuma vantagem — a regra da casa desde a página do <a class="text-link" href="choque-cardiogenico.html">choque cardiogênico</a>.</p>
-        <span class="ref">SSC 2026 — nora 1ª linha (forte); vasopressina ao escalonar; adrenalina se PAM inadequada apesar das duas; início periférico; PAM 65 com faixa de ±5 mmHg, e 60–65 nos ≥ 65 anos.</span>
+        <span class="ref">SSC 2026 — nora 1ª linha (forte); vasopressina ao escalonar em vez de subir a nora; adrenalina se PAM inadequada apesar das duas; início periférico; PAM 65 com faixa de ±5 mmHg, e 60–65 nos ≥ 65 anos · <b>Dose da vasopressina:</b> Surviving Sepsis Campaign 2021 — 0,03 UI/min, dose fixa, associada quando a noradrenalina está entre 0,25 e 0,5 mcg/kg/min; doses acima de 0,03–0,04 UI/min são explicitamente reservadas a resgate no choque refratário a múltiplos vasopressores · Faixa de segurança (&lt; 0,04 UI/min) e ausência de ajuste por peso conforme os ensaios de referência (VASST) · <b>As colunas em mL/h são calculadas para 20 UI/100 mL (0,2 UI/mL)</b> — refazer para a diluição do seu serviço.</span>
       </div>
     </div>
 
@@ -212,20 +227,23 @@
         <span class="rx-n" aria-hidden="true"></span>
         <div>
           <div class="rx-title">Hidrocortisona quando a nora não desce — dose baixa, sem desmame heroico</div>
-          <div class="rx-cond">gatilho: noradrenalina ≥ 0,25 mcg/kg/min mantida após a ressuscitação inicial</div>
+          <div class="rx-cond">não há consenso firme — o gatilho prático é a nora ≥ 0,25 mcg/kg/min que não cede</div>
         </div>
       </div>
       <div class="rx-body">
-        <div class="rx-dose"><b>Hidrocortisona 50 mg EV 6/6 h</b> (200 mg/dia) enquanto o choque durar — retirar quando o vasopressor sair, sem necessidade de desmame lento na maioria</div>
-        <div class="rx-dose"><b>Sem cortisol sérico, sem teste de estímulo</b> para decidir: a indicação é hemodinâmica, não laboratorial</div>
+        <div class="alert-box info"><div class="icon">i</div><div class="content"><strong>Aqui não existe consenso claro, e a página não vai fingir que existe.</strong> A recomendação das diretrizes é <strong>fraca (sugestão), com baixa certeza de evidência</strong>: os grandes ensaios divergem, o benefício consistente é <strong>encurtar o tempo de choque</strong> e o efeito em mortalidade permanece discutível. Traduzindo para a beira do leito: corticoide no choque séptico é decisão <strong>ponderada</strong>, não automática — nem protocolo cego, nem proibição.</div></div>
+        <div class="rx-dose"><b>Quando ponderar de verdade:</b> <b>vasopressor em ascensão</b> com <b>noradrenalina acima de ~0,25 mcg/kg/min</b> que não faz menção de descer, mantida <b>pelo menos 4 h</b> depois de iniciada, com volemia já corrigida e foco tratado. É o cenário em que o corticoide tem a melhor chance de mudar alguma coisa — e é o que o gatilho das diretrizes descreve</div>
+        <div class="rx-dose"><b>Se decidir dar:</b> <b>hidrocortisona 50 mg EV 6/6 h</b> (200 mg/dia) — ou infusão contínua de 200 mg/24 h — enquanto o choque durar · retirar quando o vasopressor sair, sem necessidade de desmame lento na maioria</div>
+        <div class="rx-dose"><b>Sem cortisol sérico, sem teste de estímulo</b> para decidir: a indicação é hemodinâmica, não laboratorial · <b>não é dose de pulso</b>: metilprednisolona 1 g aqui é erro de classe, não potência · vigiar <b>hiperglicemia</b> e hipernatremia, os efeitos que aparecem primeiro</div>
       </div>
       <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
         <span class="rx-why">Por quê &amp; armadilhas</span>
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
       </div>
       <div class="card-body">
+        <p>Vale ser explícito sobre a incerteza, porque ela muda o modo de prescrever. Os dois maiores ensaios saíram em direções diferentes — um mostrou redução de mortalidade com hidrocortisona associada a fludrocortisona, o outro não mostrou diferença em 90 dias com hidrocortisona isolada — e o que sobrevive às metanálises é a <strong>reversão mais rápida do choque</strong>, não a sobrevida. Por isso a recomendação é uma <em>sugestão</em> de baixa certeza, e por isso a pergunta certa na visita não é "está no protocolo?", e sim <strong>"este paciente está escalando vasopressor apesar de volemia e foco resolvidos?"</strong>. Se está, o corticoide é razoável e barato. Se a nora está estável em 0,08 e caindo, ele só adiciona hiperglicemia.</p>
         <p>O corticoide do choque séptico é tratamento de <strong>choque</strong>, não de infecção: a dose baixa restaura a resposta vascular às catecolaminas no paciente cuja suprarrenal não acompanha a demanda — e os ensaios convergem em encurtar o tempo de choque, com efeito em mortalidade discutível mas custo baixo. As armadilhas são duas: a dose (200 mg/dia de hidrocortisona não é "pulso" — metilprednisolona 1 g aqui é erro, não potência) e o gatilho (dar na entrada "para ajudar" trata quem não precisa; guardar para "quando estiver morrendo" chega tarde — o gatilho é a nora que passa de 0,25 e não faz menção de descer).</p>
-        <span class="ref">SSC 2026 — corticoide EV no choque séptico (condicional, baixa certeza).</span>
+        <span class="ref">SSC 2026 — corticoide EV no choque séptico: recomendação <b>condicional, baixa certeza de evidência</b> (é o que sustenta o "não há consenso claro" desta página) · <b>Gatilho:</b> Surviving Sepsis Campaign 2021 — noradrenalina ou adrenalina ≥ 0,25 mcg/kg/min mantida por pelo menos 4 h após o início · <b>Os dois ensaios que divergem:</b> Annane D, et al. APROCCHSS — hidrocortisona + fludrocortisona, mortalidade em 90 dias 43,0% vs 49,1%. <em>N Engl J Med.</em> 2018;378(9):809–818 · Venkatesh B, et al. ADRENAL — hidrocortisona em infusão contínua, sem diferença de mortalidade em 90 dias, com reversão mais rápida do choque. <em>N Engl J Med.</em> 2018;378(9):797–808.</span>
       </div>
     </div>
 

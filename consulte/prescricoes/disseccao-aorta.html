@@ -47,6 +47,7 @@
   .rx-dose{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;line-height:1.8;color:var(--text);background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:11px 14px;margin:12px 0 0}
   .rx-dose+.rx-dose{margin-top:8px}
   .rx-dose b{color:var(--accent);font-weight:600}
+  .rx-sub{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);margin:18px 0 -2px;padding-left:2px}
   .rx-body .tag-row{margin:10px 0 0}
   .rx-body .alert-box{margin:12px 0 0}
   .rx-item .card-toggle{border-top:1px solid var(--border);margin-top:14px}
@@ -180,7 +181,26 @@
         </div>
       </div>
       <div class="rx-body">
+        <div class="rx-sub">As metas — nesta ordem</div>
+        <div class="rx-dose"><b>1º · FC ≤ 60 bpm</b> (ESC 2024) — a ACC/AHA 2022 aceita <b>60–80 bpm</b>; divergência declarada, e na prática se persegue o mais baixo que o paciente tolere</div>
+        <div class="rx-dose"><b>2º · PAS &lt; 120 mmHg</b> (ACC/AHA 2022) ou, no alvo mais estreito da ESC 2024, <b>100–120 mmHg</b> — <b>ou a menor pressão que ainda perfunde</b>: diurese, nível de consciência, lactato e pulsos mandam mais que o número</div>
+        <div class="rx-dose">⚠ A ordem não é estética: <b>FC primeiro, PA depois</b>. Vasodilatador antes do betabloqueio dispara taquicardia reflexa e aumenta o dP/dt</div>
+
+        <div class="rx-sub">Esmolol — a bomba, em mL/h</div>
         <div class="rx-dose"><b>Esmolol</b> (preferido — titulável, meia-vida de minutos): ataque <b>500 mcg/kg EV em 1 min</b> → <b>50 mcg/kg/min por 4 min</b> · não atingiu a meta: repetir o ataque e subir em degraus — <b>100</b>, depois <b>150</b>, depois <b>200 mcg/kg/min</b>, reavaliando a cada 4–5 min</div>
+        <div class="rx-dose">Diluição de referência: <b>10 mg/mL</b> (2.500 mg em 250 mL, ou o frasco pronto de 10 mg/mL). <b>Confira a da sua farmácia</b> antes de usar a tabela — outra concentração muda toda a coluna:</div>
+        <div class="rx-dose" style="padding:0;background:none;border:none"><div class="table-wrap"><table>
+          <thead><tr><th>Etapa</th><th>Dose</th><th>Paciente de 70 kg</th><th>Bomba a 10 mg/mL</th></tr></thead>
+          <tbody>
+            <tr><td><b>Ataque</b></td><td>500 mcg/kg em 1 min</td><td>35 mg</td><td><b>3,5 mL</b> em <em>bolus</em> lento</td></tr>
+            <tr><td>Manutenção inicial</td><td>50 mcg/kg/min</td><td>210 mg/h</td><td><b>21 mL/h</b></td></tr>
+            <tr><td>2º degrau</td><td>100 mcg/kg/min</td><td>420 mg/h</td><td><b>42 mL/h</b></td></tr>
+            <tr><td>3º degrau</td><td>150 mcg/kg/min</td><td>630 mg/h</td><td><b>63 mL/h</b></td></tr>
+            <tr><td>Teto usual</td><td>200 mcg/kg/min</td><td>840 mg/h</td><td><b>84 mL/h</b></td></tr>
+            <tr><td>Máximo de bula</td><td>300 mcg/kg/min</td><td>1.260 mg/h</td><td><b>126 mL/h</b> — ver alerta</td></tr>
+          </tbody>
+        </table></div></div>
+        <div class="alert-box warn"><div class="icon">!</div><div class="content">Acima de <strong>200 mcg/kg/min</strong> o ganho adicional é pequeno e o <strong>volume infundido vira problema</strong>: a 300 mcg/kg/min são 126 mL/h — cerca de <strong>3 litros por dia</strong> só de esmolol num paciente que você quer seco e com a pressão baixa. Não atingiu a meta perto do teto? A resposta é <strong>associar</strong> (vasodilatador para a pressão, analgesia para o tônus adrenérgico), não empilhar mais esmolol.</div></div>
         <div class="rx-dose"><b>Teto prático: 200 mcg/kg/min.</b> A bula admite até 250–300 para efeito anti-hipertensivo, mas <b>acima de 200 o ganho cronotrópico é pequeno e os eventos aumentam</b> — 300 não é alvo de rotina</div>
         <div class="rx-dose"><b>Preparo:</b> preferir a <b>solução pronta 10 mg/mL</b> quando existir. Com concentrado, 2.500 mg/10 mL + 240 mL SG 5% = <b>10 mg/mL</b> — diluição a validar com a farmácia pela apresentação, e <b>nunca injetar concentrado sem diluir</b> quando o produto exigir (ex.: 70 kg a 50 mcg/kg/min ≈ 21 mL/h)</div>
         <div class="rx-dose"><b>Contraindicações do esmolol:</b> bradicardia grave, BAV &gt; 1º grau sem marca-passo, doença do nó sinusal, IC descompensada, choque cardiogênico, hipotensão/hipoperfusão, broncoespasmo grave ativo · atenção à <b>insuficiência aórtica aguda grave</b> e não associar em proximidade a verapamil EV</div>
@@ -194,7 +214,7 @@
       </div>
       <div class="card-body">
         <p>O que propaga a dissecção é o <strong>dP/dt</strong> — a força com que cada sístole chicoteia a parede rasgada — e só o betabloqueador o reduz. Vasodilatador primeiro faz o oposto: a queda de pressão dispara <strong>taquicardia reflexa</strong>, o dP/dt sobe, e a prescrição que parecia tratar está rasgando a aorta um pouco mais a cada batimento. Por isso a ordem não é preferência, é lei. O esmolol é a droga ideal do cenário cirúrgico iminente (desliga em minutos se o paciente hipotensa a caminho do centro cirúrgico); o metoprolol EV é a realidade da maioria dos serviços — funciona, apenas não desliga rápido. Antes de betabloquear, um olhar: insuficiência aórtica aguda grave ou tamponamento mudam a conversa — aí a bradicardia é o que mantém o débito.</p>
-        <span class="ref">ACC/AHA 2022 — betabloqueio EV como primeira linha do controle de impulso · ESC 2024 (FC ≤ 60; ACC/AHA usa 60–80 — divergência declarada) · posologia e contraindicações do esmolol conforme bula.</span>
+        <span class="ref">Isselbacher EM, Preventza O, Hamilton Black J 3rd, et al. 2022 ACC/AHA Guideline for the Diagnosis and Management of Aortic Disease. <em>Circulation.</em> 2022;146(24):e334–e482 — betabloqueio EV como primeira linha do controle de impulso (Classe 1), PAS &lt; 120 mmHg ou a menor que mantenha perfusão de órgão-alvo, FC 60–80 bpm · ESC 2024 (doenças aórticas e vasculares periféricas) — FC &lt; 60 e PAS 100–120 mmHg; divergência de alvo declarada · Posologia, teto e concentração do esmolol conforme bula; as colunas em mL/h desta página são calculadas para 70 kg a 10 mg/mL e devem ser refeitas para a diluição do seu serviço.</span>
       </div>
     </div>
 

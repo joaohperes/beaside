@@ -47,6 +47,7 @@
   .rx-dose{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;line-height:1.8;color:var(--text);background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:11px 14px;margin:12px 0 0}
   .rx-dose+.rx-dose{margin-top:8px}
   .rx-dose b{color:var(--accent);font-weight:600}
+  .rx-sub{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);margin:18px 0 -2px;padding-left:2px}
   .rx-body .tag-row{margin:10px 0 0}
   .rx-body .alert-box{margin:12px 0 0}
   .rx-item .card-toggle{border-top:1px solid var(--border);margin-top:14px}
@@ -198,11 +199,13 @@
         <span class="rx-n" aria-hidden="true"></span>
         <div>
           <div class="rx-title">Restrição de exercício — a prescrição que não é remédio</div>
-          <div class="rx-cond">para todos, atleta ou não: 3–6 meses longe do esforço competitivo/intenso</div>
+          <div class="rx-cond">para todos, atleta ou não: repouso na fase aguda e retorno guiado pela remissão</div>
         </div>
       </div>
       <div class="rx-body">
-        <div class="rx-dose"><b>Sem exercício moderado-intenso por 3–6 meses</b> (atividades leves da vida diária liberadas conforme sintomas) · liberação só após reavaliação com <b>eco + Holter ± RM</b> mostrando função normal, sem arritmia e sem inflamação ativa — e por escrito na alta</div>
+        <div class="rx-dose"><b>Fase aguda: repouso</b> — exercício nessa janela se associa a arritmia e morte súbita</div>
+        <div class="rx-dose"><b>Restrição até a remissão, no mínimo 1 mês</b>, para atleta e não atleta, de forma <b>individualizada</b> (recomendação <b>I C</b>) · atividades leves da vida diária liberadas conforme sintomas</div>
+        <div class="rx-dose"><b>Remissão completa</b> = sintomas, <b>biomarcadores</b> e <b>imagem</b> normalizados — reavaliação com eco + Holter ± RM antes de liberar, e a liberação vai <b>por escrito</b> no sumário de alta</div>
       </div>
       <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
         <span class="rx-why">Por quê &amp; armadilhas</span>
@@ -210,7 +213,8 @@
       </div>
       <div class="card-body">
         <p>Miocardite é causa clássica de morte súbita no esporte — o miocárdio inflamado sob descarga adrenérgica é arena de arritmia ventricular. A restrição vale para o paciente "curado" da alta: a inflamação sobrevive semanas à troponina normalizada. Como é a prescrição mais fácil de se perder no caminho, ela vai <strong>escrita</strong> no sumário de alta, com a data da reavaliação que pode revogá-la — "evitar academia" dito de boca não sobrevive ao primeiro convite de futebol.</p>
-        <span class="ref">ESC 2025 · SBC 2022 — retorno ao exercício.</span>
+        <p>O prazo mudou, e vale saber por quê: os <strong>3 a 6 meses</strong> que circulavam vêm das recomendações anteriores, e a ESC 2025 os chama de <strong>arbitrários</strong> — trocou o calendário fixo por remissão documentada, com piso de 1 mês. Não é afrouxamento: quem não normaliza segue restrito além dos 6 meses. É o reconhecimento de que segurar um jovem parado por meio ano sem critério tem custo real de saúde mental, e de que a alta do esporte se conquista com exame, não com data no calendário.</p>
+        <span class="ref">2025 ESC Guidelines for the management of myocarditis and pericarditis. <em>Eur Heart J.</em> 2025;46(40):3952–4041 — Tabela de Recomendações 26 (restrição até a remissão, mínimo 1 mês, I C) e Seção 12.5, que declara arbitrários os prazos fixos de 3–6 meses das recomendações prévias · SBC 2022.</span>
       </div>
     </div>
 
@@ -219,21 +223,31 @@
       <div class="rx-head">
         <span class="rx-n" aria-hidden="true"></span>
         <div>
-          <div class="rx-title">Dor e febre — sem AINE no miocárdio inflamado</div>
-          <div class="rx-cond">a exceção fica com a pericardite predominante e a função normal</div>
+          <div class="rx-title">Dor e febre — quem decide o AINE é a imagem, não a troponina</div>
+          <div class="rx-cond">função ventricular normal libera o esquema da pericardite; disfunção veta</div>
         </div>
       </div>
       <div class="rx-body">
         <div class="rx-dose"><b>Dipirona</b> 1 g EV/VO até 6/6 h SN <em>ou</em> <b>paracetamol</b> 500–750 mg VO 6/6 h · antiemético SN (ondansetrona 4–8 mg EV ou metoclopramida 10 mg EV) — <b>ondansetrona prolonga QT</b>: corrigir K e Mg, e considerar ECG em cardiopata, bradiarritmia, QT longo ou uso de outro prolongador (amiodarona) · <b>metoclopramida</b> não é automática: distonia, acatisia, parkinsonismo, sonolência e discinesia tardia — reduzir dose repetida no idoso e na disfunção renal/hepática</div>
-        <div class="alert-box warn"><div class="icon">!</div><div class="content"><strong>AINE não entra na miocardite</strong> com disfunção/miocardite predominante — associado a pior evolução e mais retenção. Na <em>perimiocardite</em> com FE normal e dor pleurítica dominante, AINE + colchicina (o esquema da pericardite) é aceitável — é a distinção que o eco faz.</div></div>
+        <div class="rx-dose"><b>A régua da ESC 2025</b> — o que separa os dois cenários é a <b>função ventricular na imagem</b> (eco ou RM), não o valor da troponina:</div>
+        <div class="rx-dose" style="padding:0;background:none;border:none"><div class="table-wrap"><table>
+          <thead><tr><th>Cenário</th><th>Como se define</th><th>Analgesia e anti-inflamatório</th></tr></thead>
+          <tbody>
+            <tr><td><b>Miopericardite</b><br><span class="pill pill-green">pericardite predominante</span></td><td>critérios de pericardite aguda <b>+ troponina elevada</b>, <b>sem</b> disfunção focal ou difusa nova de VE no eco/RM</td><td>trata-se <b>como pericardite</b>: AAS ou AINE em dose plena (ibuprofeno costuma ser o 1º) + <b>colchicina</b> + IBP obrigatório</td></tr>
+            <tr><td><b>Perimiocardite</b><br><span class="pill pill-red">miocardite predominante</span></td><td>envolvimento miocárdico dominante — <b>disfunção de VE</b>, IC ou arritmia</td><td>trata-se <b>como miocardite pura</b>: <b>dipirona/paracetamol</b>; AINE só para sintoma pericárdico associado, e nunca como anti-inflamatório do miocárdio</td></tr>
+          </tbody>
+        </table></div></div>
+        <div class="rx-dose"><b>Colchicina</b> 0,5 mg 12/12 h (0,5 mg/dia se &lt; 70 kg ou intolerância) na miopericardite, para reduzir recorrência — <b>IIa B</b>. <b>AINE com IBP</b>, quando há sintoma pericárdico associado — <b>IIa C</b></div>
+        <div class="alert-box warn"><div class="icon">!</div><div class="content"><strong>Onde a troponina realmente entra</strong> — ela <em>não</em> decide o AINE (na miopericardite ela está elevada por definição) e, desde 2025, <strong>troponina alta sozinha não diagnostica miocardite</strong>: exige imagem que comprove envolvimento miocárdico. O lugar dela na conduta é outro — a ESC 2025 sugere <strong>betabloqueador na miocardite aguda, especialmente com troponina elevada</strong>, mantido por pelo menos 6 meses (IIa C).</div></div>
       </div>
       <div class="card-toggle" onclick="toggleCard(this.parentNode,event)" role="button" tabindex="0">
         <span class="rx-why">Por quê &amp; armadilhas</span>
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
       </div>
       <div class="card-body">
-        <p>A dor da miocardite parece pericardite, e o reflexo de dar ibuprofeno é compreensível — mas o miocárdio inflamado não é a serosa: AINE em modelos experimentais piora a lesão, e no doente com FE caindo soma retenção de sódio e dano renal ao que já está frágil. A régua prática é a função ventricular: FE normal com quadro claramente pericárdico → esquema de pericardite; qualquer disfunção → dipirona/paracetamol e ponto.</p>
-        <span class="ref">ESC 2025 — perimiocardite × miocardite · SBC 2022.</span>
+        <p>Vale dizer de onde vem o medo do AINE, porque ele é mais frágil do que parece: o dado de dano é <strong>experimental</strong> — em camundongos com miocardite por coxsackie B3, o anti-inflamatório aumentou necrose, título viral e mortalidade. Em humanos, a única série que testou a pergunta de frente (114 pacientes, retrospectiva) <strong>não</strong> encontrou pior desfecho, pior FE nem mais complicações com AINE. Ou seja: a restrição é <strong>precaução com base biológica</strong>, não dano comprovado em gente — e é exatamente por isso que a ESC 2025 não proíbe o AINE, ela o coloca em IIa C para o sintoma pericárdico e faz a distinção pela imagem.</p>
+        <p>O que muda na prática: pare de usar a troponina como semáforo. Ela sobe na miopericardite benigna e sobe no fulminante — o que separa os dois é o <strong>ventrículo</strong>. Diante de dor pleurítica com FE normal, o esquema de pericardite é o tratamento certo e negá-lo por reflexo condena o paciente a semanas de dor mal tratada. Diante de qualquer disfunção, o anti-inflamatório some da lista e o que resta é analgesia simples, terapia de IC e vigilância — porque ali o problema nunca foi a dor.</p>
+        <span class="ref">Diretriz: 2025 ESC Guidelines for the management of myocarditis and pericarditis. <em>Eur Heart J.</em> 2025;46(40):3952–4041 — Tabela de Recomendações 9 (AINE com IBP IIa C; colchicina IIa B; betabloqueador IIa C, especialmente com troponina elevada) e definição de miopericardite × perimiocardite · Dano experimental: Costanzo-Nordin MR, et al. A nonsteroid anti-inflammatory drug exacerbates coxsackie B3 murine myocarditis. <em>J Am Coll Cardiol.</em> 1985;6(5):1078–1082 · Série humana neutra: Mirna M, et al. <em>J Cardiovasc Dev Dis.</em> 2022;9(2):32 · SBC 2022.</span>
       </div>
     </div>
 
@@ -400,7 +414,7 @@
   <h2 class="section-title">O que <em>não</em> prescrever</h2>
   <div class="warn-box">
     <strong>Erros que pioram o desfecho na miocardite.</strong>
-    <p class="box-body"><strong>AINE</strong> no miocárdio inflamado com disfunção. <strong>Corticoide empírico</strong> na miocardite viral sem biópsia. <strong>CDI na fase aguda.</strong> <strong>Liberar exercício cedo</strong> — ou só de boca. <strong>Betabloqueador iniciado no baixo débito.</strong> <strong>Suspender o quarteto porque a FE normalizou</strong> antes do prazo. <strong>Segurar o paciente fulminante</strong> longe do centro com suporte mecânico até a refratariedade. E <strong>não perguntar por imunoterapia oncológica</strong> — a miocardite por checkpoint se trata ao contrário das outras.</p>
+    <p class="box-body"><strong>AINE</strong> no miocárdio inflamado com disfunção — e o oposto: <strong>negar AAS/AINE + colchicina</strong> à miopericardite de função normal, que é dor pericárdica tratável. <strong>Corticoide empírico</strong> na miocardite viral sem biópsia. <strong>CDI na fase aguda.</strong> <strong>Liberar exercício cedo</strong> — ou só de boca. <strong>Betabloqueador iniciado no baixo débito.</strong> <strong>Suspender o quarteto porque a FE normalizou</strong> antes do prazo. <strong>Segurar o paciente fulminante</strong> longe do centro com suporte mecânico até a refratariedade. E <strong>não perguntar por imunoterapia oncológica</strong> — a miocardite por checkpoint se trata ao contrário das outras.</p>
   </div>
 </section>
 
