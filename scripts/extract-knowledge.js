@@ -61,7 +61,7 @@ const PAGES_BY_MODULE = {
   ],
   nefro: [
     'fluxograma.html', 'sodio.html', 'potassio.html', 'calcio.html',
-    'magnesio-fosforo.html', 'lra.html', 'drc.html',
+    'magnesio-fosforo.html', 'lra.html', 'drc.html', 'acido-base.html',
   ],
   artigos: [
     'perguntas-plantao-hemodinamica.html', 'medidas-gerais-neurocritico.html',

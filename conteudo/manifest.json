@@ -1769,6 +1769,23 @@
             "titulo": "DRC no paciente crítico",
             "resumo": "Estadiamento KDIGO 2024, ameaças da reserva estreita e o paciente em diálise"
           }
+        },
+        {
+          "id": "acido-base",
+          "arquivo": "acido-base.html",
+          "categoria": "Ácido-base",
+          "menu": "Ácido-base",
+          "titulo": "Distúrbios ácido-base no crítico",
+          "subtitulo": "Ler a gasometria em passos, achar o distúrbio (e o segundo escondido) e chegar à conduta",
+          "tipo": "guia",
+          "status": "rascunho",
+          "ia": true,
+          "hub": {
+            "grupo": "Ácido-base",
+            "selo": "Ácido-base",
+            "titulo": "Distúrbios ácido-base",
+            "resumo": "Gasometria em 5 passos, os 4 distúrbios e os mistos — com calculadora"
+          }
         }
       ]
     },

@@ -300,6 +300,7 @@ const MODULE_PAGES = {
     {id:'magnesio-fosforo', file:'magnesio-fosforo.html', cat:'Distúrbios hidroeletrolíticos', label:'Mg e Fósforo', title:'Magnésio e Fósforo',                           subtitle:'Os esquecidos que sustentam os outros — repor Mg antes de K e Ca refratários'},
     {id:'lra',              file:'lra.html',              cat:'Rim agudo e crônico',           label:'LRA',          title:'Lesão Renal Aguda no crítico',                 subtitle:'Definir e estadiar, achar a causa e dialisar pela indicação — não pelo número'},
     {id:'drc',              file:'drc.html',              cat:'Rim agudo e crônico',           label:'DRC',          title:'Doença Renal Crônica no crítico',              subtitle:'Reserva estreita, dose ajustada por TFG e o paciente dialítico na UTI'},
+    {id:'acido-base',       file:'acido-base.html',       cat:'Ácido-base',                    label:'Ácido-base',   title:'Distúrbios ácido-base no crítico',             subtitle:'Ler a gasometria em passos, achar o distúrbio (e o segundo escondido) e chegar à conduta'},
   ],
   consulte: [
     {id:'ferramentas', file:'ferramentas.html', cat:'Consulte',      label:'Ferramentas',           title:'Consulte — execução rápida', subtitle:'Doses, tabelas, calculadoras e metas do plantão'},
