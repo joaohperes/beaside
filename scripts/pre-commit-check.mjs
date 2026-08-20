@@ -101,7 +101,10 @@ const manifest = JSON.parse(ler('conteudo/manifest.json'));
   if (r.code !== 0) {
     falha('Índice das prescrições não gerou', [r.out.trim().split('\n').slice(-3).join(' · ')]);
   } else {
-    const mudou = alvos.filter((f, i) => antes[i] && ler(f) !== antes[i]);
+    // O carimbo "gerado":"AAAA-MM-DD" muda a cada dia sem página nenhuma mudar;
+    // compara-se o conteúdo real, sem o carimbo (mesmo fix da branch de API).
+    const semCarimbo = (s) => s.replace(/"gerado":\s*"\d{4}-\d{2}-\d{2}"/g, '"gerado":""');
+    const mudou = alvos.filter((f, i) => antes[i] && semCarimbo(ler(f)) !== semCarimbo(antes[i]));
     if (mudou.length) {
       falha('Índice das prescrições desatualizado', [
         `${mudou.join(' e ')} não corresponde às páginas atuais.`,
