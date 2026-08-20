@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Segurança & LGPD — Hub UTI | be·aside</title>
+<meta name="description" content="Como o Hub UTI protege os dados do paciente: cifra da identidade, RLS por organização, IA sem acesso a dado sensível e conformidade com a LGPD.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
+<link rel="stylesheet" href="shell.css">
+<script src="shell.js" defer></script>
+</head>
+<body>
+  <section class="hb-hero">
+    <div class="hb-main">
+      <div class="hb-eyebrow">Segurança & LGPD</div>
+      <h1>O dado do paciente protegido por desenho.</h1>
+      <p class="hb-lead">Não é uma política escrita depois. É a forma como o sistema foi construído — e é o que permite usar IA na UTI sem medo.</p>
+    </div>
+  </section>
+
+  <main class="hb-main">
+    <section class="hb-section">
+      <h2>Os dois cofres</h2>
+      <p>Todo dado clínico vive num banco de dados PostgreSQL hospedado no Brasil (São Paulo). Ele é dividido em dois, por construção:</p>
+      <div class="hb-grid">
+        <div class="hb-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3>Cofre operacional</h3><p>O plantão do dia, com identificação do paciente. O <b>nome e a data de nascimento ficam cifrados</b> no banco — um vazamento de banco entrega bytes ilegíveis. Só o plantonista autorizado daquela UTI enxerga.</p></div>
+        <div class="hb-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8M21 7v5M21 7h-5"/></svg></div><h3>Cofre analítico</h3><p>Os indicadores da unidade, <b>anônimos e irreversíveis</b>: faixa etária, sexo, desfechos, tempos. Sem nome, sem caminho de volta. É o que alimenta a gestão longitudinal — e sai do escopo da LGPD por ser anonimizado.</p></div>
+      </div>
+      <div class="hb-note"><strong>A IA nascerá cega para a identidade.</strong> A inteligência de apoio à decisão que estamos construindo lerá apenas o cofre anônimo — idade, sexo, evolução clínica. Não existe caminho, no banco, entre ela e o nome de um paciente: não é um filtro que alguém possa esquecer, é permissão negada na estrutura.</div>
+    </section>
+
+    <section class="hb-section">
+      <h2>As camadas</h2>
+      <ol>
+        <li><b>Acesso:</b> login com segundo fator (autenticação multifator) e bloqueio de sessão por inatividade.</li>
+        <li><b>Isolamento por organização:</b> cada hospital só enxerga os próprios dados, imposto pelo banco (RLS), não pela interface.</li>
+        <li><b>Cifra em repouso:</b> nome e nascimento criptografados com chave guardada fora do banco.</li>
+        <li><b>Auditoria imutável:</b> quem registrou o quê e quando — trilha que não se apaga.</li>
+        <li><b>Papéis:</b> plantonista, gestor e administrador veem exatamente o que seu papel permite.</li>
+        <li><b>Retaguarda:</b> backups cifrados, ambiente de testes separado, e verificação de segurança automatizada a cada mudança.</li>
+      </ol>
+    </section>
+
+    <section class="hb-section">
+      <h2>LGPD, na prática</h2>
+      <p>A be·aside atua como <b>operadora</b> dos dados; o hospital é o <b>controlador</b>. Cada contratação acompanha um contrato de tratamento de dados (DPA). Mantemos registro das operações, plano de resposta a incidentes (comunicação em até 3 dias úteis, conforme a Resolução CD/ANPD nº 15/2024) e um Encarregado (DPO) como canal.</p>
+      <div class="hb-warn"><b>Transparência:</b> nenhum sistema é "impossível de vazar" — quem promete isso mente. O que fazemos é tornar o vazamento inútil: o que a IA lê não identifica ninguém, e o que identifica está cifrado e isolado. Detalhes em <a href="privacidade.html">Privacidade / LGPD</a>.</div>
+    </section>
+  </main>
+</body>
+</html>
